@@ -1,55 +1,81 @@
 --- 
-title: "A Minimal Book Example"
-author: "John Doe"
+title: "The a4a Initiative stock assessment framework"
+author: "Ernesto Jardim"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
-# url: your book url like https://bookdown.org/yihui/bookdown
+# url: your book url like https://ejardim.github.io/a4abook/
 # cover-image: path to the social sharing image like images/cover.jpg
 description: |
-  This is a minimal example of using the bookdown package to write a book.
-  The HTML output format for this example is bookdown::gitbook,
-  set in the _output.yml file.
+  This is the manual to use the a4a stock assessment framework
 link-citations: yes
-github-repo: rstudio/bookdown-demo
+github-repo: ejardim/a4abook
 ---
 
-# About
+# Before starting
 
-This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports; for example, a math equation $a^2 + b^2 = c^2$.
+## License, documentation and development status
 
-## Usage 
+The software is released under the [EUPL 1.1](https://joinup.ec.europa.eu/community/eupl/home).
 
-Each **bookdown** chapter is an .Rmd file, and each .Rmd file can contain one (and only one) chapter. A chapter *must* start with a first-level heading: `# A good chapter`, and can contain one (and only one) first-level heading.
+For more information on the a4a methodologies refer to [Jardim, et.al, 2014](http://icesjms.oxfordjournals.org/content/early/2014/04/03/icesjms.fsu050.abstract), [Millar, et.al, 2014](http://icesjms.oxfordjournals.org/content/early/2014/03/31/icesjms.fsu043.abstract) and [Scott, et.al, 2016](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0154922).
 
-Use second-level and higher headings within chapters like: `## A short section` or `### An even shorter section`.
+Documentation can be found at <http://flr-project.org/FLa4a>. You are welcome to:
 
-The `index.Rmd` file is required, and is also your first book chapter. It will be the homepage when you render the book.
+- Submit suggestions and bug-reports at: <https://github.com/flr/FLa4a/issues>
+- Send a pull request on: <https://github.com/flr/FLa4a/>
+- Compose a friendly e-mail to the maintainer, see `packageDescription('FLa4a')`
 
-## Render book
+## Installing and loading libraries
 
-You can render the HTML version of this example book without changing anything:
+To run the `FLa4a` methods the reader will need to install the package and its dependencies and load them. Some datasets are distributed with the package and as such need to be loaded too.
 
-1. Find the **Build** pane in the RStudio IDE, and
-
-1. Click on **Build Book**, then select your output format, or select "All formats" if you'd like to use multiple formats from the same book source files.
-
-Or build the book from the R console:
-
-```{r, eval=FALSE}
-bookdown::render_book()
+```{R, eval=FALSE}
+# from CRAN
+install.packages(c("copula","triangle", "coda", "grid", "gridExtra", "latticeExtra"))
+# from FLR
+install.packages(c("FLCore", "FLa4a"), repos="http://flr-project.org/R")
 ```
 
-To render this example to PDF as a `bookdown::pdf_book`, you'll need to install XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.org/tinytex/>.
-
-## Preview book
-
-As you work, you may start a local server to live preview this HTML book. This preview will update as you edit the book when you save individual .Rmd files. You can start the server in a work session by using the RStudio add-in "Preview book", or from the R console:
-
-```{r eval=FALSE}
-bookdown::serve_book()
+```{R, message=FALSE, warning=FALSE}
+# libraries
+library(devtools)
+library(FLa4a)
+library(XML)
+library(reshape2)
+library(ggplotFL)
+# datasets
+data(ple4)
+data(ple4.indices)
+data(ple4.index)
+data(rfLen)
 ```
+
+```{R}
+packageVersion("FLCore")
+packageVersion("FLa4a")
+```
+
+## How to read this document
+
+The target audience for this document are readers with some experience in R and some background on stock assessment.
+
+The document explains the approach being developed by \aFa for fish stock assessment and scientific advice. It presents a mixture of text and code, where the first explains the concepts behind the methods, while the last shows how these can be run with the software provided. Moreover, having the code allows the reader to copy/paste and replicate the analysis presented here.
+
+The sections and subsections are as independent as possible, so it can be used as a reference document for the `FLa4a`. 
+
+## Notation
+
+Along this chapter the notation presented in Table \@ref(tab:mathsnotation) will be used. Mathematical descriptions will be kept as simple as possible for readability.
+
+|Symbol|Description| 
+|-----:|:----------|
+|Variables| |
+|$C$|catches|
+Table: (\#tab:mathsnotation) Mathematical notation
+
+
 
 
 ```{r include=FALSE}
