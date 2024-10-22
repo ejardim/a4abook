@@ -1,11 +1,68 @@
-# Hello bookdown 
+# Before starting
 
-All chapters start with a first-level heading followed by your chapter title, like the line above. There should be only one first-level heading (`#`) per .Rmd file.
+## License, documentation and development status
 
-## A section
+The software is released under the \href{https://joinup.ec.europa.eu/community/eupl/home}{EUPL 1.1}.
 
-All chapter sections start with a second-level (`##`) or higher heading followed by your section title, like the sections above and below here. You can have as many as you want within a chapter.
+For more information on the a4a methodologies refer to \href{http://icesjms.oxfordjournals.org/content/early/2014/04/03/icesjms.fsu050.abstract}{Jardim, et.al, 2014}, \href{http://icesjms.oxfordjournals.org/content/early/2014/03/31/icesjms.fsu043.abstract}{Millar, et.al, 2014} and \href{http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0154922}{Scott, et.al, 2016}.
 
-### An unnumbered section {-}
+Documentation can be found at <http://flr-project.org/FLa4a>. You are welcome to:
 
-Chapters and sections are numbered by default. To un-number a heading, add a `{.unnumbered}` or the shorter `{-}` at the end of the heading, like in this section.
+- Submit suggestions and bug-reports at: <https://github.com/flr/FLa4a/issues>
+- Send a pull request on: <https://github.com/flr/FLa4a/>
+- Compose a friendly e-mail to the maintainer, see `packageDescription('FLa4a')`
+
+## Installing and loading libraries
+
+To run the `FLa4a` methods the reader will need to install the package and its dependencies and load them. Some datasets are distributed with the package and as such need to be loaded too.
+
+```{eval=FALSE}
+# from CRAN
+install.packages(c("copula","triangle", "coda", "grid", "gridExtra", "latticeExtra"))
+# from FLR
+install.packages(c("FLCore", "FLa4a"), repos="http://flr-project.org/R")
+```
+
+```{message=FALSE, warning=FALSE}
+# libraries
+library(devtools)
+library(FLa4a)
+library(XML)
+library(reshape2)
+library(ggplotFL)
+# datasets
+data(ple4)
+data(ple4.indices)
+data(ple4.index)
+data(rfLen)
+```
+
+```
+packageVersion("FLCore")
+packageVersion("FLa4a")
+```
+
+## How to read this document
+
+The target audience for this document are readers with some experience in R and some background on stock assessment.
+
+The document explains the approach being developed by \aFa for fish stock assessment and scientific advice. It presents a mixture of text and code, where the first explains the concepts behind the methods, while the last shows how these can be run with the software provided. Moreover, having the code allows the reader to copy/paste and replicate the analysis presented here.
+
+The sections and subsections are as independent as possible, so it can be used as a reference document for the `FLa4a`. 
+
+## Notation
+
+Along this chapter the notation presented in Table~\@ref(tbl-mathsnotation) will be used. Mathematical descriptions will be kept as simple as possible for readability.
+
+  \caption{}
+  \label{}
+
+|Symbol|Description| 
+|-----:|:----------|
+|Variables| |
+|$C$|catches|
+
+: Mathematical notation {#tbl-mathsnotation}
+
+
+
