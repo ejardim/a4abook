@@ -5,3 +5,6 @@ installing-and-loading-libraries
 how-to-read-this-document
 notation
 introduction
+stock-assessment-framework
+maths-description
+classes-description

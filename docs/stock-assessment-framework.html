@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Introduction | The a4a Initiative stock assessment framework</title>
+  <title>Chapter 3 Stock assessment framework | The a4a Initiative stock assessment framework</title>
   <meta name="description" content="This is the manual to use the a4a stock assessment framework" />
   <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Introduction | The a4a Initiative stock assessment framework" />
+  <meta property="og:title" content="Chapter 3 Stock assessment framework | The a4a Initiative stock assessment framework" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is the manual to use the a4a stock assessment framework" />
   <meta name="github-repo" content="ejardim/a4abook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Introduction | The a4a Initiative stock assessment framework" />
+  <meta name="twitter:title" content="Chapter 3 Stock assessment framework | The a4a Initiative stock assessment framework" />
   
   <meta name="twitter:description" content="This is the manual to use the a4a stock assessment framework" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="stock-assessment-framework.html"/>
+<link rel="prev" href="introduction.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -173,28 +173,77 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introduction" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Introduction<a href="introduction.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>The a4a stock assessment framework is based in a non-linear catch-at-age model implemented in <code>R</code>, <code>FLR</code> and <code>ADMB</code> that can be applied rapidly to a wide range of situations with low setup requirements.</p>
-<p>The framework is built of submodels which define the different parts of a statistical catch at age model that require structural assumptions. In the a4a framework these are fishing mortality-at-age, abundance indicies catchability-at-age, recruitment, observation variances of catch-at-age and abundance indices-at-age, and abundance-at-age in the first year of the data series (see section @ref{sec:math} for details).</p>
-<p>Other important processes, like natural mortality, individual growth and reproduction, are treated as fixed, as it’s common in stock assessment methods. Nevertheless, the a4a framework provides methods to condition these processes prior to the model fit, and propagate their uncertainty into the assessment process. See chapters XX and section XX.</p>
-<p>The submodels formulation uses linear models, which opens the possibility of using the linear modelling tools available in <code>R</code>. For example, <a href="http://cran.r-project.org/web/packages/mgcv/index.html"><code>mgcv</code></a> gam formulas or factorial design formulas using <code>lm()</code>.</p>
-<p>The ‘language’ of linear models has been developing within the statistical community for many years, and constitutes an elegant way of defining models without going through the complexity of mathematical representations. This approach makes it also easier to communicate among scientists:</p>
-<ul>
-<li><a href="http://rspa.royalsocietypublishing.org/content/283/1393/147.short">J. A. Nelder, 1965</a>, notation for randomized block design</li>
-<li><a href="http://www.jstor.org/stable/info/2346786">Wilkinson and Rodgers, 1973</a>, symbolic description for factorial designs</li>
-<li><a href="http://books.google.com/books?isbn=0412343908">Hastie and Tibshirani, 1990</a>, introduced notation for smoothers</li>
-<li><a href="http://books.google.com/books?isbn=041283040X">Chambers and Hastie, 1991</a>, further developed for use in S</li>
-</ul>
+<div id="stock-assessment-framework" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Stock assessment framework<a href="stock-assessment-framework.html#stock-assessment-framework" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="maths-description" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Maths description <a href="stock-assessment-framework.html#maths-description" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The stock assessment model behind the framework is based in two main equations to link observations to processes, the Baranov’s catch equation and abundance indices equation.</p>
+<p>Catches in numbers by age and year are defined in terms of the three quantities: natural mortality, fishing mortality and recruitment; using a modified form of the well known Baranov catch equation:</p>
+<p><span class="math display">\[C_{ay} = \frac{F_{ay}}{F_{ay}+M_{ay}}\left(1 - e^{-(F_{ay}+M_{ay})}\right) R_{y}e^{-\sum (F_{ay} + M_{ay})} \]</span></p>
+<p>Survey indices by age and year are defined in terms of the same three quantities with the addition of survey catchability:</p>
+<p><span class="math display">\[I_{ays} = Q_{ays} R_{y}e^{-\sum (F_{ay} + M_{ay})}\]</span></p>
+<p>Observed catches and observed survey indices are assumed to be log-normally distributed, or equivalently, normally distributed on the log-scale, with specific observation variance:</p>
+<p><span class="math display">\[ \log \hat{C}_{ay} \sim \text{Normal} \Big( \log C_{ay}, \sigma^2_{ay}\Big) \]</span>
+<span class="math display">\[ \log \hat{I}_{ays} \sim \text{Normal} \Big( \log I_{ays}, \tau^2_{ays} \Big) \]</span></p>
+<p>The log-likelihood can now be defined as the sum of the log-likelihood of the observed catches:</p>
+<p><span class="math display">\[  \ell_C = \sum_{ay} w^{(c)}_{ay}\ \ell_N \Big( \log C_{ay}, \sigma^2_{ay} ;\ \log \hat{C}_{ay} \Big) \]</span></p>
+<p>and the log-likelihood of the observed survey indices as:</p>
+<p><span class="math display">\[  \ell_I = \sum_s \sum_{ay} w^{(s)}_{ays}\ \ell_N \Big( \log I_{ays}, \tau_{ays}^2 ;\ \log \hat{I}_{ays} \Big)\]</span></p>
+<p>giving the total log-likelihood</p>
+<p><span class="math display">\[\ell = \ell_C + \ell_I\]</span></p>
+<p>which is defined in terms of the strictly positive quantites, <span class="math inline">\(M_{ay}\)</span>, <span class="math inline">\(F_{ay}\)</span>, <span class="math inline">\(Q_{ays}\)</span> and <span class="math inline">\(R_{y}\)</span>, and the observation variances <span class="math inline">\(\sigma_{ay}\)</span> and <span class="math inline">\(\tau_{ays}\)</span>. As such, the log-likelihood is over-parameterised as there are many more parameters than observations. In order to reduce the number of parameters, <span class="math inline">\(M_{ay}\)</span> is assumed known (as is common).</p>
+<p>%====================================================================
+%THE FOLLOWING NEEDS REVISION, need to bring in N1 submod
+%====================================================================</p>
+<p>The remaining parameters are written in terms of a linear combination of covariates <span class="math inline">\(x_{ayk}\)</span>, e.g.</p>
+<p><span class="math display">\[\log F_{ay} = \sum_k \beta_k x_{ayk}\]</span></p>
+<p>where <span class="math inline">\(k\)</span> is the number of parameters to be estimated and is sufficiently small. Using this tecnique the quantities <span class="math inline">\(\log F\)</span>, <span class="math inline">\(\log Q\)</span>, <span class="math inline">\(\log \sigma\)</span> and <span class="math inline">\(\log \tau\)</span>
+%<span class="math inline">\(\log \text{initial\,age\,structure}\)</span> % this is not present in the above
+(in bold in the equations above) can be described by a reduced number of parameters. The following section has more discussion on the use of linear models in a4a.</p>
+<p>%====================================================================</p>
+<p>The a4a statistical catch-at-age model can addionally allow for a functional relationship that links predicted recruitment <span class="math inline">\(\tilde{R}\)</span> based on spawning stock biomass and modelled recruitment <span class="math inline">\(R\)</span>, to be imposed as a fixed variance random effect. [NEEDS REVISION, sentence not clear]</p>
+<p>Options for the relationship are the hard coded models Ricker, Beverton Holt, smooth hockeystick or geometric mean. This is implemented by including a third component in the log-likelihood:</p>
+<p><span class="math display">\[\ell_{SR} = \sum_y \ell_N \Big( \log \tilde{R}_y(a, b), \phi_y^2 ;\ \log R_y \Big)\]</span></p>
+<p>giving the total log-likelihood</p>
+<p><span class="math display">\[\ell = \ell_C + \ell_I + \ell_{SR}\]</span></p>
+<p>Using the (time varying) Ricker model as an example, predicted recruitment is</p>
+<p><span class="math display">\[\tilde{R}_y(a_y,b_y) = a_y S_{y-1} e^{-b_y S_{y-1}}\]</span></p>
+<p>where <span class="math inline">\(S\)</span> is spawning stock biomass derived from the model parameters <span class="math inline">\(F\)</span> and <span class="math inline">\(R\)</span>, and the fixed quantites <span class="math inline">\(M\)</span> and mean weights by year and age. It is assumed that <span class="math inline">\(R\)</span> is log-normally distributed, or equivalently, normally distributed on the log-scale about the (log) recruitment predicted by the SR model <span class="math inline">\(\tilde{R}\)</span>, with known variance <span class="math inline">\(\phi^2\)</span>, i.e.</p>
+<p><span class="math display">\[\log R_y \sim \text{Normal} \Big( \log \tilde{R}_y, \phi_y^2 \Big)\]</span></p>
+<p>which leads to the definition of <span class="math inline">\(\ell_{SR}\)</span> given above. In all cases <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are strictly positive, and with the quantities <span class="math inline">\(F\)</span>, <span class="math inline">\(R\)</span>, etc. linear models are used to parameterise <span class="math inline">\(\log a\)</span> and/or <span class="math inline">\(\log b\)</span>, where relevant.</p>
+<p>%====================================================================
+%THE FOLLOWING NEEDS REVISION, this is not just the default I guess,
+% it’s always present since R predictions will be a mix of S/R and <span class="math inline">\(\gamma\)</span>
+%====================================================================</p>
+<p>By default, recruitment <span class="math inline">\(R\)</span> as apposed to the reruitment predicted from a stock recruitment model <span class="math inline">\(\tilde{R}\)</span>, is specified as a linear model with a parameter for each year, i.e.</p>
+<p><span class="math display">\[\log R_y = \gamma_y\]</span></p>
+<p>This is to allow modelled recruitment <span class="math inline">\(R_y\)</span> to be shrunk towards the stock recruitment model. However, if it is considered appropriate that recruitment can be determined exactly by a relationship with covariates, it is possible, to instead define <span class="math inline">\(\log R\)</span> in terms of a linear model in the same way as <span class="math inline">\(\log F\)</span>, <span class="math inline">\(\log Q\)</span>, <span class="math inline">\(\log \sigma\)</span> and <span class="math inline">\(\log \tau\)</span>. %But this is pretty much the same as taking a geometric mean, with a model on log a, and making the variance very small.</p>
+<p>%====================================================================
+% WE NEED TO ADD SOMETHING ABOUT HOW THE PLUSGROUP IS MODELLED
+%====================================================================</p>
+</div>
+<div id="classes-description" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Classes description <a href="stock-assessment-framework.html#classes-description" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Figure <a href="#fig:sca"><strong>??</strong></a> shows the process to fit a statistical stock assessment catch at age method.</p>
+<p><img src="#fig:sca" alt="Figure: The fit process" />(scamethod.png)</p>
+<div class="float">
+<img src="fitclass.png" alt="The a4aFit class" />
+<div class="figcaption">The a4aFit class</div>
+</div>
+<div class="float">
+<img src="fitsamcclass.png" alt="The a4aFitSA and a4aFitMCMC classes. Both classes have the same structure" />
+<div class="figcaption">The a4aFitSA and a4aFitMCMC classes. Both classes have the same structure</div>
+</div>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="stock-assessment-framework.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="introduction.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -225,7 +274,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-intro.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-saframework.Rmd",
 "text": "Edit"
 },
 "history": {

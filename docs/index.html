@@ -148,6 +148,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#notation"><i class="fa fa-check"></i><b>1.4</b> Notation</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html"><i class="fa fa-check"></i><b>3</b> Stock assessment framework</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#maths-description"><i class="fa fa-check"></i><b>3.1</b> Maths description </a></li>
+<li class="chapter" data-level="3.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#classes-description"><i class="fa fa-check"></i><b>3.2</b> Classes description </a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -222,29 +227,179 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <caption><span id="tab:mathsnotation">Table 1.1: </span> Mathematical notation</caption>
 <thead>
 <tr class="header">
+<th align="left">Type</th>
 <th align="right">Symbol</th>
 <th align="left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">Variables</td>
+<td align="left">variables</td>
+<td align="right"></td>
 <td align="left"></td>
 </tr>
 <tr class="even">
+<td align="left"></td>
 <td align="right"><span class="math inline">\(C\)</span></td>
 <td align="left">catches</td>
 </tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(F\)</span></td>
+<td align="left">fishing mortality</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(M\)</span></td>
+<td align="left">natural mortality</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(R\)</span></td>
+<td align="left">recruitment</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(Q\)</span></td>
+<td align="left">vessel or fleet catchability</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(w\)</span></td>
+<td align="left">weights</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(l\)</span></td>
+<td align="left">likelihood</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(I\)</span></td>
+<td align="left">abundance index</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(S\)</span></td>
+<td align="left">spawning stock biomass</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(CV\)</span></td>
+<td align="left">coefficient of variation</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(D\)</span></td>
+<td align="left">residuals or deviances</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(N\)</span></td>
+<td align="left">normal distribution</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(\beta\)</span></td>
+<td align="left">parameter</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(a\)</span></td>
+<td align="left">stock-recruitment parameter</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(b\)</span></td>
+<td align="left">stock-recruitment parameter</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(\sigma^2\)</span></td>
+<td align="left">variance of catch</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(\tau^2\)</span></td>
+<td align="left">variance of index</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(\phi^2\)</span></td>
+<td align="left">variance of predicted recruitment</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(\upsilon^2\)</span></td>
+<td align="left">variance of residuals</td>
+</tr>
+<tr class="odd">
+<td align="left">subscripts</td>
+<td align="right"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(a\)</span></td>
+<td align="left">age</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(y\)</span></td>
+<td align="left">year</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(C\)</span></td>
+<td align="left">catch</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(I\)</span></td>
+<td align="left">abundance index</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(N\)</span></td>
+<td align="left">normal distribution</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(s\)</span></td>
+<td align="left">survey</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(SR\)</span></td>
+<td align="left">stock recruitment relationship</td>
+</tr>
+<tr class="odd">
+<td align="left">superscripts and accents</td>
+<td align="right"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(\hat{}\)</span></td>
+<td align="left">observation</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(\tilde{}\)</span></td>
+<td align="left">prediction</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(c\)</span></td>
+<td align="left">catches</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right"><span class="math inline">\(s\)</span></td>
+<td align="left">abundance index</td>
+</tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="index.html#cb7-1" tabindex="-1"></a> <span class="co"># fit a model with indices &quot;IBTS_Q1&quot; and &quot;IBTS_Q3&quot;</span></span>
-<span id="cb7-2"><a href="index.html#cb7-2" tabindex="-1"></a> fit0 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices[<span class="fu">c</span>(<span class="st">&quot;IBTS_Q1&quot;</span>, <span class="st">&quot;IBTS_Q3&quot;</span>)],</span>
-<span id="cb7-3"><a href="index.html#cb7-3" tabindex="-1"></a>             <span class="at">fmodel =</span> <span class="sc">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">5</span>),</span>
-<span id="cb7-4"><a href="index.html#cb7-4" tabindex="-1"></a>             <span class="at">qmodel =</span> <span class="fu">list</span>( <span class="sc">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">4</span>), <span class="sc">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">4</span>)),</span>
-<span id="cb7-5"><a href="index.html#cb7-5" tabindex="-1"></a>             <span class="at">srmodel =</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb7-6"><a href="index.html#cb7-6" tabindex="-1"></a>             <span class="at">n1model =</span> <span class="sc">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">5</span>),</span>
-<span id="cb7-7"><a href="index.html#cb7-7" tabindex="-1"></a>             <span class="at">vmodel =</span> <span class="fu">list</span>( <span class="sc">~</span> <span class="dv">1</span>, <span class="sc">~</span> <span class="dv">1</span>, <span class="sc">~</span> <span class="dv">1</span>),</span>
-<span id="cb7-8"><a href="index.html#cb7-8" tabindex="-1"></a>             <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 
 </div>
 </div>

@@ -69,11 +69,41 @@ The sections and subsections are as independent as possible, so it can be used a
 
 Along this chapter the notation presented in Table \@ref(tab:mathsnotation) will be used. Mathematical descriptions will be kept as simple as possible for readability.
 
-|Symbol|Description| 
-|-----:|:----------|
-|Variables| |
-|$C$|catches|
-
+|Type|Symbol|Description| 
+|:---|-----:|:----------|
+|variables| | |
+| |$C$ | catches|
+| |$F$ | fishing mortality |
+| |$M$ | natural mortality |
+| |$R$ | recruitment |
+| |$Q$ | vessel or fleet catchability |
+| |$w$ | weights |
+| |$l$ | likelihood |
+| |$I$ | abundance index |
+| |$S$ | spawning stock biomass |
+| |$CV$ | coefficient of variation |
+| |$D$ | residuals or deviances |
+| |$N$ | normal distribution |
+| |$\beta$ | parameter |
+| |$a$ | stock-recruitment parameter |
+| |$b$ | stock-recruitment parameter |
+| |$\sigma^2$ | variance of catch |
+| |$\tau^2$ | variance of index |
+| |$\phi^2$ | variance of predicted recruitment |
+| |$\upsilon^2$ | variance of residuals |
+|subscripts | | |
+| |$a$ | age |
+| |$y$ | year |
+| |$C$ | catch |
+| |$I$ | abundance index |
+| |$N$ | normal distribution |
+| |$s$ | survey |
+| |$SR$ | stock recruitment relationship |
+|superscripts and accents | | |
+| |$\hat{}$ | observation |
+| |$\tilde{}$ | prediction |
+| |$c$ | catches |
+| |$s$ | abundance index |
 
 Table: (\#tab:mathsnotation) Mathematical notation
 
