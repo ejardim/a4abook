@@ -73,19 +73,9 @@ Along this chapter the notation presented in Table \@ref(tab:mathsnotation) will
 |-----:|:----------|
 |Variables| |
 |$C$|catches|
+
+
 Table: (\#tab:mathsnotation) Mathematical notation
-
-```{R, eval=FALSE}
- # fit a model with indices "IBTS_Q1" and "IBTS_Q3"
- fit0 <- sca(ple4, ple4.indices[c("IBTS_Q1", "IBTS_Q3")],
-             fmodel = ~ s(age, k = 5),
-             qmodel = list( ~ s(age, k = 4), ~ s(age, k = 4)),
-             srmodel = ~ 1,
-             n1model = ~ s(age, k = 5),
-             vmodel = list( ~ 1, ~ 1, ~ 1),
-             verbose = FALSE)
-```
-
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages
