@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 Submodel structure  | The a4a Initiative stock assessment framework</title>
+  <meta name="description" content="This is the manual to use the a4a stock assessment framework" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 Submodel structure  | The a4a Initiative stock assessment framework" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is the manual to use the a4a stock assessment framework" />
+  <meta name="github-repo" content="ejardim/a4abook" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 Submodel structure  | The a4a Initiative stock assessment framework" />
+  
+  <meta name="twitter:description" content="This is the manual to use the a4a stock assessment framework" />
+  
+
+<meta name="author" content="Ernesto Jardim and Colin Millar" />
+
+
+<meta name="date" content="2024-10-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="stock-assessment-framework.html"/>
+<link rel="next" href="fitting.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Before starting</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#license-documentation-and-development-status"><i class="fa fa-check"></i><b>1.1</b> License, documentation and development status</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installing-and-loading-libraries"><i class="fa fa-check"></i><b>1.2</b> Installing and loading libraries</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#how-to-read-this-document"><i class="fa fa-check"></i><b>1.3</b> How to read this document</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#notation"><i class="fa fa-check"></i><b>1.4</b> Notation</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><i class="fa fa-check"></i><b>3</b> Modelling Individual Growth and Using Stochastic Slicing to Convert Length-based Data Into Age-based Data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#background"><i class="fa fa-check"></i><b>3.1</b> Background</a></li>
+<li class="chapter" data-level="3.2" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#a4agr---the-growth-class"><i class="fa fa-check"></i><b>3.2</b> a4aGr - The growth class</a></li>
+<li class="chapter" data-level="3.3" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>3.3</b> Adding uncertainty to growth parameters with a multivariate normal distribution}</a></li>
+<li class="chapter" data-level="3.4" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-triangle-distribution"><i class="fa fa-check"></i><b>3.4</b> Adding uncertainty to growth parameters with a multivariate triangle distribution}</a></li>
+<li class="chapter" data-level="3.5" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#adding-uncertainty-to-growth-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>3.5</b> Adding uncertainty to growth parameters with statistical copulas}</a></li>
+<li class="chapter" data-level="3.6" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#converting-from-length-to-age-based-data---the-l2a-method"><i class="fa fa-check"></i><b>3.6</b> Converting from length to age based data - the <code>l2a()</code> method}</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="natural-mortality-modelling.html"><a href="natural-mortality-modelling.html"><i class="fa fa-check"></i><b>4</b> Natural Mortality Modelling</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="natural-mortality-modelling.html"><a href="natural-mortality-modelling.html#background-1"><i class="fa fa-check"></i><b>4.1</b> Background</a></li>
+<li class="chapter" data-level="4.2" data-path="natural-mortality-modelling.html"><a href="natural-mortality-modelling.html#a4am---the-m-class"><i class="fa fa-check"></i><b>4.2</b> <code>a4aM</code> - The M class</a></li>
+<li class="chapter" data-level="4.3" data-path="natural-mortality-modelling.html"><a href="natural-mortality-modelling.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>4.3</b> Adding uncertainty to natural mortality parameters with a multivariate normal distribution</a></li>
+<li class="chapter" data-level="4.4" data-path="natural-mortality-modelling.html"><a href="natural-mortality-modelling.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>4.4</b> Adding uncertainty to natural mortality parameters with statistical copulas</a></li>
+<li class="chapter" data-level="4.5" data-path="natural-mortality-modelling.html"><a href="natural-mortality-modelling.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>4.5</b> Computing natural mortality time series - the “m” method</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html"><i class="fa fa-check"></i><b>5</b> Stock assessment framework</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#maths-description"><i class="fa fa-check"></i><b>5.1</b> Maths description </a></li>
+<li class="chapter" data-level="5.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#classes-description"><i class="fa fa-check"></i><b>5.2</b> Classes description </a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="submodel-structure.html"><a href="submodel-structure.html"><i class="fa fa-check"></i><b>6</b> Submodel structure </a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="submodel-structure.html"><a href="submodel-structure.html#submodel-building-blocks-and-fundamental-r-formulas"><i class="fa fa-check"></i><b>6.1</b> Submodel building blocks and fundamental <code>R</code> formulas</a></li>
+<li class="chapter" data-level="6.2" data-path="submodel-structure.html"><a href="submodel-structure.html#the-major-effects-available-for-modelling"><i class="fa fa-check"></i><b>6.2</b> The major effects available for modelling</a></li>
+<li class="chapter" data-level="6.3" data-path="submodel-structure.html"><a href="submodel-structure.html#the-submodel-class-and-methods"><i class="fa fa-check"></i><b>6.3</b> The submodel class and methods</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="fitting.html"><a href="fitting.html"><i class="fa fa-check"></i><b>7</b> Fitting</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="fitting.html"><a href="fitting.html#fishing-mortality-submodel-f_ay"><i class="fa fa-check"></i><b>7.1</b> Fishing mortality submodel (<span class="math inline">\(F_{ay}\)</span>)</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="fitting.html"><a href="fitting.html#separable-model"><i class="fa fa-check"></i><b>7.1.1</b> Separable model</a></li>
+<li class="chapter" data-level="7.1.2" data-path="fitting.html"><a href="fitting.html#constant-selectivity-for-contiguous-ages-or-years"><i class="fa fa-check"></i><b>7.1.2</b> Constant selectivity for contiguous ages or years</a></li>
+<li class="chapter" data-level="7.1.3" data-path="fitting.html"><a href="fitting.html#time-blocks-selectivity"><i class="fa fa-check"></i><b>7.1.3</b> Time blocks selectivity</a></li>
+<li class="chapter" data-level="7.1.4" data-path="fitting.html"><a href="fitting.html#time-changing-selectivity"><i class="fa fa-check"></i><b>7.1.4</b> Time changing selectivity</a></li>
+<li class="chapter" data-level="7.1.5" data-path="fitting.html"><a href="fitting.html#trawl-fleets"><i class="fa fa-check"></i><b>7.1.5</b> Trawl fleets}</a></li>
+<li class="chapter" data-level="7.1.6" data-path="fitting.html"><a href="fitting.html#nets-and-liners-fleets"><i class="fa fa-check"></i><b>7.1.6</b> Nets and Liners fleets}</a></li>
+<li class="chapter" data-level="7.1.7" data-path="fitting.html"><a href="fitting.html#multigear-fleets"><i class="fa fa-check"></i><b>7.1.7</b> Multigear fleets}</a></li>
+<li class="chapter" data-level="7.1.8" data-path="fitting.html"><a href="fitting.html#trawl-surveys"><i class="fa fa-check"></i><b>7.1.8</b> Trawl surveys}</a></li>
+<li class="chapter" data-level="7.1.9" data-path="fitting.html"><a href="fitting.html#closed-form-selection-pattern"><i class="fa fa-check"></i><b>7.1.9</b> Closed form selection pattern}</a></li>
+<li class="chapter" data-level="7.1.10" data-path="fitting.html"><a href="fitting.html#more-models"><i class="fa fa-check"></i><b>7.1.10</b> More models</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="fitting.html"><a href="fitting.html#abundance-indices-catchability-submodel-q_ays"><i class="fa fa-check"></i><b>7.2</b> Abundance indices catchability submodel (<span class="math inline">\(Q_{ays}\)</span>)</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="fitting.html"><a href="fitting.html#catchability-submodel-for-age-based-indices"><i class="fa fa-check"></i><b>7.2.1</b> Catchability submodel for age based indices</a></li>
+<li class="chapter" data-level="7.2.2" data-path="fitting.html"><a href="fitting.html#catchability-submodel-for-age-aggregated-biomass-indices"><i class="fa fa-check"></i><b>7.2.2</b> Catchability submodel for age aggregated biomass indices}</a></li>
+<li class="chapter" data-level="7.2.3" data-path="fitting.html"><a href="fitting.html#catchability-submodel-for-single-age-indices"><i class="fa fa-check"></i><b>7.2.3</b> Catchability submodel for single age indices</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="fitting.html"><a href="fitting.html#stock-recruitment-submodel-r_y"><i class="fa fa-check"></i><b>7.3</b> Stock-recruitment submodel (<span class="math inline">\(R_y\)</span>)}</a></li>
+<li class="chapter" data-level="7.4" data-path="fitting.html"><a href="fitting.html#observation-variance-submodel-sigma2_ay-tau2_ays"><i class="fa fa-check"></i><b>7.4</b> Observation variance submodel (<span class="math inline">\(\{\sigma^2_{ay}, \tau^2_{ays}\}\)</span>)</a></li>
+<li class="chapter" data-level="7.5" data-path="fitting.html"><a href="fitting.html#initial-year-abundance-submodel-n_ay1"><i class="fa fa-check"></i><b>7.5</b> Initial year abundance submodel (<span class="math inline">\(N_{a,y=1}\)</span>)}</a></li>
+<li class="chapter" data-level="7.6" data-path="fitting.html"><a href="fitting.html#data-weigthing"><i class="fa fa-check"></i><b>7.6</b> Data weigthing</a></li>
+<li class="chapter" data-level="7.7" data-path="fitting.html"><a href="fitting.html#working-with-covariates"><i class="fa fa-check"></i><b>7.7</b> Working with covariates</a></li>
+<li class="chapter" data-level="7.8" data-path="fitting.html"><a href="fitting.html#assessing-files"><i class="fa fa-check"></i><b>7.8</b> Assessing files</a></li>
+<li class="chapter" data-level="7.9" data-path="fitting.html"><a href="fitting.html#missing-observations-in-the-catch-matrix-or-index"><i class="fa fa-check"></i><b>7.9</b> Missing observations in the catch matrix or index</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>8</b> Diagnostics </a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="diagnostics.html"><a href="diagnostics.html#residuals"><i class="fa fa-check"></i><b>8.1</b> Residuals</a></li>
+<li class="chapter" data-level="8.2" data-path="diagnostics.html"><a href="diagnostics.html#predictive-skill"><i class="fa fa-check"></i><b>8.2</b> Predictive skill</a></li>
+<li class="chapter" data-level="8.3" data-path="diagnostics.html"><a href="diagnostics.html#aggreagted-catch-in-weight"><i class="fa fa-check"></i><b>8.3</b> Aggreagted catch in weight}</a></li>
+<li class="chapter" data-level="8.4" data-path="diagnostics.html"><a href="diagnostics.html#fit-summary-information-and-cross-validation-metrics"><i class="fa fa-check"></i><b>8.4</b> Fit summary, information and cross-validation metrics</a></li>
+<li class="chapter" data-level="8.5" data-path="diagnostics.html"><a href="diagnostics.html#the-package-a4adiags"><i class="fa fa-check"></i><b>8.5</b> The package a4adiags</a></li>
+<li class="chapter" data-level="8.6" data-path="diagnostics.html"><a href="diagnostics.html#residuals-and-submodels-misspecifiction"><i class="fa fa-check"></i><b>8.6</b> Residuals and submodels misspecifiction</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="diagnostics.html"><a href="diagnostics.html#the-mean-model"><i class="fa fa-check"></i><b>8.6.1</b> The “mean” model</a></li>
+<li class="chapter" data-level="8.6.2" data-path="diagnostics.html"><a href="diagnostics.html#the-age-effects"><i class="fa fa-check"></i><b>8.6.2</b> The age effects</a></li>
+<li class="chapter" data-level="8.6.3" data-path="diagnostics.html"><a href="diagnostics.html#the-fishing-mortality-year-model"><i class="fa fa-check"></i><b>8.6.3</b> The fishing mortality year model</a></li>
+<li class="chapter" data-level="8.6.4" data-path="diagnostics.html"><a href="diagnostics.html#the-initial-year-population-abundance-model-aka-n1"><i class="fa fa-check"></i><b>8.6.4</b> The initial year population abundance model, aka N1</a></li>
+<li class="chapter" data-level="8.6.5" data-path="diagnostics.html"><a href="diagnostics.html#the-stock-recruitment-submodel"><i class="fa fa-check"></i><b>8.6.5</b> The stock recruitment submodel</a></li>
+<li class="chapter" data-level="8.6.6" data-path="diagnostics.html"><a href="diagnostics.html#the-variance-submodel"><i class="fa fa-check"></i><b>8.6.6</b> The variance submodel</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The a4a Initiative stock assessment framework</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="submodel-structure" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Submodel structure <a href="submodel-structure.html#submodel-structure" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The <code>a4a</code> stock assessment framework allows the user to set up a large number of different models. The mechanics which provide this flexibility are designed around the concept of submodels. Each unknown variable that must be estimated is treated as a linear model, for which the user has to define the model structure using <code>R</code> formulas, including <a href="http://cran.r-project.org/web/packages/mgcv/index.html"><code>mgcv</code></a> gam formulas. All submodels use the same specification process, the <code>R</code> formula interface, wich gives lot’s of flexibility to explore models and combination of submodels.</p>
+<p>There are 5 submodels in operation:</p>
+<ul>
+<li>a model for F-at-age (<span class="math inline">\(F_{ay}\)</span>)</li>
+<li>a (list) of model(s) for abundance indices catchability-at-age (<span class="math inline">\(Q_{ays}\)</span>),</li>
+<li>a model for recruitment (<span class="math inline">\(R_y\)</span>)</li>
+<li>a list of models for the observation variance of catch-at-age and abundance indices (<span class="math inline">\(\{\sigma^2_{ay}, \tau^2_{ays}\}\)</span>)</li>
+<li>a model for the initial age structure <span class="math inline">\(N_{a,y=1}\)</span>,</li>
+</ul>
+<p>When setting the structure of each submodel the user is in fact building the predictive model and its parameters. The optimization process, done through <code>ADMB</code>, estimates the parameters and their variance-covariance matrix, allowing further analysis to be carried out, like simulation, prediction, diagnostics, etc. All the statistical machinery will be at the user’s reach.</p>
+<div id="submodel-building-blocks-and-fundamental-r-formulas" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Submodel building blocks and fundamental <code>R</code> formulas<a href="submodel-structure.html#submodel-building-blocks-and-fundamental-r-formulas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The elements available to build submodels formulas are ‘age’ and ‘year’, which can be used to build models with different structures.</p>
+<p>In R’s linear modelling language, a constant model is coded as $ 1$, while a slope over time would simply be <span class="math inline">\(\sim year\)</span>, a smoother over time <span class="math inline">\(\sim s(year, k=10)\)</span>, a model with a coefficient for each year would be <span class="math inline">\(\sim factor(year)\)</span>. Transformations of the variables are as usual, e.g. <span class="math inline">\(\sim sqrt(year)\)</span>, etc; while combinations of all the above can be done although non-convergence will limit the possibilities.</p>
+<p>Using the <span class="math inline">\(F\)</span> submodel as example the following specifies the models described in the previous paragraph:</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="submodel-structure.html#cb107-1" tabindex="-1"></a><span class="co"># models</span></span>
+<span id="cb107-2"><a href="submodel-structure.html#cb107-2" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="er">~</span><span class="dv">1</span></span>
+<span id="cb107-3"><a href="submodel-structure.html#cb107-3" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="er">~</span> year</span>
+<span id="cb107-4"><a href="submodel-structure.html#cb107-4" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">10</span>)</span>
+<span id="cb107-5"><a href="submodel-structure.html#cb107-5" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">factor</span>(year)</span>
+<span id="cb107-6"><a href="submodel-structure.html#cb107-6" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">sqrt</span>(year)</span>
+<span id="cb107-7"><a href="submodel-structure.html#cb107-7" tabindex="-1"></a></span>
+<span id="cb107-8"><a href="submodel-structure.html#cb107-8" tabindex="-1"></a><span class="co"># fits</span></span>
+<span id="cb107-9"><a href="submodel-structure.html#cb107-9" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>m1, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span>
+<span id="cb107-10"><a href="submodel-structure.html#cb107-10" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>m2, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span>
+<span id="cb107-11"><a href="submodel-structure.html#cb107-11" tabindex="-1"></a>fit3 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>m3, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span>
+<span id="cb107-12"><a href="submodel-structure.html#cb107-12" tabindex="-1"></a>fit4 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>m4, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span>
+<span id="cb107-13"><a href="submodel-structure.html#cb107-13" tabindex="-1"></a>fit5 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>m5, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span>
+<span id="cb107-14"><a href="submodel-structure.html#cb107-14" tabindex="-1"></a></span>
+<span id="cb107-15"><a href="submodel-structure.html#cb107-15" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb107-16"><a href="submodel-structure.html#cb107-16" tabindex="-1"></a>lst <span class="ot">&lt;-</span> <span class="fu">FLStocks</span>(<span class="at">constant=</span>ple4<span class="sc">+</span>fit1, <span class="at">linear=</span>ple4<span class="sc">+</span>fit2, <span class="at">smooth=</span>ple4<span class="sc">+</span>fit3, <span class="at">factor=</span>ple4<span class="sc">+</span>fit4, <span class="at">sqrt=</span>ple4<span class="sc">+</span>fit5)</span>
+<span id="cb107-17"><a href="submodel-structure.html#cb107-17" tabindex="-1"></a>lst <span class="ot">&lt;-</span> <span class="fu">lapply</span>(lst, fbar)</span>
+<span id="cb107-18"><a href="submodel-structure.html#cb107-18" tabindex="-1"></a>lgnd <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">points=</span><span class="cn">FALSE</span>, <span class="at">lines=</span><span class="cn">TRUE</span>, <span class="at">space=</span><span class="st">&#39;right&#39;</span>)</span>
+<span id="cb107-19"><a href="submodel-structure.html#cb107-19" tabindex="-1"></a><span class="fu">xyplot</span>(data<span class="sc">~</span>year, <span class="at">groups=</span>qname, lst, <span class="at">auto.key=</span>lgnd, <span class="at">type=</span><span class="st">&#39;l&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;fishing mortality&#39;</span>)</span></code></pre></div>
+<div class="figure">
+<img src="_main_files/figure-html/fund_forms-1.png" alt="Example of fundamental R formulas" width="672" />
+<p class="caption">
+(#fig:fund_forms)Example of fundamental R formulas
+</p>
+</div>
+<p>The models above and their combinations can be used to model both ‘age’ and ‘year’. The corresponding fits for age are:</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="submodel-structure.html#cb108-1" tabindex="-1"></a><span class="co"># models</span></span>
+<span id="cb108-2"><a href="submodel-structure.html#cb108-2" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="er">~</span><span class="dv">1</span></span>
+<span id="cb108-3"><a href="submodel-structure.html#cb108-3" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="er">~</span> age</span>
+<span id="cb108-4"><a href="submodel-structure.html#cb108-4" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">3</span>)</span>
+<span id="cb108-5"><a href="submodel-structure.html#cb108-5" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">factor</span>(age)</span>
+<span id="cb108-6"><a href="submodel-structure.html#cb108-6" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">sqrt</span>(age)</span>
+<span id="cb108-7"><a href="submodel-structure.html#cb108-7" tabindex="-1"></a></span>
+<span id="cb108-8"><a href="submodel-structure.html#cb108-8" tabindex="-1"></a><span class="co"># fits</span></span>
+<span id="cb108-9"><a href="submodel-structure.html#cb108-9" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>m1, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span>
+<span id="cb108-10"><a href="submodel-structure.html#cb108-10" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>m2, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span>
+<span id="cb108-11"><a href="submodel-structure.html#cb108-11" tabindex="-1"></a>fit3 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>m3, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span>
+<span id="cb108-12"><a href="submodel-structure.html#cb108-12" tabindex="-1"></a>fit4 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>m4, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span>
+<span id="cb108-13"><a href="submodel-structure.html#cb108-13" tabindex="-1"></a>fit5 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>m5, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span>
+<span id="cb108-14"><a href="submodel-structure.html#cb108-14" tabindex="-1"></a></span>
+<span id="cb108-15"><a href="submodel-structure.html#cb108-15" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb108-16"><a href="submodel-structure.html#cb108-16" tabindex="-1"></a>lst <span class="ot">&lt;-</span> <span class="fu">FLStocks</span>(<span class="at">constant=</span>ple4<span class="sc">+</span>fit1, <span class="at">linear=</span>ple4<span class="sc">+</span>fit2, <span class="at">smooth=</span>ple4<span class="sc">+</span>fit3, <span class="at">factor=</span>ple4<span class="sc">+</span>fit4, <span class="at">sqrt=</span>ple4<span class="sc">+</span>fit5)</span>
+<span id="cb108-17"><a href="submodel-structure.html#cb108-17" tabindex="-1"></a>lst <span class="ot">&lt;-</span> <span class="fu">lapply</span>(lst, <span class="cf">function</span>(x) <span class="fu">harvest</span>(x)[,<span class="st">&#39;2000&#39;</span>])</span>
+<span id="cb108-18"><a href="submodel-structure.html#cb108-18" tabindex="-1"></a><span class="fu">xyplot</span>(data<span class="sc">~</span>age, <span class="at">groups=</span>qname, lst, <span class="at">auto.key=</span>lgnd, <span class="at">type=</span><span class="st">&#39;l&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;fishing mortality in 2000&#39;</span>)</span></code></pre></div>
+<div class="figure">
+<img src="_main_files/figure-html/fund_forms_age-1.png" alt="Example of fundamental R formulas" width="672" />
+<p class="caption">
+(#fig:fund_forms_age)Example of fundamental R formulas
+</p>
+</div>
+</div>
+<div id="the-major-effects-available-for-modelling" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> The major effects available for modelling<a href="submodel-structure.html#the-major-effects-available-for-modelling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Although the building blocks for formulas are ‘age’ and ‘year’, in fact there are three effects that can be modelled for each submodel: ‘age’, ‘year’ and ‘cohort’. As examples note the following models for fishing mortality.</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="submodel-structure.html#cb109-1" tabindex="-1"></a><span class="co"># the age effect</span></span>
+<span id="cb109-2"><a href="submodel-structure.html#cb109-2" tabindex="-1"></a>ageeffect <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">factor</span>(age)</span>
+<span id="cb109-3"><a href="submodel-structure.html#cb109-3" tabindex="-1"></a></span>
+<span id="cb109-4"><a href="submodel-structure.html#cb109-4" tabindex="-1"></a><span class="co"># the year effect</span></span>
+<span id="cb109-5"><a href="submodel-structure.html#cb109-5" tabindex="-1"></a>yeareffect <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">factor</span>(year)</span>
+<span id="cb109-6"><a href="submodel-structure.html#cb109-6" tabindex="-1"></a></span>
+<span id="cb109-7"><a href="submodel-structure.html#cb109-7" tabindex="-1"></a><span class="co"># the cohort</span></span>
+<span id="cb109-8"><a href="submodel-structure.html#cb109-8" tabindex="-1"></a>cohorteffect <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">factor</span>(year<span class="sc">-</span>age)</span>
+<span id="cb109-9"><a href="submodel-structure.html#cb109-9" tabindex="-1"></a></span>
+<span id="cb109-10"><a href="submodel-structure.html#cb109-10" tabindex="-1"></a><span class="co"># the fits</span></span>
+<span id="cb109-11"><a href="submodel-structure.html#cb109-11" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>yeareffect)</span>
+<span id="cb109-12"><a href="submodel-structure.html#cb109-12" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>ageeffect)</span>
+<span id="cb109-13"><a href="submodel-structure.html#cb109-13" tabindex="-1"></a>fit3 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>cohorteffect)</span></code></pre></div>
+<p>and the graphical representation of the three models in Figures <a href="submodel-structure.html#fig:majeffy">6.1</a> to <a href="submodel-structure.html#fig:majeffc">6.3</a>.</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="submodel-structure.html#cb110-1" tabindex="-1"></a><span class="fu">wireframe</span>(<span class="fu">harvest</span>(fit1), <span class="at">main=</span><span class="st">&#39;year effect&#39;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:majeffy"></span>
+<img src="_main_files/figure-html/majeffy-1.png" alt="Major effects: the year effect (~ factor(year))" width="672" />
+<p class="caption">
+Figure 6.1: Major effects: the year effect (~ factor(year))
+</p>
+</div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="submodel-structure.html#cb111-1" tabindex="-1"></a><span class="fu">wireframe</span>(<span class="fu">harvest</span>(fit2), <span class="at">main=</span><span class="st">&#39;age effect&#39;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:majeffa"></span>
+<img src="_main_files/figure-html/majeffa-1.png" alt="Major effects: the age effect (~ factor(age))" width="672" />
+<p class="caption">
+Figure 6.2: Major effects: the age effect (~ factor(age))
+</p>
+</div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="submodel-structure.html#cb112-1" tabindex="-1"></a><span class="fu">wireframe</span>(<span class="fu">harvest</span>(fit3), <span class="at">main=</span><span class="st">&#39;cohort effect&#39;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:majeffc"></span>
+<img src="_main_files/figure-html/majeffc-1.png" alt="Major effects: the cohort effect (~ factor(year-age))" width="672" />
+<p class="caption">
+Figure 6.3: Major effects: the cohort effect (~ factor(year-age))
+</p>
+</div>
+</div>
+<div id="the-submodel-class-and-methods" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> The submodel class and methods<a href="submodel-structure.html#the-submodel-class-and-methods" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>%====================================================================
+% COLIN TO CHECK THE SECTION
+%====================================================================</p>
+<p>Although the specification of each submodel is done through a R formula, internally the <code>a4a</code> sca fit creates an object (of class ‘submodel’) which stores more information and allows a wide number of methods to be applied. The most important cases are prediction and simulation methods.</p>
+<p>The submodel class is a S4 class with the following slots:</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="submodel-structure.html#cb113-1" tabindex="-1"></a><span class="fu">showClass</span>(<span class="st">&quot;submodel&quot;</span>)</span></code></pre></div>
+<pre><code>## Class &quot;submodel&quot; [package &quot;FLa4a&quot;]
+## 
+## Slots:
+##                                                                        
+## Name:       formula coefficients         vcov    centering        distr
+## Class:      formula        FLPar        array        FLPar    character
+##                                                                        
+## Name:          link      linkinv         name         desc        range
+## Class:     function     function    character    character      numeric
+## 
+## Extends: &quot;FLComp&quot;</code></pre>
+<p>Objects of class ‘submodel’ are created in the fitting process using the formulas set by the user (or defaults if missing) and information from the fit.</p>
+<p>For example begining with a simple <code>a4a</code> fit:</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="submodel-structure.html#cb115-1" tabindex="-1"></a> <span class="co"># fit a model with indices &quot;IBTS_Q1&quot; and &quot;IBTS_Q3&quot;</span></span>
+<span id="cb115-2"><a href="submodel-structure.html#cb115-2" tabindex="-1"></a> fit0 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices[<span class="fu">c</span>(<span class="st">&quot;IBTS_Q1&quot;</span>, <span class="st">&quot;IBTS_Q3&quot;</span>)],</span>
+<span id="cb115-3"><a href="submodel-structure.html#cb115-3" tabindex="-1"></a>             <span class="at">fmodel =</span> <span class="sc">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">5</span>),</span>
+<span id="cb115-4"><a href="submodel-structure.html#cb115-4" tabindex="-1"></a>             <span class="at">qmodel =</span> <span class="fu">list</span>( <span class="sc">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">4</span>), <span class="sc">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">4</span>)),</span>
+<span id="cb115-5"><a href="submodel-structure.html#cb115-5" tabindex="-1"></a>             <span class="at">srmodel =</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb115-6"><a href="submodel-structure.html#cb115-6" tabindex="-1"></a>             <span class="at">n1model =</span> <span class="sc">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">5</span>),</span>
+<span id="cb115-7"><a href="submodel-structure.html#cb115-7" tabindex="-1"></a>             <span class="at">vmodel =</span> <span class="fu">list</span>( <span class="sc">~</span> <span class="dv">1</span>, <span class="sc">~</span> <span class="dv">1</span>, <span class="sc">~</span> <span class="dv">1</span>),</span>
+<span id="cb115-8"><a href="submodel-structure.html#cb115-8" tabindex="-1"></a>             <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb115-9"><a href="submodel-structure.html#cb115-9" tabindex="-1"></a> fit0</span></code></pre></div>
+<pre><code>## a4a model fit for: PLE 
+## 
+## Call:
+## .local(stock = stock, indices = indices, fmodel = ..1, qmodel = ..2, 
+##     srmodel = ..3, n1model = ..4, vmodel = ..5, verbose = FALSE)
+## 
+## Time used:
+##  Pre-processing     Running a4a Post-processing           Total 
+##      0.22117448      0.48696613      0.03530979      0.74345040 
+## 
+## Submodels:
+##   fmodel: ~s(age, k = 5)
+##  srmodel: ~1
+##  n1model: ~s(age, k = 5)
+##   qmodel:
+##     IBTS_Q1: ~s(age, k = 4)
+##     IBTS_Q3: ~s(age, k = 4)
+##   vmodel:
+##     catch:   ~1
+##     IBTS_Q1: ~1
+##     IBTS_Q3: ~1</code></pre>
+<p>Within the sca fit object there’s a collection of submodels for each component of the <code>a4a</code> stock assessment model (fishing mortality, survey catchability, stock recruitment relationship, initial population and the observation variance for catch numbers and survey indices). For readability the following example will use the fishing mortality submodel although the methods and models described can be applied to each of the 5 submodels.</p>
+<p>The submodel can be extracted using:</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="submodel-structure.html#cb117-1" tabindex="-1"></a> fmod <span class="ot">&lt;-</span> <span class="fu">fmodel</span>(fit0)</span></code></pre></div>
+<p>inside this object is a formula, the coeficients estimated by the model and their covariance matrix.</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="submodel-structure.html#cb118-1" tabindex="-1"></a> <span class="fu">coef</span>(fmod)</span>
+<span id="cb118-2"><a href="submodel-structure.html#cb118-2" tabindex="-1"></a> <span class="fu">vcov</span>(fmod)</span></code></pre></div>
+<p>it is also possible to get the data behind the fit and the design matrix required to get the fitted values</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="submodel-structure.html#cb119-1" tabindex="-1"></a> <span class="fu">as.data.frame</span>(fmod)</span>
+<span id="cb119-2"><a href="submodel-structure.html#cb119-2" tabindex="-1"></a> <span class="fu">getX</span>(fmod)</span></code></pre></div>
+<p>this makes it possble to check the fit manually like this (note that the data is centered in the model, which is addressed by adding the centering after the prediction is made, see code below):</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="submodel-structure.html#cb120-1" tabindex="-1"></a> dat <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(fmod)</span>
+<span id="cb120-2"><a href="submodel-structure.html#cb120-2" tabindex="-1"></a> X <span class="ot">&lt;-</span> <span class="fu">getX</span>(fmod)</span>
+<span id="cb120-3"><a href="submodel-structure.html#cb120-3" tabindex="-1"></a> b <span class="ot">&lt;-</span> <span class="fu">coef</span>(fmod)</span>
+<span id="cb120-4"><a href="submodel-structure.html#cb120-4" tabindex="-1"></a> dat<span class="sc">$</span>fit <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">c</span>(X <span class="sc">%*%</span> b))<span class="co"># + dat$data.centering)</span></span>
+<span id="cb120-5"><a href="submodel-structure.html#cb120-5" tabindex="-1"></a></span>
+<span id="cb120-6"><a href="submodel-structure.html#cb120-6" tabindex="-1"></a> <span class="fu">plot</span>(fit <span class="sc">~</span> age, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">data =</span> dat[dat<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2016</span>,],</span>
+<span id="cb120-7"><a href="submodel-structure.html#cb120-7" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">&quot;Estimated fishing mortality at age&quot;</span>,</span>
+<span id="cb120-8"><a href="submodel-structure.html#cb120-8" tabindex="-1"></a>      <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(dat<span class="sc">$</span>fit)), <span class="at">las =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p>or simulate from the fit by resampling based on the variance matrix of the coefficients, which is done by simulating many coefficients (here called <code>bsim</code>).</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="submodel-structure.html#cb121-1" tabindex="-1"></a> <span class="co"># get the variance matrix of the coefficients and simulate</span></span>
+<span id="cb121-2"><a href="submodel-structure.html#cb121-2" tabindex="-1"></a> Sigma <span class="ot">&lt;-</span> <span class="fu">vcov</span>(fmod)[,,<span class="dv">1</span>]</span>
+<span id="cb121-3"><a href="submodel-structure.html#cb121-3" tabindex="-1"></a> bsim <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(<span class="dv">999</span>, b, Sigma)</span>
+<span id="cb121-4"><a href="submodel-structure.html#cb121-4" tabindex="-1"></a></span>
+<span id="cb121-5"><a href="submodel-structure.html#cb121-5" tabindex="-1"></a> fit_sim <span class="ot">&lt;-</span> <span class="fu">exp</span>(X <span class="sc">%*%</span> bsim)</span>
+<span id="cb121-6"><a href="submodel-structure.html#cb121-6" tabindex="-1"></a> dat<span class="sc">$</span>ci_lower <span class="ot">&lt;-</span> <span class="fu">apply</span>(fit_sim, <span class="dv">1</span>, quantile, <span class="at">p =</span> <span class="fl">0.025</span>)</span>
+<span id="cb121-7"><a href="submodel-structure.html#cb121-7" tabindex="-1"></a> dat<span class="sc">$</span>ci_upper <span class="ot">&lt;-</span> <span class="fu">apply</span>(fit_sim, <span class="dv">1</span>, quantile, <span class="at">p =</span> <span class="fl">0.975</span>)</span>
+<span id="cb121-8"><a href="submodel-structure.html#cb121-8" tabindex="-1"></a></span>
+<span id="cb121-9"><a href="submodel-structure.html#cb121-9" tabindex="-1"></a> <span class="fu">plot</span>(fit <span class="sc">~</span> age, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">data =</span> dat[dat<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2016</span>,],</span>
+<span id="cb121-10"><a href="submodel-structure.html#cb121-10" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">&quot;Estimated fishing mortality at age&quot;</span>,</span>
+<span id="cb121-11"><a href="submodel-structure.html#cb121-11" tabindex="-1"></a>      <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(dat<span class="sc">$</span>ci_upper)), <span class="at">las =</span> <span class="dv">1</span>)</span>
+<span id="cb121-12"><a href="submodel-structure.html#cb121-12" tabindex="-1"></a> <span class="fu">lines</span>(ci_lower <span class="sc">~</span> age, <span class="at">data =</span> dat[dat<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2016</span>,], <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb121-13"><a href="submodel-structure.html#cb121-13" tabindex="-1"></a> <span class="fu">lines</span>(ci_upper <span class="sc">~</span> age, <span class="at">data =</span> dat[dat<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2016</span>,], <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p>The above code is to show how it is possible to use an <code>FLa4a</code> submodel to predict and simulate, and not intended to be used by the user. The recomended way to predict from a submodel and make simulations is to use the <code>genFLQuant</code> function (and for finer control, there is also a <code>simulate</code> function). The above example can be done using <code>FLa4a</code> functions as follows:</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="submodel-structure.html#cb122-1" tabindex="-1"></a> fmod_fit <span class="ot">&lt;-</span> <span class="fu">genFLQuant</span>(fmod)</span>
+<span id="cb122-2"><a href="submodel-structure.html#cb122-2" tabindex="-1"></a> dat <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(fmod_fit)</span>
+<span id="cb122-3"><a href="submodel-structure.html#cb122-3" tabindex="-1"></a></span>
+<span id="cb122-4"><a href="submodel-structure.html#cb122-4" tabindex="-1"></a> <span class="fu">plot</span>(data <span class="sc">~</span> age, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">data =</span> dat[dat<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2016</span>,],</span>
+<span id="cb122-5"><a href="submodel-structure.html#cb122-5" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">&quot;Estimated fishing mortality at age&quot;</span>,</span>
+<span id="cb122-6"><a href="submodel-structure.html#cb122-6" tabindex="-1"></a>      <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(dat<span class="sc">$</span>data)), <span class="at">las =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p>or using the <code>ggplotFL</code> package:</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="submodel-structure.html#cb123-1" tabindex="-1"></a> fmod_fit <span class="ot">&lt;-</span> <span class="fu">genFLQuant</span>(fmod)</span>
+<span id="cb123-2"><a href="submodel-structure.html#cb123-2" tabindex="-1"></a></span>
+<span id="cb123-3"><a href="submodel-structure.html#cb123-3" tabindex="-1"></a> <span class="fu">ggplot</span>(<span class="at">data =</span> fmod_fit[,<span class="st">&quot;2016&quot;</span>], <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> data)) <span class="sc">+</span> </span>
+<span id="cb123-4"><a href="submodel-structure.html#cb123-4" tabindex="-1"></a>   <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb123-5"><a href="submodel-structure.html#cb123-5" tabindex="-1"></a>   <span class="fu">ylab</span>(<span class="st">&quot;Estimated fishing mortality at age&quot;</span>) <span class="sc">+</span></span>
+<span id="cb123-6"><a href="submodel-structure.html#cb123-6" tabindex="-1"></a>   <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fu">max</span>(fmod_fit))</span></code></pre></div>
+<p>and the simulations and confidence intervals are easily computed:</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="submodel-structure.html#cb124-1" tabindex="-1"></a> <span class="co"># simulate 999 </span></span>
+<span id="cb124-2"><a href="submodel-structure.html#cb124-2" tabindex="-1"></a> fmod_fit_sim <span class="ot">&lt;-</span> <span class="fu">genFLQuant</span>(fmod, <span class="at">nsim =</span> <span class="dv">999</span>)</span>
+<span id="cb124-3"><a href="submodel-structure.html#cb124-3" tabindex="-1"></a></span>
+<span id="cb124-4"><a href="submodel-structure.html#cb124-4" tabindex="-1"></a> <span class="co"># reduce to quantiles</span></span>
+<span id="cb124-5"><a href="submodel-structure.html#cb124-5" tabindex="-1"></a> fmod_fit_sim <span class="ot">&lt;-</span> <span class="fu">quantile</span>(fmod_fit_sim[,<span class="st">&quot;2016&quot;</span>], <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.50</span>, <span class="fl">0.975</span>))</span></code></pre></div>
+<p>plotting can be done by converting to a data.frame, reshaping and using standard <code>ggplot2</code> functionality</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="submodel-structure.html#cb125-1" tabindex="-1"></a> dat <span class="ot">&lt;-</span> </span>
+<span id="cb125-2"><a href="submodel-structure.html#cb125-2" tabindex="-1"></a>   <span class="fu">reshape</span>(</span>
+<span id="cb125-3"><a href="submodel-structure.html#cb125-3" tabindex="-1"></a>     <span class="fu">as.data.frame</span>(fmod_fit_sim, <span class="at">drop=</span><span class="cn">TRUE</span>), </span>
+<span id="cb125-4"><a href="submodel-structure.html#cb125-4" tabindex="-1"></a>     <span class="at">timevar =</span> <span class="st">&quot;iter&quot;</span>, <span class="at">idvar =</span> <span class="st">&quot;age&quot;</span>, <span class="at">direction =</span> <span class="st">&quot;wide&quot;</span>  </span>
+<span id="cb125-5"><a href="submodel-structure.html#cb125-5" tabindex="-1"></a>   )</span>
+<span id="cb125-6"><a href="submodel-structure.html#cb125-6" tabindex="-1"></a></span>
+<span id="cb125-7"><a href="submodel-structure.html#cb125-7" tabindex="-1"></a> <span class="fu">ggplot</span>(<span class="at">data=</span>dat, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> <span class="st">`</span><span class="at">data.50%</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb125-8"><a href="submodel-structure.html#cb125-8" tabindex="-1"></a>   <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> <span class="st">`</span><span class="at">data.2.5%</span><span class="st">`</span>, <span class="at">ymax =</span> <span class="st">`</span><span class="at">data.97.5%</span><span class="st">`</span>), </span>
+<span id="cb125-9"><a href="submodel-structure.html#cb125-9" tabindex="-1"></a>               <span class="at">fill=</span><span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> .<span class="dv">15</span>) <span class="sc">+</span></span>
+<span id="cb125-10"><a href="submodel-structure.html#cb125-10" tabindex="-1"></a>   <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb125-11"><a href="submodel-structure.html#cb125-11" tabindex="-1"></a>   <span class="fu">ylab</span>(<span class="st">&quot;Estimated fishing mortality at age&quot;</span>) <span class="sc">+</span></span>
+<span id="cb125-12"><a href="submodel-structure.html#cb125-12" tabindex="-1"></a>   <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fu">max</span>(fmod_fit_sim))</span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="stock-assessment-framework.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="fitting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/05-submodels.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

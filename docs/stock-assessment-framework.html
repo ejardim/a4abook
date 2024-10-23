@@ -4,34 +4,34 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Stock assessment framework | The a4a Initiative stock assessment framework</title>
+  <title>Chapter 5 Stock assessment framework | The a4a Initiative stock assessment framework</title>
   <meta name="description" content="This is the manual to use the a4a stock assessment framework" />
   <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Stock assessment framework | The a4a Initiative stock assessment framework" />
+  <meta property="og:title" content="Chapter 5 Stock assessment framework | The a4a Initiative stock assessment framework" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is the manual to use the a4a stock assessment framework" />
   <meta name="github-repo" content="ejardim/a4abook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Stock assessment framework | The a4a Initiative stock assessment framework" />
+  <meta name="twitter:title" content="Chapter 5 Stock assessment framework | The a4a Initiative stock assessment framework" />
   
   <meta name="twitter:description" content="This is the manual to use the a4a stock assessment framework" />
   
 
-<meta name="author" content="Ernesto Jardim" />
+<meta name="author" content="Ernesto Jardim and Colin Millar" />
 
 
-<meta name="date" content="2024-10-22" />
+<meta name="date" content="2024-10-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="introduction.html"/>
-
+<link rel="prev" href="natural-mortality-modelling.html"/>
+<link rel="next" href="submodel-structure.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -148,10 +148,79 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#notation"><i class="fa fa-check"></i><b>1.4</b> Notation</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
-<li class="chapter" data-level="3" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html"><i class="fa fa-check"></i><b>3</b> Stock assessment framework</a>
+<li class="chapter" data-level="3" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><i class="fa fa-check"></i><b>3</b> Modelling Individual Growth and Using Stochastic Slicing to Convert Length-based Data Into Age-based Data</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#maths-description"><i class="fa fa-check"></i><b>3.1</b> Maths description </a></li>
-<li class="chapter" data-level="3.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#classes-description"><i class="fa fa-check"></i><b>3.2</b> Classes description </a></li>
+<li class="chapter" data-level="3.1" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#background"><i class="fa fa-check"></i><b>3.1</b> Background</a></li>
+<li class="chapter" data-level="3.2" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#a4agr---the-growth-class"><i class="fa fa-check"></i><b>3.2</b> a4aGr - The growth class</a></li>
+<li class="chapter" data-level="3.3" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>3.3</b> Adding uncertainty to growth parameters with a multivariate normal distribution}</a></li>
+<li class="chapter" data-level="3.4" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-triangle-distribution"><i class="fa fa-check"></i><b>3.4</b> Adding uncertainty to growth parameters with a multivariate triangle distribution}</a></li>
+<li class="chapter" data-level="3.5" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#adding-uncertainty-to-growth-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>3.5</b> Adding uncertainty to growth parameters with statistical copulas}</a></li>
+<li class="chapter" data-level="3.6" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#converting-from-length-to-age-based-data---the-l2a-method"><i class="fa fa-check"></i><b>3.6</b> Converting from length to age based data - the <code>l2a()</code> method}</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="natural-mortality-modelling.html"><a href="natural-mortality-modelling.html"><i class="fa fa-check"></i><b>4</b> Natural Mortality Modelling</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="natural-mortality-modelling.html"><a href="natural-mortality-modelling.html#background-1"><i class="fa fa-check"></i><b>4.1</b> Background</a></li>
+<li class="chapter" data-level="4.2" data-path="natural-mortality-modelling.html"><a href="natural-mortality-modelling.html#a4am---the-m-class"><i class="fa fa-check"></i><b>4.2</b> <code>a4aM</code> - The M class</a></li>
+<li class="chapter" data-level="4.3" data-path="natural-mortality-modelling.html"><a href="natural-mortality-modelling.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>4.3</b> Adding uncertainty to natural mortality parameters with a multivariate normal distribution</a></li>
+<li class="chapter" data-level="4.4" data-path="natural-mortality-modelling.html"><a href="natural-mortality-modelling.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>4.4</b> Adding uncertainty to natural mortality parameters with statistical copulas</a></li>
+<li class="chapter" data-level="4.5" data-path="natural-mortality-modelling.html"><a href="natural-mortality-modelling.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>4.5</b> Computing natural mortality time series - the “m” method</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html"><i class="fa fa-check"></i><b>5</b> Stock assessment framework</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#maths-description"><i class="fa fa-check"></i><b>5.1</b> Maths description </a></li>
+<li class="chapter" data-level="5.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#classes-description"><i class="fa fa-check"></i><b>5.2</b> Classes description </a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="submodel-structure.html"><a href="submodel-structure.html"><i class="fa fa-check"></i><b>6</b> Submodel structure </a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="submodel-structure.html"><a href="submodel-structure.html#submodel-building-blocks-and-fundamental-r-formulas"><i class="fa fa-check"></i><b>6.1</b> Submodel building blocks and fundamental <code>R</code> formulas</a></li>
+<li class="chapter" data-level="6.2" data-path="submodel-structure.html"><a href="submodel-structure.html#the-major-effects-available-for-modelling"><i class="fa fa-check"></i><b>6.2</b> The major effects available for modelling</a></li>
+<li class="chapter" data-level="6.3" data-path="submodel-structure.html"><a href="submodel-structure.html#the-submodel-class-and-methods"><i class="fa fa-check"></i><b>6.3</b> The submodel class and methods</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="fitting.html"><a href="fitting.html"><i class="fa fa-check"></i><b>7</b> Fitting</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="fitting.html"><a href="fitting.html#fishing-mortality-submodel-f_ay"><i class="fa fa-check"></i><b>7.1</b> Fishing mortality submodel (<span class="math inline">\(F_{ay}\)</span>)</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="fitting.html"><a href="fitting.html#separable-model"><i class="fa fa-check"></i><b>7.1.1</b> Separable model</a></li>
+<li class="chapter" data-level="7.1.2" data-path="fitting.html"><a href="fitting.html#constant-selectivity-for-contiguous-ages-or-years"><i class="fa fa-check"></i><b>7.1.2</b> Constant selectivity for contiguous ages or years</a></li>
+<li class="chapter" data-level="7.1.3" data-path="fitting.html"><a href="fitting.html#time-blocks-selectivity"><i class="fa fa-check"></i><b>7.1.3</b> Time blocks selectivity</a></li>
+<li class="chapter" data-level="7.1.4" data-path="fitting.html"><a href="fitting.html#time-changing-selectivity"><i class="fa fa-check"></i><b>7.1.4</b> Time changing selectivity</a></li>
+<li class="chapter" data-level="7.1.5" data-path="fitting.html"><a href="fitting.html#trawl-fleets"><i class="fa fa-check"></i><b>7.1.5</b> Trawl fleets}</a></li>
+<li class="chapter" data-level="7.1.6" data-path="fitting.html"><a href="fitting.html#nets-and-liners-fleets"><i class="fa fa-check"></i><b>7.1.6</b> Nets and Liners fleets}</a></li>
+<li class="chapter" data-level="7.1.7" data-path="fitting.html"><a href="fitting.html#multigear-fleets"><i class="fa fa-check"></i><b>7.1.7</b> Multigear fleets}</a></li>
+<li class="chapter" data-level="7.1.8" data-path="fitting.html"><a href="fitting.html#trawl-surveys"><i class="fa fa-check"></i><b>7.1.8</b> Trawl surveys}</a></li>
+<li class="chapter" data-level="7.1.9" data-path="fitting.html"><a href="fitting.html#closed-form-selection-pattern"><i class="fa fa-check"></i><b>7.1.9</b> Closed form selection pattern}</a></li>
+<li class="chapter" data-level="7.1.10" data-path="fitting.html"><a href="fitting.html#more-models"><i class="fa fa-check"></i><b>7.1.10</b> More models</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="fitting.html"><a href="fitting.html#abundance-indices-catchability-submodel-q_ays"><i class="fa fa-check"></i><b>7.2</b> Abundance indices catchability submodel (<span class="math inline">\(Q_{ays}\)</span>)</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="fitting.html"><a href="fitting.html#catchability-submodel-for-age-based-indices"><i class="fa fa-check"></i><b>7.2.1</b> Catchability submodel for age based indices</a></li>
+<li class="chapter" data-level="7.2.2" data-path="fitting.html"><a href="fitting.html#catchability-submodel-for-age-aggregated-biomass-indices"><i class="fa fa-check"></i><b>7.2.2</b> Catchability submodel for age aggregated biomass indices}</a></li>
+<li class="chapter" data-level="7.2.3" data-path="fitting.html"><a href="fitting.html#catchability-submodel-for-single-age-indices"><i class="fa fa-check"></i><b>7.2.3</b> Catchability submodel for single age indices</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="fitting.html"><a href="fitting.html#stock-recruitment-submodel-r_y"><i class="fa fa-check"></i><b>7.3</b> Stock-recruitment submodel (<span class="math inline">\(R_y\)</span>)}</a></li>
+<li class="chapter" data-level="7.4" data-path="fitting.html"><a href="fitting.html#observation-variance-submodel-sigma2_ay-tau2_ays"><i class="fa fa-check"></i><b>7.4</b> Observation variance submodel (<span class="math inline">\(\{\sigma^2_{ay}, \tau^2_{ays}\}\)</span>)</a></li>
+<li class="chapter" data-level="7.5" data-path="fitting.html"><a href="fitting.html#initial-year-abundance-submodel-n_ay1"><i class="fa fa-check"></i><b>7.5</b> Initial year abundance submodel (<span class="math inline">\(N_{a,y=1}\)</span>)}</a></li>
+<li class="chapter" data-level="7.6" data-path="fitting.html"><a href="fitting.html#data-weigthing"><i class="fa fa-check"></i><b>7.6</b> Data weigthing</a></li>
+<li class="chapter" data-level="7.7" data-path="fitting.html"><a href="fitting.html#working-with-covariates"><i class="fa fa-check"></i><b>7.7</b> Working with covariates</a></li>
+<li class="chapter" data-level="7.8" data-path="fitting.html"><a href="fitting.html#assessing-files"><i class="fa fa-check"></i><b>7.8</b> Assessing files</a></li>
+<li class="chapter" data-level="7.9" data-path="fitting.html"><a href="fitting.html#missing-observations-in-the-catch-matrix-or-index"><i class="fa fa-check"></i><b>7.9</b> Missing observations in the catch matrix or index</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>8</b> Diagnostics </a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="diagnostics.html"><a href="diagnostics.html#residuals"><i class="fa fa-check"></i><b>8.1</b> Residuals</a></li>
+<li class="chapter" data-level="8.2" data-path="diagnostics.html"><a href="diagnostics.html#predictive-skill"><i class="fa fa-check"></i><b>8.2</b> Predictive skill</a></li>
+<li class="chapter" data-level="8.3" data-path="diagnostics.html"><a href="diagnostics.html#aggreagted-catch-in-weight"><i class="fa fa-check"></i><b>8.3</b> Aggreagted catch in weight}</a></li>
+<li class="chapter" data-level="8.4" data-path="diagnostics.html"><a href="diagnostics.html#fit-summary-information-and-cross-validation-metrics"><i class="fa fa-check"></i><b>8.4</b> Fit summary, information and cross-validation metrics</a></li>
+<li class="chapter" data-level="8.5" data-path="diagnostics.html"><a href="diagnostics.html#the-package-a4adiags"><i class="fa fa-check"></i><b>8.5</b> The package a4adiags</a></li>
+<li class="chapter" data-level="8.6" data-path="diagnostics.html"><a href="diagnostics.html#residuals-and-submodels-misspecifiction"><i class="fa fa-check"></i><b>8.6</b> Residuals and submodels misspecifiction</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="diagnostics.html"><a href="diagnostics.html#the-mean-model"><i class="fa fa-check"></i><b>8.6.1</b> The “mean” model</a></li>
+<li class="chapter" data-level="8.6.2" data-path="diagnostics.html"><a href="diagnostics.html#the-age-effects"><i class="fa fa-check"></i><b>8.6.2</b> The age effects</a></li>
+<li class="chapter" data-level="8.6.3" data-path="diagnostics.html"><a href="diagnostics.html#the-fishing-mortality-year-model"><i class="fa fa-check"></i><b>8.6.3</b> The fishing mortality year model</a></li>
+<li class="chapter" data-level="8.6.4" data-path="diagnostics.html"><a href="diagnostics.html#the-initial-year-population-abundance-model-aka-n1"><i class="fa fa-check"></i><b>8.6.4</b> The initial year population abundance model, aka N1</a></li>
+<li class="chapter" data-level="8.6.5" data-path="diagnostics.html"><a href="diagnostics.html#the-stock-recruitment-submodel"><i class="fa fa-check"></i><b>8.6.5</b> The stock recruitment submodel</a></li>
+<li class="chapter" data-level="8.6.6" data-path="diagnostics.html"><a href="diagnostics.html#the-variance-submodel"><i class="fa fa-check"></i><b>8.6.6</b> The variance submodel</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -173,10 +242,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="stock-assessment-framework" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">Chapter 3</span> Stock assessment framework<a href="stock-assessment-framework.html#stock-assessment-framework" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="maths-description" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> Maths description <a href="stock-assessment-framework.html#maths-description" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="stock-assessment-framework" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Stock assessment framework<a href="stock-assessment-framework.html#stock-assessment-framework" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="maths-description" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Maths description <a href="stock-assessment-framework.html#maths-description" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The stock assessment model behind the framework is based in two main equations to link observations to processes, the Baranov’s catch equation and abundance indices equation.</p>
 <p>Catches in numbers by age and year are defined in terms of the three quantities: natural mortality, fishing mortality and recruitment; using a modified form of the well known Baranov catch equation:</p>
 <p><span class="math display">\[C_{ay} = \frac{F_{ay}}{F_{ay}+M_{ay}}\left(1 - e^{-(F_{ay}+M_{ay})}\right) R_{y}e^{-\sum (F_{ay} + M_{ay})} \]</span></p>
@@ -222,10 +291,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 % WE NEED TO ADD SOMETHING ABOUT HOW THE PLUSGROUP IS MODELLED
 %====================================================================</p>
 </div>
-<div id="classes-description" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Classes description <a href="stock-assessment-framework.html#classes-description" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Figure <a href="#fig:sca"><strong>??</strong></a> shows the process to fit a statistical stock assessment catch at age method.</p>
-<p><img src="#fig:sca" alt="Figure: The fit process" />(scamethod.png)</p>
+<div id="classes-description" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Classes description <a href="stock-assessment-framework.html#classes-description" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Figure <a href="#fig:sca">5.1</a> shows the process to fit a statistical stock assessment catch at age method.</p>
+<div class="float">
+<img src="scamethod.png" alt="Figure:  The fit process" />
+<div class="figcaption">Figure:  The fit process</div>
+</div>
 <div class="float">
 <img src="fitclass.png" alt="The a4aFit class" />
 <div class="figcaption">The a4aFit class</div>
@@ -242,8 +314,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="introduction.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="natural-mortality-modelling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="submodel-structure.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -274,7 +346,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-saframework.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-saframework.Rmd",
 "text": "Edit"
 },
 "history": {
