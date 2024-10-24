@@ -1,0 +1,41 @@
+# Propagate natural mortality uncertainty
+
+In this section we give an example of how uncertainty in natural mortality, set up using the `m()` method and the class `a4aM` (see chapter XX), is propagated through the stock assessment. We'll start by fitting the default model to the data.
+
+```{r}
+fit <- sca(ple4, ple4.indices)
+```
+
+Using `a4a` methods we'll model natural mortality using a negative exponential model by age, Jensen's estimator for the level and a constant trend with time. We include multivariate normal uncertainty using the `mvrnorm()` method and create 10 iterations.
+
+```{r}
+nits <- 10
+
+shape <- FLModelSim(model=~exp(-age-0.5))
+level <- FLModelSim(model=~k^0.66*t^0.57, params = FLPar(k=0.4, t=10),
+                     vcov=matrix(c(0.002, 0.01,0.01, 1), ncol=2))
+trend <- FLModelSim(model=~b, params=FLPar(b=0.5), vcov=matrix(0.02))
+
+m4 <- a4aM(shape=shape, level=level, trend=trend)
+m4 <- mvrnorm(nits, m4)
+range(m4)[] <- range(ple4)[]
+range(m4)[c("minmbar","maxmbar")]<-c(1,1)
+flq <- m(m4)[]
+quant(flq) <- "age"
+stk <- propagate(ple4, nits)
+m(stk) <- flq
+```
+
+We fit the same model to the new stock object which has uncertainty in the natural mortality. The assessment is performed for each of the 10 iterations.
+
+```{r}
+fit1 <- sca(stk, ple4.indices)
+```
+
+And compare the two results (Figure \@ref(fig:mprop)). It's quite easy to run these kind of tests and a large part of our effort is to create the tools to do so.
+
+```{r, mprop, fig.cap="Stock summary for two M models"}
+plot(FLStocks("Jensen M with uncertainty"=ple4+fit1, "M=0.2"=ple4+fit), key=TRUE)
+```
+
+

@@ -1,3 +1,7 @@
+---
+---
+---
+
 # Diagnostics \label{sec:diagn}
 
 There's a large number of diagnostics that can be computed for a stock assessment model, the \aFa framework implements several analysis of residuals, visualizations and statistics that can be used to evaluate the fit quality and chose across multiple fits.
@@ -8,7 +12,7 @@ Residuals are a ubiquos metrics to check quality of a fit. For `sca()` fits ther
 
 Consider $x_{ay}$ to be either a catch-at-age matrix ($C_{ay}$) or one abundance index ($I_{ay}$\footnote{For simplicity of notation we'll avoid the subscript $s$ in $I$, since we're referring to individual indices}) and $d$ to represent residuals.
 
-Raw residuals are compute by $d_{ay} = \log{x_{ay}} - \log{\tilde{x}_{ay}}$ and have distribution $N(0,\upsilon^2_{a})$. Standardized residuals will be compute with $d^s_{ay} = \frac{d_{ay}}{\hat{\upsilon}^2_{a}}$ where $\hat{\upsilon}^2_{a} = (n-1)^{-1} \sum_y(d_{ay})^2$. Pearson residuals scale raw residuals by the estimates of $\sigma^2$ or $\tau^2$, as such $d^p_{ay} = \frac{d_{ay}}{\tilde{\upsilon}^2_{a}}$ where $\tilde{\upsilon}^2_{a} = \tilde{\sigma}^2_{a}$ for catches, or $\tilde{\upsilon}^2_{a} = \tilde{\tau}^2_{a}$ for each index of abundance.  
+Raw residuals are compute by $d_{ay} = \log{x_{ay}} - \log{\tilde{x}_{ay}}$ and have distribution $N(0,\upsilon^2_{a})$. Standardized residuals will be compute with $d^s_{ay} = \frac{d_{ay}}{\hat{\upsilon}^2_{a}}$ where $\hat{\upsilon}^2_{a} = (n-1)^{-1} \sum_y(d_{ay})^2$. Pearson residuals scale raw residuals by the estimates of $\sigma^2$ or $\tau^2$, as such $d^p_{ay} = \frac{d_{ay}}{\tilde{\upsilon}^2_{a}}$ where $\tilde{\upsilon}^2_{a} = \tilde{\sigma}^2_{a}$ for catches, or $\tilde{\upsilon}^2_{a} = \tilde{\tau}^2_{a}$ for each index of abundance.
 
 The `residuals()` method will compute these residuals and generate a object which can be plotted using a set of packed methods. The argument `type` will allow the user to chose which residuals will be computed. By default the method computes standardized residuals.
 
@@ -23,7 +27,7 @@ Figure \@ref(fig:res) shows a scatterplot of standardized residuals with a smoot
 plot(d_s)
 ```
 
-When plotting residuals by default the auxiliar line is a smoother. However it's possible to use other type of lines by setting the argument "auxline" in plot. The argument can take the values used by xyplot, which are (from panel.xyplot help page) one or more of the following: "p", "l", "h", "b", "o", "s", "S", "g", "r", "a", "smooth", and "spline". If type has more than one element, an attempt is made to combine the effect of each of the components. The behaviour if any of the first five are included is similar to the effect of the corresponding type in plot: "p" and "l" stand for points and lines respectively; "b" and "o" (for ‘overlay’) plot both; "h" draws vertical (or horizontal if horizontal = TRUE) line segments from the points to the origin. Types "s" and "S" are like "l" in the sense that they join consecutive points, but instead of being joined by a straight line, points are connected by a vertical and a horizontal segment forming a ‘step’, with the vertical segment coming first for "s", and the horizontal segment coming first for "S".  "g" adds a reference grid. Type "r" adds a linear regression line, "smooth" adds a loess fit, "spline" adds a cubic smoothing spline fit, and "a" draws line segments joining the average y value for each distinct x value. Figure \@ref(fig:resaux) shows a regression line over the residuals instead of the loess smooother.  
+When plotting residuals by default the auxiliar line is a smoother. However it's possible to use other type of lines by setting the argument "auxline" in plot. The argument can take the values used by xyplot, which are (from panel.xyplot help page) one or more of the following: "p", "l", "h", "b", "o", "s", "S", "g", "r", "a", "smooth", and "spline". If type has more than one element, an attempt is made to combine the effect of each of the components. The behaviour if any of the first five are included is similar to the effect of the corresponding type in plot: "p" and "l" stand for points and lines respectively; "b" and "o" (for ‘overlay’) plot both; "h" draws vertical (or horizontal if horizontal = TRUE) line segments from the points to the origin. Types "s" and "S" are like "l" in the sense that they join consecutive points, but instead of being joined by a straight line, points are connected by a vertical and a horizontal segment forming a ‘step’, with the vertical segment coming first for "s", and the horizontal segment coming first for "S". "g" adds a reference grid. Type "r" adds a linear regression line, "smooth" adds a loess fit, "spline" adds a cubic smoothing spline fit, and "a" draws line segments joining the average y value for each distinct x value. Figure \@ref(fig:resaux) shows a regression line over the residuals instead of the loess smooother.
 
 ```{r, resaux, fig.cap="Standardized residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother."}
 plot(d_s, auxline="r")
@@ -69,7 +73,9 @@ plot(fit, ple4.indices)
 
 ## Aggreagted catch in weight}
 
-Although a statistical catch-at-age model assumes errors in catch-at-age and, as such, errors in the total catch in weight, there's still interest to evaluate how close the model estimates are of the observed catch in weight^[Some analysts believe this is the most important diagnostic since total catch should be trusted. Needless to say we don't agree and consider reported catch in weight one of the less reliable pieces of information available for stock assessment.]. The implementation of this diagnopstics is done through the method `computeCatchDiagnostics()`, which can be visualized with `plot()` (Figure \@ref(c_d)).   
+Although a statistical catch-at-age model assumes errors in catch-at-age and, as such, errors in the total catch in weight, there's still interest to evaluate how close the model estimates are of the observed catch in weight[^07-diagnostics-1]. The implementation of this diagnopstics is done through the method `computeCatchDiagnostics()`, which can be visualized with `plot()` (Figure \@ref(c_d)).
+
+[^07-diagnostics-1]: Some analysts believe this is the most important diagnostic since total catch should be trusted. Needless to say we don't agree and consider reported catch in weight one of the less reliable pieces of information available for stock assessment.
 
 ```{r, catchdiag, fig.cap="Diagnostics for age aggregated catch in weight"}
 c_d <- computeCatchDiagnostics(fit, ple4)
@@ -78,13 +84,13 @@ plot(c_d)
 
 ## Fit summary, information and cross-validation metrics
 
-To get information about the likelihood fit the method `fitSumm()` can be used to report  number of parameters (`npar`), negative log-likelkihood (`nlogl`), `ADMB` maximum gradient par (`maxgrad`), number of observations (`nobs`), generalized cross validation score (`gcv`), convergence flag (`convergence`) and acceptance rate (`accrate`) relevant for MCMC fits only. The second part refers to the likelihood value for each component.
+To get information about the likelihood fit the method `fitSumm()` can be used to report number of parameters (`npar`), negative log-likelkihood (`nlogl`), `ADMB` maximum gradient par (`maxgrad`), number of observations (`nobs`), generalized cross validation score (`gcv`), convergence flag (`convergence`) and acceptance rate (`accrate`) relevant for MCMC fits only. The second part refers to the likelihood value for each component.
 
 ```{r}
 fitSumm(fit)
 ```
 
-Information criteria based metrics are reported with the methods: 
+Information criteria based metrics are reported with the methods:
 
 ```{r}
 AIC(fit)
@@ -93,7 +99,7 @@ BIC(fit)
 
 ## The package a4adiags
 
-The package `a4adiags` contains some additional diagnostics based on the `reference`. Runs test checks weather the residuals are randomly distributed. A "run" is a sequence of the same sign residuals. Few runs indicate a trend or a correlation in the residuals while too many runs may suggest overfitting. 
+The package `a4adiags` contains some additional diagnostics based on the `reference`. Runs test checks weather the residuals are randomly distributed. A "run" is a sequence of the same sign residuals. Few runs indicate a trend or a correlation in the residuals while too many runs may suggest overfitting.
 
 The primary output of a runstest is a p-value where: a high p value $(p\leq 0.05)$ suggests that the residuals are randomly distributed, a low p value indicates a non-random pattern in the residuals.
 
@@ -127,7 +133,7 @@ fit01 <- sca(hke1567, hke1567.idx, fmod=~1, qmod=list(~1), srmod=~1, vmod=list(~
 res01 <- residuals(fit01, hke1567, hke1567.idx)
 ```
 
-The common residuals plot  clearly shows a trend across ages (Figure \@ref(fig:meanresbyage)) for both datasets. 
+The common residuals plot clearly shows a trend across ages (Figure \@ref(fig:meanresbyage)) for both datasets.
 
 ```{r, meanresbyyear, fig.cap="Mean fit residuals by year)"}
 plot(res01)
@@ -148,13 +154,13 @@ fit02 <- sca(hke1567, hke1567.idx, fmod=~factor(age), qmod=list(~1), srmod=~1, v
 res02 <- residuals(fit02, hke1567, hke1567.idx)
 ```
 
-The residuals plot now shows catch at age residuals less stagered, reflecting the modelling of the age effect. 
+The residuals plot now shows catch at age residuals less stagered, reflecting the modelling of the age effect.
 
 ```{r, fageresbyyear, fig.cap="f age effect fit residuals by year)"}
 plot(res02)
 ```
 
-The residuals plot by age shows the same outcome.  
+The residuals plot by age shows the same outcome.
 
 ```{r, fageresbyage, fig.cap="f age effect fit residuals by age)",  out.extra = "angle=90", out.height="18cm", out.width="25cm", fig.height=8, fig.width=12}
 plot(res02, auxline="l", by="age")
@@ -171,7 +177,7 @@ res03 <- residuals(fit03, hke1567, hke1567.idx)
 plot(res03)
 ```
 
-The residuals plot by age shows the same outcome.  
+The residuals plot by age shows the same outcome.
 
 ```{r, qageresbyage, fig.cap="q age effect fit residuals by age)",  out.extra = "angle=90", out.height="18cm", out.width="25cm", fig.height=8, fig.width=12}
 plot(res03, auxline="l", by="age")
@@ -188,7 +194,7 @@ res04 <- residuals(fit04, hke1567, hke1567.idx)
 plot(res04)
 ```
 
-The residuals plot by age shows the same outcome.  
+The residuals plot by age shows the same outcome.
 
 ```{r, fqageresbyage, fig.cap="q age effect fit residuals by age)",  out.extra = "angle=90", out.height="18cm", out.width="25cm", fig.height=8, fig.width=12}
 plot(res04, auxline="l", by="age")
@@ -203,13 +209,13 @@ fit05 <- sca(hke1567, hke1567.idx, fmod=~factor(age) + factor(year), qmod=list(~
 res05 <- residuals(fit05, hke1567, hke1567.idx)
 ```
 
-The residuals plot now shows catch at age residuals stagered as before. The year trends are less pronounced although, because the data doesn't have a very strong year effect, it's less clear than when modelling the age effect. 
+The residuals plot now shows catch at age residuals stagered as before. The year trends are less pronounced although, because the data doesn't have a very strong year effect, it's less clear than when modelling the age effect.
 
 ```{r, fyearresbyyear, fig.cap="f year effect fit residuals by year)"}
 plot(res05)
 ```
 
-The residuals plot by age shows the same outcome.  
+The residuals plot by age shows the same outcome.
 
 ```{r, fyearresbyage, fig.cap="f year effect fit residuals by age)",  out.extra = "angle=90", out.height="18cm", out.width="25cm", fig.height=8, fig.width=12}
 plot(res05, auxline="l", by="age")
@@ -226,13 +232,13 @@ fit06 <- sca(hke1567, hke1567.idx, fmod=~factor(age) + factor(year), qmod=list(~
 res06 <- residuals(fit06, hke1567, hke1567.idx)
 ```
 
-The residuals plot now shows catch at age residuals stagered as before. The year trends are less pronounced although, because the data doesn't have a very strong year effect, it's less clear than when modelling the age effect. 
+The residuals plot now shows catch at age residuals stagered as before. The year trends are less pronounced although, because the data doesn't have a very strong year effect, it's less clear than when modelling the age effect.
 
 ```{r, n1arresbyyear, fig.cap="f year effect fit residuals by year)"}
 plot(res06)
 ```
 
-The residuals by age (Figure \@ref(fig:n1resbyage)) the residuals' improvement in the first year of the catch at age time series (bottom left plots).  
+The residuals by age (Figure \@ref(fig:n1resbyage)) the residuals' improvement in the first year of the catch at age time series (bottom left plots).
 
 ```{r, n1resbyage, fig.cap="f year effect fit residuals by age)",  out.extra = "angle=90", out.height="18cm", out.width="25cm", fig.height=8, fig.width=12}
 plot(res06, auxline="l", by="age")
@@ -247,7 +253,7 @@ fit07 <- sca(hke1567, hke1567.idx, fmod=~factor(age) + factor(year), qmod=list(~
 res07 <- residuals(fit07, hke1567, hke1567.idx)
 ```
 
-The residuals plot by year are very useful to see the effect of adding a varying stock recruitment model. The year trends present in previous models are not absent. Recruitment variability when left unmodelled was being picked up by trends in the survey catchability and catch at age. And due to the cohort dynamics underlying the catch at age model, where propagating into other ages' estimates. 
+The residuals plot by year are very useful to see the effect of adding a varying stock recruitment model. The year trends present in previous models are not absent. Recruitment variability when left unmodelled was being picked up by trends in the survey catchability and catch at age. And due to the cohort dynamics underlying the catch at age model, where propagating into other ages' estimates.
 
 ```{r, srresbyyear, fig.cap="f year effect fit residuals by year)"}
 plot(res07)
@@ -256,9 +262,10 @@ plot(res07)
 ```{r, srresbyage, fig.cap="f year effect fit residuals by age)",  out.extra = "angle=90", out.height="18cm", out.width="25cm", fig.height=8, fig.width=12}
 plot(res07, auxline="l", by="age")
 ```
+
 ### The variance submodel
 
-Finally, we're testing the variance submodel, specifically the catch at age variance model. We won't dig into the catchability variance model though. It's common to accept that a scientific survey following a well designed sampling protocol will have equal variance across ages since no preferential areas are sampled. 
+Finally, we're testing the variance submodel, specifically the catch at age variance model. We won't dig into the catchability variance model though. It's common to accept that a scientific survey following a well designed sampling protocol will have equal variance across ages since no preferential areas are sampled.
 
 ```{r}
 fit10 <- sca(hke1567, hke1567.idx, fmod=~factor(age) + s(year, k=10), qmod=list(~factor(age)), srmod=~s(year, k=10), vmod=list(~factor(age), ~1),  n1mod=~factor(age))
@@ -288,4 +295,3 @@ plot(res10, auxline="r")
 ```{r, vageresbyage, fig.cap="f year effect fit residuals by age)",  out.extra = "angle=90", out.height="18cm", out.width="25cm", fig.height=8, fig.width=12}
 plot(res10, auxline="l", by="age")
 ```
-

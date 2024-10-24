@@ -1,0 +1,8 @@
+# Sections to be added!?
+
+- Confidence interval coverage and MCMC setup or more general Assessing the coverage of confidence intervals
+- Probabilistic assessment (RH code)
+
+
+
+

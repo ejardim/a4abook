@@ -1,0 +1,22 @@
+# Modelling spatial effects
+
+```{r, eval=FALSE}
+ridx01 <- stk0@stock.n[1]*0.7*0.001
+ridx01 <- log(ridx01*rlnorm(ridx01))
+ridx02 <- stk0@stock.n[1]*0.3*0.001
+ridx02 <- log(ridx02*rlnorm(ridx02))
+
+srmod <- ~ geomean(a~ridx01+ridx02, CV=0.5)
+cvar <- FLQuants(ridx01 = ridx01, ridx02 = ridx02)
+fit01 <- sca(stock,tun.sel[c(1)],fmodel=fmod,qmodel=qmod, srmodel=srmod, covar=cvar)
+coef(fit01)
+srmod <- ~ geomean(CV=0.1)
+fit02 <- sca(stock,tun.sel[c(1)],fmodel=fmod,qmodel=qmod, srmodel=srmod)
+coef(fit02)
+```
+
+- check situation where the two areas are negatively correlated
+- the two covariates need to be at the same scale, in the sense of representing the same process
+- other examples (ICES, ask in the plenary if we can have access to the data)
+- dan ghotel ask for spatial workshop data
+

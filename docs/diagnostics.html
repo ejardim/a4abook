@@ -4,26 +4,26 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 8 Diagnostics  | The a4a Initiative stock assessment framework</title>
-  <meta name="description" content="This is the manual to use the a4a stock assessment framework" />
+  <title>Chapter 8 Diagnostics  | Fish stock assessment with R</title>
+  <meta name="description" content="How to do stock assessment in R using the a4a framework" />
   <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 8 Diagnostics  | The a4a Initiative stock assessment framework" />
+  <meta property="og:title" content="Chapter 8 Diagnostics  | Fish stock assessment with R" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="This is the manual to use the a4a stock assessment framework" />
+  <meta property="og:description" content="How to do stock assessment in R using the a4a framework" />
   <meta name="github-repo" content="ejardim/a4abook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8 Diagnostics  | The a4a Initiative stock assessment framework" />
+  <meta name="twitter:title" content="Chapter 8 Diagnostics  | Fish stock assessment with R" />
   
-  <meta name="twitter:description" content="This is the manual to use the a4a stock assessment framework" />
+  <meta name="twitter:description" content="How to do stock assessment in R using the a4a framework" />
   
 
-<meta name="author" content="Ernesto Jardim and Colin Millar" />
+<meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2024-10-23" />
+<meta name="date" content="2024-10-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="fitting.html"/>
-
+<link rel="next" href="predict-and-simulate.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -137,7 +137,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">Stock assessment framework</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Before starting</a>
@@ -222,6 +222,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6.6" data-path="diagnostics.html"><a href="diagnostics.html#the-variance-submodel"><i class="fa fa-check"></i><b>8.6.6</b> The variance submodel</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="9" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html"><i class="fa fa-check"></i><b>9</b> Predict and simulate </a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#basic-functions"><i class="fa fa-check"></i><b>9.1</b> Basic functions}</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#simulate"><i class="fa fa-check"></i><b>9.1.1</b> simulate()</a></li>
+<li class="chapter" data-level="9.1.2" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#genflquant"><i class="fa fa-check"></i><b>9.1.2</b> genFLQuant()</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#submodels"><i class="fa fa-check"></i><b>9.2</b> submodels</a></li>
+<li class="chapter" data-level="9.3" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#predict"><i class="fa fa-check"></i><b>9.3</b> Predict</a></li>
+<li class="chapter" data-level="9.4" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#simulate-1"><i class="fa fa-check"></i><b>9.4</b> Simulate</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html"><i class="fa fa-check"></i><b>10</b> The statistical catch-at-age stock assessment framework with MCMC </a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html#diagnostics-with-coda"><i class="fa fa-check"></i><b>10.1</b> Diagnostics with CODA</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="propagate-natural-mortality-uncertainty.html"><a href="propagate-natural-mortality-uncertainty.html"><i class="fa fa-check"></i><b>11</b> Propagate natural mortality uncertainty</a></li>
+<li class="chapter" data-level="12" data-path="smoothness-mgcv-and-fits.html"><a href="smoothness-mgcv-and-fits.html"><i class="fa fa-check"></i><b>12</b> Smoothness, mgcv and fits</a></li>
+<li class="chapter" data-level="13" data-path="modelling-spatial-effects.html"><a href="modelling-spatial-effects.html"><i class="fa fa-check"></i><b>13</b> Modelling spatial effects</a></li>
+<li class="chapter" data-level="14" data-path="reference-points.html"><a href="reference-points.html"><i class="fa fa-check"></i><b>14</b> Reference points</a></li>
+<li class="chapter" data-level="15" data-path="forecasting-projections-and-harvest-control-rules.html"><a href="forecasting-projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>15</b> Forecasting, projections and harvest control rules</a></li>
+<li class="chapter" data-level="16" data-path="sections-to-be-added.html"><a href="sections-to-be-added.html"><i class="fa fa-check"></i><b>16</b> Sections to be added!?</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -234,7 +255,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The a4a Initiative stock assessment framework</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Fish stock assessment with R</a>
           </h1>
         </div>
 
@@ -251,10 +272,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Consider <span class="math inline">\(x_{ay}\)</span> to be either a catch-at-age matrix (<span class="math inline">\(C_{ay}\)</span>) or one abundance index (<span class="math inline">\(I_{ay}\)</span>) and <span class="math inline">\(d\)</span> to represent residuals.</p>
 <p>Raw residuals are compute by <span class="math inline">\(d_{ay} = \log{x_{ay}} - \log{\tilde{x}_{ay}}\)</span> and have distribution <span class="math inline">\(N(0,\upsilon^2_{a})\)</span>. Standardized residuals will be compute with <span class="math inline">\(d^s_{ay} = \frac{d_{ay}}{\hat{\upsilon}^2_{a}}\)</span> where <span class="math inline">\(\hat{\upsilon}^2_{a} = (n-1)^{-1} \sum_y(d_{ay})^2\)</span>. Pearson residuals scale raw residuals by the estimates of <span class="math inline">\(\sigma^2\)</span> or <span class="math inline">\(\tau^2\)</span>, as such <span class="math inline">\(d^p_{ay} = \frac{d_{ay}}{\tilde{\upsilon}^2_{a}}\)</span> where <span class="math inline">\(\tilde{\upsilon}^2_{a} = \tilde{\sigma}^2_{a}\)</span> for catches, or <span class="math inline">\(\tilde{\upsilon}^2_{a} = \tilde{\tau}^2_{a}\)</span> for each index of abundance.</p>
 <p>The <code>residuals()</code> method will compute these residuals and generate a object which can be plotted using a set of packed methods. The argument <code>type</code> will allow the user to chose which residuals will be computed. By default the method computes standardized residuals.</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="diagnostics.html#cb194-1" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices)</span>
-<span id="cb194-2"><a href="diagnostics.html#cb194-2" tabindex="-1"></a>d_s <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit, ple4, ple4.indices)</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="diagnostics.html#cb195-1" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices)</span>
+<span id="cb195-2"><a href="diagnostics.html#cb195-2" tabindex="-1"></a>d_s <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit, ple4, ple4.indices)</span></code></pre></div>
 <p>Figure <a href="diagnostics.html#fig:res">8.1</a> shows a scatterplot of standardized residuals with a smoother to guide (or mis-guide …) your visual analysis. Note that the standardization should produce residuals with variance=1, which means that most residual values should be between <span class="math inline">\(\sim -2\)</span> and <span class="math inline">\(\sim 2\)</span>.</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="diagnostics.html#cb195-1" tabindex="-1"></a><span class="fu">plot</span>(d_s)</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="diagnostics.html#cb196-1" tabindex="-1"></a><span class="fu">plot</span>(d_s)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:res"></span>
 <img src="_main_files/figure-html/res-1.png" alt="Standardized residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother." width="672" />
 <p class="caption">
@@ -262,7 +283,7 @@ Figure 8.1: Standardized residuals for abundance indices and catch numbers (catc
 </p>
 </div>
 <p>When plotting residuals by default the auxiliar line is a smoother. However it’s possible to use other type of lines by setting the argument “auxline” in plot. The argument can take the values used by xyplot, which are (from panel.xyplot help page) one or more of the following: “p”, “l”, “h”, “b”, “o”, “s”, “S”, “g”, “r”, “a”, “smooth”, and “spline”. If type has more than one element, an attempt is made to combine the effect of each of the components. The behaviour if any of the first five are included is similar to the effect of the corresponding type in plot: “p” and “l” stand for points and lines respectively; “b” and “o” (for ‘overlay’) plot both; “h” draws vertical (or horizontal if horizontal = TRUE) line segments from the points to the origin. Types “s” and “S” are like “l” in the sense that they join consecutive points, but instead of being joined by a straight line, points are connected by a vertical and a horizontal segment forming a ‘step’, with the vertical segment coming first for “s”, and the horizontal segment coming first for “S”. “g” adds a reference grid. Type “r” adds a linear regression line, “smooth” adds a loess fit, “spline” adds a cubic smoothing spline fit, and “a” draws line segments joining the average y value for each distinct x value. Figure <a href="diagnostics.html#fig:resaux">8.2</a> shows a regression line over the residuals instead of the loess smooother.</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="diagnostics.html#cb196-1" tabindex="-1"></a><span class="fu">plot</span>(d_s, <span class="at">auxline=</span><span class="st">&quot;r&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="diagnostics.html#cb197-1" tabindex="-1"></a><span class="fu">plot</span>(d_s, <span class="at">auxline=</span><span class="st">&quot;r&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:resaux"></span>
 <img src="_main_files/figure-html/resaux-1.png" alt="Standardized residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother." width="672" />
 <p class="caption">
@@ -270,7 +291,7 @@ Figure 8.2: Standardized residuals for abundance indices and catch numbers (catc
 </p>
 </div>
 <p>The common bubble plot (<code>bubble()</code>) are shown in Figure <a href="diagnostics.html#fig:bub">8.3</a>. It shows the same information as Figure <a href="diagnostics.html#fig:res">8.1</a> but in a multivariate perspective.</p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="diagnostics.html#cb197-1" tabindex="-1"></a><span class="fu">bubbles</span>(d_s)</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="diagnostics.html#cb198-1" tabindex="-1"></a><span class="fu">bubbles</span>(d_s)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:bub"></span>
 <img src="_main_files/figure-html/bub-1.png" alt="Bubbles plot of standardized residuals for abundance indices and for catch numbers (catch.n)." width="672" />
 <p class="caption">
@@ -278,7 +299,7 @@ Figure 8.3: Bubbles plot of standardized residuals for abundance indices and for
 </p>
 </div>
 <p>Figure <a href="diagnostics.html#fig:qq">8.4</a> shows a quantile-quantile plot to assess how well standardized residuals match a normal distribution.</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="diagnostics.html#cb198-1" tabindex="-1"></a><span class="fu">qqmath</span>(d_s)</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="diagnostics.html#cb199-1" tabindex="-1"></a><span class="fu">qqmath</span>(d_s)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:qq"></span>
 <img src="_main_files/figure-html/qq-1.png" alt="Quantile-quantile plot of standardized residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines the normal distribution quantiles." width="672" />
 <p class="caption">
@@ -286,8 +307,8 @@ Figure 8.4: Quantile-quantile plot of standardized residuals for abundance indic
 </p>
 </div>
 <p>Pearson residuals can be computed and plotted the same way as standardized residuals by setting <code>fit='pearson'</code> (Figure <a href="diagnostics.html#fig:resp">8.5</a>).</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="diagnostics.html#cb199-1" tabindex="-1"></a>d_p <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit, ple4, ple4.indices, <span class="at">type=</span><span class="st">&#39;pearson&#39;</span>)</span>
-<span id="cb199-2"><a href="diagnostics.html#cb199-2" tabindex="-1"></a><span class="fu">plot</span>(d_p)</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="diagnostics.html#cb200-1" tabindex="-1"></a>d_p <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit, ple4, ple4.indices, <span class="at">type=</span><span class="st">&#39;pearson&#39;</span>)</span>
+<span id="cb200-2"><a href="diagnostics.html#cb200-2" tabindex="-1"></a><span class="fu">plot</span>(d_p)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:resp"></span>
 <img src="_main_files/figure-html/resp-1.png" alt="Pearson residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother." width="672" />
 <p class="caption">
@@ -295,8 +316,8 @@ Figure 8.5: Pearson residuals for abundance indices and catch numbers (catch.n).
 </p>
 </div>
 <p>Finally, the raw residuals are computed by setting <code>fit='deviances'</code> and plotted the same way as before (Figure <a href="diagnostics.html#fig:resr">8.6</a>). These residuals are usefull to identify which data points are not well modelled, showing a large dispersion of the residuals and requiring more attention from the analyst.</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="diagnostics.html#cb200-1" tabindex="-1"></a>d_r <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit, ple4, ple4.indices, <span class="at">type=</span><span class="st">&#39;deviances&#39;</span>)</span>
-<span id="cb200-2"><a href="diagnostics.html#cb200-2" tabindex="-1"></a><span class="fu">plot</span>(d_r)</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="diagnostics.html#cb201-1" tabindex="-1"></a>d_r <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit, ple4, ple4.indices, <span class="at">type=</span><span class="st">&#39;deviances&#39;</span>)</span>
+<span id="cb201-2"><a href="diagnostics.html#cb201-2" tabindex="-1"></a><span class="fu">plot</span>(d_r)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:resr"></span>
 <img src="_main_files/figure-html/resr-1.png" alt="Raw residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother." width="672" />
 <p class="caption">
@@ -307,14 +328,14 @@ Figure 8.6: Raw residuals for abundance indices and catch numbers (catch.n). Eac
 <div id="predictive-skill" class="section level2 hasAnchor" number="8.2">
 <h2><span class="header-section-number">8.2</span> Predictive skill<a href="diagnostics.html#predictive-skill" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>An important feature of stock assessment model fits is the capacity to predict, since one of the most important analysis done with these fits is forecasting future fishing opportunities under pre-defined conditions. The <code>a4a</code> framework implements a visualization of the fit’s predictive skill for both catch-at-age and abundance indices. These are generated by the method <code>plot()</code> with the fit object and a <code>FLStock</code> (Figure <a href="diagnostics.html#fig:selplt">8.7</a>) or <code>FLIndices</code> (Figure <a href="#fig:idxplt"><strong>??</strong></a>) object as arguments.</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="diagnostics.html#cb201-1" tabindex="-1"></a><span class="fu">plot</span>(fit, ple4)</span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="diagnostics.html#cb202-1" tabindex="-1"></a><span class="fu">plot</span>(fit, ple4)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:selplt"></span>
 <img src="_main_files/figure-html/selplt-1.png" alt="Predict and observed catch-at-age" width="672" />
 <p class="caption">
 Figure 8.7: Predict and observed catch-at-age
 </p>
 </div>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="diagnostics.html#cb202-1" tabindex="-1"></a><span class="fu">plot</span>(fit, ple4.indices)</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="diagnostics.html#cb203-1" tabindex="-1"></a><span class="fu">plot</span>(fit, ple4.indices)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:idxplt-1"></span>
 <img src="_main_files/figure-html/idxplt-1.png" alt="Predict and observed abundance-at-age" width="672" />
 <p class="caption">
@@ -355,8 +376,8 @@ Figure 8.13: Predict and observed abundance-at-age
 <div id="aggreagted-catch-in-weight" class="section level2 hasAnchor" number="8.3">
 <h2><span class="header-section-number">8.3</span> Aggreagted catch in weight}<a href="diagnostics.html#aggreagted-catch-in-weight" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Although a statistical catch-at-age model assumes errors in catch-at-age and, as such, errors in the total catch in weight, there’s still interest to evaluate how close the model estimates are of the observed catch in weight<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. The implementation of this diagnopstics is done through the method <code>computeCatchDiagnostics()</code>, which can be visualized with <code>plot()</code> (Figure @ref(c_d)).</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="diagnostics.html#cb203-1" tabindex="-1"></a>c_d <span class="ot">&lt;-</span> <span class="fu">computeCatchDiagnostics</span>(fit, ple4)</span>
-<span id="cb203-2"><a href="diagnostics.html#cb203-2" tabindex="-1"></a><span class="fu">plot</span>(c_d)</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="diagnostics.html#cb204-1" tabindex="-1"></a>c_d <span class="ot">&lt;-</span> <span class="fu">computeCatchDiagnostics</span>(fit, ple4)</span>
+<span id="cb204-2"><a href="diagnostics.html#cb204-2" tabindex="-1"></a><span class="fu">plot</span>(c_d)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:catchdiag"></span>
 <img src="_main_files/figure-html/catchdiag-1.png" alt="Diagnostics for age aggregated catch in weight" width="672" />
 <p class="caption">
@@ -367,7 +388,7 @@ Figure 8.14: Diagnostics for age aggregated catch in weight
 <div id="fit-summary-information-and-cross-validation-metrics" class="section level2 hasAnchor" number="8.4">
 <h2><span class="header-section-number">8.4</span> Fit summary, information and cross-validation metrics<a href="diagnostics.html#fit-summary-information-and-cross-validation-metrics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To get information about the likelihood fit the method <code>fitSumm()</code> can be used to report number of parameters (<code>npar</code>), negative log-likelkihood (<code>nlogl</code>), <code>ADMB</code> maximum gradient par (<code>maxgrad</code>), number of observations (<code>nobs</code>), generalized cross validation score (<code>gcv</code>), convergence flag (<code>convergence</code>) and acceptance rate (<code>accrate</code>) relevant for MCMC fits only. The second part refers to the likelihood value for each component.</p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="diagnostics.html#cb204-1" tabindex="-1"></a><span class="fu">fitSumm</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="diagnostics.html#cb205-1" tabindex="-1"></a><span class="fu">fitSumm</span>(fit)</span></code></pre></div>
 <pre><code>##              iters
 ##                           1
 ##   nopar        2.870000e+02
@@ -385,23 +406,20 @@ Figure 8.14: Diagnostics for age aggregated catch in weight
 ##   nlogl_comp6  6.057810e+01
 ##   nlogl_comp7  3.121530e+01</code></pre>
 <p>Information criteria based metrics are reported with the methods:</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="diagnostics.html#cb206-1" tabindex="-1"></a><span class="fu">AIC</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="diagnostics.html#cb207-1" tabindex="-1"></a><span class="fu">AIC</span>(fit)</span></code></pre></div>
 <pre><code>## [1] -190.7205</code></pre>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="diagnostics.html#cb208-1" tabindex="-1"></a><span class="fu">BIC</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="diagnostics.html#cb209-1" tabindex="-1"></a><span class="fu">BIC</span>(fit)</span></code></pre></div>
 <pre><code>## [1] 1374.784</code></pre>
 </div>
 <div id="the-package-a4adiags" class="section level2 hasAnchor" number="8.5">
 <h2><span class="header-section-number">8.5</span> The package a4adiags<a href="diagnostics.html#the-package-a4adiags" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The package <code>a4adiags</code> contains some additional diagnostics based on the <code>reference</code>. Runs test checks weather the residuals are randomly distributed. A “run” is a sequence of the same sign residuals. Few runs indicate a trend or a correlation in the residuals while too many runs may suggest overfitting.</p>
 <p>The primary output of a runstest is a p-value where: a high p value <span class="math inline">\((p\leq 0.05)\)</span> suggests that the residuals are randomly distributed, a low p value indicates a non-random pattern in the residuals.</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="diagnostics.html#cb210-1" tabindex="-1"></a><span class="fu">library</span>(a4adiags)</span>
-<span id="cb210-2"><a href="diagnostics.html#cb210-2" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>())</span>
-<span id="cb210-3"><a href="diagnostics.html#cb210-3" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(mut09, mut09.idx, <span class="at">fmod =</span> <span class="sc">~</span><span class="fu">factor</span>(age) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">8</span>))</span>
-<span id="cb210-4"><a href="diagnostics.html#cb210-4" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit, mut09, mut09.idx)</span></code></pre></div>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="diagnostics.html#cb211-1" tabindex="-1"></a><span class="fu">plotRunstest</span>(fit, mut09.idx, <span class="at">combine =</span> F) <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>age)</span></code></pre></div>
-<pre><code>## Warning in grid.Call.graphics(C_rect, x$x, x$y, x$width, x$height,
-## resolveHJust(x$just, : semi-transparency is not supported on this device:
-## reported only once per page</code></pre>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="diagnostics.html#cb211-1" tabindex="-1"></a><span class="fu">library</span>(a4adiags)</span>
+<span id="cb211-2"><a href="diagnostics.html#cb211-2" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>())</span>
+<span id="cb211-3"><a href="diagnostics.html#cb211-3" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(mut09, mut09.idx, <span class="at">fmod =</span> <span class="sc">~</span><span class="fu">factor</span>(age) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">8</span>))</span>
+<span id="cb211-4"><a href="diagnostics.html#cb211-4" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit, mut09, mut09.idx)</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="diagnostics.html#cb212-1" tabindex="-1"></a><span class="fu">plotRunstest</span>(fit, mut09.idx, <span class="at">combine =</span> F) <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>age)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:idxrunstest"></span>
 <img src="_main_files/figure-html/idxrunstest-1.png" alt="Runstest for the abundance index" width="672" />
 <p class="caption">
@@ -409,9 +427,6 @@ Figure 8.15: Runstest for the abundance index
 </p>
 </div>
 <div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="diagnostics.html#cb213-1" tabindex="-1"></a><span class="fu">plotRunstest</span>(<span class="fu">catch.n</span>(mut09), <span class="fu">catch.n</span>(mut09 <span class="sc">+</span> fit), <span class="at">combine =</span> F) <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>age)</span></code></pre></div>
-<pre><code>## Warning in grid.Call.graphics(C_rect, x$x, x$y, x$width, x$height,
-## resolveHJust(x$just, : semi-transparency is not supported on this device:
-## reported only once per page</code></pre>
 <div class="figure"><span style="display:block;" id="fig:catchrunstest"></span>
 <img src="_main_files/figure-html/catchrunstest-1.png" alt="Runstest for the catch by age" width="672" />
 <p class="caption">
@@ -425,12 +440,12 @@ Figure 8.16: Runstest for the catch by age
 <div id="the-mean-model" class="section level3 hasAnchor" number="8.6.1">
 <h3><span class="header-section-number">8.6.1</span> The “mean” model<a href="diagnostics.html#the-mean-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To start the analysis we’ll fit a “mean” model, where all submodels will be set to an overall average, by using the <span class="math inline">\(\sim 1\)</span> formula. This will be our reference model to see how adding age and year effects will show up in the diagnostic tools, in particular in the residuals.</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="diagnostics.html#cb215-1" tabindex="-1"></a><span class="fu">data</span>(hke1567)</span>
-<span id="cb215-2"><a href="diagnostics.html#cb215-2" tabindex="-1"></a><span class="fu">data</span>(hke1567.idx)</span>
-<span id="cb215-3"><a href="diagnostics.html#cb215-3" tabindex="-1"></a>fit01 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmod=</span><span class="sc">~</span><span class="dv">1</span>, <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>), <span class="at">srmod=</span><span class="sc">~</span><span class="dv">1</span>, <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),  <span class="at">n1mod=</span><span class="sc">~</span><span class="dv">1</span>)</span>
-<span id="cb215-4"><a href="diagnostics.html#cb215-4" tabindex="-1"></a>res01 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit01, hke1567, hke1567.idx)</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="diagnostics.html#cb214-1" tabindex="-1"></a><span class="fu">data</span>(hke1567)</span>
+<span id="cb214-2"><a href="diagnostics.html#cb214-2" tabindex="-1"></a><span class="fu">data</span>(hke1567.idx)</span>
+<span id="cb214-3"><a href="diagnostics.html#cb214-3" tabindex="-1"></a>fit01 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmod=</span><span class="sc">~</span><span class="dv">1</span>, <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>), <span class="at">srmod=</span><span class="sc">~</span><span class="dv">1</span>, <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),  <span class="at">n1mod=</span><span class="sc">~</span><span class="dv">1</span>)</span>
+<span id="cb214-4"><a href="diagnostics.html#cb214-4" tabindex="-1"></a>res01 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit01, hke1567, hke1567.idx)</span></code></pre></div>
 <p>The common residuals plot clearly shows a trend across ages (Figure <a href="diagnostics.html#fig:meanresbyage">8.18</a>) for both datasets.</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="diagnostics.html#cb216-1" tabindex="-1"></a><span class="fu">plot</span>(res01)</span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="diagnostics.html#cb215-1" tabindex="-1"></a><span class="fu">plot</span>(res01)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:meanresbyyear"></span>
 <img src="_main_files/figure-html/meanresbyyear-1.png" alt="Mean fit residuals by year)" width="672" />
 <p class="caption">
@@ -438,7 +453,7 @@ Figure 8.17: Mean fit residuals by year)
 </p>
 </div>
 <p>Which is even clearer when plotting the residuals by age across years.</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="diagnostics.html#cb217-1" tabindex="-1"></a><span class="fu">plot</span>(res01, <span class="at">auxline=</span><span class="st">&quot;l&quot;</span>, <span class="at">by=</span><span class="st">&quot;age&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="diagnostics.html#cb216-1" tabindex="-1"></a><span class="fu">plot</span>(res01, <span class="at">auxline=</span><span class="st">&quot;l&quot;</span>, <span class="at">by=</span><span class="st">&quot;age&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:meanresbyage"></span>
 <img src="_main_files/figure-html/meanresbyage-1.png" alt="Mean fit residuals by age)" width="25cm" height="18cm" angle=90 />
 <p class="caption">
@@ -449,10 +464,10 @@ Figure 8.18: Mean fit residuals by age)
 <div id="the-age-effects" class="section level3 hasAnchor" number="8.6.2">
 <h3><span class="header-section-number">8.6.2</span> The age effects<a href="diagnostics.html#the-age-effects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>These models will introduce age effects in the fishing mortality submodel and catchability submodel. First in the fishinf mortality submodel.</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="diagnostics.html#cb218-1" tabindex="-1"></a>fit02 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmod=</span><span class="sc">~</span><span class="fu">factor</span>(age), <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>), <span class="at">srmod=</span><span class="sc">~</span><span class="dv">1</span>, <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),  <span class="at">n1mod=</span><span class="sc">~</span><span class="dv">1</span>)</span>
-<span id="cb218-2"><a href="diagnostics.html#cb218-2" tabindex="-1"></a>res02 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit02, hke1567, hke1567.idx)</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="diagnostics.html#cb217-1" tabindex="-1"></a>fit02 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmod=</span><span class="sc">~</span><span class="fu">factor</span>(age), <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>), <span class="at">srmod=</span><span class="sc">~</span><span class="dv">1</span>, <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),  <span class="at">n1mod=</span><span class="sc">~</span><span class="dv">1</span>)</span>
+<span id="cb217-2"><a href="diagnostics.html#cb217-2" tabindex="-1"></a>res02 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit02, hke1567, hke1567.idx)</span></code></pre></div>
 <p>The residuals plot now shows catch at age residuals less stagered, reflecting the modelling of the age effect.</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="diagnostics.html#cb219-1" tabindex="-1"></a><span class="fu">plot</span>(res02)</span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="diagnostics.html#cb218-1" tabindex="-1"></a><span class="fu">plot</span>(res02)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:fageresbyyear"></span>
 <img src="_main_files/figure-html/fageresbyyear-1.png" alt="f age effect fit residuals by year)" width="672" />
 <p class="caption">
@@ -460,7 +475,7 @@ Figure 8.19: f age effect fit residuals by year)
 </p>
 </div>
 <p>The residuals plot by age shows the same outcome.</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="diagnostics.html#cb220-1" tabindex="-1"></a><span class="fu">plot</span>(res02, <span class="at">auxline=</span><span class="st">&quot;l&quot;</span>, <span class="at">by=</span><span class="st">&quot;age&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="diagnostics.html#cb219-1" tabindex="-1"></a><span class="fu">plot</span>(res02, <span class="at">auxline=</span><span class="st">&quot;l&quot;</span>, <span class="at">by=</span><span class="st">&quot;age&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:fageresbyage"></span>
 <img src="_main_files/figure-html/fageresbyage-1.png" alt="f age effect fit residuals by age)" width="25cm" height="18cm" angle=90 />
 <p class="caption">
@@ -468,9 +483,9 @@ Figure 8.20: f age effect fit residuals by age)
 </p>
 </div>
 <p>Follwed by the same addition to the catchability model.</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="diagnostics.html#cb221-1" tabindex="-1"></a>fit03 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmod=</span><span class="sc">~</span><span class="dv">1</span>, <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">factor</span>(age)), <span class="at">srmod=</span><span class="sc">~</span><span class="dv">1</span>, <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),  <span class="at">n1mod=</span><span class="sc">~</span><span class="dv">1</span>)</span>
-<span id="cb221-2"><a href="diagnostics.html#cb221-2" tabindex="-1"></a>res03 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit03, hke1567, hke1567.idx)</span></code></pre></div>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="diagnostics.html#cb222-1" tabindex="-1"></a><span class="fu">plot</span>(res03)</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="diagnostics.html#cb220-1" tabindex="-1"></a>fit03 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmod=</span><span class="sc">~</span><span class="dv">1</span>, <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">factor</span>(age)), <span class="at">srmod=</span><span class="sc">~</span><span class="dv">1</span>, <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),  <span class="at">n1mod=</span><span class="sc">~</span><span class="dv">1</span>)</span>
+<span id="cb220-2"><a href="diagnostics.html#cb220-2" tabindex="-1"></a>res03 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit03, hke1567, hke1567.idx)</span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="diagnostics.html#cb221-1" tabindex="-1"></a><span class="fu">plot</span>(res03)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:qageresbyyear"></span>
 <img src="_main_files/figure-html/qageresbyyear-1.png" alt="q age effect fit residuals by year)" width="672" />
 <p class="caption">
@@ -478,7 +493,7 @@ Figure 8.21: q age effect fit residuals by year)
 </p>
 </div>
 <p>The residuals plot by age shows the same outcome.</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="diagnostics.html#cb223-1" tabindex="-1"></a><span class="fu">plot</span>(res03, <span class="at">auxline=</span><span class="st">&quot;l&quot;</span>, <span class="at">by=</span><span class="st">&quot;age&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="diagnostics.html#cb222-1" tabindex="-1"></a><span class="fu">plot</span>(res03, <span class="at">auxline=</span><span class="st">&quot;l&quot;</span>, <span class="at">by=</span><span class="st">&quot;age&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:qageresbyage"></span>
 <img src="_main_files/figure-html/qageresbyage-1.png" alt="q age effect fit residuals by age)" width="25cm" height="18cm" angle=90 />
 <p class="caption">
@@ -486,9 +501,9 @@ Figure 8.22: q age effect fit residuals by age)
 </p>
 </div>
 <p>Finally both effects are brought together.</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="diagnostics.html#cb224-1" tabindex="-1"></a>fit04 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmod=</span><span class="sc">~</span><span class="fu">factor</span>(age), <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">factor</span>(age)), <span class="at">srmod=</span><span class="sc">~</span><span class="dv">1</span>, <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),  <span class="at">n1mod=</span><span class="sc">~</span><span class="dv">1</span>)</span>
-<span id="cb224-2"><a href="diagnostics.html#cb224-2" tabindex="-1"></a>res04 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit04, hke1567, hke1567.idx)</span></code></pre></div>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="diagnostics.html#cb225-1" tabindex="-1"></a><span class="fu">plot</span>(res04)</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="diagnostics.html#cb223-1" tabindex="-1"></a>fit04 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmod=</span><span class="sc">~</span><span class="fu">factor</span>(age), <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">factor</span>(age)), <span class="at">srmod=</span><span class="sc">~</span><span class="dv">1</span>, <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),  <span class="at">n1mod=</span><span class="sc">~</span><span class="dv">1</span>)</span>
+<span id="cb223-2"><a href="diagnostics.html#cb223-2" tabindex="-1"></a>res04 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit04, hke1567, hke1567.idx)</span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="diagnostics.html#cb224-1" tabindex="-1"></a><span class="fu">plot</span>(res04)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:fqageresbyyear"></span>
 <img src="_main_files/figure-html/fqageresbyyear-1.png" alt="q age effect fit residuals by year)" width="672" />
 <p class="caption">
@@ -496,7 +511,7 @@ Figure 8.23: q age effect fit residuals by year)
 </p>
 </div>
 <p>The residuals plot by age shows the same outcome.</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="diagnostics.html#cb226-1" tabindex="-1"></a><span class="fu">plot</span>(res04, <span class="at">auxline=</span><span class="st">&quot;l&quot;</span>, <span class="at">by=</span><span class="st">&quot;age&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="diagnostics.html#cb225-1" tabindex="-1"></a><span class="fu">plot</span>(res04, <span class="at">auxline=</span><span class="st">&quot;l&quot;</span>, <span class="at">by=</span><span class="st">&quot;age&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:fqageresbyage"></span>
 <img src="_main_files/figure-html/fqageresbyage-1.png" alt="q age effect fit residuals by age)" width="25cm" height="18cm" angle=90 />
 <p class="caption">
@@ -507,10 +522,10 @@ Figure 8.24: q age effect fit residuals by age)
 <div id="the-fishing-mortality-year-model" class="section level3 hasAnchor" number="8.6.3">
 <h3><span class="header-section-number">8.6.3</span> The fishing mortality year model<a href="diagnostics.html#the-fishing-mortality-year-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This model will introduce an year effect in the fishing mortality submodel on top of the F age effect added before.</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="diagnostics.html#cb227-1" tabindex="-1"></a>fit05 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmod=</span><span class="sc">~</span><span class="fu">factor</span>(age) <span class="sc">+</span> <span class="fu">factor</span>(year), <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>), <span class="at">srmod=</span><span class="sc">~</span><span class="dv">1</span>, <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),  <span class="at">n1mod=</span><span class="sc">~</span><span class="dv">1</span>)</span>
-<span id="cb227-2"><a href="diagnostics.html#cb227-2" tabindex="-1"></a>res05 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit05, hke1567, hke1567.idx)</span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="diagnostics.html#cb226-1" tabindex="-1"></a>fit05 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmod=</span><span class="sc">~</span><span class="fu">factor</span>(age) <span class="sc">+</span> <span class="fu">factor</span>(year), <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>), <span class="at">srmod=</span><span class="sc">~</span><span class="dv">1</span>, <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),  <span class="at">n1mod=</span><span class="sc">~</span><span class="dv">1</span>)</span>
+<span id="cb226-2"><a href="diagnostics.html#cb226-2" tabindex="-1"></a>res05 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit05, hke1567, hke1567.idx)</span></code></pre></div>
 <p>The residuals plot now shows catch at age residuals stagered as before. The year trends are less pronounced although, because the data doesn’t have a very strong year effect, it’s less clear than when modelling the age effect.</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="diagnostics.html#cb228-1" tabindex="-1"></a><span class="fu">plot</span>(res05)</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="diagnostics.html#cb227-1" tabindex="-1"></a><span class="fu">plot</span>(res05)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:fyearresbyyear"></span>
 <img src="_main_files/figure-html/fyearresbyyear-1.png" alt="f year effect fit residuals by year)" width="672" />
 <p class="caption">
@@ -518,7 +533,7 @@ Figure 8.25: f year effect fit residuals by year)
 </p>
 </div>
 <p>The residuals plot by age shows the same outcome.</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="diagnostics.html#cb229-1" tabindex="-1"></a><span class="fu">plot</span>(res05, <span class="at">auxline=</span><span class="st">&quot;l&quot;</span>, <span class="at">by=</span><span class="st">&quot;age&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="diagnostics.html#cb228-1" tabindex="-1"></a><span class="fu">plot</span>(res05, <span class="at">auxline=</span><span class="st">&quot;l&quot;</span>, <span class="at">by=</span><span class="st">&quot;age&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:fyearresbyage"></span>
 <img src="_main_files/figure-html/fyearresbyage-1.png" alt="f year effect fit residuals by age)" width="25cm" height="18cm" angle=90 />
 <p class="caption">
@@ -530,10 +545,10 @@ Figure 8.26: f year effect fit residuals by age)
 <div id="the-initial-year-population-abundance-model-aka-n1" class="section level3 hasAnchor" number="8.6.4">
 <h3><span class="header-section-number">8.6.4</span> The initial year population abundance model, aka N1<a href="diagnostics.html#the-initial-year-population-abundance-model-aka-n1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This model will introduce an age effect in the population abundance in the first year of the time series. This model sets the n-at-age in the first year of the time series, which is needed due to the lack of previous data to reconstruct those cohorts.</p>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="diagnostics.html#cb230-1" tabindex="-1"></a>fit06 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmod=</span><span class="sc">~</span><span class="fu">factor</span>(age) <span class="sc">+</span> <span class="fu">factor</span>(year), <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">factor</span>(age)), <span class="at">srmod=</span><span class="sc">~</span><span class="dv">1</span>, <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),  <span class="at">n1mod=</span><span class="sc">~</span><span class="fu">factor</span>(age))</span>
-<span id="cb230-2"><a href="diagnostics.html#cb230-2" tabindex="-1"></a>res06 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit06, hke1567, hke1567.idx)</span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="diagnostics.html#cb229-1" tabindex="-1"></a>fit06 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmod=</span><span class="sc">~</span><span class="fu">factor</span>(age) <span class="sc">+</span> <span class="fu">factor</span>(year), <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">factor</span>(age)), <span class="at">srmod=</span><span class="sc">~</span><span class="dv">1</span>, <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),  <span class="at">n1mod=</span><span class="sc">~</span><span class="fu">factor</span>(age))</span>
+<span id="cb229-2"><a href="diagnostics.html#cb229-2" tabindex="-1"></a>res06 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit06, hke1567, hke1567.idx)</span></code></pre></div>
 <p>The residuals plot now shows catch at age residuals stagered as before. The year trends are less pronounced although, because the data doesn’t have a very strong year effect, it’s less clear than when modelling the age effect.</p>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="diagnostics.html#cb231-1" tabindex="-1"></a><span class="fu">plot</span>(res06)</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="diagnostics.html#cb230-1" tabindex="-1"></a><span class="fu">plot</span>(res06)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:n1arresbyyear"></span>
 <img src="_main_files/figure-html/n1arresbyyear-1.png" alt="f year effect fit residuals by year)" width="672" />
 <p class="caption">
@@ -541,7 +556,7 @@ Figure 8.27: f year effect fit residuals by year)
 </p>
 </div>
 <p>The residuals by age (Figure <a href="diagnostics.html#fig:n1resbyage">8.28</a>) the residuals’ improvement in the first year of the catch at age time series (bottom left plots).</p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="diagnostics.html#cb232-1" tabindex="-1"></a><span class="fu">plot</span>(res06, <span class="at">auxline=</span><span class="st">&quot;l&quot;</span>, <span class="at">by=</span><span class="st">&quot;age&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="diagnostics.html#cb231-1" tabindex="-1"></a><span class="fu">plot</span>(res06, <span class="at">auxline=</span><span class="st">&quot;l&quot;</span>, <span class="at">by=</span><span class="st">&quot;age&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:n1resbyage"></span>
 <img src="_main_files/figure-html/n1resbyage-1.png" alt="f year effect fit residuals by age)" width="25cm" height="18cm" angle=90 />
 <p class="caption">
@@ -552,17 +567,17 @@ Figure 8.28: f year effect fit residuals by age)
 <div id="the-stock-recruitment-submodel" class="section level3 hasAnchor" number="8.6.5">
 <h3><span class="header-section-number">8.6.5</span> The stock recruitment submodel<a href="diagnostics.html#the-stock-recruitment-submodel" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In this example we’ll simply add a model to allow recruitment to vary over time and we’ll see how to track potential improvements in the residuals.</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="diagnostics.html#cb233-1" tabindex="-1"></a>fit07 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmod=</span><span class="sc">~</span><span class="fu">factor</span>(age) <span class="sc">+</span> <span class="fu">factor</span>(year), <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">factor</span>(age)), <span class="at">srmod=</span><span class="sc">~</span><span class="fu">factor</span>(year), <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),  <span class="at">n1mod=</span><span class="sc">~</span><span class="fu">factor</span>(age))</span>
-<span id="cb233-2"><a href="diagnostics.html#cb233-2" tabindex="-1"></a>res07 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit07, hke1567, hke1567.idx)</span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="diagnostics.html#cb232-1" tabindex="-1"></a>fit07 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmod=</span><span class="sc">~</span><span class="fu">factor</span>(age) <span class="sc">+</span> <span class="fu">factor</span>(year), <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">factor</span>(age)), <span class="at">srmod=</span><span class="sc">~</span><span class="fu">factor</span>(year), <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),  <span class="at">n1mod=</span><span class="sc">~</span><span class="fu">factor</span>(age))</span>
+<span id="cb232-2"><a href="diagnostics.html#cb232-2" tabindex="-1"></a>res07 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit07, hke1567, hke1567.idx)</span></code></pre></div>
 <p>The residuals plot by year are very useful to see the effect of adding a varying stock recruitment model. The year trends present in previous models are not absent. Recruitment variability when left unmodelled was being picked up by trends in the survey catchability and catch at age. And due to the cohort dynamics underlying the catch at age model, where propagating into other ages’ estimates.</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="diagnostics.html#cb234-1" tabindex="-1"></a><span class="fu">plot</span>(res07)</span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="diagnostics.html#cb233-1" tabindex="-1"></a><span class="fu">plot</span>(res07)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:srresbyyear"></span>
 <img src="_main_files/figure-html/srresbyyear-1.png" alt="f year effect fit residuals by year)" width="672" />
 <p class="caption">
 Figure 8.29: f year effect fit residuals by year)
 </p>
 </div>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="diagnostics.html#cb235-1" tabindex="-1"></a><span class="fu">plot</span>(res07, <span class="at">auxline=</span><span class="st">&quot;l&quot;</span>, <span class="at">by=</span><span class="st">&quot;age&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="diagnostics.html#cb234-1" tabindex="-1"></a><span class="fu">plot</span>(res07, <span class="at">auxline=</span><span class="st">&quot;l&quot;</span>, <span class="at">by=</span><span class="st">&quot;age&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:srresbyage"></span>
 <img src="_main_files/figure-html/srresbyage-1.png" alt="f year effect fit residuals by age)" width="25cm" height="18cm" angle=90 />
 <p class="caption">
@@ -573,11 +588,11 @@ Figure 8.30: f year effect fit residuals by age)
 <div id="the-variance-submodel" class="section level3 hasAnchor" number="8.6.6">
 <h3><span class="header-section-number">8.6.6</span> The variance submodel<a href="diagnostics.html#the-variance-submodel" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Finally, we’re testing the variance submodel, specifically the catch at age variance model. We won’t dig into the catchability variance model though. It’s common to accept that a scientific survey following a well designed sampling protocol will have equal variance across ages since no preferential areas are sampled.</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="diagnostics.html#cb236-1" tabindex="-1"></a>fit10 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmod=</span><span class="sc">~</span><span class="fu">factor</span>(age) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">10</span>), <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">factor</span>(age)), <span class="at">srmod=</span><span class="sc">~</span><span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">10</span>), <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">factor</span>(age), <span class="sc">~</span><span class="dv">1</span>),  <span class="at">n1mod=</span><span class="sc">~</span><span class="fu">factor</span>(age))</span>
-<span id="cb236-2"><a href="diagnostics.html#cb236-2" tabindex="-1"></a>res10 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit10, hke1567, hke1567.idx)</span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="diagnostics.html#cb235-1" tabindex="-1"></a>fit10 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmod=</span><span class="sc">~</span><span class="fu">factor</span>(age) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">10</span>), <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">factor</span>(age)), <span class="at">srmod=</span><span class="sc">~</span><span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">10</span>), <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">factor</span>(age), <span class="sc">~</span><span class="dv">1</span>),  <span class="at">n1mod=</span><span class="sc">~</span><span class="fu">factor</span>(age))</span>
+<span id="cb235-2"><a href="diagnostics.html#cb235-2" tabindex="-1"></a>res10 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit10, hke1567, hke1567.idx)</span></code></pre></div>
 <p>To see what’s happening with the variance model one can use predict to plot the different models fitted.</p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="diagnostics.html#cb237-1" tabindex="-1"></a>flqs <span class="ot">&lt;-</span> <span class="fu">FLQuants</span>(<span class="at">mod10=</span><span class="fu">predict</span>(fit10)<span class="sc">$</span>vmodel<span class="sc">$</span>catch[,<span class="st">&quot;2022&quot;</span>], <span class="at">mod07=</span><span class="fu">predict</span>(fit07)<span class="sc">$</span>vmodel<span class="sc">$</span>catch[,<span class="st">&quot;2022&quot;</span>])</span>
-<span id="cb237-2"><a href="diagnostics.html#cb237-2" tabindex="-1"></a><span class="fu">xyplot</span>(data<span class="sc">~</span>age, <span class="at">data=</span>flqs, <span class="at">group=</span>qname, <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">auto.key=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="diagnostics.html#cb236-1" tabindex="-1"></a>flqs <span class="ot">&lt;-</span> <span class="fu">FLQuants</span>(<span class="at">mod10=</span><span class="fu">predict</span>(fit10)<span class="sc">$</span>vmodel<span class="sc">$</span>catch[,<span class="st">&quot;2022&quot;</span>], <span class="at">mod07=</span><span class="fu">predict</span>(fit07)<span class="sc">$</span>vmodel<span class="sc">$</span>catch[,<span class="st">&quot;2022&quot;</span>])</span>
+<span id="cb236-2"><a href="diagnostics.html#cb236-2" tabindex="-1"></a><span class="fu">xyplot</span>(data<span class="sc">~</span>age, <span class="at">data=</span>flqs, <span class="at">group=</span>qname, <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">auto.key=</span>T)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:vagepredbyage"></span>
 <img src="_main_files/figure-html/vagepredbyage-1.png" alt="Variance models for catch at age" width="672" />
 <p class="caption">
@@ -585,8 +600,8 @@ Figure 8.31: Variance models for catch at age
 </p>
 </div>
 <p>To see the effect these models have on the estimated quantities one can look at the variance of the estimates:</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="diagnostics.html#cb238-1" tabindex="-1"></a>flqs <span class="ot">&lt;-</span> <span class="fu">FLQuants</span>(<span class="at">mod10=</span><span class="fu">catch.n</span>(hke1567<span class="sc">+</span><span class="fu">simulate</span>(fit10, <span class="at">nsim=</span><span class="dv">500</span>))[,<span class="st">&quot;2022&quot;</span>], <span class="at">mod07=</span><span class="fu">catch.n</span>(hke1567<span class="sc">+</span><span class="fu">simulate</span>(fit07, <span class="at">nsim=</span><span class="dv">500</span>))[,<span class="st">&quot;2022&quot;</span>])</span>
-<span id="cb238-2"><a href="diagnostics.html#cb238-2" tabindex="-1"></a><span class="fu">bwplot</span>(data<span class="sc">~</span>qname<span class="sc">|</span><span class="fu">factor</span>(age),  <span class="at">data=</span><span class="fu">as.data.frame</span>(flqs), <span class="at">scales=</span><span class="st">&quot;free&quot;</span>, <span class="at">auto.key=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="diagnostics.html#cb237-1" tabindex="-1"></a>flqs <span class="ot">&lt;-</span> <span class="fu">FLQuants</span>(<span class="at">mod10=</span><span class="fu">catch.n</span>(hke1567<span class="sc">+</span><span class="fu">simulate</span>(fit10, <span class="at">nsim=</span><span class="dv">500</span>))[,<span class="st">&quot;2022&quot;</span>], <span class="at">mod07=</span><span class="fu">catch.n</span>(hke1567<span class="sc">+</span><span class="fu">simulate</span>(fit07, <span class="at">nsim=</span><span class="dv">500</span>))[,<span class="st">&quot;2022&quot;</span>])</span>
+<span id="cb237-2"><a href="diagnostics.html#cb237-2" tabindex="-1"></a><span class="fu">bwplot</span>(data<span class="sc">~</span>qname<span class="sc">|</span><span class="fu">factor</span>(age),  <span class="at">data=</span><span class="fu">as.data.frame</span>(flqs), <span class="at">scales=</span><span class="st">&quot;free&quot;</span>, <span class="at">auto.key=</span>T)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:vage"></span>
 <img src="_main_files/figure-html/vage-1.png" alt="Estimates of population abundance with different variance models" width="672" />
 <p class="caption">
@@ -594,14 +609,14 @@ Figure 8.32: Estimates of population abundance with different variance models
 </p>
 </div>
 <p>and the usual residuals</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="diagnostics.html#cb239-1" tabindex="-1"></a><span class="fu">plot</span>(res10, <span class="at">auxline=</span><span class="st">&quot;r&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="diagnostics.html#cb238-1" tabindex="-1"></a><span class="fu">plot</span>(res10, <span class="at">auxline=</span><span class="st">&quot;r&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:vageresbyyear"></span>
 <img src="_main_files/figure-html/vageresbyyear-1.png" alt="f year effect fit residuals by year)" width="672" />
 <p class="caption">
 Figure 8.33: f year effect fit residuals by year)
 </p>
 </div>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="diagnostics.html#cb240-1" tabindex="-1"></a><span class="fu">plot</span>(res10, <span class="at">auxline=</span><span class="st">&quot;l&quot;</span>, <span class="at">by=</span><span class="st">&quot;age&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="diagnostics.html#cb239-1" tabindex="-1"></a><span class="fu">plot</span>(res10, <span class="at">auxline=</span><span class="st">&quot;l&quot;</span>, <span class="at">by=</span><span class="st">&quot;age&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:vageresbyage"></span>
 <img src="_main_files/figure-html/vageresbyage-1.png" alt="f year effect fit residuals by age)" width="25cm" height="18cm" angle=90 />
 <p class="caption">
@@ -612,12 +627,6 @@ Figure 8.34: f year effect fit residuals by age)
 </div>
 </div>
 </div>
-
-
-
-
-
-
 <div class="footnotes">
 <hr />
 <ol start="1">
@@ -629,8 +638,8 @@ Figure 8.34: f year effect fit residuals by age)
           </div>
         </div>
       </div>
-<a href="fitting.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="fitting.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="predict-and-simulate.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
