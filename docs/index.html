@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2024-10-24" />
+<meta name="date" content="2024-12-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -145,7 +145,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#license-documentation-and-development-status"><i class="fa fa-check"></i><b>1.1</b> License, documentation and development status</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installing-and-loading-libraries"><i class="fa fa-check"></i><b>1.2</b> Installing and loading libraries</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#how-to-read-this-document"><i class="fa fa-check"></i><b>1.3</b> How to read this document</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#notation"><i class="fa fa-check"></i><b>1.4</b> Notation</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#how-to-get-help"><i class="fa fa-check"></i><b>1.4</b> How to get help</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#notation"><i class="fa fa-check"></i><b>1.5</b> Notation</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
 <li class="chapter" data-level="3" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><i class="fa fa-check"></i><b>3</b> Modelling Individual Growth and Using Stochastic Slicing to Convert Length-based Data Into Age-based Data</a>
@@ -204,6 +205,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.7" data-path="fitting.html"><a href="fitting.html#working-with-covariates"><i class="fa fa-check"></i><b>7.7</b> Working with covariates</a></li>
 <li class="chapter" data-level="7.8" data-path="fitting.html"><a href="fitting.html#assessing-files"><i class="fa fa-check"></i><b>7.8</b> Assessing files</a></li>
 <li class="chapter" data-level="7.9" data-path="fitting.html"><a href="fitting.html#missing-observations-in-the-catch-matrix-or-index"><i class="fa fa-check"></i><b>7.9</b> Missing observations in the catch matrix or index</a></li>
+<li class="chapter" data-level="7.10" data-path="fitting.html"><a href="fitting.html#introduction-to-splines"><i class="fa fa-check"></i><b>7.10</b> Introduction to Splines</a>
+<ul>
+<li class="chapter" data-level="7.10.1" data-path="fitting.html"><a href="fitting.html#understanding-spline-basics"><i class="fa fa-check"></i><b>7.10.1</b> Understanding Spline Basics</a></li>
+<li class="chapter" data-level="7.10.2" data-path="fitting.html"><a href="fitting.html#generate-some-artificial-data"><i class="fa fa-check"></i><b>7.10.2</b> Generate some artificial data</a></li>
+<li class="chapter" data-level="7.10.3" data-path="fitting.html"><a href="fitting.html#cubic-regression-splines"><i class="fa fa-check"></i><b>7.10.3</b> Cubic Regression Splines</a></li>
+<li class="chapter" data-level="7.10.4" data-path="fitting.html"><a href="fitting.html#thin-plate-spline"><i class="fa fa-check"></i><b>7.10.4</b> Thin plate spline</a></li>
+<li class="chapter" data-level="7.10.5" data-path="fitting.html"><a href="fitting.html#comparison"><i class="fa fa-check"></i><b>7.10.5</b> Comparison</a></li>
+<li class="chapter" data-level="7.10.6" data-path="fitting.html"><a href="fitting.html#the-mgcv-package-inside-a4a"><i class="fa fa-check"></i><b>7.10.6</b> The <code>mgcv</code> package inside <code>a4a</code></a></li>
+<li class="chapter" data-level="7.10.7" data-path="fitting.html"><a href="fitting.html#on-the-number-of-knots-k"><i class="fa fa-check"></i><b>7.10.7</b> On the number of knots <span class="math inline">\(k\)</span></a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>8</b> Diagnostics </a>
 <ul>
@@ -267,7 +278,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1 class="title">Fish stock assessment with R</h1>
 <h2 class="subtitle"><em>The a4a Initiative</em></h2>
 <p class="author"><em>John Doe and friends</em></p>
-<p class="date"><em>2024-10-24</em></p>
+<p class="date"><em>2024-12-02</em></p>
 </div>
 <div id="before-starting" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Before starting<a href="index.html#before-starting" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -311,8 +322,134 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The document explains the approach being developed by <code>a4a</code> for fish stock assessment and scientific advice. It presents a mixture of text and code, where the first explains the concepts behind the methods, while the last shows how these can be run with the software provided. Moreover, having the code allows the reader to copy/paste and replicate the analysis presented here.</p>
 <p>The sections and subsections are as independent as possible, so it can be used as a reference document for the <code>FLa4a</code>.</p>
 </div>
-<div id="notation" class="section level2 hasAnchor" number="1.4">
-<h2><span class="header-section-number">1.4</span> Notation<a href="index.html#notation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="how-to-get-help" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> How to get help<a href="index.html#how-to-get-help" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><code>a4a</code> is build around S4 classes. S4 classes and methods in R offer an object-oriented programming framework but in order to access the documentation requires specific terminology. In this section we will demonstrate how to get information on the main building blocks of <code>a4a</code>.</p>
+<p>For example, <code>FLStock</code> is one of our main components in order to run our stock assessment model. We can check the structure of an <code>FLStock</code> object as follows:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="index.html#cb7-1" tabindex="-1"></a><span class="fu">showClass</span>(<span class="st">&quot;FLStock&quot;</span>)</span></code></pre></div>
+<pre><code>## Class &quot;FLStock&quot; [package &quot;FLCore&quot;]
+## 
+## Slots:
+##                                                                        
+## Name:         catch      catch.n     catch.wt     discards   discards.n
+## Class:      FLQuant      FLQuant      FLQuant      FLQuant      FLQuant
+##                                                                        
+## Name:   discards.wt     landings   landings.n  landings.wt        stock
+## Class:      FLQuant      FLQuant      FLQuant      FLQuant      FLQuant
+##                                                                        
+## Name:       stock.n     stock.wt            m          mat      harvest
+## Class:      FLQuant      FLQuant      FLQuant      FLQuant      FLQuant
+##                                                                        
+## Name:  harvest.spwn       m.spwn         name         desc        range
+## Class:      FLQuant      FLQuant    character    character      numeric
+## 
+## Extends: 
+## Class &quot;FLS&quot;, directly
+## Class &quot;FLComp&quot;, by class &quot;FLS&quot;, distance 2
+## 
+## Known Subclasses: 
+## Class &quot;FLStockR&quot;, directly, with explicit coerce</code></pre>
+<p>The object oriented structure of <code>a4a</code> gives the opportunity to change the behavior of a function according to the object that is applied to. For example we can check the available methods of the function <code>plot</code></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="index.html#cb9-1" tabindex="-1"></a><span class="fu">showMethods</span>(<span class="st">&quot;plot&quot;</span>)</span></code></pre></div>
+<pre><code>## Function: plot (package base)
+## x=&quot;a4aFitCatchDiagn&quot;, y=&quot;missing&quot;
+## x=&quot;a4aFit&quot;, y=&quot;FLIndices&quot;
+## x=&quot;a4aFit&quot;, y=&quot;FLStock&quot;
+## x=&quot;a4aFitMCMCs&quot;, y=&quot;missing&quot;
+## x=&quot;a4aFitResiduals&quot;, y=&quot;missing&quot;
+## x=&quot;a4aFitSA&quot;, y=&quot;FLIndices&quot;
+##     (inherited from: x=&quot;a4aFit&quot;, y=&quot;FLIndices&quot;)
+## x=&quot;a4aFitSA&quot;, y=&quot;FLStock&quot;
+##     (inherited from: x=&quot;a4aFit&quot;, y=&quot;FLStock&quot;)
+## x=&quot;a4aFitSAs&quot;, y=&quot;missing&quot;
+##     (inherited from: x=&quot;a4aFits&quot;, y=&quot;missing&quot;)
+## x=&quot;a4aFits&quot;, y=&quot;missing&quot;
+## x=&quot;ANY&quot;, y=&quot;ANY&quot;
+## x=&quot;color&quot;, y=&quot;ANY&quot;
+## x=&quot;Copula&quot;, y=&quot;ANY&quot;
+## x=&quot;FLBiol&quot;, y=&quot;FLFishery&quot;
+## x=&quot;FLBiol&quot;, y=&quot;missing&quot;
+## x=&quot;FLBiols&quot;, y=&quot;missing&quot;
+## x=&quot;FLCatch&quot;, y=&quot;missing&quot;
+## x=&quot;FLCohort&quot;, y=&quot;missing&quot;
+## x=&quot;FLFisheries&quot;, y=&quot;ANY&quot;
+## x=&quot;FLFishery&quot;, y=&quot;ANY&quot;
+## x=&quot;FLIndexBiomass&quot;, y=&quot;missing&quot;
+## x=&quot;FLIndex&quot;, y=&quot;missing&quot;
+## x=&quot;FLIndices&quot;, y=&quot;missing&quot;
+## x=&quot;FLPar&quot;, y=&quot;missing&quot;
+## x=&quot;FLQuant&quot;, y=&quot;FLQuant&quot;
+## x=&quot;FLQuant&quot;, y=&quot;fwdControl&quot;
+## x=&quot;FLQuant&quot;, y=&quot;missing&quot;
+## x=&quot;FLQuantPoint&quot;, y=&quot;FLQuant&quot;
+## x=&quot;FLQuantPoint&quot;, y=&quot;FLQuants&quot;
+## x=&quot;FLQuantPoint&quot;, y=&quot;missing&quot;
+## x=&quot;FLQuants&quot;, y=&quot;FLPar&quot;
+## x=&quot;FLQuants&quot;, y=&quot;FLPars&quot;
+## x=&quot;FLQuants&quot;, y=&quot;fwdControl&quot;
+## x=&quot;FLQuants&quot;, y=&quot;missing&quot;
+## x=&quot;FLSR&quot;, y=&quot;missing&quot;
+## x=&quot;FLSRs&quot;, y=&quot;ANY&quot;
+## x=&quot;FLStock&quot;, y=&quot;FLPar&quot;
+## x=&quot;FLStock&quot;, y=&quot;FLStock&quot;
+## x=&quot;FLStock&quot;, y=&quot;FLStocks&quot;
+## x=&quot;FLStock&quot;, y=&quot;fwdControl&quot;
+## x=&quot;FLStock&quot;, y=&quot;missing&quot;
+## x=&quot;FLStocks&quot;, y=&quot;FLPar&quot;
+## x=&quot;FLStocks&quot;, y=&quot;fwdControl&quot;
+## x=&quot;FLStocks&quot;, y=&quot;missing&quot;
+## x=&quot;mvdc&quot;, y=&quot;ANY&quot;
+## x=&quot;numeric&quot;, y=&quot;numeric&quot;
+##     (inherited from: x=&quot;ANY&quot;, y=&quot;ANY&quot;)
+## x=&quot;profile.mle&quot;, y=&quot;missing&quot;</code></pre>
+<p>by calling <code>showMethods</code> R prints all the possible uses of the <strong>plot</strong> function. We want to see what it does when it is called on an <code>FLStock</code> object with no other object. We observe that <code>plot</code> takes two arguments, <code>x</code> and <code>y</code>. So, in the signature of the <code>getMethod</code> function we are going to use, we need to define both <code>x</code> and <code>y</code>.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="index.html#cb11-1" tabindex="-1"></a><span class="fu">getMethod</span>(<span class="st">&#39;plot&#39;</span>, <span class="at">signature =</span> <span class="fu">list</span>(<span class="st">&quot;FLStock&quot;</span>,<span class="st">&quot;missing&quot;</span>))</span></code></pre></div>
+<pre><code>## Method Definition:
+## 
+## function (x, y, ...) 
+## {
+##     .local &lt;- function (x, metrics = list(Rec = rec, SSB = ssb, 
+##         Catch = catch, F = fbar), na.rm = TRUE, ...) 
+##     {
+##         metrics &lt;- metrics(x, metrics = metrics)
+##         if (&quot;F&quot; %in% names(metrics)) 
+##             units(metrics$F) &lt;- paste0(range(x, c(&quot;minfbar&quot;, 
+##                 &quot;maxfbar&quot;)), collapse = &quot;-&quot;)
+##         if (&quot;SSB&quot; %in% names(metrics)) {
+##             if (all(dimnames(metrics$SSB)$unit %in% c(&quot;F&quot;, &quot;M&quot;))) {
+##                 metrics$SSB &lt;- metrics$SSB[, , &quot;F&quot;] + metrics$SSB[, 
+##                   , &quot;M&quot;]
+##                 if (&quot;Rec&quot; %in% names(metrics)) 
+##                   metrics$Rec &lt;- unitSums(metrics$Rec)
+##             }
+##         }
+##         if (&quot;Rec&quot; %in% names(metrics)) {
+##             if (dim(metrics$Rec)[4] &gt; 1) {
+##                 metrics$Rec[metrics$Rec == 0] &lt;- NA
+##             }
+##         }
+##         p &lt;- plot(metrics, na.rm = na.rm, ...) + ylim(c(0, NA))
+##         if (&quot;SSB&quot; %in% names(metrics)) 
+##             if (all(dimnames(metrics$SSB)$unit %in% c(&quot;F&quot;, &quot;M&quot;))) {
+##                 return(p + theme(legend.position = &quot;bottom&quot;, 
+##                   legend.key = element_blank()) + labs(color = &quot;Sex&quot;) + 
+##                   scale_color_manual(name = &quot;&quot;, labels = c(&quot;Both&quot;, 
+##                     &quot;F&quot;, &quot;M&quot;), values = flpalette_colours(3)))
+##             }
+##         return(p)
+##     }
+##     .local(x, ...)
+## }
+## &lt;bytecode: 0x6402da978048&gt;
+## &lt;environment: namespace:ggplotFL&gt;
+## 
+## Signatures:
+##         x         y        
+## target  &quot;FLStock&quot; &quot;missing&quot;
+## defined &quot;FLStock&quot; &quot;missing&quot;</code></pre>
+</div>
+<div id="notation" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Notation<a href="index.html#notation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Along this chapter the notation presented in Table <a href="index.html#tab:mathsnotation">1.1</a> will be used. Mathematical descriptions will be kept as simple as possible for readability.</p>
 <table>
 <caption><span id="tab:mathsnotation">Table 1.1: </span> Mathematical notation</caption>

@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2024-10-24" />
+<meta name="date" content="2024-12-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -145,7 +145,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#license-documentation-and-development-status"><i class="fa fa-check"></i><b>1.1</b> License, documentation and development status</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installing-and-loading-libraries"><i class="fa fa-check"></i><b>1.2</b> Installing and loading libraries</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#how-to-read-this-document"><i class="fa fa-check"></i><b>1.3</b> How to read this document</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#notation"><i class="fa fa-check"></i><b>1.4</b> Notation</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#how-to-get-help"><i class="fa fa-check"></i><b>1.4</b> How to get help</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#notation"><i class="fa fa-check"></i><b>1.5</b> Notation</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
 <li class="chapter" data-level="3" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><i class="fa fa-check"></i><b>3</b> Modelling Individual Growth and Using Stochastic Slicing to Convert Length-based Data Into Age-based Data</a>
@@ -204,6 +205,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.7" data-path="fitting.html"><a href="fitting.html#working-with-covariates"><i class="fa fa-check"></i><b>7.7</b> Working with covariates</a></li>
 <li class="chapter" data-level="7.8" data-path="fitting.html"><a href="fitting.html#assessing-files"><i class="fa fa-check"></i><b>7.8</b> Assessing files</a></li>
 <li class="chapter" data-level="7.9" data-path="fitting.html"><a href="fitting.html#missing-observations-in-the-catch-matrix-or-index"><i class="fa fa-check"></i><b>7.9</b> Missing observations in the catch matrix or index</a></li>
+<li class="chapter" data-level="7.10" data-path="fitting.html"><a href="fitting.html#introduction-to-splines"><i class="fa fa-check"></i><b>7.10</b> Introduction to Splines</a>
+<ul>
+<li class="chapter" data-level="7.10.1" data-path="fitting.html"><a href="fitting.html#understanding-spline-basics"><i class="fa fa-check"></i><b>7.10.1</b> Understanding Spline Basics</a></li>
+<li class="chapter" data-level="7.10.2" data-path="fitting.html"><a href="fitting.html#generate-some-artificial-data"><i class="fa fa-check"></i><b>7.10.2</b> Generate some artificial data</a></li>
+<li class="chapter" data-level="7.10.3" data-path="fitting.html"><a href="fitting.html#cubic-regression-splines"><i class="fa fa-check"></i><b>7.10.3</b> Cubic Regression Splines</a></li>
+<li class="chapter" data-level="7.10.4" data-path="fitting.html"><a href="fitting.html#thin-plate-spline"><i class="fa fa-check"></i><b>7.10.4</b> Thin plate spline</a></li>
+<li class="chapter" data-level="7.10.5" data-path="fitting.html"><a href="fitting.html#comparison"><i class="fa fa-check"></i><b>7.10.5</b> Comparison</a></li>
+<li class="chapter" data-level="7.10.6" data-path="fitting.html"><a href="fitting.html#the-mgcv-package-inside-a4a"><i class="fa fa-check"></i><b>7.10.6</b> The <code>mgcv</code> package inside <code>a4a</code></a></li>
+<li class="chapter" data-level="7.10.7" data-path="fitting.html"><a href="fitting.html#on-the-number-of-knots-k"><i class="fa fa-check"></i><b>7.10.7</b> On the number of knots <span class="math inline">\(k\)</span></a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>8</b> Diagnostics </a>
 <ul>
@@ -265,237 +276,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="smoothness-mgcv-and-fits" class="section level1 hasAnchor" number="12">
 <h1><span class="header-section-number">Chapter 12</span> Smoothness, mgcv and fits<a href="smoothness-mgcv-and-fits.html#smoothness-mgcv-and-fits" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="smoothness-mgcv-and-fits.html#cb272-1" tabindex="-1"></a><span class="fu">data</span>(hke1567)</span>
-<span id="cb272-2"><a href="smoothness-mgcv-and-fits.html#cb272-2" tabindex="-1"></a><span class="fu">data</span>(hke1567.idx)</span></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="smoothness-mgcv-and-fits.html#cb289-1" tabindex="-1"></a><span class="fu">data</span>(hke1567)</span>
+<span id="cb289-2"><a href="smoothness-mgcv-and-fits.html#cb289-2" tabindex="-1"></a><span class="fu">data</span>(hke1567.idx)</span></code></pre></div>
 <p>Set list of fmodels to test</p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="smoothness-mgcv-and-fits.html#cb273-1" tabindex="-1"></a>fmodsk <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb273-2"><a href="smoothness-mgcv-and-fits.html#cb273-2" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">12</span>) {</span>
-<span id="cb273-3"><a href="smoothness-mgcv-and-fits.html#cb273-3" tabindex="-1"></a>  fmodsk[[<span class="fu">paste0</span>(i)]] <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">paste0</span>(<span class="st">&quot;~s(age, k =3)+s(year, k=&quot;</span>,i,<span class="st">&quot;)&quot;</span>))</span>
-<span id="cb273-4"><a href="smoothness-mgcv-and-fits.html#cb273-4" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="smoothness-mgcv-and-fits.html#cb290-1" tabindex="-1"></a>fmodsk <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb290-2"><a href="smoothness-mgcv-and-fits.html#cb290-2" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">12</span>) {</span>
+<span id="cb290-3"><a href="smoothness-mgcv-and-fits.html#cb290-3" tabindex="-1"></a>  fmodsk[[<span class="fu">paste0</span>(i)]] <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">paste0</span>(<span class="st">&quot;~s(age, k =3)+s(year, k=&quot;</span>,i,<span class="st">&quot;)&quot;</span>))</span>
+<span id="cb290-4"><a href="smoothness-mgcv-and-fits.html#cb290-4" tabindex="-1"></a>}</span></code></pre></div>
 <p>Run several stock assessments</p>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="smoothness-mgcv-and-fits.html#cb274-1" tabindex="-1"></a>fitsk <span class="ot">&lt;-</span> FLa4a<span class="sc">:::</span><span class="fu">multisca</span>(<span class="fu">FLStocks</span>(stk), <span class="fu">list</span>(idx), <span class="at">fmodel =</span> fmodsk)</span></code></pre></div>
-<pre><code>## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).
-## Note: Provided variances will be used to weight observations.
-##  Weighting assumes variances are on the log scale or equivalently log(CV^2 + 1).</code></pre>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="smoothness-mgcv-and-fits.html#cb276-1" tabindex="-1"></a>plotFitStats <span class="ot">&lt;-</span> <span class="cf">function</span>(fits){</span>
-<span id="cb276-2"><a href="smoothness-mgcv-and-fits.html#cb276-2" tabindex="-1"></a>  gcv <span class="ot">=</span> <span class="fu">lapply</span>(fits,<span class="cf">function</span>(x) <span class="fu">fitSumm</span>(x)[<span class="st">&#39;gcv&#39;</span>,])</span>
-<span id="cb276-3"><a href="smoothness-mgcv-and-fits.html#cb276-3" tabindex="-1"></a>  bic <span class="ot">=</span> <span class="fu">lapply</span>(fits, <span class="cf">function</span>(x) <span class="fu">BIC</span>(x))</span>
-<span id="cb276-4"><a href="smoothness-mgcv-and-fits.html#cb276-4" tabindex="-1"></a>  </span>
-<span id="cb276-5"><a href="smoothness-mgcv-and-fits.html#cb276-5" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">unlist</span>(gcv), <span class="fu">unlist</span>(bic))</span>
-<span id="cb276-6"><a href="smoothness-mgcv-and-fits.html#cb276-6" tabindex="-1"></a>  </span>
-<span id="cb276-7"><a href="smoothness-mgcv-and-fits.html#cb276-7" tabindex="-1"></a>  df<span class="sc">$</span>fit <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">&quot;fit&quot;</span>, <span class="st">&quot;&quot;</span>,<span class="fu">names</span>(gcv)))</span>
-<span id="cb276-8"><a href="smoothness-mgcv-and-fits.html#cb276-8" tabindex="-1"></a>  <span class="fu">names</span>(df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;GCV&quot;</span>,<span class="st">&quot;BIC&quot;</span>,<span class="st">&quot;fit&quot;</span>)</span>
-<span id="cb276-9"><a href="smoothness-mgcv-and-fits.html#cb276-9" tabindex="-1"></a>  df <span class="ot">&lt;-</span> df[<span class="fu">complete.cases</span>(df),]</span>
-<span id="cb276-10"><a href="smoothness-mgcv-and-fits.html#cb276-10" tabindex="-1"></a>  </span>
-<span id="cb276-11"><a href="smoothness-mgcv-and-fits.html#cb276-11" tabindex="-1"></a>  <span class="fu">plot</span>(df<span class="sc">$</span>fit, df<span class="sc">$</span>GCV, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, </span>
-<span id="cb276-12"><a href="smoothness-mgcv-and-fits.html#cb276-12" tabindex="-1"></a>       <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">0.75</span><span class="sc">*</span><span class="fu">min</span>(df<span class="sc">$</span>GCV), <span class="fl">1.25</span><span class="sc">*</span><span class="fu">max</span>(df<span class="sc">$</span>GCV)), <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;fit&quot;</span>)</span>
-<span id="cb276-13"><a href="smoothness-mgcv-and-fits.html#cb276-13" tabindex="-1"></a>  <span class="fu">par</span>(<span class="at">new =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb276-14"><a href="smoothness-mgcv-and-fits.html#cb276-14" tabindex="-1"></a>  <span class="fu">plot</span>(df<span class="sc">$</span>fit, df<span class="sc">$</span>BIC, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, </span>
-<span id="cb276-15"><a href="smoothness-mgcv-and-fits.html#cb276-15" tabindex="-1"></a>       <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">0.75</span><span class="sc">*</span><span class="fu">min</span>(df<span class="sc">$</span>BIC), <span class="fl">1.25</span><span class="sc">*</span><span class="fu">max</span>(df<span class="sc">$</span>BIC)), <span class="at">axes =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb276-16"><a href="smoothness-mgcv-and-fits.html#cb276-16" tabindex="-1"></a>  <span class="fu">axis</span>(<span class="dv">4</span>)                </span>
-<span id="cb276-17"><a href="smoothness-mgcv-and-fits.html#cb276-17" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v=</span>df[<span class="fu">min</span>(df<span class="sc">$</span>GCV)<span class="sc">==</span>df<span class="sc">$</span>GCV,]<span class="sc">$</span>fit, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>,<span class="at">lty =</span> <span class="dv">2</span>)</span>
-<span id="cb276-18"><a href="smoothness-mgcv-and-fits.html#cb276-18" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v=</span>df[<span class="fu">min</span>(df<span class="sc">$</span>BIC)<span class="sc">==</span>df<span class="sc">$</span>BIC,]<span class="sc">$</span>fit, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>,<span class="at">lty =</span> <span class="dv">2</span>)</span>
-<span id="cb276-19"><a href="smoothness-mgcv-and-fits.html#cb276-19" tabindex="-1"></a>  <span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;GCV&quot;</span>, <span class="st">&quot;BIC&quot;</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="at">lty =</span> <span class="dv">1</span>)</span>
-<span id="cb276-20"><a href="smoothness-mgcv-and-fits.html#cb276-20" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="smoothness-mgcv-and-fits.html#cb277-1" tabindex="-1"></a><span class="fu">plotFitStats</span>(fitsk)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-86-1.png" width="672" /></p>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="smoothness-mgcv-and-fits.html#cb291-1" tabindex="-1"></a>fitsk <span class="ot">&lt;-</span> FLa4a<span class="sc">:::</span><span class="fu">multisca</span>(<span class="fu">FLStocks</span>(stk), <span class="fu">list</span>(idx), <span class="at">fmodel =</span> fmodsk)</span></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="smoothness-mgcv-and-fits.html#cb292-1" tabindex="-1"></a>plotFitStats <span class="ot">&lt;-</span> <span class="cf">function</span>(fits){</span>
+<span id="cb292-2"><a href="smoothness-mgcv-and-fits.html#cb292-2" tabindex="-1"></a>  gcv <span class="ot">=</span> <span class="fu">lapply</span>(fits,<span class="cf">function</span>(x) <span class="fu">fitSumm</span>(x)[<span class="st">&#39;gcv&#39;</span>,])</span>
+<span id="cb292-3"><a href="smoothness-mgcv-and-fits.html#cb292-3" tabindex="-1"></a>  bic <span class="ot">=</span> <span class="fu">lapply</span>(fits, <span class="cf">function</span>(x) <span class="fu">BIC</span>(x))</span>
+<span id="cb292-4"><a href="smoothness-mgcv-and-fits.html#cb292-4" tabindex="-1"></a>  </span>
+<span id="cb292-5"><a href="smoothness-mgcv-and-fits.html#cb292-5" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">unlist</span>(gcv), <span class="fu">unlist</span>(bic))</span>
+<span id="cb292-6"><a href="smoothness-mgcv-and-fits.html#cb292-6" tabindex="-1"></a>  </span>
+<span id="cb292-7"><a href="smoothness-mgcv-and-fits.html#cb292-7" tabindex="-1"></a>  df<span class="sc">$</span>fit <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">&quot;fit&quot;</span>, <span class="st">&quot;&quot;</span>,<span class="fu">names</span>(gcv)))</span>
+<span id="cb292-8"><a href="smoothness-mgcv-and-fits.html#cb292-8" tabindex="-1"></a>  <span class="fu">names</span>(df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;GCV&quot;</span>,<span class="st">&quot;BIC&quot;</span>,<span class="st">&quot;fit&quot;</span>)</span>
+<span id="cb292-9"><a href="smoothness-mgcv-and-fits.html#cb292-9" tabindex="-1"></a>  df <span class="ot">&lt;-</span> df[<span class="fu">complete.cases</span>(df),]</span>
+<span id="cb292-10"><a href="smoothness-mgcv-and-fits.html#cb292-10" tabindex="-1"></a>  </span>
+<span id="cb292-11"><a href="smoothness-mgcv-and-fits.html#cb292-11" tabindex="-1"></a>  <span class="fu">plot</span>(df<span class="sc">$</span>fit, df<span class="sc">$</span>GCV, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, </span>
+<span id="cb292-12"><a href="smoothness-mgcv-and-fits.html#cb292-12" tabindex="-1"></a>       <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">0.75</span><span class="sc">*</span><span class="fu">min</span>(df<span class="sc">$</span>GCV), <span class="fl">1.25</span><span class="sc">*</span><span class="fu">max</span>(df<span class="sc">$</span>GCV)), <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;fit&quot;</span>)</span>
+<span id="cb292-13"><a href="smoothness-mgcv-and-fits.html#cb292-13" tabindex="-1"></a>  <span class="fu">par</span>(<span class="at">new =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb292-14"><a href="smoothness-mgcv-and-fits.html#cb292-14" tabindex="-1"></a>  <span class="fu">plot</span>(df<span class="sc">$</span>fit, df<span class="sc">$</span>BIC, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, </span>
+<span id="cb292-15"><a href="smoothness-mgcv-and-fits.html#cb292-15" tabindex="-1"></a>       <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">0.75</span><span class="sc">*</span><span class="fu">min</span>(df<span class="sc">$</span>BIC), <span class="fl">1.25</span><span class="sc">*</span><span class="fu">max</span>(df<span class="sc">$</span>BIC)), <span class="at">axes =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb292-16"><a href="smoothness-mgcv-and-fits.html#cb292-16" tabindex="-1"></a>  <span class="fu">axis</span>(<span class="dv">4</span>)                </span>
+<span id="cb292-17"><a href="smoothness-mgcv-and-fits.html#cb292-17" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v=</span>df[<span class="fu">min</span>(df<span class="sc">$</span>GCV)<span class="sc">==</span>df<span class="sc">$</span>GCV,]<span class="sc">$</span>fit, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>,<span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb292-18"><a href="smoothness-mgcv-and-fits.html#cb292-18" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v=</span>df[<span class="fu">min</span>(df<span class="sc">$</span>BIC)<span class="sc">==</span>df<span class="sc">$</span>BIC,]<span class="sc">$</span>fit, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>,<span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb292-19"><a href="smoothness-mgcv-and-fits.html#cb292-19" tabindex="-1"></a>  <span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;GCV&quot;</span>, <span class="st">&quot;BIC&quot;</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="at">lty =</span> <span class="dv">1</span>)</span>
+<span id="cb292-20"><a href="smoothness-mgcv-and-fits.html#cb292-20" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="smoothness-mgcv-and-fits.html#cb293-1" tabindex="-1"></a><span class="fu">plotFitStats</span>(fitsk)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
 
 </div>
             </section>

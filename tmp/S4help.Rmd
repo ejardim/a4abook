@@ -1,0 +1,35 @@
+---
+title: "Untitled"
+author: "Danai"
+date: "2024-10-27"
+output: html_document
+---
+
+# Getting help for S4 classes and methods
+
+```{r, echo=FALSE, message=FALSE}
+library(FLCore)
+library(FLa4a)
+library(ggplotFL)
+```
+`a4a` is build around S4 classes. S4 classes and methods in R offer an object-oriented programming framework but in order to access the documentation requires specific terminology. In this section we will demonstrate how to get information on the main building blocks of `a4a`.
+
+For example, `FLStock` is one of our main components in order to run our stock assessment model. We can check the structure of an `FLStock` object as follows:
+
+```{r}
+showClass("FLStock")
+```
+
+The object oriented structure of `a4a` gives the opportunity to change the behavior of a function according to the object that is applied to. For example we can check the available methods of the function `plot`
+
+```{r}
+showMethods("plot")
+```
+
+by calling `showMethods` R prints all the possible uses of the **plot** function. We want to see what it does when it is called on an `FLStock` object with no other object. We observe that `plot` takes two arguments, `x` and `y`. So, in the signature of the `getMethod` function we are going to use, we need to define both `x` and `y`.
+
+```{r}
+getMethod('plot', signature = list("FLStock","missing"))
+```
+
+

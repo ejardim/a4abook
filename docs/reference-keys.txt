@@ -25,6 +25,13 @@ fig:likwgt
 fig:likwgtimpact
 fig:naor
 fig:naor2
+fig:unnamed-chunk-53
+fig:unnamed-chunk-54
+fig:unnamed-chunk-55
+fig:unnamed-chunk-56
+fig:unnamed-chunk-58
+fig:unnamed-chunk-59
+fig:unnamed-chunk-61
 fig:res
 fig:resaux
 fig:bub
@@ -66,6 +73,7 @@ before-starting
 license-documentation-and-development-status
 installing-and-loading-libraries
 how-to-read-this-document
+how-to-get-help
 notation
 introduction
 modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data
@@ -111,6 +119,14 @@ data-weigthing
 working-with-covariates
 assessing-files
 missing-observations-in-the-catch-matrix-or-index
+introduction-to-splines
+understanding-spline-basics
+generate-some-artificial-data
+cubic-regression-splines
+thin-plate-spline
+comparison
+the-mgcv-package-inside-a4a
+on-the-number-of-knots-k
 diagnostics
 residuals
 predictive-skill
