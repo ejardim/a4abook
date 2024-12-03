@@ -153,5 +153,11 @@ propagate-natural-mortality-uncertainty
 smoothness-mgcv-and-fits
 modelling-spatial-effects
 reference-points
+yield-per-recruit-reference-points
+stock-recruitment-relationship-based-reference-points
+stock-recruitment-after-fitting-the-stock-assessment-model
+stock-recruitment-during-fitting-the-stock-assessment-model
+economics-reference-points
+computing-user-specific-reference-points
 forecasting-projections-and-harvest-control-rules
 sections-to-be-added

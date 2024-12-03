@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2024-12-02" />
+<meta name="date" content="2024-12-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -251,7 +251,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="propagate-natural-mortality-uncertainty.html"><a href="propagate-natural-mortality-uncertainty.html"><i class="fa fa-check"></i><b>11</b> Propagate natural mortality uncertainty</a></li>
 <li class="chapter" data-level="12" data-path="smoothness-mgcv-and-fits.html"><a href="smoothness-mgcv-and-fits.html"><i class="fa fa-check"></i><b>12</b> Smoothness, mgcv and fits</a></li>
 <li class="chapter" data-level="13" data-path="modelling-spatial-effects.html"><a href="modelling-spatial-effects.html"><i class="fa fa-check"></i><b>13</b> Modelling spatial effects</a></li>
-<li class="chapter" data-level="14" data-path="reference-points.html"><a href="reference-points.html"><i class="fa fa-check"></i><b>14</b> Reference points</a></li>
+<li class="chapter" data-level="14" data-path="reference-points.html"><a href="reference-points.html"><i class="fa fa-check"></i><b>14</b> Reference Points</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="reference-points.html"><a href="reference-points.html#yield-per-recruit-reference-points"><i class="fa fa-check"></i><b>14.1</b> Yield per recruit reference points</a></li>
+<li class="chapter" data-level="14.2" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-relationship-based-reference-points"><i class="fa fa-check"></i><b>14.2</b> Stock recruitment relationship based reference points</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-after-fitting-the-stock-assessment-model"><i class="fa fa-check"></i><b>14.2.1</b> Stock recruitment after fitting the stock assessment model</a></li>
+<li class="chapter" data-level="14.2.2" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-during-fitting-the-stock-assessment-model"><i class="fa fa-check"></i><b>14.2.2</b> Stock recruitment during fitting the stock assessment model</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="reference-points.html"><a href="reference-points.html#economics-reference-points"><i class="fa fa-check"></i><b>14.3</b> Economics reference points</a></li>
+<li class="chapter" data-level="14.4" data-path="reference-points.html"><a href="reference-points.html#computing-user-specific-reference-points"><i class="fa fa-check"></i><b>14.4</b> Computing user specific reference points</a></li>
+</ul></li>
 <li class="chapter" data-level="15" data-path="forecasting-projections-and-harvest-control-rules.html"><a href="forecasting-projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>15</b> Forecasting, projections and harvest control rules</a></li>
 <li class="chapter" data-level="16" data-path="sections-to-be-added.html"><a href="sections-to-be-added.html"><i class="fa fa-check"></i><b>16</b> Sections to be added!?</a></li>
 <li class="divider"></li>
@@ -278,7 +288,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1 class="title">Fish stock assessment with R</h1>
 <h2 class="subtitle"><em>The a4a Initiative</em></h2>
 <p class="author"><em>John Doe and friends</em></p>
-<p class="date"><em>2024-12-02</em></p>
+<p class="date"><em>2024-12-03</em></p>
 </div>
 <div id="before-starting" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Before starting<a href="index.html#before-starting" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -357,50 +367,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## x=&quot;a4aFit&quot;, y=&quot;FLStock&quot;
 ## x=&quot;a4aFitMCMCs&quot;, y=&quot;missing&quot;
 ## x=&quot;a4aFitResiduals&quot;, y=&quot;missing&quot;
-## x=&quot;a4aFitSA&quot;, y=&quot;FLIndices&quot;
-##     (inherited from: x=&quot;a4aFit&quot;, y=&quot;FLIndices&quot;)
-## x=&quot;a4aFitSA&quot;, y=&quot;FLStock&quot;
-##     (inherited from: x=&quot;a4aFit&quot;, y=&quot;FLStock&quot;)
-## x=&quot;a4aFitSAs&quot;, y=&quot;missing&quot;
-##     (inherited from: x=&quot;a4aFits&quot;, y=&quot;missing&quot;)
 ## x=&quot;a4aFits&quot;, y=&quot;missing&quot;
 ## x=&quot;ANY&quot;, y=&quot;ANY&quot;
 ## x=&quot;color&quot;, y=&quot;ANY&quot;
 ## x=&quot;Copula&quot;, y=&quot;ANY&quot;
-## x=&quot;FLBiol&quot;, y=&quot;FLFishery&quot;
 ## x=&quot;FLBiol&quot;, y=&quot;missing&quot;
 ## x=&quot;FLBiols&quot;, y=&quot;missing&quot;
-## x=&quot;FLCatch&quot;, y=&quot;missing&quot;
 ## x=&quot;FLCohort&quot;, y=&quot;missing&quot;
-## x=&quot;FLFisheries&quot;, y=&quot;ANY&quot;
-## x=&quot;FLFishery&quot;, y=&quot;ANY&quot;
 ## x=&quot;FLIndexBiomass&quot;, y=&quot;missing&quot;
 ## x=&quot;FLIndex&quot;, y=&quot;missing&quot;
 ## x=&quot;FLIndices&quot;, y=&quot;missing&quot;
 ## x=&quot;FLPar&quot;, y=&quot;missing&quot;
 ## x=&quot;FLQuant&quot;, y=&quot;FLQuant&quot;
-## x=&quot;FLQuant&quot;, y=&quot;fwdControl&quot;
 ## x=&quot;FLQuant&quot;, y=&quot;missing&quot;
 ## x=&quot;FLQuantPoint&quot;, y=&quot;FLQuant&quot;
 ## x=&quot;FLQuantPoint&quot;, y=&quot;FLQuants&quot;
 ## x=&quot;FLQuantPoint&quot;, y=&quot;missing&quot;
 ## x=&quot;FLQuants&quot;, y=&quot;FLPar&quot;
 ## x=&quot;FLQuants&quot;, y=&quot;FLPars&quot;
-## x=&quot;FLQuants&quot;, y=&quot;fwdControl&quot;
 ## x=&quot;FLQuants&quot;, y=&quot;missing&quot;
 ## x=&quot;FLSR&quot;, y=&quot;missing&quot;
 ## x=&quot;FLSRs&quot;, y=&quot;ANY&quot;
 ## x=&quot;FLStock&quot;, y=&quot;FLPar&quot;
 ## x=&quot;FLStock&quot;, y=&quot;FLStock&quot;
 ## x=&quot;FLStock&quot;, y=&quot;FLStocks&quot;
-## x=&quot;FLStock&quot;, y=&quot;fwdControl&quot;
 ## x=&quot;FLStock&quot;, y=&quot;missing&quot;
 ## x=&quot;FLStocks&quot;, y=&quot;FLPar&quot;
-## x=&quot;FLStocks&quot;, y=&quot;fwdControl&quot;
 ## x=&quot;FLStocks&quot;, y=&quot;missing&quot;
 ## x=&quot;mvdc&quot;, y=&quot;ANY&quot;
-## x=&quot;numeric&quot;, y=&quot;numeric&quot;
-##     (inherited from: x=&quot;ANY&quot;, y=&quot;ANY&quot;)
 ## x=&quot;profile.mle&quot;, y=&quot;missing&quot;</code></pre>
 <p>by calling <code>showMethods</code> R prints all the possible uses of the <strong>plot</strong> function. We want to see what it does when it is called on an <code>FLStock</code> object with no other object. We observe that <code>plot</code> takes two arguments, <code>x</code> and <code>y</code>. So, in the signature of the <code>getMethod</code> function we are going to use, we need to define both <code>x</code> and <code>y</code>.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="index.html#cb11-1" tabindex="-1"></a><span class="fu">getMethod</span>(<span class="st">&#39;plot&#39;</span>, <span class="at">signature =</span> <span class="fu">list</span>(<span class="st">&quot;FLStock&quot;</span>,<span class="st">&quot;missing&quot;</span>))</span></code></pre></div>
@@ -440,7 +434,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     }
 ##     .local(x, ...)
 ## }
-## &lt;bytecode: 0x6402da978048&gt;
+## &lt;bytecode: 0x607fab5673a8&gt;
 ## &lt;environment: namespace:ggplotFL&gt;
 ## 
 ## Signatures:
