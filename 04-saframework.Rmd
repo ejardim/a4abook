@@ -2,7 +2,51 @@
 
 ## Maths description \label{sec:math}
 
-The stock assessment model behind the framework is based in two main equations to link observations to processes, the Baranov's catch equation and abundance indices equation.
+### Observations
+
+The stock assessment model behind the framework is based on two types of observations: catches, $\hat{C}$, and abundance indices, $\hat{I}$. The model predicts catches at age $C_{ay}$ and indices of abundance $I_{ays}$ for each age $a$, year $y$ and survey $s$ in the input dataset. It is assumed that the observed catches are normally distributed about the model predictions on the log scale with some observation variance $\sigma^2_{ay}$. that is:
+
+$$\log \hat{C}_{ay} \sim \text{Normal} \Big( \log C_{ay}, \sigma^2_{ay}\Big)$$
+
+likewise, the observed survey indices are assumed to be normally distributed about the model predictions on the log scale with some observation variance $\tau^2_{ays}$:
+
+$$\log \hat{I}_{ays} \sim \text{Normal} \Big( \log I_{ays}, \tau^2_{ays} \Big)$$
+
+This leads to the definition of the log-likelihood of the observed catches
+
+$$\ell_C = \sum_{ay} w^{(c)}_{ay}\ \ell_N \Big( \log C_{ay}, \sigma^2_{ay} ;\ \log \hat{C}_{ay} \Big)$$
+
+and the log-likelihood of the observed survey indices
+
+$$\ell_I = \sum_s \sum_{ay} w^{(s)}_{ays}\ \ell_N \Big( \log I_{ays}, \tau_{ays}^2 ;\ \log \hat{I}_{ays} \Big)$$
+
+where $\ell_N$ is the normal log-likelihood function and $w^{(c)}_{ay}$ and $w^{(s)}_{ays}$ are optional weights for the catch and index observations, respectively. The total log-likelihood is then
+
+$$\ell = \ell_C + \ell_I$$
+
+### The population dynamics model
+
+To predict catches and survey indices, the model uses the standard population dynamics model
+
+$$N_{a+1,y+1} = N_{ay} \exp \left( - F_{ay} - M_{ay} \right)$$
+
+where $N_{ay}$ is the number of individuals at age $a$ in year $y$, $F_{ay}$ is the fishing mortality at age $a$ in year $y$, and $M_{ay}$ is the natural mortality at age $a$ in year $y$.  Any fish that survived beyond the oldest age $A$ in the model are accumulated in the oldest age group and are assumed to be fished at a common rate $F_{A,y}$.
+
+$$
+\begin{align}
+N_{A,y+1} = &N_{A-1,y} \exp \left( - F_{A-1,y} - M_{A-1,y} \right) \\
+            &+ N_{A,y} \exp \left( - F_{A,y} - M_{A,y} \right)
+\end{align}
+$$
+
+The numbers $N_{a,y}$ are initiated in the first year, $y=1$ and at the youngest age, $a=1$, and the matrix of numbers at age are filled in according to the population dynamics model stated above.
+
+![](figure/sca_matrix.png)
+
+Defining $R_y = N_{1,y}$, the numbers at age can be written (ignoring the plus group) as:
+
+$$N_{a,y} = \left\{ \begin{matrix} R_{y-a+1} \exp \left( - \sum^a_{i=1} F_{a-i,y-i} + M_{a-i,y-i} \right) &  y \geq a \\ N_{a-y+1,1} \exp \left( - \sum^{a-y}_{i=1} F_{a-i,y-i} + M_{a-i,y-i} \right) &  y \lt a \end{matrix} \right.$$
+
 
 Catches in numbers by age and year are defined in terms of the three quantities: natural mortality, fishing mortality and recruitment; using a modified form of the well known Baranov catch equation:
 
@@ -29,7 +73,7 @@ giving the total log-likelihood
 
 $$\ell = \ell_C + \ell_I$$
 
-which is defined in terms of the strictly positive quantites, $M_{ay}$, $F_{ay}$, $Q_{ays}$ and $R_{y}$, and the observation variances $\sigma_{ay}$ and $\tau_{ays}$. As such, the log-likelihood is over-parameterised as there are many more parameters than observations. In order to reduce the number of parameters, $M_{ay}$ is assumed known (as is common). 
+which is defined in terms of the strictly positive quantites, $M_{ay}$, $F_{ay}$, $Q_{ays}$ and $R_{y}$, and the observation variances $\sigma_{ay}$ and $\tau_{ays}$. As such, the log-likelihood is over-parameterised as there are many more parameters than observations. In order to reduce the number of parameters, $M_{ay}$ is assumed known (as is common).
 
 %====================================================================
 %THE FOLLOWING NEEDS REVISION, need to bring in N1 submod
@@ -66,7 +110,7 @@ $$\log R_y \sim \text{Normal} \Big( \log \tilde{R}_y, \phi_y^2 \Big)$$
 which leads to the definition of $\ell_{SR}$ given above. In all cases $a$ and $b$ are strictly positive, and with the quantities $F$, $R$, etc. linear models are used to parameterise $\log a$ and/or $\log b$, where relevant.
 
 %====================================================================
-%THE FOLLOWING NEEDS REVISION, this is not just the default I guess, 
+%THE FOLLOWING NEEDS REVISION, this is not just the default I guess,
 % it's always present since R predictions will be a mix of S/R and $\gamma$
 %====================================================================
 
@@ -89,6 +133,3 @@ Figure \@ref(fig:sca) shows the process to fit a statistical stock assessment ca
 ![The a4aFit class](fitclass.png)
 
 ![The a4aFitSA and a4aFitMCMC classes. Both classes have the same structure](fitsamcclass.png)
-
-
-
