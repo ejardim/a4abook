@@ -161,3 +161,11 @@ economics-reference-points
 computing-user-specific-reference-points
 forecasting-projections-and-harvest-control-rules
 sections-to-be-added
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
+fig:unnamed-chunk-4
+fig:unnamed-chunk-6
+initial-condition-assumptions
+fig:unnamed-chunk-8
+scenarios
+fig:unnamed-chunk-10
+fig:unnamed-chunk-12

@@ -1,1 +1,179 @@
 # Forecasting, projections and harvest control rules 
+
+
+Massad et.al has a nice definition "Prediction in general science can be divided into two components: forecasting and projections [2]. A forecast is an attempt to predict what will happen. A projection is an attempt to describe what would happen, given certain hypotheses [3]." 
+
+
+(OECD)
+“Forecasting” and “prediction” are often used synonymously
+in the customary sense of assessing the magnitude which a
+quantity will assume at some future point of time .
+
+Medium-term projections or scenarios
+In the context of the OECD's Economic Outlook, medium-
+term projections or scenarios look out five to six years, and
+are published as part of the OECD's projection exercise.
+
+Projection
+This term is used in two connected senses.
+1. In relation to a time series it means a future value
+calculated according to predetermined changes in the
+assumptions of the environment.
+2. More recently, it has been used in probability theory to
+denote the conditional expectation of a variate.
+Since a regression equation gives the expectation of the
+dependent variate conditional upon values of the predicted
+(“independent”) variates and such equations are used for
+forecasting or prediction, the usages are connected.
+
+Considering the above definitions one can think of the process of advising future fishing opportunities as a mix of forecasting and projections. When using a HCR that is accepted by decision makers to predict the catches which can be taken from the stock, one's in forecasting space. The process will retur what will happen having into account the known conditions of the system. On the other hand, when exploring potential future outcomes based on a set of scenarios previously defined, one's much more in projection's space. 
+
+In fisheries science it's not common to make the distinction between forecasts and predictions, and, in general, the approach tends to be much more within the realm of predictions. For example, it's common to run scenarios when giving advice to fisheries managers or test different assumptions about future events.
+
+Strickly speaking projections are not part of the stock assessment process. The assessment of the status of the stock is completed when the analysts produces a comparison between the estimates of biomass and fishing mortality and the respective reference points. At that point it's possible to make statements about the stock being overfished, or not, and being subject to overfishing, or not.
+
+Projections tend to come after having estimates of abundance or biomass and fishing mortality. Together with estimates, or assumptions, about the population's dynamics: growth, reproduction, natural mortality, etc; one can predict catches, biomass, abundance and other relevant statistics, under spoecific conditions and with a certain level of uncertainty.
+
+For this section we'll be using the package `FLasher` (REF) from the FLR family of packages. Starting by fitting a model including a stock recruitment model. For projections one needs to set future recruitment.
+
+```{r, echo=FALSE}
+library(FLa4a)
+library(FLasher)
+library(FLBRP)
+library(ggplotFL)
+data(ple4)
+data(ple4.indices)
+fit0 <- sca(ple4, ple4.indices, srmodel=~geomean())
+sr0 <- as(fit0, "FLSR")
+```
+
+The basic workflow to project with `FLasher` is to extend the `FLStock` object to store the predictions using the method `stf`, set the targets for the projection with method `fwdControl` and project the fishery with the method `fwd`. 
+
+```{r}
+stk0 <- ple4 + fit0
+stk <- stf(stk0, nyears=5)
+trg <- fwdControl(year = 2018:2022, quant = "f", value = 0.4)
+stk <- fwd(stk, control=trg, sr=sr0)
+```
+
+```{r, echo=FALSE, fig.cap="Projection of stock for 5 years with fixed fishing mortality and recruitment"}
+plot(stk)
+```
+
+A natural addition to this forecast is to add uncertainty. We'll do that by generating uncertainty in population numbers, catch numbers and fishing mortality, using `simulate`. And add stock recruitment uncertinaty, combining observation and parameter uncertainty. The first using the residuals of the fit and the latter by fitting the stock recruitment models to the iterations simulated in the previous step, which creates an empirical distribution of the stock recruitment parameters, similar to a boot strap process. 
+
+```{r}
+stk0 <- ple4 + simulate(fit0, 250)
+recr <- residuals(sr0)
+stk <- stf(stk0, nyears=5)
+recs <- window(rec(stk), 2018, 2022)
+recs <- rlnorm(recs, mean(recr), sqrt(var(recr) + vcov(sr0)))
+stk <- fwd(stk, control=trg, sr=sr0, residuals=recs)
+```
+
+```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment"}
+plot(stk)
+```
+
+## Initial condition assumptions
+
+When projecting the stock forward one needs to make a number of assumptions about initial conditions, the starting point from where projections will be made. The method `stf` has a set of options that allows the analyst to decide about those assumptions.
+
+- `wts.nyears`: Number of years to average over to get the future mean weights at age, default is 3
+- `fbar.nyears`: Number of years to average the F over, default is 3
+- `f.rescale`: Rescale F to most recent F estimate, default is FALSE
+- `arith.mean`: If TRUE the arithmetic mean is used. If FALSE the geometric mean is used. Default is TRUE.
+- `disc.nyears`: Number of years to average over to get the future mean proportion of discards at age. Defau;lt is to be the same as wts.nyears
+
+```{r}
+stk.alt <- stf(stk0, nyears=5, wts.nyears = 20, fbar.nyears = 10, f.rescale = TRUE, disc.nyears = 10)
+stk.alt <- fwd(stk.alt, control=trg, sr=sr0, residuals=recs)
+```
+
+```{r, echo=FALSE, fig.cap="Stochastic projections of stock for 5 years with fixed fishing mortality and recruitment. Two scenarios with different assumptions about initial conditions"}
+plot(FLStocks(ple4=stk, alt=stk.alt))
+```
+
+## Scenarios
+
+There's a wide range of scenarios that can be of interest to project in order to give advice to policy makers, or to better understand the fitted stock assessment model. For example, forecasting the stock in the absence of fishing for a few generations, gives good insights about the dynamics of the population being modelled.
+
+```{r}
+stk <- stf(stk0, nyears=25)
+recs <- window(rec(stk), 2018, range(stk)["maxyear"])
+recs <- rlnorm(recs, mean(recr), sqrt(var(recr) + vcov(sr0)))
+trg <- fwdControl(year = 2018:range(stk)["maxyear"], quant = "f", value = 0)
+stk <- fwd(stk, control=trg, sr=sr0, residuals=recs)
+```
+
+```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 25 years with fixed fishing mortality and recruitment"}
+plot(stk)
+```
+
+
+These scenarios are defined by the target quantities one's trying to achieve. In `FLasher` there are the following target quantities:
+- srp
+- ssb_end
+- biomass_end
+- ssb_spawn
+- biomass_spawn
+- ssb_flash
+- biomass_flash
+- inmb_end
+- indb
+- catch
+- landings
+- discards
+- f
+- fbar
+- revenue
+- effort
+
+[IAGO NEED YOUR HELP HERE]
+
+When projecting the stock under the conditions defined by the scenario one can mix several quantities. For example it may be interesting to project an initial situation of growing the stock forward by a higher exploitation to evaluate how catches would behave. Since we're going to increase SSB let's use a beverton and holt recruitment model to introduce more structure in teh model.
+
+
+```{r}
+trg <- fwdControl(year = 2018:range(stk)["maxyear"], quant = c(rep("ssb_end", 15), rep("f", 10)), value = c(rep(1500000, 15), rep(0.3, 10)))
+stk <- fwd(stk, control=trg, sr=sr0, residuals=recs)
+```
+
+```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 25 years with fixed SSB for 15 years followed by fixed fishing mortality for 10 years and constant recruitment"}
+plot(stk)
+```
+
+## Setting a hierarchy of targets
+
+Obkjectives for exploring natural resources may be multidimentional, having more than one objective per year. In `FLasher` such situation can be set by defining a sequence of objectives.
+
+```{r}
+stk0 <- ple4 + simulate(fit0, 250)
+recr <- residuals(sr0)
+stk <- stf(stk0, nyears=5)
+recs <- window(rec(stk), 2018, 2022)
+recs <- rlnorm(recs, mean(recr), sqrt(var(recr) + vcov(sr0)))
+
+trg <- fwdControl(year = 2018:range(stk)["maxyear"], quant = c(rep("f", 5), rep("ssb_end", 5)), value = c(rep(0.4, 5), rep(1500000, 5)))
+stk <- fwd(stk, control=trg, sr=sr0, residuals=recs)
+```
+
+Note the sequance matters. Because we set `ssb_end` after the `f` objective the projection will give priority to the last objective. The objectives are set and shown in time sequence, not by priority. The projection tries to achive `f=0.4` condition on `ssb_end=150000`.
+
+Changing things around gives a different results because now the projection fuirst tries the `ssb_end` objective and afterwards the `f` one.
+
+```{r}
+trg <- fwdControl(year = 2018:range(stk)["maxyear"], quant = c(rep("ssb_end", 5), rep("f", 5)), value = c(rep(1500000, 5), rep(0.4, 5)))
+stk <- fwd(stk, control=trg, sr=sr0, residuals=recs)
+```
+
+
+
+
+
+
+
+
+
+
+
