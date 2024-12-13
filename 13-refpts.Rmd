@@ -109,9 +109,23 @@ Note $MSY$ based reference points are no longer the same as $F_{MAX}$, and recru
 plot(brp0, obs=TRUE)
 ```
 
-### Stock recruitment during fitting the stock assessment model  
+### Stock recruitment during fitting the stock assessment model
 
 **[NEED COLIN'S HELP]**
+
+```{r}
+fit1 <- sca(ple4, ple4.indices, srmodel = ~ bevholt(CV = 0.5))
+
+a4aflsr <- as(stkmodel(fit1), "FLSR")
+
+# or
+a4aflsr <- as(fit1, "FLSR")
+
+plot(a4aflsr, obs = TRUE)
+
+a4abrp <- FLBRP(stk0, a4aflsr)
+```
+
 
 ## Economics reference points
 
