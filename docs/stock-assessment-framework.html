@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2024-12-11" />
+<meta name="date" content="2024-12-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -66,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -140,7 +140,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Stock assessment framework</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> cover-image: path to the social sharing image like images/cover.jpg</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Before starting</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#license-documentation-and-development-status"><i class="fa fa-check"></i><b>1.1</b> License, documentation and development status</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installing-and-loading-libraries"><i class="fa fa-check"></i><b>1.2</b> Installing and loading libraries</a></li>
@@ -266,7 +266,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.3" data-path="reference-points.html"><a href="reference-points.html#economics-reference-points"><i class="fa fa-check"></i><b>14.3</b> Economics reference points</a></li>
 <li class="chapter" data-level="14.4" data-path="reference-points.html"><a href="reference-points.html#computing-user-specific-reference-points"><i class="fa fa-check"></i><b>14.4</b> Computing user specific reference points</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="forecasting-projections-and-harvest-control-rules.html"><a href="forecasting-projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>15</b> Forecasting, projections and harvest control rules</a></li>
+<li class="chapter" data-level="15" data-path="forecasting-projections-and-harvest-control-rules.html"><a href="forecasting-projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>15</b> Forecasting, projections and harvest control rules</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="forecasting-projections-and-harvest-control-rules.html"><a href="forecasting-projections-and-harvest-control-rules.html#initial-condition-assumptions"><i class="fa fa-check"></i><b>15.1</b> Initial condition assumptions</a></li>
+<li class="chapter" data-level="15.2" data-path="forecasting-projections-and-harvest-control-rules.html"><a href="forecasting-projections-and-harvest-control-rules.html#scenarios"><i class="fa fa-check"></i><b>15.2</b> Scenarios</a></li>
+<li class="chapter" data-level="15.3" data-path="forecasting-projections-and-harvest-control-rules.html"><a href="forecasting-projections-and-harvest-control-rules.html#setting-a-hierarchy-of-targets"><i class="fa fa-check"></i><b>15.3</b> Setting a hierarchy of targets</a></li>
+</ul></li>
 <li class="chapter" data-level="16" data-path="sections-to-be-added.html"><a href="sections-to-be-added.html"><i class="fa fa-check"></i><b>16</b> Sections to be added!?</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -319,7 +324,7 @@ N_{A,y+1} = &amp;N_{A-1,y} \exp \left( - F_{A-1,y} - M_{A-1,y} \right) \\
 <p>The numbers <span class="math inline">\(N_{a,y}\)</span> are initiated in the first year, <span class="math inline">\(y=1\)</span> and at the youngest age, <span class="math inline">\(a=1\)</span>, and the matrix of numbers at age are filled in according to the population dynamics model stated above.</p>
 <p><img src="figure/sca_matrix.png" /></p>
 <p>Defining <span class="math inline">\(R_y = N_{1,y}\)</span>, the numbers at age can be written (ignoring the plus group) as:</p>
-<p><span class="math display">\[N_{a+1,y+1} = \left\{ \begin{matrix} R_{y-a+1} \exp \left( - \sum^{a-1}_{i=0} F_{a-i,y-i} + M_{a-i,y-i} \right) &amp;  y \geq a \\ N_{a-y,0} \exp \left( - \sum^{a-y}_{i=0} F_{a-i,y-i} + M_{a-i,y-i} \right) &amp;  y \lt a \end{matrix} \right.\]</span></p>
+<p><span class="math display">\[N_{a,y} = \left\{ \begin{matrix} R_{y-a+1} \exp \left( - \sum^a_{i=1} F_{a-i,y-i} + M_{a-i,y-i} \right) &amp;  y \geq a \\ N_{a-y+1,1} \exp \left( - \sum^{a-y}_{i=1} F_{a-i,y-i} + M_{a-i,y-i} \right) &amp;  y \lt a \end{matrix} \right.\]</span></p>
 <p>Catches in numbers by age and year are defined in terms of the three quantities: natural mortality, fishing mortality and recruitment; using a modified form of the well known Baranov catch equation:</p>
 <p><span class="math display">\[C_{ay} = \frac{F_{ay}}{F_{ay}+M_{ay}}\left(1 - e^{-(F_{ay}+M_{ay})}\right) R_{y}e^{-\sum (F_{ay} + M_{ay})} \]</span></p>
 <p>Survey indices by age and year are defined in terms of the same three quantities with the addition of survey catchability:</p>

@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2024-12-03" />
+<meta name="date" content="2024-12-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -168,7 +168,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html"><i class="fa fa-check"></i><b>5</b> Stock assessment framework</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#maths-description"><i class="fa fa-check"></i><b>5.1</b> Maths description </a></li>
+<li class="chapter" data-level="5.1" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#maths-description"><i class="fa fa-check"></i><b>5.1</b> Maths description </a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#observations"><i class="fa fa-check"></i><b>5.1.1</b> Observations</a></li>
+<li class="chapter" data-level="5.1.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#the-population-dynamics-model"><i class="fa fa-check"></i><b>5.1.2</b> The population dynamics model</a></li>
+</ul></li>
 <li class="chapter" data-level="5.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#classes-description"><i class="fa fa-check"></i><b>5.2</b> Classes description </a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="submodel-structure.html"><a href="submodel-structure.html"><i class="fa fa-check"></i><b>6</b> Submodel structure </a>
@@ -262,7 +266,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.3" data-path="reference-points.html"><a href="reference-points.html#economics-reference-points"><i class="fa fa-check"></i><b>14.3</b> Economics reference points</a></li>
 <li class="chapter" data-level="14.4" data-path="reference-points.html"><a href="reference-points.html#computing-user-specific-reference-points"><i class="fa fa-check"></i><b>14.4</b> Computing user specific reference points</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="forecasting-projections-and-harvest-control-rules.html"><a href="forecasting-projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>15</b> Forecasting, projections and harvest control rules</a></li>
+<li class="chapter" data-level="15" data-path="forecasting-projections-and-harvest-control-rules.html"><a href="forecasting-projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>15</b> Forecasting, projections and harvest control rules</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="forecasting-projections-and-harvest-control-rules.html"><a href="forecasting-projections-and-harvest-control-rules.html#initial-condition-assumptions"><i class="fa fa-check"></i><b>15.1</b> Initial condition assumptions</a></li>
+<li class="chapter" data-level="15.2" data-path="forecasting-projections-and-harvest-control-rules.html"><a href="forecasting-projections-and-harvest-control-rules.html#scenarios"><i class="fa fa-check"></i><b>15.2</b> Scenarios</a></li>
+<li class="chapter" data-level="15.3" data-path="forecasting-projections-and-harvest-control-rules.html"><a href="forecasting-projections-and-harvest-control-rules.html#setting-a-hierarchy-of-targets"><i class="fa fa-check"></i><b>15.3</b> Setting a hierarchy of targets</a></li>
+</ul></li>
 <li class="chapter" data-level="16" data-path="sections-to-be-added.html"><a href="sections-to-be-added.html"><i class="fa fa-check"></i><b>16</b> Sections to be added!?</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -286,36 +295,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="smoothness-mgcv-and-fits" class="section level1 hasAnchor" number="12">
 <h1><span class="header-section-number">Chapter 12</span> Smoothness, mgcv and fits<a href="smoothness-mgcv-and-fits.html#smoothness-mgcv-and-fits" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="smoothness-mgcv-and-fits.html#cb298-1" tabindex="-1"></a><span class="fu">data</span>(hke1567)</span>
-<span id="cb298-2"><a href="smoothness-mgcv-and-fits.html#cb298-2" tabindex="-1"></a><span class="fu">data</span>(hke1567.idx)</span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="smoothness-mgcv-and-fits.html#cb295-1" tabindex="-1"></a><span class="fu">data</span>(hke1567)</span>
+<span id="cb295-2"><a href="smoothness-mgcv-and-fits.html#cb295-2" tabindex="-1"></a><span class="fu">data</span>(hke1567.idx)</span></code></pre></div>
 <p>Set list of fmodels to test</p>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="smoothness-mgcv-and-fits.html#cb299-1" tabindex="-1"></a>fmodsk <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb299-2"><a href="smoothness-mgcv-and-fits.html#cb299-2" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">12</span>) {</span>
-<span id="cb299-3"><a href="smoothness-mgcv-and-fits.html#cb299-3" tabindex="-1"></a>  fmodsk[[<span class="fu">paste0</span>(i)]] <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">paste0</span>(<span class="st">&quot;~s(age, k =3)+s(year, k=&quot;</span>,i,<span class="st">&quot;)&quot;</span>))</span>
-<span id="cb299-4"><a href="smoothness-mgcv-and-fits.html#cb299-4" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="smoothness-mgcv-and-fits.html#cb296-1" tabindex="-1"></a>fmodsk <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb296-2"><a href="smoothness-mgcv-and-fits.html#cb296-2" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">12</span>) {</span>
+<span id="cb296-3"><a href="smoothness-mgcv-and-fits.html#cb296-3" tabindex="-1"></a>  fmodsk[[<span class="fu">paste0</span>(i)]] <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">paste0</span>(<span class="st">&quot;~s(age, k =3)+s(year, k=&quot;</span>,i,<span class="st">&quot;)&quot;</span>))</span>
+<span id="cb296-4"><a href="smoothness-mgcv-and-fits.html#cb296-4" tabindex="-1"></a>}</span></code></pre></div>
 <p>Run several stock assessments</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="smoothness-mgcv-and-fits.html#cb300-1" tabindex="-1"></a>fitsk <span class="ot">&lt;-</span> FLa4a<span class="sc">:::</span><span class="fu">multisca</span>(<span class="fu">FLStocks</span>(stk), <span class="fu">list</span>(idx), <span class="at">fmodel =</span> fmodsk)</span></code></pre></div>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="smoothness-mgcv-and-fits.html#cb301-1" tabindex="-1"></a>plotFitStats <span class="ot">&lt;-</span> <span class="cf">function</span>(fits){</span>
-<span id="cb301-2"><a href="smoothness-mgcv-and-fits.html#cb301-2" tabindex="-1"></a>  gcv <span class="ot">=</span> <span class="fu">lapply</span>(fits,<span class="cf">function</span>(x) <span class="fu">fitSumm</span>(x)[<span class="st">&#39;gcv&#39;</span>,])</span>
-<span id="cb301-3"><a href="smoothness-mgcv-and-fits.html#cb301-3" tabindex="-1"></a>  bic <span class="ot">=</span> <span class="fu">lapply</span>(fits, <span class="cf">function</span>(x) <span class="fu">BIC</span>(x))</span>
-<span id="cb301-4"><a href="smoothness-mgcv-and-fits.html#cb301-4" tabindex="-1"></a>  </span>
-<span id="cb301-5"><a href="smoothness-mgcv-and-fits.html#cb301-5" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">unlist</span>(gcv), <span class="fu">unlist</span>(bic))</span>
-<span id="cb301-6"><a href="smoothness-mgcv-and-fits.html#cb301-6" tabindex="-1"></a>  </span>
-<span id="cb301-7"><a href="smoothness-mgcv-and-fits.html#cb301-7" tabindex="-1"></a>  df<span class="sc">$</span>fit <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">&quot;fit&quot;</span>, <span class="st">&quot;&quot;</span>,<span class="fu">names</span>(gcv)))</span>
-<span id="cb301-8"><a href="smoothness-mgcv-and-fits.html#cb301-8" tabindex="-1"></a>  <span class="fu">names</span>(df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;GCV&quot;</span>,<span class="st">&quot;BIC&quot;</span>,<span class="st">&quot;fit&quot;</span>)</span>
-<span id="cb301-9"><a href="smoothness-mgcv-and-fits.html#cb301-9" tabindex="-1"></a>  df <span class="ot">&lt;-</span> df[<span class="fu">complete.cases</span>(df),]</span>
-<span id="cb301-10"><a href="smoothness-mgcv-and-fits.html#cb301-10" tabindex="-1"></a>  </span>
-<span id="cb301-11"><a href="smoothness-mgcv-and-fits.html#cb301-11" tabindex="-1"></a>  <span class="fu">plot</span>(df<span class="sc">$</span>fit, df<span class="sc">$</span>GCV, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, </span>
-<span id="cb301-12"><a href="smoothness-mgcv-and-fits.html#cb301-12" tabindex="-1"></a>       <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">0.75</span><span class="sc">*</span><span class="fu">min</span>(df<span class="sc">$</span>GCV), <span class="fl">1.25</span><span class="sc">*</span><span class="fu">max</span>(df<span class="sc">$</span>GCV)), <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;fit&quot;</span>)</span>
-<span id="cb301-13"><a href="smoothness-mgcv-and-fits.html#cb301-13" tabindex="-1"></a>  <span class="fu">par</span>(<span class="at">new =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb301-14"><a href="smoothness-mgcv-and-fits.html#cb301-14" tabindex="-1"></a>  <span class="fu">plot</span>(df<span class="sc">$</span>fit, df<span class="sc">$</span>BIC, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, </span>
-<span id="cb301-15"><a href="smoothness-mgcv-and-fits.html#cb301-15" tabindex="-1"></a>       <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">0.75</span><span class="sc">*</span><span class="fu">min</span>(df<span class="sc">$</span>BIC), <span class="fl">1.25</span><span class="sc">*</span><span class="fu">max</span>(df<span class="sc">$</span>BIC)), <span class="at">axes =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb301-16"><a href="smoothness-mgcv-and-fits.html#cb301-16" tabindex="-1"></a>  <span class="fu">axis</span>(<span class="dv">4</span>)                </span>
-<span id="cb301-17"><a href="smoothness-mgcv-and-fits.html#cb301-17" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v=</span>df[<span class="fu">min</span>(df<span class="sc">$</span>GCV)<span class="sc">==</span>df<span class="sc">$</span>GCV,]<span class="sc">$</span>fit, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>,<span class="at">lty =</span> <span class="dv">2</span>)</span>
-<span id="cb301-18"><a href="smoothness-mgcv-and-fits.html#cb301-18" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v=</span>df[<span class="fu">min</span>(df<span class="sc">$</span>BIC)<span class="sc">==</span>df<span class="sc">$</span>BIC,]<span class="sc">$</span>fit, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>,<span class="at">lty =</span> <span class="dv">2</span>)</span>
-<span id="cb301-19"><a href="smoothness-mgcv-and-fits.html#cb301-19" tabindex="-1"></a>  <span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;GCV&quot;</span>, <span class="st">&quot;BIC&quot;</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="at">lty =</span> <span class="dv">1</span>)</span>
-<span id="cb301-20"><a href="smoothness-mgcv-and-fits.html#cb301-20" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="smoothness-mgcv-and-fits.html#cb302-1" tabindex="-1"></a><span class="fu">plotFitStats</span>(fitsk)</span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="smoothness-mgcv-and-fits.html#cb297-1" tabindex="-1"></a>fitsk <span class="ot">&lt;-</span> FLa4a<span class="sc">:::</span><span class="fu">multisca</span>(<span class="fu">FLStocks</span>(stk), <span class="fu">list</span>(idx), <span class="at">fmodel =</span> fmodsk)</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="smoothness-mgcv-and-fits.html#cb298-1" tabindex="-1"></a>plotFitStats <span class="ot">&lt;-</span> <span class="cf">function</span>(fits){</span>
+<span id="cb298-2"><a href="smoothness-mgcv-and-fits.html#cb298-2" tabindex="-1"></a>  gcv <span class="ot">=</span> <span class="fu">lapply</span>(fits,<span class="cf">function</span>(x) <span class="fu">fitSumm</span>(x)[<span class="st">&#39;gcv&#39;</span>,])</span>
+<span id="cb298-3"><a href="smoothness-mgcv-and-fits.html#cb298-3" tabindex="-1"></a>  bic <span class="ot">=</span> <span class="fu">lapply</span>(fits, <span class="cf">function</span>(x) <span class="fu">BIC</span>(x))</span>
+<span id="cb298-4"><a href="smoothness-mgcv-and-fits.html#cb298-4" tabindex="-1"></a>  </span>
+<span id="cb298-5"><a href="smoothness-mgcv-and-fits.html#cb298-5" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">unlist</span>(gcv), <span class="fu">unlist</span>(bic))</span>
+<span id="cb298-6"><a href="smoothness-mgcv-and-fits.html#cb298-6" tabindex="-1"></a>  </span>
+<span id="cb298-7"><a href="smoothness-mgcv-and-fits.html#cb298-7" tabindex="-1"></a>  df<span class="sc">$</span>fit <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">&quot;fit&quot;</span>, <span class="st">&quot;&quot;</span>,<span class="fu">names</span>(gcv)))</span>
+<span id="cb298-8"><a href="smoothness-mgcv-and-fits.html#cb298-8" tabindex="-1"></a>  <span class="fu">names</span>(df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;GCV&quot;</span>,<span class="st">&quot;BIC&quot;</span>,<span class="st">&quot;fit&quot;</span>)</span>
+<span id="cb298-9"><a href="smoothness-mgcv-and-fits.html#cb298-9" tabindex="-1"></a>  df <span class="ot">&lt;-</span> df[<span class="fu">complete.cases</span>(df),]</span>
+<span id="cb298-10"><a href="smoothness-mgcv-and-fits.html#cb298-10" tabindex="-1"></a>  </span>
+<span id="cb298-11"><a href="smoothness-mgcv-and-fits.html#cb298-11" tabindex="-1"></a>  <span class="fu">plot</span>(df<span class="sc">$</span>fit, df<span class="sc">$</span>GCV, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, </span>
+<span id="cb298-12"><a href="smoothness-mgcv-and-fits.html#cb298-12" tabindex="-1"></a>       <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">0.75</span><span class="sc">*</span><span class="fu">min</span>(df<span class="sc">$</span>GCV), <span class="fl">1.25</span><span class="sc">*</span><span class="fu">max</span>(df<span class="sc">$</span>GCV)), <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;fit&quot;</span>)</span>
+<span id="cb298-13"><a href="smoothness-mgcv-and-fits.html#cb298-13" tabindex="-1"></a>  <span class="fu">par</span>(<span class="at">new =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb298-14"><a href="smoothness-mgcv-and-fits.html#cb298-14" tabindex="-1"></a>  <span class="fu">plot</span>(df<span class="sc">$</span>fit, df<span class="sc">$</span>BIC, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, </span>
+<span id="cb298-15"><a href="smoothness-mgcv-and-fits.html#cb298-15" tabindex="-1"></a>       <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">0.75</span><span class="sc">*</span><span class="fu">min</span>(df<span class="sc">$</span>BIC), <span class="fl">1.25</span><span class="sc">*</span><span class="fu">max</span>(df<span class="sc">$</span>BIC)), <span class="at">axes =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb298-16"><a href="smoothness-mgcv-and-fits.html#cb298-16" tabindex="-1"></a>  <span class="fu">axis</span>(<span class="dv">4</span>)                </span>
+<span id="cb298-17"><a href="smoothness-mgcv-and-fits.html#cb298-17" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v=</span>df[<span class="fu">min</span>(df<span class="sc">$</span>GCV)<span class="sc">==</span>df<span class="sc">$</span>GCV,]<span class="sc">$</span>fit, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>,<span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb298-18"><a href="smoothness-mgcv-and-fits.html#cb298-18" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v=</span>df[<span class="fu">min</span>(df<span class="sc">$</span>BIC)<span class="sc">==</span>df<span class="sc">$</span>BIC,]<span class="sc">$</span>fit, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>,<span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb298-19"><a href="smoothness-mgcv-and-fits.html#cb298-19" tabindex="-1"></a>  <span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;GCV&quot;</span>, <span class="st">&quot;BIC&quot;</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="at">lty =</span> <span class="dv">1</span>)</span>
+<span id="cb298-20"><a href="smoothness-mgcv-and-fits.html#cb298-20" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="smoothness-mgcv-and-fits.html#cb299-1" tabindex="-1"></a><span class="fu">plotFitStats</span>(fitsk)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
 
 </div>
