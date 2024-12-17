@@ -89,7 +89,7 @@ These two methods don't give very different result when the stock recruitment mo
 plot(window(FLStocks('01' = stk01, '02' = stk02, '03' = stk03), start = 2000))
 ```
 
-## Initial condition assumptions
+## Initial condition assumptions [CHECK fwdWindow]
 
 When projecting the stock forward one needs to make a number of assumptions about initial conditions, the starting point from where projections will be made. The method `stf` has a set of options that allows the analyst to decide about those assumptions.
 
@@ -165,7 +165,7 @@ stk05 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 plot(stk05)
 ```
 
-## Setting a hierarchy of targets
+## Setting a hierarchy of targets [nope! should fail]
 
 Objectives for exploring natural resources may be multidimentional, having more than one objective per year. In `FLasher` such situation can be set by defining a sequence of objectives. In this scenario the fishery has to close until `SSB` is at $1.5 10^6$ tons, which it reaches in 2025. However fishing mortality can't be raised to $0.4$ since it would bring `SSB` below it's target and as such it's raised to the maximum possible while still keeping the `SSB` objective, which is about $0.2$.
 
