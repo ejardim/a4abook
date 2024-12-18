@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2024-12-17" />
+<meta name="date" content="2024-12-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -265,11 +265,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.3" data-path="reference-points.html"><a href="reference-points.html#economics-reference-points"><i class="fa fa-check"></i><b>14.3</b> Economics reference points</a></li>
 <li class="chapter" data-level="14.4" data-path="reference-points.html"><a href="reference-points.html#computing-user-specific-reference-points"><i class="fa fa-check"></i><b>14.4</b> Computing user specific reference points</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="forecasting-projections-and-harvest-control-rules.html"><a href="forecasting-projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>15</b> Forecasting, projections and harvest control rules</a>
+<li class="chapter" data-level="15" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>15</b> Projections and harvest control rules</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="forecasting-projections-and-harvest-control-rules.html"><a href="forecasting-projections-and-harvest-control-rules.html#initial-condition-assumptions"><i class="fa fa-check"></i><b>15.1</b> Initial condition assumptions</a></li>
-<li class="chapter" data-level="15.2" data-path="forecasting-projections-and-harvest-control-rules.html"><a href="forecasting-projections-and-harvest-control-rules.html#scenarios"><i class="fa fa-check"></i><b>15.2</b> Scenarios</a></li>
-<li class="chapter" data-level="15.3" data-path="forecasting-projections-and-harvest-control-rules.html"><a href="forecasting-projections-and-harvest-control-rules.html#setting-a-hierarchy-of-targets"><i class="fa fa-check"></i><b>15.3</b> Setting a hierarchy of targets</a></li>
+<li class="chapter" data-level="15.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#initial-condition-assumptions-check-fwdwindow"><i class="fa fa-check"></i><b>15.1</b> Initial condition assumptions [CHECK fwdWindow]</a></li>
+<li class="chapter" data-level="15.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#scenarios"><i class="fa fa-check"></i><b>15.2</b> Scenarios</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#relative-scenarios"><i class="fa fa-check"></i><b>15.2.1</b> Relative scenarios</a></li>
+<li class="chapter" data-level="15.2.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#limits"><i class="fa fa-check"></i><b>15.2.2</b> Limits</a></li>
+<li class="chapter" data-level="15.2.3" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#complex-scenario"><i class="fa fa-check"></i><b>15.2.3</b> Complex scenario</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="sections-to-be-added.html"><a href="sections-to-be-added.html"><i class="fa fa-check"></i><b>16</b> Sections to be added!?</a></li>
 <li class="divider"></li>
@@ -311,7 +315,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## Time used:
 ##  Pre-processing     Running a4a Post-processing           Total 
-##       0.8885508      14.9195468       0.1703839      15.9784815 
+##       0.8468976      13.9342637       0.1726148      14.9537761 
 ## 
 ## Submodels:
 ##   fmodel: ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
@@ -352,7 +356,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## Time used:
 ##  Pre-processing     Running a4a Post-processing           Total 
-##       0.8885508      14.9195468       0.1703839      15.9784815 
+##       0.8468976      13.9342637       0.1726148      14.9537761 
 ## 
 ## Submodels:
 ##   fmodel: ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
@@ -648,30 +652,30 @@ Figure 8.13: Catchability with a linear trend in year
 ## 
 ##      year
 ## age   1957    1958    1959    1960    1961    1962    1963    1964    1965   
-##   all  399.12  329.00  513.77  474.76  442.07  506.09  581.00  650.08  539.96
+##   all  360.53  449.15  472.07  463.22  528.81  586.14  627.37  498.65  544.16
 ##      year
 ## age   1966    1967    1968    1969    1970    1971    1972    1973    1974   
-##   all  452.29  576.64  536.57  468.53  429.35  499.16  520.41  418.59  491.40
+##   all  617.47  526.80  438.93  555.89  447.57  523.39  502.85  342.87  407.90
 ##      year
 ## age   1975    1976    1977    1978    1979    1980    1981    1982    1983   
-##   all  445.56  544.45  504.05  434.65  405.83  568.85  426.51  456.21  578.78
+##   all  567.95  541.02  482.38  522.50  430.16  513.22  475.38  498.89  529.43
 ##      year
 ## age   1984    1985    1986    1987    1988    1989    1990    1991    1992   
-##   all  553.37  663.85  714.06  669.43  607.15  511.80  501.00  513.91  441.15
+##   all  544.50  576.77  819.83  772.10  802.54  642.95  510.40  449.05  397.38
 ##      year
 ## age   1993    1994    1995    1996    1997    1998    1999    2000    2001   
-##   all  424.71  310.59  368.73  278.87  301.74  312.25  347.24  350.42  313.50
+##   all  347.99  279.20  352.72  317.43  348.78  423.67  414.72  330.78  311.17
 ##      year
 ## age   2002    2003    2004    2005    2006    2007    2008    2009    2010   
-##   all  382.15  411.04  325.50  367.25  442.68  525.20  526.94  648.72  662.88
+##   all  353.84  404.47  478.99  395.61  478.67  421.10  559.80  613.24  702.84
 ##      year
 ## age   2011    2012    2013    2014    2015    2016    2017   
-##   all  866.94  948.47  979.02 1072.79  868.10  952.41  974.57
+##   all  620.04  757.23  904.08 1028.53 1048.28  960.68  958.36
 ## 
 ## units:  t</code></pre>
 <div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="fitting.html#cb190-1" tabindex="-1"></a><span class="co"># fitting the model</span></span>
 <span id="cb190-2"><a href="fitting.html#cb190-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, <span class="fu">FLIndices</span>(bioidx), <span class="at">qmodel=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>))</span></code></pre></div>
-<p>To estimate a constant selectivity over time one used the model <span class="math inline">\(\sim 1\)</span>. As a matter of fact the estimate value, 9.7^{-4}, is not very far from the simulated one, 0.001.</p>
+<p>To estimate a constant selectivity over time one used the model <span class="math inline">\(\sim 1\)</span>. As a matter of fact the estimate value, 0.001, is not very far from the simulated one, 0.001.</p>
 <p>An example where the biomass index refers only to age 2 to 4 (for example a CPUE that targets these particular ages).</p>
 <div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="fitting.html#cb191-1" tabindex="-1"></a><span class="co"># creating the index</span></span>
 <span id="cb191-2"><a href="fitting.html#cb191-2" tabindex="-1"></a>dnms <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">age=</span><span class="st">&quot;all&quot;</span>, <span class="at">year=</span><span class="fu">range</span>(ple4)[<span class="st">&quot;minyear&quot;</span>]<span class="sc">:</span><span class="fu">range</span>(ple4)[<span class="st">&quot;maxyear&quot;</span>])</span>
@@ -684,7 +688,7 @@ Figure 8.13: Catchability with a linear trend in year
 <span id="cb191-9"><a href="fitting.html#cb191-9" tabindex="-1"></a><span class="fu">range</span>(bioidx)[<span class="fu">c</span>(<span class="st">&quot;min&quot;</span>,<span class="st">&quot;max&quot;</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>)</span>
 <span id="cb191-10"><a href="fitting.html#cb191-10" tabindex="-1"></a><span class="co"># fitting the model</span></span>
 <span id="cb191-11"><a href="fitting.html#cb191-11" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, <span class="fu">FLIndices</span>(bioidx), <span class="at">qmodel=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>))</span></code></pre></div>
-<p>Once more the estimate value, 0.00101, is not very far from the simulated one, 0.001.</p>
+<p>Once more the estimate value, 9.7^{-4}, is not very far from the simulated one, 0.001.</p>
 </div>
 <div id="catchability-submodel-for-single-age-indices" class="section level3 hasAnchor" number="8.2.3">
 <h3><span class="header-section-number">8.2.3</span> Catchability submodel for single age indices<a href="fitting.html#catchability-submodel-for-single-age-indices" class="anchor-section" aria-label="Anchor link to header"></a></h3>

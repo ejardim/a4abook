@@ -76,6 +76,7 @@ fig:unnamed-chunk-121
 fig:unnamed-chunk-123
 fig:unnamed-chunk-125
 fig:unnamed-chunk-127
+fig:unnamed-chunk-130
 before-starting
 license-documentation-and-development-status
 installing-and-loading-libraries
@@ -167,8 +168,10 @@ stock-recruitment-after-fitting-the-stock-assessment-model
 stock-recruitment-during-fitting-the-stock-assessment-model
 economics-reference-points
 computing-user-specific-reference-points
-forecasting-projections-and-harvest-control-rules
-initial-condition-assumptions
+projections-and-harvest-control-rules
+initial-condition-assumptions-check-fwdwindow
 scenarios
-setting-a-hierarchy-of-targets
+relative-scenarios
+limits
+complex-scenario
 sections-to-be-added

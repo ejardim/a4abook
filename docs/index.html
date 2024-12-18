@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2024-12-17" />
+<meta name="date" content="2024-12-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -265,11 +265,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.3" data-path="reference-points.html"><a href="reference-points.html#economics-reference-points"><i class="fa fa-check"></i><b>14.3</b> Economics reference points</a></li>
 <li class="chapter" data-level="14.4" data-path="reference-points.html"><a href="reference-points.html#computing-user-specific-reference-points"><i class="fa fa-check"></i><b>14.4</b> Computing user specific reference points</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="forecasting-projections-and-harvest-control-rules.html"><a href="forecasting-projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>15</b> Forecasting, projections and harvest control rules</a>
+<li class="chapter" data-level="15" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>15</b> Projections and harvest control rules</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="forecasting-projections-and-harvest-control-rules.html"><a href="forecasting-projections-and-harvest-control-rules.html#initial-condition-assumptions"><i class="fa fa-check"></i><b>15.1</b> Initial condition assumptions</a></li>
-<li class="chapter" data-level="15.2" data-path="forecasting-projections-and-harvest-control-rules.html"><a href="forecasting-projections-and-harvest-control-rules.html#scenarios"><i class="fa fa-check"></i><b>15.2</b> Scenarios</a></li>
-<li class="chapter" data-level="15.3" data-path="forecasting-projections-and-harvest-control-rules.html"><a href="forecasting-projections-and-harvest-control-rules.html#setting-a-hierarchy-of-targets"><i class="fa fa-check"></i><b>15.3</b> Setting a hierarchy of targets</a></li>
+<li class="chapter" data-level="15.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#initial-condition-assumptions-check-fwdwindow"><i class="fa fa-check"></i><b>15.1</b> Initial condition assumptions [CHECK fwdWindow]</a></li>
+<li class="chapter" data-level="15.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#scenarios"><i class="fa fa-check"></i><b>15.2</b> Scenarios</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#relative-scenarios"><i class="fa fa-check"></i><b>15.2.1</b> Relative scenarios</a></li>
+<li class="chapter" data-level="15.2.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#limits"><i class="fa fa-check"></i><b>15.2.2</b> Limits</a></li>
+<li class="chapter" data-level="15.2.3" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#complex-scenario"><i class="fa fa-check"></i><b>15.2.3</b> Complex scenario</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="sections-to-be-added.html"><a href="sections-to-be-added.html"><i class="fa fa-check"></i><b>16</b> Sections to be added!?</a></li>
 <li class="divider"></li>
@@ -296,7 +300,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1 class="title">Fish stock assessment with R</h1>
 <h2 class="subtitle"><em>The a4a Initiative</em></h2>
 <p class="author"><em>John Doe and friends</em></p>
-<p class="date"><em>2024-12-17</em></p>
+<p class="date"><em>2024-12-18</em></p>
 </div>
 <div id="before-starting" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Before starting<a href="index.html#before-starting" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -379,40 +383,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## x=&quot;ANY&quot;, y=&quot;ANY&quot;
 ## x=&quot;color&quot;, y=&quot;ANY&quot;
 ## x=&quot;Copula&quot;, y=&quot;ANY&quot;
-## x=&quot;FLBiol&quot;, y=&quot;FLFishery&quot;
 ## x=&quot;FLBiol&quot;, y=&quot;missing&quot;
 ## x=&quot;FLBiols&quot;, y=&quot;missing&quot;
-## x=&quot;FLBRP&quot;, y=&quot;missing&quot;
-## x=&quot;FLCatch&quot;, y=&quot;missing&quot;
 ## x=&quot;FLCohort&quot;, y=&quot;missing&quot;
-## x=&quot;FLFisheries&quot;, y=&quot;ANY&quot;
-## x=&quot;FLFishery&quot;, y=&quot;ANY&quot;
 ## x=&quot;FLIndexBiomass&quot;, y=&quot;missing&quot;
 ## x=&quot;FLIndex&quot;, y=&quot;missing&quot;
 ## x=&quot;FLIndices&quot;, y=&quot;missing&quot;
 ## x=&quot;FLPar&quot;, y=&quot;missing&quot;
 ## x=&quot;FLQuant&quot;, y=&quot;FLQuant&quot;
-## x=&quot;FLQuant&quot;, y=&quot;fwdControl&quot;
 ## x=&quot;FLQuant&quot;, y=&quot;missing&quot;
 ## x=&quot;FLQuantPoint&quot;, y=&quot;FLQuant&quot;
 ## x=&quot;FLQuantPoint&quot;, y=&quot;FLQuants&quot;
 ## x=&quot;FLQuantPoint&quot;, y=&quot;missing&quot;
 ## x=&quot;FLQuants&quot;, y=&quot;FLPar&quot;
 ## x=&quot;FLQuants&quot;, y=&quot;FLPars&quot;
-## x=&quot;FLQuants&quot;, y=&quot;fwdControl&quot;
 ## x=&quot;FLQuants&quot;, y=&quot;missing&quot;
 ## x=&quot;FLSR&quot;, y=&quot;missing&quot;
 ## x=&quot;FLSRs&quot;, y=&quot;ANY&quot;
-## x=&quot;FLStock&quot;, y=&quot;FLBRP&quot;
 ## x=&quot;FLStock&quot;, y=&quot;FLPar&quot;
 ## x=&quot;FLStock&quot;, y=&quot;FLStock&quot;
 ## x=&quot;FLStock&quot;, y=&quot;FLStocks&quot;
-## x=&quot;FLStock&quot;, y=&quot;fwdControl&quot;
 ## x=&quot;FLStock&quot;, y=&quot;missing&quot;
-## x=&quot;FLStocks&quot;, y=&quot;FLBRP&quot;
-## x=&quot;FLStocks&quot;, y=&quot;FLBRPs&quot;
 ## x=&quot;FLStocks&quot;, y=&quot;FLPar&quot;
-## x=&quot;FLStocks&quot;, y=&quot;fwdControl&quot;
 ## x=&quot;FLStocks&quot;, y=&quot;missing&quot;
 ## x=&quot;mvdc&quot;, y=&quot;ANY&quot;
 ## x=&quot;profile.mle&quot;, y=&quot;missing&quot;</code></pre>
@@ -454,7 +446,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     }
 ##     .local(x, ...)
 ## }
-## &lt;bytecode: 0x60d3dbbe8ab8&gt;
+## &lt;bytecode: 0x600e20f92c20&gt;
 ## &lt;environment: namespace:ggplotFL&gt;
 ## 
 ## Signatures:

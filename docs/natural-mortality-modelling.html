@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2024-12-17" />
+<meta name="date" content="2024-12-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -265,11 +265,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.3" data-path="reference-points.html"><a href="reference-points.html#economics-reference-points"><i class="fa fa-check"></i><b>14.3</b> Economics reference points</a></li>
 <li class="chapter" data-level="14.4" data-path="reference-points.html"><a href="reference-points.html#computing-user-specific-reference-points"><i class="fa fa-check"></i><b>14.4</b> Computing user specific reference points</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="forecasting-projections-and-harvest-control-rules.html"><a href="forecasting-projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>15</b> Forecasting, projections and harvest control rules</a>
+<li class="chapter" data-level="15" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>15</b> Projections and harvest control rules</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="forecasting-projections-and-harvest-control-rules.html"><a href="forecasting-projections-and-harvest-control-rules.html#initial-condition-assumptions"><i class="fa fa-check"></i><b>15.1</b> Initial condition assumptions</a></li>
-<li class="chapter" data-level="15.2" data-path="forecasting-projections-and-harvest-control-rules.html"><a href="forecasting-projections-and-harvest-control-rules.html#scenarios"><i class="fa fa-check"></i><b>15.2</b> Scenarios</a></li>
-<li class="chapter" data-level="15.3" data-path="forecasting-projections-and-harvest-control-rules.html"><a href="forecasting-projections-and-harvest-control-rules.html#setting-a-hierarchy-of-targets"><i class="fa fa-check"></i><b>15.3</b> Setting a hierarchy of targets</a></li>
+<li class="chapter" data-level="15.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#initial-condition-assumptions-check-fwdwindow"><i class="fa fa-check"></i><b>15.1</b> Initial condition assumptions [CHECK fwdWindow]</a></li>
+<li class="chapter" data-level="15.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#scenarios"><i class="fa fa-check"></i><b>15.2</b> Scenarios</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#relative-scenarios"><i class="fa fa-check"></i><b>15.2.1</b> Relative scenarios</a></li>
+<li class="chapter" data-level="15.2.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#limits"><i class="fa fa-check"></i><b>15.2.2</b> Limits</a></li>
+<li class="chapter" data-level="15.2.3" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#complex-scenario"><i class="fa fa-check"></i><b>15.2.3</b> Complex scenario</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="sections-to-be-added.html"><a href="sections-to-be-added.html"><i class="fa fa-check"></i><b>16</b> Sections to be added!?</a></li>
 <li class="divider"></li>
@@ -393,8 +397,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## iters:  100 
 ## 
 ## params
-##              k              t 
-## 0.4102(0.0388) 9.8881(0.9186) 
+##                k                t 
+##  0.40367(0.0362) 10.19582(1.0405) 
 ## units:  NA 
 ## 
 ## Slot &quot;vcov&quot;:
@@ -411,7 +415,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## params
 ##              b 
-## 0.50078(0.169) 
+## 0.50079(0.148) 
 ## units:  NA</code></pre>
 <p>Note the shape model has no parameters and no uncertainty:</p>
 <div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="natural-mortality-modelling.html#cb83-1" tabindex="-1"></a><span class="fu">params</span>(<span class="fu">shape</span>(m4))</span></code></pre></div>
@@ -459,7 +463,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## params
 ##             linf                k 
-## 59.99249(2.1560)  0.41493(0.0736) 
+## 59.99490(2.0496)  0.40664(0.0738) 
 ## units:  NA 
 ## 
 ## Slot &quot;vcov&quot;:
@@ -675,24 +679,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ##    year
 ## age 2000                2001                2002               
-##   0 3.0424755(0.447414) 2.0442169(0.191905) 3.0424755(0.447414)
-##   1 1.1192642(0.164594) 0.7520254(0.070598) 1.1192642(0.164594)
-##   2 0.4117543(0.060551) 0.2766547(0.025972) 0.4117543(0.060551)
-##   3 0.1514759(0.022275) 0.1017756(0.009554) 0.1514759(0.022275)
-##   4 0.0557249(0.008195) 0.0374411(0.003515) 0.0557249(0.008195)
-##   5 0.0205000(0.003015) 0.0137738(0.001293) 0.0205000(0.003015)
-##   6 0.0075415(0.001109) 0.0050671(0.000476) 0.0075415(0.001109)
-##   7 0.0027744(0.000408) 0.0018641(0.000175) 0.0027744(0.000408)
+##   0 3.1327180(0.425283) 2.0846727(0.204838) 3.1327180(0.425283)
+##   1 1.1524625(0.156453) 0.7669082(0.075356) 1.1524625(0.156453)
+##   2 0.4239673(0.057556) 0.2821298(0.027722) 0.4239673(0.057556)
+##   3 0.1559688(0.021174) 0.1037897(0.010198) 0.1559688(0.021174)
+##   4 0.0573777(0.007789) 0.0381821(0.003752) 0.0573777(0.007789)
+##   5 0.0211081(0.002866) 0.0140464(0.001380) 0.0211081(0.002866)
+##   6 0.0077652(0.001054) 0.0051674(0.000508) 0.0077652(0.001054)
+##   7 0.0028567(0.000388) 0.0019010(0.000187) 0.0028567(0.000388)
 ##    year
 ## age 2003               
-##   0 3.0424755(0.447414)
-##   1 1.1192642(0.164594)
-##   2 0.4117543(0.060551)
-##   3 0.1514759(0.022275)
-##   4 0.0557249(0.008195)
-##   5 0.0205000(0.003015)
-##   6 0.0075415(0.001109)
-##   7 0.0027744(0.000408)
+##   0 3.1327180(0.425283)
+##   1 1.1524625(0.156453)
+##   2 0.4239673(0.057556)
+##   3 0.1559688(0.021174)
+##   4 0.0573777(0.007789)
+##   5 0.0211081(0.002866)
+##   6 0.0077652(0.001054)
+##   7 0.0028567(0.000388)
 ## 
 ## units:  NA</code></pre>
 <div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="natural-mortality-modelling.html#cb125-1" tabindex="-1"></a><span class="fu">dim</span>(flq)</span></code></pre></div>

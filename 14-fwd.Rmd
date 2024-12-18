@@ -1,5 +1,4 @@
-# Forecasting, projections and harvest control rules 
-
+# Projections and harvest control rules
 
 Massad et.al has a nice definition "Prediction in general science can be divided into two components: forecasting and projections [2]. A forecast is an attempt to predict what will happen. A projection is an attempt to describe what would happen, given certain hypotheses [3]." 
 
@@ -33,16 +32,23 @@ library(ggplotFL)
 data(ple4)
 data(ple4.indices)
 nsim <- 250
+maxy <- range(ple4)["maxyear"]
 ```
 
-The basic workflow to project with `FLasher` is to extend the `FLStock` object to store the predictions using the method `stf`, set the targets for the projection with method `fwdControl` and project the fishery with the method `fwd` with a `FLStock` and a `FLSR`.
+The basic workflow to project with `FLasher` is to extend the `FLStock` object to store the predictions using the method `fwdWindow`, set the targets for the projection with method `fwdControl` and project the fishery with the method `fwd` with a `FLStock` and a `FLSR`.
 
 ```{r, warning=FALSE, message=FALSE}
+# model fit
 fit00 <- sca(ple4, ple4.indices, srmodel=~geomean()) 
 sr00 <- as(fit00, "FLSR")
 stk00 <- ple4 + fit00
-stk00 <- stf(stk00, nyears=5)
-trg00 <- fwdControl(year = 2018:2022, quant = "f", value = 0.3)
+# set projection
+projy <- 5
+endpy <- maxy + projy
+inipy <- maxy + 1
+stk00 <- fwdWindow(stk00, end = endpy)
+trg00 <- fwdControl(year = inipy:endpy, quant = "f", value = 0.3)
+# project
 stk01 <- fwd(stk00, control=trg00, sr=sr00)
 ```
 
@@ -54,7 +60,7 @@ A natural addition to this forecast is to add uncertainty. We'll do that by gene
 
 ```{r, warning=FALSE, message=FALSE}
 stk00 <- ple4 + simulate(fit00, nsim)
-stk00 <- stf(stk00, nyears=5)
+stk00 <- fwdWindow(stk00, end = endpy)
 res00 <- residuals(sr00)
 rec00 <- window(rec(stk00), 2018, 2022)
 rec00 <- rlnorm(rec00, mean(res00), sqrt(var(res00)))
@@ -65,25 +71,27 @@ stk02 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 plot(stk02)
 ```
 
-An alternative to the above workflow is to fit the stock recruitment model after the stock assessment model, using the outpuits of the assessment as input to the stock recruitment fit. In which case stock recruitment estimation uncertainty can be added by fitting the stock recruitment model over stock assessment uncertainty, so that there will be stock-recruitment fit to each iteration generated from the stock assessment model.
+An alternative to the above workflow is to fit the stock recruitment model after the stock assessment model, using the outputs of the assessment as input to the stock recruitment fit. In which case stock recruitment estimation uncertainty can be added by fitting the stock recruitment model over stock assessment uncertainty, so that there will be stock-recruitment fit to each iteration generated from the stock assessment model.
 
 ```{r, warning=FALSE, message=FALSE}
 fit00 <- sca(ple4, ple4.indices) 
 stk00 <- ple4 + simulate(fit00, nsim)
 sr00 <- as.FLSR(stk00, model="geomean")
-sr00 <- fmle(sr00)
-stk00 <- stf(stk00, nyears=5)
+sr00 <- fmle(sr00, control = list(trace = 0))
+stk00 <- fwdWindow(stk00, end = endpy)
 res00 <- residuals(sr00)
-rec00 <- window(rec(stk00), 2018, 2022)
+rec00 <- window(rec(stk00), inipy, endpy)
 rec00 <- rlnorm(rec00, c(yearMeans(res00)), sqrt(c(yearVars(res00))))
 stk03 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 ```
+[IAGO, check rlnorm, it doesn't work if the meanlog and sdlog are FLQuants]
+
 
 ```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment"}
 plot(stk03)
 ```
 
-These two methods don't give very different result when the stock recruitment model is not having a large impact in the other parameters.
+These two methods don't give very different result when the stock recruitment model is not having a large impact in the other parameters. However the second method is much slower due to all the fits needed to have the empirical distribution of the stock recruitment model parameters.
 
 ```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment"}
 plot(window(FLStocks('01' = stk01, '02' = stk02, '03' = stk03), start = 2000))
@@ -91,27 +99,29 @@ plot(window(FLStocks('01' = stk01, '02' = stk02, '03' = stk03), start = 2000))
 
 ## Initial condition assumptions [CHECK fwdWindow]
 
-When projecting the stock forward one needs to make a number of assumptions about initial conditions, the starting point from where projections will be made. The method `stf` has a set of options that allows the analyst to decide about those assumptions.
+When projecting the stock forward one needs to make a number of assumptions about initial conditions, the starting point from where projections will be made. The method `fwdWindow` has a set of options that allows the analyst to decide about those assumptions:
+- `wt`: Number of years to average over to get the future mean weights at age, default is 3
+- `mat`: Number of years to average over to get the future proportion mature at age, default is 3
+- `m`: Number of years to average over to get the future natural mortality at age, default is 3
+- `spwn`: Number of years to average over to get the future fraction of mortality before spawning, default is 3
+- `discards.ratio`: Number of years to average over to get the future mean proportion of discards at age. Default is 3
+- `catch.sel`: Number of years to average over to get the future selection patern (fishing mortality at age which will be scaled based on canges in $\bar{F}$). Default is 3
 
-- `wts.nyears`: Number of years to average over to get the future mean weights at age, default is 3
-- `fbar.nyears`: Number of years to average the F over, default is 3 [IAGO, is this about the selection pattern?]
-- `f.rescale`: Rescale F to most recent F estimate, default is FALSE
-- `arith.mean`: If TRUE the arithmetic mean is used. If FALSE the geometric mean is used. Default is TRUE.
-- `disc.nyears`: Number of years to average over to get the future mean proportion of discards at age. Defau;lt is to be the same as wts.nyears
+One can also define if those assumptions will be based on the mean value over the time period set, or randomly sampled from historical values, through setting the argument `fun` to `mean` or `sample`, respectively.
 
-For the next examples we'll use the approach of fitting the stock recruitment within the assessment together with other parameters. We'll set to 20 the number of years to compute mean weights at age, to 10 the number of years to average across and estimate the selection pattern in terms of fishing mortality at age, and we'll rescale the selection pattern to the most recent value of Fbar. Finally, we'll use a 10 year period to compute the average discard ratio.
+For the next examples we'll use the approach of fitting the stock recruitment within the assessment together with other parameters. We'll set to 20 the number of years to compute mean weights at age, to 10 the number of years to average across and estimate the selection pattern in terms of fishing mortality at age. Finally, we'll use a 10 year period to compute the average discard ratio.
 
 ```{r, warning=FALSE, message=FALSE}
 fit00 <- sca(ple4, ple4.indices, srmodel=~geomean()) 
 sr00 <- as(fit00, "FLSR")
 stk00 <- ple4 + fit00
-stk.alt <- stf(stk00, nyears=5, wts.nyears = 20, fbar.nyears = 10, f.rescale = TRUE, disc.nyears = 10)
-trg00 <- fwdControl(year = 2018:2022, quant = "f", value = 0.3)
-stk.alt <- fwd(stk.alt, control=trg00, sr=sr00)
+stk00 <- fwdWindow(stk00, end = endpy, years = list(wt = 20, catch.sel = 10, discards.ratio = 10), fun = list(wt = "sample"))
+trg00 <- fwdControl(year = inipy:endpy, quant = "f", value = 0.3)
+stk04 <- fwd(stk00, control=trg00, sr=sr00)
 ```
 
 ```{r, echo=FALSE, fig.cap="Stochastic projections of stock for 5 years with fixed fishing mortality and recruitment. Two scenarios with different assumptions about initial conditions"}
-plot(FLStocks(ple4=stk02, alt=stk.alt))
+plot(FLStocks(default=stk01, alternative=stk04))
 ```
 
 ## Scenarios
@@ -122,16 +132,22 @@ There's a wide range of scenarios that can be of interest to project in order to
 fit00 <- sca(ple4, ple4.indices, srmodel=~geomean())
 sr00 <- as(fit00, "FLSR")
 stk00 <- ple4 + simulate(fit00, nsim)
-stk00 <- stf(stk00, nyears=25)
+# set projection
+projy <- 25
+endpy <- maxy + projy
+inipy <- maxy + 1
+stk00 <- fwdWindow(stk00, end = endpy)
+trg00 <- fwdControl(year = inipy:endpy, quant = "f", value = 0)
+# recruitment uncertainty
 res00 <- residuals(sr00)
-rec00 <- window(rec(stk00), 2018, range(stk00)["maxyear"])
+rec00 <- window(rec(stk00), inipy, endpy)
 rec00 <- rlnorm(rec00, mean(res00), sqrt(var(res00)))
-trg00 <- fwdControl(year = 2018:range(stk00)["maxyear"], quant = "f", value = 0)
-stk04 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
+# project
+stk05 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 ```
 
 ```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 25 years with fixed fishing mortality and recruitment"}
-plot(stk04)
+plot(stk05)
 ```
 
 These scenarios are defined by the target quantities one's trying to achieve. In `FLasher` there are the following target quantities:
@@ -154,51 +170,64 @@ These scenarios are defined by the target quantities one's trying to achieve. In
 
 [IAGO NEED YOUR HELP HERE]
 
-When projecting the stock under the conditions defined by the scenario one can mix several quantities. For example it may be interesting to project an initial situation of growing the stock forward by a higher exploitation to evaluate how catches would behave.
+When projecting the stock under the conditions defined by the scenario one can mix several quantities. For example it may be interesting to project an initial situation of growing the stock followed by a higher exploitation to evaluate how catches would behave.
 
 ```{r, warning=FALSE, message=FALSE}
-trg00 <- fwdControl(year = 2018:range(stk00)["maxyear"], quant = c(rep("ssb_end", 15), rep("f", 10)), value = c(rep(2000000, 15), rep(0.3, 10)))
-stk05 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
-```
-
-```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 25 years with fixed SSB for 15 years followed by fixed fishing mortality for 10 years and constant recruitment"}
-plot(stk05)
-```
-
-## Setting a hierarchy of targets [nope! should fail]
-
-Objectives for exploring natural resources may be multidimentional, having more than one objective per year. In `FLasher` such situation can be set by defining a sequence of objectives. In this scenario the fishery has to close until `SSB` is at $1.5 10^6$ tons, which it reaches in 2025. However fishing mortality can't be raised to $0.4$ since it would bring `SSB` below it's target and as such it's raised to the maximum possible while still keeping the `SSB` objective, which is about $0.2$.
-
-```{r, warning=FALSE, message=FALSE}
-stk00 <- ple4 + simulate(fit00, nsim)
-stk00 <- stf(stk00, nyears=5)
-res00 <- residuals(sr00)
-rec00 <- window(rec(stk00), 2018, range(stk00)["maxyear"])
-rec00 <- rlnorm(rec00, mean(res00), sqrt(var(res00)))
-# This fails
-#trg00 <- fwdControl(year = 2018:range(stk00)["maxyear"], quant = c(rep("f", 5), rep("ssb_spawn", 5)), value = c(rep(0.4, 5), rep(1500000, 5)))
-trg00 <- fwdControl(year = 2018:range(stk00)["maxyear"], quant = c(rep("f", 5), rep("ssb_end", 5)), value = c(rep(0.4, 5), rep(1500000, 5)))
+trg00 <- fwdControl(year = inipy:endpy, quant = c(rep("ssb_end", 15), rep("f", 10)), value = c(rep(2000000, 15), rep(0.3, 10)))
 stk06 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 ```
 
-```{r, warning=FALSE, message=FALSE, echo=FALSE}
+```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 25 years with fixed SSB for 15 years followed by fixed fishing mortality for 10 years and constant recruitment"}
 plot(stk06)
 ```
 
-It's important to have in mind that the sequence of objectives matter. If the above scenario is coded so that fishing mortality is the priority objective, by setting it in second in the timeline of objectives, once the `SSB` reaches it's objective fishing mortality is set at $0.4$ even if it will bring `SSB` below its objective.
+### Relative scenarios
+
+Another scenario that is very useful when advising decision makers is to have objectives which are relative to previous preformances. For example one could increase spwanwing stock biomass by 10% each year. This is done buy using the argument `relYear` and setting `value` in relative terms, $1.1$.
 
 ```{r, warning=FALSE, message=FALSE}
-trg00 <- fwdControl(year = 2018:range(stk00)["maxyear"], quant = c(rep("ssb_end", 5), rep("f", 5)), value = c(rep(1500000, 5), rep(0.4, 5)))
+fit00 <- sca(ple4, ple4.indices, srmodel=~geomean())
+sr00 <- as(fit00, "FLSR")
+stk00 <- ple4 + simulate(fit00, nsim)
+# set projection
+projy <- 5
+endpy <- maxy + projy
+inipy <- maxy + 1
+stk00 <- fwdWindow(stk00, end = endpy)
+trg00 <- fwdControl(year = inipy:endpy, quant = "ssb_end", value = 1.1, relYear = inipy:endpy-1)
+# recruitment uncertainty
+res00 <- residuals(sr00)
+rec00 <- window(rec(stk00), inipy, endpy)
+rec00 <- rlnorm(rec00, mean(res00), sqrt(var(res00)))
+# project
 stk07 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 ```
 
-```{r, warning=FALSE, message=FALSE, echo=FALSE}
-plot(stk07)
+Similar scenarios can be set for all quantities and any years to use as reference. The next example sets a scenario where $SSB$ levels are set in relation to the most recent estimate out of the assessmeent.
+
+```{r, warning=FALSE, message=FALSE}
+trg00 <- fwdControl(year = inipy:endpy, quant = "ssb_end", value = 1.1, relYear = maxy)
+stk08 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 ```
 
-```{r, warning=FALSE, message=FALSE, echo=FALSE}
-plot(window(FLStocks("SSB scenario" = stk06, "F scenario" = stk07), start = 2000))
+```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 25 years with fixed SSB for 15 years followed by fixed fishing mortality for 10 years and constant recruitment"}
+plot(window(FLStocks("10% SSB growth relative to previous year" = stk07, "10% higher SSB relative to most recent estimate" = stk08), start = 2000))
 ```
+
+### Limits
+
+An important element when projecting the stock forward is to keep the performance of the fishery within some boundaries. A common one requested by the industry is to keep catches within some stability. `fwd` can include those constraints using the `min` and `max` arguments. The next example sets the minimum future catches to half of mean historical catches.
+
+```{r, warning=FALSE, message=FALSE}
+trg00 <- fwdControl(year = inipy:endpy, quant = rep(c("ssb_end", "catch"), projy), value = rep(c(1500000, NA), projy), min=rep(c(NA, 0.5*mean(catch(stk00), na.rm=TRUE)), projy))
+stk09 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
+```
+
+### Complex scenario
+
+
+
+
 
 
 
