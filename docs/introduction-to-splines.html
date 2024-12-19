@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2024-12-18" />
+<meta name="date" content="2024-12-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -399,9 +399,9 @@ Figure 3.6: basis functions for thin plate splines
 <span id="cb17-3"><a href="introduction-to-splines.html#cb17-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> obs), <span class="at">color =</span> <span class="st">&quot;darkgrey&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>)<span class="sc">+</span></span>
 <span id="cb17-4"><a href="introduction-to-splines.html#cb17-4" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&quot;bottom&quot;</span>)<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">&quot;y&quot;</span>)<span class="sc">+</span></span>
 <span id="cb17-5"><a href="introduction-to-splines.html#cb17-5" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.5</span>,<span class="fl">1.5</span>))</span></code></pre></div>
-<pre><code>## Warning: Removed 144 rows containing missing values or values outside the scale
+<pre><code>## Warning: Removed 155 rows containing missing values or values outside the scale
 ## range (`geom_line()`).</code></pre>
-<pre><code>## Warning: Removed 15 rows containing missing values or values outside the scale
+<pre><code>## Warning: Removed 10 rows containing missing values or values outside the scale
 ## range (`geom_point()`).</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 </div>
@@ -480,7 +480,7 @@ Figure 3.7: Thin plate splines and cubic regression splines fit
 <span id="cb26-3"><a href="introduction-to-splines.html#cb26-3" tabindex="-1"></a>  fmodsk[[<span class="fu">paste0</span>(i)]] <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">paste0</span>(<span class="st">&quot;~s(age)+s(year, k=&quot;</span>,i,<span class="st">&quot;)&quot;</span>))</span>
 <span id="cb26-4"><a href="introduction-to-splines.html#cb26-4" tabindex="-1"></a>}</span>
 <span id="cb26-5"><a href="introduction-to-splines.html#cb26-5" tabindex="-1"></a></span>
-<span id="cb26-6"><a href="introduction-to-splines.html#cb26-6" tabindex="-1"></a>myFits <span class="ot">&lt;-</span> FLa4a<span class="sc">:::</span><span class="fu">multisca</span>(<span class="fu">FLStocks</span>(stk), <span class="fu">list</span>(idx), <span class="at">fmodel =</span> fmodsk)</span>
+<span id="cb26-6"><a href="introduction-to-splines.html#cb26-6" tabindex="-1"></a>myFits <span class="ot">&lt;-</span> <span class="fu">scas</span>(<span class="fu">FLStocks</span>(stk), <span class="fu">list</span>(idx), <span class="at">fmodel =</span> fmodsk)</span>
 <span id="cb26-7"><a href="introduction-to-splines.html#cb26-7" tabindex="-1"></a><span class="fu">plot</span>(myFits)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 

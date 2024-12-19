@@ -276,7 +276,7 @@ for(i in 10:20) {
   fmodsk[[paste0(i)]] <- as.formula(paste0("~s(age)+s(year, k=",i,")"))
 }
 
-myFits <- scax(FLStocks(stk), list(idx), fmodel = fmodsk)
+myFits <- scas(FLStocks(stk), list(idx), fmodel = fmodsk)
 plot(myFits)
 ```
 
