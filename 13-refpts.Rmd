@@ -157,7 +157,23 @@ plot(brp0)
 
 ## Computing user specific reference points
 
-**[DANAI YOU ADD CODE TO DO THIS CAN YOU PLEASE SEND IT TO ME]**
+There is an option to calculate user defined reference points given a target F:
+
+```{r}
+custom_refs <- FLPar(Ftrgt1 = 0.33, Ftrgt2 = 0.44)
+brp1 <- brp0 + custom_refs
+refpts(brp1)
+```
+
+Or create an empty FLPar with specified reference points and recalculate everything:
+
+```{r}
+brp2 <- FLPar(NA,dimnames=list(refpt=c("virgin","f0.1","fmax","spr.30","spr.35","spr.45"),
+                               quantity=c("harvest","yield","rec","ssb","biomass","revenue","cost","profit"),
+                                      iter=1))
+brp2 <- brp(brp2)
+refpts(brp2)
+```
 
 One specific case is to compute $F_{MSY}$ ranges according to Hilborn (2010) and Rindorf (2012) ideas. For this case there's already the method `msyRanges`, which takes as argument a fitted `FLBRP` object and delivers a `FLPar` object, similar to `refpts`.
 
@@ -169,8 +185,6 @@ rp.rngs
 Another simple way, although it onl;y works for $SPR$ based reference points, is to include other `spr.##` points in the `refpts` table.
 
 **[IAGO NEED TO KNOW HOW TO EXTEND THE FLPAR TO HAVE MORE ROWS]**
-
- 
 
 
 
