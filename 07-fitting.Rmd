@@ -210,15 +210,7 @@ fmodel <- ~ s(age, k = 4) + s(year, k = 15) + te(age, year, k = c(3, 5))
 
 in the above model, the main effects for age and year still have similar flexibility to the full tensor model, however, the interaction (or the change in F at age over time) has been restricted, so that the full model now has 4 + 15 + 3 x 5 = 34 degrees of freedom.
 
-### Trawl fleets}
-
-### Nets and Liners fleets}
-
-### Multigear fleets}
-
-### Trawl surveys}
-
-### Closed form selection pattern}
+### Closed form selection pattern
 
 One can use a closed form for the selection pattern. The only requirement is to be able to write it as a \R formula, the example below uses a logistic form.
 
@@ -288,7 +280,7 @@ qhat <- predict(fit)$qmodel[[1]]
 wireframe(qhat, zlab="q")
 ```
 
-### Catchability submodel for age aggregated biomass indices}
+### Catchability submodel for age aggregated biomass indices
 
 The previous section was focused on age disaggregated indices, but age aggregated indices (CPUE, biomass, DEPM, etc) may also be used to tune the total biomass of the population. In these cases a different class for the index must be used, the `FLIndexBiomass`, which uses a vector `index` with the age dimension called 'all'. Note that in this case the qmodel should be set without age factors, although it can have a 'year' component and covariates if needed. An interesting feature with biomass indices is the age range they refer to can be specified.
 
@@ -337,7 +329,7 @@ fit <- sca(ple4, FLIndices(recidx=idx), qmodel=list(~1))
 predict(fit)$qmodel[[1]]
 ```
 
-## Stock-recruitment submodel ($R_y$)}
+## Stock-recruitment submodel ($R_y$)
 
 The S/R submodel is a special case, in the sense that it can be set up with the same linear tools as the $F$ and $Q$ models, but it can also use some hard coded models. The example shows how to set up a simple dummy model with `factor()`, a smooth model with `s()`, a Ricker model (`ricker()`), a Beverton and Holt model (`bevholt()`), a hockey stick model (`hockey()`), and a geometric mean model (`geomean()`). See Figure \@ref(fig:srmod) for results. As mentioned before, the 'structural' models have a fixed variance, which must be set by defining the coefficient of variation.
 
@@ -391,7 +383,7 @@ xyplot(data~year|age, groups=qname, data=flqs, type="l",
        strip.background=list(col="gray90")), ylab="")
 ```
 
-## Initial year abundance submodel ($N_{a,y=1}$)}
+## Initial year abundance submodel ($N_{a,y=1}$)
 
 The submodel for the stock number at age in the first year of the time series is set up with the usual modelling tools (Figure \@ref(fig:ny1)). Beare in mind that the year effect does not make sense here since it refers to a single year, the first in the time series of data available. This model has its influence limited to the initial lower triangle of the population matrix, which in assessments with long time series doesn't make much difference. Nevertheless, when modelling stocks with short time series in relation to the number of ages present, it becomes more important and should be given proper attention.
 

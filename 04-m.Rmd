@@ -1,4 +1,4 @@
-# Natural Mortality Modelling
+# Modelling Natural Mortality
 
 The document explains the approach being developed by a4a to integrate uncertainty in natural mortality into stock assessment and advice. It presents a mixture of text and code, where the first explains the concepts behind the methods, while the last shows how these can be run with the software provided.
 

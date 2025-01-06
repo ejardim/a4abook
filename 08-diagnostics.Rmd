@@ -1,7 +1,3 @@
----
----
----
-
 # Diagnostics \label{sec:diagn}
 
 There's a large number of diagnostics that can be computed for a stock assessment model, the \aFa framework implements several analysis of residuals, visualizations and statistics that can be used to evaluate the fit quality and chose across multiple fits.
@@ -71,7 +67,7 @@ plot(fit, ple4)
 plot(fit, ple4.indices)
 ```
 
-## Aggreagted catch in weight}
+## Aggreagted catch in weight
 
 Although a statistical catch-at-age model assumes errors in catch-at-age and, as such, errors in the total catch in weight, there's still interest to evaluate how close the model estimates are of the observed catch in weight[^07-diagnostics-1]. The implementation of this diagnopstics is done through the method `computeCatchDiagnostics()`, which can be visualized with `plot()` (Figure \@ref(c_d)).
 
