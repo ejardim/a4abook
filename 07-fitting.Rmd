@@ -223,7 +223,7 @@ fit <- sca(ple4, ple4.indices, fmod)
 wireframe(harvest(fit), zlab="F")
 ```
 
-### More models
+### More models [TO BE MOVED TO ITS OWN SECTION?]
 
 More complicated models can be built with these tools. For example, Figure \@ref(fig:ageind) shows a model where the age effect is modelled as a smoother (the same thin plate spline) throughout years but independent from each other.
 

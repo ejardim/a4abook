@@ -111,8 +111,6 @@ plot(brp0, obs=TRUE)
 
 ### Stock recruitment during fitting the stock assessment model
 
-**[NEED COLIN'S HELP]**
-
 ```{r}
 fit1 <- sca(ple4, ple4.indices, srmodel = ~ bevholt(CV = 0.5))
 
@@ -125,7 +123,6 @@ plot(a4aflsr, obs = TRUE)
 
 a4abrp <- FLBRP(stk0, a4aflsr)
 ```
-
 
 ## Economics reference points
 
@@ -168,9 +165,11 @@ refpts(brp1)
 Or create an empty FLPar with specified reference points and recalculate everything:
 
 ```{r}
-brp2 <- FLPar(NA,dimnames=list(refpt=c("virgin","f0.1","fmax","spr.30","spr.35","spr.45"),
-                               quantity=c("harvest","yield","rec","ssb","biomass","revenue","cost","profit"),
-                                      iter=1))
+#brp2 <- FLPar(NA,dimnames=list(refpt=c("virgin","f0.1","fmax","spr.30","spr.35","spr.45"), quantity=c("harvest","yield","rec","ssb","biomass","revenue","cost","profit"), iter=1))
+brp2 <- brp1
+
+brp2@refpts <- FLPar(NA, dimnames=list(refpt = c("virgin", "f0.1", "fmax", "spr.30", "spr.35","spr.45"), quantity=c("harvest", "yield", "rec", "ssb", "biomass", "revenue", "cost", "profit"), iter=1))
+
 brp2 <- brp(brp2)
 refpts(brp2)
 ```
@@ -184,8 +183,4 @@ rp.rngs
 
 Another simple way, although it onl;y works for $SPR$ based reference points, is to include other `spr.##` points in the `refpts` table.
 
-**[IAGO NEED TO KNOW HOW TO EXTEND THE FLPAR TO HAVE MORE ROWS]**
-
-
-
-
+**[IAGO: NEED TO EXPLAIN THE CODE ABOVE ABOUT EXTENDING THE REFPTS FLPAR]**

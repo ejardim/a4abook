@@ -1,4 +1,4 @@
-# Propagate natural mortality uncertainty
+# Propagate uncertainty into stock assessment
 
 In this section we give an example of how uncertainty in natural mortality, set up using the `m()` method and the class `a4aM` (see chapter XX), is propagated through the stock assessment. We'll start by fitting the default model to the data.
 
