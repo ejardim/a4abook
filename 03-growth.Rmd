@@ -1,16 +1,30 @@
 # Modelling Individual Growth and Using Stochastic Slicing to Convert Length-based Data Into Age-based Data
 
-The document explains the approach being developed by a4a to integrate uncertainty in individual growth into stock assessment and advice. It presents a mixture of text and code, where the first explains the concepts behind the methods, while the last shows how these can be run with the software provided.}
+```{R, message=FALSE, warning=FALSE, echo=FALSE}
+# libraries
+library(devtools)
+library(FLa4a)
+library(XML)
+library(reshape2)
+library(ggplotFL)
+# datasets
+data(ple4)
+data(ple4.indices)
+data(ple4.index)
+data(rfLen)
+```
 
-## Background
+This section explains the approach developed by `a4a` to take into account individual growth in stock assessment and advice. It presents a mixture of text and code, where the first explains the concepts behind the methods, while the last shows how these can be run with the `FLa4a` R package.
 
-The `a4a` stock assessment framework is based on age dynamics. Therefore, to use length information it must be processed before it can be used in an assessment. The rationale is that the processing should give the analyst the flexibility to use a range of sources of information, \emph{e.g.} literature or online databases, to grab information about the species growth model and the uncertainty about the model parameters.
+The `a4a` stock assessment framework is based on age dynamics. Therefore, to use length information, it must be processed before running the stock assessment model, which should give the analyst the flexibility to use a range of sources of information, _e.g._ literature or online databases, to collect information about the species growth model and uncertainty about the model parameters.
 
-Within the `a4a` framework this is handled using the `a4aGr` class. In this section we introduce the `a4aGr` class and look at the variety of ways that parameter uncertainty can be included.
+The framework allows the analyst to parametrize individual growth, set the assumptions about it and condition the stock assessment model on those decisions. It incentivizes the **uptake** of estimation uncertainty, as well as exploring several parameterizations and/or growth models to deal with structural uncertainty, finally propagating uncertainty into stock assessment.
+
+Within the `a4a` framework this is handled using the `a4aGr` class and its methods. This class stores information about the growth model and it's parameters, including parameters' uncertainty and the distributions governing it. The class's main method is `l2a` that converts length to ages based on a length based stock object and using the model defined in the `a4aGr` instance.
 
 ## a4aGr - The growth class
 
-The conversion of length data to age is performed through the use of a growth model. The implementation is done through the `a4aGr` class.
+The conversion of length data to age is performed through the use of a growth model. The implementation is done through the `a4aGr` class .
 
 ```{r, show_a4aGr} 
 showClass("a4aGr")
@@ -102,7 +116,7 @@ dim(vbNorm@params)
 
 We can now convert from length to ages data based on the 10000 parameter iterations. This gives us 10000 sets of age data. For example, here we convert a single length vector using each of the 10000 parameter iterations: 
 
-```{r, } 
+```{r}
 ages <- predict(vbNorm, len=5:10+0.5)
 dim(ages)
 # We show the first ten iterations only as an illustration

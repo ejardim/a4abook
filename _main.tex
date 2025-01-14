@@ -1,0 +1,965 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Fish stock assessment with R},
+  pdfauthor={John Doe and friends},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Fish stock assessment with R}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{The a4a Initiative}
+\author{John Doe and friends}
+\date{2025-01-13}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{cover-image-path-to-the-social-sharing-image-like-imagescover.jpg}{%
+\chapter{cover-image: path to the social sharing image like images/cover.jpg}\label{cover-image-path-to-the-social-sharing-image-like-imagescover.jpg}}
+
+Placeholder
+
+\hypertarget{license-documentation-and-development-status}{%
+\section{License, documentation and development status}\label{license-documentation-and-development-status}}
+
+\hypertarget{installing-and-loading-libraries}{%
+\section{Installing and loading libraries}\label{installing-and-loading-libraries}}
+
+\hypertarget{how-to-read-this-document}{%
+\section{How to read this document}\label{how-to-read-this-document}}
+
+\hypertarget{how-to-get-help}{%
+\section{How to get help}\label{how-to-get-help}}
+
+\hypertarget{notation}{%
+\section{Notation}\label{notation}}
+
+\hypertarget{introduction}{%
+\chapter{Introduction}\label{introduction}}
+
+Placeholder
+
+\hypertarget{stock-assessment-as-a-linear-model}{%
+\section{Stock assessment as a linear model}\label{stock-assessment-as-a-linear-model}}
+
+\hypertarget{data-used-in-the-book}{%
+\section{Data used in the book}\label{data-used-in-the-book}}
+
+\hypertarget{stock-xx}{%
+\subsection{stock xx}\label{stock-xx}}
+
+\hypertarget{stock-xx-1}{%
+\subsection{stock xx}\label{stock-xx-1}}
+
+\hypertarget{stock-xx-2}{%
+\subsection{stock xx}\label{stock-xx-2}}
+
+\hypertarget{introduction-to-splines}{%
+\chapter{Introduction to Splines}\label{introduction-to-splines}}
+
+Placeholder
+
+\hypertarget{understanding-spline-basics}{%
+\section{Understanding Spline Basics}\label{understanding-spline-basics}}
+
+\hypertarget{generate-some-artificial-data}{%
+\section{Generate some artificial data}\label{generate-some-artificial-data}}
+
+\hypertarget{cubic-regression-splines}{%
+\section{Cubic Regression Splines}\label{cubic-regression-splines}}
+
+\hypertarget{thin-plate-spline}{%
+\section{Thin plate spline}\label{thin-plate-spline}}
+
+\hypertarget{comparison}{%
+\section{Comparison}\label{comparison}}
+
+\hypertarget{the-mgcv-package-inside-a4a}{%
+\section{\texorpdfstring{The \texttt{mgcv} package inside \texttt{a4a}}{The mgcv package inside a4a}}\label{the-mgcv-package-inside-a4a}}
+
+\hypertarget{on-the-number-of-knots-k}{%
+\section{\texorpdfstring{On the number of knots \(k\)}{On the number of knots k}}\label{on-the-number-of-knots-k}}
+
+\hypertarget{modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data}{%
+\chapter{Modelling Individual Growth and Using Stochastic Slicing to Convert Length-based Data Into Age-based Data}\label{modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# libraries}
+\FunctionTok{library}\NormalTok{(devtools)}
+\FunctionTok{library}\NormalTok{(FLa4a)}
+\FunctionTok{library}\NormalTok{(XML)}
+\FunctionTok{library}\NormalTok{(reshape2)}
+\FunctionTok{library}\NormalTok{(ggplotFL)}
+\CommentTok{\# datasets}
+\FunctionTok{data}\NormalTok{(ple4)}
+\FunctionTok{data}\NormalTok{(ple4.indices)}
+\FunctionTok{data}\NormalTok{(ple4.index)}
+\FunctionTok{data}\NormalTok{(rfLen)}
+\end{Highlighting}
+\end{Shaded}
+
+This section explains the approach developed by \texttt{a4a} to integrate uncertainty in individual growth into stock assessment and advice. It presents a mixture of text and code, where the first explains the concepts behind the methods, while the last shows how these can be run with the \texttt{FLa4a} R package.
+
+The \texttt{a4a} stock assessment framework is based on age dynamics. Therefore, to use length information, it must be processed before running the stock assessment model. The rationale is that the processing should give the analyst the flexibility to use a range of sources of information, \emph{e.g.} literature or online databases, to collect information about the species growth model and uncertainty about the model parameters.
+
+The framework allows the analyst to parametrize individual growth, set the assumptions about it and condition the stock assessment model on those decisions. It incentivizes the \textbf{uptake} of estimation uncertainty, as well as exploring several parametrizations and/or growth models to deal with structural uncertainty, finally propagating uncertainty into stock assessment.
+
+Within the \texttt{a4a} framework this is handled using the \texttt{a4aGr} class. In this section we introduce the \texttt{a4aGr} class and look at the variety of ways that parameter uncertainty can be included.
+
+\hypertarget{a4agr---the-growth-class}{%
+\section{a4aGr - The growth class}\label{a4agr---the-growth-class}}
+
+The conversion of length data to age is performed through the use of a growth model. The implementation is done through the \texttt{a4aGr} class.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{showClass}\NormalTok{(}\StringTok{"a4aGr"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Class "a4aGr" [package "FLa4a"]
+## 
+## Slots:
+##                                                                             
+## Name:      grMod  grInvMod    params      vcov     distr      name      desc
+## Class:   formula   formula     FLPar     array character character character
+##                 
+## Name:      range
+## Class:   numeric
+## 
+## Extends: "FLComp"
+\end{verbatim}
+
+To construct an \texttt{a4aGr} object, the growth model and parameters must be provided. Check the help file for more information.
+
+Here we show an example using the von Bertalanffy growth model. To create the \texttt{a4aGr} object it's necessary to pass the model equation (\(length \sim time\)), the inverse model equation (\(time \sim length\)) and the parameters. Any growth model can be used as long as it's possible to write the model (and the inverse) as an R formula.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vbObj }\OtherTok{\textless{}{-}} \FunctionTok{a4aGr}\NormalTok{(}
+    \AttributeTok{grMod=}\SpecialCharTok{\textasciitilde{}}\NormalTok{linf}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{exp}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{k}\SpecialCharTok{*}\NormalTok{(t}\SpecialCharTok{{-}}\NormalTok{t0))),      }
+    \AttributeTok{grInvMod=}\SpecialCharTok{\textasciitilde{}}\NormalTok{t0}\DecValTok{{-}1}\SpecialCharTok{/}\NormalTok{k}\SpecialCharTok{*}\FunctionTok{log}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{len}\SpecialCharTok{/}\NormalTok{linf),      }
+    \AttributeTok{params=}\FunctionTok{FLPar}\NormalTok{(}\AttributeTok{linf=}\FloatTok{58.5}\NormalTok{, }\AttributeTok{k=}\FloatTok{0.086}\NormalTok{, }\AttributeTok{t0=}\FloatTok{0.001}\NormalTok{, }\AttributeTok{units=}\FunctionTok{c}\NormalTok{(}\StringTok{"cm"}\NormalTok{,}\StringTok{"year{-}1"}\NormalTok{,}\StringTok{"year"}\NormalTok{))     }
+\NormalTok{)}
+
+\CommentTok{\# Check the model and its inverse}
+\NormalTok{lc}\OtherTok{=}\DecValTok{20}
+\FunctionTok{predict}\NormalTok{(vbObj, }\AttributeTok{len=}\NormalTok{lc)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    iter
+##           1
+##   1 4.86575
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{predict}\NormalTok{(vbObj, }\AttributeTok{t=}\FunctionTok{predict}\NormalTok{(vbObj, }\AttributeTok{len=}\NormalTok{lc))}\SpecialCharTok{==}\NormalTok{lc}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    iter
+##        1
+##   1 TRUE
+\end{verbatim}
+
+The predict method allows the transformation between age and lengths using the growth model.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{predict}\NormalTok{(vbObj, }\AttributeTok{len=}\DecValTok{5}\SpecialCharTok{:}\DecValTok{10}\FloatTok{+0.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    iter
+##            1
+##   1 1.149080
+##   2 1.370570
+##   3 1.596362
+##   4 1.826625
+##   5 2.061540
+##   6 2.301299
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{predict}\NormalTok{(vbObj, }\AttributeTok{t=}\DecValTok{5}\SpecialCharTok{:}\DecValTok{10}\FloatTok{+0.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    iter
+##            1
+##   1 22.04376
+##   2 25.04796
+##   3 27.80460
+##   4 30.33408
+##   5 32.65511
+##   6 34.78488
+\end{verbatim}
+
+\hypertarget{adding-uncertainty-to-growth-parameters-with-a-multivariate-normal-distribution}{%
+\section{Adding uncertainty to growth parameters with a multivariate normal distribution\}}\label{adding-uncertainty-to-growth-parameters-with-a-multivariate-normal-distribution}}
+
+Uncertainty in the growth model is introduced through the inclusion of parameter uncertainty.
+This is done by making use of the parameter variance-covariance matrix (the \texttt{vcov} slot of the \texttt{a4aGr} class) and assuming a distribution. The numbers in the variance-covariance matrix could come from the parameter uncertainty from fitting the growth model parameters.
+
+Here we set the variance-covariance matrix by scaling a correlation matrix, using a cv of 0.2. Based on
+
+\[\rho_{x,y}=\frac{\Sigma_{x,y}}{\sigma_x \sigma_y}\]
+
+and
+
+\[CV_x=\frac{\sigma_x}{\mu_x}\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Make an empty cor matrix}
+\NormalTok{cm }\OtherTok{\textless{}{-}} \FunctionTok{diag}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\CommentTok{\# k and linf are negatively correlated while t0 is independent}
+\NormalTok{cm[}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{] }\OtherTok{\textless{}{-}}\NormalTok{ cm[}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\FloatTok{0.5}
+\CommentTok{\# scale cor to var using CV=0.2}
+\NormalTok{cv }\OtherTok{\textless{}{-}} \FloatTok{0.2}
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\AttributeTok{linf=}\DecValTok{60}\NormalTok{, }\AttributeTok{k=}\FloatTok{0.09}\NormalTok{, }\AttributeTok{t0=}\SpecialCharTok{{-}}\FloatTok{0.01}\NormalTok{)}
+\NormalTok{vc }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\NormalTok{, }\AttributeTok{ncol=}\DecValTok{3}\NormalTok{, }\AttributeTok{nrow=}\DecValTok{3}\NormalTok{)}
+\NormalTok{l }\OtherTok{\textless{}{-}}\NormalTok{ vc}
+\NormalTok{l[}\DecValTok{1}\NormalTok{,] }\OtherTok{\textless{}{-}}\NormalTok{ l[,}\DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}}\NormalTok{ p[}\DecValTok{1}\NormalTok{]}\SpecialCharTok{*}\NormalTok{cv}
+\NormalTok{k }\OtherTok{\textless{}{-}}\NormalTok{ vc}
+\NormalTok{k[,}\DecValTok{2}\NormalTok{] }\OtherTok{\textless{}{-}}\NormalTok{ k[}\DecValTok{2}\NormalTok{,] }\OtherTok{\textless{}{-}}\NormalTok{ p[}\DecValTok{2}\NormalTok{]}\SpecialCharTok{*}\NormalTok{cv}
+\NormalTok{t }\OtherTok{\textless{}{-}}\NormalTok{ vc}
+\NormalTok{t[}\DecValTok{3}\NormalTok{,] }\OtherTok{\textless{}{-}}\NormalTok{ t[,}\DecValTok{3}\NormalTok{] }\OtherTok{\textless{}{-}}\NormalTok{ p[}\DecValTok{3}\NormalTok{]}\SpecialCharTok{*}\NormalTok{cv}
+\NormalTok{mm }\OtherTok{\textless{}{-}}\NormalTok{ t}\SpecialCharTok{*}\NormalTok{k}\SpecialCharTok{*}\NormalTok{l}
+\FunctionTok{diag}\NormalTok{(mm) }\OtherTok{\textless{}{-}} \FunctionTok{diag}\NormalTok{(mm)}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{mm }\OtherTok{\textless{}{-}}\NormalTok{ mm}\SpecialCharTok{*}\NormalTok{cm}
+\CommentTok{\# check that we have the intended correlation}
+\FunctionTok{all.equal}\NormalTok{(cm, }\FunctionTok{cov2cor}\NormalTok{(mm))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+Create the a4aGr object as before but now we also include the vcov argument for the variance-covariance matrix.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vbObj }\OtherTok{\textless{}{-}} \FunctionTok{a4aGr}\NormalTok{(}\AttributeTok{grMod=}\SpecialCharTok{\textasciitilde{}}\NormalTok{linf}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{exp}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{k}\SpecialCharTok{*}\NormalTok{(t}\SpecialCharTok{{-}}\NormalTok{t0))), }\AttributeTok{grInvMod=}\SpecialCharTok{\textasciitilde{}}\NormalTok{t0}\DecValTok{{-}1}\SpecialCharTok{/}\NormalTok{k}\SpecialCharTok{*}\FunctionTok{log}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{len}\SpecialCharTok{/}\NormalTok{linf), }
+               \AttributeTok{params=}\FunctionTok{FLPar}\NormalTok{(}\AttributeTok{linf=}\NormalTok{p[}\StringTok{"linf"}\NormalTok{], }\AttributeTok{k=}\NormalTok{p[}\StringTok{"k"}\NormalTok{], }\AttributeTok{t0=}\NormalTok{p[}\StringTok{"t0"}\NormalTok{], }
+                            \AttributeTok{units=}\FunctionTok{c}\NormalTok{(}\StringTok{"cm"}\NormalTok{,}\StringTok{"year{-}1"}\NormalTok{,}\StringTok{"year"}\NormalTok{)), }\AttributeTok{vcov=}\NormalTok{mm)}
+\end{Highlighting}
+\end{Shaded}
+
+First we show a simple example where we assume that the parameters are represented using a multivariate normal distribution.
+\% This covariance matrix can have iterations (i.e.~each iteration can have a different covariance matrix). CHECK
+\% If the parameters or the covariance matrix have iterations then the medians accross iterations are computed before simulating. Check help for `mvrnorm\} for more information.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Note that the object we have just created has a single iteration of each parameter}
+\NormalTok{vbObj}\SpecialCharTok{@}\NormalTok{params}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## An object of class "FLPar"
+## params
+##  linf     k    t0 
+## 60.00  0.09 -0.01 
+## units:  cm year-1 year
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(vbObj}\SpecialCharTok{@}\NormalTok{params)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# We simulate 10000 iterations from the a4aGr object by calling mvrnorm() using the }
+\CommentTok{\# variance{-}covariance matrix we created earlier.}
+\NormalTok{vbNorm }\OtherTok{\textless{}{-}} \FunctionTok{mvrnorm}\NormalTok{(}\DecValTok{10000}\NormalTok{,vbObj)}
+\CommentTok{\# Now we have 10000 iterations of each parameter, randomly sampled from the }
+\CommentTok{\# multivariate normal distribution}
+\NormalTok{vbNorm}\SpecialCharTok{@}\NormalTok{params}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## An object of class "FLPar"
+## iters:  10000 
+## 
+## params
+##                linf                   k                  t0 
+## 59.936788(12.01488)  0.090323( 0.01797) -0.010009( 0.00202) 
+## units:  cm year-1 year
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(vbNorm}\SpecialCharTok{@}\NormalTok{params)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]     3 10000
+\end{verbatim}
+
+We can now convert from length to ages data based on the 10000 parameter iterations. This gives us 10000 sets of age data. For example, here we convert a single length vector using each of the 10000 parameter iterations:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ages }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(vbNorm, }\AttributeTok{len=}\DecValTok{5}\SpecialCharTok{:}\DecValTok{10}\FloatTok{+0.5}\NormalTok{)}
+\FunctionTok{dim}\NormalTok{(ages)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]     6 10000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# We show the first ten iterations only as an illustration}
+\NormalTok{ages[,}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    iter
+##            1        2        3        4         5         6         7         8
+##   1 1.040227 1.264898 1.483356 1.233129 0.7969753 0.8915156 0.9040472 0.8346221
+##   2 1.240596 1.517550 1.775896 1.475675 0.9493824 1.0650786 1.0779006 0.9958501
+##   3 1.444084 1.777356 2.075912 1.724001 1.1038198 1.2417635 1.2542913 1.1595666
+##   4 1.650790 2.044732 2.383795 1.978389 1.2603424 1.4216848 1.4332944 1.3258496
+##   5 1.860818 2.320133 2.699971 2.239142 1.4190071 1.6049632 1.6149884 1.4947809
+##   6 2.074275 2.604055 3.024897 2.506587 1.5798735 1.7917263 1.7994554 1.6664461
+##    iter
+##             9       10
+##   1 0.8264370 1.497679
+##   2 0.9865434 1.787533
+##   3 1.1493240 2.082782
+##   4 1.3148696 2.383629
+##   5 1.4832757 2.690292
+##   6 1.6546429 3.002999
+\end{verbatim}
+
+The marginal distributions can be seen in Figure @ref(fig:plot\_norm\_params).
+
+\begin{figure}
+\centering
+\includegraphics{_main_files/figure-latex/plot_norm_params-1.pdf}
+\caption{(\#fig:plot\_norm\_params)The marginal distributions of each of the parameters from using a multivariate normal distribution.}
+\end{figure}
+
+The shape of the correlation can be seen in Figure @ref(fig:plot\_norm\_scatter).
+
+\begin{figure}
+\centering
+\includegraphics{_main_files/figure-latex/plot_norm_scatter-1.pdf}
+\caption{(\#fig:plot\_norm\_scatter)Scatter plot of the 10000 samples parameter from the multivariate normal distribution.}
+\end{figure}
+
+Growth curves for the 1000 iterations can be seen in Figure @ref(fig:plot\_mv\_growth).
+
+\begin{figure}
+\centering
+\includegraphics{_main_files/figure-latex/plot_mv_growth-1.pdf}
+\caption{(\#fig:plot\_mv\_growth)Growth curves using parameters simulated from a multivariate normal distribution.}
+\end{figure}
+
+\hypertarget{adding-uncertainty-to-growth-parameters-with-a-multivariate-triangle-distribution}{%
+\section{Adding uncertainty to growth parameters with a multivariate triangle distribution\}}\label{adding-uncertainty-to-growth-parameters-with-a-multivariate-triangle-distribution}}
+
+\label{sec:growth_triangle_cop}
+
+One alternative to using a normal distribution is to use a \href{http://en.wikipedia.org/wiki/Triangle_distribution}{triangle distribution}. We use the package \href{http://cran.r-project.org/web/packages/triangle/index.html}{\texttt{triangle}} where this distribution is parametrized using the minimum, maximum and median values. This can be very attractive if the analyst needs to scrape information from the web or literature and perform some kind of meta-analysis.
+
+Here we show an example of setting a triangle distribution with values taken from Fishbase.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# The web address for the growth parameters for redfish (Sebastes norvegicus)}
+\NormalTok{addr }\OtherTok{\textless{}{-}} \StringTok{"https://fishbase.se/PopDyn/PopGrowthList.php?ID=501"}
+\CommentTok{\# Scrape the data}
+\NormalTok{tab }\OtherTok{\textless{}{-}} \FunctionTok{try}\NormalTok{(}\FunctionTok{readHTMLTable}\NormalTok{(addr))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Error : XML content does not seem to be XML: ''
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load local copy if no web}
+\ControlFlowTok{if}\NormalTok{(}\FunctionTok{is}\NormalTok{(tab, }\StringTok{"try{-}error"}\NormalTok{))}
+  \FunctionTok{load}\NormalTok{(}\StringTok{"data/tab.RData"}\NormalTok{)}
+\CommentTok{\# Interrogate the data table and get vectors of the values}
+\NormalTok{linf }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{as.character}\NormalTok{(tab}\SpecialCharTok{$}\NormalTok{dataTable[,}\DecValTok{2}\NormalTok{]))}
+\NormalTok{k }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{as.character}\NormalTok{(tab}\SpecialCharTok{$}\NormalTok{dataTable[,}\DecValTok{4}\NormalTok{]))}
+\NormalTok{t0 }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{as.character}\NormalTok{(tab}\SpecialCharTok{$}\NormalTok{dataTable[,}\DecValTok{5}\NormalTok{]))}
+\CommentTok{\# Set the min (a), max (b) and median (c) values for the parameter as a list of lists}
+\CommentTok{\# Note that t0 has no \textquotesingle{}c\textquotesingle{} (median) value. This makes the distribution symmetrical}
+\NormalTok{triPars }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\FunctionTok{list}\NormalTok{(}\AttributeTok{a=}\FunctionTok{min}\NormalTok{(linf), }\AttributeTok{b=}\FunctionTok{max}\NormalTok{(linf), }\AttributeTok{c=}\FunctionTok{median}\NormalTok{(linf)),}
+             \FunctionTok{list}\NormalTok{(}\AttributeTok{a=}\FunctionTok{min}\NormalTok{(k), }\AttributeTok{b=}\FunctionTok{max}\NormalTok{(k), }\AttributeTok{c=}\FunctionTok{median}\NormalTok{(k)),}
+             \FunctionTok{list}\NormalTok{(}\AttributeTok{a=}\FunctionTok{median}\NormalTok{(t0, }\AttributeTok{na.rm=}\NormalTok{T)}\SpecialCharTok{{-}}\FunctionTok{IQR}\NormalTok{(t0, }\AttributeTok{na.rm=}\NormalTok{T)}\SpecialCharTok{/}\DecValTok{2}\NormalTok{, }\AttributeTok{b=}\FunctionTok{median}\NormalTok{(t0, }\AttributeTok{na.rm=}\NormalTok{T)}\SpecialCharTok{+}
+                    \FunctionTok{IQR}\NormalTok{(t0, }\AttributeTok{na.rm=}\NormalTok{T)}\SpecialCharTok{/}\DecValTok{2}\NormalTok{))}
+\CommentTok{\# Simulate 10000 times using mvrtriangle}
+\NormalTok{vbTri }\OtherTok{\textless{}{-}} \FunctionTok{mvrtriangle}\NormalTok{(}\DecValTok{10000}\NormalTok{, vbObj, }\AttributeTok{paramMargins=}\NormalTok{triPars)}
+\end{Highlighting}
+\end{Shaded}
+
+The marginals will reflect the uncertainty on the parameter values that were scraped from \href{http://fishbase.org}{Fishbase} but, as we don't really believe the parameters are multivariate normal, here we adopted a distribution based on a \emph{t} copula with triangle marginals. The marginal distributions can be seen in Figure @ref(fig:plot\_tri\_params) and the shape of the correlation can be seen in Figure @ref(fig:plot\_tri\_scatter).
+
+\begin{figure}
+\centering
+\includegraphics{_main_files/figure-latex/plot_tri_params-1.pdf}
+\caption{(\#fig:plot\_tri\_params)The marginal distributions of each of the parameters from using a multivariate triangle distribution.}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{_main_files/figure-latex/plot_tri_scatter-1.pdf}
+\caption{(\#fig:plot\_tri\_scatter)Scatter plot of the 10000 samples parameter from the multivariate triangle distribution.}
+\end{figure}
+
+We can still use \texttt{predict()} to see the growth model uncertainty (Figure @ref(fig:plot\_tri\_growth)).
+
+\begin{figure}
+\centering
+\includegraphics{_main_files/figure-latex/plot_tri_growth-1.pdf}
+\caption{(\#fig:plot\_tri\_growth)Growth curves using parameters simulated from a multivariate triangle distribution.}
+\end{figure}
+
+Remember that the above examples use a variance-covariance matrix that we essentially made up. An alternative would be to scrape the entire growth parameters dataset from Fishbase and compute the shape of the variance-covariance matrix yourself.
+
+\hypertarget{adding-uncertainty-to-growth-parameters-with-statistical-copulas}{%
+\section{Adding uncertainty to growth parameters with statistical copulas\}}\label{adding-uncertainty-to-growth-parameters-with-statistical-copulas}}
+
+A more general approach to adding parameter uncertainty is to make use of \href{http://www.encyclopediaofmath.org/index.php/Copula}{statistical copulas} and marginal distributions of choice. This is possible with the \texttt{mvrcop()} function borrowed from the package \href{http://cran.r-project.org/web/packages/copula/}{\texttt{copula}}. The example below keeps the same parameters and changes only the copula type and family but a lot more can be done. Check the package \texttt{copula} for more information.
+
+\% Needs more explanation
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vbCop }\OtherTok{\textless{}{-}} \FunctionTok{mvrcop}\NormalTok{(}\DecValTok{10000}\NormalTok{, vbObj, }\AttributeTok{copula=}\StringTok{"archmCopula"}\NormalTok{, }\AttributeTok{family=}\StringTok{"clayton"}\NormalTok{, }\AttributeTok{param=}\DecValTok{2}\NormalTok{, }
+                \AttributeTok{margins=}\StringTok{"triangle"}\NormalTok{, }\AttributeTok{paramMargins=}\NormalTok{triPars)}
+\end{Highlighting}
+\end{Shaded}
+
+The shape of the correlation changes (Figure @ref(fig:plot\_cop\_tri\_scatter)) as well as the resulting growth curves (Figure @ref(fig:plot\_cop\_tri\_growth)).
+
+\begin{figure}
+\centering
+\includegraphics{_main_files/figure-latex/plot_cop_tri_scatter-1.pdf}
+\caption{(\#fig:plot\_cop\_tri\_scatter)Scatter plot of the 10000 samples parameter from the using an archmCopula copula with triangle margins.}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{_main_files/figure-latex/plot_cop_tri_growth-1.pdf}
+\caption{(\#fig:plot\_cop\_tri\_growth)Growth curves from the using an archmCopula copula with triangle margins.}
+\end{figure}
+
+\hypertarget{converting-from-length-to-age-based-data---the-l2a-method}{%
+\section{\texorpdfstring{Converting from length to age based data - the \texttt{l2a()} method\}}{Converting from length to age based data - the l2a() method\}}}\label{converting-from-length-to-age-based-data---the-l2a-method}}
+
+After introducing uncertainty in the growth model through the parameters it's time to transform the length-based dataset into an age-based dataset. The method that deals with this process is \texttt{l2a()}. The implementation of this method for the \texttt{FLQuant} class is the main workhorse. There are two other implementations, for the \texttt{FLStock} and \texttt{FLIndex} classes, which are mainly wrappers that call the \texttt{FLQuant} method several times.
+
+When converting from length-based data to age-based data you need to be aware of how the aggregation of length classes is performed. For example, individuals in length classes 1-2, 2-3, and 3-4 cm may all be considered as being of age 1 (obviously depending on the growth model). How should the values in those length classes be combined?
+
+If the values are abundances then the values should be summed. Summing other types of values, such as mean weight, does not make sense. Instead these values are averaged over the length classes (possibly weighted by the abundance). This is controlled using the \texttt{stat} argument which can be either \texttt{mean} or \texttt{sum} (the default). Fishing mortality is not computed to avoid making wrong assumptions about the meaning of F at length.
+
+We demonstrate the method by converting a catch-at-length \texttt{FLQuant} to a catch-at-age \texttt{FLQuant}. First we make an \texttt{a4aGr} object with a multivariate triangle distribution (using the parameters we set above). We use 10 iterations as an example. And call \texttt{l2a()} by passing in the length-based \texttt{FLQuant} and the \texttt{a4aGr} object.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vbTriSmall }\OtherTok{\textless{}{-}} \FunctionTok{mvrtriangle}\NormalTok{(}\DecValTok{10}\NormalTok{, vbObj, }\AttributeTok{paramMargins=}\NormalTok{triPars)}
+\NormalTok{cth.n }\OtherTok{\textless{}{-}} \FunctionTok{l2a}\NormalTok{(}\FunctionTok{catch.n}\NormalTok{(rfLen.stk), vbTriSmall)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in log(1 - len/linf): NaNs produced
+## Warning in log(1 - len/linf): NaNs produced
+## Warning in log(1 - len/linf): NaNs produced
+## Warning in log(1 - len/linf): NaNs produced
+## Warning in log(1 - len/linf): NaNs produced
+## Warning in log(1 - len/linf): NaNs produced
+## Warning in log(1 - len/linf): NaNs produced
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(cth.n)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 76 26  1  4  1 10
+\end{verbatim}
+
+In the previous example, the \texttt{FLQuant} object that was sliced (\texttt{catch.n(rfLen.stk)}) had only one iteration. This iteration was sliced by each of the iterations in the growth model. It is possible for the \texttt{FLQuant} object to have the same number of iterations as the growth model, in which case each iteration of the \texttt{FLQuant} and the growth model are used together. It is also possible for the growth model to have only one iteration while the \texttt{FLQuant} object has many iterations. The same growth model is then used for each of the \texttt{FLQuant} iterations. As with all \texttt{FLR} objects, the general rule is \emph{one or n} iterations.
+
+As well as converting one \texttt{FLQuant} at a time, we can convert entire \texttt{FLStock} and \texttt{FLIndex} objects. In these cases the individual \texttt{FLQuant} slots of those classes are converted from length-based to age-based. As mentioned above, the aggregation method depends on the type of values the slots contain. The abundance slots (\texttt{*.n}, such as \texttt{stock.n}) are summed. The \texttt{*.wt}, \texttt{m}, \texttt{mat}, \texttt{harvest.spwn} and \texttt{m.spwn} slots of an \texttt{FLStock} object are averaged. The \texttt{catch.wt} and \texttt{sel.pattern} slots of an \texttt{FLIndex} object are averaged, while the \texttt{index}, \texttt{index.var} and \texttt{catch.n} slots are summed.
+
+The method for \texttt{FLStock} classes takes an additional argument for the plusgroup.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{aStk }\OtherTok{\textless{}{-}} \FunctionTok{l2a}\NormalTok{(rfLen.stk, vbTriSmall, }\AttributeTok{plusgroup=}\DecValTok{14}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in .local(object, model, ...): Individual weights, M and maturity will be (weighted) averaged accross lengths,
+##  harvest is not computed and everything else will be summed.
+##  If this is not what you want, you'll have to deal with these slots by hand.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in .local(object, model, ...): Some ages are less than 0, indicating a mismatch between input data lengths
+##  and growth parameters (possibly t0)
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in .local(object, model, ...): Trimming age range to a minimum of 0
+\end{verbatim}
+
+\begin{verbatim}
+## [1] "maxfbar has been changed to accomodate new plusgroup"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{aIdx }\OtherTok{\textless{}{-}} \FunctionTok{l2a}\NormalTok{(rfTrawl.idx, vbTriSmall)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in l2a(rfTrawl.idx, vbTriSmall): Some ages are less than 0, indicating a mismatch between input data lengths
+##  and growth parameters (possibly t0)
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in l2a(rfTrawl.idx, vbTriSmall): Trimming age range to a minimum of 0
+\end{verbatim}
+
+When converting with \texttt{l2a()} all lengths above Linf are converted to the maximum age, as there is no information in the growth model about how to deal with individuals larger than Linf.
+
+\hypertarget{modelling-natural-mortality}{%
+\chapter{Modelling Natural Mortality}\label{modelling-natural-mortality}}
+
+Placeholder
+
+\hypertarget{background}{%
+\section{Background}\label{background}}
+
+\hypertarget{a4am---the-m-class}{%
+\section{\texorpdfstring{\texttt{a4aM} - The M class}{a4aM - The M class}}\label{a4am---the-m-class}}
+
+\hypertarget{adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution}{%
+\section{Adding uncertainty to natural mortality parameters with a multivariate normal distribution}\label{adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution}}
+
+\hypertarget{adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas}{%
+\section{Adding uncertainty to natural mortality parameters with statistical copulas}\label{adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas}}
+
+\hypertarget{computing-natural-mortality-time-series---the-m-method}{%
+\section{Computing natural mortality time series - the ``m'' method}\label{computing-natural-mortality-time-series---the-m-method}}
+
+\hypertarget{stock-assessment-framework}{%
+\chapter{Stock assessment framework}\label{stock-assessment-framework}}
+
+Placeholder
+
+\hypertarget{maths-description}{%
+\section{\texorpdfstring{Maths description \label{sec:math}}{Maths description }}\label{maths-description}}
+
+\hypertarget{observations}{%
+\subsection{Observations}\label{observations}}
+
+\hypertarget{the-population-dynamics-model}{%
+\subsection{The population dynamics model}\label{the-population-dynamics-model}}
+
+\hypertarget{classes-description}{%
+\section{\texorpdfstring{Classes description \label{sec:classes}}{Classes description }}\label{classes-description}}
+
+\hypertarget{submodel-structure}{%
+\chapter{\texorpdfstring{Submodel structure \label{sec:submod}}{Submodel structure }}\label{submodel-structure}}
+
+Placeholder
+
+\hypertarget{submodel-building-blocks-and-fundamental-r-formulas}{%
+\section{\texorpdfstring{Submodel building blocks and fundamental \texttt{R} formulas}{Submodel building blocks and fundamental R formulas}}\label{submodel-building-blocks-and-fundamental-r-formulas}}
+
+\hypertarget{the-major-effects-available-for-modelling}{%
+\section{The major effects available for modelling}\label{the-major-effects-available-for-modelling}}
+
+\hypertarget{the-submodel-class-and-methods}{%
+\section{The submodel class and methods}\label{the-submodel-class-and-methods}}
+
+\hypertarget{fitting}{%
+\chapter{Fitting}\label{fitting}}
+
+Placeholder
+
+\hypertarget{fishing-mortality-submodel-f_ay}{%
+\section{\texorpdfstring{Fishing mortality submodel (\(F_{ay}\))}{Fishing mortality submodel (F\_\{ay\})}}\label{fishing-mortality-submodel-f_ay}}
+
+\hypertarget{separable-model}{%
+\subsection{Separable model}\label{separable-model}}
+
+\hypertarget{constant-selectivity-for-contiguous-ages-or-years}{%
+\subsection{Constant selectivity for contiguous ages or years}\label{constant-selectivity-for-contiguous-ages-or-years}}
+
+\hypertarget{time-blocks-selectivity}{%
+\subsection{Time blocks selectivity}\label{time-blocks-selectivity}}
+
+\hypertarget{time-changing-selectivity}{%
+\subsection{Time changing selectivity}\label{time-changing-selectivity}}
+
+\hypertarget{closed-form-selection-pattern}{%
+\subsection{Closed form selection pattern}\label{closed-form-selection-pattern}}
+
+\hypertarget{more-models-to-be-moved-to-its-own-section}{%
+\subsection{More models {[}TO BE MOVED TO ITS OWN SECTION?{]}}\label{more-models-to-be-moved-to-its-own-section}}
+
+\hypertarget{abundance-indices-catchability-submodel-q_ays}{%
+\section{\texorpdfstring{Abundance indices catchability submodel (\(Q_{ays}\))}{Abundance indices catchability submodel (Q\_\{ays\})}}\label{abundance-indices-catchability-submodel-q_ays}}
+
+\hypertarget{catchability-submodel-for-age-based-indices}{%
+\subsection{Catchability submodel for age based indices}\label{catchability-submodel-for-age-based-indices}}
+
+\hypertarget{catchability-submodel-for-age-aggregated-biomass-indices}{%
+\subsection{Catchability submodel for age aggregated biomass indices}\label{catchability-submodel-for-age-aggregated-biomass-indices}}
+
+\hypertarget{catchability-submodel-for-single-age-indices}{%
+\subsection{Catchability submodel for single age indices}\label{catchability-submodel-for-single-age-indices}}
+
+\hypertarget{stock-recruitment-submodel-r_y}{%
+\section{\texorpdfstring{Stock-recruitment submodel (\(R_y\))}{Stock-recruitment submodel (R\_y)}}\label{stock-recruitment-submodel-r_y}}
+
+\hypertarget{observation-variance-submodel-sigma2_ay-tau2_ays}{%
+\section{\texorpdfstring{Observation variance submodel (\(\{\sigma^2_{ay}, \tau^2_{ays}\}\))}{Observation variance submodel (\textbackslash\{\textbackslash sigma\^{}2\_\{ay\}, \textbackslash tau\^{}2\_\{ays\}\textbackslash\})}}\label{observation-variance-submodel-sigma2_ay-tau2_ays}}
+
+\hypertarget{initial-year-abundance-submodel-n_ay1}{%
+\section{\texorpdfstring{Initial year abundance submodel (\(N_{a,y=1}\))}{Initial year abundance submodel (N\_\{a,y=1\})}}\label{initial-year-abundance-submodel-n_ay1}}
+
+\hypertarget{data-weigthing}{%
+\section{Data weigthing}\label{data-weigthing}}
+
+\hypertarget{working-with-covariates}{%
+\section{Working with covariates}\label{working-with-covariates}}
+
+\hypertarget{assessing-files}{%
+\section{\texorpdfstring{Assessing \ADMB files}{Assessing files}}\label{assessing-files}}
+
+\hypertarget{missing-observations-in-the-catch-matrix-or-index}{%
+\section{Missing observations in the catch matrix or index}\label{missing-observations-in-the-catch-matrix-or-index}}
+
+\hypertarget{diagnostics}{%
+\chapter{\texorpdfstring{Diagnostics \label{sec:diagn}}{Diagnostics }}\label{diagnostics}}
+
+Placeholder
+
+\hypertarget{residuals}{%
+\section{Residuals}\label{residuals}}
+
+\hypertarget{predictive-skill}{%
+\section{Predictive skill}\label{predictive-skill}}
+
+\hypertarget{aggreagted-catch-in-weight}{%
+\section{Aggreagted catch in weight}\label{aggreagted-catch-in-weight}}
+
+\hypertarget{fit-summary-information-and-cross-validation-metrics}{%
+\section{Fit summary, information and cross-validation metrics}\label{fit-summary-information-and-cross-validation-metrics}}
+
+\hypertarget{the-package-a4adiags}{%
+\section{The package a4adiags}\label{the-package-a4adiags}}
+
+\hypertarget{residuals-and-submodels-misspecifiction}{%
+\section{Residuals and submodels misspecifiction}\label{residuals-and-submodels-misspecifiction}}
+
+\hypertarget{the-mean-model}{%
+\subsection{The ``mean'' model}\label{the-mean-model}}
+
+\hypertarget{the-age-effects}{%
+\subsection{The age effects}\label{the-age-effects}}
+
+\hypertarget{the-fishing-mortality-year-model}{%
+\subsection{The fishing mortality year model}\label{the-fishing-mortality-year-model}}
+
+\hypertarget{the-initial-year-population-abundance-model-aka-n1}{%
+\subsection{The initial year population abundance model, aka N1}\label{the-initial-year-population-abundance-model-aka-n1}}
+
+\hypertarget{the-stock-recruitment-submodel}{%
+\subsection{The stock recruitment submodel}\label{the-stock-recruitment-submodel}}
+
+\hypertarget{the-variance-submodel}{%
+\subsection{The variance submodel}\label{the-variance-submodel}}
+
+\hypertarget{hindcast}{%
+\chapter{Hindcast}\label{hindcast}}
+
+alternative setups and metrics and what it means (EJ to share an initial structure)
+
+\hypertarget{reference-points}{%
+\chapter{Reference Points}\label{reference-points}}
+
+Placeholder
+
+\hypertarget{yield-per-recruit-reference-points}{%
+\section{Yield per recruit reference points}\label{yield-per-recruit-reference-points}}
+
+\hypertarget{stock-recruitment-relationship-based-reference-points}{%
+\section{Stock recruitment relationship based reference points}\label{stock-recruitment-relationship-based-reference-points}}
+
+\hypertarget{stock-recruitment-after-fitting-the-stock-assessment-model}{%
+\subsection{Stock recruitment after fitting the stock assessment model}\label{stock-recruitment-after-fitting-the-stock-assessment-model}}
+
+\hypertarget{stock-recruitment-during-fitting-the-stock-assessment-model}{%
+\subsection{Stock recruitment during fitting the stock assessment model}\label{stock-recruitment-during-fitting-the-stock-assessment-model}}
+
+\hypertarget{economics-reference-points}{%
+\section{Economics reference points}\label{economics-reference-points}}
+
+\hypertarget{computing-user-specific-reference-points}{%
+\section{Computing user specific reference points}\label{computing-user-specific-reference-points}}
+
+\hypertarget{projections-and-harvest-control-rules}{%
+\chapter{Projections and harvest control rules}\label{projections-and-harvest-control-rules}}
+
+Placeholder
+
+\hypertarget{initial-condition-assumptions-check-fwdwindow}{%
+\section{Initial condition assumptions {[}CHECK fwdWindow{]}}\label{initial-condition-assumptions-check-fwdwindow}}
+
+\hypertarget{scenarios}{%
+\section{Scenarios}\label{scenarios}}
+
+\hypertarget{relative-scenarios}{%
+\subsection{Relative scenarios}\label{relative-scenarios}}
+
+\hypertarget{limits}{%
+\subsection{Limits}\label{limits}}
+
+\hypertarget{complex-scenario}{%
+\subsection{Complex scenario}\label{complex-scenario}}
+
+\hypertarget{predict-and-simulate}{%
+\chapter{\texorpdfstring{Predict and simulate \label{sec:predsim}}{Predict and simulate }}\label{predict-and-simulate}}
+
+Placeholder
+
+\hypertarget{basic-functions}{%
+\section{Basic functions\}}\label{basic-functions}}
+
+\hypertarget{simulate}{%
+\subsection{simulate()}\label{simulate}}
+
+\hypertarget{genflquant}{%
+\subsection{genFLQuant()}\label{genflquant}}
+
+\hypertarget{submodels}{%
+\section{submodels}\label{submodels}}
+
+\hypertarget{predict}{%
+\section{Predict}\label{predict}}
+
+\hypertarget{simulate-1}{%
+\section{Simulate}\label{simulate-1}}
+
+\hypertarget{the-statistical-catch-at-age-stock-assessment-framework-with-mcmc}{%
+\chapter{\texorpdfstring{The statistical catch-at-age stock assessment framework with MCMC \label{sec:mcmc}}{The statistical catch-at-age stock assessment framework with MCMC }}\label{the-statistical-catch-at-age-stock-assessment-framework-with-mcmc}}
+
+Placeholder
+
+\hypertarget{diagnostics-with-coda}{%
+\section{Diagnostics with CODA}\label{diagnostics-with-coda}}
+
+\hypertarget{propagate-uncertainty-into-stock-assessment}{%
+\chapter{Propagate uncertainty into stock assessment}\label{propagate-uncertainty-into-stock-assessment}}
+
+Placeholder
+
+\hypertarget{modelling-fleet-selectivity}{%
+\chapter{Modelling fleet selectivity}\label{modelling-fleet-selectivity}}
+
+\hypertarget{modelling-spatial-effects}{%
+\chapter{Modelling spatial effects}\label{modelling-spatial-effects}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ridx01 }\OtherTok{\textless{}{-}}\NormalTok{ stk0}\SpecialCharTok{@}\NormalTok{stock.n[}\DecValTok{1}\NormalTok{]}\SpecialCharTok{*}\FloatTok{0.7}\SpecialCharTok{*}\FloatTok{0.001}
+\NormalTok{ridx01 }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{(ridx01}\SpecialCharTok{*}\FunctionTok{rlnorm}\NormalTok{(ridx01))}
+\NormalTok{ridx02 }\OtherTok{\textless{}{-}}\NormalTok{ stk0}\SpecialCharTok{@}\NormalTok{stock.n[}\DecValTok{1}\NormalTok{]}\SpecialCharTok{*}\FloatTok{0.3}\SpecialCharTok{*}\FloatTok{0.001}
+\NormalTok{ridx02 }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{(ridx02}\SpecialCharTok{*}\FunctionTok{rlnorm}\NormalTok{(ridx02))}
+
+\NormalTok{srmod }\OtherTok{\textless{}{-}} \ErrorTok{\textasciitilde{}} \FunctionTok{geomean}\NormalTok{(a}\SpecialCharTok{\textasciitilde{}}\NormalTok{ridx01}\SpecialCharTok{+}\NormalTok{ridx02, }\AttributeTok{CV=}\FloatTok{0.5}\NormalTok{)}
+\NormalTok{cvar }\OtherTok{\textless{}{-}} \FunctionTok{FLQuants}\NormalTok{(}\AttributeTok{ridx01 =}\NormalTok{ ridx01, }\AttributeTok{ridx02 =}\NormalTok{ ridx02)}
+\NormalTok{fit01 }\OtherTok{\textless{}{-}} \FunctionTok{sca}\NormalTok{(stock,tun.sel[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{)],}\AttributeTok{fmodel=}\NormalTok{fmod,}\AttributeTok{qmodel=}\NormalTok{qmod, }\AttributeTok{srmodel=}\NormalTok{srmod, }\AttributeTok{covar=}\NormalTok{cvar)}
+\FunctionTok{coef}\NormalTok{(fit01)}
+\NormalTok{srmod }\OtherTok{\textless{}{-}} \ErrorTok{\textasciitilde{}} \FunctionTok{geomean}\NormalTok{(}\AttributeTok{CV=}\FloatTok{0.1}\NormalTok{)}
+\NormalTok{fit02 }\OtherTok{\textless{}{-}} \FunctionTok{sca}\NormalTok{(stock,tun.sel[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{)],}\AttributeTok{fmodel=}\NormalTok{fmod,}\AttributeTok{qmodel=}\NormalTok{qmod, }\AttributeTok{srmodel=}\NormalTok{srmod)}
+\FunctionTok{coef}\NormalTok{(fit02)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  check situation where the two areas are negatively correlated
+\item
+  the two covariates need to be at the same scale, in the sense of representing the same process
+\item
+  other examples (ICES, ask in the plenary if we can have access to the data)
+\item
+  dan ghotel ask for spatial workshop data
+\end{itemize}
+
+\hypertarget{sections-to-be-added}{%
+\chapter{Sections to be added!?}\label{sections-to-be-added}}
+
+\begin{itemize}
+\tightlist
+\item
+  Assessing the coverage of confidence intervals??
+\end{itemize}
+
+  \bibliography{book.bib,packages.bib}
+
+\end{document}
