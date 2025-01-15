@@ -1,5 +1,10 @@
 # Propagate uncertainty into stock assessment
 
+Representing the uncertainty in M and how this influences estimates of management quantities is therefore an important component of conducting stock assessments (Mounder et.al 2023 M paper in fishres).
+
+Many values for M used in assessments remain based on life history theory, maximum age, and regression (LHMR) approaches. There will be cases when LHMR methods are more reliable than direct estimates and the results of stock assessments. However, LHMR methods should be used only if more direct estimates or stock assessment internal estimates are unavailable or unreliable (which, admittedly, is most of the time). If they are to be used, **they should be accompanied by measures of uncertainty (e.g., Cope and Hamel, 2022; Hamel and Cope, 2022), which should be propagated into the results of the assessment** either directly through Bayesian or related approaches, or through sensitivity analyses and profiles (Mounder et.al 2023 M paper in fishres).
+
+
 In this section we give an example of how uncertainty in natural mortality, set up using the `m()` method and the class `a4aM` (see chapter XX), is propagated through the stock assessment. We'll start by fitting the default model to the data.
 
 ```{r}

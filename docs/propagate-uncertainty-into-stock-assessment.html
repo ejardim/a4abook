@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-01-14" />
+<meta name="date" content="2025-01-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -150,13 +150,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#stock-assessment-process"><i class="fa fa-check"></i><b>2.1</b> Stock assessment process</a></li>
-<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#stock-assessment-as-a-linear-model"><i class="fa fa-check"></i><b>2.2</b> Stock assessment as a linear model</a></li>
-<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#data-used-in-the-book"><i class="fa fa-check"></i><b>2.3</b> Data used in the book</a>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#the-assessment-for-all-initiative-a4a"><i class="fa fa-check"></i><b>2.1</b> The “Assessment for All” Initiative (a4a)</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#multi-stage-modelling-approach"><i class="fa fa-check"></i><b>2.2</b> Multi-stage modelling approach</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#stock-assessment-process"><i class="fa fa-check"></i><b>2.3</b> Stock Assessment Process</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#stock-assessment-as-a-linear-model"><i class="fa fa-check"></i><b>2.4</b> Stock assessment as a linear model</a></li>
+<li class="chapter" data-level="2.5" data-path="introduction.html"><a href="introduction.html#data-used-in-the-book"><i class="fa fa-check"></i><b>2.5</b> Data used in the book</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="introduction.html"><a href="introduction.html#stock-xx"><i class="fa fa-check"></i><b>2.3.1</b> stock xx</a></li>
-<li class="chapter" data-level="2.3.2" data-path="introduction.html"><a href="introduction.html#stock-xx-1"><i class="fa fa-check"></i><b>2.3.2</b> stock xx</a></li>
-<li class="chapter" data-level="2.3.3" data-path="introduction.html"><a href="introduction.html#stock-xx-2"><i class="fa fa-check"></i><b>2.3.3</b> stock xx</a></li>
+<li class="chapter" data-level="2.5.1" data-path="introduction.html"><a href="introduction.html#plaice-in-area-fao-27-ices-area-iv"><i class="fa fa-check"></i><b>2.5.1</b> Plaice in area FAO 27, ICES area IV</a></li>
+<li class="chapter" data-level="2.5.2" data-path="introduction.html"><a href="introduction.html#stock-xx"><i class="fa fa-check"></i><b>2.5.2</b> stock xx</a></li>
+<li class="chapter" data-level="2.5.3" data-path="introduction.html"><a href="introduction.html#stock-xx-1"><i class="fa fa-check"></i><b>2.5.3</b> stock xx</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html"><i class="fa fa-check"></i><b>3</b> Introduction to Splines</a>
@@ -305,6 +307,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="propagate-uncertainty-into-stock-assessment" class="section level1 hasAnchor" number="15">
 <h1><span class="header-section-number">Chapter 15</span> Propagate uncertainty into stock assessment<a href="propagate-uncertainty-into-stock-assessment.html#propagate-uncertainty-into-stock-assessment" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Representing the uncertainty in M and how this influences estimates of management quantities is therefore an important component of conducting stock assessments (Mounder et.al 2023 M paper in fishres).</p>
+<p>Many values for M used in assessments remain based on life history theory, maximum age, and regression (LHMR) approaches. There will be cases when LHMR methods are more reliable than direct estimates and the results of stock assessments. However, LHMR methods should be used only if more direct estimates or stock assessment internal estimates are unavailable or unreliable (which, admittedly, is most of the time). If they are to be used, <strong>they should be accompanied by measures of uncertainty (e.g., Cope and Hamel, 2022; Hamel and Cope, 2022), which should be propagated into the results of the assessment</strong> either directly through Bayesian or related approaches, or through sensitivity analyses and profiles (Mounder et.al 2023 M paper in fishres).</p>
 <p>In this section we give an example of how uncertainty in natural mortality, set up using the <code>m()</code> method and the class <code>a4aM</code> (see chapter XX), is propagated through the stock assessment. We’ll start by fitting the default model to the data.</p>
 <div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="propagate-uncertainty-into-stock-assessment.html#cb332-1" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices)</span></code></pre></div>
 <p>Using <code>a4a</code> methods we’ll model natural mortality using a negative exponential model by age, Jensen’s estimator for the level and a constant trend with time. We include multivariate normal uncertainty using the <code>mvrnorm()</code> method and create 10 iterations.</p>

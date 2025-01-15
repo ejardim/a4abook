@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Debian) (preloaded format=xelatex 2025.1.13)  13 JAN 2025 10:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.1.13)  15 JAN 2025 14:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -11,42 +11,47 @@ Document Class: book 2023/05/17 v1.4n Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/bk10.clo
 File: bk10.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count183
-\c@chapter=\count184
-\c@section=\count185
-\c@subsection=\count186
-\c@subsubsection=\count187
-\c@paragraph=\count188
-\c@subparagraph=\count189
-\c@figure=\count190
-\c@table=\count191
+\c@part=\count187
+\c@chapter=\count188
+\c@section=\count189
+\c@subsection=\count190
+\c@subsubsection=\count191
+\c@paragraph=\count192
+\c@subparagraph=\count193
+\c@figure=\count194
+\c@table=\count195
 \abovecaptionskip=\skip48
 \belowcaptionskip=\skip49
 \bibindent=\dimen140
-) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2023/05/13 v2.17o AMS math features
 \@mathmargin=\skip50
+
 For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2021/08/26 v2.01 AMS text
+
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks17
 \ex@=\dimen141
-)) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen142
-) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count192
+\inf@bad=\count196
 LaTeX Info: Redefining \frac on input line 234.
-\uproot@=\count193
-\leftroot@=\count194
+\uproot@=\count197
+\leftroot@=\count198
 LaTeX Info: Redefining \overline on input line 399.
 LaTeX Info: Redefining \colon on input line 410.
-\classnum@=\count195
-\DOTSCASE@=\count196
+\classnum@=\count199
+\DOTSCASE@=\count266
 LaTeX Info: Redefining \ldots on input line 496.
 LaTeX Info: Redefining \dots on input line 499.
 LaTeX Info: Redefining \cdots on input line 620.
@@ -59,20 +64,20 @@ LaTeX Info: Redefining \Bigg on input line 725.
 \big@size=\dimen143
 LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count197
+\macc@depth=\count267
 LaTeX Info: Redefining \bmod on input line 905.
 LaTeX Info: Redefining \pmod on input line 910.
 LaTeX Info: Redefining \smash on input line 940.
 LaTeX Info: Redefining \relbar on input line 970.
 LaTeX Info: Redefining \Relbar on input line 971.
-\c@MaxMatrixCols=\count198
+\c@MaxMatrixCols=\count268
 \dotsspace@=\muskip16
-\c@parentequation=\count199
-\dspbrk@lvl=\count266
+\c@parentequation=\count269
+\dspbrk@lvl=\count270
 \tag@help=\toks18
-\row@=\count267
-\column@=\count268
-\maxfields@=\count269
+\row@=\count271
+\column@=\count272
+\maxfields@=\count273
 \andhelp@=\toks19
 \eqnshift@=\dimen144
 \alignsep@=\dimen145
@@ -86,8 +91,10 @@ LaTeX Info: Redefining \Relbar on input line 971.
 \mathdisplay@stack=\toks21
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
-) (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
@@ -95,60 +102,782 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)) (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+))
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2022/02/03 v1.0f TeX engine tests
-) (/usr/share/texlive/texmf-dist/tex/latex/unicode-math/unicode-math.sty (/usr/
-share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2024-01-22 L3 programming layer (loader) 
-(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
-File: l3backend-xetex.def 2024-01-04 L3 backend support: XeTeX
-\g__graphics_track_int=\count270
-\l__pdf_internal_box=\box53
-\g__pdf_backend_object_int=\count271
-\g__pdf_backend_annotation_int=\count272
-\g__pdf_backend_link_int=\count273
+) (./a4a.sty
+Package: a4a 
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2024-01-20 v7.01h Hypertext links for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks22
+)
+(/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
 ))
-Package: unicode-math 2023/08/13 v0.8r Unicode maths in XeLaTeX and LuaLaTeX
-(/usr/share/texlive/texmf-dist/tex/latex/unicode-math/unicode-math-xetex.sty
-Package: unicode-math-xetex 2023/08/13 v0.8r Unicode maths in XeLaTeX and LuaLa
-TeX
-(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-Package: xparse 2023-10-10 L3 Experimental document command parser
-) (/usr/share/texlive/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
-Package: l3keys2e 2023-10-10 LaTeX2e option processing using LaTeX3 keys
-) (/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.sty
-Package: fontspec 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
-(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
-Package: fontspec-xetex 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTe
-X
-\l__fontspec_script_int=\count274
-\l__fontspec_language_int=\count275
-\l__fontspec_strnum_int=\count276
-\l__fontspec_tmp_int=\count277
-\l__fontspec_tmpa_int=\count278
-\l__fontspec_tmpb_int=\count279
-\l__fontspec_tmpc_int=\count280
-\l__fontspec_em_int=\count281
-\l__fontspec_emdef_int=\count282
-\l__fontspec_strong_int=\count283
-\l__fontspec_strongdef_int=\count284
-\l__fontspec_tmpa_dim=\dimen150
-\l__fontspec_tmpb_dim=\dimen151
-\l__fontspec_tmpc_dim=\dimen152
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
-) (/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.cfg))) (/usr/share
-/texlive/texmf-dist/tex/latex/base/fix-cm.sty
-Package: fix-cm 2020/11/24 v1.1t fixes to LaTeX
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def
-File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
-LaTeX Font Info:    Redeclaring font encoding TS1 on input line 47.
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2023-11-26 v2.56 Cross-referencing by name of section
+
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\g__um_fam_int=\count285
-\g__um_fonts_used_int=\count286
-\l__um_primecount_int=\count287
-\g__um_primekern_muskip=\muskip17
-(/usr/share/texlive/texmf-dist/tex/latex/unicode-math/unicode-math-table.tex)))
+\c@section@level=\count274
+)
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count275
+)
+\@linkdim=\dimen150
+\Hy@linkcounter=\count276
+\Hy@pagecounter=\count277
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2024-01-20 v7.01h Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count278
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2024-01-20 v7.01h Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Option `unicode' set `true' on input line 4062.
+Package hyperref Info: Hyper figures OFF on input line 4179.
+Package hyperref Info: Link nesting OFF on input line 4184.
+Package hyperref Info: Hyper index ON on input line 4187.
+Package hyperref Info: Plain pages OFF on input line 4194.
+Package hyperref Info: Backreferencing OFF on input line 4199.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4446.
+\c@Hy@tempcnt=\count279
+
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4784.
+\XeTeXLinkMargin=\dimen151
+
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count280
+\Field@Width=\dimen152
+\Fld@charsize=\dimen153
+Package hyperref Info: Hyper figures OFF on input line 6063.
+Package hyperref Info: Link nesting OFF on input line 6068.
+Package hyperref Info: Hyper index ON on input line 6071.
+Package hyperref Info: backreferencing OFF on input line 6078.
+Package hyperref Info: Link coloring OFF on input line 6083.
+Package hyperref Info: Link coloring with OCG OFF on input line 6088.
+Package hyperref Info: PDF/A mode OFF on input line 6093.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+\Hy@abspage=\count281
+\c@Item=\count282
+\c@Hfootnote=\count283
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2024-01-20 v7.01h Hyperref driver for pdfTeX
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
+kage
+with kernel methods
+)
+\Fld@listcount=\count284
+\c@bookmark@seq@number=\count285
+
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+85.
+)
+\Hy@SectionHShift=\skip53
+)
+(/usr/share/texlive/texmf-dist/tex/latex/preprint/authblk.sty
+Package: authblk 2001/02/27 1.3 (PWD)
+\affilsep=\skip54
+\@affilsep=\skip55
+\c@Maxaffil=\count286
+\c@authors=\count287
+\c@affil=\count288
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks23
+\inpenc@posthook=\toks24
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/utf8x.def
+File: utf8x.def 2023/11/09 UCS: Input encoding UTF-8
+
+
+Package ucs Info: utf8x disabled, assuming standard utf8 processing
+(ucs)             load ucs package to force utf8x processing.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2022/06/07 v1.3c UTF-8 support
+Now handling font encoding OML ...
+... no UTF-8 mapping file for font encoding OML
+Now handling font encoding OMS ...
+... processing UTF-8 mapping file for font encoding OMS
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu
+File: omsenc.dfu 2022/06/07 v1.3c UTF-8 support
+   defining Unicode char U+00A7 (decimal 167)
+   defining Unicode char U+00B6 (decimal 182)
+   defining Unicode char U+00B7 (decimal 183)
+   defining Unicode char U+2020 (decimal 8224)
+   defining Unicode char U+2021 (decimal 8225)
+   defining Unicode char U+2022 (decimal 8226)
+)
+Now handling font encoding OT1 ...
+... processing UTF-8 mapping file for font encoding OT1
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu
+File: ot1enc.dfu 2022/06/07 v1.3c UTF-8 support
+   defining Unicode char U+00A0 (decimal 160)
+   defining Unicode char U+00A1 (decimal 161)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00AD (decimal 173)
+   defining Unicode char U+00B8 (decimal 184)
+   defining Unicode char U+00BF (decimal 191)
+   defining Unicode char U+00C5 (decimal 197)
+   defining Unicode char U+00C6 (decimal 198)
+   defining Unicode char U+00D8 (decimal 216)
+   defining Unicode char U+00DF (decimal 223)
+   defining Unicode char U+00E6 (decimal 230)
+   defining Unicode char U+00EC (decimal 236)
+   defining Unicode char U+00ED (decimal 237)
+   defining Unicode char U+00EE (decimal 238)
+   defining Unicode char U+00EF (decimal 239)
+   defining Unicode char U+00F8 (decimal 248)
+   defining Unicode char U+0131 (decimal 305)
+   defining Unicode char U+0141 (decimal 321)
+   defining Unicode char U+0142 (decimal 322)
+   defining Unicode char U+0152 (decimal 338)
+   defining Unicode char U+0153 (decimal 339)
+   defining Unicode char U+0174 (decimal 372)
+   defining Unicode char U+0175 (decimal 373)
+   defining Unicode char U+0176 (decimal 374)
+   defining Unicode char U+0177 (decimal 375)
+   defining Unicode char U+0218 (decimal 536)
+   defining Unicode char U+0219 (decimal 537)
+   defining Unicode char U+021A (decimal 538)
+   defining Unicode char U+021B (decimal 539)
+   defining Unicode char U+0237 (decimal 567)
+   defining Unicode char U+2013 (decimal 8211)
+   defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2018 (decimal 8216)
+   defining Unicode char U+2019 (decimal 8217)
+   defining Unicode char U+201C (decimal 8220)
+   defining Unicode char U+201D (decimal 8221)
+   defining Unicode char U+FB00 (decimal 64256)
+   defining Unicode char U+FB01 (decimal 64257)
+   defining Unicode char U+FB02 (decimal 64258)
+   defining Unicode char U+FB03 (decimal 64259)
+   defining Unicode char U+FB04 (decimal 64260)
+   defining Unicode char U+FB05 (decimal 64261)
+   defining Unicode char U+FB06 (decimal 64262)
+)
+Now handling font encoding T1 ...
+... processing UTF-8 mapping file for font encoding T1
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu
+File: t1enc.dfu 2022/06/07 v1.3c UTF-8 support
+   defining Unicode char U+00A0 (decimal 160)
+   defining Unicode char U+00A1 (decimal 161)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00AB (decimal 171)
+   defining Unicode char U+00AD (decimal 173)
+   defining Unicode char U+00BB (decimal 187)
+   defining Unicode char U+00BF (decimal 191)
+   defining Unicode char U+00C0 (decimal 192)
+   defining Unicode char U+00C1 (decimal 193)
+   defining Unicode char U+00C2 (decimal 194)
+   defining Unicode char U+00C3 (decimal 195)
+   defining Unicode char U+00C4 (decimal 196)
+   defining Unicode char U+00C5 (decimal 197)
+   defining Unicode char U+00C6 (decimal 198)
+   defining Unicode char U+00C7 (decimal 199)
+   defining Unicode char U+00C8 (decimal 200)
+   defining Unicode char U+00C9 (decimal 201)
+   defining Unicode char U+00CA (decimal 202)
+   defining Unicode char U+00CB (decimal 203)
+   defining Unicode char U+00CC (decimal 204)
+   defining Unicode char U+00CD (decimal 205)
+   defining Unicode char U+00CE (decimal 206)
+   defining Unicode char U+00CF (decimal 207)
+   defining Unicode char U+00D0 (decimal 208)
+   defining Unicode char U+00D1 (decimal 209)
+   defining Unicode char U+00D2 (decimal 210)
+   defining Unicode char U+00D3 (decimal 211)
+   defining Unicode char U+00D4 (decimal 212)
+   defining Unicode char U+00D5 (decimal 213)
+   defining Unicode char U+00D6 (decimal 214)
+   defining Unicode char U+00D8 (decimal 216)
+   defining Unicode char U+00D9 (decimal 217)
+   defining Unicode char U+00DA (decimal 218)
+   defining Unicode char U+00DB (decimal 219)
+   defining Unicode char U+00DC (decimal 220)
+   defining Unicode char U+00DD (decimal 221)
+   defining Unicode char U+00DE (decimal 222)
+   defining Unicode char U+00DF (decimal 223)
+   defining Unicode char U+00E0 (decimal 224)
+   defining Unicode char U+00E1 (decimal 225)
+   defining Unicode char U+00E2 (decimal 226)
+   defining Unicode char U+00E3 (decimal 227)
+   defining Unicode char U+00E4 (decimal 228)
+   defining Unicode char U+00E5 (decimal 229)
+   defining Unicode char U+00E6 (decimal 230)
+   defining Unicode char U+00E7 (decimal 231)
+   defining Unicode char U+00E8 (decimal 232)
+   defining Unicode char U+00E9 (decimal 233)
+   defining Unicode char U+00EA (decimal 234)
+   defining Unicode char U+00EB (decimal 235)
+   defining Unicode char U+00EC (decimal 236)
+   defining Unicode char U+00ED (decimal 237)
+   defining Unicode char U+00EE (decimal 238)
+   defining Unicode char U+00EF (decimal 239)
+   defining Unicode char U+00F0 (decimal 240)
+   defining Unicode char U+00F1 (decimal 241)
+   defining Unicode char U+00F2 (decimal 242)
+   defining Unicode char U+00F3 (decimal 243)
+   defining Unicode char U+00F4 (decimal 244)
+   defining Unicode char U+00F5 (decimal 245)
+   defining Unicode char U+00F6 (decimal 246)
+   defining Unicode char U+00F8 (decimal 248)
+   defining Unicode char U+00F9 (decimal 249)
+   defining Unicode char U+00FA (decimal 250)
+   defining Unicode char U+00FB (decimal 251)
+   defining Unicode char U+00FC (decimal 252)
+   defining Unicode char U+00FD (decimal 253)
+   defining Unicode char U+00FE (decimal 254)
+   defining Unicode char U+00FF (decimal 255)
+   defining Unicode char U+0100 (decimal 256)
+   defining Unicode char U+0101 (decimal 257)
+   defining Unicode char U+0102 (decimal 258)
+   defining Unicode char U+0103 (decimal 259)
+   defining Unicode char U+0104 (decimal 260)
+   defining Unicode char U+0105 (decimal 261)
+   defining Unicode char U+0106 (decimal 262)
+   defining Unicode char U+0107 (decimal 263)
+   defining Unicode char U+0108 (decimal 264)
+   defining Unicode char U+0109 (decimal 265)
+   defining Unicode char U+010A (decimal 266)
+   defining Unicode char U+010B (decimal 267)
+   defining Unicode char U+010C (decimal 268)
+   defining Unicode char U+010D (decimal 269)
+   defining Unicode char U+010E (decimal 270)
+   defining Unicode char U+010F (decimal 271)
+   defining Unicode char U+0110 (decimal 272)
+   defining Unicode char U+0111 (decimal 273)
+   defining Unicode char U+0112 (decimal 274)
+   defining Unicode char U+0113 (decimal 275)
+   defining Unicode char U+0114 (decimal 276)
+   defining Unicode char U+0115 (decimal 277)
+   defining Unicode char U+0116 (decimal 278)
+   defining Unicode char U+0117 (decimal 279)
+   defining Unicode char U+0118 (decimal 280)
+   defining Unicode char U+0119 (decimal 281)
+   defining Unicode char U+011A (decimal 282)
+   defining Unicode char U+011B (decimal 283)
+   defining Unicode char U+011C (decimal 284)
+   defining Unicode char U+011D (decimal 285)
+   defining Unicode char U+011E (decimal 286)
+   defining Unicode char U+011F (decimal 287)
+   defining Unicode char U+0120 (decimal 288)
+   defining Unicode char U+0121 (decimal 289)
+   defining Unicode char U+0122 (decimal 290)
+   defining Unicode char U+0123 (decimal 291)
+   defining Unicode char U+0124 (decimal 292)
+   defining Unicode char U+0125 (decimal 293)
+   defining Unicode char U+0128 (decimal 296)
+   defining Unicode char U+0129 (decimal 297)
+   defining Unicode char U+012A (decimal 298)
+   defining Unicode char U+012B (decimal 299)
+   defining Unicode char U+012C (decimal 300)
+   defining Unicode char U+012D (decimal 301)
+   defining Unicode char U+012E (decimal 302)
+   defining Unicode char U+012F (decimal 303)
+   defining Unicode char U+0130 (decimal 304)
+   defining Unicode char U+0131 (decimal 305)
+   defining Unicode char U+0132 (decimal 306)
+   defining Unicode char U+0133 (decimal 307)
+   defining Unicode char U+0134 (decimal 308)
+   defining Unicode char U+0135 (decimal 309)
+   defining Unicode char U+0136 (decimal 310)
+   defining Unicode char U+0137 (decimal 311)
+   defining Unicode char U+0139 (decimal 313)
+   defining Unicode char U+013A (decimal 314)
+   defining Unicode char U+013B (decimal 315)
+   defining Unicode char U+013C (decimal 316)
+   defining Unicode char U+013D (decimal 317)
+   defining Unicode char U+013E (decimal 318)
+   defining Unicode char U+0141 (decimal 321)
+   defining Unicode char U+0142 (decimal 322)
+   defining Unicode char U+0143 (decimal 323)
+   defining Unicode char U+0144 (decimal 324)
+   defining Unicode char U+0145 (decimal 325)
+   defining Unicode char U+0146 (decimal 326)
+   defining Unicode char U+0147 (decimal 327)
+   defining Unicode char U+0148 (decimal 328)
+   defining Unicode char U+014A (decimal 330)
+   defining Unicode char U+014B (decimal 331)
+   defining Unicode char U+014C (decimal 332)
+   defining Unicode char U+014D (decimal 333)
+   defining Unicode char U+014E (decimal 334)
+   defining Unicode char U+014F (decimal 335)
+   defining Unicode char U+0150 (decimal 336)
+   defining Unicode char U+0151 (decimal 337)
+   defining Unicode char U+0152 (decimal 338)
+   defining Unicode char U+0153 (decimal 339)
+   defining Unicode char U+0154 (decimal 340)
+   defining Unicode char U+0155 (decimal 341)
+   defining Unicode char U+0156 (decimal 342)
+   defining Unicode char U+0157 (decimal 343)
+   defining Unicode char U+0158 (decimal 344)
+   defining Unicode char U+0159 (decimal 345)
+   defining Unicode char U+015A (decimal 346)
+   defining Unicode char U+015B (decimal 347)
+   defining Unicode char U+015C (decimal 348)
+   defining Unicode char U+015D (decimal 349)
+   defining Unicode char U+015E (decimal 350)
+   defining Unicode char U+015F (decimal 351)
+   defining Unicode char U+0160 (decimal 352)
+   defining Unicode char U+0161 (decimal 353)
+   defining Unicode char U+0162 (decimal 354)
+   defining Unicode char U+0163 (decimal 355)
+   defining Unicode char U+0164 (decimal 356)
+   defining Unicode char U+0165 (decimal 357)
+   defining Unicode char U+0168 (decimal 360)
+   defining Unicode char U+0169 (decimal 361)
+   defining Unicode char U+016A (decimal 362)
+   defining Unicode char U+016B (decimal 363)
+   defining Unicode char U+016C (decimal 364)
+   defining Unicode char U+016D (decimal 365)
+   defining Unicode char U+016E (decimal 366)
+   defining Unicode char U+016F (decimal 367)
+   defining Unicode char U+0170 (decimal 368)
+   defining Unicode char U+0171 (decimal 369)
+   defining Unicode char U+0172 (decimal 370)
+   defining Unicode char U+0173 (decimal 371)
+   defining Unicode char U+0174 (decimal 372)
+   defining Unicode char U+0175 (decimal 373)
+   defining Unicode char U+0176 (decimal 374)
+   defining Unicode char U+0177 (decimal 375)
+   defining Unicode char U+0178 (decimal 376)
+   defining Unicode char U+0179 (decimal 377)
+   defining Unicode char U+017A (decimal 378)
+   defining Unicode char U+017B (decimal 379)
+   defining Unicode char U+017C (decimal 380)
+   defining Unicode char U+017D (decimal 381)
+   defining Unicode char U+017E (decimal 382)
+   defining Unicode char U+01C4 (decimal 452)
+   defining Unicode char U+01C5 (decimal 453)
+   defining Unicode char U+01C6 (decimal 454)
+   defining Unicode char U+01C7 (decimal 455)
+   defining Unicode char U+01C8 (decimal 456)
+   defining Unicode char U+01C9 (decimal 457)
+   defining Unicode char U+01CA (decimal 458)
+   defining Unicode char U+01CB (decimal 459)
+   defining Unicode char U+01CC (decimal 460)
+   defining Unicode char U+01CD (decimal 461)
+   defining Unicode char U+01CE (decimal 462)
+   defining Unicode char U+01CF (decimal 463)
+   defining Unicode char U+01D0 (decimal 464)
+   defining Unicode char U+01D1 (decimal 465)
+   defining Unicode char U+01D2 (decimal 466)
+   defining Unicode char U+01D3 (decimal 467)
+   defining Unicode char U+01D4 (decimal 468)
+   defining Unicode char U+01E2 (decimal 482)
+   defining Unicode char U+01E3 (decimal 483)
+   defining Unicode char U+01E6 (decimal 486)
+   defining Unicode char U+01E7 (decimal 487)
+   defining Unicode char U+01E8 (decimal 488)
+   defining Unicode char U+01E9 (decimal 489)
+   defining Unicode char U+01EA (decimal 490)
+   defining Unicode char U+01EB (decimal 491)
+   defining Unicode char U+01F0 (decimal 496)
+   defining Unicode char U+01F4 (decimal 500)
+   defining Unicode char U+01F5 (decimal 501)
+   defining Unicode char U+0218 (decimal 536)
+   defining Unicode char U+0219 (decimal 537)
+   defining Unicode char U+021A (decimal 538)
+   defining Unicode char U+021B (decimal 539)
+   defining Unicode char U+0232 (decimal 562)
+   defining Unicode char U+0233 (decimal 563)
+   defining Unicode char U+0237 (decimal 567)
+   defining Unicode char U+02D9 (decimal 729)
+   defining Unicode char U+02DB (decimal 731)
+   defining Unicode char U+1E02 (decimal 7682)
+   defining Unicode char U+1E03 (decimal 7683)
+   defining Unicode char U+1E0D (decimal 7693)
+   defining Unicode char U+1E1E (decimal 7710)
+   defining Unicode char U+1E1F (decimal 7711)
+   defining Unicode char U+1E25 (decimal 7717)
+   defining Unicode char U+1E30 (decimal 7728)
+   defining Unicode char U+1E31 (decimal 7729)
+   defining Unicode char U+1E37 (decimal 7735)
+   defining Unicode char U+1E8E (decimal 7822)
+   defining Unicode char U+1E8F (decimal 7823)
+   defining Unicode char U+1E43 (decimal 7747)
+   defining Unicode char U+1E45 (decimal 7749)
+   defining Unicode char U+1E47 (decimal 7751)
+   defining Unicode char U+1E5B (decimal 7771)
+   defining Unicode char U+1E63 (decimal 7779)
+   defining Unicode char U+1E6D (decimal 7789)
+   defining Unicode char U+1E90 (decimal 7824)
+   defining Unicode char U+1E91 (decimal 7825)
+   defining Unicode char U+1E9E (decimal 7838)
+   defining Unicode char U+1EF2 (decimal 7922)
+   defining Unicode char U+1EF3 (decimal 7923)
+   defining Unicode char U+200C (decimal 8204)
+   defining Unicode char U+2010 (decimal 8208)
+   defining Unicode char U+2011 (decimal 8209)
+   defining Unicode char U+2012 (decimal 8210)
+   defining Unicode char U+2013 (decimal 8211)
+   defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2015 (decimal 8213)
+   defining Unicode char U+2018 (decimal 8216)
+   defining Unicode char U+2019 (decimal 8217)
+   defining Unicode char U+201A (decimal 8218)
+   defining Unicode char U+201C (decimal 8220)
+   defining Unicode char U+201D (decimal 8221)
+   defining Unicode char U+201E (decimal 8222)
+   defining Unicode char U+2030 (decimal 8240)
+   defining Unicode char U+2031 (decimal 8241)
+   defining Unicode char U+2039 (decimal 8249)
+   defining Unicode char U+203A (decimal 8250)
+   defining Unicode char U+2423 (decimal 9251)
+   defining Unicode char U+1E20 (decimal 7712)
+   defining Unicode char U+1E21 (decimal 7713)
+   defining Unicode char U+FB00 (decimal 64256)
+   defining Unicode char U+FB01 (decimal 64257)
+   defining Unicode char U+FB02 (decimal 64258)
+   defining Unicode char U+FB03 (decimal 64259)
+   defining Unicode char U+FB04 (decimal 64260)
+   defining Unicode char U+FB05 (decimal 64261)
+   defining Unicode char U+FB06 (decimal 64262)
+)
+Now handling font encoding TS1 ...
+... processing UTF-8 mapping file for font encoding TS1
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.dfu
+File: ts1enc.dfu 2022/06/07 v1.3c UTF-8 support
+   defining Unicode char U+00A2 (decimal 162)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00A4 (decimal 164)
+   defining Unicode char U+00A5 (decimal 165)
+   defining Unicode char U+00A6 (decimal 166)
+   defining Unicode char U+00A7 (decimal 167)
+   defining Unicode char U+00A8 (decimal 168)
+   defining Unicode char U+00A9 (decimal 169)
+   defining Unicode char U+00AA (decimal 170)
+   defining Unicode char U+00AC (decimal 172)
+   defining Unicode char U+00AE (decimal 174)
+   defining Unicode char U+00AF (decimal 175)
+   defining Unicode char U+00B0 (decimal 176)
+   defining Unicode char U+00B1 (decimal 177)
+   defining Unicode char U+00B2 (decimal 178)
+   defining Unicode char U+00B3 (decimal 179)
+   defining Unicode char U+00B4 (decimal 180)
+   defining Unicode char U+00B5 (decimal 181)
+   defining Unicode char U+00B6 (decimal 182)
+   defining Unicode char U+00B7 (decimal 183)
+   defining Unicode char U+00B9 (decimal 185)
+   defining Unicode char U+00BA (decimal 186)
+   defining Unicode char U+00BC (decimal 188)
+   defining Unicode char U+00BD (decimal 189)
+   defining Unicode char U+00BE (decimal 190)
+   defining Unicode char U+00D7 (decimal 215)
+   defining Unicode char U+00F7 (decimal 247)
+   defining Unicode char U+0192 (decimal 402)
+   defining Unicode char U+02C7 (decimal 711)
+   defining Unicode char U+02D8 (decimal 728)
+   defining Unicode char U+02DD (decimal 733)
+   defining Unicode char U+0E3F (decimal 3647)
+   defining Unicode char U+2016 (decimal 8214)
+   defining Unicode char U+2020 (decimal 8224)
+   defining Unicode char U+2021 (decimal 8225)
+   defining Unicode char U+2022 (decimal 8226)
+   defining Unicode char U+2030 (decimal 8240)
+   defining Unicode char U+2031 (decimal 8241)
+   defining Unicode char U+203B (decimal 8251)
+   defining Unicode char U+203D (decimal 8253)
+   defining Unicode char U+2044 (decimal 8260)
+   defining Unicode char U+204E (decimal 8270)
+   defining Unicode char U+2052 (decimal 8274)
+   defining Unicode char U+20A1 (decimal 8353)
+   defining Unicode char U+20A4 (decimal 8356)
+   defining Unicode char U+20A6 (decimal 8358)
+   defining Unicode char U+20A9 (decimal 8361)
+   defining Unicode char U+20AB (decimal 8363)
+   defining Unicode char U+20AC (decimal 8364)
+   defining Unicode char U+20B1 (decimal 8369)
+   defining Unicode char U+2103 (decimal 8451)
+   defining Unicode char U+2116 (decimal 8470)
+   defining Unicode char U+2117 (decimal 8471)
+   defining Unicode char U+211E (decimal 8478)
+   defining Unicode char U+2120 (decimal 8480)
+   defining Unicode char U+2122 (decimal 8482)
+   defining Unicode char U+2126 (decimal 8486)
+   defining Unicode char U+2127 (decimal 8487)
+   defining Unicode char U+212E (decimal 8494)
+   defining Unicode char U+2190 (decimal 8592)
+   defining Unicode char U+2191 (decimal 8593)
+   defining Unicode char U+2192 (decimal 8594)
+   defining Unicode char U+2193 (decimal 8595)
+   defining Unicode char U+2329 (decimal 9001)
+   defining Unicode char U+3008 (decimal 12296)
+   defining Unicode char U+232A (decimal 9002)
+   defining Unicode char U+3009 (decimal 12297)
+   defining Unicode char U+2422 (decimal 9250)
+   defining Unicode char U+25E6 (decimal 9702)
+   defining Unicode char U+25EF (decimal 9711)
+   defining Unicode char U+266A (decimal 9834)
+   defining Unicode char U+27E8 (decimal 10216)
+   defining Unicode char U+27E9 (decimal 10217)
+   defining Unicode char U+FEFF (decimal 65279)
+)
+Now handling font encoding OMX ...
+... no UTF-8 mapping file for font encoding OMX
+Now handling font encoding U ...
+... no UTF-8 mapping file for font encoding U
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+   defining Unicode char U+00A9 (decimal 169)
+   defining Unicode char U+00AA (decimal 170)
+   defining Unicode char U+00AE (decimal 174)
+   defining Unicode char U+00BA (decimal 186)
+   defining Unicode char U+02C6 (decimal 710)
+   defining Unicode char U+02DC (decimal 732)
+   defining Unicode char U+200C (decimal 8204)
+   defining Unicode char U+2026 (decimal 8230)
+   defining Unicode char U+2122 (decimal 8482)
+   defining Unicode char U+2423 (decimal 9251)
+   defining Unicode char U+FEFF (decimal 65279)
+)))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2024/01/07 v24.1 The Babel package
+\babel@savecnt=\count289
+\U@D=\dimen154
+\l@unhyphenated=\language7
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count290
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2017/06/06 v3.3r English support from the babel system
+Package babel Info: Hyphen rules for 'canadian' set to \l@english
+(babel)             (\language0). Reported on input line 102.
+Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
+(babel)             (\language5). Reported on input line 105.
+Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
+(babel)             (\language5). Reported on input line 108.
+))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/locale/en/babel-english.tex
+Package babel Info: Importing font and identification data for english
+(babel)             from babel-en.ini. Reported on input line 11.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip56
+\bibsep=\skip57
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count291
+)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count292
+\float@exts=\toks25
+\float@box=\box53
+\@float@everytoks=\toks26
+\@floatcapt=\box54
+)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count293
+\Gm@cntv=\count294
+\c@Gm@tempcnt=\count295
+\Gm@bindingoffset=\dimen155
+\Gm@wd@mp=\dimen156
+\Gm@odd@mp=\dimen157
+\Gm@even@mp=\dimen158
+\Gm@layoutwidth=\dimen159
+\Gm@layoutheight=\dimen160
+\Gm@layouthoffset=\dimen161
+\Gm@layoutvoffset=\dimen162
+\Gm@dimlist=\toks27
+)
+(/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
+Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
+)
+(/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2022/12/04 v6.7b set line spacing
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen163
+\Gin@req@width=\dimen164
+)
+(/usr/share/texlive/texmf-dist/tex/latex/subfig/subfig.sty
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen165
+\captionmargin=\dimen166
+\caption@leftmargin=\dimen167
+\caption@rightmargin=\dimen168
+\caption@width=\dimen169
+\caption@indent=\dimen170
+\caption@parindent=\dimen171
+\caption@hangindent=\dimen172
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count296
+\c@continuedfloat=\count297
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+)
+\c@KVtest=\count298
+\sf@farskip=\skip58
+\sf@captopadj=\dimen173
+\sf@capskip=\skip59
+\sf@nearskip=\skip60
+\c@subfigure=\count299
+\c@subfigure@save=\count300
+\c@lofdepth=\count301
+\c@subtable=\count302
+\c@subtable@save=\count303
+\c@lotdepth=\count304
+\sf@top=\skip61
+\sf@bottom=\skip62
+)
+(/usr/share/texlive/texmf-dist/tex/latex/footmisc/footmisc.sty
+Package: footmisc 2023/07/05 v6.0f a miscellany of footnote facilities
+\FN@temptoken=\toks28
+\footnotemargin=\dimen174
+\@outputbox@depth=\dimen175
+Package footmisc Info: Declaring symbol style bringhurst on input line 696.
+Package footmisc Info: Declaring symbol style chicago on input line 704.
+Package footmisc Info: Declaring symbol style wiley on input line 713.
+Package footmisc Info: Declaring symbol style lamport-robust on input line 724.
+
+Package footmisc Info: Declaring symbol style lamport* on input line 744.
+Package footmisc Info: Declaring symbol style lamport*-robust on input line 765
+.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2022/01/06 v1.3d Standard LaTeX Color (DPC)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 149.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2023-11-01 v4.19 Multi-page Table package (DPC)
+\LTleft=\skip63
+\LTright=\skip64
+\LTpre=\skip65
+\LTpost=\skip66
+\LTchunksize=\count305
+\LTcapwidth=\dimen176
+\LT@head=\box55
+\LT@firsthead=\box56
+\LT@foot=\box57
+\LT@lastfoot=\box58
+\LT@gbox=\box59
+\LT@cols=\count306
+\LT@rows=\count307
+\c@LT@tables=\count308
+\c@LT@chunks=\count309
+\LT@p@ftn=\toks29
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
+))
 (/usr/share/texmf/tex/latex/lm/lmodern.sty
 Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
@@ -183,56 +912,49 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
-) (/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty
+)
+(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
 tim
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
-Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
-)) (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
-Package: microtype 2023/03/13 v3.1a Micro-typographical refinements (RS)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks22
-) (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count288
 )
-\MT@toks=\toks23
-\MT@tempbox=\box54
-\MT@count=\count289
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+Package: microtype 2023/03/13 v3.1a Micro-typographical refinements (RS)
+\MT@toks=\toks30
+\MT@tempbox=\box60
+\MT@count=\count310
 LaTeX Info: Redefining \noprotrusionifhmode on input line 1059.
 LaTeX Info: Redefining \leftprotrusion on input line 1060.
-\MT@prot@toks=\toks24
+\MT@prot@toks=\toks31
 LaTeX Info: Redefining \rightprotrusion on input line 1078.
 LaTeX Info: Redefining \textls on input line 1368.
-\MT@outer@kern=\dimen153
+\MT@outer@kern=\dimen177
 LaTeX Info: Redefining \textmicrotypecontext on input line 1988.
-\MT@listname@count=\count290
-(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype-xetex.def
-File: microtype-xetex.def 2023/03/13 v3.1a Definitions specific to xetex (RS)
-LaTeX Info: Redefining \lsstyle on input line 238.
+\MT@listname@count=\count311
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype-pdftex.def
+File: microtype-pdftex.def 2023/03/13 v3.1a Definitions specific to pdftex (RS)
+
+LaTeX Info: Redefining \lsstyle on input line 902.
+LaTeX Info: Redefining \lslig on input line 902.
+\MT@outer@space=\skip67
 )
 Package microtype Info: Loading configuration file microtype.cfg.
+
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.cfg
 File: microtype.cfg 2023/03/13 v3.1a microtype main configuration file (RS)
-)) (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
-Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
-(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
-(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
-Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
-) (/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
-Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
-))) (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+))
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
+
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package xcolor Info: Driver file: xetex.def on input line 274.
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/xetex.def
-File: xetex.def 2022/09/22 v5.0n Graphics/color driver for xetex
-) (/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+LaTeX Info: Redefining \color on input line 758.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1354.
 Package xcolor Info: Model `RGB' extended on input line 1366.
 Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1368.
 Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1369.
@@ -240,865 +962,1936 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
-) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Package: fancyvrb 2024/01/20 4.5c verbatim text (tvz,hv)
-\FV@CodeLineNo=\count291
-\FV@InFile=\read2
-\FV@TabBox=\box55
-\c@FancyVerbLine=\count292
-\FV@StepNumber=\count293
+\FV@CodeLineNo=\count312
+\FV@InFile=\read3
+\FV@TabBox=\box61
+\c@FancyVerbLine=\count313
+\FV@StepNumber=\count314
 \FV@OutFile=\write3
-) (/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty
+)
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
-\OuterFrameSep=\skip53
-\fb@frw=\dimen154
-\fb@frh=\dimen155
-\FrameRule=\dimen156
-\FrameSep=\dimen157
-) (/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
-Package: longtable 2023-11-01 v4.19 Multi-page Table package (DPC)
-\LTleft=\skip54
-\LTright=\skip55
-\LTpre=\skip56
-\LTpost=\skip57
-\LTchunksize=\count294
-\LTcapwidth=\dimen158
-\LT@head=\box56
-\LT@firsthead=\box57
-\LT@foot=\box58
-\LT@lastfoot=\box59
-\LT@gbox=\box60
-\LT@cols=\count295
-\LT@rows=\count296
-\c@LT@tables=\count297
-\c@LT@chunks=\count298
-\LT@p@ftn=\toks25
-) (/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
+\OuterFrameSep=\skip68
+\fb@frw=\dimen178
+\fb@frh=\dimen179
+\FrameRule=\dimen180
+\FrameSep=\dimen181
+)
+(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen159
-\lightrulewidth=\dimen160
-\cmidrulewidth=\dimen161
-\belowrulesep=\dimen162
-\belowbottomsep=\dimen163
-\aboverulesep=\dimen164
-\abovetopsep=\dimen165
-\cmidrulesep=\dimen166
-\cmidrulekern=\dimen167
-\defaultaddspace=\dimen168
-\@cmidla=\count299
-\@cmidlb=\count300
-\@aboverulesep=\dimen169
-\@belowrulesep=\dimen170
-\@thisruleclass=\count301
-\@lastruleclass=\count302
-\@thisrulewidth=\dimen171
-) (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+\heavyrulewidth=\dimen182
+\lightrulewidth=\dimen183
+\cmidrulewidth=\dimen184
+\belowrulesep=\dimen185
+\belowbottomsep=\dimen186
+\aboverulesep=\dimen187
+\abovetopsep=\dimen188
+\cmidrulesep=\dimen189
+\cmidrulekern=\dimen190
+\defaultaddspace=\dimen191
+\@cmidla=\count315
+\@cmidlb=\count316
+\@aboverulesep=\dimen192
+\@belowrulesep=\dimen193
+\@thisruleclass=\count317
+\@lastruleclass=\count318
+\@thisrulewidth=\dimen194
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
 Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
-\col@sep=\dimen172
-\ar@mcellbox=\box61
-\extrarowheight=\dimen173
-\NC@list=\toks26
-\extratabsurround=\skip58
-\backup@length=\skip59
-\ar@cellbox=\box62
-) (/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+\col@sep=\dimen195
+\ar@mcellbox=\box62
+\extrarowheight=\dimen196
+\NC@list=\toks32
+\extratabsurround=\skip69
+\backup@length=\skip70
+\ar@cellbox=\box63
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count303
-\calc@Bcount=\count304
-\calc@Adimen=\dimen174
-\calc@Bdimen=\dimen175
-\calc@Askip=\skip60
-\calc@Bskip=\skip61
+\calc@Acount=\count319
+\calc@Bcount=\count320
+\calc@Adimen=\dimen197
+\calc@Bdimen=\dimen198
+\calc@Askip=\skip71
+\calc@Bskip=\skip72
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count305
-\calc@Cskip=\skip62
-) (/usr/share/texlive/texmf-dist/tex/latex/footnotehyper/footnotehyper.sty
+\calc@Ccount=\count321
+\calc@Cskip=\skip73
+)
+(/usr/share/texlive/texmf-dist/tex/latex/footnotehyper/footnotehyper.sty
 Package: footnotehyper 2021/08/13 v1.1e hyperref aware footnote.sty (JFB)
-\FNH@notes=\box63
-\FNH@width=\dimen176
-\FNH@toks=\toks27
-) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
-) (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
-File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+\FNH@notes=\box64
+\FNH@width=\dimen199
+\FNH@toks=\toks33
 )
-Package graphics Info: Driver file: xetex.def on input line 107.
-)
-\Gin@req@height=\dimen177
-\Gin@req@width=\dimen178
-) (/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
-Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip63
-\bibsep=\skip64
-LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count306
-) (/usr/share/texlive/texmf-dist/tex/latex/bookmark/bookmark.sty
+(/usr/share/texlive/texmf-dist/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2024-01-20 v7.01h Hypertext links for LaTeX
-(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
-Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-) (/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty
-Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
-(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
-Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+
+(/usr/share/texlive/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
+File: bkm-pdftex.def 2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO
 )
-(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty
-Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
-)
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode not found.
-)) (/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty
-Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
-) (/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty
-Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
-) (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
-Package: nameref 2023-11-26 v2.56 Cross-referencing by name of section
-(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
-Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
-) (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
-Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
-)
-\c@section@level=\count307
-)
-\@linkdim=\dimen179
-\Hy@linkcounter=\count308
-\Hy@pagecounter=\count309
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2024-01-20 v7.01h Hyperref: PDFDocEncoding definition (HO)
-) (/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty
-Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
-)
-\Hy@SavedSpaceFactor=\count310
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
-File: puenc.def 2024-01-20 v7.01h Hyperref: PDF Unicode definition (HO)
-)
-Package hyperref Info: Option `unicode' set `true' on input line 4062.
-Package hyperref Info: Hyper figures OFF on input line 4179.
-Package hyperref Info: Link nesting OFF on input line 4184.
-Package hyperref Info: Hyper index ON on input line 4187.
-Package hyperref Info: Plain pages OFF on input line 4194.
-Package hyperref Info: Backreferencing OFF on input line 4199.
-Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4446.
-\c@Hy@tempcnt=\count311
-(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
-\Urlmuskip=\muskip18
-Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-)
-LaTeX Info: Redefining \url on input line 4784.
-\XeTeXLinkMargin=\dimen180
-(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
-Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
-(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
-Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
-)
+\BKM@id=\count322
 ))
-\Fld@menulength=\count312
-\Field@Width=\dimen181
-\Fld@charsize=\dimen182
-Package hyperref Info: Hyper figures OFF on input line 6063.
-Package hyperref Info: Link nesting OFF on input line 6068.
-Package hyperref Info: Hyper index ON on input line 6071.
-Package hyperref Info: backreferencing OFF on input line 6078.
-Package hyperref Info: Link coloring OFF on input line 6083.
-Package hyperref Info: Link coloring with OCG OFF on input line 6088.
-Package hyperref Info: PDF/A mode OFF on input line 6093.
-(/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty
-Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
-package with kernel methods
-)
-\Hy@abspage=\count313
-\c@Item=\count314
-\c@Hfootnote=\count315
-)
-Package hyperref Info: Driver (autodetected): hxetex.
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hxetex.def
-File: hxetex.def 2024-01-20 v7.01h Hyperref driver for XeTeX
-(/usr/share/texlive/texmf-dist/tex/generic/stringenc/stringenc.sty
-Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
-)
-)
-\pdfm@box=\box64
-\c@Hy@AnnotLevel=\count316
-\HyField@AnnotCount=\count317
-\Fld@listcount=\count318
-\c@bookmark@seq@number=\count319
-(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
-Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
-(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty
-Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
-kage
-with kernel methods
-) (/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
-Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
-)
-Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
-85.
-)
-\Hy@SectionHShift=\skip65
-) (/usr/share/texlive/texmf-dist/tex/latex/bookmark/bkm-dvipdfm.def
-File: bkm-dvipdfm.def 2023-12-10 v1.31 bookmark driver for dvipdfm (HO)
-\BKM@id=\count320
-)) (/usr/share/texlive/texmf-dist/tex/latex/xurl/xurl.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xurl/xurl.sty
 Package: xurl 2022/01/09 v 0.10 modify URL breaks
-) (./_main.aux)
+)
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
+21.
+
+(/usr/share/texmf/tex/latex/lm/ot1lmr.fd
+File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count323
+\l__pdf_internal_box=\box65
+)
+(./_main.aux)
 \openout1 = `_main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 132.
-LaTeX Font Info:    ... okay on input line 132.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 132.
-LaTeX Font Info:    ... okay on input line 132.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 132.
-LaTeX Font Info:    ... okay on input line 132.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 132.
-LaTeX Font Info:    ... okay on input line 132.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 132.
-LaTeX Font Info:    ... okay on input line 132.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 132.
-LaTeX Font Info:    ... okay on input line 132.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 132.
-LaTeX Font Info:    ... okay on input line 132.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 132.
-LaTeX Font Info:    ... okay on input line 132.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 132.
-LaTeX Font Info:    ... okay on input line 132.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 132.
-LaTeX Font Info:    ... okay on input line 132.
-LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 132.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 132.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 132.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 132.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 132.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 132.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 132.
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: Font family 'latinmodern-math.otf(0)' created for font
-(fontspec)             'latinmodern-math.otf' with options
-(fontspec)             [Scale=MatchLowercase,BoldItalicFont={},ItalicFont={},Sm
-allCapsFont={},Script=Math,BoldFont={latinmodern-math.otf}].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->s*[0.9999964596882403]"[latinmodern-math.otf]/OT:scri
-pt=math;language=dflt;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->s*[0.9999964596882403]"[latinmodern-math.otf]/OT:scri
-pt=math;language=dflt;"
-(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
-
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 132.
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: Font family 'latinmodern-math.otf(1)' created for font
-(fontspec)             'latinmodern-math.otf' with options
-(fontspec)             [Scale=MatchLowercase,BoldItalicFont={},ItalicFont={},Sm
-allCapsFont={},Script=Math,SizeFeatures={{Size=8.5-},{Size=6-8.5,Font=latinmode
-rn-math.otf,Style=MathScript},{Size=-6,Font=latinmodern-math.otf,Style=MathScri
-ptScript}},BoldFont={latinmodern-math.otf}].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <8.5->s*[0.9999964596882403]"[latinmodern-math.otf]/OT:s
-cript=math;language=dflt;"<6-8.5>s*[0.9999964596882403]"[latinmodern-math.otf]/
-OT:script=math;language=dflt;+ssty=0;"<-6>s*[0.9999964596882403]"[latinmodern-m
-ath.otf]/OT:script=math;language=dflt;+ssty=1;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->s*[0.9999964596882403]"[latinmodern-math.otf]/OT:scri
-pt=math;language=dflt;"
-(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
-
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 132.
-LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 132.
-
-LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input
- line 132.
-LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 132.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on inpu
-t line 132.
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 1.000096459334209.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 1.000096459334209.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 1.000096459334209.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 1.000096459334209.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 1.000096459334209.
-
-
-Package fontspec Info: Font family 'latinmodern-math.otf(2)' created for font
-(fontspec)             'latinmodern-math.otf' with options
-(fontspec)             [Scale=MatchLowercase,BoldItalicFont={},ItalicFont={},Sm
-allCapsFont={},Script=Math,SizeFeatures={{Size=8.5-},{Size=6-8.5,Font=latinmode
-rn-math.otf,Style=MathScript},{Size=-6,Font=latinmodern-math.otf,Style=MathScri
-ptScript}},BoldFont={latinmodern-math.otf},ScaleAgain=1.0001,FontAdjustment={\f
-ontdimen
-(fontspec)             8\font =6.77pt\relax \fontdimen 9\font =3.94pt\relax
-(fontspec)             \fontdimen 10\font =4.44pt\relax \fontdimen 11\font
-(fontspec)             =6.86pt\relax \fontdimen 12\font =3.45pt\relax
-(fontspec)             \fontdimen 13\font =3.63pt\relax \fontdimen 14\font
-(fontspec)             =3.63pt\relax \fontdimen 15\font =2.89pt\relax
-(fontspec)             \fontdimen 16\font =2.47pt\relax \fontdimen 17\font
-(fontspec)             =2.47pt\relax \fontdimen 18\font =2.5pt\relax
-(fontspec)             \fontdimen 19\font =2.0pt\relax \fontdimen 22\font
-(fontspec)             =2.5pt\relax \fontdimen 20\font =0pt\relax \fontdimen
-(fontspec)             21\font =0pt\relax }].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <8.5->s*[1.000096459334209]"[latinmodern-math.otf]/OT:sc
-ript=math;language=dflt;"<6-8.5>s*[1.000096459334209]"[latinmodern-math.otf]/OT
-:script=math;language=dflt;+ssty=0;"<-6>s*[1.000096459334209]"[latinmodern-math
-.otf]/OT:script=math;language=dflt;+ssty=1;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             and font adjustment code:
-(fontspec)             \fontdimen 8\font =6.77pt\relax \fontdimen 9\font
-(fontspec)             =3.94pt\relax \fontdimen 10\font =4.44pt\relax
-(fontspec)             \fontdimen 11\font =6.86pt\relax \fontdimen 12\font
-(fontspec)             =3.45pt\relax \fontdimen 13\font =3.63pt\relax
-(fontspec)             \fontdimen 14\font =3.63pt\relax \fontdimen 15\font
-(fontspec)             =2.89pt\relax \fontdimen 16\font =2.47pt\relax
-(fontspec)             \fontdimen 17\font =2.47pt\relax \fontdimen 18\font
-(fontspec)             =2.5pt\relax \fontdimen 19\font =2.0pt\relax \fontdimen
-(fontspec)             22\font =2.5pt\relax \fontdimen 20\font =0pt\relax
-(fontspec)             \fontdimen 21\font =0pt\relax 
-(fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->s*[1.000096459334209]"[latinmodern-math.otf]/OT:scrip
-t=math;language=dflt;"
-(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
-(fontspec)             and font adjustment code:
-(fontspec)             \fontdimen 8\font =6.77pt\relax \fontdimen 9\font
-(fontspec)             =3.94pt\relax \fontdimen 10\font =4.44pt\relax
-(fontspec)             \fontdimen 11\font =6.86pt\relax \fontdimen 12\font
-(fontspec)             =3.45pt\relax \fontdimen 13\font =3.63pt\relax
-(fontspec)             \fontdimen 14\font =3.63pt\relax \fontdimen 15\font
-(fontspec)             =2.89pt\relax \fontdimen 16\font =2.47pt\relax
-(fontspec)             \fontdimen 17\font =2.47pt\relax \fontdimen 18\font
-(fontspec)             =2.5pt\relax \fontdimen 19\font =2.0pt\relax \fontdimen
-(fontspec)             22\font =2.5pt\relax \fontdimen 20\font =0pt\relax
-(fontspec)             \fontdimen 21\font =0pt\relax 
-
-LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 132.
-LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
-(Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on inpu
-t line 132.
-LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 132.
-LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
-(Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on inpu
-t line 132.
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9998964600422715.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9998964600422715.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9998964600422715.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9998964600422715.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9998964600422715.
-
-
-Package fontspec Info: Font family 'latinmodern-math.otf(3)' created for font
-(fontspec)             'latinmodern-math.otf' with options
-(fontspec)             [Scale=MatchLowercase,BoldItalicFont={},ItalicFont={},Sm
-allCapsFont={},Script=Math,SizeFeatures={{Size=8.5-},{Size=6-8.5,Font=latinmode
-rn-math.otf,Style=MathScript},{Size=-6,Font=latinmodern-math.otf,Style=MathScri
-ptScript}},BoldFont={latinmodern-math.otf},ScaleAgain=0.9999,FontAdjustment={\f
-ontdimen
-(fontspec)             8\font =0.4pt\relax \fontdimen 9\font =2.0pt\relax
-(fontspec)             \fontdimen 10\font =1.67pt\relax \fontdimen 11\font
-(fontspec)             =1.11pt\relax \fontdimen 12\font =6.0pt\relax
-(fontspec)             \fontdimen 13\font =0pt\relax }].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <8.5->s*[0.9998964600422715]"[latinmodern-math.otf]/OT:s
-cript=math;language=dflt;"<6-8.5>s*[0.9998964600422715]"[latinmodern-math.otf]/
-OT:script=math;language=dflt;+ssty=0;"<-6>s*[0.9998964600422715]"[latinmodern-m
-ath.otf]/OT:script=math;language=dflt;+ssty=1;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             and font adjustment code:
-(fontspec)             \fontdimen 8\font =0.4pt\relax \fontdimen 9\font
-(fontspec)             =2.0pt\relax \fontdimen 10\font =1.67pt\relax
-(fontspec)             \fontdimen 11\font =1.11pt\relax \fontdimen 12\font
-(fontspec)             =6.0pt\relax \fontdimen 13\font =0pt\relax 
-(fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->s*[0.9998964600422715]"[latinmodern-math.otf]/OT:scri
-pt=math;language=dflt;"
-(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
-(fontspec)             and font adjustment code:
-(fontspec)             \fontdimen 8\font =0.4pt\relax \fontdimen 9\font
-(fontspec)             =2.0pt\relax \fontdimen 10\font =1.67pt\relax
-(fontspec)             \fontdimen 11\font =1.11pt\relax \fontdimen 12\font
-(fontspec)             =6.0pt\relax \fontdimen 13\font =0pt\relax 
-
-LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `normal' on input line 1
-32.
-LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
-(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on inpu
-t line 132.
-LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 132
-.
-LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
-(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on inpu
-t line 132.
-LaTeX Info: Redefining \microtypecontext on input line 132.
-Package microtype Info: Applying patch `item' on input line 132.
-Package microtype Info: Applying patch `toc' on input line 132.
-Package microtype Info: Applying patch `eqnum' on input line 132.
-Package microtype Info: Applying patch `footnote' on input line 132.
-Package microtype Info: Applying patch `verbatim' on input line 132.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+Package hyperref Info: Link coloring OFF on input line 121.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+
+Package geometry Warning: The marginal notes overrun the paper.
+     Add 46.64174pt and more to the right margin.
+
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(56.9055pt, 455.24411pt, 85.35826pt)
+* v-part:(T,H,B)=(85.35826pt, 702.78308pt, 56.9055pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=455.24411pt
+* \textheight=702.78308pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=13.08827pt
+* \topmargin=-16.97922pt
+* \headheight=12.0pt
+* \headsep=18.06749pt
+* \topskip=10.0pt
+* \footskip=25.29494pt
+* \marginparwidth=125.0pt
+* \marginparsep=7.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count324
+\scratchdimen=\dimen256
+\scratchbox=\box66
+\nofMPsegments=\count325
+\nofMParguments=\count326
+\everyMPshowfont=\toks34
+\MPscratchCnt=\count327
+\MPscratchDim=\dimen257
+\MPnumerator=\count328
+\makeMPintoPDFobject=\count329
+\everyMPtoPDFconversion=\toks35
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: longtable package is loaded.
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
+)
+Package caption Info: End \AtBeginDocument code.
+LaTeX Info: Redefining \microtypecontext on input line 121.
+Package microtype Info: Applying patch `item' on input line 121.
+Package microtype Info: Applying patch `toc' on input line 121.
+Package microtype Info: Applying patch `eqnum' on input line 121.
+
+
+Package microtype Warning: Unable to apply patch `footnote' on input line 121.
+
+Package microtype Info: Applying patch `verbatim' on input line 121.
+Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `alltext-nott'.
+LaTeX Info: Redefining \showhyphens on input line 121.
 Package microtype Info: No adjustment of tracking.
-Package microtype Info: No adjustment of spacing.
-Package microtype Info: No adjustment of kerning.
-(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-LatinModernRoman.cfg
-File: mt-LatinModernRoman.cfg 2021/02/21 v1.1 microtype config. file: Latin Mod
-ern Roman (RS)
-)
-Package hyperref Info: Link coloring OFF on input line 132.
-
-Package hyperref Warning: Rerun to get /PageLabels entry.
-
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 134.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 134.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 134.
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-34.
-(/usr/share/texmf/tex/latex/lm/omllmm.fd
-File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 12.0011pt on input line 134.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.00073pt on input line 134.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.00055pt on input line 134.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 11.99872pt on input line 134.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.99915pt on input line 134.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.99936pt on input line 134.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 134
-.
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
-File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 134
-.
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
-File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+Package microtype Info: No adjustment of interword spacing.
+Package microtype Info: No adjustment of character kerning.
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
 ) [1
 
 
-] [2
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf/fonts/enc/
+dvips/lm/lm-rm.enc}] [2
 
 ] (./_main.toc
-Underfull \hbox (badness 1552) in paragraph at lines 1--1
-  [][]\TU/lmr/bx/n/10 cover-image: path to the social sharing image like im- 
- []
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 3
+.
+ (/usr/share/texmf/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
+3.
 
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.00092pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.00064pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.00046pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.99893pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.99925pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 2.
-[3] [4])
+(/usr/share/texmf/tex/latex/lm/omslmsy.fd
+File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
+3.
+
+(/usr/share/texmf/tex/latex/lm/omxlmex.fd
+File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 3.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 3.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 3.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 3.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 3.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+LaTeX Font Info:    Trying to load font information for OT1+lmtt on input line 
+23.
+
+(/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
+File: ot1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMS+lmr on input line 2
+7.
+
+(/usr/share/texmf/tex/latex/lm/omslmr.fd
+File: omslmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 27.
+ [3{/usr/share/texmf/fonts/enc/dvips/lm/lm-rmtt.enc}{/usr/share/texmf/fonts/enc
+/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}] [4
+])
 \tf@toc=\write4
 \openout4 = `_main.toc'.
 
-[5] [6
+ [5] [6
 
 ]
 Chapter 1.
-[7]
-Overfull \hbox (133.62233pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 8 \TU/lmr/m/sl/10 CHAPTER 1.  COVER-IMAGE: PATH TO THE SOCIAL SH
-ARING IMAGE LIKE IMAGES/COVER.JPG
- []
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
+43.
+(/usr/share/texmf/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
+147.
 
-[8
+(/usr/share/texmf/tex/latex/lm/ts1lmtt.fd
+File: ts1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `OT1/lmtt/bx/n' in size <10> not available
+(Font)              Font shape `OT1/lmtt/b/n' tried instead on input line 158.
+ [7{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}] [8]
+Underfull \vbox (badness 2443) has occurred while \output is active []
 
-]
+ [9]
+Underfull \vbox (badness 2443) has occurred while \output is active []
+
+ [10]
+[11] [12]
 Chapter 2.
-[9] [10
+[13
 
-]
-Chapter 3.
-LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <14.4> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 200.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 14.4pt on input line 203.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 14.4013pt on input line 203.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 14.39845pt on input line 203.
-[11] [12
+] [14]
+Underfull \vbox (badness 1147) has occurred while \output is active []
 
-]
-Chapter 4.
-LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 211.
-[13]
-Overfull \hbox (69.75pt too wide) in paragraph at lines 255--255
-[]\TU/lmtt/m/n/10 ## Name:      grMod  grInvMod    params      vcov     distr  
-    name      desc[] 
- []
-
-
-Overfull \hbox (69.75pt too wide) in paragraph at lines 255--255
-[]\TU/lmtt/m/n/10 ## Class:   formula   formula     FLPar     array character c
-haracter character[] 
- []
-
-
-Overfull \hbox (384.21576pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 14 \TU/lmr/m/sl/10 CHAPTER 4.  MODELLING INDIVIDUAL GROWTH AND U
-SING STOCHASTIC SLICING TO CONVERT LENGTH-BASED DATA INTO AGE-BASED DATA
- []
-
-[14]
-Overfull \hbox (198.38016pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 4.2.  ADDING UNCERTAINTY TO GROWTH PARAMETERS WITH A MULTIVARIA
-TE NORMAL DISTRIBUTION} \TU/lmr/m/n/10 15
- []
-
-[15]
-Overfull \hbox (384.21576pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 16 \TU/lmr/m/sl/10 CHAPTER 4.  MODELLING INDIVIDUAL GROWTH AND U
-SING STOCHASTIC SLICING TO CONVERT LENGTH-BASED DATA INTO AGE-BASED DATA
- []
-
+ [15]
 [16]
-Overfull \hbox (85.5pt too wide) in paragraph at lines 478--478
-[]\TU/lmtt/m/n/10 ##            1        2        3        4         5         
-6         7         8[] 
+Chapter 3.
+
+Underfull \vbox (badness 3250) has occurred while \output is active []
+
+ [17
+
+]
+LaTeX Font Info:    Trying to load font information for OML+lmtt on input line 
+569.
+LaTeX Font Info:    No file OMLlmtt.fd. on input line 569.
+
+
+LaTeX Font Warning: Font shape `OML/lmtt/m/n' undefined
+(Font)              using `OML/cmm/m/it' instead
+(Font)              for symbol `textless' on input line 569.
+
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-9-1.png, id=294, 505.89p
+t x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-9-1.png Graphic fil
+e (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-9-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+9-1.png  used on input line 579.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-10-1.png, id=295, 505.89
+pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-10-1.png Graphic fi
+le (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-10-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+10-1.png  used on input line 606.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+[18 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-9-1.png>]
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-11-1.png, id=304, 505.89
+pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-11-1.png Graphic fi
+le (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-11-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+11-1.png  used on input line 616.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-12-1.png, id=305, 505.89
+pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-12-1.png Graphic fi
+le (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-12-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+12-1.png  used on input line 624.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-13-1.png, id=306, 505.89
+pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-13-1.png Graphic fi
+le (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-13-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+13-1.png  used on input line 638.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [19 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-10-1.png (PNG cop
+y)>]
+[20 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-11-1.png (PNG copy
+)> <./_bookdown_files/_main_files/figure-html/unnamed-chunk-12-1.png (PNG copy)
+>]
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-14-1.png, id=320, 505.89
+pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-14-1.png Graphic fi
+le (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-14-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+14-1.png  used on input line 661.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-15-1.png, id=321, 505.89
+pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-15-1.png Graphic fi
+le (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-15-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+15-1.png  used on input line 671.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+ [21 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-13-1.png (PNG cop
+y)>] [22 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-14-1.png (PNG
+ copy)> <./_bookdown_files/_main_files/figure-html/unnamed-chunk-15-1.png (PNG 
+copy)>]
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-16-1.png, id=333, 505.89
+pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-16-1.png Graphic fi
+le (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-16-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+16-1.png  used on input line 697.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-17-1.png, id=334, 505.89
+pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-17-1.png Graphic fi
+le (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-17-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+17-1.png  used on input line 717.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+LaTeX Font Info:    Font shape `OT1/lmtt/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/lmtt/b/n' tried instead on input line 722.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [23 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-16-1.png (PNG cop
+y)>]
+[24 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-17-1.png (PNG copy
+)>]
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-20-1.png, id=346, 505.89
+pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-20-1.png Graphic fi
+le (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-20-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+20-1.png  used on input line 761.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+ [25 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-20-1.png (PNG cop
+y)>]
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-22-1.png, id=353, 505.89
+pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-22-1.png Graphic fi
+le (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-22-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+22-1.png  used on input line 785.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <14.4> on input line 788.
+ [26 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-22-1.png (PNG cop
+y)>]
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-23-1.png, id=360, 505.89
+pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-23-1.png Graphic fi
+le (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-23-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+23-1.png  used on input line 808.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+LaTeX Font Info:    Trying to load font information for OMS+lmtt on input line 
+815.
+LaTeX Font Info:    No file OMSlmtt.fd. on input line 815.
+
+
+LaTeX Font Warning: Font shape `OMS/lmtt/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbraceleft' on input line 815.
+
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-24-1.png, id=361, 505.89
+pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-24-1.png Graphic fi
+le (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-24-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+24-1.png  used on input line 824.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [27 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-23-1.png (PNG cop
+y)>]
+[28 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-24-1.png (PNG copy
+)>]
+Chapter 4.
+[29
+
+]
+Underfull \vbox (badness 1448) has occurred while \output is active []
+
+
+Overfull \hbox (273.94945pt too wide) has occurred while \output is active
+\OT1/lmr/m/n/10 30 \OT1/lmr/m/sl/10 CHAPTER 4.  MODELLING INDIVIDUAL GROWTH AND
+ USING STOCHASTIC SLICING TO CONVERT LENGTH-BASED DATA INTO AGE-BASED DATA
+ []
+
+[30]
+LaTeX Font Info:    Font shape `OMS/lmr/bx/n' in size <14.4> not available
+(Font)              Font shape `OMS/lmsy/b/n' tried instead on input line 935.
+LaTeX Font Info:    Font shape `OMS/lmr/m/sl' in size <10> not available
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 974.
+
+Overfull \hbox (88.12259pt too wide) has occurred while \output is active
+\OT1/lmr/m/sl/10 4.2.  ADDING UNCERTAINTY TO GROWTH PARAMETERS WITH A MULTIVARI
+ATE NORMAL DISTRIBUTION\OMS/lmsy/m/n/10 g \OT1/lmr/m/n/10 31
+ []
+
+[31]
+Overfull \hbox (273.94945pt too wide) has occurred while \output is active
+\OT1/lmr/m/n/10 32 \OT1/lmr/m/sl/10 CHAPTER 4.  MODELLING INDIVIDUAL GROWTH AND
+ USING STOCHASTIC SLICING TO CONVERT LENGTH-BASED DATA INTO AGE-BASED DATA
+ []
+
+[32]
+<_bookdown_files/_main_files/figure-html/plot_norm_params-1.png, id=392, 505.89
+pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/plot_norm_params-1.png Graphic fi
+le (type png)
+<use _bookdown_files/_main_files/figure-html/plot_norm_params-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/plot_norm_para
+ms-1.png  used on input line 1089.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/plot_norm_scatter-1.png, id=393, 505.8
+9pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/plot_norm_scatter-1.png Graphic f
+ile (type png)
+<use _bookdown_files/_main_files/figure-html/plot_norm_scatter-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/plot_norm_scat
+ter-1.png  used on input line 1097.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/plot_mv_growth-1.png, id=394, 505.89pt
+ x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/plot_mv_growth-1.png Graphic file
+ (type png)
+<use _bookdown_files/_main_files/figure-html/plot_mv_growth-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/plot_mv_growth
+-1.png  used on input line 1105.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+
+Overfull \hbox (88.12259pt too wide) has occurred while \output is active
+\OT1/lmr/m/sl/10 4.2.  ADDING UNCERTAINTY TO GROWTH PARAMETERS WITH A MULTIVARI
+ATE NORMAL DISTRIBUTION\OMS/lmsy/m/n/10 g \OT1/lmr/m/n/10 33
+ []
+
+[33 <./_bookdown_files/_main_files/figure-html/plot_norm_params-1.png>]
+Overfull \hbox (273.94945pt too wide) has occurred while \output is active
+\OT1/lmr/m/n/10 34 \OT1/lmr/m/sl/10 CHAPTER 4.  MODELLING INDIVIDUAL GROWTH AND
+ USING STOCHASTIC SLICING TO CONVERT LENGTH-BASED DATA INTO AGE-BASED DATA
+ []
+
+[34 <./_bookdown_files/_main_files/figure-html/plot_norm_scatter-1.png>]
+Overfull \hbox (96.6631pt too wide) has occurred while \output is active
+\OT1/lmr/m/sl/10 4.3.  ADDING UNCERTAINTY TO GROWTH PARAMETERS WITH A MULTIVARI
+ATE TRIANGLE DISTRIBUTION\OMS/lmsy/m/n/10 g \OT1/lmr/m/n/10 35
+ []
+
+[35 <./_bookdown_files/_main_files/figure-html/plot_mv_growth-1.png>]
+<_bookdown_files/_main_files/figure-html/plot_tri_params-1.png, id=417, 505.89p
+t x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/plot_tri_params-1.png Graphic fil
+e (type png)
+<use _bookdown_files/_main_files/figure-html/plot_tri_params-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/plot_tri_param
+s-1.png  used on input line 1155.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/plot_tri_scatter-1.png, id=418, 505.89
+pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/plot_tri_scatter-1.png Graphic fi
+le (type png)
+<use _bookdown_files/_main_files/figure-html/plot_tri_scatter-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/plot_tri_scatt
+er-1.png  used on input line 1161.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/plot_tri_growth-1.png, id=419, 505.89p
+t x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/plot_tri_growth-1.png Graphic fil
+e (type png)
+<use _bookdown_files/_main_files/figure-html/plot_tri_growth-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/plot_tri_growt
+h-1.png  used on input line 1169.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+
+Underfull \vbox (badness 1221) has occurred while \output is active []
+
+
+Overfull \hbox (273.94945pt too wide) has occurred while \output is active
+\OT1/lmr/m/n/10 36 \OT1/lmr/m/sl/10 CHAPTER 4.  MODELLING INDIVIDUAL GROWTH AND
+ USING STOCHASTIC SLICING TO CONVERT LENGTH-BASED DATA INTO AGE-BASED DATA
+ []
+
+[36 <./_bookdown_files/_main_files/figure-html/plot_tri_params-1.png>]
+Overfull \hbox (96.6631pt too wide) has occurred while \output is active
+\OT1/lmr/m/sl/10 4.3.  ADDING UNCERTAINTY TO GROWTH PARAMETERS WITH A MULTIVARI
+ATE TRIANGLE DISTRIBUTION\OMS/lmsy/m/n/10 g \OT1/lmr/m/n/10 37
+ []
+
+[37 <./_bookdown_files/_main_files/figure-html/plot_tri_scatter-1.png>]
+Overfull \hbox (273.94945pt too wide) has occurred while \output is active
+\OT1/lmr/m/n/10 38 \OT1/lmr/m/sl/10 CHAPTER 4.  MODELLING INDIVIDUAL GROWTH AND
+ USING STOCHASTIC SLICING TO CONVERT LENGTH-BASED DATA INTO AGE-BASED DATA
+ []
+
+[38 <./_bookdown_files/_main_files/figure-html/plot_tri_growth-1.png>]
+<_bookdown_files/_main_files/figure-html/plot_cop_tri_scatter-1.png, id=443, 50
+5.89pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/plot_cop_tri_scatter-1.png Graphi
+c file (type png)
+<use _bookdown_files/_main_files/figure-html/plot_cop_tri_scatter-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/plot_cop_tri_s
+catter-1.png  used on input line 1193.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/plot_cop_tri_growth-1.png, id=444, 505
+.89pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/plot_cop_tri_growth-1.png Graphic
+ file (type png)
+<use _bookdown_files/_main_files/figure-html/plot_cop_tri_growth-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/plot_cop_tri_g
+rowth-1.png  used on input line 1199.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+ [39 <./_bookdown_files/_main_files/figure-html/plot_cop_tri_scatter-1.png>]
+Overfull \hbox (273.94945pt too wide) has occurred while \output is active
+\OT1/lmr/m/n/10 40 \OT1/lmr/m/sl/10 CHAPTER 4.  MODELLING INDIVIDUAL GROWTH AND
+ USING STOCHASTIC SLICING TO CONVERT LENGTH-BASED DATA INTO AGE-BASED DATA
+ []
+
+[40 <./_bookdown_files/_main_files/figure-html/plot_cop_tri_growth-1.png>]
+Overfull \hbox (180.00404pt too wide) in paragraph at lines 1257--1257
+[]\OT1/lmtt/m/n/10 ## Warning in .local(object, model, ...): Individual weights
+, M and maturity will be (weighted) averaged accross lengths,[] 
+ []
+
+[41]
+Overfull \hbox (159.0041pt too wide) in paragraph at lines 1262--1262
+[]\OT1/lmtt/m/n/10 ## Warning in .local(object, model, ...): Some ages are less
+ than 0, indicating a mismatch between input data lengths[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 478--478
-[]\TU/lmtt/m/n/10 ##   1 1.040227 1.264898 1.483356 1.233129 0.7969753 0.891515
-6 0.9040472 0.8346221[] 
+Overfull \hbox (169.50407pt too wide) in paragraph at lines 1281--1281
+[]\OT1/lmtt/m/n/10 ## Warning in l2a(rfTrawl.idx, vbTriSmall): Some ages are le
+ss than 0, indicating a mismatch between input data lengths[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 478--478
-[]\TU/lmtt/m/n/10 ##   2 1.240596 1.517550 1.775896 1.475675 0.9493824 1.065078
-6 1.0779006 0.9958501[] 
+Overfull \hbox (273.94945pt too wide) has occurred while \output is active
+\OT1/lmr/m/n/10 42 \OT1/lmr/m/sl/10 CHAPTER 4.  MODELLING INDIVIDUAL GROWTH AND
+ USING STOCHASTIC SLICING TO CONVERT LENGTH-BASED DATA INTO AGE-BASED DATA
+ []
+
+[42]
+Chapter 5.
+[43
+
+] [44]
+
+LaTeX Font Warning: Font shape `OML/lmtt/bx/n' undefined
+(Font)              using `OML/cmm/m/it' instead
+(Font)              for symbol `textgreater' on input line 1402.
+
+
+Overfull \hbox (149.85722pt too wide) has occurred while \output is active
+\OT1/lmr/m/sl/10 5.3.  ADDING UNCERTAINTY TO NATURAL MORTALITY PARAMETERS WITH 
+A MULTIVARIATE NORMAL DISTRIBUTION \OT1/lmr/m/n/10 45
+ []
+
+[45] [46]
+Overfull \hbox (53.60919pt too wide) has occurred while \output is active
+\OT1/lmr/m/sl/10 5.4.  ADDING UNCERTAINTY TO NATURAL MORTALITY PARAMETERS WITH 
+STATISTICAL COPULAS \OT1/lmr/m/n/10 47
+ []
+
+[47]
+<_bookdown_files/_main_files/figure-html/plot_tri_gis_m-1.png, id=496, 505.89pt
+ x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/plot_tri_gis_m-1.png Graphic file
+ (type png)
+<use _bookdown_files/_main_files/figure-html/plot_tri_gis_m-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/plot_tri_gis_m
+-1.png  used on input line 1594.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/plot_tri_gis_m_hist-1.png, id=497, 505
+.89pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/plot_tri_gis_m_hist-1.png Graphic
+ file (type png)
+<use _bookdown_files/_main_files/figure-html/plot_tri_gis_m_hist-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/plot_tri_gis_m
+_hist-1.png  used on input line 1600.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1604--1605
+\OT1/lmtt/m/n/10 shape\OMS/lmtt/m/n/10 g \OT1/lmtt/m/n/10 model from Gislason\T
+S1/lmtt/m/n/10 '\OT1/lmtt/m/n/10 s work, Jensen\TS1/lmtt/m/n/10 '\OT1/lmtt/m/n/
+10 s third model based on temperature\OT1/lmr/m/n/10 (+20) level\OT1/lmtt/m/n/1
+0 and a
+ []
+
+[48 <./_bookdown_files/_main_files/figure-html/plot_tri_gis_m-1.png>]
+Overfull \hbox (53.60919pt too wide) has occurred while \output is active
+\OT1/lmr/m/sl/10 5.4.  ADDING UNCERTAINTY TO NATURAL MORTALITY PARAMETERS WITH 
+STATISTICAL COPULAS \OT1/lmr/m/n/10 49
+ []
+
+[49 <./_bookdown_files/_main_files/figure-html/plot_tri_gis_m_hist-1.png>]
+[50] [51] [52] [53] [54]
+<_bookdown_files/_main_files/figure-html/uncertain_m-1.png, id=532, 505.89pt x 
+361.35pt>
+File: _bookdown_files/_main_files/figure-html/uncertain_m-1.png Graphic file (t
+ype png)
+<use _bookdown_files/_main_files/figure-html/uncertain_m-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/uncertain_m-1.
+png  used on input line 1985.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+ [55 <./_bookdown_files/_main_files/figure-html/uncertain_m-1.png>] [56
+
+]
+Chapter 6.
+[57{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}]
+<figure/sca_matrix.png, id=554, 179.2296pt x 180.675pt>
+File: figure/sca_matrix.png Graphic file (type png)
+<use figure/sca_matrix.png>
+Package pdftex.def Info: figure/sca_matrix.png  used on input line 2030.
+(pdftex.def)             Requested size: 179.22914pt x 180.67455pt.
+ [58 <./figure/sca_matrix.png>]
+Overfull \hbox (70.82687pt too wide) in paragraph at lines 2061--2064
+[]\OT1/lmr/m/n/10 (-20) %======================================================
+==============
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 478--478
-[]\TU/lmtt/m/n/10 ##   3 1.444084 1.777356 2.075912 1.724001 1.1038198 1.241763
-5 1.2542913 1.1595666[] 
+Overfull \hbox (373.98604pt too wide) in paragraph at lines 2061--2064
+\OT1/lmr/m/n/10 (-20) %THE FOL-LOW-ING NEEDS RE-VI-SION, need to bring in N1 su
+b-mod %==================================================================== 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 478--478
-[]\TU/lmtt/m/n/10 ##   4 1.650790 2.044732 2.383795 1.978389 1.2603424 1.421684
-8 1.4332944 1.3258496[] 
+Overfull \hbox (70.82687pt too wide) in paragraph at lines 2073--2074
+[]\OT1/lmr/m/n/10 (-20) %======================================================
+============== 
+ []
+
+[59]
+Overfull \hbox (70.82687pt too wide) in paragraph at lines 2095--2099
+[]\OT1/lmr/m/n/10 (-20) %======================================================
+==============
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 478--478
-[]\TU/lmtt/m/n/10 ##   5 1.860818 2.320133 2.699971 2.239142 1.4190071 1.604963
-2 1.6149884 1.4947809[] 
+Overfull \hbox (231.40668pt too wide) in paragraph at lines 2095--2099
+\OT1/lmr/m/n/10 (-20) pre-dic-tions will be a mix of S/R and $\OML/lmm/m/it/10 
+^^M$ \OT1/lmr/m/n/10 (-20) %===================================================
+================= 
  []
 
 
-Overfull \hbox (198.38016pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 4.2.  ADDING UNCERTAINTY TO GROWTH PARAMETERS WITH A MULTIVARIA
-TE NORMAL DISTRIBUTION} \TU/lmr/m/n/10 17
+Overfull \hbox (70.82687pt too wide) in paragraph at lines 2106--2109
+[]\OT1/lmr/m/n/10 (-20) %======================================================
+==============
  []
 
-[17]
-Overfull \hbox (85.5pt too wide) in paragraph at lines 478--478
-[]\TU/lmtt/m/n/10 ##   6 2.074275 2.604055 3.024897 2.506587 1.5798735 1.791726
-3 1.7994554 1.6664461[] 
+
+Underfull \hbox (badness 1215) in paragraph at lines 2106--2109
+\OT1/lmr/m/n/10 (+20) % WE NEED TO ADD SOME-THING ABOUT HOW THE PLUS-GROUP IS M
+OD-ELLED
  []
 
-File: _main_files/figure-latex/plot_norm_params-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/plot_norm_params-1.pdf>
-File: _main_files/figure-latex/plot_norm_scatter-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/plot_norm_scatter-1.pdf>
 
-Overfull \hbox (24.20001pt too wide) in paragraph at lines 496--497
-[]\TU/lmr/m/n/10 Growth curves for the 1000 iterations can be seen in Figure @r
-ef(fig:plot_mv_growth). 
+Overfull \hbox (70.82687pt too wide) in paragraph at lines 2106--2109
+\OT1/lmr/m/n/10 (-20) %========================================================
+============ 
  []
 
-File: _main_files/figure-latex/plot_mv_growth-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/plot_mv_growth-1.pdf>
+<scamethod.png, id=568, 584.1825pt x 152.9715pt>
+File: scamethod.png Graphic file (type png)
+<use scamethod.png>
+Package pdftex.def Info: scamethod.png  used on input line 2117.
+(pdftex.def)             Requested size: 455.25938pt x 119.21222pt.
+<fitclass.png, id=570, 226.6869pt x 336.5373pt>
+File: fitclass.png Graphic file (type png)
+<use fitclass.png>
+Package pdftex.def Info: fitclass.png  used on input line 2123.
+(pdftex.def)             Requested size: 226.68979pt x 336.5416pt.
+<fitsamcclass.png, id=571, 667.0521pt x 865.7946pt>
+File: fitsamcclass.png Graphic file (type png)
+<use fitsamcclass.png>
+Package pdftex.def Info: fitsamcclass.png  used on input line 2129.
+(pdftex.def)             Requested size: 455.24849pt x 590.88593pt.
+[60 <./scamethod.png>] [61 <./fitclass.png>] [62 <./fitsamcclass.png>]
+Chapter 7.
+[63
 
-Overfull \hbox (384.21576pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 18 \TU/lmr/m/sl/10 CHAPTER 4.  MODELLING INDIVIDUAL GROWTH AND U
-SING STOCHASTIC SLICING TO CONVERT LENGTH-BASED DATA INTO AGE-BASED DATA
+]
+<_bookdown_files/_main_files/figure-html/fund_forms-1.png, id=600, 505.89pt x 3
+61.35pt>
+File: _bookdown_files/_main_files/figure-html/fund_forms-1.png Graphic file (ty
+pe png)
+<use _bookdown_files/_main_files/figure-html/fund_forms-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/fund_forms-1.p
+ng  used on input line 2191.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+ [64 <./_bookdown_files/_main_files/figure-html/fund_forms-1.png (PNG copy)>]
+<_bookdown_files/_main_files/figure-html/fund_forms_age-1.png, id=606, 505.89pt
+ x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/fund_forms_age-1.png Graphic file
+ (type png)
+<use _bookdown_files/_main_files/figure-html/fund_forms_age-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/fund_forms_age
+-1.png  used on input line 2222.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+ [65 <./_bookdown_files/_main_files/figure-html/fund_forms_age-1.png (PNG copy)
+>]
+<_bookdown_files/_main_files/figure-html/majeffy-1.png, id=615, 505.89pt x 361.
+35pt>
+File: _bookdown_files/_main_files/figure-html/majeffy-1.png Graphic file (type 
+png)
+<use _bookdown_files/_main_files/figure-html/majeffy-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/majeffy-1.png 
+ used on input line 2259.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/majeffa-1.png, id=616, 505.89pt x 361.
+35pt>
+File: _bookdown_files/_main_files/figure-html/majeffa-1.png Graphic file (type 
+png)
+<use _bookdown_files/_main_files/figure-html/majeffa-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/majeffa-1.png 
+ used on input line 2271.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/majeffc-1.png, id=617, 505.89pt x 361.
+35pt>
+File: _bookdown_files/_main_files/figure-html/majeffc-1.png Graphic file (type 
+png)
+<use _bookdown_files/_main_files/figure-html/majeffc-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/majeffc-1.png 
+ used on input line 2283.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+
+Overfull \hbox (70.82687pt too wide) in paragraph at lines 2290--2293
+\OT1/lmr/m/n/10 (-20) %========================================================
+============
  []
 
-[18]
-Overfull \hbox (206.92017pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 4.3.  ADDING UNCERTAINTY TO GROWTH PARAMETERS WITH A MULTIVARIA
-TE TRIANGLE DISTRIBUTION} \TU/lmr/m/n/10 19
+
+Overfull \hbox (240.40872pt too wide) in paragraph at lines 2290--2293
+\OT1/lmr/m/n/10 (-20) % COLIN TO CHECK THE SEC-TION %==========================
+========================================== 
  []
 
-[19]
-Overfull \hbox (384.21576pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 20 \TU/lmr/m/sl/10 CHAPTER 4.  MODELLING INDIVIDUAL GROWTH AND U
-SING STOCHASTIC SLICING TO CONVERT LENGTH-BASED DATA INTO AGE-BASED DATA
+[66 <./_bookdown_files/_main_files/figure-html/majeffy-1.png>] [67 <./_bookdown
+_files/_main_files/figure-html/majeffa-1.png> <./_bookdown_files/_main_files/fi
+gure-html/majeffc-1.png>] [68]
+Overfull \vbox (0.45204pt too high) detected at line 2421
  []
 
-[20]
-File: _main_files/figure-latex/plot_tri_params-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/plot_tri_params-1.pdf>
-File: _main_files/figure-latex/plot_tri_scatter-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/plot_tri_scatter-1.pdf>
-File: _main_files/figure-latex/plot_tri_growth-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/plot_tri_growth-1.pdf>
+[69] [70]
+Chapter 8.
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-38-1.png, id=647, 505.89
+pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-38-1.png Graphic fi
+le (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-38-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+38-1.png  used on input line 2497.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [71
+
+]
+Underfull \vbox (badness 4872) has occurred while \output is active []
+
+ [72 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-38-1.png>]
+<_bookdown_files/_main_files/figure-html/fit0-1.png, id=657, 505.89pt x 361.35p
+t>
+File: _bookdown_files/_main_files/figure-html/fit0-1.png Graphic file (type png
+)
+<use _bookdown_files/_main_files/figure-html/fit0-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/fit0-1.png  us
+ed on input line 2555.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+
+Underfull \vbox (badness 1231) has occurred while \output is active []
+
+ [73 <./_bookdown_files/_main_files/figure-html/fit0-1.png>] [74]
+<_bookdown_files/_main_files/figure-html/te1-1.png, id=670, 505.89pt x 361.35pt
+>
+File: _bookdown_files/_main_files/figure-html/te1-1.png Graphic file (type png)
+
+<use _bookdown_files/_main_files/figure-html/te1-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/te1-1.png  use
+d on input line 2654.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+ [75 <./_bookdown_files/_main_files/figure-html/te1-1.png>]
+<_bookdown_files/_main_files/figure-html/age1-1.png, id=680, 505.89pt x 361.35p
+t>
+File: _bookdown_files/_main_files/figure-html/age1-1.png Graphic file (type png
+)
+<use _bookdown_files/_main_files/figure-html/age1-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/age1-1.png  us
+ed on input line 2675.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+ [76 <./_bookdown_files/_main_files/figure-html/age1-1.png>]
+Overfull \hbox (164.25409pt too wide) in paragraph at lines 2715--2715
+[]\OT1/lmtt/m/n/10 ## Warning: *** ~s(age, k = 4) + s(year, k = 20) + s(as.nume
+ric(year - age),     k = 10) has 1 too many parameter(s)!![] 
+ []
+
+<_bookdown_files/_main_files/figure-html/sep00-1.png, id=691, 505.89pt x 361.35
+pt>
+File: _bookdown_files/_main_files/figure-html/sep00-1.png Graphic file (type pn
+g)
+<use _bookdown_files/_main_files/figure-html/sep00-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/sep00-1.png  u
+sed on input line 2729.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/sep01-1.png, id=692, 505.89pt x 361.35
+pt>
+File: _bookdown_files/_main_files/figure-html/sep01-1.png Graphic file (type pn
+g)
+<use _bookdown_files/_main_files/figure-html/sep01-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/sep01-1.png  u
+sed on input line 2741.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+[77 <./_bookdown_files/_main_files/figure-html/sep00-1.png>] [78 <./_bookdown_f
+iles/_main_files/figure-html/sep01-1.png>]
+<_bookdown_files/_main_files/figure-html/ctsselage-1.png, id=707, 505.89pt x 36
+1.35pt>
+File: _bookdown_files/_main_files/figure-html/ctsselage-1.png Graphic file (typ
+e png)
+<use _bookdown_files/_main_files/figure-html/ctsselage-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/ctsselage-1.pn
+g  used on input line 2805.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/ctsselyear-1.png, id=708, 505.89pt x 3
+61.35pt>
+File: _bookdown_files/_main_files/figure-html/ctsselyear-1.png Graphic file (ty
+pe png)
+<use _bookdown_files/_main_files/figure-html/ctsselyear-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/ctsselyear-1.p
+ng  used on input line 2826.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+ [79] [80 <./_bookdown_files/_main_files/figure-html/ctsselage-1.png> <./_bookd
+own_files/_main_files/figure-html/ctsselyear-1.png>]
+<_bookdown_files/_main_files/figure-html/brk-1.png, id=725, 505.89pt x 361.35pt
+>
+File: _bookdown_files/_main_files/figure-html/brk-1.png Graphic file (type png)
+
+<use _bookdown_files/_main_files/figure-html/brk-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/brk-1.png  use
+d on input line 2900.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+ [81] [82 <./_bookdown_files/_main_files/figure-html/brk-1.png>]
+<_bookdown_files/_main_files/figure-html/logistic-1.png, id=741, 505.89pt x 361
+.35pt>
+File: _bookdown_files/_main_files/figure-html/logistic-1.png Graphic file (type
+ png)
+<use _bookdown_files/_main_files/figure-html/logistic-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/logistic-1.png
+  used on input line 2953.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/ageind-1.png, id=743, 505.89pt x 361.3
+5pt>
+File: _bookdown_files/_main_files/figure-html/ageind-1.png Graphic file (type p
+ng)
+<use _bookdown_files/_main_files/figure-html/ageind-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/ageind-1.png  
+used on input line 2977.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/coh-1.png, id=745, 505.89pt x 361.35pt
+>
+File: _bookdown_files/_main_files/figure-html/coh-1.png Graphic file (type png)
+
+<use _bookdown_files/_main_files/figure-html/coh-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/coh-1.png  use
+d on input line 2992.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [83 <./_bookdown_files/_main_files/figure-html/logistic-1.png>] [84 <./_bookdo
+wn_files/_main_files/figure-html/ageind-1.png> <./_bookdown_files/_main_files/f
+igure-html/coh-1.png>]
+<_bookdown_files/_main_files/figure-html/dummyage-1.png, id=764, 505.89pt x 361
+.35pt>
+File: _bookdown_files/_main_files/figure-html/dummyage-1.png Graphic file (type
+ png)
+<use _bookdown_files/_main_files/figure-html/dummyage-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/dummyage-1.png
+  used on input line 3017.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/smoothage-1.png, id=766, 505.89pt x 36
+1.35pt>
+File: _bookdown_files/_main_files/figure-html/smoothage-1.png Graphic file (typ
+e png)
+<use _bookdown_files/_main_files/figure-html/smoothage-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/smoothage-1.pn
+g  used on input line 3034.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+ [85 <./_bookdown_files/_main_files/figure-html/dummyage-1.png>]
+<_bookdown_files/_main_files/figure-html/qtrend-1.png, id=778, 505.89pt x 361.3
+5pt>
+File: _bookdown_files/_main_files/figure-html/qtrend-1.png Graphic file (type p
+ng)
+<use _bookdown_files/_main_files/figure-html/qtrend-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/qtrend-1.png  
+used on input line 3051.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+
+[86 <./_bookdown_files/_main_files/figure-html/smoothage-1.png>]
+Underfull \vbox (badness 2582) has occurred while \output is active []
+
+ [87 <./_bookdown_files/_main_files/figure-html/qtrend-1.png>]
+Underfull \vbox (badness 1852) has occurred while \output is active []
+
+ [88]
+<_bookdown_files/_main_files/figure-html/srmod-1.png, id=800, 505.89pt x 361.35
+pt>
+File: _bookdown_files/_main_files/figure-html/srmod-1.png Graphic file (type pn
+g)
+<use _bookdown_files/_main_files/figure-html/srmod-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/srmod-1.png  u
+sed on input line 3185.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+
+[89 <./_bookdown_files/_main_files/figure-html/srmod-1.png (PNG copy)>]
+<_bookdown_files/_main_files/figure-html/vmod-1.png, id=808, 505.89pt x 361.35p
+t>
+File: _bookdown_files/_main_files/figure-html/vmod-1.png Graphic file (type png
+)
+<use _bookdown_files/_main_files/figure-html/vmod-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/vmod-1.png  us
+ed on input line 3215.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+
+[90 <./_bookdown_files/_main_files/figure-html/vmod-1.png>]
+<_bookdown_files/_main_files/figure-html/vmodimpact-1.png, id=817, 505.89pt x 3
+61.35pt>
+File: _bookdown_files/_main_files/figure-html/vmodimpact-1.png Graphic file (ty
+pe png)
+<use _bookdown_files/_main_files/figure-html/vmodimpact-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/vmodimpact-1.p
+ng  used on input line 3234.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+ [91 <./_bookdown_files/_main_files/figure-html/vmodimpact-1.png>]
+<_bookdown_files/_main_files/figure-html/ny1-1.png, id=827, 505.89pt x 361.35pt
+>
+File: _bookdown_files/_main_files/figure-html/ny1-1.png Graphic file (type png)
+
+<use _bookdown_files/_main_files/figure-html/ny1-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/ny1-1.png  use
+d on input line 3262.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/n1modimpact-1.png, id=829, 505.89pt x 
+361.35pt>
+File: _bookdown_files/_main_files/figure-html/n1modimpact-1.png Graphic file (t
+ype png)
+<use _bookdown_files/_main_files/figure-html/n1modimpact-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/n1modimpact-1.
+png  used on input line 3279.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+
+Overfull \hbox (70.82687pt too wide) in paragraph at lines 3286--3289
+\OT1/lmr/m/n/10 (-20) %========================================================
+============
+ []
+
+
+Overfull \hbox (240.40872pt too wide) in paragraph at lines 3286--3289
+\OT1/lmr/m/n/10 (-20) % COLIN TO CHECK THE SEC-TION %==========================
+========================================== 
+ []
+
+
+LaTeX Warning: Reference `sec:maths' on page 92 undefined on input line 3290.
+
+[92 <./_bookdown_files/_main_files/figure-html/ny1-1.png>]
+<_bookdown_files/_main_files/figure-html/likwgt-1.png, id=841, 505.89pt x 361.3
+5pt>
+File: _bookdown_files/_main_files/figure-html/likwgt-1.png Graphic file (type p
+ng)
+<use _bookdown_files/_main_files/figure-html/likwgt-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/likwgt-1.png  
+used on input line 3328.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/likwgtimpact-1.png, id=842, 505.89pt x
+ 361.35pt>
+File: _bookdown_files/_main_files/figure-html/likwgtimpact-1.png Graphic file (
+type png)
+<use _bookdown_files/_main_files/figure-html/likwgtimpact-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/likwgtimpact-1
+.png  used on input line 3341.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+ [93 <./_bookdown_files/_main_files/figure-html/n1modimpact-1.png>] [94 <./_boo
+kdown_files/_main_files/figure-html/likwgt-1.png> <./_bookdown_files/_main_file
+s/figure-html/likwgtimpact-1.png (PNG copy)>]
+<_bookdown_files/_main_files/figure-html/naor-1.png, id=854, 505.89pt x 361.35p
+t>
+File: _bookdown_files/_main_files/figure-html/naor-1.png Graphic file (type png
+)
+<use _bookdown_files/_main_files/figure-html/naor-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/naor-1.png  us
+ed on input line 3385.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+ [95 <./_bookdown_files/_main_files/figure-html/naor-1.png>]
+<_bookdown_files/_main_files/figure-html/naor2-1.png, id=863, 505.89pt x 361.35
+pt>
+File: _bookdown_files/_main_files/figure-html/naor2-1.png Graphic file (type pn
+g)
+<use _bookdown_files/_main_files/figure-html/naor2-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/naor2-1.png  u
+sed on input line 3401.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+
+Overfull \hbox (70.82687pt too wide) in paragraph at lines 3421--3424
+\OT1/lmr/m/n/10 (-20) %========================================================
+============
+ []
+
+
+Overfull \hbox (240.40872pt too wide) in paragraph at lines 3421--3424
+\OT1/lmr/m/n/10 (-20) % COLIN TO CHECK THE SEC-TION %==========================
+========================================== 
+ []
+
+[96 <./_bookdown_files/_main_files/figure-html/naor2-1.png>]
+Chapter 9.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 3437.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 3437.
+<_bookdown_files/_main_files/figure-html/res-1.png, id=876, 505.89pt x 361.35pt
+>
+File: _bookdown_files/_main_files/figure-html/res-1.png Graphic file (type png)
+
+<use _bookdown_files/_main_files/figure-html/res-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/res-1.png  use
+d on input line 3460.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+[97
+
+] [98 <./_bookdown_files/_main_files/figure-html/res-1.png>]
+<_bookdown_files/_main_files/figure-html/resaux-1.png, id=894, 505.89pt x 361.3
+5pt>
+File: _bookdown_files/_main_files/figure-html/resaux-1.png Graphic file (type p
+ng)
+<use _bookdown_files/_main_files/figure-html/resaux-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/resaux-1.png  
+used on input line 3474.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/bub-1.png, id=897, 505.89pt x 361.35pt
+>
+File: _bookdown_files/_main_files/figure-html/bub-1.png Graphic file (type png)
+
+<use _bookdown_files/_main_files/figure-html/bub-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/bub-1.png  use
+d on input line 3488.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/qq-1.png, id=899, 505.89pt x 361.35pt>
+
+File: _bookdown_files/_main_files/figure-html/qq-1.png Graphic file (type png)
+<use _bookdown_files/_main_files/figure-html/qq-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/qq-1.png  used
+ on input line 3502.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+ [99 <./_bookdown_files/_main_files/figure-html/resaux-1.png>]
+<_bookdown_files/_main_files/figure-html/resp-1.png, id=910, 505.89pt x 361.35p
+t>
+File: _bookdown_files/_main_files/figure-html/resp-1.png Graphic file (type png
+)
+<use _bookdown_files/_main_files/figure-html/resp-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/resp-1.png  us
+ed on input line 3517.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/resr-1.png, id=912, 505.89pt x 361.35p
+t>
+File: _bookdown_files/_main_files/figure-html/resr-1.png Graphic file (type png
+)
+<use _bookdown_files/_main_files/figure-html/resr-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/resr-1.png  us
+ed on input line 3532.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+
+
+LaTeX Warning: Reference `fig:idxplt' on page 100 undefined on input line 3539.
+
+
+<_bookdown_files/_main_files/figure-html/selplt-1.png, id=914, 505.89pt x 361.3
+5pt>
+File: _bookdown_files/_main_files/figure-html/selplt-1.png Graphic file (type p
+ng)
+<use _bookdown_files/_main_files/figure-html/selplt-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/selplt-1.png  
+used on input line 3549.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/idxplt-1.png, id=915, 505.89pt x 361.3
+5pt>
+File: _bookdown_files/_main_files/figure-html/idxplt-1.png Graphic file (type p
+ng)
+<use _bookdown_files/_main_files/figure-html/idxplt-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/idxplt-1.png  
+used on input line 3559.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/idxplt-2.png, id=916, 505.89pt x 361.3
+5pt>
+File: _bookdown_files/_main_files/figure-html/idxplt-2.png Graphic file (type p
+ng)
+<use _bookdown_files/_main_files/figure-html/idxplt-2.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/idxplt-2.png  
+used on input line 3559.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/idxplt-3.png, id=917, 505.89pt x 361.3
+5pt>
+File: _bookdown_files/_main_files/figure-html/idxplt-3.png Graphic file (type p
+ng)
+<use _bookdown_files/_main_files/figure-html/idxplt-3.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/idxplt-3.png  
+used on input line 3559.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/idxplt-4.png, id=918, 505.89pt x 361.3
+5pt>
+File: _bookdown_files/_main_files/figure-html/idxplt-4.png Graphic file (type p
+ng)
+<use _bookdown_files/_main_files/figure-html/idxplt-4.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/idxplt-4.png  
+used on input line 3559.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/idxplt-5.png, id=919, 505.89pt x 361.3
+5pt>
+File: _bookdown_files/_main_files/figure-html/idxplt-5.png Graphic file (type p
+ng)
+<use _bookdown_files/_main_files/figure-html/idxplt-5.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/idxplt-5.png  
+used on input line 3559.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/idxplt-6.png, id=920, 505.89pt x 361.3
+5pt>
+File: _bookdown_files/_main_files/figure-html/idxplt-6.png Graphic file (type p
+ng)
+<use _bookdown_files/_main_files/figure-html/idxplt-6.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/idxplt-6.png  
+used on input line 3559.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+
+Underfull \vbox (badness 4595) has occurred while \output is active []
+
+ [100 <./_bookdown_files/_main_files/figure-html/bub-1.png>] [101 <./_bookdown_
+files/_main_files/figure-html/qq-1.png>] [102 <./_bookdown_files/_main_files/fi
+gure-html/resp-1.png>] [103 <./_bookdown_files/_main_files/figure-html/resr-1.p
+ng>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [104 <./_bookdown_files/_main_files/figure-html/selplt-1.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [105 <./_bookdown_files/_main_files/figure-html/idxplt-1.png> <./_bookdown_fil
+es/_main_files/figure-html/idxplt-2.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [106 <./_bookdown_files/_main_files/figure-html/idxplt-3.png> <./_bookdown_fil
+es/_main_files/figure-html/idxplt-4.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [107 <./_bookdown_files/_main_files/figure-html/idxplt-5.png> <./_bookdown_fil
+es/_main_files/figure-html/idxplt-6.png>]
+<_bookdown_files/_main_files/figure-html/catchdiag-1.png, id=970, 505.89pt x 36
+1.35pt>
+File: _bookdown_files/_main_files/figure-html/catchdiag-1.png Graphic file (typ
+e png)
+<use _bookdown_files/_main_files/figure-html/catchdiag-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/catchdiag-1.pn
+g  used on input line 3575.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+ [108 <./_bookdown_files/_main_files/figure-html/catchdiag-1.png>]
+<_bookdown_files/_main_files/figure-html/idxrunstest-1.png, id=979, 505.89pt x 
+361.35pt>
+File: _bookdown_files/_main_files/figure-html/idxrunstest-1.png Graphic file (t
+ype png)
+<use _bookdown_files/_main_files/figure-html/idxrunstest-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/idxrunstest-1.
+png  used on input line 3655.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/catchrunstest-1.png, id=980, 505.89pt 
+x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/catchrunstest-1.png Graphic file 
+(type png)
+<use _bookdown_files/_main_files/figure-html/catchrunstest-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/catchrunstest-
+1.png  used on input line 3667.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [109]
+[110 <./_bookdown_files/_main_files/figure-html/idxrunstest-1.png (PNG copy)> <
+./_bookdown_files/_main_files/figure-html/catchrunstest-1.png (PNG copy)>]
+<_bookdown_files/_main_files/figure-html/meanresbyyear-1.png, id=995, 505.89pt 
+x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/meanresbyyear-1.png Graphic file 
+(type png)
+<use _bookdown_files/_main_files/figure-html/meanresbyyear-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/meanresbyyear-
+1.png  used on input line 3700.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/meanresbyage-1.png, id=996, 867.24pt x
+ 578.16pt>
+File: _bookdown_files/_main_files/figure-html/meanresbyage-1.png Graphic file (
+type png)
+<use _bookdown_files/_main_files/figure-html/meanresbyage-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/meanresbyage-1
+.png  used on input line 3713.
+(pdftex.def)             Requested size: 711.35315pt x 474.23541pt.
+
+Overfull \hbox (18.9913pt too wide) in paragraph at lines 3713--3713
+[][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 30.57007pt on input line 3714.
+
+[111 <./_bookdown_files/_main_files/figure-html/meanresbyyear-1.png>] [112 <./_
+bookdown_files/_main_files/figure-html/meanresbyage-1.png>]
+<_bookdown_files/_main_files/figure-html/fageresbyyear-1.png, id=1013, 505.89pt
+ x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/fageresbyyear-1.png Graphic file 
+(type png)
+<use _bookdown_files/_main_files/figure-html/fageresbyyear-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/fageresbyyear-
+1.png  used on input line 3738.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/fageresbyage-1.png, id=1014, 867.24pt 
+x 578.16pt>
+File: _bookdown_files/_main_files/figure-html/fageresbyage-1.png Graphic file (
+type png)
+<use _bookdown_files/_main_files/figure-html/fageresbyage-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/fageresbyage-1
+.png  used on input line 3751.
+(pdftex.def)             Requested size: 711.35315pt x 474.23541pt.
+
+Overfull \hbox (18.9913pt too wide) in paragraph at lines 3751--3751
+[][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 30.57007pt on input line 3752.
+
+<_bookdown_files/_main_files/figure-html/qageresbyyear-1.png, id=1015, 505.89pt
+ x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/qageresbyyear-1.png Graphic file 
+(type png)
+<use _bookdown_files/_main_files/figure-html/qageresbyyear-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/qageresbyyear-
+1.png  used on input line 3771.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/qageresbyage-1.png, id=1016, 867.24pt 
+x 578.16pt>
+File: _bookdown_files/_main_files/figure-html/qageresbyage-1.png Graphic file (
+type png)
+<use _bookdown_files/_main_files/figure-html/qageresbyage-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/qageresbyage-1
+.png  used on input line 3784.
+(pdftex.def)             Requested size: 711.35315pt x 474.23541pt.
+
+Overfull \hbox (18.9913pt too wide) in paragraph at lines 3784--3784
+[][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 30.57007pt on input line 3785.
+
+
+Underfull \vbox (badness 1019) has occurred while \output is active []
+
+ [113 <./_bookdown_files/_main_files/figure-html/fageresbyyear-1.png>] [114 <./
+_bookdown_files/_main_files/figure-html/fageresbyage-1.png>]
+<_bookdown_files/_main_files/figure-html/fqageresbyyear-1.png, id=1029, 505.89p
+t x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/fqageresbyyear-1.png Graphic file
+ (type png)
+<use _bookdown_files/_main_files/figure-html/fqageresbyyear-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/fqageresbyyear
+-1.png  used on input line 3804.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/fqageresbyage-1.png, id=1030, 867.24pt
+ x 578.16pt>
+File: _bookdown_files/_main_files/figure-html/fqageresbyage-1.png Graphic file 
+(type png)
+<use _bookdown_files/_main_files/figure-html/fqageresbyage-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/fqageresbyage-
+1.png  used on input line 3817.
+(pdftex.def)             Requested size: 711.35315pt x 474.23541pt.
+
+Overfull \hbox (18.9913pt too wide) in paragraph at lines 3817--3817
+[][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 30.57007pt on input line 3818.
+
+<_bookdown_files/_main_files/figure-html/fyearresbyyear-1.png, id=1031, 505.89p
+t x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/fyearresbyyear-1.png Graphic file
+ (type png)
+<use _bookdown_files/_main_files/figure-html/fyearresbyyear-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/fyearresbyyear
+-1.png  used on input line 3842.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/fyearresbyage-1.png, id=1032, 867.24pt
+ x 578.16pt>
+File: _bookdown_files/_main_files/figure-html/fyearresbyage-1.png Graphic file 
+(type png)
+<use _bookdown_files/_main_files/figure-html/fyearresbyage-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/fyearresbyage-
+1.png  used on input line 3855.
+(pdftex.def)             Requested size: 711.35315pt x 474.23541pt.
+
+Overfull \hbox (18.9913pt too wide) in paragraph at lines 3855--3855
+[][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 30.57007pt on input line 3856.
+
+[115 <./_bookdown_files/_main_files/figure-html/qageresbyyear-1.png>] [116 <./_
+bookdown_files/_main_files/figure-html/qageresbyage-1.png>]
+<_bookdown_files/_main_files/figure-html/n1arresbyyear-1.png, id=1049, 505.89pt
+ x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/n1arresbyyear-1.png Graphic file 
+(type png)
+<use _bookdown_files/_main_files/figure-html/n1arresbyyear-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/n1arresbyyear-
+1.png  used on input line 3882.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/n1resbyage-1.png, id=1051, 867.24pt x 
+578.16pt>
+File: _bookdown_files/_main_files/figure-html/n1resbyage-1.png Graphic file (ty
+pe png)
+<use _bookdown_files/_main_files/figure-html/n1resbyage-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/n1resbyage-1.p
+ng  used on input line 3895.
+(pdftex.def)             Requested size: 711.35315pt x 474.23541pt.
+
+Overfull \hbox (18.9913pt too wide) in paragraph at lines 3895--3895
+[][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 30.57007pt on input line 3896.
+
+
+Underfull \vbox (badness 5374) has occurred while \output is active []
+
+ [117 <./_bookdown_files/_main_files/figure-html/fqageresbyyear-1.png>] [118 <.
+/_bookdown_files/_main_files/figure-html/fqageresbyage-1.png>]
+<_bookdown_files/_main_files/figure-html/srresbyyear-1.png, id=1067, 505.89pt x
+ 361.35pt>
+File: _bookdown_files/_main_files/figure-html/srresbyyear-1.png Graphic file (t
+ype png)
+<use _bookdown_files/_main_files/figure-html/srresbyyear-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/srresbyyear-1.
+png  used on input line 3920.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/srresbyage-1.png, id=1068, 867.24pt x 
+578.16pt>
+File: _bookdown_files/_main_files/figure-html/srresbyage-1.png Graphic file (ty
+pe png)
+<use _bookdown_files/_main_files/figure-html/srresbyage-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/srresbyage-1.p
+ng  used on input line 3931.
+(pdftex.def)             Requested size: 711.35315pt x 474.23541pt.
+
+Overfull \hbox (18.9913pt too wide) in paragraph at lines 3931--3931
+[][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 30.57007pt on input line 3932.
+
+[119 <./_bookdown_files/_main_files/figure-html/fyearresbyyear-1.png>] [120 <./
+_bookdown_files/_main_files/figure-html/fyearresbyage-1.png>]
+<_bookdown_files/_main_files/figure-html/vagepredbyage-1.png, id=1085, 505.89pt
+ x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/vagepredbyage-1.png Graphic file 
+(type png)
+<use _bookdown_files/_main_files/figure-html/vagepredbyage-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/vagepredbyage-
+1.png  used on input line 3957.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/vage-1.png, id=1086, 505.89pt x 361.35
+pt>
+File: _bookdown_files/_main_files/figure-html/vage-1.png Graphic file (type png
+)
+<use _bookdown_files/_main_files/figure-html/vage-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/vage-1.png  us
+ed on input line 3972.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/vageresbyyear-1.png, id=1087, 505.89pt
+ x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/vageresbyyear-1.png Graphic file 
+(type png)
+<use _bookdown_files/_main_files/figure-html/vageresbyyear-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/vageresbyyear-
+1.png  used on input line 3986.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/vageresbyage-1.png, id=1088, 867.24pt 
+x 578.16pt>
+File: _bookdown_files/_main_files/figure-html/vageresbyage-1.png Graphic file (
+type png)
+<use _bookdown_files/_main_files/figure-html/vageresbyage-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/vageresbyage-1
+.png  used on input line 3997.
+(pdftex.def)             Requested size: 711.35315pt x 474.23541pt.
+
+Overfull \hbox (18.9913pt too wide) in paragraph at lines 3997--3997
+[][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 30.57007pt on input line 3998.
+
+[121 <./_bookdown_files/_main_files/figure-html/n1arresbyyear-1.png>] [122 <./_
+bookdown_files/_main_files/figure-html/n1resbyage-1.png>] [123 <./_bookdown_fil
+es/_main_files/figure-html/srresbyyear-1.png>] [124 <./_bookdown_files/_main_fi
+les/figure-html/srresbyage-1.png>] [125 <./_bookdown_files/_main_files/figure-h
+tml/vagepredbyage-1.png (PNG copy)> <./_bookdown_files/_main_files/figure-html/
+vage-1.png (PNG copy)>] [126 <./_bookdown_files/_main_files/figure-html/vageres
+byyear-1.png>] [127 <./_bookdown_files/_main_files/figure-html/vageresbyage-1.p
+ng>] [128
+
+]
+Chapter 10.
+[129] [130
+
+]
+Chapter 11.
+[131] [132]
+<_bookdown_files/_main_files/figure-html/selection pattern-1.png, id=1157, 505.
+89pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/selection pattern-1.png Graphic f
+ile (type png)
+<use _bookdown_files/_main_files/figure-html/selection pattern-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/selection patt
+ern-1.png  used on input line 4091.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/relevant quantities for reference poin
+ts-1.png, id=1158, 505.89pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/relevant quantities for reference
+ points-1.png Graphic file (type png)
+<use _bookdown_files/_main_files/figure-html/relevant quantities for reference 
+points-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/relevant quant
+ities for reference points-1.png  used on input line 4102.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [133 <./_bookdown_files/_main_files/figure-html/selection pattern-1.png (PNG c
+opy)>]
+[134 <./_bookdown_files/_main_files/figure-html/relevant quantities for referen
+ce points-1.png (PNG copy)>]
+<_bookdown_files/_main_files/figure-html/reference points-1.png, id=1168, 505.8
+9pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/reference points-1.png Graphic fi
+le (type png)
+<use _bookdown_files/_main_files/figure-html/reference points-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/reference poin
+ts-1.png  used on input line 4158.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+ [135 <./_bookdown_files/_main_files/figure-html/reference points-1.png (PNG co
+py)>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [136]
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-85-1.png, id=1180, 505.8
+9pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-85-1.png Graphic fi
+le (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-85-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+85-1.png  used on input line 4241.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+
+Underfull \vbox (badness 1231) has occurred while \output is active []
+
+ [137 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-85-1.png (PNG co
+py)>]
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-88-1.png, id=1186, 505.8
+9pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-88-1.png Graphic fi
+le (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-88-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+88-1.png  used on input line 4297.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [138]
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-89-1.png, id=1191, 505.8
+9pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-89-1.png Graphic fi
+le (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-89-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+89-1.png  used on input line 4315.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [139 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-88-1.png (PNG co
+py)>]
+[140 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-89-1.png (PNG cop
+y)>]
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-91-1.png, id=1204, 505.8
+9pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-91-1.png Graphic fi
+le (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-91-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+91-1.png  used on input line 4379.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+
+Underfull \vbox (badness 5741) has occurred while \output is active []
+
+ [141 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-91-1.png (PNG co
+py)>]
+
+LaTeX Font Warning: Font shape `OML/lmtt/m/it' undefined
+(Font)              using `OML/cmm/m/it' instead
+(Font)              for symbol `textless' on input line 4425.
+
+[142] [143] [144
+
+]
+Chapter 12.
+[145]
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-97-1.png, id=1228, 505.8
+9pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-97-1.png Graphic fi
+le (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-97-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+97-1.png  used on input line 4526.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+ [146 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-97-1.png>]
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-99-1.png, id=1235, 505.8
+9pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-99-1.png Graphic fi
+le (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-99-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+99-1.png  used on input line 4545.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-101-1.png, id=1236, 505.
+89pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-101-1.png Graphic f
+ile (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-101-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+101-1.png  used on input line 4569.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+
+[147 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-99-1.png (PNG cop
+y)>]
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-102-1.png, id=1242, 505.
+89pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-102-1.png Graphic f
+ile (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-102-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+102-1.png  used on input line 4577.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+ [148 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-101-1.png (PNG c
+opy)>]
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-104-1.png, id=1249, 505.
+89pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-104-1.png Graphic f
+ile (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-104-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+104-1.png  used on input line 4609.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+ [149 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-102-1.png (PNG c
+opy)>] [150 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-104-1.png 
+(PNG copy)>]
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-106-1.png, id=1261, 505.
+89pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-106-1.png Graphic f
+ile (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-106-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+106-1.png  used on input line 4640.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-108-1.png, id=1262, 505.
+89pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-108-1.png Graphic f
+ile (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-108-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+108-1.png  used on input line 4675.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [151 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-106-1.png (PNG c
+opy)>]
+[152 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-108-1.png (PNG co
+py)>]
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-111-1.png, id=1275, 505.
+89pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-111-1.png Graphic f
+ile (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-111-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+111-1.png  used on input line 4715.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+ [153] [154 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-111-1.png 
+(PNG copy)>]
+Chapter 13.
+[155
+
+] [156]
+<_bookdown_files/_main_files/figure-html/sim-1.png, id=1309, 505.89pt x 361.35p
+t>
+File: _bookdown_files/_main_files/figure-html/sim-1.png Graphic file (type png)
+
+<use _bookdown_files/_main_files/figure-html/sim-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/sim-1.png  use
+d on input line 4860.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/sim2-1.png, id=1310, 505.89pt x 361.35
+pt>
+File: _bookdown_files/_main_files/figure-html/sim2-1.png Graphic file (type png
+)
+<use _bookdown_files/_main_files/figure-html/sim2-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/sim2-1.png  us
+ed on input line 4873.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+ [157] [158 <./_bookdown_files/_main_files/figure-html/sim-1.png> <./_bookdown_
+files/_main_files/figure-html/sim2-1.png (PNG copy)>]
+Chapter 14.
+[159
+
+]
+Underfull \vbox (badness 4072) has occurred while \output is active []
+
+
+Overfull \hbox (50.27655pt too wide) has occurred while \output is active
+\OT1/lmr/m/n/10 160 \OT1/lmr/m/sl/10 CHAPTER 14.  THE STATISTICAL CATCH-AT-AGE 
+STOCK ASSESSMENT FRAMEWORK WITH MCMC 
+ []
+
+[160]
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-119-1.png, id=1334, 505.
+89pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-119-1.png Graphic f
+ile (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-119-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+119-1.png  used on input line 4978.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-121-1.png, id=1335, 505.
+89pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-121-1.png Graphic f
+ile (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-121-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+121-1.png  used on input line 4997.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [161 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-119-1.png (PNG c
+opy)>]
+
+LaTeX Warning: Reference `fig:acf01' on page 162 undefined on input line 5017.
+
+LaTeX Font Info:    Trying to load font information for OML+lmr on input line 5
+019.
+(/usr/share/texmf/tex/latex/lm/omllmr.fd
+File: omllmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `OML/lmr/m/n' in size <10> not available
+(Font)              Font shape `OML/lmm/m/it' tried instead on input line 5019.
+
+
+Overfull \hbox (505.5031pt too wide) in paragraph at lines 5028--5028
+[]\OT1/lmtt/m/n/10 Ploting the chain for the parameter clearly shows the autoco
+rrelation but also the burnin phase, where there\TS1/lmtt/m/n/10 '\OT1/lmtt/m/n
+/10 s no information about the parameter. These iterations must to be dropped.[
+] 
+ []
+
+
+Overfull \hbox (50.27655pt too wide) has occurred while \output is active
+\OT1/lmr/m/n/10 162 \OT1/lmr/m/sl/10 CHAPTER 14.  THE STATISTICAL CATCH-AT-AGE 
+STOCK ASSESSMENT FRAMEWORK WITH MCMC 
+ []
+
+[162 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-121-1.png (PNG co
+py)>]
+Overfull \hbox (941.25183pt too wide) in paragraph at lines 5041--5041
+[]\OT1/lmtt/m/n/10 Another interesting diagnostic is the Geweke-Brooks Z-score 
+check. This diagnostic indicates if the first and last part of a sample from a 
+Markov chain may not be drawn from the same distribution. It\TS1/lmtt/m/n/10 '\
+OT1/lmtt/m/n/10 s useful to decide if the first few iterations should e discard
+ed.[] 
+ []
+
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-124-1.png, id=1347, 505.
+89pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-124-1.png Graphic f
+ile (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-124-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+124-1.png  used on input line 5063.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+[163 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-124-1.png (PNG co
+py)>]
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-127-1.png, id=1353, 505.
+89pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-127-1.png Graphic f
+ile (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-127-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+127-1.png  used on input line 5091.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-128-1.png, id=1354, 505.
+89pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-128-1.png Graphic f
+ile (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-128-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+128-1.png  used on input line 5101.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (206.92017pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 4.3.  ADDING UNCERTAINTY TO GROWTH PARAMETERS WITH A MULTIVARIA
-TE TRIANGLE DISTRIBUTION} \TU/lmr/m/n/10 21
+Overfull \hbox (50.27655pt too wide) has occurred while \output is active
+\OT1/lmr/m/n/10 164 \OT1/lmr/m/sl/10 CHAPTER 14.  THE STATISTICAL CATCH-AT-AGE 
+STOCK ASSESSMENT FRAMEWORK WITH MCMC 
  []
 
-[21]
-Overfull \hbox (384.21576pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 22 \TU/lmr/m/sl/10 CHAPTER 4.  MODELLING INDIVIDUAL GROWTH AND U
-SING STOCHASTIC SLICING TO CONVERT LENGTH-BASED DATA INTO AGE-BASED DATA
+[164 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-127-1.png (PNG co
+py)>]
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-129-1.png, id=1359, 505.
+89pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-129-1.png Graphic f
+ile (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-129-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+129-1.png  used on input line 5109.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+ [165 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-128-1.png (PNG c
+opy)> <./_bookdown_files/_main_files/figure-html/unnamed-chunk-129-1.png (PNG c
+opy)>]
+<_bookdown_files/_main_files/figure-html/unnamed-chunk-130-1.png, id=1364, 505.
+89pt x 361.35pt>
+File: _bookdown_files/_main_files/figure-html/unnamed-chunk-130-1.png Graphic f
+ile (type png)
+<use _bookdown_files/_main_files/figure-html/unnamed-chunk-130-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
+130-1.png  used on input line 5117.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+
+Overfull \hbox (50.27655pt too wide) has occurred while \output is active
+\OT1/lmr/m/n/10 166 \OT1/lmr/m/sl/10 CHAPTER 14.  THE STATISTICAL CATCH-AT-AGE 
+STOCK ASSESSMENT FRAMEWORK WITH MCMC 
  []
 
-[22]
-File: _main_files/figure-latex/plot_cop_tri_scatter-1.pdf Graphic file (type pd
-f)
-<use _main_files/figure-latex/plot_cop_tri_scatter-1.pdf>
-File: _main_files/figure-latex/plot_cop_tri_growth-1.pdf Graphic file (type pdf
-)
-<use _main_files/figure-latex/plot_cop_tri_growth-1.pdf>
-
-Overfull \hbox (102.14233pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 4.4.  ADDING UNCERTAINTY TO GROWTH PARAMETERS WITH STATISTICAL 
-COPULAS} \TU/lmr/m/n/10 23
- []
-
-[23]
-Overfull \hbox (384.21576pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 24 \TU/lmr/m/sl/10 CHAPTER 4.  MODELLING INDIVIDUAL GROWTH AND U
-SING STOCHASTIC SLICING TO CONVERT LENGTH-BASED DATA INTO AGE-BASED DATA
- []
-
-[24]
-Overfull \hbox (53.87123pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 4.5.  CONVERTING FROM LENGTH TO AGE BASED DATA - THE \TU/lmtt/m
-/sl/10 L2A() \TU/lmr/m/sl/10 METHOD} \TU/lmr/m/n/10 25
- []
-
-[25]
-Overfull \hbox (12.15201pt too wide) in paragraph at lines 636--637
-[]\TU/lmr/m/n/10 In the previous example, the \TU/lmtt/m/n/10 FLQuant \TU/lmr/m
-/n/10 object that was sliced (\TU/lmtt/m/n/10 catch.n(rfLen.stk)\TU/lmr/m/n/10 
-)
- []
-
-
-Overfull \hbox (290.25pt too wide) in paragraph at lines 652--652
-[]\TU/lmtt/m/n/10 ## Warning in .local(object, model, ...): Individual weights,
- M and maturity will be (weighted) averaged accross lengths,[] 
- []
-
-
-Overfull \hbox (69.75pt too wide) in paragraph at lines 652--652
-[]\TU/lmtt/m/n/10 ##  If this is not what you want, you[]ll have to deal with t
-hese slots by hand.[] 
- []
-
-
-Overfull \hbox (269.25pt too wide) in paragraph at lines 657--657
-[]\TU/lmtt/m/n/10 ## Warning in .local(object, model, ...): Some ages are less 
-than 0, indicating a mismatch between input data lengths[] 
- []
-
-
-Overfull \hbox (64.5pt too wide) in paragraph at lines 661--661
-[]\TU/lmtt/m/n/10 ## Warning in .local(object, model, ...): Trimming age range 
-to a minimum of 0[] 
- []
-
-
-Overfull \hbox (279.75pt too wide) in paragraph at lines 676--676
-[]\TU/lmtt/m/n/10 ## Warning in l2a(rfTrawl.idx, vbTriSmall): Some ages are les
-s than 0, indicating a mismatch between input data lengths[] 
- []
-
-
-Overfull \hbox (384.21576pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 26 \TU/lmr/m/sl/10 CHAPTER 4.  MODELLING INDIVIDUAL GROWTH AND U
-SING STOCHASTIC SLICING TO CONVERT LENGTH-BASED DATA INTO AGE-BASED DATA
- []
-
-[26]
-Overfull \hbox (75.0pt too wide) in paragraph at lines 680--680
-[]\TU/lmtt/m/n/10 ## Warning in l2a(rfTrawl.idx, vbTriSmall): Trimming age rang
-e to a minimum of 0[] 
- []
-
-
-Overfull \hbox (53.87123pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 4.5.  CONVERTING FROM LENGTH TO AGE BASED DATA - THE \TU/lmtt/m
-/sl/10 L2A() \TU/lmr/m/sl/10 METHOD} \TU/lmr/m/n/10 27
- []
-
-[27]
-Overfull \hbox (384.21576pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 28 \TU/lmr/m/sl/10 CHAPTER 4.  MODELLING INDIVIDUAL GROWTH AND U
-SING STOCHASTIC SLICING TO CONVERT LENGTH-BASED DATA INTO AGE-BASED DATA
- []
-
-[28
+[166 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-130-1.png>]
+Chapter 15.
+[167
 
 ]
-Chapter 5.
-[29] [30
+<_bookdown_files/_main_files/figure-html/mprop-1.png, id=1376, 505.89pt x 361.3
+5pt>
+File: _bookdown_files/_main_files/figure-html/mprop-1.png Graphic file (type pn
+g)
+<use _bookdown_files/_main_files/figure-html/mprop-1.png>
+Package pdftex.def Info: _bookdown_files/_main_files/figure-html/mprop-1.png  u
+sed on input line 5178.
+(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+ [168 <./_bookdown_files/_main_files/figure-html/mprop-1.png (PNG copy)>]
+Chapter 16.
+[169
+
+] [170
 
 ]
-Chapter 6.
-[31] [32
+Chapter 17.
+[171] [172
 
 ]
-Chapter 7.
-[33] [34
+Chapter 18.
+[173] (./_main.aux)
+ ***********
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-22>
+ ***********
 
-]
-Chapter 8.
-! Undefined control sequence.
-<argument> Assessing \ADMB 
-                           files
-l.789 ...Assessing files}}\label{assessing-files}}
-                                                   
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 19479 strings out of 476835
- 357241 string characters out of 5804108
- 1933627 words of memory out of 5000000
- 41117 multiletter control sequences out of 15000+600000
- 565521 words of font info for 100 fonts, out of 8000000 for 9000
+ 19136 strings out of 476139
+ 347719 string characters out of 5794454
+ 1940975 words of memory out of 5000000
+ 40194 multiletter control sequences out of 15000+600000
+ 626231 words of font info for 170 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 90i,6n,120p,1232b,530s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,9n,93p,1469b,730s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on _main.pdf (34 pages).
+pdfTeX warning (dest): name{Hfootnote.3} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
+, replaced by a fixed one
+
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmbsy10.pfb></usr/share/texmf/fonts/type1/public/lm
+/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmmi5.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmr5.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmro10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmsy5.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share
+/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm
+/lmtti10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtto10.pfb>
+Output written on _main.pdf (173 pages, 10343289 bytes).
+PDF statistics:
+ 1867 PDF objects out of 2073 (max. 8388607)
+ 1430 compressed objects within 15 object streams
+ 475 named destinations out of 1000 (max. 500000)
+ 38053 words of extra memory for PDF output out of 42996 (max. 10000000)
+

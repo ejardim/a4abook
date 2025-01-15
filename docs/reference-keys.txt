@@ -1,4 +1,5 @@
 tab:mathsnotation
+tab:sastages
 fig:unnamed-chunk-9
 fig:unnamed-chunk-10
 fig:unnamed-chunk-11
@@ -84,12 +85,14 @@ how-to-read-this-document
 how-to-get-help
 notation
 introduction
+the-assessment-for-all-initiative-a4a
+multi-stage-modelling-approach
 stock-assessment-process
 stock-assessment-as-a-linear-model
 data-used-in-the-book
+plaice-in-area-fao-27-ices-area-iv
 stock-xx
 stock-xx-1
-stock-xx-2
 introduction-to-splines
 understanding-spline-basics
 generate-some-artificial-data

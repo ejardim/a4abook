@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-01-14" />
+<meta name="date" content="2025-01-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -150,13 +150,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#stock-assessment-process"><i class="fa fa-check"></i><b>2.1</b> Stock assessment process</a></li>
-<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#stock-assessment-as-a-linear-model"><i class="fa fa-check"></i><b>2.2</b> Stock assessment as a linear model</a></li>
-<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#data-used-in-the-book"><i class="fa fa-check"></i><b>2.3</b> Data used in the book</a>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#the-assessment-for-all-initiative-a4a"><i class="fa fa-check"></i><b>2.1</b> The “Assessment for All” Initiative (a4a)</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#multi-stage-modelling-approach"><i class="fa fa-check"></i><b>2.2</b> Multi-stage modelling approach</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#stock-assessment-process"><i class="fa fa-check"></i><b>2.3</b> Stock Assessment Process</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#stock-assessment-as-a-linear-model"><i class="fa fa-check"></i><b>2.4</b> Stock assessment as a linear model</a></li>
+<li class="chapter" data-level="2.5" data-path="introduction.html"><a href="introduction.html#data-used-in-the-book"><i class="fa fa-check"></i><b>2.5</b> Data used in the book</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="introduction.html"><a href="introduction.html#stock-xx"><i class="fa fa-check"></i><b>2.3.1</b> stock xx</a></li>
-<li class="chapter" data-level="2.3.2" data-path="introduction.html"><a href="introduction.html#stock-xx-1"><i class="fa fa-check"></i><b>2.3.2</b> stock xx</a></li>
-<li class="chapter" data-level="2.3.3" data-path="introduction.html"><a href="introduction.html#stock-xx-2"><i class="fa fa-check"></i><b>2.3.3</b> stock xx</a></li>
+<li class="chapter" data-level="2.5.1" data-path="introduction.html"><a href="introduction.html#plaice-in-area-fao-27-ices-area-iv"><i class="fa fa-check"></i><b>2.5.1</b> Plaice in area FAO 27, ICES area IV</a></li>
+<li class="chapter" data-level="2.5.2" data-path="introduction.html"><a href="introduction.html#stock-xx"><i class="fa fa-check"></i><b>2.5.2</b> stock xx</a></li>
+<li class="chapter" data-level="2.5.3" data-path="introduction.html"><a href="introduction.html#stock-xx-1"><i class="fa fa-check"></i><b>2.5.3</b> stock xx</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html"><i class="fa fa-check"></i><b>3</b> Introduction to Splines</a>
@@ -364,8 +366,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="adding-uncertainty-to-growth-parameters-with-a-multivariate-normal-distribution" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Adding uncertainty to growth parameters with a multivariate normal distribution}<a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-normal-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Uncertainty in the growth model is introduced through the inclusion of parameter uncertainty.
-This is done by making use of the parameter variance-covariance matrix (the <code>vcov</code> slot of the <code>a4aGr</code> class) and assuming a distribution. The numbers in the variance-covariance matrix could come from the parameter uncertainty from fitting the growth model parameters.</p>
+<p>Uncertainty in the growth model is introduced through the inclusion of parameter uncertainty. This is done by making use of the parameter variance-covariance matrix (the <code>vcov</code> slot of the <code>a4aGr</code> class) and assuming a distribution. The numbers in the variance-covariance matrix could come from the parameter uncertainty from fitting the growth model parameters.</p>
 <p>Here we set the variance-covariance matrix by scaling a correlation matrix, using a cv of 0.2. Based on</p>
 <p><span class="math display">\[\rho_{x,y}=\frac{\Sigma_{x,y}}{\sigma_x \sigma_y}\]</span></p>
 <p>and</p>
@@ -391,9 +392,14 @@ This is done by making use of the parameter variance-covariance matrix (the <cod
 <span id="cb37-19"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb37-19" tabindex="-1"></a><span class="fu">all.equal</span>(cm, <span class="fu">cov2cor</span>(mm))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Create the a4aGr object as before but now we also include the vcov argument for the variance-covariance matrix.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb39-1" tabindex="-1"></a>vbObj <span class="ot">&lt;-</span> <span class="fu">a4aGr</span>(<span class="at">grMod=</span><span class="sc">~</span>linf<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>k<span class="sc">*</span>(t<span class="sc">-</span>t0))), <span class="at">grInvMod=</span><span class="sc">~</span>t0<span class="dv">-1</span><span class="sc">/</span>k<span class="sc">*</span><span class="fu">log</span>(<span class="dv">1</span><span class="sc">-</span>len<span class="sc">/</span>linf), </span>
-<span id="cb39-2"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb39-2" tabindex="-1"></a>               <span class="at">params=</span><span class="fu">FLPar</span>(<span class="at">linf=</span>p[<span class="st">&quot;linf&quot;</span>], <span class="at">k=</span>p[<span class="st">&quot;k&quot;</span>], <span class="at">t0=</span>p[<span class="st">&quot;t0&quot;</span>], </span>
-<span id="cb39-3"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb39-3" tabindex="-1"></a>                            <span class="at">units=</span><span class="fu">c</span>(<span class="st">&quot;cm&quot;</span>,<span class="st">&quot;year-1&quot;</span>,<span class="st">&quot;year&quot;</span>)), <span class="at">vcov=</span>mm)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb39-1" tabindex="-1"></a>vbObj <span class="ot">&lt;-</span> <span class="fu">a4aGr</span>(</span>
+<span id="cb39-2"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb39-2" tabindex="-1"></a>  <span class="at">grMod=</span><span class="sc">~</span>linf<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>k<span class="sc">*</span>(t<span class="sc">-</span>t0))),</span>
+<span id="cb39-3"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb39-3" tabindex="-1"></a>  <span class="at">grInvMod=</span><span class="sc">~</span>t0<span class="dv">-1</span><span class="sc">/</span>k<span class="sc">*</span><span class="fu">log</span>(<span class="dv">1</span><span class="sc">-</span>len<span class="sc">/</span>linf),</span>
+<span id="cb39-4"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb39-4" tabindex="-1"></a>  <span class="at">params=</span><span class="fu">FLPar</span>(</span>
+<span id="cb39-5"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb39-5" tabindex="-1"></a>    <span class="at">linf=</span>p[<span class="st">&quot;linf&quot;</span>], <span class="at">k=</span>p[<span class="st">&quot;k&quot;</span>], <span class="at">t0=</span>p[<span class="st">&quot;t0&quot;</span>],</span>
+<span id="cb39-6"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb39-6" tabindex="-1"></a>    <span class="at">units=</span><span class="fu">c</span>(<span class="st">&quot;cm&quot;</span>,<span class="st">&quot;year-1&quot;</span>,<span class="st">&quot;year&quot;</span>)),</span>
+<span id="cb39-7"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb39-7" tabindex="-1"></a>    <span class="at">vcov=</span>mm</span>
+<span id="cb39-8"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb39-8" tabindex="-1"></a>)</span></code></pre></div>
 <p>First we show a simple example where we assume that the parameters are represented using a multivariate normal distribution.
 % This covariance matrix can have iterations (i.e. each iteration can have a different covariance matrix). CHECK
 % If the parameters or the covariance matrix have iterations then the medians accross iterations are computed before simulating. Check help for `mvrnorm} for more information.</p>
@@ -406,43 +412,43 @@ This is done by making use of the parameter variance-covariance matrix (the <cod
 ## units:  cm year-1 year</code></pre>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb42-1" tabindex="-1"></a><span class="fu">dim</span>(vbObj<span class="sc">@</span>params)</span></code></pre></div>
 <pre><code>## [1] 3 1</code></pre>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb44-1" tabindex="-1"></a><span class="co"># We simulate 10000 iterations from the a4aGr object by calling mvrnorm() using the </span></span>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb44-1" tabindex="-1"></a><span class="co"># We simulate 250 iterations from the a4aGr object by calling mvrnorm() using the</span></span>
 <span id="cb44-2"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb44-2" tabindex="-1"></a><span class="co"># variance-covariance matrix we created earlier.</span></span>
-<span id="cb44-3"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb44-3" tabindex="-1"></a>vbNorm <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(<span class="dv">10000</span>,vbObj)</span>
-<span id="cb44-4"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb44-4" tabindex="-1"></a><span class="co"># Now we have 10000 iterations of each parameter, randomly sampled from the </span></span>
+<span id="cb44-3"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb44-3" tabindex="-1"></a>vbNorm <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(<span class="dv">250</span>,vbObj)</span>
+<span id="cb44-4"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb44-4" tabindex="-1"></a><span class="co"># Now we have 250 iterations of each parameter, randomly sampled from the</span></span>
 <span id="cb44-5"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb44-5" tabindex="-1"></a><span class="co"># multivariate normal distribution</span></span>
 <span id="cb44-6"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb44-6" tabindex="-1"></a>vbNorm<span class="sc">@</span>params</span></code></pre></div>
 <pre><code>## An object of class &quot;FLPar&quot;
-## iters:  10000 
+## iters:  250 
 ## 
 ## params
 ##                linf                   k                  t0 
-## 60.1113476(11.9663)  0.0898736( 0.0181) -0.0099958( 0.0020) 
+## 60.475998(13.15422)  0.091329( 0.02056) -0.010330( 0.00183) 
 ## units:  cm year-1 year</code></pre>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb46-1" tabindex="-1"></a><span class="fu">dim</span>(vbNorm<span class="sc">@</span>params)</span></code></pre></div>
-<pre><code>## [1]     3 10000</code></pre>
-<p>We can now convert from length to ages data based on the 10000 parameter iterations. This gives us 10000 sets of age data. For example, here we convert a single length vector using each of the 10000 parameter iterations:</p>
+<pre><code>## [1]   3 250</code></pre>
+<p>We can now convert from length to ages data based on the 10000 parameter iterations. This gives us 250 sets of age data. For example, here we convert a single length vector using each of the 250 parameter iterations:</p>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb48-1" tabindex="-1"></a>ages <span class="ot">&lt;-</span> <span class="fu">predict</span>(vbNorm, <span class="at">len=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">10</span><span class="fl">+0.5</span>)</span>
 <span id="cb48-2"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb48-2" tabindex="-1"></a><span class="fu">dim</span>(ages)</span></code></pre></div>
-<pre><code>## [1]     6 10000</code></pre>
+<pre><code>## [1]   6 250</code></pre>
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb50-1" tabindex="-1"></a><span class="co"># We show the first ten iterations only as an illustration</span></span>
 <span id="cb50-2"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb50-2" tabindex="-1"></a>ages[,<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
 <pre><code>##    iter
-##             1        2        3        4        5        6        7         8
-##   1 0.9161938 1.142482 1.074787 1.292629 1.011368 1.038579 1.224665 0.8581071
-##   2 1.0934698 1.361946 1.285292 1.544040 1.209416 1.242383 1.464114 1.0217958
-##   3 1.2735598 1.584712 1.500334 1.800511 1.411769 1.450579 1.708360 1.1874963
-##   4 1.4565544 1.810880 1.720115 2.062250 1.618616 1.663360 1.957596 1.3552588
-##   5 1.6425490 2.040556 1.944848 2.329478 1.830163 1.880932 2.212033 1.5251353
-##   6 1.8316435 2.273850 2.174761 2.602429 2.046628 2.103516 2.471891 1.6971795
+##             1         2         3         4         5        6        7
+##   1 0.9836803 0.9736041 0.9555395 0.9023218 0.8936881 1.253551 1.346060
+##   2 1.1764768 1.1600670 1.1443257 1.0770859 1.0679724 1.499790 1.612640
+##   3 1.3734596 1.3489659 1.3375485 1.2549420 1.2455899 1.751805 1.886327
+##   4 1.5748145 1.5403654 1.5354215 1.4360016 1.4266707 2.009875 2.167510
+##   5 1.7807400 1.7343326 1.7381740 1.6203821 1.6113524 2.274297 2.456611
+##   6 1.9914484 1.9309372 1.9460529 1.8082078 1.7997812 2.545392 2.754089
 ##    iter
-##            9        10
-##   1 0.902007 0.9864757
-##   2 1.076612 1.1764490
-##   3 1.254094 1.3695174
-##   4 1.434551 1.5657834
-##   5 1.618083 1.7653547
-##   6 1.804797 1.9683446</code></pre>
+##             8        9        10
+##   1 0.8202537 1.069245 0.8588564
+##   2 0.9787791 1.278021 1.0266998
+##   3 1.1396816 1.490900 1.1978021
+##   4 1.3030336 1.708048 1.3722922
+##   5 1.4689108 1.929638 1.5503071
+##   6 1.6373926 2.155857 1.7319921</code></pre>
 <p>The marginal distributions can be seen in Figure @ref(fig:plot_norm_params).</p>
 <div class="figure">
 <img src="_main_files/figure-html/plot_norm_params-1.png" alt="The marginal distributions of each of the parameters from using a multivariate normal distribution." width="672" />
@@ -457,7 +463,7 @@ This is done by making use of the parameter variance-covariance matrix (the <cod
 (#fig:plot_norm_scatter)Scatter plot of the 10000 samples parameter from the multivariate normal distribution.
 </p>
 </div>
-<p>Growth curves for the 1000 iterations can be seen in Figure @ref(fig:plot_mv_growth).</p>
+<p>Growth curves for the 250 iterations can be seen in Figure @ref(fig:plot_mv_growth).</p>
 <div class="figure">
 <img src="_main_files/figure-html/plot_mv_growth-1.png" alt="Growth curves using parameters simulated from a multivariate normal distribution." width="672" />
 <p class="caption">
@@ -484,12 +490,12 @@ This is done by making use of the parameter variance-covariance matrix (the <cod
 <span id="cb54-7"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb54-7" tabindex="-1"></a>t0 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(tab<span class="sc">$</span>dataTable[,<span class="dv">5</span>]))</span>
 <span id="cb54-8"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb54-8" tabindex="-1"></a><span class="co"># Set the min (a), max (b) and median (c) values for the parameter as a list of lists</span></span>
 <span id="cb54-9"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb54-9" tabindex="-1"></a><span class="co"># Note that t0 has no &#39;c&#39; (median) value. This makes the distribution symmetrical</span></span>
-<span id="cb54-10"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb54-10" tabindex="-1"></a>triPars <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">list</span>(<span class="at">a=</span><span class="fu">min</span>(linf), <span class="at">b=</span><span class="fu">max</span>(linf), <span class="at">c=</span><span class="fu">median</span>(linf)),</span>
-<span id="cb54-11"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb54-11" tabindex="-1"></a>             <span class="fu">list</span>(<span class="at">a=</span><span class="fu">min</span>(k), <span class="at">b=</span><span class="fu">max</span>(k), <span class="at">c=</span><span class="fu">median</span>(k)),</span>
-<span id="cb54-12"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb54-12" tabindex="-1"></a>             <span class="fu">list</span>(<span class="at">a=</span><span class="fu">median</span>(t0, <span class="at">na.rm=</span>T)<span class="sc">-</span><span class="fu">IQR</span>(t0, <span class="at">na.rm=</span>T)<span class="sc">/</span><span class="dv">2</span>, <span class="at">b=</span><span class="fu">median</span>(t0, <span class="at">na.rm=</span>T)<span class="sc">+</span></span>
-<span id="cb54-13"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb54-13" tabindex="-1"></a>                    <span class="fu">IQR</span>(t0, <span class="at">na.rm=</span>T)<span class="sc">/</span><span class="dv">2</span>))</span>
-<span id="cb54-14"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb54-14" tabindex="-1"></a><span class="co"># Simulate 10000 times using mvrtriangle</span></span>
-<span id="cb54-15"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb54-15" tabindex="-1"></a>vbTri <span class="ot">&lt;-</span> <span class="fu">mvrtriangle</span>(<span class="dv">10000</span>, vbObj, <span class="at">paramMargins=</span>triPars)</span></code></pre></div>
+<span id="cb54-10"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb54-10" tabindex="-1"></a>triPars <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb54-11"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb54-11" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">a=</span><span class="fu">min</span>(linf), <span class="at">b=</span><span class="fu">max</span>(linf), <span class="at">c=</span><span class="fu">median</span>(linf)),</span>
+<span id="cb54-12"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb54-12" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">a=</span><span class="fu">min</span>(k), <span class="at">b=</span><span class="fu">max</span>(k), <span class="at">c=</span><span class="fu">median</span>(k)),</span>
+<span id="cb54-13"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb54-13" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">a=</span><span class="fu">median</span>(t0, <span class="at">na.rm=</span>T)<span class="sc">-</span><span class="fu">IQR</span>(t0, <span class="at">na.rm=</span>T)<span class="sc">/</span><span class="dv">2</span>, <span class="at">b=</span><span class="fu">median</span>(t0, <span class="at">na.rm=</span>T)<span class="sc">+</span><span class="fu">IQR</span>(t0, <span class="at">na.rm=</span>T)<span class="sc">/</span><span class="dv">2</span>))</span>
+<span id="cb54-14"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb54-14" tabindex="-1"></a><span class="co"># Simulate 250 times using mvrtriangle</span></span>
+<span id="cb54-15"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb54-15" tabindex="-1"></a>vbTri <span class="ot">&lt;-</span> <span class="fu">mvrtriangle</span>(<span class="dv">250</span>, vbObj, <span class="at">paramMargins=</span>triPars)</span></code></pre></div>
 <p>The marginals will reflect the uncertainty on the parameter values that were scraped from <a href="http://fishbase.org">Fishbase</a> but, as we don’t really believe the parameters are multivariate normal, here we adopted a distribution based on a <em>t</em> copula with triangle marginals. The marginal distributions can be seen in Figure @ref(fig:plot_tri_params) and the shape of the correlation can be seen in Figure @ref(fig:plot_tri_scatter).</p>
 <div class="figure">
 <img src="_main_files/figure-html/plot_tri_params-1.png" alt="The marginal distributions of each of the parameters from using a multivariate triangle distribution." width="672" />
@@ -516,8 +522,7 @@ This is done by making use of the parameter variance-covariance matrix (the <cod
 <h2><span class="header-section-number">4.4</span> Adding uncertainty to growth parameters with statistical copulas}<a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#adding-uncertainty-to-growth-parameters-with-statistical-copulas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A more general approach to adding parameter uncertainty is to make use of <a href="http://www.encyclopediaofmath.org/index.php/Copula">statistical copulas</a> and marginal distributions of choice. This is possible with the <code>mvrcop()</code> function borrowed from the package <a href="http://cran.r-project.org/web/packages/copula/"><code>copula</code></a>. The example below keeps the same parameters and changes only the copula type and family but a lot more can be done. Check the package <code>copula</code> for more information.</p>
 <p>% Needs more explanation</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb55-1" tabindex="-1"></a>vbCop <span class="ot">&lt;-</span> <span class="fu">mvrcop</span>(<span class="dv">10000</span>, vbObj, <span class="at">copula=</span><span class="st">&quot;archmCopula&quot;</span>, <span class="at">family=</span><span class="st">&quot;clayton&quot;</span>, <span class="at">param=</span><span class="dv">2</span>, </span>
-<span id="cb55-2"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb55-2" tabindex="-1"></a>                <span class="at">margins=</span><span class="st">&quot;triangle&quot;</span>, <span class="at">paramMargins=</span>triPars)</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb55-1" tabindex="-1"></a>vbCop <span class="ot">&lt;-</span> <span class="fu">mvrcop</span>(<span class="dv">1000</span>, vbObj, <span class="at">copula=</span><span class="st">&quot;archmCopula&quot;</span>, <span class="at">family=</span><span class="st">&quot;clayton&quot;</span>, <span class="at">param=</span><span class="dv">2</span>, <span class="at">margins=</span><span class="st">&quot;triangle&quot;</span>, <span class="at">paramMargins=</span>triPars)</span></code></pre></div>
 <p>The shape of the correlation changes (Figure @ref(fig:plot_cop_tri_scatter)) as well as the resulting growth curves (Figure @ref(fig:plot_cop_tri_growth)).</p>
 <div class="figure">
 <img src="_main_files/figure-html/plot_cop_tri_scatter-1.png" alt="Scatter plot of the 10000 samples parameter from the using an archmCopula copula with triangle margins." width="672" />
@@ -546,9 +551,10 @@ This is done by making use of the parameter variance-covariance matrix (the <cod
 ## Warning in log(1 - len/linf): NaNs produced
 ## Warning in log(1 - len/linf): NaNs produced
 ## Warning in log(1 - len/linf): NaNs produced
+## Warning in log(1 - len/linf): NaNs produced
 ## Warning in log(1 - len/linf): NaNs produced</code></pre>
 <div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb58-1" tabindex="-1"></a><span class="fu">dim</span>(cth.n)</span></code></pre></div>
-<pre><code>## [1] 59 26  1  4  1 10</code></pre>
+<pre><code>## [1] 66 26  1  4  1 10</code></pre>
 <p>In the previous example, the <code>FLQuant</code> object that was sliced (<code>catch.n(rfLen.stk)</code>) had only one iteration. This iteration was sliced by each of the iterations in the growth model. It is possible for the <code>FLQuant</code> object to have the same number of iterations as the growth model, in which case each iteration of the <code>FLQuant</code> and the growth model are used together. It is also possible for the growth model to have only one iteration while the <code>FLQuant</code> object has many iterations. The same growth model is then used for each of the <code>FLQuant</code> iterations. As with all <code>FLR</code> objects, the general rule is <em>one or n</em> iterations.</p>
 <p>As well as converting one <code>FLQuant</code> at a time, we can convert entire <code>FLStock</code> and <code>FLIndex</code> objects. In these cases the individual <code>FLQuant</code> slots of those classes are converted from length-based to age-based. As mentioned above, the aggregation method depends on the type of values the slots contain. The abundance slots (<code>*.n</code>, such as <code>stock.n</code>) are summed. The <code>*.wt</code>, <code>m</code>, <code>mat</code>, <code>harvest.spwn</code> and <code>m.spwn</code> slots of an <code>FLStock</code> object are averaged. The <code>catch.wt</code> and <code>sel.pattern</code> slots of an <code>FLIndex</code> object are averaged, while the <code>index</code>, <code>index.var</code> and <code>catch.n</code> slots are summed.</p>
 <p>The method for <code>FLStock</code> classes takes an additional argument for the plusgroup.</p>

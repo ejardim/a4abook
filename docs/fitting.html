@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-01-14" />
+<meta name="date" content="2025-01-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -150,13 +150,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#stock-assessment-process"><i class="fa fa-check"></i><b>2.1</b> Stock assessment process</a></li>
-<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#stock-assessment-as-a-linear-model"><i class="fa fa-check"></i><b>2.2</b> Stock assessment as a linear model</a></li>
-<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#data-used-in-the-book"><i class="fa fa-check"></i><b>2.3</b> Data used in the book</a>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#the-assessment-for-all-initiative-a4a"><i class="fa fa-check"></i><b>2.1</b> The “Assessment for All” Initiative (a4a)</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#multi-stage-modelling-approach"><i class="fa fa-check"></i><b>2.2</b> Multi-stage modelling approach</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#stock-assessment-process"><i class="fa fa-check"></i><b>2.3</b> Stock Assessment Process</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#stock-assessment-as-a-linear-model"><i class="fa fa-check"></i><b>2.4</b> Stock assessment as a linear model</a></li>
+<li class="chapter" data-level="2.5" data-path="introduction.html"><a href="introduction.html#data-used-in-the-book"><i class="fa fa-check"></i><b>2.5</b> Data used in the book</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="introduction.html"><a href="introduction.html#stock-xx"><i class="fa fa-check"></i><b>2.3.1</b> stock xx</a></li>
-<li class="chapter" data-level="2.3.2" data-path="introduction.html"><a href="introduction.html#stock-xx-1"><i class="fa fa-check"></i><b>2.3.2</b> stock xx</a></li>
-<li class="chapter" data-level="2.3.3" data-path="introduction.html"><a href="introduction.html#stock-xx-2"><i class="fa fa-check"></i><b>2.3.3</b> stock xx</a></li>
+<li class="chapter" data-level="2.5.1" data-path="introduction.html"><a href="introduction.html#plaice-in-area-fao-27-ices-area-iv"><i class="fa fa-check"></i><b>2.5.1</b> Plaice in area FAO 27, ICES area IV</a></li>
+<li class="chapter" data-level="2.5.2" data-path="introduction.html"><a href="introduction.html#stock-xx"><i class="fa fa-check"></i><b>2.5.2</b> stock xx</a></li>
+<li class="chapter" data-level="2.5.3" data-path="introduction.html"><a href="introduction.html#stock-xx-1"><i class="fa fa-check"></i><b>2.5.3</b> stock xx</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html"><i class="fa fa-check"></i><b>3</b> Introduction to Splines</a>
@@ -322,7 +324,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## Time used:
 ##  Pre-processing     Running a4a Post-processing           Total 
-##       0.8310628      13.8670402       0.1635840      14.8616869 
+##       0.8444660      13.8429878       0.1742072      14.8616610 
 ## 
 ## Submodels:
 ##   fmodel: ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
@@ -363,7 +365,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## Time used:
 ##  Pre-processing     Running a4a Post-processing           Total 
-##       0.8310628      13.8670402       0.1635840      14.8616869 
+##       0.8444660      13.8429878       0.1742072      14.8616610 
 ## 
 ## Submodels:
 ##   fmodel: ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
@@ -647,24 +649,24 @@ Figure 8.13: Catchability with a linear trend in year
 ## 
 ##      year
 ## age   1957 1958 1959 1960 1961 1962 1963 1964 1965 1966 1967 1968 1969 1970
-##   all  405  399  468  568  503  590  543  613  514  574  492  518  542  508
+##   all  476  392  402  466  561  509  582  565  506  426  484  531  382  451
 ##      year
 ## age   1971 1972 1973 1974 1975 1976 1977 1978 1979 1980 1981 1982 1983 1984
-##   all  415  507  409  414  493  443  456  492  468  413  477  513  551  570
+##   all  532  494  442  418  457  555  507  482  533  511  495  496  512  521
 ##      year
 ## age   1985 1986 1987 1988 1989 1990 1991 1992 1993 1994 1995 1996 1997 1998
-##   all  715  666  633  796  651  486  381  434  359  370  330  299  398  337
+##   all  623  779  646  633  802  503  562  431  444  323  374  303  428  364
 ##      year
 ## age   1999 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010 2011 2012
-##   all  348  369  344  414  406  350  351  334  448  527  566  763  935  912
+##   all  349  311  384  379  423  448  390  421  501  514  610  808  660  822
 ##      year
 ## age   2013 2014 2015 2016 2017
-##   all  919 1075  859 1027 1085
+##   all  997  985  926  994 1216
 ## 
 ## units:  t</code></pre>
 <div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="fitting.html#cb190-1" tabindex="-1"></a><span class="co"># fitting the model</span></span>
 <span id="cb190-2"><a href="fitting.html#cb190-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, <span class="fu">FLIndices</span>(bioidx), <span class="at">qmodel=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>))</span></code></pre></div>
-<p>To estimate a constant selectivity over time one used the model <span class="math inline">\(\sim 1\)</span>. As a matter of fact the estimate value, 9.9^{-4}, is not very far from the simulated one, 0.001.</p>
+<p>To estimate a constant selectivity over time one used the model <span class="math inline">\(\sim 1\)</span>. As a matter of fact the estimate value, 0.001, is not very far from the simulated one, 0.001.</p>
 <p>An example where the biomass index refers only to age 2 to 4 (for example a CPUE that targets these particular ages).</p>
 <div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="fitting.html#cb191-1" tabindex="-1"></a><span class="co"># creating the index</span></span>
 <span id="cb191-2"><a href="fitting.html#cb191-2" tabindex="-1"></a>dnms <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">age=</span><span class="st">&quot;all&quot;</span>, <span class="at">year=</span><span class="fu">range</span>(ple4)[<span class="st">&quot;minyear&quot;</span>]<span class="sc">:</span><span class="fu">range</span>(ple4)[<span class="st">&quot;maxyear&quot;</span>])</span>
@@ -677,7 +679,7 @@ Figure 8.13: Catchability with a linear trend in year
 <span id="cb191-9"><a href="fitting.html#cb191-9" tabindex="-1"></a><span class="fu">range</span>(bioidx)[<span class="fu">c</span>(<span class="st">&quot;min&quot;</span>,<span class="st">&quot;max&quot;</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>)</span>
 <span id="cb191-10"><a href="fitting.html#cb191-10" tabindex="-1"></a><span class="co"># fitting the model</span></span>
 <span id="cb191-11"><a href="fitting.html#cb191-11" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, <span class="fu">FLIndices</span>(bioidx), <span class="at">qmodel=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>))</span></code></pre></div>
-<p>Once more the estimate value, 0.00101, is not very far from the simulated one, 0.001.</p>
+<p>Once more the estimate value, 0.001, is not very far from the simulated one, 0.001.</p>
 </div>
 <div id="catchability-submodel-for-single-age-indices" class="section level3 hasAnchor" number="8.2.3">
 <h3><span class="header-section-number">8.2.3</span> Catchability submodel for single age indices<a href="fitting.html#catchability-submodel-for-single-age-indices" class="anchor-section" aria-label="Anchor link to header"></a></h3>

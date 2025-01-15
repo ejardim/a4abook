@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-01-14" />
+<meta name="date" content="2025-01-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -150,13 +150,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#stock-assessment-process"><i class="fa fa-check"></i><b>2.1</b> Stock assessment process</a></li>
-<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#stock-assessment-as-a-linear-model"><i class="fa fa-check"></i><b>2.2</b> Stock assessment as a linear model</a></li>
-<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#data-used-in-the-book"><i class="fa fa-check"></i><b>2.3</b> Data used in the book</a>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#the-assessment-for-all-initiative-a4a"><i class="fa fa-check"></i><b>2.1</b> The “Assessment for All” Initiative (a4a)</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#multi-stage-modelling-approach"><i class="fa fa-check"></i><b>2.2</b> Multi-stage modelling approach</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#stock-assessment-process"><i class="fa fa-check"></i><b>2.3</b> Stock Assessment Process</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#stock-assessment-as-a-linear-model"><i class="fa fa-check"></i><b>2.4</b> Stock assessment as a linear model</a></li>
+<li class="chapter" data-level="2.5" data-path="introduction.html"><a href="introduction.html#data-used-in-the-book"><i class="fa fa-check"></i><b>2.5</b> Data used in the book</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="introduction.html"><a href="introduction.html#stock-xx"><i class="fa fa-check"></i><b>2.3.1</b> stock xx</a></li>
-<li class="chapter" data-level="2.3.2" data-path="introduction.html"><a href="introduction.html#stock-xx-1"><i class="fa fa-check"></i><b>2.3.2</b> stock xx</a></li>
-<li class="chapter" data-level="2.3.3" data-path="introduction.html"><a href="introduction.html#stock-xx-2"><i class="fa fa-check"></i><b>2.3.3</b> stock xx</a></li>
+<li class="chapter" data-level="2.5.1" data-path="introduction.html"><a href="introduction.html#plaice-in-area-fao-27-ices-area-iv"><i class="fa fa-check"></i><b>2.5.1</b> Plaice in area FAO 27, ICES area IV</a></li>
+<li class="chapter" data-level="2.5.2" data-path="introduction.html"><a href="introduction.html#stock-xx"><i class="fa fa-check"></i><b>2.5.2</b> stock xx</a></li>
+<li class="chapter" data-level="2.5.3" data-path="introduction.html"><a href="introduction.html#stock-xx-1"><i class="fa fa-check"></i><b>2.5.3</b> stock xx</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html"><i class="fa fa-check"></i><b>3</b> Introduction to Splines</a>
@@ -305,15 +307,72 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="introduction" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Introduction<a href="introduction.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>The a4a stock assessment framework is based in a non-linear catch-at-age model implemented in <code>R</code>, <code>FLR</code> and <code>ADMB</code> that can be applied rapidly to a wide range of situations with low setup requirements.</p>
-<p>The framework is built of submodels which define the different parts of a statistical catch at age model that require structural assumptions. In the a4a framework these are fishing mortality-at-age, abundance indicies catchability-at-age, recruitment, observation variances of catch-at-age and abundance indices-at-age, and abundance-at-age in the first year of the data series (see section @ref{sec:math} for details).</p>
-<p>Other important processes, like natural mortality, individual growth and reproduction, are treated as fixed, as it’s common in stock assessment methods. Nevertheless, the <code>a4a</code> framework provides methods to condition these processes prior to the model fit, and propagate their uncertainty into the assessment process. See chapters XX and section XX.</p>
-<div id="stock-assessment-process" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> Stock assessment process<a href="introduction.html#stock-assessment-process" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>IO approach versus integrated modelling</p>
+<div id="the-assessment-for-all-initiative-a4a" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> The “Assessment for All” Initiative (a4a)<a href="introduction.html#the-assessment-for-all-initiative-a4a" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The European Commission Joint Research Centre’s (JRC) “Assessment for All” Initiative (a4a) was launched to simplify and standardize the complex methodologies often employed in fisheries science, a4a focuses on creating flexible, modular frameworks that can accommodate varying data availability, regional needs, and stakeholder objectives.</p>
+<p>The JRC started its ‘Assessment for All’ Initiative (a4a), with the aim to develop, test, and distribute methods to assess a large numbers of stocks in an operational time frame, and to build the necessary capacity/expertise on stock assessment and advice provision.</p>
+<p>According to Jardim et.al (2014), the long-term strategy of a4a is to increase the number of stock assessments by reducing the workload required to run each analysis and by bringing more scientists/analysts into fisheries management advice. The first is achieved by developing a working framework with the methods required to run all the analyses a stock assessment needs. Such approach should make the model exploration and selection processes easier, as well as decreasing the burden of moving between software platforms. The second can be achieved by making the analysis more intuitive, thereby attracting more experts to join stock assessment teams.</p>
+<p>One major step to achieve the a4a goals was the development of a stock assessment model that could be applied rapidly to a large number of stocks and for a wide range of applications: traditional stock assessment, conditioning of operating models, forecasting, or informing harvest control rules in MSE algorithms.</p>
+<p>The modular nature of a4a allows for the integration of data from diverse sources, including biological, environmental, and socioeconomic datasets, ensuring comprehensive assessments. This inclusivity enhances the ability to predict stock dynamics and evaluate the impacts of fishing and environmental changes.</p>
+<p>While a4a simplifies traditional assessment approaches, it faces challenges such as ensuring the quality and consistency of input data, especially in regions with limited monitoring infrastructure. To address this, the initiative incorporates uncertainty into its models, leveraging MCMC frameworks and other statistical tools to account for variability in data quality and ecosystem processes.</p>
+<p>[EJ TO CHECK] The a4a framework has been applied in various European fisheries to improve stock assessment practices. For example, its use in small pelagic fisheries demonstrated the utility of simple linear models in capturing key population dynamics without the need for data-intensive methods <a href="https://typeset.io/papers/food-for-thought-what-if-stock-assessment-is-as-simple-as-a-22co3slqjr">(Jardim et al., 2014)</a>.</p>
+<p>Some of the key elements of stock assessment are the quantity, quality and aggregation level of the data available. As in many other models the data will condition the type of models that can be used. In <code>a4a</code> the minimum set of data, loosely defined as a “moderate data” level, consists of:</p>
+<ul>
+<li>volume of catches in weight (which should include landings and discards);</li>
+<li>length structure of the catches (based on selectivity studies or direct observations);</li>
+<li>natural mortality by length;</li>
+<li>proportion of mature individuals by length;</li>
+<li>age-length key or growth model;</li>
+<li>length-weight relationship;</li>
+<li>index of abundance and its length structure, or index of biomass (the type of index is left open, it could be from a scientifc survey or a commercial CPUE series);</li>
+</ul>
 </div>
-<div id="stock-assessment-as-a-linear-model" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Stock assessment as a linear model<a href="introduction.html#stock-assessment-as-a-linear-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="multi-stage-modelling-approach" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Multi-stage modelling approach<a href="introduction.html#multi-stage-modelling-approach" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In ecological and population dynamics modeling, one can choose between integrated models, which estimate correlated parameters together, and two-stage models, which separate estimation into distinct steps. These approaches differ in complexity, data requirements, interpretability, and their ability to address uncertainties. The selection depends largely on the study objectives, available data, and the system’s ecological complexity.</p>
+<p>Integrated models estimate all parameters within a unified framework, accounting for correlations and interactions between variables such as growth, natural mortality, recruitment, and environmental factors. This approach can provide a realistic depiction of biological systems by preserving dependencies and feedback loops, which are crucial for understanding processes like density dependence or predator-prey interactions <a href="https://typeset.io/papers/natural-mortality-theory-estimation-and-application-in-29k3o1na">(Hamel et al., 2023)</a>. Integrated models are particularly advantageous for ecosystem-based management, where interactions among multiple factors need to be captured. However, the complexity of these models makes them computationally intensive and sensitive to data quality.</p>
+<p>On the other hand, two-stage models estimate parameters such as growth or natural mortality independently before incorporating them into broader models. This step-wise approach simplifies estimation, reducing computational demands and mitigating issues like parameter confounding. For example, fisheries often use empirical relationships to estimate natural mortality (M) based on growth parameters or life history traits before including M in stock assessment models <a href="https://typeset.io/papers/assessing-the-accuracy-of-published-natural-mortality-2ejiyrxpk7">(Maceina &amp; Sammons, 2016)</a>. However, this decoupling may overlook dynamic interactions, such as how growth influences mortality, potentially leading to biased or incomplete inferences about ecosystem dynamics <a href="https://typeset.io/papers/natural-mortality-augments-population-fluctuations-of-forage-11krhr78za">(Jacobsen &amp; Essington, 2018)</a>.</p>
+<p>Dealing with uncertainty is a critical aspect of both approaches. Integrated models explicitly quantify and propagate uncertainties across correlated parameters. These models incorporate multiple sources of variability, including observation, process, and structural uncertainties, enhancing the robustness of predictions <a href="https://typeset.io/papers/incorporating-uncertainty-into-a-length-based-estimator-of-4bes19tqua">(López Quintero et al., 2017)</a>. Conversely, two-stage models often treat parameter estimates as fixed values, which can underestimate uncertainty propagation in subsequent analyses. However, by treating first-stage estimates as distributions rather than point estimates, two-stage models can partially address this limitation.</p>
+<p>For fisheries science, the choice between these models often depends on management goals and data availability. Integrated models are better suited for forecasting fish abundance or evaluating complex ecological interactions, such as predator-prey dynamics or responses to environmental variability <a href="https://typeset.io/papers/limited-temporal-variability-in-natural-mortality-for-t8tbfa2f">(Robertson et al., 2022)</a>. Meanwhile, two-stage models are practical for stock assessments, where simplicity and interpretability are prioritized.</p>
+<p>Two-stage models are advantageous for practical applications, such as fisheries stock assessments, where simplicity and robustness take precedence over ecological nuance. Empirical estimates of <span class="math inline">\(M\)</span>, derived from life-history traits, provide reliable inputs for subsequent models, avoiding the parameter confounding that often occurs in integrated frameworks.</p>
+<p>Despite the intuitive advantages of integrated models, it is not a panacea for poor quality data or model structure uncertainty in stock assessments. There are several disadvantages, mostly related to model misspecification, the complexity of the resulting models, and the associated, often considerable, computational requirements (e.g. the use of remotely sensed environmental information). Consequently, in some situations, the traditional two-stage approach remains a better approach (Mounder and Punt, 2013).</p>
+</div>
+<div id="stock-assessment-process" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Stock Assessment Process<a href="introduction.html#stock-assessment-process" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The following table breaks down the stock assessment process into three stages: (i) input data preparation, (ii) stock assessment model fitting, and (iii) provision of scientific advice. This breakdown is designed to explain the a4a approach, offering a general framework that outlines the sequence of analyses in the stock assessment process. Each stage includes a plethora of analyses and procedures tailored to the specific stock, considering the available data, time, and resources.</p>
+<table>
+<caption><span id="tab:sastages">Table 2.1: </span> Stock assessment process stages</caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Stage</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>Input data preparation</strong></td>
+<td align="left">Preparation of catch data, potentially separating landings and discards. Preparation of biological data, including maturity, length-weight relationships, natural mortality, and individual growth. Conversion of length data into age data.</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Stock assessment model fit</strong></td>
+<td align="left">Fitting the model to data, inspecting diagnostics such as residuals, retrospective analyses, and hindcasts. Fitting the stock-recruitment model to recruitment and spawning stock biomass (SSB) estimates from the stock assessment model fit or within the model itself.</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Scientific advice provision</strong></td>
+<td align="left">Estimation of reference points. Assessment of stock status based on reference points and model estimates of SSB and fishing mortality. Running projections under different scenarios. Providing reports with policy outcome evaluations.</td>
+</tr>
+</tbody>
+</table>
+<p>The main purpose of the above table is to clarify a4a’s multi-stage approach to stock assessment. For instance, parameters like natural mortality and individual growth are estimated outside the stock assessment model fitting process, unlike integrated analyses. This is done for reasons discussed earlier. Nevertheless, the stock-recruitment relationship can be estimated within the model, as is typical in integrated analyses. This mixed approach seeks to exclude highly correlated processes from the model while incorporating those that can enhance the robustness of the stock assessment model fit.</p>
+<p>When data are limited, the stock assessment model requires more structure, but this constraint reduces the information available to manage parameter correlations. Striking this balance is challenging. The a4a approach incorporates stock-recruitment relationships, as these are believed to exhibit lower correlation with other model parameters compared to natural mortality or individual growth.</p>
+<p>On the other hand, since natural mortality and individual growth are very important processes acting at a very low level in terms of data processing, there are specific methods to deal with conditioning those processes, in case there’s no data or limited data available, and to provide the opportuinity to propagate their uncertainty into stock assessment.</p>
+</div>
+<div id="stock-assessment-as-a-linear-model" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Stock assessment as a linear model<a href="introduction.html#stock-assessment-as-a-linear-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The submodels formulation uses linear models, which opens the possibility of using the linear modelling tools available in <code>R</code>. For example, <a href="http://cran.r-project.org/web/packages/mgcv/index.html"><code>mgcv</code></a> gam formulas or factorial design formulas using <code>lm()</code>.</p>
 <p>The ‘language’ of linear models has been developing within the statistical community for many years, and constitutes an elegant way of defining models without going through the complexity of mathematical representations. This approach makes it also easier to communicate among scientists:</p>
 <ul>
@@ -323,18 +382,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="http://books.google.com/books?isbn=041283040X">Chambers and Hastie, 1991</a>, further developed for use in S</li>
 </ul>
 </div>
-<div id="data-used-in-the-book" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> Data used in the book<a href="introduction.html#data-used-in-the-book" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="stock-xx" class="section level3 hasAnchor" number="2.3.1">
-<h3><span class="header-section-number">2.3.1</span> stock xx<a href="introduction.html#stock-xx" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="data-used-in-the-book" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Data used in the book<a href="introduction.html#data-used-in-the-book" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="plaice-in-area-fao-27-ices-area-iv" class="section level3 hasAnchor" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Plaice in area FAO 27, ICES area IV<a href="introduction.html#plaice-in-area-fao-27-ices-area-iv" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="stock-xx" class="section level3 hasAnchor" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> stock xx<a href="introduction.html#stock-xx" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Description and summarized depiction of data</p>
 </div>
-<div id="stock-xx-1" class="section level3 hasAnchor" number="2.3.2">
-<h3><span class="header-section-number">2.3.2</span> stock xx<a href="introduction.html#stock-xx-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Description and summarized depiction of data</p>
-</div>
-<div id="stock-xx-2" class="section level3 hasAnchor" number="2.3.3">
-<h3><span class="header-section-number">2.3.3</span> stock xx<a href="introduction.html#stock-xx-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="stock-xx-1" class="section level3 hasAnchor" number="2.5.3">
+<h3><span class="header-section-number">2.5.3</span> stock xx<a href="introduction.html#stock-xx-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Description and summarized depiction of data</p>
 
 </div>

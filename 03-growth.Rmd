@@ -56,8 +56,7 @@ predict(vbObj, t=5:10+0.5)
 
 ## Adding uncertainty to growth parameters with a multivariate normal distribution}
 
-Uncertainty in the growth model is introduced through the inclusion of parameter uncertainty.
-This is done by making use of the parameter variance-covariance matrix (the `vcov` slot of the `a4aGr` class) and assuming a distribution. The numbers in the variance-covariance matrix could come from the parameter uncertainty from fitting the growth model parameters.
+Uncertainty in the growth model is introduced through the inclusion of parameter uncertainty. This is done by making use of the parameter variance-covariance matrix (the `vcov` slot of the `a4aGr` class) and assuming a distribution. The numbers in the variance-covariance matrix could come from the parameter uncertainty from fitting the growth model parameters.
 
 Here we set the variance-covariance matrix by scaling a correlation matrix, using a cv of 0.2. Based on 
 
@@ -92,9 +91,14 @@ all.equal(cm, cov2cor(mm))
 Create the a4aGr object as before but now we also include the vcov argument for the variance-covariance matrix.
 
 ```{r, making_vcov_example} 
-vbObj <- a4aGr(grMod=~linf*(1-exp(-k*(t-t0))), grInvMod=~t0-1/k*log(1-len/linf), 
-               params=FLPar(linf=p["linf"], k=p["k"], t0=p["t0"], 
-                            units=c("cm","year-1","year")), vcov=mm)
+vbObj <- a4aGr(
+  grMod=~linf*(1-exp(-k*(t-t0))),
+  grInvMod=~t0-1/k*log(1-len/linf),
+  params=FLPar(
+    linf=p["linf"], k=p["k"], t0=p["t0"],
+    units=c("cm","year-1","year")),
+    vcov=mm
+)
 ```
 
 First we show a simple example where we assume that the parameters are represented using a multivariate normal distribution.
@@ -105,16 +109,16 @@ First we show a simple example where we assume that the parameters are represent
 # Note that the object we have just created has a single iteration of each parameter
 vbObj@params
 dim(vbObj@params)
-# We simulate 10000 iterations from the a4aGr object by calling mvrnorm() using the 
+# We simulate 250 iterations from the a4aGr object by calling mvrnorm() using the
 # variance-covariance matrix we created earlier.
-vbNorm <- mvrnorm(10000,vbObj)
-# Now we have 10000 iterations of each parameter, randomly sampled from the 
+vbNorm <- mvrnorm(250,vbObj)
+# Now we have 250 iterations of each parameter, randomly sampled from the
 # multivariate normal distribution
 vbNorm@params
 dim(vbNorm@params)
 ```
 
-We can now convert from length to ages data based on the 10000 parameter iterations. This gives us 10000 sets of age data. For example, here we convert a single length vector using each of the 10000 parameter iterations: 
+We can now convert from length to ages data based on the 10000 parameter iterations. This gives us 250 sets of age data. For example, here we convert a single length vector using each of the 250 parameter iterations:
 
 ```{r}
 ages <- predict(vbNorm, len=5:10+0.5)
@@ -138,7 +142,7 @@ The shape of the correlation can be seen in Figure \@ref(fig:plot_norm_scatter).
 splom(data.frame(t(params(vbNorm)@.Data)), par.settings=list(plot.symbol=list(pch=19, cex=0.1, col=1)))
 ```
 
-Growth curves for the 1000 iterations can be seen in Figure \@ref(fig:plot_mv_growth).
+Growth curves for the 250 iterations can be seen in Figure \@ref(fig:plot_mv_growth).
 
 ```{r, plot_mv_growth, fig.cap="Growth curves using parameters simulated from a multivariate normal distribution.", echo=FALSE} 
 #df0 <- melt(predict(vbNorm, t=0:50+0.5))
@@ -167,12 +171,12 @@ k <- as.numeric(as.character(tab$dataTable[,4]))
 t0 <- as.numeric(as.character(tab$dataTable[,5]))
 # Set the min (a), max (b) and median (c) values for the parameter as a list of lists
 # Note that t0 has no 'c' (median) value. This makes the distribution symmetrical
-triPars <- list(list(a=min(linf), b=max(linf), c=median(linf)),
-             list(a=min(k), b=max(k), c=median(k)),
-             list(a=median(t0, na.rm=T)-IQR(t0, na.rm=T)/2, b=median(t0, na.rm=T)+
-                    IQR(t0, na.rm=T)/2))
-# Simulate 10000 times using mvrtriangle
-vbTri <- mvrtriangle(10000, vbObj, paramMargins=triPars)
+triPars <- list(
+  list(a=min(linf), b=max(linf), c=median(linf)),
+  list(a=min(k), b=max(k), c=median(k)),
+  list(a=median(t0, na.rm=T)-IQR(t0, na.rm=T)/2, b=median(t0, na.rm=T)+IQR(t0, na.rm=T)/2))
+# Simulate 250 times using mvrtriangle
+vbTri <- mvrtriangle(250, vbObj, paramMargins=triPars)
 ```
 
 The marginals will reflect the uncertainty on the parameter values that were scraped from [Fishbase](http://fishbase.org) but, as we don't really believe the parameters are multivariate normal, here we adopted a distribution based on a _t_ copula with triangle marginals. The marginal distributions can be seen in Figure \@ref(fig:plot_tri_params) and the shape of the correlation can be seen in Figure \@ref(fig:plot_tri_scatter).
@@ -205,8 +209,7 @@ A more general approach to adding parameter uncertainty is to make use of [stati
 % Needs more explanation
 
 ```{r, copula_triangle_example} 
-vbCop <- mvrcop(10000, vbObj, copula="archmCopula", family="clayton", param=2, 
-                margins="triangle", paramMargins=triPars)
+vbCop <- mvrcop(1000, vbObj, copula="archmCopula", family="clayton", param=2, margins="triangle", paramMargins=triPars)
 ```
 
 The shape of the correlation changes (Figure \@ref(fig:plot_cop_tri_scatter)) as well as the resulting growth curves (Figure \@ref(fig:plot_cop_tri_growth)). 

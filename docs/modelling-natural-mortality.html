@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-01-14" />
+<meta name="date" content="2025-01-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -150,13 +150,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#stock-assessment-process"><i class="fa fa-check"></i><b>2.1</b> Stock assessment process</a></li>
-<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#stock-assessment-as-a-linear-model"><i class="fa fa-check"></i><b>2.2</b> Stock assessment as a linear model</a></li>
-<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#data-used-in-the-book"><i class="fa fa-check"></i><b>2.3</b> Data used in the book</a>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#the-assessment-for-all-initiative-a4a"><i class="fa fa-check"></i><b>2.1</b> The “Assessment for All” Initiative (a4a)</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#multi-stage-modelling-approach"><i class="fa fa-check"></i><b>2.2</b> Multi-stage modelling approach</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#stock-assessment-process"><i class="fa fa-check"></i><b>2.3</b> Stock Assessment Process</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#stock-assessment-as-a-linear-model"><i class="fa fa-check"></i><b>2.4</b> Stock assessment as a linear model</a></li>
+<li class="chapter" data-level="2.5" data-path="introduction.html"><a href="introduction.html#data-used-in-the-book"><i class="fa fa-check"></i><b>2.5</b> Data used in the book</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="introduction.html"><a href="introduction.html#stock-xx"><i class="fa fa-check"></i><b>2.3.1</b> stock xx</a></li>
-<li class="chapter" data-level="2.3.2" data-path="introduction.html"><a href="introduction.html#stock-xx-1"><i class="fa fa-check"></i><b>2.3.2</b> stock xx</a></li>
-<li class="chapter" data-level="2.3.3" data-path="introduction.html"><a href="introduction.html#stock-xx-2"><i class="fa fa-check"></i><b>2.3.3</b> stock xx</a></li>
+<li class="chapter" data-level="2.5.1" data-path="introduction.html"><a href="introduction.html#plaice-in-area-fao-27-ices-area-iv"><i class="fa fa-check"></i><b>2.5.1</b> Plaice in area FAO 27, ICES area IV</a></li>
+<li class="chapter" data-level="2.5.2" data-path="introduction.html"><a href="introduction.html#stock-xx"><i class="fa fa-check"></i><b>2.5.2</b> stock xx</a></li>
+<li class="chapter" data-level="2.5.3" data-path="introduction.html"><a href="introduction.html#stock-xx-1"><i class="fa fa-check"></i><b>2.5.3</b> stock xx</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html"><i class="fa fa-check"></i><b>3</b> Introduction to Splines</a>
@@ -405,7 +407,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## params
 ##                k                t 
-##  0.40363(0.0437) 10.14538(0.9354) 
+##  0.39565(0.0395) 10.01914(1.0729) 
 ## units:  NA 
 ## 
 ## Slot &quot;vcov&quot;:
@@ -422,7 +424,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## params
 ##              b 
-## 0.48957(0.139) 
+## 0.50094(0.138) 
 ## units:  NA</code></pre>
 <p>Note the shape model has no parameters and no uncertainty:</p>
 <div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="modelling-natural-mortality.html#cb83-1" tabindex="-1"></a><span class="fu">params</span>(<span class="fu">shape</span>(m4))</span></code></pre></div>
@@ -469,8 +471,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## iters:  1000 
 ## 
 ## params
-##            linf               k 
-## 59.9867(2.1370)  0.4057(0.0727) 
+##             linf                k 
+## 59.95219(2.0771)  0.40254(0.0708) 
 ## units:  NA 
 ## 
 ## Slot &quot;vcov&quot;:
@@ -686,14 +688,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ##    year
 ## age 2000              2001              2002              2003             
-##   0 3.10166(0.408769) 2.06138(0.163868) 3.10166(0.408769) 3.10166(0.408769)
-##   1 1.14104(0.150378) 0.75834(0.060284) 1.14104(0.150378) 1.14104(0.150378)
-##   2 0.41976(0.055321) 0.27898(0.022177) 0.41976(0.055321) 0.41976(0.055321)
-##   3 0.15442(0.020351) 0.10263(0.008159) 0.15442(0.020351) 0.15442(0.020351)
-##   4 0.05681(0.007487) 0.03776(0.003001) 0.05681(0.007487) 0.05681(0.007487)
-##   5 0.02090(0.002754) 0.01389(0.001104) 0.02090(0.002754) 0.02090(0.002754)
-##   6 0.00769(0.001013) 0.00511(0.000406) 0.00769(0.001013) 0.00769(0.001013)
-##   7 0.00283(0.000373) 0.00188(0.000149) 0.00283(0.000373) 0.00283(0.000373)
+##   0 3.03723(0.412903) 2.04317(0.175062) 3.03723(0.412903) 3.03723(0.412903)
+##   1 1.11734(0.151899) 0.75164(0.064402) 1.11734(0.151899) 1.11734(0.151899)
+##   2 0.41104(0.055880) 0.27651(0.023692) 0.41104(0.055880) 0.41104(0.055880)
+##   3 0.15121(0.020557) 0.10172(0.008716) 0.15121(0.020557) 0.15121(0.020557)
+##   4 0.05563(0.007563) 0.03742(0.003206) 0.05563(0.007563) 0.05563(0.007563)
+##   5 0.02046(0.002782) 0.01377(0.001180) 0.02046(0.002782) 0.02046(0.002782)
+##   6 0.00753(0.001023) 0.00506(0.000434) 0.00753(0.001023) 0.00753(0.001023)
+##   7 0.00277(0.000377) 0.00186(0.000160) 0.00277(0.000377) 0.00277(0.000377)
 ## 
 ## units:  NA</code></pre>
 <div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="modelling-natural-mortality.html#cb125-1" tabindex="-1"></a><span class="fu">dim</span>(flq)</span></code></pre></div>
