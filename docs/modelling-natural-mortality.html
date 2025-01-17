@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-01-15" />
+<meta name="date" content="2025-01-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -181,11 +181,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html"><i class="fa fa-check"></i><b>5</b> Modelling Natural Mortality</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#background"><i class="fa fa-check"></i><b>5.1</b> Background</a></li>
-<li class="chapter" data-level="5.2" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#a4am---the-m-class"><i class="fa fa-check"></i><b>5.2</b> <code>a4aM</code> - The M class</a></li>
-<li class="chapter" data-level="5.3" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>5.3</b> Adding uncertainty to natural mortality parameters with a multivariate normal distribution</a></li>
-<li class="chapter" data-level="5.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>5.4</b> Adding uncertainty to natural mortality parameters with statistical copulas</a></li>
-<li class="chapter" data-level="5.5" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>5.5</b> Computing natural mortality time series - the “m” method</a></li>
+<li class="chapter" data-level="5.1" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#a4am---the-m-class"><i class="fa fa-check"></i><b>5.1</b> <code>a4aM</code> - The M class</a></li>
+<li class="chapter" data-level="5.2" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>5.2</b> Adding uncertainty to natural mortality parameters with a multivariate normal distribution</a></li>
+<li class="chapter" data-level="5.3" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>5.3</b> Adding uncertainty to natural mortality parameters with statistical copulas</a></li>
+<li class="chapter" data-level="5.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>5.4</b> Computing natural mortality time series - the “m” method</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html"><i class="fa fa-check"></i><b>6</b> Stock assessment framework</a>
 <ul>
@@ -194,7 +193,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1.1" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#observations"><i class="fa fa-check"></i><b>6.1.1</b> Observations</a></li>
 <li class="chapter" data-level="6.1.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#the-population-dynamics-model"><i class="fa fa-check"></i><b>6.1.2</b> The population dynamics model</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#classes-description"><i class="fa fa-check"></i><b>6.2</b> Classes description </a></li>
+<li class="chapter" data-level="6.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#classes-description"><i class="fa fa-check"></i><b>6.2</b> Classes Description </a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="submodel-structure.html"><a href="submodel-structure.html"><i class="fa fa-check"></i><b>7</b> Submodel structure </a>
 <ul>
@@ -307,12 +306,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="modelling-natural-mortality" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">Chapter 5</span> Modelling Natural Mortality<a href="modelling-natural-mortality.html#modelling-natural-mortality" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>The document explains the approach being developed by a4a to integrate uncertainty in natural mortality into stock assessment and advice. It presents a mixture of text and code, where the first explains the concepts behind the methods, while the last shows how these can be run with the software provided.</p>
-<div id="background" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> Background<a href="modelling-natural-mortality.html#background" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In the <code>a4a</code> natural mortality is dealt with as an external parameter to the stock assessment model. The rationale to modelling natural mortality is similar to that of growth: one should be able to grab information from a range of sources and feed it into the assessment.</p>
-<p>The mechanism used by <code>a4a</code> is to build an interface that makes it transparent, flexible and hopefully easy to explore different options. In relation to natural mortality it means that the analyst should be able to use distinct models like Gislasson’s, Charnov’s, Pauly’s, etc in a coherent framework making it possible to compare the outcomes of the assessment.</p>
-<p>Within the <code>a4a</code> framework, the general method for inserting natural mortality in the stock assessment is to:</p>
+<p>In the <code>a4a</code> natural mortality is dealt with as an external parameter to the stock assessment model. The rationale to modelling natural mortality is similar to that of growth: one should be able to collect information from a range of sources and feed it into the assessment. The analyst should be able to use distinct models like Gislasson’s, Charnov’s, Pauly’s, etc in a coherent framework making it possible to compare the outcomes of the assessment.</p>
+<p>Within the <code>a4a</code> framework, the general method for adding natural mortality in the stock assessment model is to:</p>
 <ul>
 <li>Create an object of class <code>a4aM</code> which holds the natural mortality model and parameters.</li>
 <li>Add uncertainty to the parameters in the <code>a4aM</code> object.</li>
@@ -320,9 +315,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>The resulting <code>FLQuant</code> object can then be directly inserted into an <code>FLStock</code> object to be used for the assessment.</p>
 <p>In this section we go through each of the steps in detail using a variety of different models.</p>
-</div>
-<div id="a4am---the-m-class" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> <code>a4aM</code> - The M class<a href="modelling-natural-mortality.html#a4am---the-m-class" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="a4am---the-m-class" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> <code>a4aM</code> - The M class<a href="modelling-natural-mortality.html#a4am---the-m-class" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Natural mortality is implemented in a class named <code>a4aM</code>. This class is made up of three objects of the class <code>FLModelSim</code>. Each object is a model that represents one effect: an age or length effect, a scaling (level) effect and a time trend, named <code>shape</code>, <code>level</code> and <code>trend</code>, respectively. The impact of the models is multiplicative, i.e. the overal natural mortality is given by <code>shape</code> x <code>level</code> x <code>trend</code>. Check the help files for more information.</p>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="modelling-natural-mortality.html#cb68-1" tabindex="-1"></a><span class="fu">showClass</span>(<span class="st">&quot;a4aM&quot;</span>)</span></code></pre></div>
 <pre><code>## Class &quot;a4aM&quot; [package &quot;FLa4a&quot;]
@@ -357,7 +351,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="modelling-natural-mortality.html#cb74-1" tabindex="-1"></a>shape_len <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span>K<span class="sc">*</span>(linf<span class="sc">/</span>len)<span class="sc">^</span><span class="fl">1.5</span>, <span class="at">params=</span><span class="fu">FLPar</span>(<span class="at">linf=</span><span class="dv">60</span>, <span class="at">K=</span><span class="fl">0.4</span>))</span>
 <span id="cb74-2"><a href="modelling-natural-mortality.html#cb74-2" tabindex="-1"></a>m_len <span class="ot">&lt;-</span> <span class="fu">a4aM</span>(<span class="at">shape=</span>shape_len)</span></code></pre></div>
 <p>Another option is to model how an external factor may impact the natural mortality. This can be added through the <code>trend</code> model. Suppose natural mortality can be modelled with a dependency on the NAO index, due to some mechanism that results in having lower mortality when NAO is negative and higher when it’s positive. In this example, the impact is represented by the NAO value on the quarter before spawning, which occurs in the second quarter.</p>
-<p>We use this to make a complicated natural mortality model with an age based shape model, a level model based on <span class="math inline">\(K\)</span> and a trend model driven by NAO, where mortality increases by 50% if NAO is positive on the first quarter.</p>
+<p>We use this to make a complex natural mortality model with an age based shape model, a level model based on <span class="math inline">\(K\)</span> and a trend model driven by NAO, where mortality increases by 50% if NAO is positive on the first quarter.</p>
 <div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="modelling-natural-mortality.html#cb75-1" tabindex="-1"></a><span class="co"># Get NAO</span></span>
 <span id="cb75-2"><a href="modelling-natural-mortality.html#cb75-2" tabindex="-1"></a>nao <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://www.cpc.ncep.noaa.gov/products/precip/CWlink/pna/norm.nao.monthly.b5001.current.ascii.table&quot;</span>, <span class="at">skip=</span><span class="dv">1</span>, <span class="at">fill=</span><span class="cn">TRUE</span>, <span class="at">na.strings=</span><span class="st">&quot;-99.90&quot;</span>)</span>
 <span id="cb75-3"><a href="modelling-natural-mortality.html#cb75-3" tabindex="-1"></a>dnms <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">quant=</span><span class="st">&quot;nao&quot;</span>, <span class="at">year=</span><span class="dv">1950</span><span class="sc">:</span><span class="dv">2024</span>, <span class="at">unit=</span><span class="st">&quot;unique&quot;</span>, <span class="at">season=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">area=</span><span class="st">&quot;unique&quot;</span>)</span>
@@ -378,8 +372,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   level: ~1.5 * k
 ##   trend: ~1 + b * nao</code></pre>
 </div>
-<div id="adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> Adding uncertainty to natural mortality parameters with a multivariate normal distribution<a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Adding uncertainty to natural mortality parameters with a multivariate normal distribution<a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Uncertainty on natural mortality is added through uncertainty on the parameters.</p>
 <p>In this section we’ll’ show how to add multivariate normal uncertainty. We make use of the class <code>FLModelSim</code> method <code>mvrnorm()</code>, which is a wrapper for the method <code>mvrnorm()</code> distributed by the package <code>MASS</code>.</p>
 <p>We’ll create an <code>a4aM</code> object with an exponential shape, a <code>level</code> model based on <span class="math inline">\(k\)</span> and temperature (Jensen’s third estimator), and a <code>trend</code> model driven by the NAO (as above). Afterwards a variance-covariance matrix for the <code>level</code> and <code>trend</code> models will be included. Finally, create an object with 100 iterations using the <code>mvrnorm()</code> method.</p>
@@ -406,8 +400,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## iters:  100 
 ## 
 ## params
-##                k                t 
-##  0.39565(0.0395) 10.01914(1.0729) 
+##               k               t 
+## 0.39624(0.0486) 9.81045(0.8374) 
 ## units:  NA 
 ## 
 ## Slot &quot;vcov&quot;:
@@ -423,8 +417,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## iters:  100 
 ## 
 ## params
-##              b 
-## 0.50094(0.138) 
+##             b 
+## 0.5157(0.128) 
 ## units:  NA</code></pre>
 <p>Note the shape model has no parameters and no uncertainty:</p>
 <div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="modelling-natural-mortality.html#cb83-1" tabindex="-1"></a><span class="fu">params</span>(<span class="fu">shape</span>(m4))</span></code></pre></div>
@@ -433,13 +427,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##    
 ## NA 
 ## units:  NA</code></pre>
-<p>In this particular case, the <code>shape</code> model will not be randomized because it doesn’t have a variance-covariance matrix. Also note that because there is only one parameter in the `trend} model, the randomization will use a univariate normal distribution.</p>
+<p>In this particular case, the <code>shape</code> model will not be randomized because it doesn’t have a variance-covariance matrix. Also note that because there is only one parameter in the <code>trend</code> model, the randomization will use a univariate normal distribution.</p>
 <p>The same model could be achieved by using <code>mnrnorm()</code> on each model component:</p>
 <div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="modelling-natural-mortality.html#cb85-1" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">a4aM</span>(<span class="at">shape=</span>shape4, <span class="at">level=</span><span class="fu">mvrnorm</span>(<span class="dv">100</span>, level4), <span class="at">trend=</span><span class="fu">mvrnorm</span>(<span class="dv">100</span>, trend4))</span></code></pre></div>
-<p>%Note: How to include ageing error ???</p>
 </div>
-<div id="adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas" class="section level2 hasAnchor" number="5.4">
-<h2><span class="header-section-number">5.4</span> Adding uncertainty to natural mortality parameters with statistical copulas<a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Adding uncertainty to natural mortality parameters with statistical copulas<a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can also use copulas to add parameter uncertainty to the natural mortality model, similar to the way we use them for the growth model in Section <span class="math inline">\(\ref{sec:growth_triangle_cop}\)</span>. As stated above these processes make use of the methods implemented for the <code>FLModelSim</code> class.</p>
 <p>% EXPAND…</p>
 <p>In the following example we’ll use again Gislason’s second estimator, <span class="math inline">\(M_l=K(\frac{L_{\inf}}{l})^{1.5}\)</span> and a triangle copula to model parameter uncertainty. The method <code>mvrtriangle()</code> is used to create 1000 iterations.</p>
@@ -472,7 +465,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## params
 ##             linf                k 
-## 59.95219(2.0771)  0.40254(0.0708) 
+## 59.93099(2.3567)  0.40491(0.0714) 
 ## units:  NA 
 ## 
 ## Slot &quot;vcov&quot;:
@@ -495,18 +488,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 (#fig:plot_tri_gis_m_hist)Marginal distributions of the parameters for Gislason’s second natural mortality model using a triangle distribution.
 </p>
 </div>
-<p>We now have a new model that can be used for the <code>shape</code> model. You can use the constructor or the set method to add the new model. Note that we have a quite complex method now for M. A length based <code>shape} model from Gislason's work, Jensen's third model based on temperature</code>level<code>and a time</code>trend` depending on NAO. All of the component models have uncertainty in their parameters.</p>
+<p>We now have a new model that can be used for the <code>shape</code> model. You can use the constructor or the set method to add the new model. Note that we have a quite complex method now for M. A length based <code>shape</code> model from Gislason’s work, Jensen’s third model based on temperature <code>level</code> and a time <code>trend</code> depending on NAO. All of the component models have uncertainty in their parameters.</p>
 <div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="modelling-natural-mortality.html#cb90-1" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> <span class="fu">a4aM</span>(<span class="at">shape=</span>mgis2, <span class="at">level=</span>level4, <span class="at">trend=</span>trend4)</span>
 <span id="cb90-2"><a href="modelling-natural-mortality.html#cb90-2" tabindex="-1"></a><span class="co"># or</span></span>
 <span id="cb90-3"><a href="modelling-natural-mortality.html#cb90-3" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> m4</span>
 <span id="cb90-4"><a href="modelling-natural-mortality.html#cb90-4" tabindex="-1"></a><span class="fu">shape</span>(m5) <span class="ot">&lt;-</span> mgis2</span></code></pre></div>
 </div>
-<div id="computing-natural-mortality-time-series---the-m-method" class="section level2 hasAnchor" number="5.5">
-<h2><span class="header-section-number">5.5</span> Computing natural mortality time series - the “m” method<a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="computing-natural-mortality-time-series---the-m-method" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Computing natural mortality time series - the “m” method<a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Now that we have set up the natural mortality <code>a4aM</code> model and added parameter uncertainty to each component, we are ready to generate the <code>FLQuant</code> of natural mortality. For that we need the <code>m()</code> method.</p>
 <p>The <code>m()</code> method is the workhorse method for computing natural mortality. The method returns an <code>FLQuant</code> that can be inserted in an <code>FLStock</code> for usage by the assessment method.</p>
-<p>%The method uses the <code>range</code> slot to work out the dimensions of the <code>FLQuant</code> object.
-% Future developments will also allow for easy insertion into FLStockLen objects.</p>
 <p>The size of the <code>FLQuant</code> object is determined by the <code>min</code>, <code>max</code>, <code>minyear</code> and <code>maxyear</code> elements of the <code>range</code> slot of the <code>a4aM</code> object. By default the values of these elements are set to 0. Giving an <code>FLQuant</code> with length 1 in the <code>quant</code> and <code>year</code> dimension. The <code>range</code> slot can be set by hand, or by using the <code>rngquant()</code> and <code>rngyear()</code> methods.</p>
 <p>The name of the first dimension of the output <code>FLQuant</code> (e.g. ‘age’ or ‘len’) is determined by the parameters of the <code>shape</code> model. If it is not clear what the name should be then the name is set to ‘quant’.</p>
 <p>Here we demonstrate <code>m()</code> using the simple <code>a4aM</code> object we created above that has constant natural mortality.</p>
@@ -688,14 +679,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ##    year
 ## age 2000              2001              2002              2003             
-##   0 3.03723(0.412903) 2.04317(0.175062) 3.03723(0.412903) 3.03723(0.412903)
-##   1 1.11734(0.151899) 0.75164(0.064402) 1.11734(0.151899) 1.11734(0.151899)
-##   2 0.41104(0.055880) 0.27651(0.023692) 0.41104(0.055880) 0.41104(0.055880)
-##   3 0.15121(0.020557) 0.10172(0.008716) 0.15121(0.020557) 0.15121(0.020557)
-##   4 0.05563(0.007563) 0.03742(0.003206) 0.05563(0.007563) 0.05563(0.007563)
-##   5 0.02046(0.002782) 0.01377(0.001180) 0.02046(0.002782) 0.02046(0.002782)
-##   6 0.00753(0.001023) 0.00506(0.000434) 0.00753(0.001023) 0.00753(0.001023)
-##   7 0.00277(0.000377) 0.00186(0.000160) 0.00277(0.000377) 0.00277(0.000377)
+##   0 3.02978(0.456064) 2.02907(0.219726) 3.02978(0.456064) 3.02978(0.456064)
+##   1 1.11459(0.167777) 0.74645(0.080833) 1.11459(0.167777) 1.11459(0.167777)
+##   2 0.41004(0.061722) 0.27461(0.029737) 0.41004(0.061722) 0.41004(0.061722)
+##   3 0.15084(0.022706) 0.10102(0.010940) 0.15084(0.022706) 0.15084(0.022706)
+##   4 0.05549(0.008353) 0.03716(0.004024) 0.05549(0.008353) 0.05549(0.008353)
+##   5 0.02041(0.003073) 0.01367(0.001481) 0.02041(0.003073) 0.02041(0.003073)
+##   6 0.00751(0.001130) 0.00503(0.000545) 0.00751(0.001130) 0.00751(0.001130)
+##   7 0.00276(0.000416) 0.00185(0.000200) 0.00276(0.000416) 0.00276(0.000416)
 ## 
 ## units:  NA</code></pre>
 <div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="modelling-natural-mortality.html#cb125-1" tabindex="-1"></a><span class="fu">dim</span>(flq)</span></code></pre></div>
@@ -706,6 +697,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 (#fig:uncertain_m)Natural mortality with age and year trend.
 </p>
 </div>
+<p>Notably, the last example created a M model that varies with time, based on an environmental variable, and adds estimation uncertainty, showing the huge flexibility this method can deal with.</p>
 
 </div>
 </div>

@@ -219,8 +219,12 @@ plot(window(FLStocks("10% SSB growth relative to previous year" = stk07, "10% hi
 An important element when projecting the stock forward is to keep the performance of the fishery within some boundaries. A common one requested by the industry is to keep catches within some stability. `fwd` can include those constraints using the `min` and `max` arguments. The next example sets the minimum future catches to half of mean historical catches.
 
 ```{r, warning=FALSE, message=FALSE}
-trg00 <- fwdControl(year = inipy:endpy, quant = rep(c("ssb_end", "catch"), projy), value = rep(c(1500000, NA), projy), min=rep(c(NA, 0.5*mean(catch(stk00), na.rm=TRUE)), projy))
+trg00 <- fwdControl(year = inipy:endpy, quant = rep(c("ssb_end", "catch"), projy), value = rep(c(1500000, NA), projy), min=rep(c(NA, 0.1*mean(catch(stk00), na.rm=TRUE)), projy))
 stk09 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
+```
+
+```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 25 years with SSB target of 1500000t and catch limit of 50% historical catches"}
+plot(window(stk09, start = 2000))
 ```
 
 ### Complex scenario

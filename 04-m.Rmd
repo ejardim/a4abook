@@ -1,20 +1,14 @@
 # Modelling Natural Mortality
 
-The document explains the approach being developed by a4a to integrate uncertainty in natural mortality into stock assessment and advice. It presents a mixture of text and code, where the first explains the concepts behind the methods, while the last shows how these can be run with the software provided.
+In the `a4a` natural mortality is dealt with as an external parameter to the stock assessment model. The rationale to modelling natural mortality is similar to that of growth: one should be able to collect information from a range of sources and feed it into the assessment. The analyst should be able to use distinct models like Gislasson's, Charnov's, Pauly's, etc in a coherent framework making it possible to compare the outcomes of the assessment.
 
-## Background
-
-In the `a4a` natural mortality is dealt with as an external parameter to the stock assessment model. The rationale to modelling natural mortality is similar to that of growth: one should be able to grab information from a range of sources and feed it into the assessment.
-
-The mechanism used by `a4a` is to build an interface that makes it transparent, flexible and hopefully easy to explore different options. In relation to natural mortality it means that the analyst should be able to use distinct models like Gislasson's, Charnov's, Pauly's, etc in a coherent framework making it possible to compare the outcomes of the assessment. 
-
-Within the `a4a` framework, the general method for inserting natural mortality in the stock assessment is to:
+Within the `a4a` framework, the general method for adding natural mortality in the stock assessment model is to:
 
 - Create an object of class `a4aM` which holds the natural mortality model and parameters.
 - Add uncertainty to the parameters in the `a4aM` object.
 - Apply the `m()` method to the `a4aM` object to create an age or length based `FLQuant` object of the required dimensions.
 
-The resulting `FLQuant` object can then be directly inserted into an `FLStock` object to be used for the assessment.   
+The resulting `FLQuant` object can then be directly inserted into an `FLStock` object to be used for the assessment.
 
 In this section we go through each of the steps in detail using a variety of different models.
 
@@ -57,7 +51,7 @@ m_len <- a4aM(shape=shape_len)
 
 Another option is to model how an external factor may impact the natural mortality. This can be added through the `trend` model. Suppose natural mortality can be modelled with a dependency on the NAO index, due to some mechanism that results in having lower mortality when NAO is negative and higher when it's positive. In this example, the impact is represented by the NAO value on the quarter before spawning, which occurs in the second quarter. 
 
-We use this to make a complicated natural mortality model with an age based shape model, a level model based on $K$ and a trend model driven by NAO, where mortality increases by 50% if NAO is positive on the first quarter.
+We use this to make a complex natural mortality model with an age based shape model, a level model based on $K$ and a trend model driven by NAO, where mortality increases by 50% if NAO is positive on the first quarter.
 
 ```{r, nao_m}
 # Get NAO
@@ -115,15 +109,13 @@ Note the shape model has no parameters and no uncertainty:
 params(shape(m4))
 ``` 
 
-In this particular case, the `shape` model will not be randomized because it doesn't have a variance-covariance matrix. Also note that because there is only one parameter in the `trend} model, the randomization will use a univariate normal distribution.
+In this particular case, the `shape` model will not be randomized because it doesn't have a variance-covariance matrix. Also note that because there is only one parameter in the `trend` model, the randomization will use a univariate normal distribution.
 
 The same model could be achieved by using `mnrnorm()` on each model component:
 
 ```{r, univariate_m}
 m4 <- a4aM(shape=shape4, level=mvrnorm(100, level4), trend=mvrnorm(100, trend4))
 ```
-
-%Note: How to include ageing error ???
 
 ## Adding uncertainty to natural mortality parameters with statistical copulas
 
@@ -164,7 +156,7 @@ hist(c(params(mgis2)["linf",]), main="Linf", xlab="")
 hist(c(params(mgis2)["k",]), main="K", xlab="")
 ```
 
-We now have a new model that can be used for the `shape` model. You can use the constructor or the set method to add the new model. Note that we have a quite complex method now for M. A length based `shape} model from Gislason's work, Jensen's third model based on temperature `level` and a time `trend` depending on NAO. All of the component models have uncertainty in their parameters.
+We now have a new model that can be used for the `shape` model. You can use the constructor or the set method to add the new model. Note that we have a quite complex method now for M. A length based `shape` model from Gislason's work, Jensen's third model based on temperature `level` and a time `trend` depending on NAO. All of the component models have uncertainty in their parameters.
 
 ```{r, making_complicated_m}
 m5 <- a4aM(shape=mgis2, level=level4, trend=trend4)
@@ -178,9 +170,6 @@ shape(m5) <- mgis2
 Now that we have set up the natural mortality `a4aM` model and added parameter uncertainty to each component, we are ready to generate the `FLQuant` of natural mortality. For that we need the `m()` method.
 
 The `m()` method is the workhorse method for computing natural mortality. The method returns an `FLQuant` that can be inserted in an `FLStock` for usage by the assessment method.
-
-%The method uses the `range` slot to work out the dimensions of the `FLQuant` object. 
-% Future developments will also allow for easy insertion into FLStockLen objects.
 
 The size of the `FLQuant` object is determined by the `min`, `max`, `minyear` and `maxyear` elements of the `range` slot of the `a4aM` object. By default the values of these elements are set to 0. Giving an `FLQuant` with length 1 in the `quant` and `year` dimension. The `range` slot can be set by hand, or by using the `rngquant()` and `rngyear()` methods.
 
@@ -300,4 +289,6 @@ dim(flq)
 ```{r, uncertain_m, echo=FALSE, fig.cap="Natural mortality with age and year trend."}
 bwplot(data~factor(age)|year, data=flq, par.settings=list(plot.symbol=list(cex=0.2, col="gray50"), box.umbrella=list(col="gray40"), box.rectangle=list(col="gray30")), ylab="M", xlab="age (years)", scales=list(x=list(rot=90)))
 ```
+
+Notably, the last example created a M model that varies with time, based on an environmental variable, and adds estimation uncertainty, showing the huge flexibility this method can deal with.
 

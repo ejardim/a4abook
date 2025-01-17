@@ -82,7 +82,7 @@ The stock recruitment model must be fitted before computing reference points and
 
 In the following example we'll use a Beverton and Holt stock recruitment reltionship. There are several other relationships that can be used, see **[IAGO CHECK THIS]**
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 sr0 <- as.FLSR(stk0, model=bevholt)
 sr0 <- fmle(sr0)
 plot(sr0)
@@ -90,7 +90,7 @@ plot(sr0)
 
 We now need to provide the `FLSR` object, `sr0`, to the `FLBRP` call and refit the reference points. 
 
-```{r, echo=FALSE}
+```{r}
 brp0 <- FLBRP(stk0, sr=sr0)
 model(brp0)
 params(brp0)
@@ -105,7 +105,7 @@ refpts(brp0)
 
 Note $MSY$ based reference points are no longer the same as $F_{MAX}$, and recruitment is no longer constant over all $SSB$ levels.
 
-```{r}
+```{r, echo=FALSE}
 plot(brp0, obs=TRUE)
 ```
 

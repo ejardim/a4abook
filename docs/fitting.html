@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-01-15" />
+<meta name="date" content="2025-01-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -181,11 +181,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html"><i class="fa fa-check"></i><b>5</b> Modelling Natural Mortality</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#background"><i class="fa fa-check"></i><b>5.1</b> Background</a></li>
-<li class="chapter" data-level="5.2" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#a4am---the-m-class"><i class="fa fa-check"></i><b>5.2</b> <code>a4aM</code> - The M class</a></li>
-<li class="chapter" data-level="5.3" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>5.3</b> Adding uncertainty to natural mortality parameters with a multivariate normal distribution</a></li>
-<li class="chapter" data-level="5.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>5.4</b> Adding uncertainty to natural mortality parameters with statistical copulas</a></li>
-<li class="chapter" data-level="5.5" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>5.5</b> Computing natural mortality time series - the “m” method</a></li>
+<li class="chapter" data-level="5.1" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#a4am---the-m-class"><i class="fa fa-check"></i><b>5.1</b> <code>a4aM</code> - The M class</a></li>
+<li class="chapter" data-level="5.2" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>5.2</b> Adding uncertainty to natural mortality parameters with a multivariate normal distribution</a></li>
+<li class="chapter" data-level="5.3" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>5.3</b> Adding uncertainty to natural mortality parameters with statistical copulas</a></li>
+<li class="chapter" data-level="5.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>5.4</b> Computing natural mortality time series - the “m” method</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html"><i class="fa fa-check"></i><b>6</b> Stock assessment framework</a>
 <ul>
@@ -194,7 +193,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1.1" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#observations"><i class="fa fa-check"></i><b>6.1.1</b> Observations</a></li>
 <li class="chapter" data-level="6.1.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#the-population-dynamics-model"><i class="fa fa-check"></i><b>6.1.2</b> The population dynamics model</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#classes-description"><i class="fa fa-check"></i><b>6.2</b> Classes description </a></li>
+<li class="chapter" data-level="6.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#classes-description"><i class="fa fa-check"></i><b>6.2</b> Classes Description </a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="submodel-structure.html"><a href="submodel-structure.html"><i class="fa fa-check"></i><b>7</b> Submodel structure </a>
 <ul>
@@ -324,7 +323,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## Time used:
 ##  Pre-processing     Running a4a Post-processing           Total 
-##       0.8444660      13.8429878       0.1742072      14.8616610 
+##       1.1253374      16.9399023       0.1952536      18.2604933 
 ## 
 ## Submodels:
 ##   fmodel: ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
@@ -365,7 +364,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## Time used:
 ##  Pre-processing     Running a4a Post-processing           Total 
-##       0.8444660      13.8429878       0.1742072      14.8616610 
+##       1.1253374      16.9399023       0.1952536      18.2604933 
 ## 
 ## Submodels:
 ##   fmodel: ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
@@ -649,24 +648,24 @@ Figure 8.13: Catchability with a linear trend in year
 ## 
 ##      year
 ## age   1957 1958 1959 1960 1961 1962 1963 1964 1965 1966 1967 1968 1969 1970
-##   all  476  392  402  466  561  509  582  565  506  426  484  531  382  451
+##   all  465  503  398  493  602  633  527  613  441  566  556  608  457  397
 ##      year
 ## age   1971 1972 1973 1974 1975 1976 1977 1978 1979 1980 1981 1982 1983 1984
-##   all  532  494  442  418  457  555  507  482  533  511  495  496  512  521
+##   all  434  484  398  377  597  461  576  438  449  421  456  558  596  733
 ##      year
 ## age   1985 1986 1987 1988 1989 1990 1991 1992 1993 1994 1995 1996 1997 1998
-##   all  623  779  646  633  802  503  562  431  444  323  374  303  428  364
+##   all  612  733  777  657  595  486  446  426  435  336  391  282  371  406
 ##      year
 ## age   1999 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010 2011 2012
-##   all  349  311  384  379  423  448  390  421  501  514  610  808  660  822
+##   all  440  315  354  351  342  406  410  373  470  532  600  745  685  934
 ##      year
 ## age   2013 2014 2015 2016 2017
-##   all  997  985  926  994 1216
+##   all  951  998 1132 1062  968
 ## 
 ## units:  t</code></pre>
 <div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="fitting.html#cb190-1" tabindex="-1"></a><span class="co"># fitting the model</span></span>
 <span id="cb190-2"><a href="fitting.html#cb190-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, <span class="fu">FLIndices</span>(bioidx), <span class="at">qmodel=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>))</span></code></pre></div>
-<p>To estimate a constant selectivity over time one used the model <span class="math inline">\(\sim 1\)</span>. As a matter of fact the estimate value, 0.001, is not very far from the simulated one, 0.001.</p>
+<p>To estimate a constant selectivity over time one used the model <span class="math inline">\(\sim 1\)</span>. As a matter of fact the estimate value, 0.00101, is not very far from the simulated one, 0.001.</p>
 <p>An example where the biomass index refers only to age 2 to 4 (for example a CPUE that targets these particular ages).</p>
 <div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="fitting.html#cb191-1" tabindex="-1"></a><span class="co"># creating the index</span></span>
 <span id="cb191-2"><a href="fitting.html#cb191-2" tabindex="-1"></a>dnms <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">age=</span><span class="st">&quot;all&quot;</span>, <span class="at">year=</span><span class="fu">range</span>(ple4)[<span class="st">&quot;minyear&quot;</span>]<span class="sc">:</span><span class="fu">range</span>(ple4)[<span class="st">&quot;maxyear&quot;</span>])</span>
@@ -679,7 +678,7 @@ Figure 8.13: Catchability with a linear trend in year
 <span id="cb191-9"><a href="fitting.html#cb191-9" tabindex="-1"></a><span class="fu">range</span>(bioidx)[<span class="fu">c</span>(<span class="st">&quot;min&quot;</span>,<span class="st">&quot;max&quot;</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>)</span>
 <span id="cb191-10"><a href="fitting.html#cb191-10" tabindex="-1"></a><span class="co"># fitting the model</span></span>
 <span id="cb191-11"><a href="fitting.html#cb191-11" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, <span class="fu">FLIndices</span>(bioidx), <span class="at">qmodel=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>))</span></code></pre></div>
-<p>Once more the estimate value, 0.001, is not very far from the simulated one, 0.001.</p>
+<p>Once more the estimate value, 0.00102, is not very far from the simulated one, 0.001.</p>
 </div>
 <div id="catchability-submodel-for-single-age-indices" class="section level3 hasAnchor" number="8.2.3">
 <h3><span class="header-section-number">8.2.3</span> Catchability submodel for single age indices<a href="fitting.html#catchability-submodel-for-single-age-indices" class="anchor-section" aria-label="Anchor link to header"></a></h3>

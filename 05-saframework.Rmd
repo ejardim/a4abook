@@ -4,7 +4,7 @@
 
 ### Observations
 
-The stock assessment model behind the framework is based on two types of observations: catches, $\hat{C}$, and abundance indices, $\hat{I}$. The model predicts catches at age $C_{ay}$ and indices of abundance $I_{ays}$ for each age $a$, year $y$ and survey $s$ in the input dataset. It is assumed that the observed catches are normally distributed about the model predictions on the log scale with some observation variance $\sigma^2_{ay}$. that is:
+The stock assessment model is based on two types of observations: catches, $\hat{C}$, and abundance indices, $\hat{I}$. The model predicts catches at age $C_{ay}$ and indices of abundance $I_{ays}$ for each age $a$, year $y$ and survey $s$ in the input dataset. It is assumed that the observed catches are normally distributed about the model predictions on the log scale with some observation variance $\sigma^2_{ay}$. that is:
 
 $$\log \hat{C}_{ay} \sim \text{Normal} \Big( \log C_{ay}, \sigma^2_{ay}\Big)$$
 
@@ -124,12 +124,91 @@ This is to allow modelled recruitment $R_y$ to be shrunk towards the stock recru
 % WE NEED TO ADD SOMETHING ABOUT HOW THE PLUSGROUP IS MODELLED
 %====================================================================
 
-## Classes description \label{sec:classes}
+## Classes Description \label{sec:classes}
 
-Figure \@ref(fig:sca) shows the process to fit a statistical stock assessment catch at age method.
+Figure \@ref(fig:sca) illustrates the input/output model of the statistical stock assessment method based on catch-at-age data.
 
 ![Figure: (\#fig:sca) The fit process](scamethod.png)
 
-![The a4aFit class](fitclass.png)
+The `type` argument in the `sca` function defines the fitting method—either maximum likelihood or MCMC—and specifies whether the variance-covariance matrix of the parameters is calculated and returned in the case of maximum likelihood. The resulting object belongs to a specific class, depending on the selected options. The data structure used to store and report the fitting process follows an object-oriented paradigm (e.g., the S4 system in R) and is hierarchically organized. The primary class, `a4aFit`, is extended by `a4aFitSA` and `a4aFitMCMC` for specific configurations.
 
-![The a4aFitSA and a4aFitMCMC classes. Both classes have the same structure](fitsamcclass.png)
+|Type of Fit|Fit Method|Variance-Covariance Matrix|Output Object Class|
+|:--|:--|:--|:--|
+|MP|Maximum Likelihood|No|`a4aFit`|
+|Assessment|Maximum Likelihood|Yes|`a4aFitSA`|
+|MCMC|MCMC|Yes|`a4aFitMCMC`|
+Table: (\#tab:scatype) Fit Types and Associated Classes
+
+Type `MP`, representing "Management Procedure," returns an `a4aFit` class object designed for use in MSEs (Management Strategy Evaluations) with full feedback models (REF PUNT and KELL). Inverting the Jacobian to compute the variance-covariance matrix is computationally intensive in maximum likelihood models, and as MSE analyses often involve thousands of iterations, using `type="MP"` significantly speeds up the process. This option is advantageous for scenarios requiring multiple model fits. However, the lack of immediate feedback on model convergence is a drawback, as convergence is assessed by inverting the Jacobian. A failed inversion indicates non-convergence. Table \@ref(tab:a4afitclass) describes the composition of the `a4aFit` class.
+
+|Class|Slots|Slot's Class|Description|
+|:--|:--|:--|:--|
+|a4aFit|call|call|Code used to run the analysis|
+| |catch.n|FLQuant|Catch numbers at age and year|
+| |clock|numeric|Time to run the analysis|
+| |desc|character|Description of the stock and/or analysis|
+| |fitSumm|array|Summary statistics of the fit (e.g., number of data points)|
+| |harvest|FLQuant|Fishing mortality at age and year|
+| |index|FLQuants|Indices of abundance (age/biomass, by year)|
+| |name|character|Stock name|
+| |range|numeric|Age and year range of the data|
+| |stock.n|FLQuant|Population in numbers (age and year)|
+Table: (\#tab:a4afitclass) `a4aFit` Class Description
+
+The `a4aFitSA` and `a4aFitMCMC` classes extend `a4aFit`, retaining all its slots while adding a `pars` slot of class `SCAPars`. Table \@ref(tab:a4afitSAclass) outlines these classes.
+
+|Class|Slots|Slot's Class|Description|
+|:--|:--|:--|:--|
+|a4aFitSA|All `a4aFit`||Inherited from `a4aFit`|
+| |pars|SCAPars|Parameter information|
+|a4aFitMCMC|All `a4aFit`||Inherited from `a4aFit`|
+| |pars|SCAPars|Parameter information|
+Table: (\#tab:a4afitSAclass) `a4aFitSA` and `a4aFitMCMC` Class Description
+
+The `SCAPars` class stores details about submodel parameters, such as formulas and distributions, and includes three slots: `stkmodel` for stock model parameters, `qmodel` for catchability parameters, and `vmodel` for variance parameters. Table \@ref(tab:SCAParsclass) describes this class.
+
+|Class|Slots|Slot's Class|Description|
+|:--|:--|:--|:--|
+|SCAPars|stkmodel|a4aStkParams|Details of fishing mortality, stock recruitment, and initial stock numbers|
+| |qmodel|submodel|Details of catchability parameters|
+| |vmodel|submodel|Details of variance parameters|
+Table: (\#tab:SCAParsclass) `SCAPars` Class Description
+
+The `stkmodel` slot encompasses parameters for fishing mortality, stock recruitment, and initial stock numbers. Due to potential correlations among these parameters, their variance-covariance matrix is reported collectively. Table \@ref(tab:a4aStkParamsclass) describes the slots of the `a4aStkParams` class.
+
+|Class|Slots|Slot's Class|Description|
+|:--|:--|:--|:--|
+|a4aStkParams|centering|FLPar|Centering parameters|
+| |coefficients|FLPar|Model coefficients|
+| |desc|character|Description|
+| |distr|character|Distributions|
+| |fMod|formula|Fishing mortality model|
+| |link|function|Link function|
+| |linkinv|function|Inverse link function|
+| |m|FLQuant|Mortality parameters|
+| |mat|FLQuant|Maturity parameters|
+| |n1Mod|formula|Initial stock numbers model|
+| |name|character|Stock name|
+| |range|numeric|Age and year range|
+| |srMod|formula|Stock-recruitment model|
+| |units|character|Units of measurement|
+| |vcov|array|Variance-covariance matrix|
+| |wt|FLQuant|Weights|
+Table: (\#tab:a4aStkParamsclass) `a4aStkParams` Class Description
+
+The `qmodel` and `vmodel` slots share the `submodel` class, which describes single submodels. Table \@ref(tab:submodelclass) provides details.
+
+|Class|Slots|Slot's Class|Description|
+|:--|:--|:--|:--|
+|submodel|centering|FLPar|Centering parameters|
+| |coefficients|FLPar|Model coefficients|
+| |desc|character|Description|
+| |distr|character|Distributions|
+| |formula|formula|Submodel formula|
+| |link|function|Link function|
+| |linkinv|function|Inverse link function|
+| |name|character|Stock name|
+| |range|numeric|Age and year range|
+| |vcov|array|Variance-covariance matrix|
+Table: (\#tab:submodelclass) `submodel` Class Description
+

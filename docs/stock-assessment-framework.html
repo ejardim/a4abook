@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-01-15" />
+<meta name="date" content="2025-01-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -181,11 +181,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html"><i class="fa fa-check"></i><b>5</b> Modelling Natural Mortality</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#background"><i class="fa fa-check"></i><b>5.1</b> Background</a></li>
-<li class="chapter" data-level="5.2" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#a4am---the-m-class"><i class="fa fa-check"></i><b>5.2</b> <code>a4aM</code> - The M class</a></li>
-<li class="chapter" data-level="5.3" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>5.3</b> Adding uncertainty to natural mortality parameters with a multivariate normal distribution</a></li>
-<li class="chapter" data-level="5.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>5.4</b> Adding uncertainty to natural mortality parameters with statistical copulas</a></li>
-<li class="chapter" data-level="5.5" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>5.5</b> Computing natural mortality time series - the “m” method</a></li>
+<li class="chapter" data-level="5.1" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#a4am---the-m-class"><i class="fa fa-check"></i><b>5.1</b> <code>a4aM</code> - The M class</a></li>
+<li class="chapter" data-level="5.2" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>5.2</b> Adding uncertainty to natural mortality parameters with a multivariate normal distribution</a></li>
+<li class="chapter" data-level="5.3" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>5.3</b> Adding uncertainty to natural mortality parameters with statistical copulas</a></li>
+<li class="chapter" data-level="5.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>5.4</b> Computing natural mortality time series - the “m” method</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html"><i class="fa fa-check"></i><b>6</b> Stock assessment framework</a>
 <ul>
@@ -194,7 +193,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1.1" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#observations"><i class="fa fa-check"></i><b>6.1.1</b> Observations</a></li>
 <li class="chapter" data-level="6.1.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#the-population-dynamics-model"><i class="fa fa-check"></i><b>6.1.2</b> The population dynamics model</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#classes-description"><i class="fa fa-check"></i><b>6.2</b> Classes description </a></li>
+<li class="chapter" data-level="6.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#classes-description"><i class="fa fa-check"></i><b>6.2</b> Classes Description </a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="submodel-structure.html"><a href="submodel-structure.html"><i class="fa fa-check"></i><b>7</b> Submodel structure </a>
 <ul>
@@ -311,7 +310,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.1</span> Maths description <a href="stock-assessment-framework.html#maths-description" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="observations" class="section level3 hasAnchor" number="6.1.1">
 <h3><span class="header-section-number">6.1.1</span> Observations<a href="stock-assessment-framework.html#observations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The stock assessment model behind the framework is based on two types of observations: catches, <span class="math inline">\(\hat{C}\)</span>, and abundance indices, <span class="math inline">\(\hat{I}\)</span>. The model predicts catches at age <span class="math inline">\(C_{ay}\)</span> and indices of abundance <span class="math inline">\(I_{ays}\)</span> for each age <span class="math inline">\(a\)</span>, year <span class="math inline">\(y\)</span> and survey <span class="math inline">\(s\)</span> in the input dataset. It is assumed that the observed catches are normally distributed about the model predictions on the log scale with some observation variance <span class="math inline">\(\sigma^2_{ay}\)</span>. that is:</p>
+<p>The stock assessment model is based on two types of observations: catches, <span class="math inline">\(\hat{C}\)</span>, and abundance indices, <span class="math inline">\(\hat{I}\)</span>. The model predicts catches at age <span class="math inline">\(C_{ay}\)</span> and indices of abundance <span class="math inline">\(I_{ays}\)</span> for each age <span class="math inline">\(a\)</span>, year <span class="math inline">\(y\)</span> and survey <span class="math inline">\(s\)</span> in the input dataset. It is assumed that the observed catches are normally distributed about the model predictions on the log scale with some observation variance <span class="math inline">\(\sigma^2_{ay}\)</span>. that is:</p>
 <p><span class="math display">\[\log \hat{C}_{ay} \sim \text{Normal} \Big( \log C_{ay}, \sigma^2_{ay}\Big)\]</span></p>
 <p>likewise, the observed survey indices are assumed to be normally distributed about the model predictions on the log scale with some observation variance <span class="math inline">\(\tau^2_{ays}\)</span>:</p>
 <p><span class="math display">\[\log \hat{I}_{ays} \sim \text{Normal} \Big( \log I_{ays}, \tau^2_{ays} \Big)\]</span></p>
@@ -383,20 +382,384 @@ N_{A,y+1} = &amp;N_{A-1,y} \exp \left( - F_{A-1,y} - M_{A-1,y} \right) \\
 </div>
 </div>
 <div id="classes-description" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> Classes description <a href="stock-assessment-framework.html#classes-description" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Figure <a href="#fig:sca">6.1</a> shows the process to fit a statistical stock assessment catch at age method.</p>
+<h2><span class="header-section-number">6.2</span> Classes Description <a href="stock-assessment-framework.html#classes-description" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Figure <a href="#fig:sca">6.1</a> illustrates the input/output model of the statistical stock assessment method based on catch-at-age data.</p>
 <div class="float">
 <img src="scamethod.png" alt="Figure:  The fit process" />
 <div class="figcaption">Figure:  The fit process</div>
 </div>
-<div class="float">
-<img src="fitclass.png" alt="The a4aFit class" />
-<div class="figcaption">The a4aFit class</div>
-</div>
-<div class="float">
-<img src="fitsamcclass.png" alt="The a4aFitSA and a4aFitMCMC classes. Both classes have the same structure" />
-<div class="figcaption">The a4aFitSA and a4aFitMCMC classes. Both classes have the same structure</div>
-</div>
+<p>The <code>type</code> argument in the <code>sca</code> function defines the fitting method—either maximum likelihood or MCMC—and specifies whether the variance-covariance matrix of the parameters is calculated and returned in the case of maximum likelihood. The resulting object belongs to a specific class, depending on the selected options. The data structure used to store and report the fitting process follows an object-oriented paradigm (e.g., the S4 system in R) and is hierarchically organized. The primary class, <code>a4aFit</code>, is extended by <code>a4aFitSA</code> and <code>a4aFitMCMC</code> for specific configurations.</p>
+<table>
+<caption><span id="tab:scatype">Table 6.1: </span> Fit Types and Associated Classes</caption>
+<thead>
+<tr class="header">
+<th align="left">Type of Fit</th>
+<th align="left">Fit Method</th>
+<th align="left">Variance-Covariance Matrix</th>
+<th align="left">Output Object Class</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">MP</td>
+<td align="left">Maximum Likelihood</td>
+<td align="left">No</td>
+<td align="left"><code>a4aFit</code></td>
+</tr>
+<tr class="even">
+<td align="left">Assessment</td>
+<td align="left">Maximum Likelihood</td>
+<td align="left">Yes</td>
+<td align="left"><code>a4aFitSA</code></td>
+</tr>
+<tr class="odd">
+<td align="left">MCMC</td>
+<td align="left">MCMC</td>
+<td align="left">Yes</td>
+<td align="left"><code>a4aFitMCMC</code></td>
+</tr>
+</tbody>
+</table>
+<p>Type <code>MP</code>, representing “Management Procedure,” returns an <code>a4aFit</code> class object designed for use in MSEs (Management Strategy Evaluations) with full feedback models (REF PUNT and KELL). Inverting the Jacobian to compute the variance-covariance matrix is computationally intensive in maximum likelihood models, and as MSE analyses often involve thousands of iterations, using <code>type="MP"</code> significantly speeds up the process. This option is advantageous for scenarios requiring multiple model fits. However, the lack of immediate feedback on model convergence is a drawback, as convergence is assessed by inverting the Jacobian. A failed inversion indicates non-convergence. Table <a href="stock-assessment-framework.html#tab:a4afitclass">6.2</a> describes the composition of the <code>a4aFit</code> class.</p>
+<table>
+<caption><span id="tab:a4afitclass">Table 6.2: </span> <code>a4aFit</code> Class Description</caption>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Class</th>
+<th align="left">Slots</th>
+<th align="left">Slot’s Class</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">a4aFit</td>
+<td align="left">call</td>
+<td align="left">call</td>
+<td align="left">Code used to run the analysis</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">catch.n</td>
+<td align="left">FLQuant</td>
+<td align="left">Catch numbers at age and year</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">clock</td>
+<td align="left">numeric</td>
+<td align="left">Time to run the analysis</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">desc</td>
+<td align="left">character</td>
+<td align="left">Description of the stock and/or analysis</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">fitSumm</td>
+<td align="left">array</td>
+<td align="left">Summary statistics of the fit (e.g., number of data points)</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">harvest</td>
+<td align="left">FLQuant</td>
+<td align="left">Fishing mortality at age and year</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">index</td>
+<td align="left">FLQuants</td>
+<td align="left">Indices of abundance (age/biomass, by year)</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">name</td>
+<td align="left">character</td>
+<td align="left">Stock name</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">range</td>
+<td align="left">numeric</td>
+<td align="left">Age and year range of the data</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">stock.n</td>
+<td align="left">FLQuant</td>
+<td align="left">Population in numbers (age and year)</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>a4aFitSA</code> and <code>a4aFitMCMC</code> classes extend <code>a4aFit</code>, retaining all its slots while adding a <code>pars</code> slot of class <code>SCAPars</code>. Table <a href="stock-assessment-framework.html#tab:a4afitSAclass">6.3</a> outlines these classes.</p>
+<table>
+<caption><span id="tab:a4afitSAclass">Table 6.3: </span> <code>a4aFitSA</code> and <code>a4aFitMCMC</code> Class Description</caption>
+<thead>
+<tr class="header">
+<th align="left">Class</th>
+<th align="left">Slots</th>
+<th align="left">Slot’s Class</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">a4aFitSA</td>
+<td align="left">All <code>a4aFit</code></td>
+<td align="left"></td>
+<td align="left">Inherited from <code>a4aFit</code></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">pars</td>
+<td align="left">SCAPars</td>
+<td align="left">Parameter information</td>
+</tr>
+<tr class="odd">
+<td align="left">a4aFitMCMC</td>
+<td align="left">All <code>a4aFit</code></td>
+<td align="left"></td>
+<td align="left">Inherited from <code>a4aFit</code></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">pars</td>
+<td align="left">SCAPars</td>
+<td align="left">Parameter information</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>SCAPars</code> class stores details about submodel parameters, such as formulas and distributions, and includes three slots: <code>stkmodel</code> for stock model parameters, <code>qmodel</code> for catchability parameters, and <code>vmodel</code> for variance parameters. Table <a href="stock-assessment-framework.html#tab:SCAParsclass">6.4</a> describes this class.</p>
+<table>
+<caption><span id="tab:SCAParsclass">Table 6.4: </span> <code>SCAPars</code> Class Description</caption>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Class</th>
+<th align="left">Slots</th>
+<th align="left">Slot’s Class</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">SCAPars</td>
+<td align="left">stkmodel</td>
+<td align="left">a4aStkParams</td>
+<td align="left">Details of fishing mortality, stock recruitment, and initial stock numbers</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">qmodel</td>
+<td align="left">submodel</td>
+<td align="left">Details of catchability parameters</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">vmodel</td>
+<td align="left">submodel</td>
+<td align="left">Details of variance parameters</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>stkmodel</code> slot encompasses parameters for fishing mortality, stock recruitment, and initial stock numbers. Due to potential correlations among these parameters, their variance-covariance matrix is reported collectively. Table <a href="stock-assessment-framework.html#tab:a4aStkParamsclass">6.5</a> describes the slots of the <code>a4aStkParams</code> class.</p>
+<table>
+<caption><span id="tab:a4aStkParamsclass">Table 6.5: </span> <code>a4aStkParams</code> Class Description</caption>
+<thead>
+<tr class="header">
+<th align="left">Class</th>
+<th align="left">Slots</th>
+<th align="left">Slot’s Class</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">a4aStkParams</td>
+<td align="left">centering</td>
+<td align="left">FLPar</td>
+<td align="left">Centering parameters</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">coefficients</td>
+<td align="left">FLPar</td>
+<td align="left">Model coefficients</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">desc</td>
+<td align="left">character</td>
+<td align="left">Description</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">distr</td>
+<td align="left">character</td>
+<td align="left">Distributions</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">fMod</td>
+<td align="left">formula</td>
+<td align="left">Fishing mortality model</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">link</td>
+<td align="left">function</td>
+<td align="left">Link function</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">linkinv</td>
+<td align="left">function</td>
+<td align="left">Inverse link function</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">m</td>
+<td align="left">FLQuant</td>
+<td align="left">Mortality parameters</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">mat</td>
+<td align="left">FLQuant</td>
+<td align="left">Maturity parameters</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">n1Mod</td>
+<td align="left">formula</td>
+<td align="left">Initial stock numbers model</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">name</td>
+<td align="left">character</td>
+<td align="left">Stock name</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">range</td>
+<td align="left">numeric</td>
+<td align="left">Age and year range</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">srMod</td>
+<td align="left">formula</td>
+<td align="left">Stock-recruitment model</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">units</td>
+<td align="left">character</td>
+<td align="left">Units of measurement</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">vcov</td>
+<td align="left">array</td>
+<td align="left">Variance-covariance matrix</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">wt</td>
+<td align="left">FLQuant</td>
+<td align="left">Weights</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>qmodel</code> and <code>vmodel</code> slots share the <code>submodel</code> class, which describes single submodels. Table <a href="stock-assessment-framework.html#tab:submodelclass">6.6</a> provides details.</p>
+<table>
+<caption><span id="tab:submodelclass">Table 6.6: </span> <code>submodel</code> Class Description</caption>
+<thead>
+<tr class="header">
+<th align="left">Class</th>
+<th align="left">Slots</th>
+<th align="left">Slot’s Class</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">submodel</td>
+<td align="left">centering</td>
+<td align="left">FLPar</td>
+<td align="left">Centering parameters</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">coefficients</td>
+<td align="left">FLPar</td>
+<td align="left">Model coefficients</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">desc</td>
+<td align="left">character</td>
+<td align="left">Description</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">distr</td>
+<td align="left">character</td>
+<td align="left">Distributions</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">formula</td>
+<td align="left">formula</td>
+<td align="left">Submodel formula</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">link</td>
+<td align="left">function</td>
+<td align="left">Link function</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">linkinv</td>
+<td align="left">function</td>
+<td align="left">Inverse link function</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">name</td>
+<td align="left">character</td>
+<td align="left">Stock name</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">range</td>
+<td align="left">numeric</td>
+<td align="left">Age and year range</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">vcov</td>
+<td align="left">array</td>
+<td align="left">Variance-covariance matrix</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 </div>

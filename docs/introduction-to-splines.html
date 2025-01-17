@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-01-15" />
+<meta name="date" content="2025-01-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -181,11 +181,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html"><i class="fa fa-check"></i><b>5</b> Modelling Natural Mortality</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#background"><i class="fa fa-check"></i><b>5.1</b> Background</a></li>
-<li class="chapter" data-level="5.2" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#a4am---the-m-class"><i class="fa fa-check"></i><b>5.2</b> <code>a4aM</code> - The M class</a></li>
-<li class="chapter" data-level="5.3" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>5.3</b> Adding uncertainty to natural mortality parameters with a multivariate normal distribution</a></li>
-<li class="chapter" data-level="5.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>5.4</b> Adding uncertainty to natural mortality parameters with statistical copulas</a></li>
-<li class="chapter" data-level="5.5" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>5.5</b> Computing natural mortality time series - the “m” method</a></li>
+<li class="chapter" data-level="5.1" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#a4am---the-m-class"><i class="fa fa-check"></i><b>5.1</b> <code>a4aM</code> - The M class</a></li>
+<li class="chapter" data-level="5.2" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>5.2</b> Adding uncertainty to natural mortality parameters with a multivariate normal distribution</a></li>
+<li class="chapter" data-level="5.3" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>5.3</b> Adding uncertainty to natural mortality parameters with statistical copulas</a></li>
+<li class="chapter" data-level="5.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>5.4</b> Computing natural mortality time series - the “m” method</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html"><i class="fa fa-check"></i><b>6</b> Stock assessment framework</a>
 <ul>
@@ -194,7 +193,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1.1" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#observations"><i class="fa fa-check"></i><b>6.1.1</b> Observations</a></li>
 <li class="chapter" data-level="6.1.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#the-population-dynamics-model"><i class="fa fa-check"></i><b>6.1.2</b> The population dynamics model</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#classes-description"><i class="fa fa-check"></i><b>6.2</b> Classes description </a></li>
+<li class="chapter" data-level="6.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#classes-description"><i class="fa fa-check"></i><b>6.2</b> Classes Description </a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="submodel-structure.html"><a href="submodel-structure.html"><i class="fa fa-check"></i><b>7</b> Submodel structure </a>
 <ul>
@@ -408,9 +407,9 @@ Figure 3.6: basis functions for thin plate splines
 <span id="cb17-3"><a href="introduction-to-splines.html#cb17-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> obs), <span class="at">color =</span> <span class="st">&quot;darkgrey&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>)<span class="sc">+</span></span>
 <span id="cb17-4"><a href="introduction-to-splines.html#cb17-4" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&quot;bottom&quot;</span>)<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">&quot;y&quot;</span>)<span class="sc">+</span></span>
 <span id="cb17-5"><a href="introduction-to-splines.html#cb17-5" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.5</span>,<span class="fl">1.5</span>))</span></code></pre></div>
-<pre><code>## Warning: Removed 119 rows containing missing values or values outside the scale
+<pre><code>## Warning: Removed 145 rows containing missing values or values outside the scale
 ## range (`geom_line()`).</code></pre>
-<pre><code>## Warning: Removed 10 rows containing missing values or values outside the scale
+<pre><code>## Warning: Removed 20 rows containing missing values or values outside the scale
 ## range (`geom_point()`).</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 </div>

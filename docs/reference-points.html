@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-01-15" />
+<meta name="date" content="2025-01-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -181,11 +181,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html"><i class="fa fa-check"></i><b>5</b> Modelling Natural Mortality</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#background"><i class="fa fa-check"></i><b>5.1</b> Background</a></li>
-<li class="chapter" data-level="5.2" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#a4am---the-m-class"><i class="fa fa-check"></i><b>5.2</b> <code>a4aM</code> - The M class</a></li>
-<li class="chapter" data-level="5.3" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>5.3</b> Adding uncertainty to natural mortality parameters with a multivariate normal distribution</a></li>
-<li class="chapter" data-level="5.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>5.4</b> Adding uncertainty to natural mortality parameters with statistical copulas</a></li>
-<li class="chapter" data-level="5.5" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>5.5</b> Computing natural mortality time series - the “m” method</a></li>
+<li class="chapter" data-level="5.1" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#a4am---the-m-class"><i class="fa fa-check"></i><b>5.1</b> <code>a4aM</code> - The M class</a></li>
+<li class="chapter" data-level="5.2" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>5.2</b> Adding uncertainty to natural mortality parameters with a multivariate normal distribution</a></li>
+<li class="chapter" data-level="5.3" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>5.3</b> Adding uncertainty to natural mortality parameters with statistical copulas</a></li>
+<li class="chapter" data-level="5.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>5.4</b> Computing natural mortality time series - the “m” method</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html"><i class="fa fa-check"></i><b>6</b> Stock assessment framework</a>
 <ul>
@@ -194,7 +193,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1.1" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#observations"><i class="fa fa-check"></i><b>6.1.1</b> Observations</a></li>
 <li class="chapter" data-level="6.1.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#the-population-dynamics-model"><i class="fa fa-check"></i><b>6.1.2</b> The population dynamics model</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#classes-description"><i class="fa fa-check"></i><b>6.2</b> Classes description </a></li>
+<li class="chapter" data-level="6.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#classes-description"><i class="fa fa-check"></i><b>6.2</b> Classes Description </a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="submodel-structure.html"><a href="submodel-structure.html"><i class="fa fa-check"></i><b>7</b> Submodel structure </a>
 <ul>
@@ -458,15 +457,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="reference-points.html#cb273-1" tabindex="-1"></a><span class="fu">plot</span>(sr0)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-85-1.png" width="672" /></p>
 <p>We now need to provide the <code>FLSR</code> object, <code>sr0</code>, to the <code>FLBRP</code> call and refit the reference points.</p>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="reference-points.html#cb274-1" tabindex="-1"></a>brp0 <span class="ot">&lt;-</span> <span class="fu">FLBRP</span>(stk0, <span class="at">sr=</span>sr0)</span>
+<span id="cb274-2"><a href="reference-points.html#cb274-2" tabindex="-1"></a><span class="fu">model</span>(brp0)</span></code></pre></div>
 <pre><code>## rec ~ a * ssb/(b + ssb)
-## &lt;environment: 0x6509d02943c8&gt;</code></pre>
+## &lt;environment: 0x5ab1b323fe20&gt;</code></pre>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="reference-points.html#cb276-1" tabindex="-1"></a><span class="fu">params</span>(brp0)</span></code></pre></div>
 <pre><code>## An object of class &quot;FLPar&quot;
 ## params
 ##       a       b 
 ## 1038832    9829 
 ## units:  NA</code></pre>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="reference-points.html#cb278-1" tabindex="-1"></a>brp0 <span class="ot">&lt;-</span> <span class="fu">brp</span>(brp0)</span></code></pre></div>
 <p>The new reference points can now be extracted using the <code>refpts</code> method with the <code>FLBRP</code> object as the main argument, and depict the relationships with <code>plot()</code>. Note this time by setting the flag <code>obs</code> to <code>TRUE</code> the plot will include the estimates of <span class="math inline">\(SSB\)</span> and <span class="math inline">\(R\)</span>.</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="reference-points.html#cb276-1" tabindex="-1"></a><span class="fu">refpts</span>(brp0)</span></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="reference-points.html#cb279-1" tabindex="-1"></a><span class="fu">refpts</span>(brp0)</span></code></pre></div>
 <pre><code>## An object of class &quot;FLPar&quot;
 ##         quant
 ## refpt    harvest  yield    rec      ssb      biomass  revenue  cost    
@@ -488,41 +491,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   mey          NA
 ## units:  NA</code></pre>
 <p>Note <span class="math inline">\(MSY\)</span> based reference points are no longer the same as <span class="math inline">\(F_{MAX}\)</span>, and recruitment is no longer constant over all <span class="math inline">\(SSB\)</span> levels.</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="reference-points.html#cb278-1" tabindex="-1"></a><span class="fu">plot</span>(brp0, <span class="at">obs=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-88-1.png" width="672" /></p>
 </div>
 <div id="stock-recruitment-during-fitting-the-stock-assessment-model" class="section level3 hasAnchor" number="11.2.2">
 <h3><span class="header-section-number">11.2.2</span> Stock recruitment during fitting the stock assessment model<a href="reference-points.html#stock-recruitment-during-fitting-the-stock-assessment-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="reference-points.html#cb279-1" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel =</span> <span class="sc">~</span> <span class="fu">bevholt</span>(<span class="at">CV =</span> <span class="fl">0.5</span>))</span>
-<span id="cb279-2"><a href="reference-points.html#cb279-2" tabindex="-1"></a></span>
-<span id="cb279-3"><a href="reference-points.html#cb279-3" tabindex="-1"></a>a4aflsr <span class="ot">&lt;-</span> <span class="fu">as</span>(<span class="fu">stkmodel</span>(fit1), <span class="st">&quot;FLSR&quot;</span>)</span>
-<span id="cb279-4"><a href="reference-points.html#cb279-4" tabindex="-1"></a></span>
-<span id="cb279-5"><a href="reference-points.html#cb279-5" tabindex="-1"></a><span class="co"># or</span></span>
-<span id="cb279-6"><a href="reference-points.html#cb279-6" tabindex="-1"></a>a4aflsr <span class="ot">&lt;-</span> <span class="fu">as</span>(fit1, <span class="st">&quot;FLSR&quot;</span>)</span>
-<span id="cb279-7"><a href="reference-points.html#cb279-7" tabindex="-1"></a></span>
-<span id="cb279-8"><a href="reference-points.html#cb279-8" tabindex="-1"></a><span class="fu">plot</span>(a4aflsr, <span class="at">obs =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="reference-points.html#cb281-1" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel =</span> <span class="sc">~</span> <span class="fu">bevholt</span>(<span class="at">CV =</span> <span class="fl">0.5</span>))</span>
+<span id="cb281-2"><a href="reference-points.html#cb281-2" tabindex="-1"></a></span>
+<span id="cb281-3"><a href="reference-points.html#cb281-3" tabindex="-1"></a>a4aflsr <span class="ot">&lt;-</span> <span class="fu">as</span>(<span class="fu">stkmodel</span>(fit1), <span class="st">&quot;FLSR&quot;</span>)</span>
+<span id="cb281-4"><a href="reference-points.html#cb281-4" tabindex="-1"></a></span>
+<span id="cb281-5"><a href="reference-points.html#cb281-5" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb281-6"><a href="reference-points.html#cb281-6" tabindex="-1"></a>a4aflsr <span class="ot">&lt;-</span> <span class="fu">as</span>(fit1, <span class="st">&quot;FLSR&quot;</span>)</span>
+<span id="cb281-7"><a href="reference-points.html#cb281-7" tabindex="-1"></a></span>
+<span id="cb281-8"><a href="reference-points.html#cb281-8" tabindex="-1"></a><span class="fu">plot</span>(a4aflsr, <span class="at">obs =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-89-1.png" width="672" /></p>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="reference-points.html#cb280-1" tabindex="-1"></a>a4abrp <span class="ot">&lt;-</span> <span class="fu">FLBRP</span>(stk0, a4aflsr)</span></code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="reference-points.html#cb282-1" tabindex="-1"></a>a4abrp <span class="ot">&lt;-</span> <span class="fu">FLBRP</span>(stk0, a4aflsr)</span></code></pre></div>
 </div>
 </div>
 <div id="economics-reference-points" class="section level2 hasAnchor" number="11.3">
 <h2><span class="header-section-number">11.3</span> Economics reference points<a href="reference-points.html#economics-reference-points" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can add economic data to the <code>FLBRP</code> object to calculate economic based reference points, like maximum economic yield (MEY). We need to provide information about price, variable costs and fixed costs. The first in value at age per weight of fish, the others in value per unit of fishing mortality.</p>
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="reference-points.html#cb281-1" tabindex="-1"></a><span class="co"># price</span></span>
-<span id="cb281-2"><a href="reference-points.html#cb281-2" tabindex="-1"></a><span class="fu">price</span>(brp0) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">3</span>),<span class="fu">rep</span>(<span class="fl">1.5</span>,<span class="dv">2</span>),<span class="fu">rep</span>(<span class="dv">2</span>,<span class="dv">5</span>))</span>
-<span id="cb281-3"><a href="reference-points.html#cb281-3" tabindex="-1"></a><span class="fu">price</span>(brp0)<span class="sc">@</span>units <span class="ot">&lt;-</span> <span class="st">&quot;1000 euro per ton&quot;</span></span>
-<span id="cb281-4"><a href="reference-points.html#cb281-4" tabindex="-1"></a></span>
-<span id="cb281-5"><a href="reference-points.html#cb281-5" tabindex="-1"></a><span class="co"># variable costs per F </span></span>
-<span id="cb281-6"><a href="reference-points.html#cb281-6" tabindex="-1"></a><span class="fu">vcost</span>(brp0) <span class="ot">&lt;-</span> <span class="dv">100000</span></span>
-<span id="cb281-7"><a href="reference-points.html#cb281-7" tabindex="-1"></a><span class="fu">vcost</span>(brp0)<span class="sc">@</span>units <span class="ot">&lt;-</span> <span class="st">&quot;1000 euro per F&quot;</span></span>
-<span id="cb281-8"><a href="reference-points.html#cb281-8" tabindex="-1"></a></span>
-<span id="cb281-9"><a href="reference-points.html#cb281-9" tabindex="-1"></a><span class="co"># fixed costs per F </span></span>
-<span id="cb281-10"><a href="reference-points.html#cb281-10" tabindex="-1"></a><span class="fu">fcost</span>(brp0) <span class="ot">&lt;-</span> <span class="dv">50000</span></span>
-<span id="cb281-11"><a href="reference-points.html#cb281-11" tabindex="-1"></a><span class="fu">fcost</span>(brp0)<span class="sc">@</span>units <span class="ot">&lt;-</span> <span class="st">&quot;1000 euro per F&quot;</span></span>
-<span id="cb281-12"><a href="reference-points.html#cb281-12" tabindex="-1"></a></span>
-<span id="cb281-13"><a href="reference-points.html#cb281-13" tabindex="-1"></a><span class="co"># reference points</span></span>
-<span id="cb281-14"><a href="reference-points.html#cb281-14" tabindex="-1"></a>brp0 <span class="ot">&lt;-</span> <span class="fu">brp</span>(brp0)</span>
-<span id="cb281-15"><a href="reference-points.html#cb281-15" tabindex="-1"></a><span class="fu">refpts</span>(brp0)</span></code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="reference-points.html#cb283-1" tabindex="-1"></a><span class="co"># price</span></span>
+<span id="cb283-2"><a href="reference-points.html#cb283-2" tabindex="-1"></a><span class="fu">price</span>(brp0) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">3</span>),<span class="fu">rep</span>(<span class="fl">1.5</span>,<span class="dv">2</span>),<span class="fu">rep</span>(<span class="dv">2</span>,<span class="dv">5</span>))</span>
+<span id="cb283-3"><a href="reference-points.html#cb283-3" tabindex="-1"></a><span class="fu">price</span>(brp0)<span class="sc">@</span>units <span class="ot">&lt;-</span> <span class="st">&quot;1000 euro per ton&quot;</span></span>
+<span id="cb283-4"><a href="reference-points.html#cb283-4" tabindex="-1"></a></span>
+<span id="cb283-5"><a href="reference-points.html#cb283-5" tabindex="-1"></a><span class="co"># variable costs per F </span></span>
+<span id="cb283-6"><a href="reference-points.html#cb283-6" tabindex="-1"></a><span class="fu">vcost</span>(brp0) <span class="ot">&lt;-</span> <span class="dv">100000</span></span>
+<span id="cb283-7"><a href="reference-points.html#cb283-7" tabindex="-1"></a><span class="fu">vcost</span>(brp0)<span class="sc">@</span>units <span class="ot">&lt;-</span> <span class="st">&quot;1000 euro per F&quot;</span></span>
+<span id="cb283-8"><a href="reference-points.html#cb283-8" tabindex="-1"></a></span>
+<span id="cb283-9"><a href="reference-points.html#cb283-9" tabindex="-1"></a><span class="co"># fixed costs per F </span></span>
+<span id="cb283-10"><a href="reference-points.html#cb283-10" tabindex="-1"></a><span class="fu">fcost</span>(brp0) <span class="ot">&lt;-</span> <span class="dv">50000</span></span>
+<span id="cb283-11"><a href="reference-points.html#cb283-11" tabindex="-1"></a><span class="fu">fcost</span>(brp0)<span class="sc">@</span>units <span class="ot">&lt;-</span> <span class="st">&quot;1000 euro per F&quot;</span></span>
+<span id="cb283-12"><a href="reference-points.html#cb283-12" tabindex="-1"></a></span>
+<span id="cb283-13"><a href="reference-points.html#cb283-13" tabindex="-1"></a><span class="co"># reference points</span></span>
+<span id="cb283-14"><a href="reference-points.html#cb283-14" tabindex="-1"></a>brp0 <span class="ot">&lt;-</span> <span class="fu">brp</span>(brp0)</span>
+<span id="cb283-15"><a href="reference-points.html#cb283-15" tabindex="-1"></a><span class="fu">refpts</span>(brp0)</span></code></pre></div>
 <pre><code>## An object of class &quot;FLPar&quot;
 ##         quant
 ## refpt    harvest   yield     rec       ssb       biomass   revenue   cost     
@@ -544,15 +546,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   mey     4.89e+04
 ## units:  NA</code></pre>
 <p>The reference points table is now complete with values for <code>revenue</code>, <code>costs</code> and <code>profit</code>, as well as estimtes for <span class="math inline">\(MEY\)</span> based reference points. The point where <code>profits</code> are maximized, instead of the point where <code>catch</code> is maximized as in the case of <code>MSY</code>.</p>
-<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="reference-points.html#cb283-1" tabindex="-1"></a><span class="fu">plot</span>(brp0)</span></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="reference-points.html#cb285-1" tabindex="-1"></a><span class="fu">plot</span>(brp0)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-91-1.png" width="672" /></p>
 </div>
 <div id="computing-user-specific-reference-points" class="section level2 hasAnchor" number="11.4">
 <h2><span class="header-section-number">11.4</span> Computing user specific reference points<a href="reference-points.html#computing-user-specific-reference-points" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>There is an option to calculate user defined reference points given a target F:</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="reference-points.html#cb284-1" tabindex="-1"></a>custom_refs <span class="ot">&lt;-</span> <span class="fu">FLPar</span>(<span class="at">Ftrgt1 =</span> <span class="fl">0.33</span>, <span class="at">Ftrgt2 =</span> <span class="fl">0.44</span>)</span>
-<span id="cb284-2"><a href="reference-points.html#cb284-2" tabindex="-1"></a>brp1 <span class="ot">&lt;-</span> brp0 <span class="sc">+</span> custom_refs</span>
-<span id="cb284-3"><a href="reference-points.html#cb284-3" tabindex="-1"></a><span class="fu">refpts</span>(brp1)</span></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="reference-points.html#cb286-1" tabindex="-1"></a>custom_refs <span class="ot">&lt;-</span> <span class="fu">FLPar</span>(<span class="at">Ftrgt1 =</span> <span class="fl">0.33</span>, <span class="at">Ftrgt2 =</span> <span class="fl">0.44</span>)</span>
+<span id="cb286-2"><a href="reference-points.html#cb286-2" tabindex="-1"></a>brp1 <span class="ot">&lt;-</span> brp0 <span class="sc">+</span> custom_refs</span>
+<span id="cb286-3"><a href="reference-points.html#cb286-3" tabindex="-1"></a><span class="fu">refpts</span>(brp1)</span></code></pre></div>
 <pre><code>## An object of class &quot;FLPar&quot;
 ##         quant
 ## refpt    harvest   yield     rec       ssb       biomass   revenue   cost     
@@ -578,13 +580,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   Ftrgt2 -1.13e+04
 ## units:  NA</code></pre>
 <p>Or create an empty FLPar with specified reference points and recalculate everything:</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="reference-points.html#cb286-1" tabindex="-1"></a><span class="co">#brp2 &lt;- FLPar(NA,dimnames=list(refpt=c(&quot;virgin&quot;,&quot;f0.1&quot;,&quot;fmax&quot;,&quot;spr.30&quot;,&quot;spr.35&quot;,&quot;spr.45&quot;), quantity=c(&quot;harvest&quot;,&quot;yield&quot;,&quot;rec&quot;,&quot;ssb&quot;,&quot;biomass&quot;,&quot;revenue&quot;,&quot;cost&quot;,&quot;profit&quot;), iter=1))</span></span>
-<span id="cb286-2"><a href="reference-points.html#cb286-2" tabindex="-1"></a>brp2 <span class="ot">&lt;-</span> brp1</span>
-<span id="cb286-3"><a href="reference-points.html#cb286-3" tabindex="-1"></a></span>
-<span id="cb286-4"><a href="reference-points.html#cb286-4" tabindex="-1"></a>brp2<span class="sc">@</span>refpts <span class="ot">&lt;-</span> <span class="fu">FLPar</span>(<span class="cn">NA</span>, <span class="at">dimnames=</span><span class="fu">list</span>(<span class="at">refpt =</span> <span class="fu">c</span>(<span class="st">&quot;virgin&quot;</span>, <span class="st">&quot;f0.1&quot;</span>, <span class="st">&quot;fmax&quot;</span>, <span class="st">&quot;spr.30&quot;</span>, <span class="st">&quot;spr.35&quot;</span>,<span class="st">&quot;spr.45&quot;</span>), <span class="at">quantity=</span><span class="fu">c</span>(<span class="st">&quot;harvest&quot;</span>, <span class="st">&quot;yield&quot;</span>, <span class="st">&quot;rec&quot;</span>, <span class="st">&quot;ssb&quot;</span>, <span class="st">&quot;biomass&quot;</span>, <span class="st">&quot;revenue&quot;</span>, <span class="st">&quot;cost&quot;</span>, <span class="st">&quot;profit&quot;</span>), <span class="at">iter=</span><span class="dv">1</span>))</span>
-<span id="cb286-5"><a href="reference-points.html#cb286-5" tabindex="-1"></a></span>
-<span id="cb286-6"><a href="reference-points.html#cb286-6" tabindex="-1"></a>brp2 <span class="ot">&lt;-</span> <span class="fu">brp</span>(brp2)</span>
-<span id="cb286-7"><a href="reference-points.html#cb286-7" tabindex="-1"></a><span class="fu">refpts</span>(brp2)</span></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="reference-points.html#cb288-1" tabindex="-1"></a><span class="co">#brp2 &lt;- FLPar(NA,dimnames=list(refpt=c(&quot;virgin&quot;,&quot;f0.1&quot;,&quot;fmax&quot;,&quot;spr.30&quot;,&quot;spr.35&quot;,&quot;spr.45&quot;), quantity=c(&quot;harvest&quot;,&quot;yield&quot;,&quot;rec&quot;,&quot;ssb&quot;,&quot;biomass&quot;,&quot;revenue&quot;,&quot;cost&quot;,&quot;profit&quot;), iter=1))</span></span>
+<span id="cb288-2"><a href="reference-points.html#cb288-2" tabindex="-1"></a>brp2 <span class="ot">&lt;-</span> brp1</span>
+<span id="cb288-3"><a href="reference-points.html#cb288-3" tabindex="-1"></a></span>
+<span id="cb288-4"><a href="reference-points.html#cb288-4" tabindex="-1"></a>brp2<span class="sc">@</span>refpts <span class="ot">&lt;-</span> <span class="fu">FLPar</span>(<span class="cn">NA</span>, <span class="at">dimnames=</span><span class="fu">list</span>(<span class="at">refpt =</span> <span class="fu">c</span>(<span class="st">&quot;virgin&quot;</span>, <span class="st">&quot;f0.1&quot;</span>, <span class="st">&quot;fmax&quot;</span>, <span class="st">&quot;spr.30&quot;</span>, <span class="st">&quot;spr.35&quot;</span>,<span class="st">&quot;spr.45&quot;</span>), <span class="at">quantity=</span><span class="fu">c</span>(<span class="st">&quot;harvest&quot;</span>, <span class="st">&quot;yield&quot;</span>, <span class="st">&quot;rec&quot;</span>, <span class="st">&quot;ssb&quot;</span>, <span class="st">&quot;biomass&quot;</span>, <span class="st">&quot;revenue&quot;</span>, <span class="st">&quot;cost&quot;</span>, <span class="st">&quot;profit&quot;</span>), <span class="at">iter=</span><span class="dv">1</span>))</span>
+<span id="cb288-5"><a href="reference-points.html#cb288-5" tabindex="-1"></a></span>
+<span id="cb288-6"><a href="reference-points.html#cb288-6" tabindex="-1"></a>brp2 <span class="ot">&lt;-</span> <span class="fu">brp</span>(brp2)</span>
+<span id="cb288-7"><a href="reference-points.html#cb288-7" tabindex="-1"></a><span class="fu">refpts</span>(brp2)</span></code></pre></div>
 <pre><code>## An object of class &quot;FLPar&quot;
 ##         quantity
 ## refpt    harvest   yield     rec       ssb       biomass   revenue   cost     
@@ -604,8 +606,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   spr.45  5.07e+04
 ## units:  NA</code></pre>
 <p>One specific case is to compute <span class="math inline">\(F_{MSY}\)</span> ranges according to Hilborn (2010) and Rindorf (2012) ideas. For this case there’s already the method <code>msyRanges</code>, which takes as argument a fitted <code>FLBRP</code> object and delivers a <code>FLPar</code> object, similar to <code>refpts</code>.</p>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="reference-points.html#cb288-1" tabindex="-1"></a>rp.rngs <span class="ot">&lt;-</span> <span class="fu">msyRange</span>(brp0, <span class="at">range=</span><span class="fl">0.05</span>)</span>
-<span id="cb288-2"><a href="reference-points.html#cb288-2" tabindex="-1"></a>rp.rngs</span></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="reference-points.html#cb290-1" tabindex="-1"></a>rp.rngs <span class="ot">&lt;-</span> <span class="fu">msyRange</span>(brp0, <span class="at">range=</span><span class="fl">0.05</span>)</span>
+<span id="cb290-2"><a href="reference-points.html#cb290-2" tabindex="-1"></a>rp.rngs</span></code></pre></div>
 <pre><code>## An object of class &quot;FLPar&quot;
 ##      quantity
 ## refpt harvest  yield    rec      ssb      biomass  revenue  cost     profit  

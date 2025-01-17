@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.1.13)  15 JAN 2025 14:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.1.13)  17 JAN 2025 14:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1234,1610 +1234,177 @@ LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10> not available
 
 ]
 Chapter 1.
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
-43.
-(/usr/share/texmf/tex/latex/lm/ts1lmr.fd
-File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
-147.
+[7]
+Overfull \hbox (23.33318pt too wide) has occurred while \output is active
+\OT1/lmr/m/n/10 8 \OT1/lmr/m/sl/10 CHAPTER 1.  COVER-IMAGE: PATH TO THE SOCIAL 
+SHARING IMAGE LIKE IMAGES/COVER.JPG
+ []
 
-(/usr/share/texmf/tex/latex/lm/ts1lmtt.fd
-File: ts1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    Font shape `OT1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `OT1/lmtt/b/n' tried instead on input line 158.
- [7{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}] [8]
-Underfull \vbox (badness 2443) has occurred while \output is active []
+[8
 
- [9]
-Underfull \vbox (badness 2443) has occurred while \output is active []
-
- [10]
-[11] [12]
+]
 Chapter 2.
-[13
+[9] [10
 
-] [14]
-Underfull \vbox (badness 1147) has occurred while \output is active []
-
- [15]
-[16]
+]
 Chapter 3.
-
-Underfull \vbox (badness 3250) has occurred while \output is active []
-
- [17
-
-]
-LaTeX Font Info:    Trying to load font information for OML+lmtt on input line 
-569.
-LaTeX Font Info:    No file OMLlmtt.fd. on input line 569.
-
-
-LaTeX Font Warning: Font shape `OML/lmtt/m/n' undefined
-(Font)              using `OML/cmm/m/it' instead
-(Font)              for symbol `textless' on input line 569.
-
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-9-1.png, id=294, 505.89p
-t x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-9-1.png Graphic fil
-e (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-9-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-9-1.png  used on input line 579.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-10-1.png, id=295, 505.89
-pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-10-1.png Graphic fi
-le (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-10-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-10-1.png  used on input line 606.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-[18 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-9-1.png>]
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-11-1.png, id=304, 505.89
-pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-11-1.png Graphic fi
-le (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-11-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-11-1.png  used on input line 616.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-12-1.png, id=305, 505.89
-pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-12-1.png Graphic fi
-le (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-12-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-12-1.png  used on input line 624.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-13-1.png, id=306, 505.89
-pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-13-1.png Graphic fi
-le (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-13-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-13-1.png  used on input line 638.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [19 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-10-1.png (PNG cop
-y)>]
-[20 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-11-1.png (PNG copy
-)> <./_bookdown_files/_main_files/figure-html/unnamed-chunk-12-1.png (PNG copy)
->]
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-14-1.png, id=320, 505.89
-pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-14-1.png Graphic fi
-le (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-14-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-14-1.png  used on input line 661.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-15-1.png, id=321, 505.89
-pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-15-1.png Graphic fi
-le (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-15-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-15-1.png  used on input line 671.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
- [21 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-13-1.png (PNG cop
-y)>] [22 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-14-1.png (PNG
- copy)> <./_bookdown_files/_main_files/figure-html/unnamed-chunk-15-1.png (PNG 
-copy)>]
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-16-1.png, id=333, 505.89
-pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-16-1.png Graphic fi
-le (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-16-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-16-1.png  used on input line 697.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-17-1.png, id=334, 505.89
-pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-17-1.png Graphic fi
-le (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-17-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-17-1.png  used on input line 717.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
 LaTeX Font Info:    Font shape `OT1/lmtt/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/lmtt/b/n' tried instead on input line 722.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [23 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-16-1.png (PNG cop
-y)>]
-[24 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-17-1.png (PNG copy
-)>]
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-20-1.png, id=346, 505.89
-pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-20-1.png Graphic fi
-le (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-20-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-20-1.png  used on input line 761.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
- [25 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-20-1.png (PNG cop
-y)>]
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-22-1.png, id=353, 505.89
-pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-22-1.png Graphic fi
-le (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-22-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-22-1.png  used on input line 785.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+(Font)              Font shape `OT1/lmtt/b/n' tried instead on input line 198.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 788.
- [26 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-22-1.png (PNG cop
-y)>]
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-23-1.png, id=360, 505.89
-pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-23-1.png Graphic fi
-le (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-23-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-23-1.png  used on input line 808.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-LaTeX Font Info:    Trying to load font information for OMS+lmtt on input line 
-815.
-LaTeX Font Info:    No file OMSlmtt.fd. on input line 815.
-
-
-LaTeX Font Warning: Font shape `OMS/lmtt/m/n' undefined
-(Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbraceleft' on input line 815.
-
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-24-1.png, id=361, 505.89
-pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-24-1.png Graphic fi
-le (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-24-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-24-1.png  used on input line 824.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [27 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-23-1.png (PNG cop
-y)>]
-[28 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-24-1.png (PNG copy
-)>]
-Chapter 4.
-[29
+(Font)              <14.4> on input line 201.
+[11] [12
 
 ]
-Underfull \vbox (badness 1448) has occurred while \output is active []
-
-
-Overfull \hbox (273.94945pt too wide) has occurred while \output is active
-\OT1/lmr/m/n/10 30 \OT1/lmr/m/sl/10 CHAPTER 4.  MODELLING INDIVIDUAL GROWTH AND
- USING STOCHASTIC SLICING TO CONVERT LENGTH-BASED DATA INTO AGE-BASED DATA
- []
-
-[30]
+Chapter 4.
 LaTeX Font Info:    Font shape `OMS/lmr/bx/n' in size <14.4> not available
-(Font)              Font shape `OMS/lmsy/b/n' tried instead on input line 935.
-LaTeX Font Info:    Font shape `OMS/lmr/m/sl' in size <10> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 974.
-
-Overfull \hbox (88.12259pt too wide) has occurred while \output is active
-\OT1/lmr/m/sl/10 4.2.  ADDING UNCERTAINTY TO GROWTH PARAMETERS WITH A MULTIVARI
-ATE NORMAL DISTRIBUTION\OMS/lmsy/m/n/10 g \OT1/lmr/m/n/10 31
- []
-
-[31]
+(Font)              Font shape `OMS/lmsy/b/n' tried instead on input line 212.
+[13]
 Overfull \hbox (273.94945pt too wide) has occurred while \output is active
-\OT1/lmr/m/n/10 32 \OT1/lmr/m/sl/10 CHAPTER 4.  MODELLING INDIVIDUAL GROWTH AND
+\OT1/lmr/m/n/10 14 \OT1/lmr/m/sl/10 CHAPTER 4.  MODELLING INDIVIDUAL GROWTH AND
  USING STOCHASTIC SLICING TO CONVERT LENGTH-BASED DATA INTO AGE-BASED DATA
  []
 
-[32]
-<_bookdown_files/_main_files/figure-html/plot_norm_params-1.png, id=392, 505.89
-pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/plot_norm_params-1.png Graphic fi
-le (type png)
-<use _bookdown_files/_main_files/figure-html/plot_norm_params-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/plot_norm_para
-ms-1.png  used on input line 1089.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/plot_norm_scatter-1.png, id=393, 505.8
-9pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/plot_norm_scatter-1.png Graphic f
-ile (type png)
-<use _bookdown_files/_main_files/figure-html/plot_norm_scatter-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/plot_norm_scat
-ter-1.png  used on input line 1097.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/plot_mv_growth-1.png, id=394, 505.89pt
- x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/plot_mv_growth-1.png Graphic file
- (type png)
-<use _bookdown_files/_main_files/figure-html/plot_mv_growth-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/plot_mv_growth
--1.png  used on input line 1105.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+[14
 
-Overfull \hbox (88.12259pt too wide) has occurred while \output is active
-\OT1/lmr/m/sl/10 4.2.  ADDING UNCERTAINTY TO GROWTH PARAMETERS WITH A MULTIVARI
-ATE NORMAL DISTRIBUTION\OMS/lmsy/m/n/10 g \OT1/lmr/m/n/10 33
- []
-
-[33 <./_bookdown_files/_main_files/figure-html/plot_norm_params-1.png>]
-Overfull \hbox (273.94945pt too wide) has occurred while \output is active
-\OT1/lmr/m/n/10 34 \OT1/lmr/m/sl/10 CHAPTER 4.  MODELLING INDIVIDUAL GROWTH AND
- USING STOCHASTIC SLICING TO CONVERT LENGTH-BASED DATA INTO AGE-BASED DATA
- []
-
-[34 <./_bookdown_files/_main_files/figure-html/plot_norm_scatter-1.png>]
-Overfull \hbox (96.6631pt too wide) has occurred while \output is active
-\OT1/lmr/m/sl/10 4.3.  ADDING UNCERTAINTY TO GROWTH PARAMETERS WITH A MULTIVARI
-ATE TRIANGLE DISTRIBUTION\OMS/lmsy/m/n/10 g \OT1/lmr/m/n/10 35
- []
-
-[35 <./_bookdown_files/_main_files/figure-html/plot_mv_growth-1.png>]
-<_bookdown_files/_main_files/figure-html/plot_tri_params-1.png, id=417, 505.89p
-t x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/plot_tri_params-1.png Graphic fil
-e (type png)
-<use _bookdown_files/_main_files/figure-html/plot_tri_params-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/plot_tri_param
-s-1.png  used on input line 1155.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/plot_tri_scatter-1.png, id=418, 505.89
-pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/plot_tri_scatter-1.png Graphic fi
-le (type png)
-<use _bookdown_files/_main_files/figure-html/plot_tri_scatter-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/plot_tri_scatt
-er-1.png  used on input line 1161.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/plot_tri_growth-1.png, id=419, 505.89p
-t x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/plot_tri_growth-1.png Graphic fil
-e (type png)
-<use _bookdown_files/_main_files/figure-html/plot_tri_growth-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/plot_tri_growt
-h-1.png  used on input line 1169.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-
-Underfull \vbox (badness 1221) has occurred while \output is active []
-
-
-Overfull \hbox (273.94945pt too wide) has occurred while \output is active
-\OT1/lmr/m/n/10 36 \OT1/lmr/m/sl/10 CHAPTER 4.  MODELLING INDIVIDUAL GROWTH AND
- USING STOCHASTIC SLICING TO CONVERT LENGTH-BASED DATA INTO AGE-BASED DATA
- []
-
-[36 <./_bookdown_files/_main_files/figure-html/plot_tri_params-1.png>]
-Overfull \hbox (96.6631pt too wide) has occurred while \output is active
-\OT1/lmr/m/sl/10 4.3.  ADDING UNCERTAINTY TO GROWTH PARAMETERS WITH A MULTIVARI
-ATE TRIANGLE DISTRIBUTION\OMS/lmsy/m/n/10 g \OT1/lmr/m/n/10 37
- []
-
-[37 <./_bookdown_files/_main_files/figure-html/plot_tri_scatter-1.png>]
-Overfull \hbox (273.94945pt too wide) has occurred while \output is active
-\OT1/lmr/m/n/10 38 \OT1/lmr/m/sl/10 CHAPTER 4.  MODELLING INDIVIDUAL GROWTH AND
- USING STOCHASTIC SLICING TO CONVERT LENGTH-BASED DATA INTO AGE-BASED DATA
- []
-
-[38 <./_bookdown_files/_main_files/figure-html/plot_tri_growth-1.png>]
-<_bookdown_files/_main_files/figure-html/plot_cop_tri_scatter-1.png, id=443, 50
-5.89pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/plot_cop_tri_scatter-1.png Graphi
-c file (type png)
-<use _bookdown_files/_main_files/figure-html/plot_cop_tri_scatter-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/plot_cop_tri_s
-catter-1.png  used on input line 1193.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/plot_cop_tri_growth-1.png, id=444, 505
-.89pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/plot_cop_tri_growth-1.png Graphic
- file (type png)
-<use _bookdown_files/_main_files/figure-html/plot_cop_tri_growth-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/plot_cop_tri_g
-rowth-1.png  used on input line 1199.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
- [39 <./_bookdown_files/_main_files/figure-html/plot_cop_tri_scatter-1.png>]
-Overfull \hbox (273.94945pt too wide) has occurred while \output is active
-\OT1/lmr/m/n/10 40 \OT1/lmr/m/sl/10 CHAPTER 4.  MODELLING INDIVIDUAL GROWTH AND
- USING STOCHASTIC SLICING TO CONVERT LENGTH-BASED DATA INTO AGE-BASED DATA
- []
-
-[40 <./_bookdown_files/_main_files/figure-html/plot_cop_tri_growth-1.png>]
-Overfull \hbox (180.00404pt too wide) in paragraph at lines 1257--1257
-[]\OT1/lmtt/m/n/10 ## Warning in .local(object, model, ...): Individual weights
-, M and maturity will be (weighted) averaged accross lengths,[] 
- []
-
-[41]
-Overfull \hbox (159.0041pt too wide) in paragraph at lines 1262--1262
-[]\OT1/lmtt/m/n/10 ## Warning in .local(object, model, ...): Some ages are less
- than 0, indicating a mismatch between input data lengths[] 
- []
-
-
-Overfull \hbox (169.50407pt too wide) in paragraph at lines 1281--1281
-[]\OT1/lmtt/m/n/10 ## Warning in l2a(rfTrawl.idx, vbTriSmall): Some ages are le
-ss than 0, indicating a mismatch between input data lengths[] 
- []
-
-
-Overfull \hbox (273.94945pt too wide) has occurred while \output is active
-\OT1/lmr/m/n/10 42 \OT1/lmr/m/sl/10 CHAPTER 4.  MODELLING INDIVIDUAL GROWTH AND
- USING STOCHASTIC SLICING TO CONVERT LENGTH-BASED DATA INTO AGE-BASED DATA
- []
-
-[42]
+]
 Chapter 5.
-[43
-
-] [44]
-
-LaTeX Font Warning: Font shape `OML/lmtt/bx/n' undefined
-(Font)              using `OML/cmm/m/it' instead
-(Font)              for symbol `textgreater' on input line 1402.
-
-
-Overfull \hbox (149.85722pt too wide) has occurred while \output is active
-\OT1/lmr/m/sl/10 5.3.  ADDING UNCERTAINTY TO NATURAL MORTALITY PARAMETERS WITH 
-A MULTIVARIATE NORMAL DISTRIBUTION \OT1/lmr/m/n/10 45
- []
-
-[45] [46]
-Overfull \hbox (53.60919pt too wide) has occurred while \output is active
-\OT1/lmr/m/sl/10 5.4.  ADDING UNCERTAINTY TO NATURAL MORTALITY PARAMETERS WITH 
-STATISTICAL COPULAS \OT1/lmr/m/n/10 47
- []
-
-[47]
-<_bookdown_files/_main_files/figure-html/plot_tri_gis_m-1.png, id=496, 505.89pt
- x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/plot_tri_gis_m-1.png Graphic file
- (type png)
-<use _bookdown_files/_main_files/figure-html/plot_tri_gis_m-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/plot_tri_gis_m
--1.png  used on input line 1594.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/plot_tri_gis_m_hist-1.png, id=497, 505
-.89pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/plot_tri_gis_m_hist-1.png Graphic
- file (type png)
-<use _bookdown_files/_main_files/figure-html/plot_tri_gis_m_hist-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/plot_tri_gis_m
-_hist-1.png  used on input line 1600.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 1604--1605
-\OT1/lmtt/m/n/10 shape\OMS/lmtt/m/n/10 g \OT1/lmtt/m/n/10 model from Gislason\T
-S1/lmtt/m/n/10 '\OT1/lmtt/m/n/10 s work, Jensen\TS1/lmtt/m/n/10 '\OT1/lmtt/m/n/
-10 s third model based on temperature\OT1/lmr/m/n/10 (+20) level\OT1/lmtt/m/n/1
-0 and a
- []
-
-[48 <./_bookdown_files/_main_files/figure-html/plot_tri_gis_m-1.png>]
-Overfull \hbox (53.60919pt too wide) has occurred while \output is active
-\OT1/lmr/m/sl/10 5.4.  ADDING UNCERTAINTY TO NATURAL MORTALITY PARAMETERS WITH 
-STATISTICAL COPULAS \OT1/lmr/m/n/10 49
- []
-
-[49 <./_bookdown_files/_main_files/figure-html/plot_tri_gis_m_hist-1.png>]
-[50] [51] [52] [53] [54]
-<_bookdown_files/_main_files/figure-html/uncertain_m-1.png, id=532, 505.89pt x 
-361.35pt>
-File: _bookdown_files/_main_files/figure-html/uncertain_m-1.png Graphic file (t
-ype png)
-<use _bookdown_files/_main_files/figure-html/uncertain_m-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/uncertain_m-1.
-png  used on input line 1985.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
- [55 <./_bookdown_files/_main_files/figure-html/uncertain_m-1.png>] [56
+[15] [16
 
 ]
 Chapter 6.
-[57{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}]
-<figure/sca_matrix.png, id=554, 179.2296pt x 180.675pt>
+[17{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}]
+<figure/sca_matrix.png, id=286, 179.2296pt x 180.675pt>
 File: figure/sca_matrix.png Graphic file (type png)
 <use figure/sca_matrix.png>
-Package pdftex.def Info: figure/sca_matrix.png  used on input line 2030.
+Package pdftex.def Info: figure/sca_matrix.png  used on input line 280.
 (pdftex.def)             Requested size: 179.22914pt x 180.67455pt.
- [58 <./figure/sca_matrix.png>]
-Overfull \hbox (70.82687pt too wide) in paragraph at lines 2061--2064
+ [18 <./figure/sca_matrix.png>]
+Overfull \hbox (70.82687pt too wide) in paragraph at lines 312--315
 []\OT1/lmr/m/n/10 (-20) %======================================================
 ==============
  []
 
 
-Overfull \hbox (373.98604pt too wide) in paragraph at lines 2061--2064
+Overfull \hbox (373.98604pt too wide) in paragraph at lines 312--315
 \OT1/lmr/m/n/10 (-20) %THE FOL-LOW-ING NEEDS RE-VI-SION, need to bring in N1 su
 b-mod %==================================================================== 
  []
 
 
-Overfull \hbox (70.82687pt too wide) in paragraph at lines 2073--2074
+Overfull \hbox (70.82687pt too wide) in paragraph at lines 324--325
 []\OT1/lmr/m/n/10 (-20) %======================================================
 ============== 
  []
 
-[59]
-Overfull \hbox (70.82687pt too wide) in paragraph at lines 2095--2099
+[19]
+Overfull \hbox (70.82687pt too wide) in paragraph at lines 346--350
 []\OT1/lmr/m/n/10 (-20) %======================================================
 ==============
  []
 
 
-Overfull \hbox (231.40668pt too wide) in paragraph at lines 2095--2099
+Overfull \hbox (231.40668pt too wide) in paragraph at lines 346--350
 \OT1/lmr/m/n/10 (-20) pre-dic-tions will be a mix of S/R and $\OML/lmm/m/it/10 
 ^^M$ \OT1/lmr/m/n/10 (-20) %===================================================
 ================= 
  []
 
 
-Overfull \hbox (70.82687pt too wide) in paragraph at lines 2106--2109
+Overfull \hbox (70.82687pt too wide) in paragraph at lines 357--360
 []\OT1/lmr/m/n/10 (-20) %======================================================
 ==============
  []
 
 
-Underfull \hbox (badness 1215) in paragraph at lines 2106--2109
+Underfull \hbox (badness 1215) in paragraph at lines 357--360
 \OT1/lmr/m/n/10 (+20) % WE NEED TO ADD SOME-THING ABOUT HOW THE PLUS-GROUP IS M
 OD-ELLED
  []
 
 
-Overfull \hbox (70.82687pt too wide) in paragraph at lines 2106--2109
+Overfull \hbox (70.82687pt too wide) in paragraph at lines 357--360
 \OT1/lmr/m/n/10 (-20) %========================================================
 ============ 
  []
 
-<scamethod.png, id=568, 584.1825pt x 152.9715pt>
+<scamethod.png, id=303, 584.1825pt x 152.9715pt>
 File: scamethod.png Graphic file (type png)
 <use scamethod.png>
-Package pdftex.def Info: scamethod.png  used on input line 2117.
+Package pdftex.def Info: scamethod.png  used on input line 368.
 (pdftex.def)             Requested size: 455.25938pt x 119.21222pt.
-<fitclass.png, id=570, 226.6869pt x 336.5373pt>
-File: fitclass.png Graphic file (type png)
-<use fitclass.png>
-Package pdftex.def Info: fitclass.png  used on input line 2123.
-(pdftex.def)             Requested size: 226.68979pt x 336.5416pt.
-<fitsamcclass.png, id=571, 667.0521pt x 865.7946pt>
-File: fitsamcclass.png Graphic file (type png)
-<use fitsamcclass.png>
-Package pdftex.def Info: fitsamcclass.png  used on input line 2129.
-(pdftex.def)             Requested size: 455.24849pt x 590.88593pt.
-[60 <./scamethod.png>] [61 <./fitclass.png>] [62 <./fitsamcclass.png>]
+[20 <./scamethod.png>] [21] [22] [23] [24
+
+]
 Chapter 7.
-[63
+[25] [26
 
 ]
-<_bookdown_files/_main_files/figure-html/fund_forms-1.png, id=600, 505.89pt x 3
-61.35pt>
-File: _bookdown_files/_main_files/figure-html/fund_forms-1.png Graphic file (ty
-pe png)
-<use _bookdown_files/_main_files/figure-html/fund_forms-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/fund_forms-1.p
-ng  used on input line 2191.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
- [64 <./_bookdown_files/_main_files/figure-html/fund_forms-1.png (PNG copy)>]
-<_bookdown_files/_main_files/figure-html/fund_forms_age-1.png, id=606, 505.89pt
- x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/fund_forms_age-1.png Graphic file
- (type png)
-<use _bookdown_files/_main_files/figure-html/fund_forms_age-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/fund_forms_age
--1.png  used on input line 2222.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
- [65 <./_bookdown_files/_main_files/figure-html/fund_forms_age-1.png (PNG copy)
->]
-<_bookdown_files/_main_files/figure-html/majeffy-1.png, id=615, 505.89pt x 361.
-35pt>
-File: _bookdown_files/_main_files/figure-html/majeffy-1.png Graphic file (type 
-png)
-<use _bookdown_files/_main_files/figure-html/majeffy-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/majeffy-1.png 
- used on input line 2259.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/majeffa-1.png, id=616, 505.89pt x 361.
-35pt>
-File: _bookdown_files/_main_files/figure-html/majeffa-1.png Graphic file (type 
-png)
-<use _bookdown_files/_main_files/figure-html/majeffa-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/majeffa-1.png 
- used on input line 2271.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/majeffc-1.png, id=617, 505.89pt x 361.
-35pt>
-File: _bookdown_files/_main_files/figure-html/majeffc-1.png Graphic file (type 
-png)
-<use _bookdown_files/_main_files/figure-html/majeffc-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/majeffc-1.png 
- used on input line 2283.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-
-Overfull \hbox (70.82687pt too wide) in paragraph at lines 2290--2293
-\OT1/lmr/m/n/10 (-20) %========================================================
-============
- []
-
-
-Overfull \hbox (240.40872pt too wide) in paragraph at lines 2290--2293
-\OT1/lmr/m/n/10 (-20) % COLIN TO CHECK THE SEC-TION %==========================
-========================================== 
- []
-
-[66 <./_bookdown_files/_main_files/figure-html/majeffy-1.png>] [67 <./_bookdown
-_files/_main_files/figure-html/majeffa-1.png> <./_bookdown_files/_main_files/fi
-gure-html/majeffc-1.png>] [68]
-Overfull \vbox (0.45204pt too high) detected at line 2421
- []
-
-[69] [70]
 Chapter 8.
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-38-1.png, id=647, 505.89
-pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-38-1.png Graphic fi
-le (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-38-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-38-1.png  used on input line 2497.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [71
-
-]
-Underfull \vbox (badness 4872) has occurred while \output is active []
-
- [72 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-38-1.png>]
-<_bookdown_files/_main_files/figure-html/fit0-1.png, id=657, 505.89pt x 361.35p
-t>
-File: _bookdown_files/_main_files/figure-html/fit0-1.png Graphic file (type png
-)
-<use _bookdown_files/_main_files/figure-html/fit0-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/fit0-1.png  us
-ed on input line 2555.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-
-Underfull \vbox (badness 1231) has occurred while \output is active []
-
- [73 <./_bookdown_files/_main_files/figure-html/fit0-1.png>] [74]
-<_bookdown_files/_main_files/figure-html/te1-1.png, id=670, 505.89pt x 361.35pt
->
-File: _bookdown_files/_main_files/figure-html/te1-1.png Graphic file (type png)
-
-<use _bookdown_files/_main_files/figure-html/te1-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/te1-1.png  use
-d on input line 2654.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
- [75 <./_bookdown_files/_main_files/figure-html/te1-1.png>]
-<_bookdown_files/_main_files/figure-html/age1-1.png, id=680, 505.89pt x 361.35p
-t>
-File: _bookdown_files/_main_files/figure-html/age1-1.png Graphic file (type png
-)
-<use _bookdown_files/_main_files/figure-html/age1-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/age1-1.png  us
-ed on input line 2675.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
- [76 <./_bookdown_files/_main_files/figure-html/age1-1.png>]
-Overfull \hbox (164.25409pt too wide) in paragraph at lines 2715--2715
-[]\OT1/lmtt/m/n/10 ## Warning: *** ~s(age, k = 4) + s(year, k = 20) + s(as.nume
-ric(year - age),     k = 10) has 1 too many parameter(s)!![] 
- []
-
-<_bookdown_files/_main_files/figure-html/sep00-1.png, id=691, 505.89pt x 361.35
-pt>
-File: _bookdown_files/_main_files/figure-html/sep00-1.png Graphic file (type pn
-g)
-<use _bookdown_files/_main_files/figure-html/sep00-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/sep00-1.png  u
-sed on input line 2729.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/sep01-1.png, id=692, 505.89pt x 361.35
-pt>
-File: _bookdown_files/_main_files/figure-html/sep01-1.png Graphic file (type pn
-g)
-<use _bookdown_files/_main_files/figure-html/sep01-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/sep01-1.png  u
-sed on input line 2741.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-[77 <./_bookdown_files/_main_files/figure-html/sep00-1.png>] [78 <./_bookdown_f
-iles/_main_files/figure-html/sep01-1.png>]
-<_bookdown_files/_main_files/figure-html/ctsselage-1.png, id=707, 505.89pt x 36
-1.35pt>
-File: _bookdown_files/_main_files/figure-html/ctsselage-1.png Graphic file (typ
-e png)
-<use _bookdown_files/_main_files/figure-html/ctsselage-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/ctsselage-1.pn
-g  used on input line 2805.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/ctsselyear-1.png, id=708, 505.89pt x 3
-61.35pt>
-File: _bookdown_files/_main_files/figure-html/ctsselyear-1.png Graphic file (ty
-pe png)
-<use _bookdown_files/_main_files/figure-html/ctsselyear-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/ctsselyear-1.p
-ng  used on input line 2826.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
- [79] [80 <./_bookdown_files/_main_files/figure-html/ctsselage-1.png> <./_bookd
-own_files/_main_files/figure-html/ctsselyear-1.png>]
-<_bookdown_files/_main_files/figure-html/brk-1.png, id=725, 505.89pt x 361.35pt
->
-File: _bookdown_files/_main_files/figure-html/brk-1.png Graphic file (type png)
-
-<use _bookdown_files/_main_files/figure-html/brk-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/brk-1.png  use
-d on input line 2900.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
- [81] [82 <./_bookdown_files/_main_files/figure-html/brk-1.png>]
-<_bookdown_files/_main_files/figure-html/logistic-1.png, id=741, 505.89pt x 361
-.35pt>
-File: _bookdown_files/_main_files/figure-html/logistic-1.png Graphic file (type
- png)
-<use _bookdown_files/_main_files/figure-html/logistic-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/logistic-1.png
-  used on input line 2953.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/ageind-1.png, id=743, 505.89pt x 361.3
-5pt>
-File: _bookdown_files/_main_files/figure-html/ageind-1.png Graphic file (type p
-ng)
-<use _bookdown_files/_main_files/figure-html/ageind-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/ageind-1.png  
-used on input line 2977.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/coh-1.png, id=745, 505.89pt x 361.35pt
->
-File: _bookdown_files/_main_files/figure-html/coh-1.png Graphic file (type png)
-
-<use _bookdown_files/_main_files/figure-html/coh-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/coh-1.png  use
-d on input line 2992.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [83 <./_bookdown_files/_main_files/figure-html/logistic-1.png>] [84 <./_bookdo
-wn_files/_main_files/figure-html/ageind-1.png> <./_bookdown_files/_main_files/f
-igure-html/coh-1.png>]
-<_bookdown_files/_main_files/figure-html/dummyage-1.png, id=764, 505.89pt x 361
-.35pt>
-File: _bookdown_files/_main_files/figure-html/dummyage-1.png Graphic file (type
- png)
-<use _bookdown_files/_main_files/figure-html/dummyage-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/dummyage-1.png
-  used on input line 3017.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/smoothage-1.png, id=766, 505.89pt x 36
-1.35pt>
-File: _bookdown_files/_main_files/figure-html/smoothage-1.png Graphic file (typ
-e png)
-<use _bookdown_files/_main_files/figure-html/smoothage-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/smoothage-1.pn
-g  used on input line 3034.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
- [85 <./_bookdown_files/_main_files/figure-html/dummyage-1.png>]
-<_bookdown_files/_main_files/figure-html/qtrend-1.png, id=778, 505.89pt x 361.3
-5pt>
-File: _bookdown_files/_main_files/figure-html/qtrend-1.png Graphic file (type p
-ng)
-<use _bookdown_files/_main_files/figure-html/qtrend-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/qtrend-1.png  
-used on input line 3051.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-
-[86 <./_bookdown_files/_main_files/figure-html/smoothage-1.png>]
-Underfull \vbox (badness 2582) has occurred while \output is active []
-
- [87 <./_bookdown_files/_main_files/figure-html/qtrend-1.png>]
-Underfull \vbox (badness 1852) has occurred while \output is active []
-
- [88]
-<_bookdown_files/_main_files/figure-html/srmod-1.png, id=800, 505.89pt x 361.35
-pt>
-File: _bookdown_files/_main_files/figure-html/srmod-1.png Graphic file (type pn
-g)
-<use _bookdown_files/_main_files/figure-html/srmod-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/srmod-1.png  u
-sed on input line 3185.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-
-[89 <./_bookdown_files/_main_files/figure-html/srmod-1.png (PNG copy)>]
-<_bookdown_files/_main_files/figure-html/vmod-1.png, id=808, 505.89pt x 361.35p
-t>
-File: _bookdown_files/_main_files/figure-html/vmod-1.png Graphic file (type png
-)
-<use _bookdown_files/_main_files/figure-html/vmod-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/vmod-1.png  us
-ed on input line 3215.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-
-[90 <./_bookdown_files/_main_files/figure-html/vmod-1.png>]
-<_bookdown_files/_main_files/figure-html/vmodimpact-1.png, id=817, 505.89pt x 3
-61.35pt>
-File: _bookdown_files/_main_files/figure-html/vmodimpact-1.png Graphic file (ty
-pe png)
-<use _bookdown_files/_main_files/figure-html/vmodimpact-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/vmodimpact-1.p
-ng  used on input line 3234.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
- [91 <./_bookdown_files/_main_files/figure-html/vmodimpact-1.png>]
-<_bookdown_files/_main_files/figure-html/ny1-1.png, id=827, 505.89pt x 361.35pt
->
-File: _bookdown_files/_main_files/figure-html/ny1-1.png Graphic file (type png)
-
-<use _bookdown_files/_main_files/figure-html/ny1-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/ny1-1.png  use
-d on input line 3262.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/n1modimpact-1.png, id=829, 505.89pt x 
-361.35pt>
-File: _bookdown_files/_main_files/figure-html/n1modimpact-1.png Graphic file (t
-ype png)
-<use _bookdown_files/_main_files/figure-html/n1modimpact-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/n1modimpact-1.
-png  used on input line 3279.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-
-Overfull \hbox (70.82687pt too wide) in paragraph at lines 3286--3289
-\OT1/lmr/m/n/10 (-20) %========================================================
-============
- []
-
-
-Overfull \hbox (240.40872pt too wide) in paragraph at lines 3286--3289
-\OT1/lmr/m/n/10 (-20) % COLIN TO CHECK THE SEC-TION %==========================
-========================================== 
- []
-
-
-LaTeX Warning: Reference `sec:maths' on page 92 undefined on input line 3290.
-
-[92 <./_bookdown_files/_main_files/figure-html/ny1-1.png>]
-<_bookdown_files/_main_files/figure-html/likwgt-1.png, id=841, 505.89pt x 361.3
-5pt>
-File: _bookdown_files/_main_files/figure-html/likwgt-1.png Graphic file (type p
-ng)
-<use _bookdown_files/_main_files/figure-html/likwgt-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/likwgt-1.png  
-used on input line 3328.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/likwgtimpact-1.png, id=842, 505.89pt x
- 361.35pt>
-File: _bookdown_files/_main_files/figure-html/likwgtimpact-1.png Graphic file (
-type png)
-<use _bookdown_files/_main_files/figure-html/likwgtimpact-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/likwgtimpact-1
-.png  used on input line 3341.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
- [93 <./_bookdown_files/_main_files/figure-html/n1modimpact-1.png>] [94 <./_boo
-kdown_files/_main_files/figure-html/likwgt-1.png> <./_bookdown_files/_main_file
-s/figure-html/likwgtimpact-1.png (PNG copy)>]
-<_bookdown_files/_main_files/figure-html/naor-1.png, id=854, 505.89pt x 361.35p
-t>
-File: _bookdown_files/_main_files/figure-html/naor-1.png Graphic file (type png
-)
-<use _bookdown_files/_main_files/figure-html/naor-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/naor-1.png  us
-ed on input line 3385.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
- [95 <./_bookdown_files/_main_files/figure-html/naor-1.png>]
-<_bookdown_files/_main_files/figure-html/naor2-1.png, id=863, 505.89pt x 361.35
-pt>
-File: _bookdown_files/_main_files/figure-html/naor2-1.png Graphic file (type pn
-g)
-<use _bookdown_files/_main_files/figure-html/naor2-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/naor2-1.png  u
-sed on input line 3401.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-
-Overfull \hbox (70.82687pt too wide) in paragraph at lines 3421--3424
-\OT1/lmr/m/n/10 (-20) %========================================================
-============
- []
-
-
-Overfull \hbox (240.40872pt too wide) in paragraph at lines 3421--3424
-\OT1/lmr/m/n/10 (-20) % COLIN TO CHECK THE SEC-TION %==========================
-========================================== 
- []
-
-[96 <./_bookdown_files/_main_files/figure-html/naor2-1.png>]
+ [27]
+[28]
 Chapter 9.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 3437.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 3437.
-<_bookdown_files/_main_files/figure-html/res-1.png, id=876, 505.89pt x 361.35pt
->
-File: _bookdown_files/_main_files/figure-html/res-1.png Graphic file (type png)
+[29
 
-<use _bookdown_files/_main_files/figure-html/res-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/res-1.png  use
-d on input line 3460.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-[97
-
-] [98 <./_bookdown_files/_main_files/figure-html/res-1.png>]
-<_bookdown_files/_main_files/figure-html/resaux-1.png, id=894, 505.89pt x 361.3
-5pt>
-File: _bookdown_files/_main_files/figure-html/resaux-1.png Graphic file (type p
-ng)
-<use _bookdown_files/_main_files/figure-html/resaux-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/resaux-1.png  
-used on input line 3474.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/bub-1.png, id=897, 505.89pt x 361.35pt
->
-File: _bookdown_files/_main_files/figure-html/bub-1.png Graphic file (type png)
-
-<use _bookdown_files/_main_files/figure-html/bub-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/bub-1.png  use
-d on input line 3488.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/qq-1.png, id=899, 505.89pt x 361.35pt>
-
-File: _bookdown_files/_main_files/figure-html/qq-1.png Graphic file (type png)
-<use _bookdown_files/_main_files/figure-html/qq-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/qq-1.png  used
- on input line 3502.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
- [99 <./_bookdown_files/_main_files/figure-html/resaux-1.png>]
-<_bookdown_files/_main_files/figure-html/resp-1.png, id=910, 505.89pt x 361.35p
-t>
-File: _bookdown_files/_main_files/figure-html/resp-1.png Graphic file (type png
-)
-<use _bookdown_files/_main_files/figure-html/resp-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/resp-1.png  us
-ed on input line 3517.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/resr-1.png, id=912, 505.89pt x 361.35p
-t>
-File: _bookdown_files/_main_files/figure-html/resr-1.png Graphic file (type png
-)
-<use _bookdown_files/_main_files/figure-html/resr-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/resr-1.png  us
-ed on input line 3532.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-
-
-LaTeX Warning: Reference `fig:idxplt' on page 100 undefined on input line 3539.
-
-
-<_bookdown_files/_main_files/figure-html/selplt-1.png, id=914, 505.89pt x 361.3
-5pt>
-File: _bookdown_files/_main_files/figure-html/selplt-1.png Graphic file (type p
-ng)
-<use _bookdown_files/_main_files/figure-html/selplt-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/selplt-1.png  
-used on input line 3549.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/idxplt-1.png, id=915, 505.89pt x 361.3
-5pt>
-File: _bookdown_files/_main_files/figure-html/idxplt-1.png Graphic file (type p
-ng)
-<use _bookdown_files/_main_files/figure-html/idxplt-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/idxplt-1.png  
-used on input line 3559.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/idxplt-2.png, id=916, 505.89pt x 361.3
-5pt>
-File: _bookdown_files/_main_files/figure-html/idxplt-2.png Graphic file (type p
-ng)
-<use _bookdown_files/_main_files/figure-html/idxplt-2.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/idxplt-2.png  
-used on input line 3559.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/idxplt-3.png, id=917, 505.89pt x 361.3
-5pt>
-File: _bookdown_files/_main_files/figure-html/idxplt-3.png Graphic file (type p
-ng)
-<use _bookdown_files/_main_files/figure-html/idxplt-3.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/idxplt-3.png  
-used on input line 3559.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/idxplt-4.png, id=918, 505.89pt x 361.3
-5pt>
-File: _bookdown_files/_main_files/figure-html/idxplt-4.png Graphic file (type p
-ng)
-<use _bookdown_files/_main_files/figure-html/idxplt-4.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/idxplt-4.png  
-used on input line 3559.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/idxplt-5.png, id=919, 505.89pt x 361.3
-5pt>
-File: _bookdown_files/_main_files/figure-html/idxplt-5.png Graphic file (type p
-ng)
-<use _bookdown_files/_main_files/figure-html/idxplt-5.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/idxplt-5.png  
-used on input line 3559.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/idxplt-6.png, id=920, 505.89pt x 361.3
-5pt>
-File: _bookdown_files/_main_files/figure-html/idxplt-6.png Graphic file (type p
-ng)
-<use _bookdown_files/_main_files/figure-html/idxplt-6.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/idxplt-6.png  
-used on input line 3559.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-
-Underfull \vbox (badness 4595) has occurred while \output is active []
-
- [100 <./_bookdown_files/_main_files/figure-html/bub-1.png>] [101 <./_bookdown_
-files/_main_files/figure-html/qq-1.png>] [102 <./_bookdown_files/_main_files/fi
-gure-html/resp-1.png>] [103 <./_bookdown_files/_main_files/figure-html/resr-1.p
-ng>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [104 <./_bookdown_files/_main_files/figure-html/selplt-1.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [105 <./_bookdown_files/_main_files/figure-html/idxplt-1.png> <./_bookdown_fil
-es/_main_files/figure-html/idxplt-2.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [106 <./_bookdown_files/_main_files/figure-html/idxplt-3.png> <./_bookdown_fil
-es/_main_files/figure-html/idxplt-4.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [107 <./_bookdown_files/_main_files/figure-html/idxplt-5.png> <./_bookdown_fil
-es/_main_files/figure-html/idxplt-6.png>]
-<_bookdown_files/_main_files/figure-html/catchdiag-1.png, id=970, 505.89pt x 36
-1.35pt>
-File: _bookdown_files/_main_files/figure-html/catchdiag-1.png Graphic file (typ
-e png)
-<use _bookdown_files/_main_files/figure-html/catchdiag-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/catchdiag-1.pn
-g  used on input line 3575.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
- [108 <./_bookdown_files/_main_files/figure-html/catchdiag-1.png>]
-<_bookdown_files/_main_files/figure-html/idxrunstest-1.png, id=979, 505.89pt x 
-361.35pt>
-File: _bookdown_files/_main_files/figure-html/idxrunstest-1.png Graphic file (t
-ype png)
-<use _bookdown_files/_main_files/figure-html/idxrunstest-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/idxrunstest-1.
-png  used on input line 3655.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/catchrunstest-1.png, id=980, 505.89pt 
-x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/catchrunstest-1.png Graphic file 
-(type png)
-<use _bookdown_files/_main_files/figure-html/catchrunstest-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/catchrunstest-
-1.png  used on input line 3667.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [109]
-[110 <./_bookdown_files/_main_files/figure-html/idxrunstest-1.png (PNG copy)> <
-./_bookdown_files/_main_files/figure-html/catchrunstest-1.png (PNG copy)>]
-<_bookdown_files/_main_files/figure-html/meanresbyyear-1.png, id=995, 505.89pt 
-x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/meanresbyyear-1.png Graphic file 
-(type png)
-<use _bookdown_files/_main_files/figure-html/meanresbyyear-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/meanresbyyear-
-1.png  used on input line 3700.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/meanresbyage-1.png, id=996, 867.24pt x
- 578.16pt>
-File: _bookdown_files/_main_files/figure-html/meanresbyage-1.png Graphic file (
-type png)
-<use _bookdown_files/_main_files/figure-html/meanresbyage-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/meanresbyage-1
-.png  used on input line 3713.
-(pdftex.def)             Requested size: 711.35315pt x 474.23541pt.
-
-Overfull \hbox (18.9913pt too wide) in paragraph at lines 3713--3713
-[][] 
- []
-
-
-LaTeX Warning: Float too large for page by 30.57007pt on input line 3714.
-
-[111 <./_bookdown_files/_main_files/figure-html/meanresbyyear-1.png>] [112 <./_
-bookdown_files/_main_files/figure-html/meanresbyage-1.png>]
-<_bookdown_files/_main_files/figure-html/fageresbyyear-1.png, id=1013, 505.89pt
- x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/fageresbyyear-1.png Graphic file 
-(type png)
-<use _bookdown_files/_main_files/figure-html/fageresbyyear-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/fageresbyyear-
-1.png  used on input line 3738.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/fageresbyage-1.png, id=1014, 867.24pt 
-x 578.16pt>
-File: _bookdown_files/_main_files/figure-html/fageresbyage-1.png Graphic file (
-type png)
-<use _bookdown_files/_main_files/figure-html/fageresbyage-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/fageresbyage-1
-.png  used on input line 3751.
-(pdftex.def)             Requested size: 711.35315pt x 474.23541pt.
-
-Overfull \hbox (18.9913pt too wide) in paragraph at lines 3751--3751
-[][] 
- []
-
-
-LaTeX Warning: Float too large for page by 30.57007pt on input line 3752.
-
-<_bookdown_files/_main_files/figure-html/qageresbyyear-1.png, id=1015, 505.89pt
- x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/qageresbyyear-1.png Graphic file 
-(type png)
-<use _bookdown_files/_main_files/figure-html/qageresbyyear-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/qageresbyyear-
-1.png  used on input line 3771.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/qageresbyage-1.png, id=1016, 867.24pt 
-x 578.16pt>
-File: _bookdown_files/_main_files/figure-html/qageresbyage-1.png Graphic file (
-type png)
-<use _bookdown_files/_main_files/figure-html/qageresbyage-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/qageresbyage-1
-.png  used on input line 3784.
-(pdftex.def)             Requested size: 711.35315pt x 474.23541pt.
-
-Overfull \hbox (18.9913pt too wide) in paragraph at lines 3784--3784
-[][] 
- []
-
-
-LaTeX Warning: Float too large for page by 30.57007pt on input line 3785.
-
-
-Underfull \vbox (badness 1019) has occurred while \output is active []
-
- [113 <./_bookdown_files/_main_files/figure-html/fageresbyyear-1.png>] [114 <./
-_bookdown_files/_main_files/figure-html/fageresbyage-1.png>]
-<_bookdown_files/_main_files/figure-html/fqageresbyyear-1.png, id=1029, 505.89p
-t x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/fqageresbyyear-1.png Graphic file
- (type png)
-<use _bookdown_files/_main_files/figure-html/fqageresbyyear-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/fqageresbyyear
--1.png  used on input line 3804.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/fqageresbyage-1.png, id=1030, 867.24pt
- x 578.16pt>
-File: _bookdown_files/_main_files/figure-html/fqageresbyage-1.png Graphic file 
-(type png)
-<use _bookdown_files/_main_files/figure-html/fqageresbyage-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/fqageresbyage-
-1.png  used on input line 3817.
-(pdftex.def)             Requested size: 711.35315pt x 474.23541pt.
-
-Overfull \hbox (18.9913pt too wide) in paragraph at lines 3817--3817
-[][] 
- []
-
-
-LaTeX Warning: Float too large for page by 30.57007pt on input line 3818.
-
-<_bookdown_files/_main_files/figure-html/fyearresbyyear-1.png, id=1031, 505.89p
-t x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/fyearresbyyear-1.png Graphic file
- (type png)
-<use _bookdown_files/_main_files/figure-html/fyearresbyyear-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/fyearresbyyear
--1.png  used on input line 3842.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/fyearresbyage-1.png, id=1032, 867.24pt
- x 578.16pt>
-File: _bookdown_files/_main_files/figure-html/fyearresbyage-1.png Graphic file 
-(type png)
-<use _bookdown_files/_main_files/figure-html/fyearresbyage-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/fyearresbyage-
-1.png  used on input line 3855.
-(pdftex.def)             Requested size: 711.35315pt x 474.23541pt.
-
-Overfull \hbox (18.9913pt too wide) in paragraph at lines 3855--3855
-[][] 
- []
-
-
-LaTeX Warning: Float too large for page by 30.57007pt on input line 3856.
-
-[115 <./_bookdown_files/_main_files/figure-html/qageresbyyear-1.png>] [116 <./_
-bookdown_files/_main_files/figure-html/qageresbyage-1.png>]
-<_bookdown_files/_main_files/figure-html/n1arresbyyear-1.png, id=1049, 505.89pt
- x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/n1arresbyyear-1.png Graphic file 
-(type png)
-<use _bookdown_files/_main_files/figure-html/n1arresbyyear-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/n1arresbyyear-
-1.png  used on input line 3882.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/n1resbyage-1.png, id=1051, 867.24pt x 
-578.16pt>
-File: _bookdown_files/_main_files/figure-html/n1resbyage-1.png Graphic file (ty
-pe png)
-<use _bookdown_files/_main_files/figure-html/n1resbyage-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/n1resbyage-1.p
-ng  used on input line 3895.
-(pdftex.def)             Requested size: 711.35315pt x 474.23541pt.
-
-Overfull \hbox (18.9913pt too wide) in paragraph at lines 3895--3895
-[][] 
- []
-
-
-LaTeX Warning: Float too large for page by 30.57007pt on input line 3896.
-
-
-Underfull \vbox (badness 5374) has occurred while \output is active []
-
- [117 <./_bookdown_files/_main_files/figure-html/fqageresbyyear-1.png>] [118 <.
-/_bookdown_files/_main_files/figure-html/fqageresbyage-1.png>]
-<_bookdown_files/_main_files/figure-html/srresbyyear-1.png, id=1067, 505.89pt x
- 361.35pt>
-File: _bookdown_files/_main_files/figure-html/srresbyyear-1.png Graphic file (t
-ype png)
-<use _bookdown_files/_main_files/figure-html/srresbyyear-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/srresbyyear-1.
-png  used on input line 3920.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/srresbyage-1.png, id=1068, 867.24pt x 
-578.16pt>
-File: _bookdown_files/_main_files/figure-html/srresbyage-1.png Graphic file (ty
-pe png)
-<use _bookdown_files/_main_files/figure-html/srresbyage-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/srresbyage-1.p
-ng  used on input line 3931.
-(pdftex.def)             Requested size: 711.35315pt x 474.23541pt.
-
-Overfull \hbox (18.9913pt too wide) in paragraph at lines 3931--3931
-[][] 
- []
-
-
-LaTeX Warning: Float too large for page by 30.57007pt on input line 3932.
-
-[119 <./_bookdown_files/_main_files/figure-html/fyearresbyyear-1.png>] [120 <./
-_bookdown_files/_main_files/figure-html/fyearresbyage-1.png>]
-<_bookdown_files/_main_files/figure-html/vagepredbyage-1.png, id=1085, 505.89pt
- x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/vagepredbyage-1.png Graphic file 
-(type png)
-<use _bookdown_files/_main_files/figure-html/vagepredbyage-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/vagepredbyage-
-1.png  used on input line 3957.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/vage-1.png, id=1086, 505.89pt x 361.35
-pt>
-File: _bookdown_files/_main_files/figure-html/vage-1.png Graphic file (type png
-)
-<use _bookdown_files/_main_files/figure-html/vage-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/vage-1.png  us
-ed on input line 3972.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/vageresbyyear-1.png, id=1087, 505.89pt
- x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/vageresbyyear-1.png Graphic file 
-(type png)
-<use _bookdown_files/_main_files/figure-html/vageresbyyear-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/vageresbyyear-
-1.png  used on input line 3986.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/vageresbyage-1.png, id=1088, 867.24pt 
-x 578.16pt>
-File: _bookdown_files/_main_files/figure-html/vageresbyage-1.png Graphic file (
-type png)
-<use _bookdown_files/_main_files/figure-html/vageresbyage-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/vageresbyage-1
-.png  used on input line 3997.
-(pdftex.def)             Requested size: 711.35315pt x 474.23541pt.
-
-Overfull \hbox (18.9913pt too wide) in paragraph at lines 3997--3997
-[][] 
- []
-
-
-LaTeX Warning: Float too large for page by 30.57007pt on input line 3998.
-
-[121 <./_bookdown_files/_main_files/figure-html/n1arresbyyear-1.png>] [122 <./_
-bookdown_files/_main_files/figure-html/n1resbyage-1.png>] [123 <./_bookdown_fil
-es/_main_files/figure-html/srresbyyear-1.png>] [124 <./_bookdown_files/_main_fi
-les/figure-html/srresbyage-1.png>] [125 <./_bookdown_files/_main_files/figure-h
-tml/vagepredbyage-1.png (PNG copy)> <./_bookdown_files/_main_files/figure-html/
-vage-1.png (PNG copy)>] [126 <./_bookdown_files/_main_files/figure-html/vageres
-byyear-1.png>] [127 <./_bookdown_files/_main_files/figure-html/vageresbyage-1.p
-ng>] [128
+] [30
 
 ]
 Chapter 10.
-[129] [130
+[31] [32
 
 ]
 Chapter 11.
-[131] [132]
-<_bookdown_files/_main_files/figure-html/selection pattern-1.png, id=1157, 505.
-89pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/selection pattern-1.png Graphic f
-ile (type png)
-<use _bookdown_files/_main_files/figure-html/selection pattern-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/selection patt
-ern-1.png  used on input line 4091.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/relevant quantities for reference poin
-ts-1.png, id=1158, 505.89pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/relevant quantities for reference
- points-1.png Graphic file (type png)
-<use _bookdown_files/_main_files/figure-html/relevant quantities for reference 
-points-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/relevant quant
-ities for reference points-1.png  used on input line 4102.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [133 <./_bookdown_files/_main_files/figure-html/selection pattern-1.png (PNG c
-opy)>]
-[134 <./_bookdown_files/_main_files/figure-html/relevant quantities for referen
-ce points-1.png (PNG copy)>]
-<_bookdown_files/_main_files/figure-html/reference points-1.png, id=1168, 505.8
-9pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/reference points-1.png Graphic fi
-le (type png)
-<use _bookdown_files/_main_files/figure-html/reference points-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/reference poin
-ts-1.png  used on input line 4158.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
- [135 <./_bookdown_files/_main_files/figure-html/reference points-1.png (PNG co
-py)>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [136]
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-85-1.png, id=1180, 505.8
-9pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-85-1.png Graphic fi
-le (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-85-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-85-1.png  used on input line 4241.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-
-Underfull \vbox (badness 1231) has occurred while \output is active []
-
- [137 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-85-1.png (PNG co
-py)>]
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-88-1.png, id=1186, 505.8
-9pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-88-1.png Graphic fi
-le (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-88-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-88-1.png  used on input line 4297.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [138]
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-89-1.png, id=1191, 505.8
-9pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-89-1.png Graphic fi
-le (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-89-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-89-1.png  used on input line 4315.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [139 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-88-1.png (PNG co
-py)>]
-[140 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-89-1.png (PNG cop
-y)>]
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-91-1.png, id=1204, 505.8
-9pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-91-1.png Graphic fi
-le (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-91-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-91-1.png  used on input line 4379.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-
-Underfull \vbox (badness 5741) has occurred while \output is active []
-
- [141 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-91-1.png (PNG co
-py)>]
-
-LaTeX Font Warning: Font shape `OML/lmtt/m/it' undefined
-(Font)              using `OML/cmm/m/it' instead
-(Font)              for symbol `textless' on input line 4425.
-
-[142] [143] [144
+[33] [34
 
 ]
 Chapter 12.
-[145]
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-97-1.png, id=1228, 505.8
-9pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-97-1.png Graphic fi
-le (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-97-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-97-1.png  used on input line 4526.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
- [146 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-97-1.png>]
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-99-1.png, id=1235, 505.8
-9pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-99-1.png Graphic fi
-le (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-99-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-99-1.png  used on input line 4545.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-101-1.png, id=1236, 505.
-89pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-101-1.png Graphic f
-ile (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-101-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-101-1.png  used on input line 4569.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
+[35] [36
 
-[147 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-99-1.png (PNG cop
-y)>]
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-102-1.png, id=1242, 505.
-89pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-102-1.png Graphic f
-ile (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-102-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-102-1.png  used on input line 4577.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
- [148 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-101-1.png (PNG c
-opy)>]
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-104-1.png, id=1249, 505.
-89pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-104-1.png Graphic f
-ile (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-104-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-104-1.png  used on input line 4609.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
- [149 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-102-1.png (PNG c
-opy)>] [150 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-104-1.png 
-(PNG copy)>]
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-106-1.png, id=1261, 505.
-89pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-106-1.png Graphic f
-ile (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-106-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-106-1.png  used on input line 4640.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-108-1.png, id=1262, 505.
-89pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-108-1.png Graphic f
-ile (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-108-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-108-1.png  used on input line 4675.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [151 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-106-1.png (PNG c
-opy)>]
-[152 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-108-1.png (PNG co
-py)>]
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-111-1.png, id=1275, 505.
-89pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-111-1.png Graphic f
-ile (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-111-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-111-1.png  used on input line 4715.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
- [153] [154 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-111-1.png 
-(PNG copy)>]
+]
 Chapter 13.
-[155
+[37] [38
 
-] [156]
-<_bookdown_files/_main_files/figure-html/sim-1.png, id=1309, 505.89pt x 361.35p
-t>
-File: _bookdown_files/_main_files/figure-html/sim-1.png Graphic file (type png)
-
-<use _bookdown_files/_main_files/figure-html/sim-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/sim-1.png  use
-d on input line 4860.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/sim2-1.png, id=1310, 505.89pt x 361.35
-pt>
-File: _bookdown_files/_main_files/figure-html/sim2-1.png Graphic file (type png
-)
-<use _bookdown_files/_main_files/figure-html/sim2-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/sim2-1.png  us
-ed on input line 4873.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
- [157] [158 <./_bookdown_files/_main_files/figure-html/sim-1.png> <./_bookdown_
-files/_main_files/figure-html/sim2-1.png (PNG copy)>]
+]
 Chapter 14.
-[159
+[39]
+Overfull \hbox (45.27655pt too wide) has occurred while \output is active
+\OT1/lmr/m/n/10 40 \OT1/lmr/m/sl/10 CHAPTER 14.  THE STATISTICAL CATCH-AT-AGE S
+TOCK ASSESSMENT FRAMEWORK WITH MCMC 
+ []
+
+[40
 
 ]
-Underfull \vbox (badness 4072) has occurred while \output is active []
-
-
-Overfull \hbox (50.27655pt too wide) has occurred while \output is active
-\OT1/lmr/m/n/10 160 \OT1/lmr/m/sl/10 CHAPTER 14.  THE STATISTICAL CATCH-AT-AGE 
-STOCK ASSESSMENT FRAMEWORK WITH MCMC 
- []
-
-[160]
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-119-1.png, id=1334, 505.
-89pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-119-1.png Graphic f
-ile (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-119-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-119-1.png  used on input line 4978.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-121-1.png, id=1335, 505.
-89pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-121-1.png Graphic f
-ile (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-121-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-121-1.png  used on input line 4997.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [161 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-119-1.png (PNG c
-opy)>]
-
-LaTeX Warning: Reference `fig:acf01' on page 162 undefined on input line 5017.
-
-LaTeX Font Info:    Trying to load font information for OML+lmr on input line 5
-019.
-(/usr/share/texmf/tex/latex/lm/omllmr.fd
-File: omllmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    Font shape `OML/lmr/m/n' in size <10> not available
-(Font)              Font shape `OML/lmm/m/it' tried instead on input line 5019.
-
-
-Overfull \hbox (505.5031pt too wide) in paragraph at lines 5028--5028
-[]\OT1/lmtt/m/n/10 Ploting the chain for the parameter clearly shows the autoco
-rrelation but also the burnin phase, where there\TS1/lmtt/m/n/10 '\OT1/lmtt/m/n
-/10 s no information about the parameter. These iterations must to be dropped.[
-] 
- []
-
-
-Overfull \hbox (50.27655pt too wide) has occurred while \output is active
-\OT1/lmr/m/n/10 162 \OT1/lmr/m/sl/10 CHAPTER 14.  THE STATISTICAL CATCH-AT-AGE 
-STOCK ASSESSMENT FRAMEWORK WITH MCMC 
- []
-
-[162 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-121-1.png (PNG co
-py)>]
-Overfull \hbox (941.25183pt too wide) in paragraph at lines 5041--5041
-[]\OT1/lmtt/m/n/10 Another interesting diagnostic is the Geweke-Brooks Z-score 
-check. This diagnostic indicates if the first and last part of a sample from a 
-Markov chain may not be drawn from the same distribution. It\TS1/lmtt/m/n/10 '\
-OT1/lmtt/m/n/10 s useful to decide if the first few iterations should e discard
-ed.[] 
- []
-
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-124-1.png, id=1347, 505.
-89pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-124-1.png Graphic f
-ile (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-124-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-124-1.png  used on input line 5063.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-[163 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-124-1.png (PNG co
-py)>]
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-127-1.png, id=1353, 505.
-89pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-127-1.png Graphic f
-ile (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-127-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-127-1.png  used on input line 5091.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-128-1.png, id=1354, 505.
-89pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-128-1.png Graphic f
-ile (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-128-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-128-1.png  used on input line 5101.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (50.27655pt too wide) has occurred while \output is active
-\OT1/lmr/m/n/10 164 \OT1/lmr/m/sl/10 CHAPTER 14.  THE STATISTICAL CATCH-AT-AGE 
-STOCK ASSESSMENT FRAMEWORK WITH MCMC 
- []
-
-[164 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-127-1.png (PNG co
-py)>]
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-129-1.png, id=1359, 505.
-89pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-129-1.png Graphic f
-ile (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-129-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-129-1.png  used on input line 5109.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
- [165 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-128-1.png (PNG c
-opy)> <./_bookdown_files/_main_files/figure-html/unnamed-chunk-129-1.png (PNG c
-opy)>]
-<_bookdown_files/_main_files/figure-html/unnamed-chunk-130-1.png, id=1364, 505.
-89pt x 361.35pt>
-File: _bookdown_files/_main_files/figure-html/unnamed-chunk-130-1.png Graphic f
-ile (type png)
-<use _bookdown_files/_main_files/figure-html/unnamed-chunk-130-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/unnamed-chunk-
-130-1.png  used on input line 5117.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
-
-Overfull \hbox (50.27655pt too wide) has occurred while \output is active
-\OT1/lmr/m/n/10 166 \OT1/lmr/m/sl/10 CHAPTER 14.  THE STATISTICAL CATCH-AT-AGE 
-STOCK ASSESSMENT FRAMEWORK WITH MCMC 
- []
-
-[166 <./_bookdown_files/_main_files/figure-html/unnamed-chunk-130-1.png>]
 Chapter 15.
-[167
+[41] [42
 
 ]
-<_bookdown_files/_main_files/figure-html/mprop-1.png, id=1376, 505.89pt x 361.3
-5pt>
-File: _bookdown_files/_main_files/figure-html/mprop-1.png Graphic file (type pn
-g)
-<use _bookdown_files/_main_files/figure-html/mprop-1.png>
-Package pdftex.def Info: _bookdown_files/_main_files/figure-html/mprop-1.png  u
-sed on input line 5178.
-(pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
- [168 <./_bookdown_files/_main_files/figure-html/mprop-1.png (PNG copy)>]
 Chapter 16.
-[169
-
-] [170
+[43] [44
 
 ]
 Chapter 17.
-[171] [172
+LaTeX Font Info:    Trying to load font information for OML+lmtt on input line 
+760.
+LaTeX Font Info:    No file OMLlmtt.fd. on input line 760.
+
+LaTeX Font Warning: Font shape `OML/lmtt/m/n' undefined
+(Font)              using `OML/cmm/m/it' instead
+(Font)              for symbol `textless' on input line 760.
+
+LaTeX Font Info:    Font shape `OT1/lmtt/bx/n' in size <10> not available
+(Font)              Font shape `OT1/lmtt/b/n' tried instead on input line 760.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 7
+78.
+(/usr/share/texmf/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) [45{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}] [46
 
 ]
 Chapter 18.
-[173] (./_main.aux)
+[47] (./_main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -2846,52 +1413,33 @@ L3 programming layer <2024-01-22>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were undefined references.
-
  ) 
 Here is how much of TeX's memory you used:
- 19136 strings out of 476139
- 347719 string characters out of 5794454
- 1940975 words of memory out of 5000000
- 40194 multiletter control sequences out of 15000+600000
- 626231 words of font info for 170 fonts, out of 8000000 for 9000
+ 17834 strings out of 476139
+ 288764 string characters out of 5794454
+ 1942975 words of memory out of 5000000
+ 39180 multiletter control sequences out of 15000+600000
+ 610281 words of font info for 127 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 90i,9n,93p,1469b,730s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-pdfTeX warning (dest): name{Hfootnote.3} has been referenced but does not exist
-, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist
-, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
-, replaced by a fixed one
-
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/
-texmf/fonts/type1/public/lm/lmbsy10.pfb></usr/share/texmf/fonts/type1/public/lm
-/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi
-10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmmi5.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/sh
-are/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/
-lm/lmr5.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/
-fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/typ
-e1/public/lm/lmro10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmsy5.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share
-/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm
-/lmtti10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtto10.pfb>
-Output written on _main.pdf (173 pages, 10343289 bytes).
+ 90i,9n,93p,1248b,620s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmbsy10.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/t
+exmf/fonts/type1/public/lm/lmmi5.pfb></usr/share/texmf/fonts/type1/public/lm/lm
+mi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmr5.pfb></usr/share/texmf/fonts/type1/
+public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmro10.pfb></usr/sha
+re/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmsy5.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt
+10.pfb>
+Output written on _main.pdf (47 pages, 463822 bytes).
 PDF statistics:
- 1867 PDF objects out of 2073 (max. 8388607)
- 1430 compressed objects within 15 object streams
- 475 named destinations out of 1000 (max. 500000)
- 38053 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 902 PDF objects out of 1000 (max. 8388607)
+ 800 compressed objects within 8 object streams
+ 260 named destinations out of 1000 (max. 500000)
+ 31331 words of extra memory for PDF output out of 35830 (max. 10000000)
 

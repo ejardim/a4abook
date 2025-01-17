@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-01-15" />
+<meta name="date" content="2025-01-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -181,11 +181,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html"><i class="fa fa-check"></i><b>5</b> Modelling Natural Mortality</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#background"><i class="fa fa-check"></i><b>5.1</b> Background</a></li>
-<li class="chapter" data-level="5.2" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#a4am---the-m-class"><i class="fa fa-check"></i><b>5.2</b> <code>a4aM</code> - The M class</a></li>
-<li class="chapter" data-level="5.3" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>5.3</b> Adding uncertainty to natural mortality parameters with a multivariate normal distribution</a></li>
-<li class="chapter" data-level="5.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>5.4</b> Adding uncertainty to natural mortality parameters with statistical copulas</a></li>
-<li class="chapter" data-level="5.5" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>5.5</b> Computing natural mortality time series - the “m” method</a></li>
+<li class="chapter" data-level="5.1" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#a4am---the-m-class"><i class="fa fa-check"></i><b>5.1</b> <code>a4aM</code> - The M class</a></li>
+<li class="chapter" data-level="5.2" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>5.2</b> Adding uncertainty to natural mortality parameters with a multivariate normal distribution</a></li>
+<li class="chapter" data-level="5.3" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>5.3</b> Adding uncertainty to natural mortality parameters with statistical copulas</a></li>
+<li class="chapter" data-level="5.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>5.4</b> Computing natural mortality time series - the “m” method</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html"><i class="fa fa-check"></i><b>6</b> Stock assessment framework</a>
 <ul>
@@ -194,7 +193,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1.1" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#observations"><i class="fa fa-check"></i><b>6.1.1</b> Observations</a></li>
 <li class="chapter" data-level="6.1.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#the-population-dynamics-model"><i class="fa fa-check"></i><b>6.1.2</b> The population dynamics model</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#classes-description"><i class="fa fa-check"></i><b>6.2</b> Classes description </a></li>
+<li class="chapter" data-level="6.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#classes-description"><i class="fa fa-check"></i><b>6.2</b> Classes Description </a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="submodel-structure.html"><a href="submodel-structure.html"><i class="fa fa-check"></i><b>7</b> Submodel structure </a>
 <ul>
@@ -307,18 +306,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="modelling-spatial-effects" class="section level1 hasAnchor" number="17">
 <h1><span class="header-section-number">Chapter 17</span> Modelling spatial effects<a href="modelling-spatial-effects.html#modelling-spatial-effects" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="modelling-spatial-effects.html#cb336-1" tabindex="-1"></a>ridx01 <span class="ot">&lt;-</span> stk0<span class="sc">@</span>stock.n[<span class="dv">1</span>]<span class="sc">*</span><span class="fl">0.7</span><span class="sc">*</span><span class="fl">0.001</span></span>
-<span id="cb336-2"><a href="modelling-spatial-effects.html#cb336-2" tabindex="-1"></a>ridx01 <span class="ot">&lt;-</span> <span class="fu">log</span>(ridx01<span class="sc">*</span><span class="fu">rlnorm</span>(ridx01))</span>
-<span id="cb336-3"><a href="modelling-spatial-effects.html#cb336-3" tabindex="-1"></a>ridx02 <span class="ot">&lt;-</span> stk0<span class="sc">@</span>stock.n[<span class="dv">1</span>]<span class="sc">*</span><span class="fl">0.3</span><span class="sc">*</span><span class="fl">0.001</span></span>
-<span id="cb336-4"><a href="modelling-spatial-effects.html#cb336-4" tabindex="-1"></a>ridx02 <span class="ot">&lt;-</span> <span class="fu">log</span>(ridx02<span class="sc">*</span><span class="fu">rlnorm</span>(ridx02))</span>
-<span id="cb336-5"><a href="modelling-spatial-effects.html#cb336-5" tabindex="-1"></a></span>
-<span id="cb336-6"><a href="modelling-spatial-effects.html#cb336-6" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">geomean</span>(a<span class="sc">~</span>ridx01<span class="sc">+</span>ridx02, <span class="at">CV=</span><span class="fl">0.5</span>)</span>
-<span id="cb336-7"><a href="modelling-spatial-effects.html#cb336-7" tabindex="-1"></a>cvar <span class="ot">&lt;-</span> <span class="fu">FLQuants</span>(<span class="at">ridx01 =</span> ridx01, <span class="at">ridx02 =</span> ridx02)</span>
-<span id="cb336-8"><a href="modelling-spatial-effects.html#cb336-8" tabindex="-1"></a>fit01 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stock,tun.sel[<span class="fu">c</span>(<span class="dv">1</span>)],<span class="at">fmodel=</span>fmod,<span class="at">qmodel=</span>qmod, <span class="at">srmodel=</span>srmod, <span class="at">covar=</span>cvar)</span>
-<span id="cb336-9"><a href="modelling-spatial-effects.html#cb336-9" tabindex="-1"></a><span class="fu">coef</span>(fit01)</span>
-<span id="cb336-10"><a href="modelling-spatial-effects.html#cb336-10" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">geomean</span>(<span class="at">CV=</span><span class="fl">0.1</span>)</span>
-<span id="cb336-11"><a href="modelling-spatial-effects.html#cb336-11" tabindex="-1"></a>fit02 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stock,tun.sel[<span class="fu">c</span>(<span class="dv">1</span>)],<span class="at">fmodel=</span>fmod,<span class="at">qmodel=</span>qmod, <span class="at">srmodel=</span>srmod)</span>
-<span id="cb336-12"><a href="modelling-spatial-effects.html#cb336-12" tabindex="-1"></a><span class="fu">coef</span>(fit02)</span></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="modelling-spatial-effects.html#cb338-1" tabindex="-1"></a>ridx01 <span class="ot">&lt;-</span> stk0<span class="sc">@</span>stock.n[<span class="dv">1</span>]<span class="sc">*</span><span class="fl">0.7</span><span class="sc">*</span><span class="fl">0.001</span></span>
+<span id="cb338-2"><a href="modelling-spatial-effects.html#cb338-2" tabindex="-1"></a>ridx01 <span class="ot">&lt;-</span> <span class="fu">log</span>(ridx01<span class="sc">*</span><span class="fu">rlnorm</span>(ridx01))</span>
+<span id="cb338-3"><a href="modelling-spatial-effects.html#cb338-3" tabindex="-1"></a>ridx02 <span class="ot">&lt;-</span> stk0<span class="sc">@</span>stock.n[<span class="dv">1</span>]<span class="sc">*</span><span class="fl">0.3</span><span class="sc">*</span><span class="fl">0.001</span></span>
+<span id="cb338-4"><a href="modelling-spatial-effects.html#cb338-4" tabindex="-1"></a>ridx02 <span class="ot">&lt;-</span> <span class="fu">log</span>(ridx02<span class="sc">*</span><span class="fu">rlnorm</span>(ridx02))</span>
+<span id="cb338-5"><a href="modelling-spatial-effects.html#cb338-5" tabindex="-1"></a></span>
+<span id="cb338-6"><a href="modelling-spatial-effects.html#cb338-6" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">geomean</span>(a<span class="sc">~</span>ridx01<span class="sc">+</span>ridx02, <span class="at">CV=</span><span class="fl">0.5</span>)</span>
+<span id="cb338-7"><a href="modelling-spatial-effects.html#cb338-7" tabindex="-1"></a>cvar <span class="ot">&lt;-</span> <span class="fu">FLQuants</span>(<span class="at">ridx01 =</span> ridx01, <span class="at">ridx02 =</span> ridx02)</span>
+<span id="cb338-8"><a href="modelling-spatial-effects.html#cb338-8" tabindex="-1"></a>fit01 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stock,tun.sel[<span class="fu">c</span>(<span class="dv">1</span>)],<span class="at">fmodel=</span>fmod,<span class="at">qmodel=</span>qmod, <span class="at">srmodel=</span>srmod, <span class="at">covar=</span>cvar)</span>
+<span id="cb338-9"><a href="modelling-spatial-effects.html#cb338-9" tabindex="-1"></a><span class="fu">coef</span>(fit01)</span>
+<span id="cb338-10"><a href="modelling-spatial-effects.html#cb338-10" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">geomean</span>(<span class="at">CV=</span><span class="fl">0.1</span>)</span>
+<span id="cb338-11"><a href="modelling-spatial-effects.html#cb338-11" tabindex="-1"></a>fit02 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stock,tun.sel[<span class="fu">c</span>(<span class="dv">1</span>)],<span class="at">fmodel=</span>fmod,<span class="at">qmodel=</span>qmod, <span class="at">srmodel=</span>srmod)</span>
+<span id="cb338-12"><a href="modelling-spatial-effects.html#cb338-12" tabindex="-1"></a><span class="fu">coef</span>(fit02)</span></code></pre></div>
 <ul>
 <li>check situation where the two areas are negatively correlated</li>
 <li>the two covariates need to be at the same scale, in the sense of representing the same process</li>
