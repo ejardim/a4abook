@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-01-17" />
+<meta name="date" content="2025-01-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -422,7 +422,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## params
 ##                linf                   k                  t0 
-## 60.522572(13.67201)  0.089923( 0.01663) -0.010135( 0.00197) 
+## 59.069680(12.94106)  0.091759( 0.02015) -0.010051( 0.00216) 
 ## units:  cm year-1 year</code></pre>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb46-1" tabindex="-1"></a><span class="fu">dim</span>(vbNorm<span class="sc">@</span>params)</span></code></pre></div>
 <pre><code>## [1]   3 250</code></pre>
@@ -433,21 +433,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb50-1" tabindex="-1"></a><span class="co"># We show the first ten iterations only as an illustration</span></span>
 <span id="cb50-2"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb50-2" tabindex="-1"></a>ages[,<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
 <pre><code>##    iter
-##            1         2        3         4        5         6        7         8
-##   1 1.048337 0.8748057 1.160922 0.9717783 1.059876 0.9694846 1.261625 0.9258484
-##   2 1.253387 1.0451252 1.385115 1.1588730 1.269831 1.1569048 1.507637 1.1040195
-##   3 1.462555 1.2187690 1.613248 1.3490048 1.485047 1.3472947 1.758347 1.2848973
-##   4 1.676010 1.3958694 1.845463 1.5422740 1.705797 1.5407498 2.013939 1.4685653
-##   5 1.893932 1.5765669 2.081908 1.7387858 1.932371 1.7373706 2.274605 1.6551109
-##   6 2.116510 1.7610106 2.322740 1.9386509 2.165086 1.9372623 2.540551 1.8446258
+##             1        2        3         4        5         6        7         8
+##   1 0.9960501 1.715225 1.249221 0.9719272 1.073284 0.9312899 1.189519 0.7138235
+##   2 1.1880934 2.051315 1.499955 1.1602304 1.280977 1.1099865 1.418355 0.8519706
+##   3 1.3834158 2.394975 1.758324 1.3516582 1.492231 1.2912791 1.650920 0.9923417
+##   4 1.5821311 2.746556 2.024807 1.5463159 1.707169 1.4752441 1.887337 1.1350095
+##   5 1.7843594 3.106431 2.299931 1.7443145 1.925922 1.6619617 2.127735 1.2800504
+##   6 1.9902271 3.475000 2.584275 1.9457705 2.148629 1.8515153 2.372252 1.4275448
 ##    iter
 ##             9       10
-##   1 0.8838288 1.126832
-##   2 1.0524741 1.346719
-##   3 1.2231120 1.571190
-##   4 1.3957903 1.800439
-##   5 1.5705582 2.034675
-##   6 1.7474671 2.274118</code></pre>
+##   1 0.9182033 1.097738
+##   2 1.0951302 1.310708
+##   3 1.2748840 1.527785
+##   4 1.4575566 1.749131
+##   5 1.6432443 1.974918
+##   6 1.8320484 2.205326</code></pre>
 <p>The marginal distributions can be seen in Figure @ref(fig:plot_norm_params).</p>
 <div class="figure">
 <img src="_main_files/figure-html/plot_norm_params-1.png" alt="The marginal distributions of each of the parameters from using a multivariate normal distribution." width="672" />
@@ -549,9 +549,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Warning in log(1 - len/linf): NaNs produced
 ## Warning in log(1 - len/linf): NaNs produced
 ## Warning in log(1 - len/linf): NaNs produced
+## Warning in log(1 - len/linf): NaNs produced
+## Warning in log(1 - len/linf): NaNs produced
 ## Warning in log(1 - len/linf): NaNs produced</code></pre>
 <div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb58-1" tabindex="-1"></a><span class="fu">dim</span>(cth.n)</span></code></pre></div>
-<pre><code>## [1] 66 26  1  4  1 10</code></pre>
+<pre><code>## [1] 95 26  1  4  1 10</code></pre>
 <p>In the previous example, the <code>FLQuant</code> object that was sliced (<code>catch.n(rfLen.stk)</code>) had only one iteration. This iteration was sliced by each of the iterations in the growth model. It is possible for the <code>FLQuant</code> object to have the same number of iterations as the growth model, in which case each iteration of the <code>FLQuant</code> and the growth model are used together. It is also possible for the growth model to have only one iteration while the <code>FLQuant</code> object has many iterations. The same growth model is then used for each of the <code>FLQuant</code> iterations. As with all <code>FLR</code> objects, the general rule is <em>one or n</em> iterations.</p>
 <p>As well as converting one <code>FLQuant</code> at a time, we can convert entire <code>FLStock</code> and <code>FLIndex</code> objects. In these cases the individual <code>FLQuant</code> slots of those classes are converted from length-based to age-based. As mentioned above, the aggregation method depends on the type of values the slots contain. The abundance slots (<code>*.n</code>, such as <code>stock.n</code>) are summed. The <code>*.wt</code>, <code>m</code>, <code>mat</code>, <code>harvest.spwn</code> and <code>m.spwn</code> slots of an <code>FLStock</code> object are averaged. The <code>catch.wt</code> and <code>sel.pattern</code> slots of an <code>FLIndex</code> object are averaged, while the <code>index</code>, <code>index.var</code> and <code>catch.n</code> slots are summed.</p>
 <p>The method for <code>FLStock</code> classes takes an additional argument for the plusgroup.</p>

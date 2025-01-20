@@ -7,7 +7,8 @@ fig:unnamed-chunk-12
 fig:unnamed-chunk-14
 fig:unnamed-chunk-15
 fig:unnamed-chunk-17
-fig:sca
+fig:popdyn
+fig:iomod
 tab:scatype
 tab:a4afitclass
 tab:a4afitSAclass
@@ -187,6 +188,3 @@ propagate-uncertainty-into-stock-assessment
 modelling-fleet-selectivity
 modelling-spatial-effects
 sections-to-be-added
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
-fig:popdyn
-fig:iomod
