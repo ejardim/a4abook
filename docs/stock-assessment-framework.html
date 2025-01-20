@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-01-17" />
+<meta name="date" content="2025-01-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -140,7 +140,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Stock assessment framework</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Before starting</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> cover-image: path to the social sharing image like images/cover.jpg</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#license-documentation-and-development-status"><i class="fa fa-check"></i><b>1.1</b> License, documentation and development status</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installing-and-loading-libraries"><i class="fa fa-check"></i><b>1.2</b> Installing and loading libraries</a></li>
@@ -310,9 +310,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.1</span> Maths description <a href="stock-assessment-framework.html#maths-description" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="observations" class="section level3 hasAnchor" number="6.1.1">
 <h3><span class="header-section-number">6.1.1</span> Observations<a href="stock-assessment-framework.html#observations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The stock assessment model is based on two types of observations: catches, <span class="math inline">\(\hat{C}\)</span>, and abundance indices, <span class="math inline">\(\hat{I}\)</span>. The model predicts catches at age <span class="math inline">\(C_{ay}\)</span> and indices of abundance <span class="math inline">\(I_{ays}\)</span> for each age <span class="math inline">\(a\)</span>, year <span class="math inline">\(y\)</span> and survey <span class="math inline">\(s\)</span> in the input dataset. It is assumed that the observed catches are normally distributed about the model predictions on the log scale with some observation variance <span class="math inline">\(\sigma^2_{ay}\)</span>. that is:</p>
+<p>The stock assessment model is based on two types of observations: catches, <span class="math inline">\(\hat{C}\)</span>, and abundance indices, <span class="math inline">\(\hat{I}\)</span>. The model predicts catches at age <span class="math inline">\(C_{ay}\)</span> and indices of abundance <span class="math inline">\(I_{ays}\)</span> for each age <span class="math inline">\(a\)</span>, year <span class="math inline">\(y\)</span> and survey <span class="math inline">\(s\)</span> in the input dataset. It is assumed that the observed catches are normally distributed about the model predictions on the log scale with observation variance <span class="math inline">\(\sigma^2_{ay}\)</span>. that is:</p>
 <p><span class="math display">\[\log \hat{C}_{ay} \sim \text{Normal} \Big( \log C_{ay}, \sigma^2_{ay}\Big)\]</span></p>
-<p>likewise, the observed survey indices are assumed to be normally distributed about the model predictions on the log scale with some observation variance <span class="math inline">\(\tau^2_{ays}\)</span>:</p>
+<p>likewise, the observed survey indices are assumed to be normally distributed about the model predictions on the log scale with observation variance <span class="math inline">\(\tau^2_{ays}\)</span>:</p>
 <p><span class="math display">\[\log \hat{I}_{ays} \sim \text{Normal} \Big( \log I_{ays}, \tau^2_{ays} \Big)\]</span></p>
 <p>This leads to the definition of the log-likelihood of the observed catches</p>
 <p><span class="math display">\[\ell_C = \sum_{ay} w^{(c)}_{ay}\ \ell_N \Big( \log C_{ay}, \sigma^2_{ay} ;\ \log \hat{C}_{ay} \Big)\]</span></p>
@@ -332,8 +332,13 @@ N_{A,y+1} = &amp;N_{A-1,y} \exp \left( - F_{A-1,y} - M_{A-1,y} \right) \\
             &amp;+ N_{A,y} \exp \left( - F_{A,y} - M_{A,y} \right)
 \end{align}
 \]</span></p>
-<p>The numbers <span class="math inline">\(N_{a,y}\)</span> are initiated in the first year, <span class="math inline">\(y=1\)</span> and at the youngest age, <span class="math inline">\(a=1\)</span>, and the matrix of numbers at age are filled in according to the population dynamics model stated above.</p>
-<p><img src="figure/sca_matrix.png" /></p>
+<p>The numbers <span class="math inline">\(N_{a,y}\)</span> are initiated in the first year, <span class="math inline">\(y=1\)</span> and at the youngest age, <span class="math inline">\(a=1\)</span>, and the matrix of numbers at age are filled in according to the population dynamics model stated above (see Figure <a href="stock-assessment-framework.html#fig:popdyn">6.1</a>).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:popdyn"></span>
+<img src="figure/sca_matrix.png" alt="Statistical catch at age population dynamics model" width="40%" />
+<p class="caption">
+Figure 6.1: Statistical catch at age population dynamics model
+</p>
+</div>
 <p>Defining <span class="math inline">\(R_y = N_{1,y}\)</span>, the numbers at age can be written (ignoring the plus group) as:</p>
 <p><span class="math display">\[N_{a,y} = \left\{ \begin{matrix} R_{y-a+1} \exp \left( - \sum^a_{i=1} F_{a-i,y-i} + M_{a-i,y-i} \right) &amp;  y \geq a \\ N_{a-y+1,1} \exp \left( - \sum^{a-y}_{i=1} F_{a-i,y-i} + M_{a-i,y-i} \right) &amp;  y \lt a \end{matrix} \right.\]</span></p>
 <p>Catches in numbers by age and year are defined in terms of the three quantities: natural mortality, fishing mortality and recruitment; using a modified form of the well known Baranov catch equation:</p>
@@ -350,15 +355,11 @@ N_{A,y+1} = &amp;N_{A-1,y} \exp \left( - F_{A-1,y} - M_{A-1,y} \right) \\
 <p>giving the total log-likelihood</p>
 <p><span class="math display">\[\ell = \ell_C + \ell_I\]</span></p>
 <p>which is defined in terms of the strictly positive quantites, <span class="math inline">\(M_{ay}\)</span>, <span class="math inline">\(F_{ay}\)</span>, <span class="math inline">\(Q_{ays}\)</span> and <span class="math inline">\(R_{y}\)</span>, and the observation variances <span class="math inline">\(\sigma_{ay}\)</span> and <span class="math inline">\(\tau_{ays}\)</span>. As such, the log-likelihood is over-parameterised as there are many more parameters than observations. In order to reduce the number of parameters, <span class="math inline">\(M_{ay}\)</span> is assumed known (as is common).</p>
-<p>%====================================================================
-%THE FOLLOWING NEEDS REVISION, need to bring in N1 submod
-%====================================================================</p>
 <p>The remaining parameters are written in terms of a linear combination of covariates <span class="math inline">\(x_{ayk}\)</span>, e.g.</p>
 <p><span class="math display">\[\log F_{ay} = \sum_k \beta_k x_{ayk}\]</span></p>
 <p>where <span class="math inline">\(k\)</span> is the number of parameters to be estimated and is sufficiently small. Using this tecnique the quantities <span class="math inline">\(\log F\)</span>, <span class="math inline">\(\log Q\)</span>, <span class="math inline">\(\log \sigma\)</span> and <span class="math inline">\(\log \tau\)</span>
 %<span class="math inline">\(\log \text{initial\,age\,structure}\)</span> % this is not present in the above
 (in bold in the equations above) can be described by a reduced number of parameters. The following section has more discussion on the use of linear models in a4a.</p>
-<p>%====================================================================</p>
 <p>The a4a statistical catch-at-age model can addionally allow for a functional relationship that links predicted recruitment <span class="math inline">\(\tilde{R}\)</span> based on spawning stock biomass and modelled recruitment <span class="math inline">\(R\)</span>, to be imposed as a fixed variance random effect. [NEEDS REVISION, sentence not clear]</p>
 <p>Options for the relationship are the hard coded models Ricker, Beverton Holt, smooth hockeystick or geometric mean. This is implemented by including a third component in the log-likelihood:</p>
 <p><span class="math display">\[\ell_{SR} = \sum_y \ell_N \Big( \log \tilde{R}_y(a, b), \phi_y^2 ;\ \log R_y \Big)\]</span></p>
@@ -369,26 +370,21 @@ N_{A,y+1} = &amp;N_{A-1,y} \exp \left( - F_{A-1,y} - M_{A-1,y} \right) \\
 <p>where <span class="math inline">\(S\)</span> is spawning stock biomass derived from the model parameters <span class="math inline">\(F\)</span> and <span class="math inline">\(R\)</span>, and the fixed quantites <span class="math inline">\(M\)</span> and mean weights by year and age. It is assumed that <span class="math inline">\(R\)</span> is log-normally distributed, or equivalently, normally distributed on the log-scale about the (log) recruitment predicted by the SR model <span class="math inline">\(\tilde{R}\)</span>, with known variance <span class="math inline">\(\phi^2\)</span>, i.e.</p>
 <p><span class="math display">\[\log R_y \sim \text{Normal} \Big( \log \tilde{R}_y, \phi_y^2 \Big)\]</span></p>
 <p>which leads to the definition of <span class="math inline">\(\ell_{SR}\)</span> given above. In all cases <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are strictly positive, and with the quantities <span class="math inline">\(F\)</span>, <span class="math inline">\(R\)</span>, etc. linear models are used to parameterise <span class="math inline">\(\log a\)</span> and/or <span class="math inline">\(\log b\)</span>, where relevant.</p>
-<p>%====================================================================
-%THE FOLLOWING NEEDS REVISION, this is not just the default I guess,
-% it’s always present since R predictions will be a mix of S/R and <span class="math inline">\(\gamma\)</span>
-%====================================================================</p>
 <p>By default, recruitment <span class="math inline">\(R\)</span> as apposed to the reruitment predicted from a stock recruitment model <span class="math inline">\(\tilde{R}\)</span>, is specified as a linear model with a parameter for each year, i.e.</p>
 <p><span class="math display">\[\log R_y = \gamma_y\]</span></p>
 <p>This is to allow modelled recruitment <span class="math inline">\(R_y\)</span> to be shrunk towards the stock recruitment model. However, if it is considered appropriate that recruitment can be determined exactly by a relationship with covariates, it is possible, to instead define <span class="math inline">\(\log R\)</span> in terms of a linear model in the same way as <span class="math inline">\(\log F\)</span>, <span class="math inline">\(\log Q\)</span>, <span class="math inline">\(\log \sigma\)</span> and <span class="math inline">\(\log \tau\)</span>. %But this is pretty much the same as taking a geometric mean, with a model on log a, and making the variance very small.</p>
-<p>%====================================================================
-% WE NEED TO ADD SOMETHING ABOUT HOW THE PLUSGROUP IS MODELLED
-%====================================================================</p>
 </div>
 </div>
 <div id="classes-description" class="section level2 hasAnchor" number="6.2">
 <h2><span class="header-section-number">6.2</span> Classes Description <a href="stock-assessment-framework.html#classes-description" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Figure <a href="#fig:sca">6.1</a> illustrates the input/output model of the statistical stock assessment method based on catch-at-age data.</p>
-<div class="float">
-<img src="scamethod.png" alt="Figure:  The fit process" />
-<div class="figcaption">Figure:  The fit process</div>
+<p>The data structure used to store and report the fitting process follows an object-oriented paradigm (e.g., the S4 system in R) and is hierarchically organized. The <code>type</code> argument in the <code>sca</code> method defines the fitting method—either maximum likelihood or MCMC — and specifies whether the variance-covariance matrix of the parameters is calculated and returned in the case of maximum likelihood. The resulting object belongs to a specific class, depending on the selected option. Figure <a href="stock-assessment-framework.html#fig:iomod">6.2</a> illustrates the input/output model of the statistical stock assessment method based on catch-at-age data.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:iomod"></span>
+<img src="figure/scamethod.png" alt="The fit process input/output model" width="120%" />
+<p class="caption">
+Figure 6.2: The fit process input/output model
+</p>
 </div>
-<p>The <code>type</code> argument in the <code>sca</code> function defines the fitting method—either maximum likelihood or MCMC—and specifies whether the variance-covariance matrix of the parameters is calculated and returned in the case of maximum likelihood. The resulting object belongs to a specific class, depending on the selected options. The data structure used to store and report the fitting process follows an object-oriented paradigm (e.g., the S4 system in R) and is hierarchically organized. The primary class, <code>a4aFit</code>, is extended by <code>a4aFitSA</code> and <code>a4aFitMCMC</code> for specific configurations.</p>
+<p>Table <a href="stock-assessment-framework.html#tab:scatype">6.1</a> provides details about the type of fit approach and computation of variance covariance information.</p>
 <table>
 <caption><span id="tab:scatype">Table 6.1: </span> Fit Types and Associated Classes</caption>
 <thead>
@@ -415,12 +411,12 @@ N_{A,y+1} = &amp;N_{A-1,y} \exp \left( - F_{A-1,y} - M_{A-1,y} \right) \\
 <tr class="odd">
 <td align="left">MCMC</td>
 <td align="left">MCMC</td>
-<td align="left">Yes</td>
+<td align="left">Yes(check)</td>
 <td align="left"><code>a4aFitMCMC</code></td>
 </tr>
 </tbody>
 </table>
-<p>Type <code>MP</code>, representing “Management Procedure,” returns an <code>a4aFit</code> class object designed for use in MSEs (Management Strategy Evaluations) with full feedback models (REF PUNT and KELL). Inverting the Jacobian to compute the variance-covariance matrix is computationally intensive in maximum likelihood models, and as MSE analyses often involve thousands of iterations, using <code>type="MP"</code> significantly speeds up the process. This option is advantageous for scenarios requiring multiple model fits. However, the lack of immediate feedback on model convergence is a drawback, as convergence is assessed by inverting the Jacobian. A failed inversion indicates non-convergence. Table <a href="stock-assessment-framework.html#tab:a4afitclass">6.2</a> describes the composition of the <code>a4aFit</code> class.</p>
+<p>Type <code>MP</code>, for “Management Procedure,” returns an <code>a4aFit</code> class object designed for use in MSEs (Management Strategy Evaluations) with full feedback models (REF PUNT and KELL). Inverting the Jacobian to compute the variance-covariance matrix is computationally intensive in maximum likelihood models, and as MSE analyses often involve thousands of iterations, using <code>type="MP"</code> significantly speeds up the process. This option is advantageous for scenarios requiring multiple model fits. However, the lack of immediate feedback on model convergence is a drawback, as convergence is assessed by inverting the Jacobian. A failed inversion indicates non-convergence. Table <a href="stock-assessment-framework.html#tab:a4afitclass">6.2</a> describes the composition of the <code>a4aFit</code> class.</p>
 <table>
 <caption><span id="tab:a4afitclass">Table 6.2: </span> <code>a4aFit</code> Class Description</caption>
 <colgroup>
@@ -432,7 +428,7 @@ N_{A,y+1} = &amp;N_{A-1,y} \exp \left( - F_{A-1,y} - M_{A-1,y} \right) \\
 <thead>
 <tr class="header">
 <th align="left">Class</th>
-<th align="left">Slots</th>
+<th align="left">Slot</th>
 <th align="left">Slot’s Class</th>
 <th align="left">Description</th>
 </tr>
@@ -506,7 +502,7 @@ N_{A,y+1} = &amp;N_{A-1,y} \exp \left( - F_{A-1,y} - M_{A-1,y} \right) \\
 <thead>
 <tr class="header">
 <th align="left">Class</th>
-<th align="left">Slots</th>
+<th align="left">Slot</th>
 <th align="left">Slot’s Class</th>
 <th align="left">Description</th>
 </tr>
@@ -538,7 +534,7 @@ N_{A,y+1} = &amp;N_{A-1,y} \exp \left( - F_{A-1,y} - M_{A-1,y} \right) \\
 </tr>
 </tbody>
 </table>
-<p>The <code>SCAPars</code> class stores details about submodel parameters, such as formulas and distributions, and includes three slots: <code>stkmodel</code> for stock model parameters, <code>qmodel</code> for catchability parameters, and <code>vmodel</code> for variance parameters. Table <a href="stock-assessment-framework.html#tab:SCAParsclass">6.4</a> describes this class.</p>
+<p>The <code>SCAPars</code> class stores details about submodel parameters, such as formulas and distributions, and includes three slots: <code>stkmodel</code> for stock model parameters, <code>qmodel</code> for catchability parameters, and <code>vmodel</code> for variance parameters. Table <a href="stock-assessment-framework.html#tab:SCAParsclass">6.4</a> describes the <code>SCAPars</code> class.</p>
 <table>
 <caption><span id="tab:SCAParsclass">Table 6.4: </span> <code>SCAPars</code> Class Description</caption>
 <colgroup>
@@ -550,7 +546,7 @@ N_{A,y+1} = &amp;N_{A-1,y} \exp \left( - F_{A-1,y} - M_{A-1,y} \right) \\
 <thead>
 <tr class="header">
 <th align="left">Class</th>
-<th align="left">Slots</th>
+<th align="left">Slot</th>
 <th align="left">Slot’s Class</th>
 <th align="left">Description</th>
 </tr>
@@ -582,7 +578,7 @@ N_{A,y+1} = &amp;N_{A-1,y} \exp \left( - F_{A-1,y} - M_{A-1,y} \right) \\
 <thead>
 <tr class="header">
 <th align="left">Class</th>
-<th align="left">Slots</th>
+<th align="left">Slot</th>
 <th align="left">Slot’s Class</th>
 <th align="left">Description</th>
 </tr>
@@ -692,7 +688,7 @@ N_{A,y+1} = &amp;N_{A-1,y} \exp \left( - F_{A-1,y} - M_{A-1,y} \right) \\
 <thead>
 <tr class="header">
 <th align="left">Class</th>
-<th align="left">Slots</th>
+<th align="left">Slot</th>
 <th align="left">Slot’s Class</th>
 <th align="left">Description</th>
 </tr>

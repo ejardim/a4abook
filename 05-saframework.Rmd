@@ -4,11 +4,11 @@
 
 ### Observations
 
-The stock assessment model is based on two types of observations: catches, $\hat{C}$, and abundance indices, $\hat{I}$. The model predicts catches at age $C_{ay}$ and indices of abundance $I_{ays}$ for each age $a$, year $y$ and survey $s$ in the input dataset. It is assumed that the observed catches are normally distributed about the model predictions on the log scale with some observation variance $\sigma^2_{ay}$. that is:
+The stock assessment model is based on two types of observations: catches, $\hat{C}$, and abundance indices, $\hat{I}$. The model predicts catches at age $C_{ay}$ and indices of abundance $I_{ays}$ for each age $a$, year $y$ and survey $s$ in the input dataset. It is assumed that the observed catches are normally distributed about the model predictions on the log scale with observation variance $\sigma^2_{ay}$. that is:
 
 $$\log \hat{C}_{ay} \sim \text{Normal} \Big( \log C_{ay}, \sigma^2_{ay}\Big)$$
 
-likewise, the observed survey indices are assumed to be normally distributed about the model predictions on the log scale with some observation variance $\tau^2_{ays}$:
+likewise, the observed survey indices are assumed to be normally distributed about the model predictions on the log scale with observation variance $\tau^2_{ays}$:
 
 $$\log \hat{I}_{ays} \sim \text{Normal} \Big( \log I_{ays}, \tau^2_{ays} \Big)$$
 
@@ -39,14 +39,15 @@ N_{A,y+1} = &N_{A-1,y} \exp \left( - F_{A-1,y} - M_{A-1,y} \right) \\
 \end{align}
 $$
 
-The numbers $N_{a,y}$ are initiated in the first year, $y=1$ and at the youngest age, $a=1$, and the matrix of numbers at age are filled in according to the population dynamics model stated above.
+The numbers $N_{a,y}$ are initiated in the first year, $y=1$ and at the youngest age, $a=1$, and the matrix of numbers at age are filled in according to the population dynamics model stated above (see Figure \@ref(fig:popdyn)).
 
-![](figure/sca_matrix.png)
+```{r, popdyn, fig.align="center", fig.cap="Statistical catch at age population dynamics model", echo=FALSE, out.width="40%"}
+knitr::include_graphics("figure/sca_matrix.png")
+```
 
 Defining $R_y = N_{1,y}$, the numbers at age can be written (ignoring the plus group) as:
 
 $$N_{a,y} = \left\{ \begin{matrix} R_{y-a+1} \exp \left( - \sum^a_{i=1} F_{a-i,y-i} + M_{a-i,y-i} \right) &  y \geq a \\ N_{a-y+1,1} \exp \left( - \sum^{a-y}_{i=1} F_{a-i,y-i} + M_{a-i,y-i} \right) &  y \lt a \end{matrix} \right.$$
-
 
 Catches in numbers by age and year are defined in terms of the three quantities: natural mortality, fishing mortality and recruitment; using a modified form of the well known Baranov catch equation:
 
@@ -75,10 +76,6 @@ $$\ell = \ell_C + \ell_I$$
 
 which is defined in terms of the strictly positive quantites, $M_{ay}$, $F_{ay}$, $Q_{ays}$ and $R_{y}$, and the observation variances $\sigma_{ay}$ and $\tau_{ays}$. As such, the log-likelihood is over-parameterised as there are many more parameters than observations. In order to reduce the number of parameters, $M_{ay}$ is assumed known (as is common).
 
-%====================================================================
-%THE FOLLOWING NEEDS REVISION, need to bring in N1 submod
-%====================================================================
-
 The remaining parameters are written in terms of a linear combination of covariates $x_{ayk}$, e.g.
 
 $$\log F_{ay} = \sum_k \beta_k x_{ayk}$$
@@ -86,8 +83,6 @@ $$\log F_{ay} = \sum_k \beta_k x_{ayk}$$
 where $k$ is the number of parameters to be estimated and is sufficiently small. Using this tecnique the quantities $\log F$, $\log Q$, $\log \sigma$ and $\log \tau$
 %$\log \text{initial\,age\,structure}$ % this is not present in the above
 (in bold in the equations above) can be described by a reduced number of parameters. The following section has more discussion on the use of linear models in a4a.
-
-%====================================================================
 
 The a4a statistical catch-at-age model can addionally allow for a functional relationship that links predicted recruitment $\tilde{R}$ based on spawning stock biomass and modelled recruitment $R$, to be imposed as a fixed variance random effect. [NEEDS REVISION, sentence not clear]
 
@@ -109,39 +104,33 @@ $$\log R_y \sim \text{Normal} \Big( \log \tilde{R}_y, \phi_y^2 \Big)$$
 
 which leads to the definition of $\ell_{SR}$ given above. In all cases $a$ and $b$ are strictly positive, and with the quantities $F$, $R$, etc. linear models are used to parameterise $\log a$ and/or $\log b$, where relevant.
 
-%====================================================================
-%THE FOLLOWING NEEDS REVISION, this is not just the default I guess,
-% it's always present since R predictions will be a mix of S/R and $\gamma$
-%====================================================================
-
 By default, recruitment $R$ as apposed to the reruitment predicted from a stock recruitment model $\tilde{R}$, is specified as a linear model with a parameter for each year, i.e.
 
 $$\log R_y = \gamma_y$$
 
 This is to allow modelled recruitment $R_y$ to be shrunk towards the stock recruitment model. However, if it is considered appropriate that recruitment can be determined exactly by a relationship with covariates, it is possible, to instead define $\log R$ in terms of a linear model in the same way as $\log F$, $\log Q$, $\log \sigma$ and $\log \tau$.  %But this is pretty much the same as taking a geometric mean, with a model on log a, and making the variance very small.
 
-%====================================================================
-% WE NEED TO ADD SOMETHING ABOUT HOW THE PLUSGROUP IS MODELLED
-%====================================================================
-
 ## Classes Description \label{sec:classes}
 
-Figure \@ref(fig:sca) illustrates the input/output model of the statistical stock assessment method based on catch-at-age data.
+The data structure used to store and report the fitting process follows an object-oriented paradigm (e.g., the S4 system in R) and is hierarchically organized. The `type` argument in the `sca` method defines the fitting method—either maximum likelihood or MCMC — and specifies whether the variance-covariance matrix of the parameters is calculated and returned in the case of maximum likelihood. The resulting object belongs to a specific class, depending on the selected option. Figure \@ref(fig:iomod) illustrates the input/output model of the statistical stock assessment method based on catch-at-age data.
 
-![Figure: (\#fig:sca) The fit process](scamethod.png)
 
-The `type` argument in the `sca` function defines the fitting method—either maximum likelihood or MCMC—and specifies whether the variance-covariance matrix of the parameters is calculated and returned in the case of maximum likelihood. The resulting object belongs to a specific class, depending on the selected options. The data structure used to store and report the fitting process follows an object-oriented paradigm (e.g., the S4 system in R) and is hierarchically organized. The primary class, `a4aFit`, is extended by `a4aFitSA` and `a4aFitMCMC` for specific configurations.
+```{r, iomod, fig.align="center", fig.cap="The fit process input/output model", echo=FALSE, out.width="120%"}
+knitr::include_graphics("figure/scamethod.png")
+```
+
+Table \@ref(tab:scatype) provides details about the type of fit approach and computation of variance covariance information.
 
 |Type of Fit|Fit Method|Variance-Covariance Matrix|Output Object Class|
 |:--|:--|:--|:--|
 |MP|Maximum Likelihood|No|`a4aFit`|
 |Assessment|Maximum Likelihood|Yes|`a4aFitSA`|
-|MCMC|MCMC|Yes|`a4aFitMCMC`|
+|MCMC|MCMC|Yes(check)|`a4aFitMCMC`|
 Table: (\#tab:scatype) Fit Types and Associated Classes
 
-Type `MP`, representing "Management Procedure," returns an `a4aFit` class object designed for use in MSEs (Management Strategy Evaluations) with full feedback models (REF PUNT and KELL). Inverting the Jacobian to compute the variance-covariance matrix is computationally intensive in maximum likelihood models, and as MSE analyses often involve thousands of iterations, using `type="MP"` significantly speeds up the process. This option is advantageous for scenarios requiring multiple model fits. However, the lack of immediate feedback on model convergence is a drawback, as convergence is assessed by inverting the Jacobian. A failed inversion indicates non-convergence. Table \@ref(tab:a4afitclass) describes the composition of the `a4aFit` class.
+Type `MP`, for "Management Procedure," returns an `a4aFit` class object designed for use in MSEs (Management Strategy Evaluations) with full feedback models (REF PUNT and KELL). Inverting the Jacobian to compute the variance-covariance matrix is computationally intensive in maximum likelihood models, and as MSE analyses often involve thousands of iterations, using `type="MP"` significantly speeds up the process. This option is advantageous for scenarios requiring multiple model fits. However, the lack of immediate feedback on model convergence is a drawback, as convergence is assessed by inverting the Jacobian. A failed inversion indicates non-convergence. Table \@ref(tab:a4afitclass) describes the composition of the `a4aFit` class.
 
-|Class|Slots|Slot's Class|Description|
+|Class|Slot|Slot's Class|Description|
 |:--|:--|:--|:--|
 |a4aFit|call|call|Code used to run the analysis|
 | |catch.n|FLQuant|Catch numbers at age and year|
@@ -157,7 +146,7 @@ Table: (\#tab:a4afitclass) `a4aFit` Class Description
 
 The `a4aFitSA` and `a4aFitMCMC` classes extend `a4aFit`, retaining all its slots while adding a `pars` slot of class `SCAPars`. Table \@ref(tab:a4afitSAclass) outlines these classes.
 
-|Class|Slots|Slot's Class|Description|
+|Class|Slot|Slot's Class|Description|
 |:--|:--|:--|:--|
 |a4aFitSA|All `a4aFit`||Inherited from `a4aFit`|
 | |pars|SCAPars|Parameter information|
@@ -165,9 +154,9 @@ The `a4aFitSA` and `a4aFitMCMC` classes extend `a4aFit`, retaining all its slots
 | |pars|SCAPars|Parameter information|
 Table: (\#tab:a4afitSAclass) `a4aFitSA` and `a4aFitMCMC` Class Description
 
-The `SCAPars` class stores details about submodel parameters, such as formulas and distributions, and includes three slots: `stkmodel` for stock model parameters, `qmodel` for catchability parameters, and `vmodel` for variance parameters. Table \@ref(tab:SCAParsclass) describes this class.
+The `SCAPars` class stores details about submodel parameters, such as formulas and distributions, and includes three slots: `stkmodel` for stock model parameters, `qmodel` for catchability parameters, and `vmodel` for variance parameters. Table \@ref(tab:SCAParsclass) describes the `SCAPars` class.
 
-|Class|Slots|Slot's Class|Description|
+|Class|Slot|Slot's Class|Description|
 |:--|:--|:--|:--|
 |SCAPars|stkmodel|a4aStkParams|Details of fishing mortality, stock recruitment, and initial stock numbers|
 | |qmodel|submodel|Details of catchability parameters|
@@ -176,7 +165,7 @@ Table: (\#tab:SCAParsclass) `SCAPars` Class Description
 
 The `stkmodel` slot encompasses parameters for fishing mortality, stock recruitment, and initial stock numbers. Due to potential correlations among these parameters, their variance-covariance matrix is reported collectively. Table \@ref(tab:a4aStkParamsclass) describes the slots of the `a4aStkParams` class.
 
-|Class|Slots|Slot's Class|Description|
+|Class|Slot|Slot's Class|Description|
 |:--|:--|:--|:--|
 |a4aStkParams|centering|FLPar|Centering parameters|
 | |coefficients|FLPar|Model coefficients|
@@ -198,7 +187,7 @@ Table: (\#tab:a4aStkParamsclass) `a4aStkParams` Class Description
 
 The `qmodel` and `vmodel` slots share the `submodel` class, which describes single submodels. Table \@ref(tab:submodelclass) provides details.
 
-|Class|Slots|Slot's Class|Description|
+|Class|Slot|Slot's Class|Description|
 |:--|:--|:--|:--|
 |submodel|centering|FLPar|Centering parameters|
 | |coefficients|FLPar|Model coefficients|
