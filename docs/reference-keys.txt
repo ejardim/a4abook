@@ -188,3 +188,11 @@ propagate-uncertainty-into-stock-assessment
 modelling-fleet-selectivity
 modelling-spatial-effects
 sections-to-be-added
+fig:unnamed-chunk-3
+fig:unnamed-chunk-5
+fig:unnamed-chunk-7
+fig:unnamed-chunk-8
+fig:unnamed-chunk-19
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
+references
+simple-workflow

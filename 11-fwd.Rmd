@@ -1,28 +1,22 @@
 # Projections and harvest control rules
 
-Massad et.al has a nice definition "Prediction in general science can be divided into two components: forecasting and projections [2]. A forecast is an attempt to predict what will happen. A projection is an attempt to describe what would happen, given certain hypotheses [3]." 
+Massad et al. (2018) provide a useful distinction between forecasting and projection in scientific prediction, stating that prediction in general science can be categorized into two main components: forecasting and projection. According to their definition, "a forecast is an attempt to predict what will happen, whereas a projection describes what would happen, given certain hypotheses" (Massad et al., 2018). This distinction is also reflected in the Organisation for Economic Co-operation and Development (OECD, 2009), which notes that “forecasting” and “prediction” are often used interchangeably in assessing the magnitude that a given variable will assume in the future.
 
+In the context of economic and environmental modeling, the OECD distinguishes between medium-term projections, which typically extend five to six years into the future, and other predictive exercises that rely on different methodologies. The term "projection" is generally used in two interrelated senses: (1) as a future value of a time series computed based on specific assumptions about environmental changes, and (2) in probability theory, as the conditional expectation of a variable. Since regression models provide conditional expectations of dependent variables based on predictor variables, this probabilistic use of projection aligns with forecasting and predictive modeling (OECD, 2009).
 
-(OECD)
-“Forecasting” and “prediction” are often used synonymously in the customary sense of assessing the magnitude which a quantity will assume at some future point of time .
+Applying this conceptual framework to fisheries science, the process of advising on future fishing opportunities can be viewed as a combination of forecasting and projection. When using a harvest control rule (HCR) approved by decision-makers to predict catch levels that can be extracted from a stock, the analysis falls into the realm of forecasting, as it predicts what will happen under known system conditions. Conversely, when assessing potential future outcomes based on predefined scenarios—such as climate change effects or policy interventions—the approach aligns more closely with projections.
 
-Medium-term projections or scenarios In the context of the OECD's Economic Outlook, medium-term projections or scenarios look out five to six years, and are published as part of the OECD's projection exercise.
+In fisheries science, the distinction between forecasting and prediction is not always explicitly made, with the discipline generally emphasizing broader predictive approaches. It is common practice to run scenarios when advising fisheries managers, testing different assumptions about future ecological and management conditions. Strictly speaking, projections are not part of the stock assessment process itself. Stock assessment concludes when analysts compare estimates of biomass and fishing mortality with reference points, allowing for determinations of whether a stock is overfished or subject to overfishing (Hilborn & Walters, 1992).
 
-Projection
-This term is used in two connected senses.
-1. In relation to a time series it means a future value calculated according to predetermined changes in the
-assumptions of the environment.
-2. More recently, it has been used in probability theory to denote the conditional expectation of a variate. Since a regression equation gives the expectation of the dependent variate conditional upon values of the predicted (“independent”) variates and such equations are used for forecasting or prediction, the usages are connected.
+Projections typically follow stock assessments, incorporating estimates or assumptions about population dynamics—growth, reproduction, and natural mortality—to predict future catches, biomass, and abundance under specific conditions and with quantified uncertainty. By integrating both forecasting and projection methodologies, fisheries science can offer robust, scenario-based decision-making tools that aid sustainable resource management (Punt et al., 2016).
 
-Considering the above definitions one can think of the process of advising future fishing opportunities as a mix of forecasting and projections. When using a HCR that is accepted by decision makers to predict the catches which can be taken from the stock, one's in forecasting space. The process will retur what will happen having into account the known conditions of the system. On the other hand, when exploring potential future outcomes based on a set of scenarios previously defined, one's much more in projection's space. 
+### References:
+- Hilborn, R., & Walters, C. J. (1992). *Quantitative fisheries stock assessment: Choice, dynamics and uncertainty*. Chapman & Hall.
+- Massad, E., Coutinho, F. A. B., Lopez, L. F., & da Silva, D. R. (2018). *Mathematical models for infectious diseases: A theoretical companion*. Springer.
+- OECD. (2009). *The OECD economic outlook: Sources and methods*. Organisation for Economic Co-operation and Development.
+- Punt, A. E., Smith, A. D. M., & Cui, G. (2016). Review of progress in the introduction of management strategy evaluation (MSE) approaches in fisheries management. *Fish and Fisheries*, 17(1), 235–265.
 
-In fisheries science it's not common to make the distinction between forecasts and predictions, and, in general, the approach tends to be much more within the realm of predictions. For example, it's common to run scenarios when giving advice to fisheries managers or test different assumptions about future events.
-
-Strickly speaking projections are not part of the stock assessment process. The assessment of the status of the stock is completed when the analysts produces a comparison between the estimates of biomass and fishing mortality and the respective reference points. At that point it's possible to make statements about the stock being overfished, or not, and being subject to overfishing, or not.
-
-Projections tend to come after having estimates of abundance or biomass and fishing mortality. Together with estimates, or assumptions, about the population's dynamics: growth, reproduction, natural mortality, etc; one can predict catches, biomass, abundance and other relevant statistics, under spoecific conditions and with a certain level of uncertainty.
-
-For this section we'll be using the package `FLasher` (REF) from the FLR family of packages. Starting by fitting a model including a stock recruitment model. For projections one needs to set future recruitment.
+For this section we'll be using the package `FLasher` (REF) from the FLR family of packages.
 
 ```{r, echo=FALSE}
 library(FLa4a)
@@ -31,22 +25,34 @@ library(FLBRP)
 library(ggplotFL)
 data(ple4)
 data(ple4.indices)
-nsim <- 250
-maxy <- range(ple4)["maxyear"]
 ```
+
+## Simple workflow
 
 The basic workflow to project with `FLasher` is to extend the `FLStock` object to store the predictions using the method `fwdWindow`, set the targets for the projection with method `fwdControl` and project the fishery with the method `fwd` with a `FLStock` and a `FLSR`.
 
+We'll start by fitting a model including, a stock recruitment model which will be used to forecast recruitment. We'll also set the number of iterations we'll be working with and the time period we want to project.
+
 ```{r, warning=FALSE, message=FALSE}
-# model fit
+# fit model
 fit00 <- sca(ple4, ple4.indices, srmodel=~geomean()) 
-sr00 <- as(fit00, "FLSR")
 stk00 <- ple4 + fit00
+# create stock recruitment model object
+sr00 <- as(fit00, "FLSR")
 # set projection
+# number of iterations
+nsim <- 250
+# most recent year in the data
+maxy <- range(ple4)["maxyear"]
+# number of years to project
 projy <- 5
+# last year for projections
 endpy <- maxy + projy
+# initial year for projections
 inipy <- maxy + 1
+# extend stock object to store projection's results
 stk00 <- fwdWindow(stk00, end = endpy)
+# set the control for the projections, in this case a fixed f of 0.3
 trg00 <- fwdControl(year = inipy:endpy, quant = "f", value = 0.3)
 # project
 stk01 <- fwd(stk00, control=trg00, sr=sr00)
@@ -71,7 +77,7 @@ stk02 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 plot(stk02)
 ```
 
-An alternative to the above workflow is to fit the stock recruitment model after the stock assessment model, using the outputs of the assessment as input to the stock recruitment fit. In which case stock recruitment estimation uncertainty can be added by fitting the stock recruitment model over stock assessment uncertainty, so that there will be stock-recruitment fit to each iteration generated from the stock assessment model.
+An alternative to the above workflow is to fit the stock recruitment model after the stock assessment model, using the output of the assessment as input to the stock recruitment fit. In which case stock recruitment estimation uncertainty can be added by fitting the stock recruitment model over stock assessment uncertainty, so that there will be stock-recruitment fit to each iteration generated from the stock assessment model.
 
 ```{r, warning=FALSE, message=FALSE}
 fit00 <- sca(ple4, ple4.indices) 
@@ -93,13 +99,14 @@ plot(stk03)
 
 These two methods don't give very different result when the stock recruitment model is not having a large impact in the other parameters. However the second method is much slower due to all the fits needed to have the empirical distribution of the stock recruitment model parameters.
 
-```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment"}
+```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment. 01: projection without uncertainty, stock recruitment model fit within the stock assessment model; 02: projection with uncertainty, stock recruitment model fit within the stock assessment model; 03: projection with uncertainty, stock recruitment model fit after the stock assessment model"}
 plot(window(FLStocks('01' = stk01, '02' = stk02, '03' = stk03), start = 2000))
 ```
 
 ## Initial condition assumptions [CHECK fwdWindow]
 
 When projecting the stock forward one needs to make a number of assumptions about initial conditions, the starting point from where projections will be made. The method `fwdWindow` has a set of options that allows the analyst to decide about those assumptions:
+
 - `wt`: Number of years to average over to get the future mean weights at age, default is 3
 - `mat`: Number of years to average over to get the future proportion mature at age, default is 3
 - `m`: Number of years to average over to get the future natural mortality at age, default is 3
@@ -126,7 +133,7 @@ plot(FLStocks(default=stk01, alternative=stk04))
 
 ## Scenarios
 
-There's a wide range of scenarios that can be of interest to project in order to give advice to policy makers, or to better understand the fitted stock assessment model. For example, forecasting the stock in the absence of fishing for a few generations, gives good insights about the dynamics of the population being modelled.
+There's a wide range of scenarios that can be of interest to project in order to give advice to policy makers, or to better understand the fitted stock assessment model. For example, projecting the stock in the absence of fishing for a few generations, gives good insights about the dynamics of the population being modelled.
 
 ```{r, warning=FALSE, message=FALSE}
 fit00 <- sca(ple4, ple4.indices, srmodel=~geomean())
@@ -146,11 +153,12 @@ rec00 <- rlnorm(rec00, mean(res00), sqrt(var(res00)))
 stk05 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 ```
 
-```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 25 years with fixed fishing mortality and recruitment"}
+```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 25 years in the absence of fishing"}
 plot(stk05)
 ```
 
 These scenarios are defined by the target quantities one's trying to achieve. In `FLasher` there are the following target quantities:
+
 - srp
 - ssb_end
 - biomass_end
@@ -181,7 +189,7 @@ stk06 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 plot(stk06)
 ```
 
-### Relative scenarios
+## Relative scenarios
 
 Another scenario that is very useful when advising decision makers is to have objectives which are relative to previous preformances. For example one could increase spwanwing stock biomass by 10% each year. This is done buy using the argument `relYear` and setting `value` in relative terms, $1.1$.
 
@@ -214,12 +222,13 @@ stk08 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 plot(window(FLStocks("10% SSB growth relative to previous year" = stk07, "10% higher SSB relative to most recent estimate" = stk08), start = 2000))
 ```
 
-### Limits
+## Limits
 
 An important element when projecting the stock forward is to keep the performance of the fishery within some boundaries. A common one requested by the industry is to keep catches within some stability. `fwd` can include those constraints using the `min` and `max` arguments. The next example sets the minimum future catches to half of mean historical catches.
 
 ```{r, warning=FALSE, message=FALSE}
-trg00 <- fwdControl(year = inipy:endpy, quant = rep(c("ssb_end", "catch"), projy), value = rep(c(1500000, NA), projy), min=rep(c(NA, 0.1*mean(catch(stk00), na.rm=TRUE)), projy))
+minc <- 0.2*mean(catch(stk00), na.rm=TRUE)
+trg00 <- fwdControl(year = inipy:endpy, quant = rep(c("ssb_end", "catch"), projy), value = rep(c(1500000, NA), projy), min=rep(c(NA, minc), projy))
 stk09 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 ```
 
@@ -227,7 +236,53 @@ stk09 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 plot(window(stk09, start = 2000))
 ```
 
-### Complex scenario
+## Harvest Control Rule
+
+Harvest Control Rules (HCR) can be complex and of many shapes (REF). We'll keep our examples simple to demonstrate the mechanism of coding HCR.
+
+HCR are decision algorythms that can be used to codify the decision making process, allowing for longer term stability of management decisions in fisheries.
+
+The HCR we're going to explore is based on a target and a limit. The target is applied to the management objective and represents the intent of management. The limit is applied to the process we want to use as trigger for protective actions. For example, the objective of the management system is to extract the highest catches possible for a very long time (aka equilibrium). However, due to natural variability and scientific uncertainty, it can happen that the stock's biomass decreases below what's expected, in which case decision makers want to make sure the stock stays healthy and productive. This situation can be translated into a target of fishing mortality at the level that extracts the Maximum Sustainable Yield, and a biomass limit of half the biomass that would produce the referred catches, everything being in a stable equilibrium. If SSB falls below the limit then fishing mortality is set at 80% of the target.
+
+Such HCR could be written as
+
+$if SSB_y > B_{MSY} then F_{y+1} = F_{MSY} or else F_{y+1} = 0.9xF_{MSY}$
+
+and coded like
+
+```{r, warning=FALSE, message=FALSE}
+# # fit model
+# fit00 <- sca(ple4, ple4.indices, srmodel=~geomean())
+# stk00 <- ple4 + fit00
+# # create stock recruitment model object
+# sr00 <- as(fit00, "FLSR")
+# # estimate reference points
+# #brp00 <-
+# #ftrg <- fmsy
+# #blim <- ssb
+# # set projection
+# # most recent year in the data
+# maxy <- range(ple4)["maxyear"]
+# # number of years to project
+# projy <- 2
+# # last year for projections
+# endpy <- maxy + projy
+# # initial year for projections
+# inipy <- maxy + 1
+# # extend stock object to store projection's results
+# stk00 <- fwdWindow(stk00, end = endpy)
+# # set the controls for the projections
+# trg00 <- fwdControl(year = inipy:endpy, quant = "f", value = trg)
+# trg01 <- fwdControl(year = inipy:endpy, quant = "f", value = 0.8trg)
+# # project
+# if(ssb(stk00)>blim) stk10 <- fwd(stk00, control=trg00, sr=sr00) elseif stk10 <- fwd(stk00, control=trg01, sr=sr00)
+```
+
+
+
+
+
+
 
 
 

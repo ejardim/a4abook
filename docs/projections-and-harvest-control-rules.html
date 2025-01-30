@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-01-20" />
+<meta name="date" content="2025-01-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -140,7 +140,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Stock assessment framework</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Before starting</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> cover-image: path to the social sharing image like images/cover.jpg</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#license-documentation-and-development-status"><i class="fa fa-check"></i><b>1.1</b> License, documentation and development status</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installing-and-loading-libraries"><i class="fa fa-check"></i><b>1.2</b> Installing and loading libraries</a></li>
@@ -257,12 +257,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>12</b> Projections and harvest control rules</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#initial-condition-assumptions-check-fwdwindow"><i class="fa fa-check"></i><b>12.1</b> Initial condition assumptions [CHECK fwdWindow]</a></li>
-<li class="chapter" data-level="12.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#scenarios"><i class="fa fa-check"></i><b>12.2</b> Scenarios</a>
+<li class="chapter" data-level="12.0.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#references"><i class="fa fa-check"></i><b>12.0.1</b> References:</a></li>
+<li class="chapter" data-level="12.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#simple-workflow"><i class="fa fa-check"></i><b>12.1</b> Simple workflow</a></li>
+<li class="chapter" data-level="12.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#initial-condition-assumptions-check-fwdwindow"><i class="fa fa-check"></i><b>12.2</b> Initial condition assumptions [CHECK fwdWindow]</a></li>
+<li class="chapter" data-level="12.3" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#scenarios"><i class="fa fa-check"></i><b>12.3</b> Scenarios</a>
 <ul>
-<li class="chapter" data-level="12.2.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#relative-scenarios"><i class="fa fa-check"></i><b>12.2.1</b> Relative scenarios</a></li>
-<li class="chapter" data-level="12.2.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#limits"><i class="fa fa-check"></i><b>12.2.2</b> Limits</a></li>
-<li class="chapter" data-level="12.2.3" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#complex-scenario"><i class="fa fa-check"></i><b>12.2.3</b> Complex scenario</a></li>
+<li class="chapter" data-level="12.3.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#relative-scenarios"><i class="fa fa-check"></i><b>12.3.1</b> Relative scenarios</a></li>
+<li class="chapter" data-level="12.3.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#limits"><i class="fa fa-check"></i><b>12.3.2</b> Limits</a></li>
+<li class="chapter" data-level="12.3.3" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#complex-scenario"><i class="fa fa-check"></i><b>12.3.3</b> Complex scenario</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html"><i class="fa fa-check"></i><b>13</b> Predict and simulate </a>
@@ -306,124 +308,164 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="projections-and-harvest-control-rules" class="section level1 hasAnchor" number="12">
 <h1><span class="header-section-number">Chapter 12</span> Projections and harvest control rules<a href="projections-and-harvest-control-rules.html#projections-and-harvest-control-rules" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Massad et.al has a nice definition “Prediction in general science can be divided into two components: forecasting and projections [2]. A forecast is an attempt to predict what will happen. A projection is an attempt to describe what would happen, given certain hypotheses [3].”</p>
-<p>(OECD)
-“Forecasting” and “prediction” are often used synonymously in the customary sense of assessing the magnitude which a quantity will assume at some future point of time .</p>
-<p>Medium-term projections or scenarios In the context of the OECD’s Economic Outlook, medium-term projections or scenarios look out five to six years, and are published as part of the OECD’s projection exercise.</p>
-<p>Projection
-This term is used in two connected senses.
-1. In relation to a time series it means a future value calculated according to predetermined changes in the
-assumptions of the environment.
-2. More recently, it has been used in probability theory to denote the conditional expectation of a variate. Since a regression equation gives the expectation of the dependent variate conditional upon values of the predicted (“independent”) variates and such equations are used for forecasting or prediction, the usages are connected.</p>
-<p>Considering the above definitions one can think of the process of advising future fishing opportunities as a mix of forecasting and projections. When using a HCR that is accepted by decision makers to predict the catches which can be taken from the stock, one’s in forecasting space. The process will retur what will happen having into account the known conditions of the system. On the other hand, when exploring potential future outcomes based on a set of scenarios previously defined, one’s much more in projection’s space.</p>
-<p>In fisheries science it’s not common to make the distinction between forecasts and predictions, and, in general, the approach tends to be much more within the realm of predictions. For example, it’s common to run scenarios when giving advice to fisheries managers or test different assumptions about future events.</p>
-<p>Strickly speaking projections are not part of the stock assessment process. The assessment of the status of the stock is completed when the analysts produces a comparison between the estimates of biomass and fishing mortality and the respective reference points. At that point it’s possible to make statements about the stock being overfished, or not, and being subject to overfishing, or not.</p>
-<p>Projections tend to come after having estimates of abundance or biomass and fishing mortality. Together with estimates, or assumptions, about the population’s dynamics: growth, reproduction, natural mortality, etc; one can predict catches, biomass, abundance and other relevant statistics, under spoecific conditions and with a certain level of uncertainty.</p>
-<p>For this section we’ll be using the package <code>FLasher</code> (REF) from the FLR family of packages. Starting by fitting a model including a stock recruitment model. For projections one needs to set future recruitment.</p>
+<p>Massad et al. (2018) provide a useful distinction between forecasting and projection in scientific prediction, stating that prediction in general science can be categorized into two main components: forecasting and projection. According to their definition, “a forecast is an attempt to predict what will happen, whereas a projection describes what would happen, given certain hypotheses” (Massad et al., 2018). This distinction is also reflected in the Organisation for Economic Co-operation and Development (OECD, 2009), which notes that “forecasting” and “prediction” are often used interchangeably in assessing the magnitude that a given variable will assume in the future.</p>
+<p>In the context of economic and environmental modeling, the OECD distinguishes between medium-term projections, which typically extend five to six years into the future, and other predictive exercises that rely on different methodologies. The term “projection” is generally used in two interrelated senses: (1) as a future value of a time series computed based on specific assumptions about environmental changes, and (2) in probability theory, as the conditional expectation of a variable. Since regression models provide conditional expectations of dependent variables based on predictor variables, this probabilistic use of projection aligns with forecasting and predictive modeling (OECD, 2009).</p>
+<p>Applying this conceptual framework to fisheries science, the process of advising on future fishing opportunities can be viewed as a combination of forecasting and projection. When using a harvest control rule (HCR) approved by decision-makers to predict catch levels that can be extracted from a stock, the analysis falls into the realm of forecasting, as it predicts what will happen under known system conditions. Conversely, when assessing potential future outcomes based on predefined scenarios—such as climate change effects or policy interventions—the approach aligns more closely with projections.</p>
+<p>In fisheries science, the distinction between forecasting and prediction is not always explicitly made, with the discipline generally emphasizing broader predictive approaches. It is common practice to run scenarios when advising fisheries managers, testing different assumptions about future ecological and management conditions. Strictly speaking, projections are not part of the stock assessment process itself. Stock assessment concludes when analysts compare estimates of biomass and fishing mortality with reference points, allowing for determinations of whether a stock is overfished or subject to overfishing (Hilborn &amp; Walters, 1992).</p>
+<p>Projections typically follow stock assessments, incorporating estimates or assumptions about population dynamics—growth, reproduction, and natural mortality—to predict future catches, biomass, and abundance under specific conditions and with quantified uncertainty. By integrating both forecasting and projection methodologies, fisheries science can offer robust, scenario-based decision-making tools that aid sustainable resource management (Punt et al., 2016).</p>
+<div id="references" class="section level3 hasAnchor" number="12.0.1">
+<h3><span class="header-section-number">12.0.1</span> References:<a href="projections-and-harvest-control-rules.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Hilborn, R., &amp; Walters, C. J. (1992). <em>Quantitative fisheries stock assessment: Choice, dynamics and uncertainty</em>. Chapman &amp; Hall.</li>
+<li>Massad, E., Coutinho, F. A. B., Lopez, L. F., &amp; da Silva, D. R. (2018). <em>Mathematical models for infectious diseases: A theoretical companion</em>. Springer.</li>
+<li>OECD. (2009). <em>The OECD economic outlook: Sources and methods</em>. Organisation for Economic Co-operation and Development.</li>
+<li>Punt, A. E., Smith, A. D. M., &amp; Cui, G. (2016). Review of progress in the introduction of management strategy evaluation (MSE) approaches in fisheries management. <em>Fish and Fisheries</em>, 17(1), 235–265.</li>
+</ul>
+<p>For this section we’ll be using the package <code>FLasher</code> (REF) from the FLR family of packages.</p>
+<pre><code>## Loading required package: FLCore</code></pre>
+<pre><code>## Loading required package: lattice</code></pre>
+<pre><code>## Loading required package: iterators</code></pre>
+<pre><code>## FLCore (Version 2.6.20.9323, packaged: 2025-01-30 16:52:25 UTC)</code></pre>
+<pre><code>## Loading required package: triangle</code></pre>
+<pre><code>## This is FLa4a 1.9.0.9002. For overview type &#39;help(package=&quot;FLa4a&quot;)&#39;</code></pre>
 <pre><code>## Loading required package: FLFishery</code></pre>
-<pre><code>## FLasher: Light bores through the adjunct worlds - the soul-galleon prevails</code></pre>
+<pre><code>## Loading required package: ggplotFL</code></pre>
+<pre><code>## Loading required package: ggplot2</code></pre>
+<pre><code>## 
+## Attaching package: &#39;ggplot2&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:FLCore&#39;:
+## 
+##     %+%</code></pre>
+<pre><code>## FLasher: From the pain-sheath life ascends - the Non-returner sees</code></pre>
+</div>
+<div id="simple-workflow" class="section level2 hasAnchor" number="12.1">
+<h2><span class="header-section-number">12.1</span> Simple workflow<a href="projections-and-harvest-control-rules.html#simple-workflow" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The basic workflow to project with <code>FLasher</code> is to extend the <code>FLStock</code> object to store the predictions using the method <code>fwdWindow</code>, set the targets for the projection with method <code>fwdControl</code> and project the fishery with the method <code>fwd</code> with a <code>FLStock</code> and a <code>FLSR</code>.</p>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="projections-and-harvest-control-rules.html#cb294-1" tabindex="-1"></a><span class="co"># model fit</span></span>
-<span id="cb294-2"><a href="projections-and-harvest-control-rules.html#cb294-2" tabindex="-1"></a>fit00 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel=</span><span class="sc">~</span><span class="fu">geomean</span>()) </span>
-<span id="cb294-3"><a href="projections-and-harvest-control-rules.html#cb294-3" tabindex="-1"></a>sr00 <span class="ot">&lt;-</span> <span class="fu">as</span>(fit00, <span class="st">&quot;FLSR&quot;</span>)</span>
-<span id="cb294-4"><a href="projections-and-harvest-control-rules.html#cb294-4" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> fit00</span>
-<span id="cb294-5"><a href="projections-and-harvest-control-rules.html#cb294-5" tabindex="-1"></a><span class="co"># set projection</span></span>
-<span id="cb294-6"><a href="projections-and-harvest-control-rules.html#cb294-6" tabindex="-1"></a>projy <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb294-7"><a href="projections-and-harvest-control-rules.html#cb294-7" tabindex="-1"></a>endpy <span class="ot">&lt;-</span> maxy <span class="sc">+</span> projy</span>
-<span id="cb294-8"><a href="projections-and-harvest-control-rules.html#cb294-8" tabindex="-1"></a>inipy <span class="ot">&lt;-</span> maxy <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb294-9"><a href="projections-and-harvest-control-rules.html#cb294-9" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> <span class="fu">fwdWindow</span>(stk00, <span class="at">end =</span> endpy)</span>
-<span id="cb294-10"><a href="projections-and-harvest-control-rules.html#cb294-10" tabindex="-1"></a>trg00 <span class="ot">&lt;-</span> <span class="fu">fwdControl</span>(<span class="at">year =</span> inipy<span class="sc">:</span>endpy, <span class="at">quant =</span> <span class="st">&quot;f&quot;</span>, <span class="at">value =</span> <span class="fl">0.3</span>)</span>
-<span id="cb294-11"><a href="projections-and-harvest-control-rules.html#cb294-11" tabindex="-1"></a><span class="co"># project</span></span>
-<span id="cb294-12"><a href="projections-and-harvest-control-rules.html#cb294-12" tabindex="-1"></a>stk01 <span class="ot">&lt;-</span> <span class="fu">fwd</span>(stk00, <span class="at">control=</span>trg00, <span class="at">sr=</span>sr00)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-97"></span>
-<img src="_main_files/figure-html/unnamed-chunk-97-1.png" alt="Projection of stock for 5 years with fixed fishing mortality and recruitment" width="672" />
+<p>We’ll start by fitting a model including, a stock recruitment model which will be used to forecast recruitment. We’ll also set the number of iterations we’ll be working with and the time period we want to project.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="projections-and-harvest-control-rules.html#cb13-1" tabindex="-1"></a><span class="co"># fit model</span></span>
+<span id="cb13-2"><a href="projections-and-harvest-control-rules.html#cb13-2" tabindex="-1"></a>fit00 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel=</span><span class="sc">~</span><span class="fu">geomean</span>()) </span>
+<span id="cb13-3"><a href="projections-and-harvest-control-rules.html#cb13-3" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> fit00</span>
+<span id="cb13-4"><a href="projections-and-harvest-control-rules.html#cb13-4" tabindex="-1"></a><span class="co"># create stock recruitment model object</span></span>
+<span id="cb13-5"><a href="projections-and-harvest-control-rules.html#cb13-5" tabindex="-1"></a>sr00 <span class="ot">&lt;-</span> <span class="fu">as</span>(fit00, <span class="st">&quot;FLSR&quot;</span>)</span>
+<span id="cb13-6"><a href="projections-and-harvest-control-rules.html#cb13-6" tabindex="-1"></a><span class="co"># set projection</span></span>
+<span id="cb13-7"><a href="projections-and-harvest-control-rules.html#cb13-7" tabindex="-1"></a><span class="co"># number of iterations</span></span>
+<span id="cb13-8"><a href="projections-and-harvest-control-rules.html#cb13-8" tabindex="-1"></a>nsim <span class="ot">&lt;-</span> <span class="dv">250</span></span>
+<span id="cb13-9"><a href="projections-and-harvest-control-rules.html#cb13-9" tabindex="-1"></a><span class="co"># most recent year in the data</span></span>
+<span id="cb13-10"><a href="projections-and-harvest-control-rules.html#cb13-10" tabindex="-1"></a>maxy <span class="ot">&lt;-</span> <span class="fu">range</span>(ple4)[<span class="st">&quot;maxyear&quot;</span>]</span>
+<span id="cb13-11"><a href="projections-and-harvest-control-rules.html#cb13-11" tabindex="-1"></a><span class="co"># number of years to project</span></span>
+<span id="cb13-12"><a href="projections-and-harvest-control-rules.html#cb13-12" tabindex="-1"></a>projy <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb13-13"><a href="projections-and-harvest-control-rules.html#cb13-13" tabindex="-1"></a><span class="co"># last year for projections</span></span>
+<span id="cb13-14"><a href="projections-and-harvest-control-rules.html#cb13-14" tabindex="-1"></a>endpy <span class="ot">&lt;-</span> maxy <span class="sc">+</span> projy</span>
+<span id="cb13-15"><a href="projections-and-harvest-control-rules.html#cb13-15" tabindex="-1"></a><span class="co"># initial year for projections</span></span>
+<span id="cb13-16"><a href="projections-and-harvest-control-rules.html#cb13-16" tabindex="-1"></a>inipy <span class="ot">&lt;-</span> maxy <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb13-17"><a href="projections-and-harvest-control-rules.html#cb13-17" tabindex="-1"></a><span class="co"># extend stock object to store projection&#39;s results</span></span>
+<span id="cb13-18"><a href="projections-and-harvest-control-rules.html#cb13-18" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> <span class="fu">fwdWindow</span>(stk00, <span class="at">end =</span> endpy)</span>
+<span id="cb13-19"><a href="projections-and-harvest-control-rules.html#cb13-19" tabindex="-1"></a><span class="co"># set the control for the projections, in this case a fixed f of 0.3</span></span>
+<span id="cb13-20"><a href="projections-and-harvest-control-rules.html#cb13-20" tabindex="-1"></a>trg00 <span class="ot">&lt;-</span> <span class="fu">fwdControl</span>(<span class="at">year =</span> inipy<span class="sc">:</span>endpy, <span class="at">quant =</span> <span class="st">&quot;f&quot;</span>, <span class="at">value =</span> <span class="fl">0.3</span>)</span>
+<span id="cb13-21"><a href="projections-and-harvest-control-rules.html#cb13-21" tabindex="-1"></a><span class="co"># project</span></span>
+<span id="cb13-22"><a href="projections-and-harvest-control-rules.html#cb13-22" tabindex="-1"></a>stk01 <span class="ot">&lt;-</span> <span class="fu">fwd</span>(stk00, <span class="at">control=</span>trg00, <span class="at">sr=</span>sr00)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<img src="_main_files/figure-html/unnamed-chunk-3-1.png" alt="Projection of stock for 5 years with fixed fishing mortality and recruitment" width="672" />
 <p class="caption">
 Figure 12.1: Projection of stock for 5 years with fixed fishing mortality and recruitment
 </p>
 </div>
 <p>A natural addition to this forecast is to add uncertainty. We’ll do that by generating uncertainty in population numbers, catch numbers and fishing mortality, using <code>simulate</code>, and add stock recruitment uncertainty using the residuals of the fit.</p>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="projections-and-harvest-control-rules.html#cb295-1" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> <span class="fu">simulate</span>(fit00, nsim)</span>
-<span id="cb295-2"><a href="projections-and-harvest-control-rules.html#cb295-2" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> <span class="fu">fwdWindow</span>(stk00, <span class="at">end =</span> endpy)</span>
-<span id="cb295-3"><a href="projections-and-harvest-control-rules.html#cb295-3" tabindex="-1"></a>res00 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(sr00)</span>
-<span id="cb295-4"><a href="projections-and-harvest-control-rules.html#cb295-4" tabindex="-1"></a>rec00 <span class="ot">&lt;-</span> <span class="fu">window</span>(<span class="fu">rec</span>(stk00), <span class="dv">2018</span>, <span class="dv">2022</span>)</span>
-<span id="cb295-5"><a href="projections-and-harvest-control-rules.html#cb295-5" tabindex="-1"></a>rec00 <span class="ot">&lt;-</span> <span class="fu">rlnorm</span>(rec00, <span class="fu">mean</span>(res00), <span class="fu">sqrt</span>(<span class="fu">var</span>(res00)))</span>
-<span id="cb295-6"><a href="projections-and-harvest-control-rules.html#cb295-6" tabindex="-1"></a>stk02 <span class="ot">&lt;-</span> <span class="fu">fwd</span>(stk00, <span class="at">control=</span>trg00, <span class="at">sr=</span>sr00, <span class="at">residuals=</span>rec00)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-99"></span>
-<img src="_main_files/figure-html/unnamed-chunk-99-1.png" alt="Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment" width="672" />
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="projections-and-harvest-control-rules.html#cb14-1" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> <span class="fu">simulate</span>(fit00, nsim)</span>
+<span id="cb14-2"><a href="projections-and-harvest-control-rules.html#cb14-2" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> <span class="fu">fwdWindow</span>(stk00, <span class="at">end =</span> endpy)</span>
+<span id="cb14-3"><a href="projections-and-harvest-control-rules.html#cb14-3" tabindex="-1"></a>res00 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(sr00)</span>
+<span id="cb14-4"><a href="projections-and-harvest-control-rules.html#cb14-4" tabindex="-1"></a>rec00 <span class="ot">&lt;-</span> <span class="fu">window</span>(<span class="fu">rec</span>(stk00), <span class="dv">2018</span>, <span class="dv">2022</span>)</span>
+<span id="cb14-5"><a href="projections-and-harvest-control-rules.html#cb14-5" tabindex="-1"></a>rec00 <span class="ot">&lt;-</span> <span class="fu">rlnorm</span>(rec00, <span class="fu">mean</span>(res00), <span class="fu">sqrt</span>(<span class="fu">var</span>(res00)))</span>
+<span id="cb14-6"><a href="projections-and-harvest-control-rules.html#cb14-6" tabindex="-1"></a>stk02 <span class="ot">&lt;-</span> <span class="fu">fwd</span>(stk00, <span class="at">control=</span>trg00, <span class="at">sr=</span>sr00, <span class="at">residuals=</span>rec00)</span></code></pre></div>
+<pre><code>## Warning in grid.Call.graphics(C_polygon, x$x, x$y, index): semi-transparency is
+## not supported on this device: reported only once per page</code></pre>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
+<img src="_main_files/figure-html/unnamed-chunk-5-1.png" alt="Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment" width="672" />
 <p class="caption">
 Figure 12.2: Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment
 </p>
 </div>
-<p>An alternative to the above workflow is to fit the stock recruitment model after the stock assessment model, using the outputs of the assessment as input to the stock recruitment fit. In which case stock recruitment estimation uncertainty can be added by fitting the stock recruitment model over stock assessment uncertainty, so that there will be stock-recruitment fit to each iteration generated from the stock assessment model.</p>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="projections-and-harvest-control-rules.html#cb296-1" tabindex="-1"></a>fit00 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices) </span>
-<span id="cb296-2"><a href="projections-and-harvest-control-rules.html#cb296-2" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> <span class="fu">simulate</span>(fit00, nsim)</span>
-<span id="cb296-3"><a href="projections-and-harvest-control-rules.html#cb296-3" tabindex="-1"></a>sr00 <span class="ot">&lt;-</span> <span class="fu">as.FLSR</span>(stk00, <span class="at">model=</span><span class="st">&quot;geomean&quot;</span>)</span>
-<span id="cb296-4"><a href="projections-and-harvest-control-rules.html#cb296-4" tabindex="-1"></a>sr00 <span class="ot">&lt;-</span> <span class="fu">fmle</span>(sr00, <span class="at">control =</span> <span class="fu">list</span>(<span class="at">trace =</span> <span class="dv">0</span>))</span>
-<span id="cb296-5"><a href="projections-and-harvest-control-rules.html#cb296-5" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> <span class="fu">fwdWindow</span>(stk00, <span class="at">end =</span> endpy)</span>
-<span id="cb296-6"><a href="projections-and-harvest-control-rules.html#cb296-6" tabindex="-1"></a>res00 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(sr00)</span>
-<span id="cb296-7"><a href="projections-and-harvest-control-rules.html#cb296-7" tabindex="-1"></a>rec00 <span class="ot">&lt;-</span> <span class="fu">window</span>(<span class="fu">rec</span>(stk00), inipy, endpy)</span>
-<span id="cb296-8"><a href="projections-and-harvest-control-rules.html#cb296-8" tabindex="-1"></a>rec00 <span class="ot">&lt;-</span> <span class="fu">rlnorm</span>(rec00, <span class="fu">c</span>(<span class="fu">yearMeans</span>(res00)), <span class="fu">sqrt</span>(<span class="fu">c</span>(<span class="fu">yearVars</span>(res00))))</span>
-<span id="cb296-9"><a href="projections-and-harvest-control-rules.html#cb296-9" tabindex="-1"></a>stk03 <span class="ot">&lt;-</span> <span class="fu">fwd</span>(stk00, <span class="at">control=</span>trg00, <span class="at">sr=</span>sr00, <span class="at">residuals=</span>rec00)</span></code></pre></div>
+<p>An alternative to the above workflow is to fit the stock recruitment model after the stock assessment model, using the output of the assessment as input to the stock recruitment fit. In which case stock recruitment estimation uncertainty can be added by fitting the stock recruitment model over stock assessment uncertainty, so that there will be stock-recruitment fit to each iteration generated from the stock assessment model.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="projections-and-harvest-control-rules.html#cb16-1" tabindex="-1"></a>fit00 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices) </span>
+<span id="cb16-2"><a href="projections-and-harvest-control-rules.html#cb16-2" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> <span class="fu">simulate</span>(fit00, nsim)</span>
+<span id="cb16-3"><a href="projections-and-harvest-control-rules.html#cb16-3" tabindex="-1"></a>sr00 <span class="ot">&lt;-</span> <span class="fu">as.FLSR</span>(stk00, <span class="at">model=</span><span class="st">&quot;geomean&quot;</span>)</span>
+<span id="cb16-4"><a href="projections-and-harvest-control-rules.html#cb16-4" tabindex="-1"></a>sr00 <span class="ot">&lt;-</span> <span class="fu">fmle</span>(sr00, <span class="at">control =</span> <span class="fu">list</span>(<span class="at">trace =</span> <span class="dv">0</span>))</span>
+<span id="cb16-5"><a href="projections-and-harvest-control-rules.html#cb16-5" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> <span class="fu">fwdWindow</span>(stk00, <span class="at">end =</span> endpy)</span>
+<span id="cb16-6"><a href="projections-and-harvest-control-rules.html#cb16-6" tabindex="-1"></a>res00 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(sr00)</span>
+<span id="cb16-7"><a href="projections-and-harvest-control-rules.html#cb16-7" tabindex="-1"></a>rec00 <span class="ot">&lt;-</span> <span class="fu">window</span>(<span class="fu">rec</span>(stk00), inipy, endpy)</span>
+<span id="cb16-8"><a href="projections-and-harvest-control-rules.html#cb16-8" tabindex="-1"></a>rec00 <span class="ot">&lt;-</span> <span class="fu">rlnorm</span>(rec00, <span class="fu">c</span>(<span class="fu">yearMeans</span>(res00)), <span class="fu">sqrt</span>(<span class="fu">c</span>(<span class="fu">yearVars</span>(res00))))</span>
+<span id="cb16-9"><a href="projections-and-harvest-control-rules.html#cb16-9" tabindex="-1"></a>stk03 <span class="ot">&lt;-</span> <span class="fu">fwd</span>(stk00, <span class="at">control=</span>trg00, <span class="at">sr=</span>sr00, <span class="at">residuals=</span>rec00)</span></code></pre></div>
 <p>[IAGO, check rlnorm, it doesn’t work if the meanlog and sdlog are FLQuants]</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-101"></span>
-<img src="_main_files/figure-html/unnamed-chunk-101-1.png" alt="Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment" width="672" />
+<pre><code>## Warning in grid.Call.graphics(C_polygon, x$x, x$y, index): semi-transparency is
+## not supported on this device: reported only once per page</code></pre>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-7"></span>
+<img src="_main_files/figure-html/unnamed-chunk-7-1.png" alt="Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment" width="672" />
 <p class="caption">
 Figure 12.3: Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment
 </p>
 </div>
 <p>These two methods don’t give very different result when the stock recruitment model is not having a large impact in the other parameters. However the second method is much slower due to all the fits needed to have the empirical distribution of the stock recruitment model parameters.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-102"></span>
-<img src="_main_files/figure-html/unnamed-chunk-102-1.png" alt="Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment" width="672" />
+<pre><code>## Warning in grid.Call.graphics(C_polygon, x$x, x$y, index): semi-transparency is
+## not supported on this device: reported only once per page</code></pre>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-8"></span>
+<img src="_main_files/figure-html/unnamed-chunk-8-1.png" alt="Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment. 01: projection without uncertainty, stock recruitment model fit within the stock assessment model; 02: projection with uncertainty, stock recruitment model fit within the stock assessment model; 03: projection with uncertainty, stock recruitment model fit after the stock assessment model" width="672" />
 <p class="caption">
-Figure 12.4: Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment
+Figure 12.4: Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment. 01: projection without uncertainty, stock recruitment model fit within the stock assessment model; 02: projection with uncertainty, stock recruitment model fit within the stock assessment model; 03: projection with uncertainty, stock recruitment model fit after the stock assessment model
 </p>
 </div>
-<div id="initial-condition-assumptions-check-fwdwindow" class="section level2 hasAnchor" number="12.1">
-<h2><span class="header-section-number">12.1</span> Initial condition assumptions [CHECK fwdWindow]<a href="projections-and-harvest-control-rules.html#initial-condition-assumptions-check-fwdwindow" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>When projecting the stock forward one needs to make a number of assumptions about initial conditions, the starting point from where projections will be made. The method <code>fwdWindow</code> has a set of options that allows the analyst to decide about those assumptions:
-- <code>wt</code>: Number of years to average over to get the future mean weights at age, default is 3
-- <code>mat</code>: Number of years to average over to get the future proportion mature at age, default is 3
-- <code>m</code>: Number of years to average over to get the future natural mortality at age, default is 3
-- <code>spwn</code>: Number of years to average over to get the future fraction of mortality before spawning, default is 3
-- <code>discards.ratio</code>: Number of years to average over to get the future mean proportion of discards at age. Default is 3
-- <code>catch.sel</code>: Number of years to average over to get the future selection patern (fishing mortality at age which will be scaled based on canges in <span class="math inline">\(\bar{F}\)</span>). Default is 3</p>
+</div>
+<div id="initial-condition-assumptions-check-fwdwindow" class="section level2 hasAnchor" number="12.2">
+<h2><span class="header-section-number">12.2</span> Initial condition assumptions [CHECK fwdWindow]<a href="projections-and-harvest-control-rules.html#initial-condition-assumptions-check-fwdwindow" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When projecting the stock forward one needs to make a number of assumptions about initial conditions, the starting point from where projections will be made. The method <code>fwdWindow</code> has a set of options that allows the analyst to decide about those assumptions:</p>
+<ul>
+<li><code>wt</code>: Number of years to average over to get the future mean weights at age, default is 3</li>
+<li><code>mat</code>: Number of years to average over to get the future proportion mature at age, default is 3</li>
+<li><code>m</code>: Number of years to average over to get the future natural mortality at age, default is 3</li>
+<li><code>spwn</code>: Number of years to average over to get the future fraction of mortality before spawning, default is 3</li>
+<li><code>discards.ratio</code>: Number of years to average over to get the future mean proportion of discards at age. Default is 3</li>
+<li><code>catch.sel</code>: Number of years to average over to get the future selection patern (fishing mortality at age which will be scaled based on canges in <span class="math inline">\(\bar{F}\)</span>). Default is 3</li>
+</ul>
 <p>One can also define if those assumptions will be based on the mean value over the time period set, or randomly sampled from historical values, through setting the argument <code>fun</code> to <code>mean</code> or <code>sample</code>, respectively.</p>
 <p>For the next examples we’ll use the approach of fitting the stock recruitment within the assessment together with other parameters. We’ll set to 20 the number of years to compute mean weights at age, to 10 the number of years to average across and estimate the selection pattern in terms of fishing mortality at age. Finally, we’ll use a 10 year period to compute the average discard ratio.</p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="projections-and-harvest-control-rules.html#cb297-1" tabindex="-1"></a>fit00 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel=</span><span class="sc">~</span><span class="fu">geomean</span>()) </span>
-<span id="cb297-2"><a href="projections-and-harvest-control-rules.html#cb297-2" tabindex="-1"></a>sr00 <span class="ot">&lt;-</span> <span class="fu">as</span>(fit00, <span class="st">&quot;FLSR&quot;</span>)</span>
-<span id="cb297-3"><a href="projections-and-harvest-control-rules.html#cb297-3" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> fit00</span>
-<span id="cb297-4"><a href="projections-and-harvest-control-rules.html#cb297-4" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> <span class="fu">fwdWindow</span>(stk00, <span class="at">end =</span> endpy, <span class="at">years =</span> <span class="fu">list</span>(<span class="at">wt =</span> <span class="dv">20</span>, <span class="at">catch.sel =</span> <span class="dv">10</span>, <span class="at">discards.ratio =</span> <span class="dv">10</span>), <span class="at">fun =</span> <span class="fu">list</span>(<span class="at">wt =</span> <span class="st">&quot;sample&quot;</span>))</span>
-<span id="cb297-5"><a href="projections-and-harvest-control-rules.html#cb297-5" tabindex="-1"></a>trg00 <span class="ot">&lt;-</span> <span class="fu">fwdControl</span>(<span class="at">year =</span> inipy<span class="sc">:</span>endpy, <span class="at">quant =</span> <span class="st">&quot;f&quot;</span>, <span class="at">value =</span> <span class="fl">0.3</span>)</span>
-<span id="cb297-6"><a href="projections-and-harvest-control-rules.html#cb297-6" tabindex="-1"></a>stk04 <span class="ot">&lt;-</span> <span class="fu">fwd</span>(stk00, <span class="at">control=</span>trg00, <span class="at">sr=</span>sr00)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-104"></span>
-<img src="_main_files/figure-html/unnamed-chunk-104-1.png" alt="Stochastic projections of stock for 5 years with fixed fishing mortality and recruitment. Two scenarios with different assumptions about initial conditions" width="672" />
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="projections-and-harvest-control-rules.html#cb19-1" tabindex="-1"></a>fit00 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel=</span><span class="sc">~</span><span class="fu">geomean</span>()) </span>
+<span id="cb19-2"><a href="projections-and-harvest-control-rules.html#cb19-2" tabindex="-1"></a>sr00 <span class="ot">&lt;-</span> <span class="fu">as</span>(fit00, <span class="st">&quot;FLSR&quot;</span>)</span>
+<span id="cb19-3"><a href="projections-and-harvest-control-rules.html#cb19-3" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> fit00</span>
+<span id="cb19-4"><a href="projections-and-harvest-control-rules.html#cb19-4" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> <span class="fu">fwdWindow</span>(stk00, <span class="at">end =</span> endpy, <span class="at">years =</span> <span class="fu">list</span>(<span class="at">wt =</span> <span class="dv">20</span>, <span class="at">catch.sel =</span> <span class="dv">10</span>, <span class="at">discards.ratio =</span> <span class="dv">10</span>), <span class="at">fun =</span> <span class="fu">list</span>(<span class="at">wt =</span> <span class="st">&quot;sample&quot;</span>))</span>
+<span id="cb19-5"><a href="projections-and-harvest-control-rules.html#cb19-5" tabindex="-1"></a>trg00 <span class="ot">&lt;-</span> <span class="fu">fwdControl</span>(<span class="at">year =</span> inipy<span class="sc">:</span>endpy, <span class="at">quant =</span> <span class="st">&quot;f&quot;</span>, <span class="at">value =</span> <span class="fl">0.3</span>)</span>
+<span id="cb19-6"><a href="projections-and-harvest-control-rules.html#cb19-6" tabindex="-1"></a>stk04 <span class="ot">&lt;-</span> <span class="fu">fwd</span>(stk00, <span class="at">control=</span>trg00, <span class="at">sr=</span>sr00)</span></code></pre></div>
+<pre><code>## Warning in grid.Call.graphics(C_polygon, x$x, x$y, index): semi-transparency is
+## not supported on this device: reported only once per page</code></pre>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-10"></span>
+<img src="_main_files/figure-html/unnamed-chunk-10-1.png" alt="Stochastic projections of stock for 5 years with fixed fishing mortality and recruitment. Two scenarios with different assumptions about initial conditions" width="672" />
 <p class="caption">
 Figure 12.5: Stochastic projections of stock for 5 years with fixed fishing mortality and recruitment. Two scenarios with different assumptions about initial conditions
 </p>
 </div>
 </div>
-<div id="scenarios" class="section level2 hasAnchor" number="12.2">
-<h2><span class="header-section-number">12.2</span> Scenarios<a href="projections-and-harvest-control-rules.html#scenarios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>There’s a wide range of scenarios that can be of interest to project in order to give advice to policy makers, or to better understand the fitted stock assessment model. For example, forecasting the stock in the absence of fishing for a few generations, gives good insights about the dynamics of the population being modelled.</p>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="projections-and-harvest-control-rules.html#cb298-1" tabindex="-1"></a>fit00 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel=</span><span class="sc">~</span><span class="fu">geomean</span>())</span>
-<span id="cb298-2"><a href="projections-and-harvest-control-rules.html#cb298-2" tabindex="-1"></a>sr00 <span class="ot">&lt;-</span> <span class="fu">as</span>(fit00, <span class="st">&quot;FLSR&quot;</span>)</span>
-<span id="cb298-3"><a href="projections-and-harvest-control-rules.html#cb298-3" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> <span class="fu">simulate</span>(fit00, nsim)</span>
-<span id="cb298-4"><a href="projections-and-harvest-control-rules.html#cb298-4" tabindex="-1"></a><span class="co"># set projection</span></span>
-<span id="cb298-5"><a href="projections-and-harvest-control-rules.html#cb298-5" tabindex="-1"></a>projy <span class="ot">&lt;-</span> <span class="dv">25</span></span>
-<span id="cb298-6"><a href="projections-and-harvest-control-rules.html#cb298-6" tabindex="-1"></a>endpy <span class="ot">&lt;-</span> maxy <span class="sc">+</span> projy</span>
-<span id="cb298-7"><a href="projections-and-harvest-control-rules.html#cb298-7" tabindex="-1"></a>inipy <span class="ot">&lt;-</span> maxy <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb298-8"><a href="projections-and-harvest-control-rules.html#cb298-8" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> <span class="fu">fwdWindow</span>(stk00, <span class="at">end =</span> endpy)</span>
-<span id="cb298-9"><a href="projections-and-harvest-control-rules.html#cb298-9" tabindex="-1"></a>trg00 <span class="ot">&lt;-</span> <span class="fu">fwdControl</span>(<span class="at">year =</span> inipy<span class="sc">:</span>endpy, <span class="at">quant =</span> <span class="st">&quot;f&quot;</span>, <span class="at">value =</span> <span class="dv">0</span>)</span>
-<span id="cb298-10"><a href="projections-and-harvest-control-rules.html#cb298-10" tabindex="-1"></a><span class="co"># recruitment uncertainty</span></span>
-<span id="cb298-11"><a href="projections-and-harvest-control-rules.html#cb298-11" tabindex="-1"></a>res00 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(sr00)</span>
-<span id="cb298-12"><a href="projections-and-harvest-control-rules.html#cb298-12" tabindex="-1"></a>rec00 <span class="ot">&lt;-</span> <span class="fu">window</span>(<span class="fu">rec</span>(stk00), inipy, endpy)</span>
-<span id="cb298-13"><a href="projections-and-harvest-control-rules.html#cb298-13" tabindex="-1"></a>rec00 <span class="ot">&lt;-</span> <span class="fu">rlnorm</span>(rec00, <span class="fu">mean</span>(res00), <span class="fu">sqrt</span>(<span class="fu">var</span>(res00)))</span>
-<span id="cb298-14"><a href="projections-and-harvest-control-rules.html#cb298-14" tabindex="-1"></a><span class="co"># project</span></span>
-<span id="cb298-15"><a href="projections-and-harvest-control-rules.html#cb298-15" tabindex="-1"></a>stk05 <span class="ot">&lt;-</span> <span class="fu">fwd</span>(stk00, <span class="at">control=</span>trg00, <span class="at">sr=</span>sr00, <span class="at">residuals=</span>rec00)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-106"></span>
-<img src="_main_files/figure-html/unnamed-chunk-106-1.png" alt="Stochastic projection of stock for 25 years with fixed fishing mortality and recruitment" width="672" />
+<div id="scenarios" class="section level2 hasAnchor" number="12.3">
+<h2><span class="header-section-number">12.3</span> Scenarios<a href="projections-and-harvest-control-rules.html#scenarios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There’s a wide range of scenarios that can be of interest to project in order to give advice to policy makers, or to better understand the fitted stock assessment model. For example, projecting the stock in the absence of fishing for a few generations, gives good insights about the dynamics of the population being modelled.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="projections-and-harvest-control-rules.html#cb21-1" tabindex="-1"></a>fit00 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel=</span><span class="sc">~</span><span class="fu">geomean</span>())</span>
+<span id="cb21-2"><a href="projections-and-harvest-control-rules.html#cb21-2" tabindex="-1"></a>sr00 <span class="ot">&lt;-</span> <span class="fu">as</span>(fit00, <span class="st">&quot;FLSR&quot;</span>)</span>
+<span id="cb21-3"><a href="projections-and-harvest-control-rules.html#cb21-3" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> <span class="fu">simulate</span>(fit00, nsim)</span>
+<span id="cb21-4"><a href="projections-and-harvest-control-rules.html#cb21-4" tabindex="-1"></a><span class="co"># set projection</span></span>
+<span id="cb21-5"><a href="projections-and-harvest-control-rules.html#cb21-5" tabindex="-1"></a>projy <span class="ot">&lt;-</span> <span class="dv">25</span></span>
+<span id="cb21-6"><a href="projections-and-harvest-control-rules.html#cb21-6" tabindex="-1"></a>endpy <span class="ot">&lt;-</span> maxy <span class="sc">+</span> projy</span>
+<span id="cb21-7"><a href="projections-and-harvest-control-rules.html#cb21-7" tabindex="-1"></a>inipy <span class="ot">&lt;-</span> maxy <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb21-8"><a href="projections-and-harvest-control-rules.html#cb21-8" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> <span class="fu">fwdWindow</span>(stk00, <span class="at">end =</span> endpy)</span>
+<span id="cb21-9"><a href="projections-and-harvest-control-rules.html#cb21-9" tabindex="-1"></a>trg00 <span class="ot">&lt;-</span> <span class="fu">fwdControl</span>(<span class="at">year =</span> inipy<span class="sc">:</span>endpy, <span class="at">quant =</span> <span class="st">&quot;f&quot;</span>, <span class="at">value =</span> <span class="dv">0</span>)</span>
+<span id="cb21-10"><a href="projections-and-harvest-control-rules.html#cb21-10" tabindex="-1"></a><span class="co"># recruitment uncertainty</span></span>
+<span id="cb21-11"><a href="projections-and-harvest-control-rules.html#cb21-11" tabindex="-1"></a>res00 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(sr00)</span>
+<span id="cb21-12"><a href="projections-and-harvest-control-rules.html#cb21-12" tabindex="-1"></a>rec00 <span class="ot">&lt;-</span> <span class="fu">window</span>(<span class="fu">rec</span>(stk00), inipy, endpy)</span>
+<span id="cb21-13"><a href="projections-and-harvest-control-rules.html#cb21-13" tabindex="-1"></a>rec00 <span class="ot">&lt;-</span> <span class="fu">rlnorm</span>(rec00, <span class="fu">mean</span>(res00), <span class="fu">sqrt</span>(<span class="fu">var</span>(res00)))</span>
+<span id="cb21-14"><a href="projections-and-harvest-control-rules.html#cb21-14" tabindex="-1"></a><span class="co"># project</span></span>
+<span id="cb21-15"><a href="projections-and-harvest-control-rules.html#cb21-15" tabindex="-1"></a>stk05 <span class="ot">&lt;-</span> <span class="fu">fwd</span>(stk00, <span class="at">control=</span>trg00, <span class="at">sr=</span>sr00, <span class="at">residuals=</span>rec00)</span></code></pre></div>
+<pre><code>## Warning in grid.Call.graphics(C_polygon, x$x, x$y, index): semi-transparency is
+## not supported on this device: reported only once per page</code></pre>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-12"></span>
+<img src="_main_files/figure-html/unnamed-chunk-12-1.png" alt="Stochastic projection of stock for 25 years in the absence of fishing" width="672" />
 <p class="caption">
-Figure 12.6: Stochastic projection of stock for 25 years with fixed fishing mortality and recruitment
+Figure 12.6: Stochastic projection of stock for 25 years in the absence of fishing
 </p>
 </div>
 <p>These scenarios are defined by the target quantities one’s trying to achieve. In <code>FLasher</code> there are the following target quantities:
@@ -445,56 +487,63 @@ Figure 12.6: Stochastic projection of stock for 25 years with fixed fishing mort
 - effort</p>
 <p>[IAGO NEED YOUR HELP HERE]</p>
 <p>When projecting the stock under the conditions defined by the scenario one can mix several quantities. For example it may be interesting to project an initial situation of growing the stock followed by a higher exploitation to evaluate how catches would behave.</p>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="projections-and-harvest-control-rules.html#cb299-1" tabindex="-1"></a>trg00 <span class="ot">&lt;-</span> <span class="fu">fwdControl</span>(<span class="at">year =</span> inipy<span class="sc">:</span>endpy, <span class="at">quant =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;ssb_end&quot;</span>, <span class="dv">15</span>), <span class="fu">rep</span>(<span class="st">&quot;f&quot;</span>, <span class="dv">10</span>)), <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">2000000</span>, <span class="dv">15</span>), <span class="fu">rep</span>(<span class="fl">0.3</span>, <span class="dv">10</span>)))</span>
-<span id="cb299-2"><a href="projections-and-harvest-control-rules.html#cb299-2" tabindex="-1"></a>stk06 <span class="ot">&lt;-</span> <span class="fu">fwd</span>(stk00, <span class="at">control=</span>trg00, <span class="at">sr=</span>sr00, <span class="at">residuals=</span>rec00)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-108"></span>
-<img src="_main_files/figure-html/unnamed-chunk-108-1.png" alt="Stochastic projection of stock for 25 years with fixed SSB for 15 years followed by fixed fishing mortality for 10 years and constant recruitment" width="672" />
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="projections-and-harvest-control-rules.html#cb23-1" tabindex="-1"></a>trg00 <span class="ot">&lt;-</span> <span class="fu">fwdControl</span>(<span class="at">year =</span> inipy<span class="sc">:</span>endpy, <span class="at">quant =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;ssb_end&quot;</span>, <span class="dv">15</span>), <span class="fu">rep</span>(<span class="st">&quot;f&quot;</span>, <span class="dv">10</span>)), <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">2000000</span>, <span class="dv">15</span>), <span class="fu">rep</span>(<span class="fl">0.3</span>, <span class="dv">10</span>)))</span>
+<span id="cb23-2"><a href="projections-and-harvest-control-rules.html#cb23-2" tabindex="-1"></a>stk06 <span class="ot">&lt;-</span> <span class="fu">fwd</span>(stk00, <span class="at">control=</span>trg00, <span class="at">sr=</span>sr00, <span class="at">residuals=</span>rec00)</span></code></pre></div>
+<pre><code>## Warning in grid.Call.graphics(C_polygon, x$x, x$y, index): semi-transparency is
+## not supported on this device: reported only once per page</code></pre>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-14"></span>
+<img src="_main_files/figure-html/unnamed-chunk-14-1.png" alt="Stochastic projection of stock for 25 years with fixed SSB for 15 years followed by fixed fishing mortality for 10 years and constant recruitment" width="672" />
 <p class="caption">
 Figure 12.7: Stochastic projection of stock for 25 years with fixed SSB for 15 years followed by fixed fishing mortality for 10 years and constant recruitment
 </p>
 </div>
-<div id="relative-scenarios" class="section level3 hasAnchor" number="12.2.1">
-<h3><span class="header-section-number">12.2.1</span> Relative scenarios<a href="projections-and-harvest-control-rules.html#relative-scenarios" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="relative-scenarios" class="section level3 hasAnchor" number="12.3.1">
+<h3><span class="header-section-number">12.3.1</span> Relative scenarios<a href="projections-and-harvest-control-rules.html#relative-scenarios" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Another scenario that is very useful when advising decision makers is to have objectives which are relative to previous preformances. For example one could increase spwanwing stock biomass by 10% each year. This is done buy using the argument <code>relYear</code> and setting <code>value</code> in relative terms, <span class="math inline">\(1.1\)</span>.</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="projections-and-harvest-control-rules.html#cb300-1" tabindex="-1"></a>fit00 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel=</span><span class="sc">~</span><span class="fu">geomean</span>())</span>
-<span id="cb300-2"><a href="projections-and-harvest-control-rules.html#cb300-2" tabindex="-1"></a>sr00 <span class="ot">&lt;-</span> <span class="fu">as</span>(fit00, <span class="st">&quot;FLSR&quot;</span>)</span>
-<span id="cb300-3"><a href="projections-and-harvest-control-rules.html#cb300-3" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> <span class="fu">simulate</span>(fit00, nsim)</span>
-<span id="cb300-4"><a href="projections-and-harvest-control-rules.html#cb300-4" tabindex="-1"></a><span class="co"># set projection</span></span>
-<span id="cb300-5"><a href="projections-and-harvest-control-rules.html#cb300-5" tabindex="-1"></a>projy <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb300-6"><a href="projections-and-harvest-control-rules.html#cb300-6" tabindex="-1"></a>endpy <span class="ot">&lt;-</span> maxy <span class="sc">+</span> projy</span>
-<span id="cb300-7"><a href="projections-and-harvest-control-rules.html#cb300-7" tabindex="-1"></a>inipy <span class="ot">&lt;-</span> maxy <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb300-8"><a href="projections-and-harvest-control-rules.html#cb300-8" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> <span class="fu">fwdWindow</span>(stk00, <span class="at">end =</span> endpy)</span>
-<span id="cb300-9"><a href="projections-and-harvest-control-rules.html#cb300-9" tabindex="-1"></a>trg00 <span class="ot">&lt;-</span> <span class="fu">fwdControl</span>(<span class="at">year =</span> inipy<span class="sc">:</span>endpy, <span class="at">quant =</span> <span class="st">&quot;ssb_end&quot;</span>, <span class="at">value =</span> <span class="fl">1.1</span>, <span class="at">relYear =</span> inipy<span class="sc">:</span>endpy<span class="dv">-1</span>)</span>
-<span id="cb300-10"><a href="projections-and-harvest-control-rules.html#cb300-10" tabindex="-1"></a><span class="co"># recruitment uncertainty</span></span>
-<span id="cb300-11"><a href="projections-and-harvest-control-rules.html#cb300-11" tabindex="-1"></a>res00 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(sr00)</span>
-<span id="cb300-12"><a href="projections-and-harvest-control-rules.html#cb300-12" tabindex="-1"></a>rec00 <span class="ot">&lt;-</span> <span class="fu">window</span>(<span class="fu">rec</span>(stk00), inipy, endpy)</span>
-<span id="cb300-13"><a href="projections-and-harvest-control-rules.html#cb300-13" tabindex="-1"></a>rec00 <span class="ot">&lt;-</span> <span class="fu">rlnorm</span>(rec00, <span class="fu">mean</span>(res00), <span class="fu">sqrt</span>(<span class="fu">var</span>(res00)))</span>
-<span id="cb300-14"><a href="projections-and-harvest-control-rules.html#cb300-14" tabindex="-1"></a><span class="co"># project</span></span>
-<span id="cb300-15"><a href="projections-and-harvest-control-rules.html#cb300-15" tabindex="-1"></a>stk07 <span class="ot">&lt;-</span> <span class="fu">fwd</span>(stk00, <span class="at">control=</span>trg00, <span class="at">sr=</span>sr00, <span class="at">residuals=</span>rec00)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="projections-and-harvest-control-rules.html#cb25-1" tabindex="-1"></a>fit00 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel=</span><span class="sc">~</span><span class="fu">geomean</span>())</span>
+<span id="cb25-2"><a href="projections-and-harvest-control-rules.html#cb25-2" tabindex="-1"></a>sr00 <span class="ot">&lt;-</span> <span class="fu">as</span>(fit00, <span class="st">&quot;FLSR&quot;</span>)</span>
+<span id="cb25-3"><a href="projections-and-harvest-control-rules.html#cb25-3" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> <span class="fu">simulate</span>(fit00, nsim)</span>
+<span id="cb25-4"><a href="projections-and-harvest-control-rules.html#cb25-4" tabindex="-1"></a><span class="co"># set projection</span></span>
+<span id="cb25-5"><a href="projections-and-harvest-control-rules.html#cb25-5" tabindex="-1"></a>projy <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb25-6"><a href="projections-and-harvest-control-rules.html#cb25-6" tabindex="-1"></a>endpy <span class="ot">&lt;-</span> maxy <span class="sc">+</span> projy</span>
+<span id="cb25-7"><a href="projections-and-harvest-control-rules.html#cb25-7" tabindex="-1"></a>inipy <span class="ot">&lt;-</span> maxy <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb25-8"><a href="projections-and-harvest-control-rules.html#cb25-8" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> <span class="fu">fwdWindow</span>(stk00, <span class="at">end =</span> endpy)</span>
+<span id="cb25-9"><a href="projections-and-harvest-control-rules.html#cb25-9" tabindex="-1"></a>trg00 <span class="ot">&lt;-</span> <span class="fu">fwdControl</span>(<span class="at">year =</span> inipy<span class="sc">:</span>endpy, <span class="at">quant =</span> <span class="st">&quot;ssb_end&quot;</span>, <span class="at">value =</span> <span class="fl">1.1</span>, <span class="at">relYear =</span> inipy<span class="sc">:</span>endpy<span class="dv">-1</span>)</span>
+<span id="cb25-10"><a href="projections-and-harvest-control-rules.html#cb25-10" tabindex="-1"></a><span class="co"># recruitment uncertainty</span></span>
+<span id="cb25-11"><a href="projections-and-harvest-control-rules.html#cb25-11" tabindex="-1"></a>res00 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(sr00)</span>
+<span id="cb25-12"><a href="projections-and-harvest-control-rules.html#cb25-12" tabindex="-1"></a>rec00 <span class="ot">&lt;-</span> <span class="fu">window</span>(<span class="fu">rec</span>(stk00), inipy, endpy)</span>
+<span id="cb25-13"><a href="projections-and-harvest-control-rules.html#cb25-13" tabindex="-1"></a>rec00 <span class="ot">&lt;-</span> <span class="fu">rlnorm</span>(rec00, <span class="fu">mean</span>(res00), <span class="fu">sqrt</span>(<span class="fu">var</span>(res00)))</span>
+<span id="cb25-14"><a href="projections-and-harvest-control-rules.html#cb25-14" tabindex="-1"></a><span class="co"># project</span></span>
+<span id="cb25-15"><a href="projections-and-harvest-control-rules.html#cb25-15" tabindex="-1"></a>stk07 <span class="ot">&lt;-</span> <span class="fu">fwd</span>(stk00, <span class="at">control=</span>trg00, <span class="at">sr=</span>sr00, <span class="at">residuals=</span>rec00)</span></code></pre></div>
 <p>Similar scenarios can be set for all quantities and any years to use as reference. The next example sets a scenario where <span class="math inline">\(SSB\)</span> levels are set in relation to the most recent estimate out of the assessmeent.</p>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="projections-and-harvest-control-rules.html#cb301-1" tabindex="-1"></a>trg00 <span class="ot">&lt;-</span> <span class="fu">fwdControl</span>(<span class="at">year =</span> inipy<span class="sc">:</span>endpy, <span class="at">quant =</span> <span class="st">&quot;ssb_end&quot;</span>, <span class="at">value =</span> <span class="fl">1.1</span>, <span class="at">relYear =</span> maxy)</span>
-<span id="cb301-2"><a href="projections-and-harvest-control-rules.html#cb301-2" tabindex="-1"></a>stk08 <span class="ot">&lt;-</span> <span class="fu">fwd</span>(stk00, <span class="at">control=</span>trg00, <span class="at">sr=</span>sr00, <span class="at">residuals=</span>rec00)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-111"></span>
-<img src="_main_files/figure-html/unnamed-chunk-111-1.png" alt="Stochastic projection of stock for 25 years with fixed SSB for 15 years followed by fixed fishing mortality for 10 years and constant recruitment" width="672" />
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="projections-and-harvest-control-rules.html#cb26-1" tabindex="-1"></a>trg00 <span class="ot">&lt;-</span> <span class="fu">fwdControl</span>(<span class="at">year =</span> inipy<span class="sc">:</span>endpy, <span class="at">quant =</span> <span class="st">&quot;ssb_end&quot;</span>, <span class="at">value =</span> <span class="fl">1.1</span>, <span class="at">relYear =</span> maxy)</span>
+<span id="cb26-2"><a href="projections-and-harvest-control-rules.html#cb26-2" tabindex="-1"></a>stk08 <span class="ot">&lt;-</span> <span class="fu">fwd</span>(stk00, <span class="at">control=</span>trg00, <span class="at">sr=</span>sr00, <span class="at">residuals=</span>rec00)</span></code></pre></div>
+<pre><code>## Warning in grid.Call.graphics(C_polygon, x$x, x$y, index): semi-transparency is
+## not supported on this device: reported only once per page</code></pre>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-17"></span>
+<img src="_main_files/figure-html/unnamed-chunk-17-1.png" alt="Stochastic projection of stock for 25 years with fixed SSB for 15 years followed by fixed fishing mortality for 10 years and constant recruitment" width="672" />
 <p class="caption">
 Figure 12.8: Stochastic projection of stock for 25 years with fixed SSB for 15 years followed by fixed fishing mortality for 10 years and constant recruitment
 </p>
 </div>
 </div>
-<div id="limits" class="section level3 hasAnchor" number="12.2.2">
-<h3><span class="header-section-number">12.2.2</span> Limits<a href="projections-and-harvest-control-rules.html#limits" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="limits" class="section level3 hasAnchor" number="12.3.2">
+<h3><span class="header-section-number">12.3.2</span> Limits<a href="projections-and-harvest-control-rules.html#limits" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>An important element when projecting the stock forward is to keep the performance of the fishery within some boundaries. A common one requested by the industry is to keep catches within some stability. <code>fwd</code> can include those constraints using the <code>min</code> and <code>max</code> arguments. The next example sets the minimum future catches to half of mean historical catches.</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="projections-and-harvest-control-rules.html#cb302-1" tabindex="-1"></a>trg00 <span class="ot">&lt;-</span> <span class="fu">fwdControl</span>(<span class="at">year =</span> inipy<span class="sc">:</span>endpy, <span class="at">quant =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;ssb_end&quot;</span>, <span class="st">&quot;catch&quot;</span>), projy), <span class="at">value =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1500000</span>, <span class="cn">NA</span>), projy), <span class="at">min=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="cn">NA</span>, <span class="fl">0.1</span><span class="sc">*</span><span class="fu">mean</span>(<span class="fu">catch</span>(stk00), <span class="at">na.rm=</span><span class="cn">TRUE</span>)), projy))</span>
-<span id="cb302-2"><a href="projections-and-harvest-control-rules.html#cb302-2" tabindex="-1"></a>stk09 <span class="ot">&lt;-</span> <span class="fu">fwd</span>(stk00, <span class="at">control=</span>trg00, <span class="at">sr=</span>sr00, <span class="at">residuals=</span>rec00)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-113"></span>
-<img src="_main_files/figure-html/unnamed-chunk-113-1.png" alt="Stochastic projection of stock for 25 years with SSB target of 1500000t and catch limit of 50% historical catches" width="672" />
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="projections-and-harvest-control-rules.html#cb28-1" tabindex="-1"></a>minc <span class="ot">&lt;-</span> <span class="fl">0.2</span><span class="sc">*</span><span class="fu">mean</span>(<span class="fu">catch</span>(stk00), <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb28-2"><a href="projections-and-harvest-control-rules.html#cb28-2" tabindex="-1"></a>trg00 <span class="ot">&lt;-</span> <span class="fu">fwdControl</span>(<span class="at">year =</span> inipy<span class="sc">:</span>endpy, <span class="at">quant =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;ssb_end&quot;</span>, <span class="st">&quot;catch&quot;</span>), projy), <span class="at">value =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1500000</span>, <span class="cn">NA</span>), projy), <span class="at">min=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="cn">NA</span>, minc), projy))</span>
+<span id="cb28-3"><a href="projections-and-harvest-control-rules.html#cb28-3" tabindex="-1"></a>stk09 <span class="ot">&lt;-</span> <span class="fu">fwd</span>(stk00, <span class="at">control=</span>trg00, <span class="at">sr=</span>sr00, <span class="at">residuals=</span>rec00)</span></code></pre></div>
+<pre><code>## Warning in grid.Call.graphics(C_polygon, x$x, x$y, index): semi-transparency is
+## not supported on this device: reported only once per page</code></pre>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-19"></span>
+<img src="_main_files/figure-html/unnamed-chunk-19-1.png" alt="Stochastic projection of stock for 25 years with SSB target of 1500000t and catch limit of 50% historical catches" width="672" />
 <p class="caption">
 Figure 12.9: Stochastic projection of stock for 25 years with SSB target of 1500000t and catch limit of 50% historical catches
 </p>
 </div>
 </div>
-<div id="complex-scenario" class="section level3 hasAnchor" number="12.2.3">
-<h3><span class="header-section-number">12.2.3</span> Complex scenario<a href="projections-and-harvest-control-rules.html#complex-scenario" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="complex-scenario" class="section level3 hasAnchor" number="12.3.3">
+<h3><span class="header-section-number">12.3.3</span> Complex scenario<a href="projections-and-harvest-control-rules.html#complex-scenario" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 
 </div>
 </div>
