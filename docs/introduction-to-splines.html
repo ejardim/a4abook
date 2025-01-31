@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-01-20" />
+<meta name="date" content="2025-01-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -257,13 +257,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>12</b> Projections and harvest control rules</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#initial-condition-assumptions-check-fwdwindow"><i class="fa fa-check"></i><b>12.1</b> Initial condition assumptions [CHECK fwdWindow]</a></li>
-<li class="chapter" data-level="12.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#scenarios"><i class="fa fa-check"></i><b>12.2</b> Scenarios</a>
-<ul>
-<li class="chapter" data-level="12.2.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#relative-scenarios"><i class="fa fa-check"></i><b>12.2.1</b> Relative scenarios</a></li>
-<li class="chapter" data-level="12.2.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#limits"><i class="fa fa-check"></i><b>12.2.2</b> Limits</a></li>
-<li class="chapter" data-level="12.2.3" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#complex-scenario"><i class="fa fa-check"></i><b>12.2.3</b> Complex scenario</a></li>
-</ul></li>
+<li class="chapter" data-level="12.0.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#references"><i class="fa fa-check"></i><b>12.0.1</b> References:</a></li>
+<li class="chapter" data-level="12.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#simple-workflow"><i class="fa fa-check"></i><b>12.1</b> Simple workflow</a></li>
+<li class="chapter" data-level="12.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#initial-condition-assumptions-check-fwdwindow"><i class="fa fa-check"></i><b>12.2</b> Initial condition assumptions [CHECK fwdWindow]</a></li>
+<li class="chapter" data-level="12.3" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#scenarios"><i class="fa fa-check"></i><b>12.3</b> Scenarios</a></li>
+<li class="chapter" data-level="12.4" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#relative-scenarios"><i class="fa fa-check"></i><b>12.4</b> Relative scenarios</a></li>
+<li class="chapter" data-level="12.5" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#limits"><i class="fa fa-check"></i><b>12.5</b> Limits</a></li>
+<li class="chapter" data-level="12.6" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#harvest-control-rule"><i class="fa fa-check"></i><b>12.6</b> Harvest Control Rule</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html"><i class="fa fa-check"></i><b>13</b> Predict and simulate </a>
 <ul>
@@ -407,9 +407,9 @@ Figure 3.6: basis functions for thin plate splines
 <span id="cb17-3"><a href="introduction-to-splines.html#cb17-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> obs), <span class="at">color =</span> <span class="st">&quot;darkgrey&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>)<span class="sc">+</span></span>
 <span id="cb17-4"><a href="introduction-to-splines.html#cb17-4" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&quot;bottom&quot;</span>)<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">&quot;y&quot;</span>)<span class="sc">+</span></span>
 <span id="cb17-5"><a href="introduction-to-splines.html#cb17-5" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.5</span>,<span class="fl">1.5</span>))</span></code></pre></div>
-<pre><code>## Warning: Removed 135 rows containing missing values or values outside the scale
+<pre><code>## Warning: Removed 128 rows containing missing values or values outside the scale
 ## range (`geom_line()`).</code></pre>
-<pre><code>## Warning: Removed 5 rows containing missing values or values outside the scale
+<pre><code>## Warning: Removed 10 rows containing missing values or values outside the scale
 ## range (`geom_point()`).</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 </div>

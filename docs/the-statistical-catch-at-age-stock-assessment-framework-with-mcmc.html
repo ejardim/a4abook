@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-01-20" />
+<meta name="date" content="2025-01-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -257,13 +257,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>12</b> Projections and harvest control rules</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#initial-condition-assumptions-check-fwdwindow"><i class="fa fa-check"></i><b>12.1</b> Initial condition assumptions [CHECK fwdWindow]</a></li>
-<li class="chapter" data-level="12.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#scenarios"><i class="fa fa-check"></i><b>12.2</b> Scenarios</a>
-<ul>
-<li class="chapter" data-level="12.2.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#relative-scenarios"><i class="fa fa-check"></i><b>12.2.1</b> Relative scenarios</a></li>
-<li class="chapter" data-level="12.2.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#limits"><i class="fa fa-check"></i><b>12.2.2</b> Limits</a></li>
-<li class="chapter" data-level="12.2.3" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#complex-scenario"><i class="fa fa-check"></i><b>12.2.3</b> Complex scenario</a></li>
-</ul></li>
+<li class="chapter" data-level="12.0.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#references"><i class="fa fa-check"></i><b>12.0.1</b> References:</a></li>
+<li class="chapter" data-level="12.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#simple-workflow"><i class="fa fa-check"></i><b>12.1</b> Simple workflow</a></li>
+<li class="chapter" data-level="12.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#initial-condition-assumptions-check-fwdwindow"><i class="fa fa-check"></i><b>12.2</b> Initial condition assumptions [CHECK fwdWindow]</a></li>
+<li class="chapter" data-level="12.3" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#scenarios"><i class="fa fa-check"></i><b>12.3</b> Scenarios</a></li>
+<li class="chapter" data-level="12.4" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#relative-scenarios"><i class="fa fa-check"></i><b>12.4</b> Relative scenarios</a></li>
+<li class="chapter" data-level="12.5" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#limits"><i class="fa fa-check"></i><b>12.5</b> Limits</a></li>
+<li class="chapter" data-level="12.6" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#harvest-control-rule"><i class="fa fa-check"></i><b>12.6</b> Harvest Control Rule</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html"><i class="fa fa-check"></i><b>13</b> Predict and simulate </a>
 <ul>
@@ -374,13 +374,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   convergence       NA
 ##   accrate       0.3271</code></pre>
 <div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html#cb317-1" tabindex="-1"></a><span class="fu">plot</span>(hke1567 <span class="sc">+</span> fitmc00)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-120-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-122-1.png" width="672" /></p>
 <p>As mentioned above <code>ADMB</code> has several options for MCMC. Here we demonstrate one of them, <code>mcprobe</code> which sets a fat-tailed proposal distribution, as an example of how to use the <code>SCAMCMC</code> objects.</p>
 <div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html#cb318-1" tabindex="-1"></a>mc <span class="ot">&lt;-</span> <span class="fu">SCAMCMC</span>(<span class="at">mcprobe=</span><span class="fl">0.45</span>)</span>
 <span id="cb318-2"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html#cb318-2" tabindex="-1"></a>fitmc01 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmodel=</span>fmod, <span class="at">qmodel=</span>qmod, <span class="at">fit =</span> <span class="st">&quot;MCMC&quot;</span>, <span class="at">mcmc=</span>mc)</span></code></pre></div>
 <p>All fits together</p>
 <div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html#cb319-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">FLStocks</span>(<span class="at">ll=</span>hke1567 <span class="sc">+</span> fit, <span class="at">mc=</span>hke1567 <span class="sc">+</span> fitmc00, <span class="at">mc_alt=</span>hke1567 <span class="sc">+</span> fitmc01))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-122-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-124-1.png" width="672" /></p>
 <div id="diagnostics-with-coda" class="section level2 hasAnchor" number="14.1">
 <h2><span class="header-section-number">14.1</span> Diagnostics with CODA<a href="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html#diagnostics-with-coda" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We use the package <code>CODA</code> to run the diagnostics on MCMC fits. One needs to convert the <code>a4a</code> output into a <code>mcmc</code> CODA object over which several diagostics can be ran. The mcmc object is a matrix with the parameters (row = iters, cols= pars).</p>
@@ -418,7 +418,7 @@ geweke.plot(fitmc02.mc[,1])</code></pre>
 <span id="cb326-3"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html#cb326-3" tabindex="-1"></a>fitmc03.mc <span class="ot">&lt;-</span> FLa4a<span class="sc">::</span><span class="fu">as.mcmc</span>(fitmc03)</span></code></pre></div>
 <p>The autocorrelation plots still shows a strong correlation across samples, although less than in the previous model.</p>
 <div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html#cb327-1" tabindex="-1"></a><span class="fu">acf</span>(fitmc03.mc[,<span class="dv">1</span>])</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-125-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-127-1.png" width="672" /></p>
 <p>Next fit will run 100000 iterations and save every 100th iteration (<code>mcsave=100</code>), so that the same 1000 iters are generated by the method. Autocorrelation is much weaker, could still be reduced by increasing <code>mcsave</code>.</p>
 <div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html#cb328-1" tabindex="-1"></a>mc <span class="ot">&lt;-</span> <span class="fu">SCAMCMC</span>(<span class="at">mcmc=</span><span class="dv">100000</span>, <span class="at">mcsave=</span><span class="dv">100</span>)</span>
 <span id="cb328-2"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html#cb328-2" tabindex="-1"></a>fitmc03 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmodel=</span>fmod, <span class="at">qmodel=</span>qmod, <span class="at">fit =</span> <span class="st">&quot;MCMC&quot;</span>, <span class="at">mcmc=</span>mc)</span>
@@ -428,14 +428,14 @@ geweke.plot(fitmc02.mc[,1])</code></pre>
 <span id="cb329-2"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html#cb329-2" tabindex="-1"></a>fitmc03 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmodel=</span>fmod, <span class="at">qmodel=</span>qmod, <span class="at">fit =</span> <span class="st">&quot;MCMC&quot;</span>, <span class="at">mcmc=</span>mc)</span>
 <span id="cb329-3"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html#cb329-3" tabindex="-1"></a>fitmc03.mc <span class="ot">&lt;-</span> FLa4a<span class="sc">::</span><span class="fu">as.mcmc</span>(fitmc03)</span></code></pre></div>
 <div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html#cb330-1" tabindex="-1"></a><span class="fu">acf</span>(fitmc03.mc[,<span class="dv">1</span>])</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-128-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-130-1.png" width="672" /></p>
 <p>All diagnostics improved with the new thining rate although some other improvements can be done. Note this diagnostics should be checked for all parameters. For the sake of space the demonstration uses only on the first.</p>
 <div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html#cb331-1" tabindex="-1"></a><span class="fu">xyplot</span>(fitmc03.mc[,<span class="dv">1</span>])</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-129-1.png" width="672" /></p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html#cb332-1" tabindex="-1"></a><span class="fu">densityplot</span>(fitmc03.mc[,<span class="dv">1</span>])</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-130-1.png" width="672" /></p>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html#cb333-1" tabindex="-1"></a><span class="fu">geweke.plot</span>(fitmc03.mc[,<span class="dv">1</span>])</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-131-1.png" width="672" /></p>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html#cb332-1" tabindex="-1"></a><span class="fu">densityplot</span>(fitmc03.mc[,<span class="dv">1</span>])</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-132-1.png" width="672" /></p>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html#cb333-1" tabindex="-1"></a><span class="fu">geweke.plot</span>(fitmc03.mc[,<span class="dv">1</span>])</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-133-1.png" width="672" /></p>
 <p>Note: add correlation across parameters</p>
 <p>The manual “A Guide for Bayesian Analysis in AD Model Builder” by Cole C. Monnahan, Melissa L. Muradian and Peter T. Kuriyam describe and explain a larger group of arguments that can be set when running MCMC with ADMB, which the engine <code>a4a</code> uses.</p>
 

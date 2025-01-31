@@ -18,7 +18,7 @@ Projections typically follow stock assessments, incorporating estimates or assum
 
 For this section we'll be using the package `FLasher` (REF) from the FLR family of packages.
 
-```{r, echo=FALSE}
+```{r, warning=FALSE, message=FALSE}
 library(FLa4a)
 library(FLasher)
 library(FLBRP)
@@ -242,40 +242,49 @@ Harvest Control Rules (HCR) can be complex and of many shapes (REF). We'll keep 
 
 HCR are decision algorythms that can be used to codify the decision making process, allowing for longer term stability of management decisions in fisheries.
 
-The HCR we're going to explore is based on a target and a limit. The target is applied to the management objective and represents the intent of management. The limit is applied to the process we want to use as trigger for protective actions. For example, the objective of the management system is to extract the highest catches possible for a very long time (aka equilibrium). However, due to natural variability and scientific uncertainty, it can happen that the stock's biomass decreases below what's expected, in which case decision makers want to make sure the stock stays healthy and productive. This situation can be translated into a target of fishing mortality at the level that extracts the Maximum Sustainable Yield, and a biomass limit of half the biomass that would produce the referred catches, everything being in a stable equilibrium. If SSB falls below the limit then fishing mortality is set at 80% of the target.
+The HCR we're going to explore is based on a target and a limit. The target is applied to the management objective and represents the intent of management. The limit is applied to the process we want to use as trigger for protective actions. For example, the objective of the management system is to extract the highest catches possible for a very long time (aka equilibrium). However, due to natural variability and scientific uncertainty, it can happen that the stock's biomass decreases below what's expected, in which case decision makers want to make sure the stock stays healthy and productive. This situation can be translated into a target of fishing mortality at the level that extracts the Maximum Sustainable Yield, and a biomass limit of *e.g.* half the biomass that would produce the referred catches, everything being in a stable equilibrium. If SSB falls below the limit then fishing mortality is set at 80% of the target.
 
 Such HCR could be written as
 
-$if SSB_y > B_{MSY} then F_{y+1} = F_{MSY} or else F_{y+1} = 0.9xF_{MSY}$
+$if SSB_y > 0.5xB_{MSY} then F_{y+1} = F_{MSY} or else F_{y+1} = 0.8xF_{MSY}$
 
 and coded like
 
 ```{r, warning=FALSE, message=FALSE}
-# # fit model
-# fit00 <- sca(ple4, ple4.indices, srmodel=~geomean())
-# stk00 <- ple4 + fit00
-# # create stock recruitment model object
-# sr00 <- as(fit00, "FLSR")
-# # estimate reference points
-# #brp00 <-
-# #ftrg <- fmsy
-# #blim <- ssb
-# # set projection
-# # most recent year in the data
-# maxy <- range(ple4)["maxyear"]
-# # number of years to project
-# projy <- 2
-# # last year for projections
-# endpy <- maxy + projy
-# # initial year for projections
-# inipy <- maxy + 1
-# # extend stock object to store projection's results
-# stk00 <- fwdWindow(stk00, end = endpy)
-# # set the controls for the projections
-# trg00 <- fwdControl(year = inipy:endpy, quant = "f", value = trg)
-# trg01 <- fwdControl(year = inipy:endpy, quant = "f", value = 0.8trg)
-# # project
-# if(ssb(stk00)>blim) stk10 <- fwd(stk00, control=trg00, sr=sr00) elseif stk10 <- fwd(stk00, control=trg01, sr=sr00)
+# fit model
+fit00 <- sca(ple4, ple4.indices, srmodel=~geomean())
+stk00 <- ple4 + fit00
+# create stock recruitment model object
+sr00 <- as(fit00, "FLSR")
+# estimate reference points
+brp00 <- FLBRP(stk00, sr=sr00)
+brp00 <- brp(brp00)
+ftrg <- refpts(brp00)['msy','harvest']
+blim <- 0.5*refpts(brp00)['msy','biomass']
+# set projection
+# most recent year in the data
+maxy <- range(ple4)["maxyear"]
+# number of years to project
+projy <- 2
+# last year for projections
+endpy <- maxy + projy
+# initial year for projections
+inipy <- maxy + 1
+# extend stock object to store projection's results
+stk00 <- fwdWindow(stk00, end = endpy)
+# set the controls for the projections
+trg00 <- fwdControl(year = inipy:endpy, quant = "f", value = ftrg)
+trg01 <- fwdControl(year = inipy:endpy, quant = "f", value = 0.8*ftrg)
+# project
+if(ssb(stk00)[,ac(maxy)] > blim){
+        stk10 <- fwd(stk00, control=trg00, sr=sr00)
+    } else {
+        stk10 <- fwd(stk00, control=trg01, sr=sr00)
+}
+```
+
+```{r, echo=FALSE, fig.cap="Projection of stock for 2 years following a HCR with a target of FMSY and limit of 50% SSBMSY"}
+plot(window(stk10, start = 2000))
 ```
 
 

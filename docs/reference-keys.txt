@@ -83,6 +83,7 @@ fig:unnamed-chunk-106
 fig:unnamed-chunk-108
 fig:unnamed-chunk-111
 fig:unnamed-chunk-113
+fig:unnamed-chunk-115
 fig:sim
 fig:sim2
 fig:mprop
@@ -170,11 +171,13 @@ stock-recruitment-during-fitting-the-stock-assessment-model
 economics-reference-points
 computing-user-specific-reference-points
 projections-and-harvest-control-rules
+references
+simple-workflow
 initial-condition-assumptions-check-fwdwindow
 scenarios
 relative-scenarios
 limits
-complex-scenario
+harvest-control-rule
 predict-and-simulate
 basic-functions
 simulate
@@ -188,11 +191,3 @@ propagate-uncertainty-into-stock-assessment
 modelling-fleet-selectivity
 modelling-spatial-effects
 sections-to-be-added
-fig:unnamed-chunk-3
-fig:unnamed-chunk-5
-fig:unnamed-chunk-7
-fig:unnamed-chunk-8
-fig:unnamed-chunk-19
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
-references
-simple-workflow

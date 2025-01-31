@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-01-20" />
+<meta name="date" content="2025-01-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -257,13 +257,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>12</b> Projections and harvest control rules</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#initial-condition-assumptions-check-fwdwindow"><i class="fa fa-check"></i><b>12.1</b> Initial condition assumptions [CHECK fwdWindow]</a></li>
-<li class="chapter" data-level="12.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#scenarios"><i class="fa fa-check"></i><b>12.2</b> Scenarios</a>
-<ul>
-<li class="chapter" data-level="12.2.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#relative-scenarios"><i class="fa fa-check"></i><b>12.2.1</b> Relative scenarios</a></li>
-<li class="chapter" data-level="12.2.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#limits"><i class="fa fa-check"></i><b>12.2.2</b> Limits</a></li>
-<li class="chapter" data-level="12.2.3" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#complex-scenario"><i class="fa fa-check"></i><b>12.2.3</b> Complex scenario</a></li>
-</ul></li>
+<li class="chapter" data-level="12.0.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#references"><i class="fa fa-check"></i><b>12.0.1</b> References:</a></li>
+<li class="chapter" data-level="12.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#simple-workflow"><i class="fa fa-check"></i><b>12.1</b> Simple workflow</a></li>
+<li class="chapter" data-level="12.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#initial-condition-assumptions-check-fwdwindow"><i class="fa fa-check"></i><b>12.2</b> Initial condition assumptions [CHECK fwdWindow]</a></li>
+<li class="chapter" data-level="12.3" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#scenarios"><i class="fa fa-check"></i><b>12.3</b> Scenarios</a></li>
+<li class="chapter" data-level="12.4" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#relative-scenarios"><i class="fa fa-check"></i><b>12.4</b> Relative scenarios</a></li>
+<li class="chapter" data-level="12.5" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#limits"><i class="fa fa-check"></i><b>12.5</b> Limits</a></li>
+<li class="chapter" data-level="12.6" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#harvest-control-rule"><i class="fa fa-check"></i><b>12.6</b> Harvest Control Rule</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html"><i class="fa fa-check"></i><b>13</b> Predict and simulate </a>
 <ul>
@@ -308,7 +308,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1 class="title">Fish stock assessment with R</h1>
 <h2 class="subtitle"><em>The a4a Initiative</em></h2>
 <p class="author"><em>John Doe and friends</em></p>
-<p class="date"><em>2025-01-20</em></p>
+<p class="date"><em>2025-01-31</em></p>
 </div>
 <div id="before-starting" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Before starting<a href="index.html#before-starting" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -342,7 +342,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-10"><a href="index.html#cb2-10" tabindex="-1"></a><span class="fu">data</span>(ple4.index)</span>
 <span id="cb2-11"><a href="index.html#cb2-11" tabindex="-1"></a><span class="fu">data</span>(rfLen)</span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">&quot;FLCore&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &#39;2.6.20.9321&#39;</code></pre>
+<pre><code>## [1] &#39;2.6.20.9323&#39;</code></pre>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="index.html#cb5-1" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">&quot;FLa4a&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &#39;1.9.0.9002&#39;</code></pre>
 </div>
@@ -382,9 +382,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The object oriented structure of <code>a4a</code> gives the opportunity to change the behavior of a function according to the object that is applied to. For example we can check the available methods of the function <code>plot</code></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="index.html#cb9-1" tabindex="-1"></a><span class="fu">showMethods</span>(<span class="st">&quot;plot&quot;</span>)</span></code></pre></div>
 <pre><code>## Function: plot (package base)
-## x=&quot;a4aFitCatchDiagn&quot;, y=&quot;missing&quot;
 ## x=&quot;a4aFit&quot;, y=&quot;FLIndices&quot;
 ## x=&quot;a4aFit&quot;, y=&quot;FLStock&quot;
+## x=&quot;a4aFitCatchDiagn&quot;, y=&quot;missing&quot;
 ## x=&quot;a4aFitMCMCs&quot;, y=&quot;missing&quot;
 ## x=&quot;a4aFitResiduals&quot;, y=&quot;missing&quot;
 ## x=&quot;a4aFits&quot;, y=&quot;missing&quot;
@@ -394,8 +394,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## x=&quot;FLBiol&quot;, y=&quot;missing&quot;
 ## x=&quot;FLBiols&quot;, y=&quot;missing&quot;
 ## x=&quot;FLCohort&quot;, y=&quot;missing&quot;
-## x=&quot;FLIndexBiomass&quot;, y=&quot;missing&quot;
 ## x=&quot;FLIndex&quot;, y=&quot;missing&quot;
+## x=&quot;FLIndexBiomass&quot;, y=&quot;missing&quot;
 ## x=&quot;FLIndices&quot;, y=&quot;missing&quot;
 ## x=&quot;FLPar&quot;, y=&quot;missing&quot;
 ## x=&quot;FLQuant&quot;, y=&quot;FLQuant&quot;
@@ -425,6 +425,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     .local &lt;- function (x, metrics = list(Rec = rec, SSB = ssb, 
 ##         Catch = catch, F = fbar), na.rm = TRUE, ...) 
 ##     {
+##         if (all(is.na(harvest(x))) &amp; missing(metrics)) 
+##             metrics &lt;- list(Catch = catch, Landings = landings, 
+##                 Discards = discards)
 ##         metrics &lt;- metrics(x, metrics = metrics)
 ##         if (&quot;F&quot; %in% names(metrics)) 
 ##             units(metrics$F) &lt;- paste0(range(x, c(&quot;minfbar&quot;, 
@@ -435,11 +438,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##                   , &quot;M&quot;]
 ##                 if (&quot;Rec&quot; %in% names(metrics)) 
 ##                   metrics$Rec &lt;- unitSums(metrics$Rec)
-##             }
-##         }
-##         if (&quot;Rec&quot; %in% names(metrics)) {
-##             if (dim(metrics$Rec)[4] &gt; 1) {
-##                 metrics$Rec[metrics$Rec == 0] &lt;- NA
 ##             }
 ##         }
 ##         p &lt;- plot(metrics, na.rm = na.rm, ...) + ylim(c(0, NA))
@@ -454,7 +452,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     }
 ##     .local(x, ...)
 ## }
-## &lt;bytecode: 0x605b1cd62da8&gt;
+## &lt;bytecode: 0x5d45d5896af8&gt;
 ## &lt;environment: namespace:ggplotFL&gt;
 ## 
 ## Signatures:

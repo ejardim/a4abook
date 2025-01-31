@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-01-20" />
+<meta name="date" content="2025-01-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -257,13 +257,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>12</b> Projections and harvest control rules</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#initial-condition-assumptions-check-fwdwindow"><i class="fa fa-check"></i><b>12.1</b> Initial condition assumptions [CHECK fwdWindow]</a></li>
-<li class="chapter" data-level="12.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#scenarios"><i class="fa fa-check"></i><b>12.2</b> Scenarios</a>
-<ul>
-<li class="chapter" data-level="12.2.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#relative-scenarios"><i class="fa fa-check"></i><b>12.2.1</b> Relative scenarios</a></li>
-<li class="chapter" data-level="12.2.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#limits"><i class="fa fa-check"></i><b>12.2.2</b> Limits</a></li>
-<li class="chapter" data-level="12.2.3" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#complex-scenario"><i class="fa fa-check"></i><b>12.2.3</b> Complex scenario</a></li>
-</ul></li>
+<li class="chapter" data-level="12.0.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#references"><i class="fa fa-check"></i><b>12.0.1</b> References:</a></li>
+<li class="chapter" data-level="12.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#simple-workflow"><i class="fa fa-check"></i><b>12.1</b> Simple workflow</a></li>
+<li class="chapter" data-level="12.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#initial-condition-assumptions-check-fwdwindow"><i class="fa fa-check"></i><b>12.2</b> Initial condition assumptions [CHECK fwdWindow]</a></li>
+<li class="chapter" data-level="12.3" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#scenarios"><i class="fa fa-check"></i><b>12.3</b> Scenarios</a></li>
+<li class="chapter" data-level="12.4" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#relative-scenarios"><i class="fa fa-check"></i><b>12.4</b> Relative scenarios</a></li>
+<li class="chapter" data-level="12.5" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#limits"><i class="fa fa-check"></i><b>12.5</b> Limits</a></li>
+<li class="chapter" data-level="12.6" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#harvest-control-rule"><i class="fa fa-check"></i><b>12.6</b> Harvest Control Rule</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html"><i class="fa fa-check"></i><b>13</b> Predict and simulate </a>
 <ul>
@@ -422,7 +422,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## params
 ##                linf                   k                  t0 
-## 59.069680(12.94106)  0.091759( 0.02015) -0.010051( 0.00216) 
+## 59.988423(10.36360)  0.091179( 0.01936) -0.009690( 0.00197) 
 ## units:  cm year-1 year</code></pre>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb46-1" tabindex="-1"></a><span class="fu">dim</span>(vbNorm<span class="sc">@</span>params)</span></code></pre></div>
 <pre><code>## [1]   3 250</code></pre>
@@ -433,21 +433,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb50-1" tabindex="-1"></a><span class="co"># We show the first ten iterations only as an illustration</span></span>
 <span id="cb50-2"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb50-2" tabindex="-1"></a>ages[,<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
 <pre><code>##    iter
-##             1        2        3         4        5         6        7         8
-##   1 0.9960501 1.715225 1.249221 0.9719272 1.073284 0.9312899 1.189519 0.7138235
-##   2 1.1880934 2.051315 1.499955 1.1602304 1.280977 1.1099865 1.418355 0.8519706
-##   3 1.3834158 2.394975 1.758324 1.3516582 1.492231 1.2912791 1.650920 0.9923417
-##   4 1.5821311 2.746556 2.024807 1.5463159 1.707169 1.4752441 1.887337 1.1350095
-##   5 1.7843594 3.106431 2.299931 1.7443145 1.925922 1.6619617 2.127735 1.2800504
-##   6 1.9902271 3.475000 2.584275 1.9457705 2.148629 1.8515153 2.372252 1.4275448
+##             1         2        3         4        5         6         7
+##   1 0.8596082 0.9135528 1.150130 0.7975569 1.453628 0.7915770 0.9127163
+##   2 1.0284246 1.0932293 1.374537 0.9530771 1.734548 0.9451764 1.0913176
+##   3 1.2008157 1.2767987 1.603590 1.1115247 2.020490 1.1013990 1.2734478
+##   4 1.3769364 1.4644333 1.837486 1.2730120 2.311636 1.2603358 1.4592492
+##   5 1.5569515 1.6563174 2.076433 1.4376580 2.608179 1.4220828 1.6488728
+##   6 1.7410371 1.8526478 2.320655 1.6055886 2.910324 1.5867413 1.8424793
 ##    iter
-##             9       10
-##   1 0.9182033 1.097738
-##   2 1.0951302 1.310708
-##   3 1.2748840 1.527785
-##   4 1.4575566 1.749131
-##   5 1.6432443 1.974918
-##   6 1.8320484 2.205326</code></pre>
+##             8        9        10
+##   1 0.8348379 1.073396 0.9725319
+##   2 0.9961795 1.283598 1.1606014
+##   3 1.1600269 1.498314 1.3517097
+##   4 1.3264592 1.717742 1.5459567
+##   5 1.4955593 1.942093 1.7434472
+##   6 1.6674141 2.171593 1.9442913</code></pre>
 <p>The marginal distributions can be seen in Figure @ref(fig:plot_norm_params).</p>
 <div class="figure">
 <img src="_main_files/figure-html/plot_norm_params-1.png" alt="The marginal distributions of each of the parameters from using a multivariate normal distribution." width="672" />
@@ -551,9 +551,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Warning in log(1 - len/linf): NaNs produced
 ## Warning in log(1 - len/linf): NaNs produced
 ## Warning in log(1 - len/linf): NaNs produced
+## Warning in log(1 - len/linf): NaNs produced
+## Warning in log(1 - len/linf): NaNs produced
 ## Warning in log(1 - len/linf): NaNs produced</code></pre>
 <div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb58-1" tabindex="-1"></a><span class="fu">dim</span>(cth.n)</span></code></pre></div>
-<pre><code>## [1] 95 26  1  4  1 10</code></pre>
+<pre><code>## [1] 59 26  1  4  1 10</code></pre>
 <p>In the previous example, the <code>FLQuant</code> object that was sliced (<code>catch.n(rfLen.stk)</code>) had only one iteration. This iteration was sliced by each of the iterations in the growth model. It is possible for the <code>FLQuant</code> object to have the same number of iterations as the growth model, in which case each iteration of the <code>FLQuant</code> and the growth model are used together. It is also possible for the growth model to have only one iteration while the <code>FLQuant</code> object has many iterations. The same growth model is then used for each of the <code>FLQuant</code> iterations. As with all <code>FLR</code> objects, the general rule is <em>one or n</em> iterations.</p>
 <p>As well as converting one <code>FLQuant</code> at a time, we can convert entire <code>FLStock</code> and <code>FLIndex</code> objects. In these cases the individual <code>FLQuant</code> slots of those classes are converted from length-based to age-based. As mentioned above, the aggregation method depends on the type of values the slots contain. The abundance slots (<code>*.n</code>, such as <code>stock.n</code>) are summed. The <code>*.wt</code>, <code>m</code>, <code>mat</code>, <code>harvest.spwn</code> and <code>m.spwn</code> slots of an <code>FLStock</code> object are averaged. The <code>catch.wt</code> and <code>sel.pattern</code> slots of an <code>FLIndex</code> object are averaged, while the <code>index</code>, <code>index.var</code> and <code>catch.n</code> slots are summed.</p>
 <p>The method for <code>FLStock</code> classes takes an additional argument for the plusgroup.</p>
