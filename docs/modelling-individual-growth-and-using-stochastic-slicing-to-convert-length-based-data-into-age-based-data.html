@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-01-31" />
+<meta name="date" content="2025-02-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -276,9 +276,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#predict"><i class="fa fa-check"></i><b>13.3</b> Predict</a></li>
 <li class="chapter" data-level="13.4" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#simulate-1"><i class="fa fa-check"></i><b>13.4</b> Simulate</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html"><i class="fa fa-check"></i><b>14</b> The statistical catch-at-age stock assessment framework with MCMC </a>
+<li class="chapter" data-level="14" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>14</b> The statistical catch-at-age stock assessment framework with Markov Chain Monte Carlo (MCMC) </a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html#diagnostics-with-coda"><i class="fa fa-check"></i><b>14.1</b> Diagnostics with CODA</a></li>
+<li class="chapter" data-level="14.0.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#references-1"><i class="fa fa-check"></i><b>14.0.1</b> References:</a></li>
+<li class="chapter" data-level="14.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#the-mcmc-method-for-sca"><i class="fa fa-check"></i><b>14.1</b> The MCMC method for <code>sca</code></a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#mcmc-arguments"><i class="fa fa-check"></i><b>14.1.1</b> MCMC arguments</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#diagnostics-with-coda"><i class="fa fa-check"></i><b>14.2</b> Diagnostics with CODA</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="propagate-uncertainty-into-stock-assessment.html"><a href="propagate-uncertainty-into-stock-assessment.html"><i class="fa fa-check"></i><b>15</b> Propagate uncertainty into stock assessment</a></li>
 <li class="chapter" data-level="16" data-path="modelling-fleet-selectivity.html"><a href="modelling-fleet-selectivity.html"><i class="fa fa-check"></i><b>16</b> Modelling fleet selectivity</a></li>
@@ -422,7 +427,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## params
 ##                linf                   k                  t0 
-## 59.988423(10.36360)  0.091179( 0.01936) -0.009690( 0.00197) 
+## 60.957842(12.85845)  0.090221( 0.01795) -0.010135( 0.00193) 
 ## units:  cm year-1 year</code></pre>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb46-1" tabindex="-1"></a><span class="fu">dim</span>(vbNorm<span class="sc">@</span>params)</span></code></pre></div>
 <pre><code>## [1]   3 250</code></pre>
@@ -433,21 +438,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb50-1" tabindex="-1"></a><span class="co"># We show the first ten iterations only as an illustration</span></span>
 <span id="cb50-2"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb50-2" tabindex="-1"></a>ages[,<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
 <pre><code>##    iter
-##             1         2        3         4        5         6         7
-##   1 0.8596082 0.9135528 1.150130 0.7975569 1.453628 0.7915770 0.9127163
-##   2 1.0284246 1.0932293 1.374537 0.9530771 1.734548 0.9451764 1.0913176
-##   3 1.2008157 1.2767987 1.603590 1.1115247 2.020490 1.1013990 1.2734478
-##   4 1.3769364 1.4644333 1.837486 1.2730120 2.311636 1.2603358 1.4592492
-##   5 1.5569515 1.6563174 2.076433 1.4376580 2.608179 1.4220828 1.6488728
-##   6 1.7410371 1.8526478 2.320655 1.6055886 2.910324 1.5867413 1.8424793
+##            1        2         3        4        5         6        7        8
+##   1 1.052078 1.163532 0.9315611 1.347104 1.089671 0.9110328 1.219220 1.714656
+##   2 1.256183 1.386221 1.1110533 1.609157 1.305410 1.0869279 1.457276 2.053803
+##   3 1.464132 1.612110 1.2934562 1.876231 1.526607 1.2655323 1.700304 2.401922
+##   4 1.676074 1.841293 1.4788657 2.148523 1.753545 1.4469307 1.948519 2.759502
+##   5 1.892164 2.073867 1.6673828 2.426240 1.986531 1.6312120 2.202145 3.127070
+##   6 2.112568 2.309935 1.8591133 2.709602 2.225896 1.8184693 2.461425 3.505202
 ##    iter
-##             8        9        10
-##   1 0.8348379 1.073396 0.9725319
-##   2 0.9961795 1.283598 1.1606014
-##   3 1.1600269 1.498314 1.3517097
-##   4 1.3264592 1.717742 1.5459567
-##   5 1.4955593 1.942093 1.7434472
-##   6 1.6674141 2.171593 1.9442913</code></pre>
+##             9       10
+##   1 0.8139041 2.138809
+##   2 0.9711283 2.596337
+##   3 1.1309854 3.080368
+##   4 1.2935649 3.594162
+##   5 1.4589612 4.141620
+##   6 1.6272737 4.727465</code></pre>
 <p>The marginal distributions can be seen in Figure @ref(fig:plot_norm_params).</p>
 <div class="figure">
 <img src="_main_files/figure-html/plot_norm_params-1.png" alt="The marginal distributions of each of the parameters from using a multivariate normal distribution." width="672" />
@@ -549,13 +554,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Warning in log(1 - len/linf): NaNs produced
 ## Warning in log(1 - len/linf): NaNs produced
 ## Warning in log(1 - len/linf): NaNs produced
-## Warning in log(1 - len/linf): NaNs produced
-## Warning in log(1 - len/linf): NaNs produced
-## Warning in log(1 - len/linf): NaNs produced
-## Warning in log(1 - len/linf): NaNs produced
 ## Warning in log(1 - len/linf): NaNs produced</code></pre>
 <div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#cb58-1" tabindex="-1"></a><span class="fu">dim</span>(cth.n)</span></code></pre></div>
-<pre><code>## [1] 59 26  1  4  1 10</code></pre>
+<pre><code>## [1] 71 26  1  4  1 10</code></pre>
 <p>In the previous example, the <code>FLQuant</code> object that was sliced (<code>catch.n(rfLen.stk)</code>) had only one iteration. This iteration was sliced by each of the iterations in the growth model. It is possible for the <code>FLQuant</code> object to have the same number of iterations as the growth model, in which case each iteration of the <code>FLQuant</code> and the growth model are used together. It is also possible for the growth model to have only one iteration while the <code>FLQuant</code> object has many iterations. The same growth model is then used for each of the <code>FLQuant</code> iterations. As with all <code>FLR</code> objects, the general rule is <em>one or n</em> iterations.</p>
 <p>As well as converting one <code>FLQuant</code> at a time, we can convert entire <code>FLStock</code> and <code>FLIndex</code> objects. In these cases the individual <code>FLQuant</code> slots of those classes are converted from length-based to age-based. As mentioned above, the aggregation method depends on the type of values the slots contain. The abundance slots (<code>*.n</code>, such as <code>stock.n</code>) are summed. The <code>*.wt</code>, <code>m</code>, <code>mat</code>, <code>harvest.spwn</code> and <code>m.spwn</code> slots of an <code>FLStock</code> object are averaged. The <code>catch.wt</code> and <code>sel.pattern</code> slots of an <code>FLIndex</code> object are averaged, while the <code>index</code>, <code>index.var</code> and <code>catch.n</code> slots are summed.</p>
 <p>The method for <code>FLStock</code> classes takes an additional argument for the plusgroup.</p>

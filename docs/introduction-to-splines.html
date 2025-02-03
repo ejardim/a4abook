@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-01-31" />
+<meta name="date" content="2025-02-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -276,9 +276,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#predict"><i class="fa fa-check"></i><b>13.3</b> Predict</a></li>
 <li class="chapter" data-level="13.4" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#simulate-1"><i class="fa fa-check"></i><b>13.4</b> Simulate</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html"><i class="fa fa-check"></i><b>14</b> The statistical catch-at-age stock assessment framework with MCMC </a>
+<li class="chapter" data-level="14" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>14</b> The statistical catch-at-age stock assessment framework with Markov Chain Monte Carlo (MCMC) </a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-mcmc.html#diagnostics-with-coda"><i class="fa fa-check"></i><b>14.1</b> Diagnostics with CODA</a></li>
+<li class="chapter" data-level="14.0.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#references-1"><i class="fa fa-check"></i><b>14.0.1</b> References:</a></li>
+<li class="chapter" data-level="14.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#the-mcmc-method-for-sca"><i class="fa fa-check"></i><b>14.1</b> The MCMC method for <code>sca</code></a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#mcmc-arguments"><i class="fa fa-check"></i><b>14.1.1</b> MCMC arguments</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#diagnostics-with-coda"><i class="fa fa-check"></i><b>14.2</b> Diagnostics with CODA</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="propagate-uncertainty-into-stock-assessment.html"><a href="propagate-uncertainty-into-stock-assessment.html"><i class="fa fa-check"></i><b>15</b> Propagate uncertainty into stock assessment</a></li>
 <li class="chapter" data-level="16" data-path="modelling-fleet-selectivity.html"><a href="modelling-fleet-selectivity.html"><i class="fa fa-check"></i><b>16</b> Modelling fleet selectivity</a></li>
@@ -407,9 +412,9 @@ Figure 3.6: basis functions for thin plate splines
 <span id="cb17-3"><a href="introduction-to-splines.html#cb17-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> obs), <span class="at">color =</span> <span class="st">&quot;darkgrey&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>)<span class="sc">+</span></span>
 <span id="cb17-4"><a href="introduction-to-splines.html#cb17-4" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&quot;bottom&quot;</span>)<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">&quot;y&quot;</span>)<span class="sc">+</span></span>
 <span id="cb17-5"><a href="introduction-to-splines.html#cb17-5" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.5</span>,<span class="fl">1.5</span>))</span></code></pre></div>
-<pre><code>## Warning: Removed 128 rows containing missing values or values outside the scale
+<pre><code>## Warning: Removed 152 rows containing missing values or values outside the scale
 ## range (`geom_line()`).</code></pre>
-<pre><code>## Warning: Removed 10 rows containing missing values or values outside the scale
+<pre><code>## Warning: Removed 5 rows containing missing values or values outside the scale
 ## range (`geom_point()`).</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 </div>

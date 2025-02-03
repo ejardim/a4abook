@@ -86,6 +86,7 @@ fig:unnamed-chunk-113
 fig:unnamed-chunk-115
 fig:sim
 fig:sim2
+tab:mcargs
 fig:mprop
 before-starting
 license-documentation-and-development-status
@@ -185,7 +186,10 @@ genflquant
 submodels
 predict
 simulate-1
-the-statistical-catch-at-age-stock-assessment-framework-with-mcmc
+the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc
+references-1
+the-mcmc-method-for-sca
+mcmc-arguments
 diagnostics-with-coda
 propagate-uncertainty-into-stock-assessment
 modelling-fleet-selectivity

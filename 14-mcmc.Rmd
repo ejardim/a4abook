@@ -1,20 +1,84 @@
-# The statistical catch-at-age stock assessment framework with MCMC \label{sec:mcmc}
+# The statistical catch-at-age stock assessment framework with Markov Chain Monte Carlo (MCMC) \label{sec:mcmc}
 
-The previous methods were demonstrated using the maximum likelihood estimation method. However, `ADMB` can also use MCMC methods to fit the model. This section shows how the `sca` methods interface with `ADMB` to use the MCMC fits. For this section we'll use the hake assessment in mediterranean areas (gsa) 1, 5, 6 and 7.
+The previous methods were demonstrated using maximum likelihood estimation (MLE). However, ADMB also supports Markov Chain Monte Carlo (MCMC) methods, which provide significant advantages, particularly when working with complex models that involve many parameters. The key difference is that while MLE finds a single best estimate of parameters by maximizing the likelihood function, MCMC offers a broader perspective by generating an entire distribution of possible values. This approach is more informative because it does not just give the most likely estimate but also helps us understand the uncertainty surrounding it. With MCMC, researchers can incorporate prior knowledge and obtain results that are often more realistic and reliable (Gelman et al., 2013). This is especially useful when dealing with complicated models where traditional likelihood-based methods struggle, as MCMC allows for efficient exploration of possible solutions without requiring an exact mathematical formulation (Gilks, Richardson, & Spiegelhalter, 1996; Robert & Casella, 2004).
 
-The `sca` likelihood estimate is:
+One of the biggest advantages of MCMC is its flexibility when working with models that have irregular behavior, such as those with multiple peaks or abrupt changes in likelihood. Standard MLE methods assume that the likelihood function behaves smoothly, like a well-shaped bowl, but this is rarely true in real-world applications. In fisheries, ecology, and other applied sciences, models often have parameters that interact in complex ways, creating likelihood surfaces with ridges and multiple solutions. In these cases, MLE can easily get stuck in a local peak, failing to find the best possible estimate or underestimating the real uncertainty in the system (Neal, 1993). Since MCMC uses a probabilistic sampling approach instead of strict optimization, it moves freely across the entire space of possible values, making it more robust and adaptable to challenging problems (Robert & Casella, 2013).
 
-```{r}
-# ll
-data(hke1567)
-data(hke1567.idx)
-fmod <- ~s(age, k = 4) + s(year, k = 8) + s(year, k = 8, by = as.numeric(age == 0)) + s(year, k = 8, by = as.numeric(age == 4))
-qmod <- list(~I(1/(1 + exp(-age))))
-fit <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod)
-fit <- simulate(fit, 1000)
+Traditional MLE-based uncertainty estimation relies on the Hessian matrix, which essentially measures how quickly the likelihood function changes as parameters vary. This method assumes that the shape of the likelihood function is roughly the same everywhere—meaning that a quadratic (bowl-like) approximation is valid (Pawitan, 2001). However, this assumption is often unrealistic, especially in models with many parameters or correlations between them, as is common in fisheries stock assessment models. Furthermore, MLE uncertainty estimates require a large sample size for them to be accurate, which is not always available in real-world applications (Wasserman, 2004; van der Vaart, 1998). If these assumptions do not hold, MLE can give misleading confidence intervals, making decision-making riskier. Additionally, MLE assumes that the model is correctly specified—meaning that it accurately represents the real system being studied. If the model is misspecified or overly simplified, the Hessian-based uncertainty estimates may be highly unreliable, requiring alternative approaches like robust standard errors or resampling methods (White, 1982).
+
+In fields like fisheries science, where models often involve multiple correlated parameters, MCMC provides a much more flexible and realistic way to estimate uncertainty. Unlike MLE, which assumes uncertainty follows a simple symmetrical pattern, MCMC can handle more complex distributions, giving a better representation of real-world variability. This is especially important when estimating key fisheries management indicators, such as spawning stock biomass (SSB) or fishing mortality (F), which influence critical policy decisions. Because MCMC does not impose strict mathematical assumptions about the shape of uncertainty, it produces estimates that are more reflective of real-world conditions, ultimately leading to more informed and reliable management strategies.
+
+ADMB’s approach to Markov Chain Monte Carlo (MCMC) enhances Bayesian analysis by efficiently exploring parameter uncertainty in complex models. Unlike standard MCMC tools, ADMB leverages automatic differentiation to improve sampling efficiency and speed (Fournier et al., 2012). It supports various sampling algorithms, including Metropolis-Hastings and Hamiltonian Monte Carlo, which help navigate high-dimensional parameter spaces and complex likelihood structures more effectively. This makes ADMB particularly useful in applied sciences like fisheries and ecology, where uncertainty estimation is crucial for decision-making. Additionally, ADMB provides built-in diagnostics to assess MCMC convergence and reliability, ensuring that posterior distributions are well-explored and results are robust (Gelman et al., 2013).
+
+To evaluate the quality of MCMC sampling, ADMB offers several key diagnostics. Autocorrelation analysis detects dependencies between successive samples, while the effective sample size (ESS) measures the number of independent samples in the chain. The Gelman-Rubin diagnostic (\(\hat{R}\)) helps assess whether multiple chains have converged to the same distribution, with values close to 1 indicating good convergence. Trace plots visually inspect parameter behavior over iterations, revealing trends or poor mixing. Additionally, ADMB monitors the acceptance rate to ensure efficient sampling and provides posterior density estimates to check if the distribution has been properly explored. These tools help users refine their MCMC runs, adjusting sampling length or proposal distributions to improve performance and ensure reliable uncertainty estimates.
+
+The manual "A Guide for Bayesian Analysis in AD Model Builder" by Cole C. Monnahan, Melissa L. Muradian and Peter T. Kuriyam describe and explain a larger group of arguments that can be set when running MCMC with ADMB, which the `a4a` uses.
+
+### References:
+- Brooks, S., Gelman, A., Jones, G., & Meng, X.-L. (2011). *Handbook of Markov Chain Monte Carlo*. CRC Press.
+- Gamerman, D., & Lopes, H. F. (2006). *Markov Chain Monte Carlo: Stochastic Simulation for Bayesian Inference*. CRC Press.
+- Gelman, A., Carlin, J. B., Stern, H. S., Dunson, D. B., Vehtari, A., & Rubin, D. B. (2014). *Bayesian Data Analysis* (3rd ed.). CRC Press.
+- Neal, R. M. (1993). *Probabilistic inference using Markov Chain Monte Carlo methods*. Department of Computer Science, University of Toronto.
+- Robert, C., & Casella, G. (2013). *Monte Carlo Statistical Methods* (2nd ed.). Springer.
+- Casella, G., & Berger, R. L. (2002). *Statistical Inference* (2nd ed.). Duxbury.
+- Lehmann, E. L., & Casella, G. (1998). *Theory of Point Estimation* (2nd ed.). Springer.
+- Pawitan, Y. (2001). *In All Likelihood: Statistical Modelling and Inference Using Likelihood*. Oxford University Press.
+- van der Vaart, A. W. (1998). *Asymptotic Statistics*. Cambridge University Press.
+- Wasserman, L. (2004). *All of Statistics: A Concise Course in Statistical Inference*. Springer.
+- White, H. (1982). "Maximum Likelihood Estimation of Misspecified Models." *Econometrica*, 50(1), 1-25.
+- Fournier, D. A., Skaug, H. J., Ancheta, J., Ianelli, J., Magnusson, A., Maunder, M. N., Nielsen, A., & Sibert, J. (2012). AD Model Builder: Using automatic differentiation for statistical inference of highly parameterized complex nonlinear models. *Optimization Methods and Software, 27*(2), 233–249.
+- Gelman, A., Carlin, J. B., Stern, H. S., Dunson, D. B., Vehtari, A., & Rubin, D. B. (2013). *Bayesian Data Analysis* (3rd ed.). CRC Press.
+
+## The MCMC method for `sca`
+
+This section shows how the `sca` methods interface with `ADMB` to use the MCMC fits. For this section we'll use the hake assessment in mediterranean areas (gsa) 1, 5, 6 and 7.
+
+We'll start buy fitting the `MLE` model and afterwards call the `MCMC` methods. The outcomes of the `MCMC` fit need to be inspected to make sure the chain converged and the results are robust. A set of diagnostics are available to do this work.
+
+[TO CHECK]
+For many Bayesian software platforms, the MCMC algorithms are started at user-specified or arbitrary places. ADMB has the advantage that it can robustly estimate the posterior mode and the covariance at that point. This information is very valuable in initializing the MCMC chain. Specifically, an MCMC chain starts from the posterior mode and uses the estimated covariance matrix in its proposed jumps (see the algorithm sections below). As such, ADMB chains typically do not need a long period to reach areas of high density. However, we caution the user to always check the MCMC output as other issues may lead to a chain that needs a longer burn-in. (REF TO Monnahan)
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+opts_chunk$set(dev='png', dev.args=list(type="cairo"))
 ```
 
-To run the MCMC method, one needs to configure a set of arguments, which is done by creating a `SCAMCMC` object. For details on the MCMC configuration in `ADMB` visit the `ADMB` website.
+```{r}
+# load libraries and data
+library(FLa4a)
+library(ggplotFL)
+data(hke1567)
+data(hke1567.idx)
+nsim <- 250
+# MLE estimate
+fmod <- ~s(age, k = 4) +
+    s(year, k = 8) +
+    s(year, k = 8, by = as.numeric(age == 0)) +
+    s(year, k = 8, by = as.numeric(age == 4))
+qmod <- list(~I(1/(1 + exp(-age))))
+fit <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod)
+fit <- simulate(fit, nsim)
+```
+
+To run the MCMC method, one needs to configure a set of arguments, which is done by creating a `SCAMCMC` object. Table \@ref(tab:mcargs) describes the arguments available to run the MCMC method, extracted from Monnahan [ref]. For more details on the MCMC configuration in `ADMB` visit the `ADMB` website.
+
+|Argument|Description|
+|:---|:----------|
+|mcmc N |Run N MCMC iterations|
+|mcsave N| Save every N th MCMC iteration|
+|mcscale N| Rescale step size for first N iterations|
+|mcmult N| Rescale the covariance matrix|
+|mcrb N| Reduce high parameter correlations|
+|mcprobe X| Use a fat-tailed proposal distribution|
+|mcdiag| Use a diagonal covariance matrix|
+|mcnoscale| Do not scale the algorithm during|
+|mcu| Use a uniform distribution as proposal distribution|
+|hybrid| Use the hybrid method|
+|hynstep N| Mean number of steps for the leapfrog method|
+|hyeps X| The stepsize for the leapfrog method [X numeric and > 0]|
+
+Table: (\#tab:mcargs) `ADMB` MCMC arguments
 
 ```{r}
 # mcmc
@@ -23,7 +87,7 @@ mc <- SCAMCMC()
 mc
 ```
 
-Defaults for now are ok, so lets fit the model. Note that the argument `fit` must be set to `MCMC` and the argument `mcmc` takes the `SCAMCMC` object. A major check when running MCMC is the acceptance rate, which should be around 0.3. This is a rule of thumb, for more information read the (extensive) literature on MCMC. The slot `fitSumm` stores that information.
+Defaults for now are ok, so lets fit the model. Note that the argument `fit` must be set to `MCMC` and the argument `mcmc` takes the `SCAMCMC` object.
 
 ```{r}
 # fit the model
@@ -32,15 +96,25 @@ fitmc00 <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcm
 fitSumm(fitmc00)
 ```
 
+As usual `fitSumm` store relevant information about the model fit. In the case of MCMC fit the information stored is the number of model paramters (`nopar`), the number of observations (`nobs`) and the acceptance rate (`accrate`). Monnahan recommends an optimal range for acceptance rate for the Metropolis-Hastings algorithm (e.g. [5]). If the proposal distribution generates values too close to the current state, the chain will accept them (high acceptance rate) but explore the posterior slowly and need more thinning. Alternatively, if proposals are too far away into regions of low density (low acceptance rate) the chain will not explore the space. The optimal acceptance rate varies by model size, among other things, but is roughly 40%. The general advice is to tune the proposal distribution to achieve an efficient acceptance rate, with models with more parameters having a lower optimal acceptance rate. Tunning the acceptance rate is an important element of MCMC fits, which will be addressed in the next section.
+
 ```{r}
 plot(hke1567 + fitmc00)
 ```
 
+### MCMC arguments
+
 As mentioned above `ADMB` has several options for MCMC. Here we demonstrate one of them, `mcprobe` which sets a fat-tailed proposal distribution, as an example of how to use the `SCAMCMC` objects.
 
+
+mcprobe
+
+For some models, there may be concern of being “stuck” in a local minimum and simply never proposing a value far enough away to escape it and find other regions of high density. Obviously this problem would present issues for maximum likelihood inference as well. ADMB has a built-in algorithm which modifies the default proposal distribution so it occasionally proposes very distant parameters (i.e. “probes”)5. The mcprobe X argument initiates this option. The modified proposal distribution is a mixture distribution of normal and Cauchy distributions. The argument X controls how the two distributions are mixed, with larger values being more Cauchy (fatter tails, larger jumps). The range of valid inputs is 0.00001 to 0.499, and if no value is supplied a default of 0.05 is used
+
 ```{r}
-mc <- SCAMCMC(mcprobe=0.45)
+mc <- SCAMCMC(mcprobe=0.0005)
 fitmc01 <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=mc)
+fitSumm(fitmc01)
 ```
 
 All fits together
@@ -124,7 +198,7 @@ fitmc03.mc <- FLa4a::as.mcmc(fitmc03)
 acf(fitmc03.mc[,1])
 ```
 
-All diagnostics improved with the new thining rate although some other improvements can be done. Note this diagnostics should be checked for all parameters. For the sake of space the demonstration uses only on the first.
+All diagnostics improved with the new thining rate although some other improvements can be done. Note these diagnostics should be checked for all parameters. For the sake of space the demonstration uses only on the first.
 
 ```{r}
 xyplot(fitmc03.mc[,1])
@@ -141,5 +215,4 @@ geweke.plot(fitmc03.mc[,1])
 Note: add correlation across parameters
 
 
-The manual "A Guide for Bayesian Analysis in AD Model Builder" by Cole C. Monnahan, Melissa L. Muradian and Peter T. Kuriyam describe and explain a larger group of arguments that can be set when running MCMC with ADMB, which the engine `a4a` uses. 
 
