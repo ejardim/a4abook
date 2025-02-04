@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 Stock assessment framework | Fish stock assessment with R</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 Stock assessment framework | Fish stock assessment with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-02-03" />
+<meta name="date" content="2025-02-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -66,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -140,7 +140,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Stock assessment framework</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Before starting</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> cover-image: path to the social sharing image like images/cover.jpg</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#license-documentation-and-development-status"><i class="fa fa-check"></i><b>1.1</b> License, documentation and development status</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installing-and-loading-libraries"><i class="fa fa-check"></i><b>1.2</b> Installing and loading libraries</a></li>
@@ -316,27 +316,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="observations" class="section level3 hasAnchor" number="6.1.1">
 <h3><span class="header-section-number">6.1.1</span> Observations<a href="stock-assessment-framework.html#observations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The stock assessment model is based on two types of observations: catches, <span class="math inline">\(\hat{C}\)</span>, and abundance indices, <span class="math inline">\(\hat{I}\)</span>. The model predicts catches at age <span class="math inline">\(C_{ay}\)</span> and indices of abundance <span class="math inline">\(I_{ays}\)</span> for each age <span class="math inline">\(a\)</span>, year <span class="math inline">\(y\)</span> and survey <span class="math inline">\(s\)</span> in the input dataset. It is assumed that the observed catches are normally distributed about the model predictions on the log scale with observation variance <span class="math inline">\(\sigma^2_{ay}\)</span>. that is:</p>
-<p><span class="math display">\[\log \hat{C}_{ay} \sim \text{Normal} \Big( \log C_{ay}, \sigma^2_{ay}\Big)\]</span></p>
+<p><span class="math display">\[\begin{equation}
+  \log \hat{C}_{ay} \sim \text{Normal} \Big( \log C_{ay}, \sigma^2_{ay}\Big)
+\end{equation}\]</span></p>
 <p>likewise, the observed survey indices are assumed to be normally distributed about the model predictions on the log scale with observation variance <span class="math inline">\(\tau^2_{ays}\)</span>:</p>
-<p><span class="math display">\[\log \hat{I}_{ays} \sim \text{Normal} \Big( \log I_{ays}, \tau^2_{ays} \Big)\]</span></p>
+<p><span class="math display">\[\begin{equation}
+\log \hat{I}_{ays} \sim \text{Normal} \Big( \log I_{ays}, \tau^2_{ays} \Big)
+\end{equation}\]</span></p>
 <p>This leads to the definition of the log-likelihood of the observed catches</p>
-<p><span class="math display">\[\ell_C = \sum_{ay} w^{(c)}_{ay}\ \ell_N \Big( \log C_{ay}, \sigma^2_{ay} ;\ \log \hat{C}_{ay} \Big)\]</span></p>
+<p><span class="math display">\[\begin{equation}
+\ell_C = \sum_{ay} w^{(c)}_{ay}\ \ell_N \Big( \log C_{ay}, \sigma^2_{ay} ;\ \log \hat{C}_{ay} \Big)
+\end{equation}\]</span></p>
 <p>and the log-likelihood of the observed survey indices</p>
-<p><span class="math display">\[\ell_I = \sum_s \sum_{ay} w^{(s)}_{ays}\ \ell_N \Big( \log I_{ays}, \tau_{ays}^2 ;\ \log \hat{I}_{ays} \Big)\]</span></p>
+<p><span class="math display">\[\begin{equation}
+\ell_I = \sum_s \sum_{ay} w^{(s)}_{ays}\ \ell_N \Big( \log I_{ays}, \tau_{ays}^2 ;\ \log \hat{I}_{ays} \Big)
+\end{equation}\]</span></p>
 <p>where <span class="math inline">\(\ell_N\)</span> is the normal log-likelihood function and <span class="math inline">\(w^{(c)}_{ay}\)</span> and <span class="math inline">\(w^{(s)}_{ays}\)</span> are optional weights for the catch and index observations, respectively. The total log-likelihood is then</p>
-<p><span class="math display">\[\ell = \ell_C + \ell_I\]</span></p>
+<p><span class="math display">\[\begin{equation}
+\ell = \ell_C + \ell_I
+\end{equation}\]</span></p>
 </div>
 <div id="the-population-dynamics-model" class="section level3 hasAnchor" number="6.1.2">
 <h3><span class="header-section-number">6.1.2</span> The population dynamics model<a href="stock-assessment-framework.html#the-population-dynamics-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To predict catches and survey indices, the model uses the standard population dynamics model</p>
-<p><span class="math display">\[N_{a+1,y+1} = N_{ay} \exp \left( - F_{ay} - M_{ay} \right)\]</span></p>
+<p><span class="math display">\[\begin{equation}
+N_{a+1,y+1} = N_{ay} \exp \left( - F_{ay} - M_{ay} \right)
+\end{equation}\]</span></p>
 <p>where <span class="math inline">\(N_{ay}\)</span> is the number of individuals at age <span class="math inline">\(a\)</span> in year <span class="math inline">\(y\)</span>, <span class="math inline">\(F_{ay}\)</span> is the fishing mortality at age <span class="math inline">\(a\)</span> in year <span class="math inline">\(y\)</span>, and <span class="math inline">\(M_{ay}\)</span> is the natural mortality at age <span class="math inline">\(a\)</span> in year <span class="math inline">\(y\)</span>. Any fish that survived beyond the oldest age <span class="math inline">\(A\)</span> in the model are accumulated in the oldest age group and are assumed to be fished at a common rate <span class="math inline">\(F_{A,y}\)</span>.</p>
-<p><span class="math display">\[
-\begin{align}
+<p><span class="math display">\[\begin{align}
 N_{A,y+1} = &amp;N_{A-1,y} \exp \left( - F_{A-1,y} - M_{A-1,y} \right) \\
             &amp;+ N_{A,y} \exp \left( - F_{A,y} - M_{A,y} \right)
-\end{align}
-\]</span></p>
+\end{align}\]</span></p>
 <p>The numbers <span class="math inline">\(N_{a,y}\)</span> are initiated in the first year, <span class="math inline">\(y=1\)</span> and at the youngest age, <span class="math inline">\(a=1\)</span>, and the matrix of numbers at age are filled in according to the population dynamics model stated above (see Figure <a href="stock-assessment-framework.html#fig:popdyn">6.1</a>).</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:popdyn"></span>
 <img src="figure/sca_matrix.png" alt="Statistical catch at age population dynamics model" width="40%" />
@@ -345,38 +355,66 @@ Figure 6.1: Statistical catch at age population dynamics model
 </p>
 </div>
 <p>Defining <span class="math inline">\(R_y = N_{1,y}\)</span>, the numbers at age can be written (ignoring the plus group) as:</p>
-<p><span class="math display">\[N_{a,y} = \left\{ \begin{matrix} R_{y-a+1} \exp \left( - \sum^a_{i=1} F_{a-i,y-i} + M_{a-i,y-i} \right) &amp;  y \geq a \\ N_{a-y+1,1} \exp \left( - \sum^{a-y}_{i=1} F_{a-i,y-i} + M_{a-i,y-i} \right) &amp;  y \lt a \end{matrix} \right.\]</span></p>
+<p><span class="math display">\[\begin{equation}
+N_{a,y} = \left\{ \begin{matrix} R_{y-a+1} \exp \left( - \sum^a_{i=1} F_{a-i,y-i} + M_{a-i,y-i} \right) &amp;  y \geq a \\ N_{a-y+1,1} \exp \left( - \sum^{a-y}_{i=1} F_{a-i,y-i} + M_{a-i,y-i} \right) &amp;  y \lt a \end{matrix} \right.
+\end{equation}\]</span></p>
 <p>Catches in numbers by age and year are defined in terms of the three quantities: natural mortality, fishing mortality and recruitment; using a modified form of the well known Baranov catch equation:</p>
-<p><span class="math display">\[C_{ay} = \frac{F_{ay}}{F_{ay}+M_{ay}}\left(1 - e^{-(F_{ay}+M_{ay})}\right) R_{y}e^{-\sum (F_{ay} + M_{ay})} \]</span></p>
+<p><span class="math display">\[\begin{equation}
+C_{ay} = \frac{F_{ay}}{F_{ay}+M_{ay}}\left(1 - e^{-(F_{ay}+M_{ay})}\right) R_{y}e^{-\sum (F_{ay} + M_{ay})}
+\end{equation}\]</span></p>
 <p>Survey indices by age and year are defined in terms of the same three quantities with the addition of survey catchability:</p>
-<p><span class="math display">\[I_{ays} = Q_{ays} R_{y}e^{-\sum (F_{ay} + M_{ay})}\]</span></p>
+<p><span class="math display">\[\begin{equation}
+I_{ays} = Q_{ays} R_{y}e^{-\sum (F_{ay} + M_{ay})}
+\end{equation}\]</span></p>
 <p>Observed catches and observed survey indices are assumed to be log-normally distributed, or equivalently, normally distributed on the log-scale, with specific observation variance:</p>
-<p><span class="math display">\[ \log \hat{C}_{ay} \sim \text{Normal} \Big( \log C_{ay}, \sigma^2_{ay}\Big) \]</span>
-<span class="math display">\[ \log \hat{I}_{ays} \sim \text{Normal} \Big( \log I_{ays}, \tau^2_{ays} \Big) \]</span></p>
+<p><span class="math display">\[\begin{equation}
+\log \hat{C}_{ay} \sim \text{Normal} \Big( \log C_{ay}, \sigma^2_{ay}\Big)
+\end{equation}\]</span></p>
+<p><span class="math display">\[\begin{equation}
+\log \hat{I}_{ays} \sim \text{Normal} \Big( \log I_{ays}, \tau^2_{ays} \Big)
+\end{equation}\]</span></p>
 <p>The log-likelihood can now be defined as the sum of the log-likelihood of the observed catches:</p>
-<p><span class="math display">\[  \ell_C = \sum_{ay} w^{(c)}_{ay}\ \ell_N \Big( \log C_{ay}, \sigma^2_{ay} ;\ \log \hat{C}_{ay} \Big) \]</span></p>
+<p><span class="math display">\[\begin{equation}
+\ell_C = \sum_{ay} w^{(c)}_{ay}\ \ell_N \Big( \log C_{ay}, \sigma^2_{ay} ;\ \log \hat{C}_{ay} \Big)
+\end{equation}\]</span></p>
 <p>and the log-likelihood of the observed survey indices as:</p>
-<p><span class="math display">\[  \ell_I = \sum_s \sum_{ay} w^{(s)}_{ays}\ \ell_N \Big( \log I_{ays}, \tau_{ays}^2 ;\ \log \hat{I}_{ays} \Big)\]</span></p>
+<p><span class="math display">\[\begin{equation}
+\ell_I = \sum_s \sum_{ay} w^{(s)}_{ays}\ \ell_N \Big( \log I_{ays}, \tau_{ays}^2 ;\ \log \hat{I}_{ays} \Big)
+\end{equation}\]</span></p>
 <p>giving the total log-likelihood</p>
-<p><span class="math display">\[\ell = \ell_C + \ell_I\]</span></p>
+<p><span class="math display">\[\begin{equation}
+\ell = \ell_C + \ell_I
+\end{equation}\]</span></p>
 <p>which is defined in terms of the strictly positive quantites, <span class="math inline">\(M_{ay}\)</span>, <span class="math inline">\(F_{ay}\)</span>, <span class="math inline">\(Q_{ays}\)</span> and <span class="math inline">\(R_{y}\)</span>, and the observation variances <span class="math inline">\(\sigma_{ay}\)</span> and <span class="math inline">\(\tau_{ays}\)</span>. As such, the log-likelihood is over-parameterised as there are many more parameters than observations. In order to reduce the number of parameters, <span class="math inline">\(M_{ay}\)</span> is assumed known (as is common).</p>
 <p>The remaining parameters are written in terms of a linear combination of covariates <span class="math inline">\(x_{ayk}\)</span>, e.g.</p>
-<p><span class="math display">\[\log F_{ay} = \sum_k \beta_k x_{ayk}\]</span></p>
+<p><span class="math display">\[\begin{equation}
+\log F_{ay} = \sum_k \beta_k x_{ayk}
+\end{equation}\]</span></p>
 <p>where <span class="math inline">\(k\)</span> is the number of parameters to be estimated and is sufficiently small. Using this tecnique the quantities <span class="math inline">\(\log F\)</span>, <span class="math inline">\(\log Q\)</span>, <span class="math inline">\(\log \sigma\)</span> and <span class="math inline">\(\log \tau\)</span>
 %<span class="math inline">\(\log \text{initial\,age\,structure}\)</span> % this is not present in the above
 (in bold in the equations above) can be described by a reduced number of parameters. The following section has more discussion on the use of linear models in a4a.</p>
 <p>The a4a statistical catch-at-age model can addionally allow for a functional relationship that links predicted recruitment <span class="math inline">\(\tilde{R}\)</span> based on spawning stock biomass and modelled recruitment <span class="math inline">\(R\)</span>, to be imposed as a fixed variance random effect. [NEEDS REVISION, sentence not clear]</p>
 <p>Options for the relationship are the hard coded models Ricker, Beverton Holt, smooth hockeystick or geometric mean. This is implemented by including a third component in the log-likelihood:</p>
-<p><span class="math display">\[\ell_{SR} = \sum_y \ell_N \Big( \log \tilde{R}_y(a, b), \phi_y^2 ;\ \log R_y \Big)\]</span></p>
+<p><span class="math display">\[\begin{equation}
+\ell_{SR} = \sum_y \ell_N \Big( \log \tilde{R}_y(a, b), \phi_y^2 ;\ \log R_y \Big)
+\end{equation}\]</span></p>
 <p>giving the total log-likelihood</p>
-<p><span class="math display">\[\ell = \ell_C + \ell_I + \ell_{SR}\]</span></p>
+<p><span class="math display">\[\begin{equation}
+\ell = \ell_C + \ell_I + \ell_{SR}
+\end{equation}\]</span></p>
 <p>Using the (time varying) Ricker model as an example, predicted recruitment is</p>
-<p><span class="math display">\[\tilde{R}_y(a_y,b_y) = a_y S_{y-1} e^{-b_y S_{y-1}}\]</span></p>
+<p><span class="math display">\[\begin{equation}
+\tilde{R}_y(a_y,b_y) = a_y S_{y-1} e^{-b_y S_{y-1}}
+\end{equation}\]</span></p>
 <p>where <span class="math inline">\(S\)</span> is spawning stock biomass derived from the model parameters <span class="math inline">\(F\)</span> and <span class="math inline">\(R\)</span>, and the fixed quantites <span class="math inline">\(M\)</span> and mean weights by year and age. It is assumed that <span class="math inline">\(R\)</span> is log-normally distributed, or equivalently, normally distributed on the log-scale about the (log) recruitment predicted by the SR model <span class="math inline">\(\tilde{R}\)</span>, with known variance <span class="math inline">\(\phi^2\)</span>, i.e.</p>
-<p><span class="math display">\[\log R_y \sim \text{Normal} \Big( \log \tilde{R}_y, \phi_y^2 \Big)\]</span></p>
+<p><span class="math display">\[\begin{equation}
+\log R_y \sim \text{Normal} \Big( \log \tilde{R}_y, \phi_y^2 \Big)
+\end{equation}\]</span></p>
 <p>which leads to the definition of <span class="math inline">\(\ell_{SR}\)</span> given above. In all cases <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are strictly positive, and with the quantities <span class="math inline">\(F\)</span>, <span class="math inline">\(R\)</span>, etc. linear models are used to parameterise <span class="math inline">\(\log a\)</span> and/or <span class="math inline">\(\log b\)</span>, where relevant.</p>
 <p>By default, recruitment <span class="math inline">\(R\)</span> as apposed to the reruitment predicted from a stock recruitment model <span class="math inline">\(\tilde{R}\)</span>, is specified as a linear model with a parameter for each year, i.e.</p>
-<p><span class="math display">\[\log R_y = \gamma_y\]</span></p>
+<p><span class="math display">\[\begin{equation}
+\log R_y = \gamma_y
+\end{equation}\]</span></p>
 <p>This is to allow modelled recruitment <span class="math inline">\(R_y\)</span> to be shrunk towards the stock recruitment model. However, if it is considered appropriate that recruitment can be determined exactly by a relationship with covariates, it is possible, to instead define <span class="math inline">\(\log R\)</span> in terms of a linear model in the same way as <span class="math inline">\(\log F\)</span>, <span class="math inline">\(\log Q\)</span>, <span class="math inline">\(\log \sigma\)</span> and <span class="math inline">\(\log \tau\)</span>. %But this is pretty much the same as taking a geometric mean, with a model on log a, and making the variance very small.</p>
 </div>
 </div>
