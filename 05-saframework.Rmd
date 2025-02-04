@@ -6,38 +6,54 @@
 
 The stock assessment model is based on two types of observations: catches, $\hat{C}$, and abundance indices, $\hat{I}$. The model predicts catches at age $C_{ay}$ and indices of abundance $I_{ays}$ for each age $a$, year $y$ and survey $s$ in the input dataset. It is assumed that the observed catches are normally distributed about the model predictions on the log scale with observation variance $\sigma^2_{ay}$. that is:
 
-$$\log \hat{C}_{ay} \sim \text{Normal} \Big( \log C_{ay}, \sigma^2_{ay}\Big)$$
+\begin{equation}
+  \log \hat{C}_{ay} \sim \text{Normal} \Big( \log C_{ay}, \sigma^2_{ay}\Big)
+\end{equation}
 
 likewise, the observed survey indices are assumed to be normally distributed about the model predictions on the log scale with observation variance $\tau^2_{ays}$:
 
-$$\log \hat{I}_{ays} \sim \text{Normal} \Big( \log I_{ays}, \tau^2_{ays} \Big)$$
+\begin{equation}
+\log \hat{I}_{ays} \sim \text{Normal} \Big( \log I_{ays}, \tau^2_{ays} \Big)
+\end{equation}
 
 This leads to the definition of the log-likelihood of the observed catches
 
-$$\ell_C = \sum_{ay} w^{(c)}_{ay}\ \ell_N \Big( \log C_{ay}, \sigma^2_{ay} ;\ \log \hat{C}_{ay} \Big)$$
+\begin{equation}
+\ell_C = \sum_{ay} w^{(c)}_{ay}\ \ell_N \Big( \log C_{ay}, \sigma^2_{ay} ;\ \log \hat{C}_{ay} \Big)
+\end{equation}
+
 
 and the log-likelihood of the observed survey indices
 
-$$\ell_I = \sum_s \sum_{ay} w^{(s)}_{ays}\ \ell_N \Big( \log I_{ays}, \tau_{ays}^2 ;\ \log \hat{I}_{ays} \Big)$$
+\begin{equation}
+\ell_I = \sum_s \sum_{ay} w^{(s)}_{ays}\ \ell_N \Big( \log I_{ays}, \tau_{ays}^2 ;\ \log \hat{I}_{ays} \Big)
+\end{equation}
+
 
 where $\ell_N$ is the normal log-likelihood function and $w^{(c)}_{ay}$ and $w^{(s)}_{ays}$ are optional weights for the catch and index observations, respectively. The total log-likelihood is then
 
-$$\ell = \ell_C + \ell_I$$
+\begin{equation}
+\ell = \ell_C + \ell_I
+\end{equation}
+
 
 ### The population dynamics model
 
 To predict catches and survey indices, the model uses the standard population dynamics model
 
-$$N_{a+1,y+1} = N_{ay} \exp \left( - F_{ay} - M_{ay} \right)$$
+\begin{equation}
+N_{a+1,y+1} = N_{ay} \exp \left( - F_{ay} - M_{ay} \right)
+\end{equation}
+
 
 where $N_{ay}$ is the number of individuals at age $a$ in year $y$, $F_{ay}$ is the fishing mortality at age $a$ in year $y$, and $M_{ay}$ is the natural mortality at age $a$ in year $y$.  Any fish that survived beyond the oldest age $A$ in the model are accumulated in the oldest age group and are assumed to be fished at a common rate $F_{A,y}$.
 
-$$
+
 \begin{align}
 N_{A,y+1} = &N_{A-1,y} \exp \left( - F_{A-1,y} - M_{A-1,y} \right) \\
             &+ N_{A,y} \exp \left( - F_{A,y} - M_{A,y} \right)
 \end{align}
-$$
+
 
 The numbers $N_{a,y}$ are initiated in the first year, $y=1$ and at the youngest age, $a=1$, and the matrix of numbers at age are filled in according to the population dynamics model stated above (see Figure \@ref(fig:popdyn)).
 
@@ -47,38 +63,65 @@ knitr::include_graphics("figure/sca_matrix.png")
 
 Defining $R_y = N_{1,y}$, the numbers at age can be written (ignoring the plus group) as:
 
-$$N_{a,y} = \left\{ \begin{matrix} R_{y-a+1} \exp \left( - \sum^a_{i=1} F_{a-i,y-i} + M_{a-i,y-i} \right) &  y \geq a \\ N_{a-y+1,1} \exp \left( - \sum^{a-y}_{i=1} F_{a-i,y-i} + M_{a-i,y-i} \right) &  y \lt a \end{matrix} \right.$$
+\begin{equation}
+N_{a,y} = \left\{ \begin{matrix} R_{y-a+1} \exp \left( - \sum^a_{i=1} F_{a-i,y-i} + M_{a-i,y-i} \right) &  y \geq a \\ N_{a-y+1,1} \exp \left( - \sum^{a-y}_{i=1} F_{a-i,y-i} + M_{a-i,y-i} \right) &  y \lt a \end{matrix} \right.
+\end{equation}
+
 
 Catches in numbers by age and year are defined in terms of the three quantities: natural mortality, fishing mortality and recruitment; using a modified form of the well known Baranov catch equation:
 
-$$C_{ay} = \frac{F_{ay}}{F_{ay}+M_{ay}}\left(1 - e^{-(F_{ay}+M_{ay})}\right) R_{y}e^{-\sum (F_{ay} + M_{ay})} $$
+\begin{equation}
+C_{ay} = \frac{F_{ay}}{F_{ay}+M_{ay}}\left(1 - e^{-(F_{ay}+M_{ay})}\right) R_{y}e^{-\sum (F_{ay} + M_{ay})}
+\end{equation}
+
 
 Survey indices by age and year are defined in terms of the same three quantities with the addition of survey catchability:
 
-$$I_{ays} = Q_{ays} R_{y}e^{-\sum (F_{ay} + M_{ay})}$$
+\begin{equation}
+I_{ays} = Q_{ays} R_{y}e^{-\sum (F_{ay} + M_{ay})}
+\end{equation}
+
 
 Observed catches and observed survey indices are assumed to be log-normally distributed, or equivalently, normally distributed on the log-scale, with specific observation variance:
 
-$$ \log \hat{C}_{ay} \sim \text{Normal} \Big( \log C_{ay}, \sigma^2_{ay}\Big) $$
-$$ \log \hat{I}_{ays} \sim \text{Normal} \Big( \log I_{ays}, \tau^2_{ays} \Big) $$
+\begin{equation}
+\log \hat{C}_{ay} \sim \text{Normal} \Big( \log C_{ay}, \sigma^2_{ay}\Big)
+\end{equation}
+
+\begin{equation}
+\log \hat{I}_{ays} \sim \text{Normal} \Big( \log I_{ays}, \tau^2_{ays} \Big)
+\end{equation}
+
 
 The log-likelihood can now be defined as the sum of the log-likelihood of the observed catches:
 
-$$  \ell_C = \sum_{ay} w^{(c)}_{ay}\ \ell_N \Big( \log C_{ay}, \sigma^2_{ay} ;\ \log \hat{C}_{ay} \Big) $$
+\begin{equation}
+\ell_C = \sum_{ay} w^{(c)}_{ay}\ \ell_N \Big( \log C_{ay}, \sigma^2_{ay} ;\ \log \hat{C}_{ay} \Big)
+\end{equation}
+
 
 and the log-likelihood of the observed survey indices as:
 
-$$  \ell_I = \sum_s \sum_{ay} w^{(s)}_{ays}\ \ell_N \Big( \log I_{ays}, \tau_{ays}^2 ;\ \log \hat{I}_{ays} \Big)$$
+\begin{equation}
+\ell_I = \sum_s \sum_{ay} w^{(s)}_{ays}\ \ell_N \Big( \log I_{ays}, \tau_{ays}^2 ;\ \log \hat{I}_{ays} \Big)
+\end{equation}
+
 
 giving the total log-likelihood
 
-$$\ell = \ell_C + \ell_I$$
+\begin{equation}
+\ell = \ell_C + \ell_I
+\end{equation}
+
 
 which is defined in terms of the strictly positive quantites, $M_{ay}$, $F_{ay}$, $Q_{ays}$ and $R_{y}$, and the observation variances $\sigma_{ay}$ and $\tau_{ays}$. As such, the log-likelihood is over-parameterised as there are many more parameters than observations. In order to reduce the number of parameters, $M_{ay}$ is assumed known (as is common).
 
 The remaining parameters are written in terms of a linear combination of covariates $x_{ayk}$, e.g.
 
-$$\log F_{ay} = \sum_k \beta_k x_{ayk}$$
+\begin{equation}
+\log F_{ay} = \sum_k \beta_k x_{ayk}
+\end{equation}
+
 
 where $k$ is the number of parameters to be estimated and is sufficiently small. Using this tecnique the quantities $\log F$, $\log Q$, $\log \sigma$ and $\log \tau$
 %$\log \text{initial\,age\,structure}$ % this is not present in the above
@@ -88,25 +131,40 @@ The a4a statistical catch-at-age model can addionally allow for a functional rel
 
 Options for the relationship are the hard coded models Ricker, Beverton Holt, smooth hockeystick or geometric mean. This is implemented by including a third component in the log-likelihood:
 
-$$\ell_{SR} = \sum_y \ell_N \Big( \log \tilde{R}_y(a, b), \phi_y^2 ;\ \log R_y \Big)$$
+\begin{equation}
+\ell_{SR} = \sum_y \ell_N \Big( \log \tilde{R}_y(a, b), \phi_y^2 ;\ \log R_y \Big)
+\end{equation}
+
 
 giving the total log-likelihood
 
-$$\ell = \ell_C + \ell_I + \ell_{SR}$$
+\begin{equation}
+\ell = \ell_C + \ell_I + \ell_{SR}
+\end{equation}
+
 
 Using the (time varying) Ricker model as an example, predicted recruitment is
 
-$$\tilde{R}_y(a_y,b_y) = a_y S_{y-1} e^{-b_y S_{y-1}}$$
+\begin{equation}
+\tilde{R}_y(a_y,b_y) = a_y S_{y-1} e^{-b_y S_{y-1}}
+\end{equation}
+
 
 where $S$ is spawning stock biomass derived from the model parameters $F$ and $R$, and the fixed quantites $M$ and mean weights by year and age. It is assumed that $R$ is log-normally distributed, or equivalently, normally distributed on the log-scale about the (log) recruitment predicted by the SR model $\tilde{R}$, with known variance $\phi^2$, i.e.
 
-$$\log R_y \sim \text{Normal} \Big( \log \tilde{R}_y, \phi_y^2 \Big)$$
+\begin{equation}
+\log R_y \sim \text{Normal} \Big( \log \tilde{R}_y, \phi_y^2 \Big)
+\end{equation}
+
 
 which leads to the definition of $\ell_{SR}$ given above. In all cases $a$ and $b$ are strictly positive, and with the quantities $F$, $R$, etc. linear models are used to parameterise $\log a$ and/or $\log b$, where relevant.
 
 By default, recruitment $R$ as apposed to the reruitment predicted from a stock recruitment model $\tilde{R}$, is specified as a linear model with a parameter for each year, i.e.
 
-$$\log R_y = \gamma_y$$
+\begin{equation}
+\log R_y = \gamma_y
+\end{equation}
+
 
 This is to allow modelled recruitment $R_y$ to be shrunk towards the stock recruitment model. However, if it is considered appropriate that recruitment can be determined exactly by a relationship with covariates, it is possible, to instead define $\log R$ in terms of a linear model in the same way as $\log F$, $\log Q$, $\log \sigma$ and $\log \tau$.  %But this is pretty much the same as taking a geometric mean, with a model on log a, and making the variance very small.
 
@@ -200,4 +258,3 @@ The `qmodel` and `vmodel` slots share the `submodel` class, which describes sing
 | |range|numeric|Age and year range|
 | |vcov|array|Variance-covariance matrix|
 Table: (\#tab:submodelclass) `submodel` Class Description
-
