@@ -76,7 +76,7 @@ The 'language' of linear models has been developing within the statistical commu
 
 ### European hake in FAO 37, GSAs 1,5,6,7
 
-European hake is an important demersal species targeted by Mediterranean fishing fleets in several regions, mainly by bottom trawling, with some use of gillnets and longlines. In GSA 1, the fishery is dominated by otter trawlers, with small-scale fisheries playing a minor role. Catches have fluctuated in recent years. In GSA 5 (Balearic Islands), bottom trawlers use different fishing tactics depending on the depth, with hake being targeted mainly on the deep shelf and the upper slope. In GSA 6, the fishery is also dominated by trawlers, with a large fleet operating on the shelf and slope and showing relatively stable catches. In GSA 7 (Gulf of Lions), hake is targeted by both French and Spanish vessels using a variety of gear types, including trawlers, gillnetters and longliners.
+European hake is an important demersal species targeted by Mediterranean fishing fleets in several regions, mainly by bottom trawling, with In GSA 5 (Balearic Islands), bottom trawlers use different fishing tactics depending on the depth, with hake being targeted mainly on the deep shelf and the upper slope. In GSA 6, the fishery is also dominated by trawlers, with a large fleet operating on the shelf and slope and showing relatively stable catches. In GSA 7 (Gulf of Lions), hake is targeted by both French and Spanish vessels using a variety of gear types, including trawlers, gillnets and longlines.
 
 ### stock xx
 
