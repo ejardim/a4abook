@@ -195,3 +195,4 @@ propagate-uncertainty-into-stock-assessment
 modelling-fleet-selectivity
 modelling-spatial-effects
 sections-to-be-added
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
