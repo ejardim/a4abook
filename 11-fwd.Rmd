@@ -107,6 +107,8 @@ plot(window(FLStocks('01' = stk01, '02' = stk02, '03' = stk03), start = 2000))
 
 When projecting the stock forward one needs to make a number of assumptions about initial conditions, the starting point from where projections will be made. The method `fwdWindow` has a set of options that allows the analyst to decide about those assumptions:
 
+[PUT IN TABLE FORMAT AS BRP]
+
 - `wt`: Number of years to average over to get the future mean weights at age, default is 3
 - `mat`: Number of years to average over to get the future proportion mature at age, default is 3
 - `m`: Number of years to average over to get the future natural mortality at age, default is 3

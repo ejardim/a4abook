@@ -38,7 +38,6 @@ We'll start buy fitting the `MLE` model and afterwards call the `MCMC` methods. 
 [TO CHECK]
 For many Bayesian software platforms, the MCMC algorithms are started at user-specified or arbitrary places. ADMB has the advantage that it can robustly estimate the posterior mode and the covariance at that point. This information is very valuable in initializing the MCMC chain. Specifically, an MCMC chain starts from the posterior mode and uses the estimated covariance matrix in its proposed jumps (see the algorithm sections below). As such, ADMB chains typically do not need a long period to reach areas of high density. However, we caution the user to always check the MCMC output as other issues may lead to a chain that needs a longer burn-in. (REF TO Monnahan)
 
-
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
 opts_chunk$set(dev='png', dev.args=list(type="cairo"))

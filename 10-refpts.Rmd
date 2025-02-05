@@ -31,13 +31,24 @@ fit0 <- sca(ple4, ple4.indices)
 stk0 <- ple4 + fit0
 ```
 
-To proceed with the computation of reference points we must start by creating an `FLBRP` object and afterwards run the fitting process with `brp()`. The FLBRP class has information on selection pattern, mass at age, and biological parameters. The information is stored in the object's slots which can be accessed with the usual commands, respectively `catch.sel()`, `discards.sel()`, `stock.wt()`, `catch.wt()`, `discards.wt()`, `m()` and `mat()`. These quantities are computed by averaging the 3 most recent years of the relevant stock object slots. In the case of selection pattern the values are scaled so that $\bar{F}=1$ **[IAGO TO CHECK]**. `FLBRP` creates a harvest slot with 100 computations of fishing mortality at age scaled from $\bar{F}=0$ up to $\bar{F}=4$, which is later used in the fitting process.
+To proceed with the computation of reference points we must start by creating an `FLBRP` object and afterwards run the fitting process with `brp()`. The FLBRP class has information on selection pattern, mass at age, and biological parameters. The information is stored in the object's slots which can be accessed with the usual commands, respectively `catch.sel()`, `discards.sel()`, `stock.wt()`, `catch.wt()`, `discards.wt()`, `m()` and `mat()`. These quantities are computed by averaging the 3 most recent years of the relevant stock object slots. In the case of the selection pattern it is computed by scaling F-at-age to a maximum of 1. By default `FLBRP` creates a harvest slot with 100 computations of fishing mortality at age scaled from $\bar{F}=0$ up to $F_{crash}$ or $\bar{F}=4$, if the former isn't possible to compute, which is later used to compute the reference points.
 
-A number of parameters can be set by the user to create the `FLBRP` object: fbar = seq(0, 4, length.out = 101), nyears = 3, biol.nyears = nyears, fbar.nyears = nyears, sel.nyears = fbar.nyears, na.rm = TRUE, mean = "arithmetic". **[IAGO is this somewhere we can point to instead of adding it here?]**
+A number of parameters can be set by the user to create the `FLBRP` object:
+
+| Argument | Default value | Description |
+|----:|:----|:----|
+|fbar | seq(0, 4, length.out = 101)| |
+| nyears | 3 | |
+| biol.nyears | nyears | |
+| fbar.nyears | nyears | |
+| sel.nyears |  |
+| fbar.nyears |  |
+| na.rm | TRUE | |
+| mean | "arithmetic" | |
 
 ## Yield per recruit reference points
 
-In the case where no stock recruitment relationship exists, or was fitted, `brp()` will return yield per recruit reference points. By default it computes biomasses in the absence of fishing, also know as virgin biomass, $F_{MAX}$, $F_{0.1}$ and 40% Spawning per recruit reference points.  
+In the case where no stock recruitment relationship exists, or was fitted, `brp()` will return yield per recruit reference points. By default it computes biomasses in the absence of fishing, also know as virgin biomass, $F_{MAX}$, $F_{0.1}$ and 40% Spawning per recruit reference points.
 
 
 ```{r}
@@ -80,7 +91,17 @@ The stock recruitment model must be fitted before computing reference points and
 
 ### Stock recruitment after fitting the stock assessment model  
 
-In the following example we'll use a Beverton and Holt stock recruitment reltionship. There are several other relationships that can be used, see **[IAGO CHECK THIS]**
+In the following example we'll use a Beverton and Holt stock recruitment reltionship. There are several other relationships that can be used, see Table XX (ver ?bevholt())
+
+| Model | Formula | Function | Description |
+|----:|:----|:----|:----|
+| Beverton and Holt | rec ~ a * ssb/(b + ssb) | `bevholt()` | [REF] |
+| Ricker [REF] | rec ~ a * ssb * exp(-b * ssb) | `ricker()` | |
+| Segmented regression  [REF] | rec ~ ifelse(ssb <= b, a * ssb, a * b) | `segreg` | |
+| Cushing  [REF] | rec ~ a * ssb^b | `cushing` | |
+| Shepherd  [REF] | | `shepherd` | |
+| Geomean  [REF] | | `geomean` | |
+
 
 ```{r, message=FALSE, warning=FALSE}
 sr0 <- as.FLSR(stk0, model=bevholt)
@@ -182,5 +203,3 @@ rp.rngs
 ```
 
 Another simple way, although it onl;y works for $SPR$ based reference points, is to include other `spr.##` points in the `refpts` table.
-
-**[IAGO: NEED TO EXPLAIN THE CODE ABOVE ABOUT EXTENDING THE REFPTS FLPAR]**
