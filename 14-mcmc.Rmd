@@ -6,7 +6,7 @@ One of the biggest advantages of MCMC is its flexibility when working with model
 
 Traditional MLE-based uncertainty estimation relies on the Hessian matrix, which essentially measures how quickly the likelihood function changes as parameters vary. This method assumes that the shape of the likelihood function is roughly the same everywhere—meaning that a quadratic (bowl-like) approximation is valid (Pawitan, 2001). However, this assumption is often unrealistic, especially in models with many parameters or correlations between them, as is common in fisheries stock assessment models. Furthermore, MLE uncertainty estimates require a large sample size for them to be accurate, which is not always available in real-world applications (Wasserman, 2004; van der Vaart, 1998). If these assumptions do not hold, MLE can give misleading confidence intervals, making decision-making riskier. Additionally, MLE assumes that the model is correctly specified—meaning that it accurately represents the real system being studied. If the model is misspecified or overly simplified, the Hessian-based uncertainty estimates may be highly unreliable, requiring alternative approaches like robust standard errors or resampling methods (White, 1982).
 
-In fields like fisheries science, where models often involve multiple correlated parameters, MCMC provides a much more flexible and realistic way to estimate uncertainty. Unlike MLE, which assumes uncertainty follows a simple symmetrical pattern, MCMC can handle more complex distributions, giving a better representation of real-world variability. This is especially important when estimating key fisheries management indicators, such as spawning stock biomass (SSB) or fishing mortality (F), which influence critical policy decisions. Because MCMC does not impose strict mathematical assumptions about the shape of uncertainty, it produces estimates that are more reflective of real-world conditions, ultimately leading to more informed and reliable management strategies.
+In fields like fisheries science, where models often involve multiple correlated parameters, MCMC provides a much more flexible and realistic way to estimate uncertainty. Unlike MLE, which assumes uncertainty follows a simple symmetrical pattern, MCMC can handle more complex distributions, giving a better representation of real-world variability. This is especially important when estimating key fisheries management indicators, such as spawning stock biomass ($SSB$) or fishing mortality ($F$), which influence critical policy decisions. Because MCMC does not impose strict mathematical assumptions about the shape of uncertainty, it produces estimates that are more reflective of real-world conditions, ultimately leading to more informed and reliable management strategies.
 
 ADMB’s approach to Markov Chain Monte Carlo (MCMC) enhances Bayesian analysis by efficiently exploring parameter uncertainty in complex models. Unlike standard MCMC tools, ADMB leverages automatic differentiation to improve sampling efficiency and speed (Fournier et al., 2012). It supports various sampling algorithms, including Metropolis-Hastings and Hamiltonian Monte Carlo, which help navigate high-dimensional parameter spaces and complex likelihood structures more effectively. This makes ADMB particularly useful in applied sciences like fisheries and ecology, where uncertainty estimation is crucial for decision-making. Additionally, ADMB provides built-in diagnostics to assess MCMC convergence and reliability, ensuring that posterior distributions are well-explored and results are robust (Gelman et al., 2013).
 
@@ -95,13 +95,170 @@ fitmc00 <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcm
 fitSumm(fitmc00)
 ```
 
-As usual `fitSumm` store relevant information about the model fit. In the case of MCMC fit the information stored is the number of model paramters (`nopar`), the number of observations (`nobs`) and the acceptance rate (`accrate`). Monnahan recommends an optimal range for acceptance rate for the Metropolis-Hastings algorithm (e.g. [5]). If the proposal distribution generates values too close to the current state, the chain will accept them (high acceptance rate) but explore the posterior slowly and need more thinning. Alternatively, if proposals are too far away into regions of low density (low acceptance rate) the chain will not explore the space. The optimal acceptance rate varies by model size, among other things, but is roughly 40%. The general advice is to tune the proposal distribution to achieve an efficient acceptance rate, with models with more parameters having a lower optimal acceptance rate. Tunning the acceptance rate is an important element of MCMC fits, which will be addressed in the next section.
+As usual `fitSumm` store relevant information about the model fit. In the case of MCMC fit the information stored is the number of model paramters (`nopar`), the number of observations (`nobs`) and the acceptance rate (`accrate`).
 
 ```{r}
 plot(hke1567 + fitmc00)
 ```
 
-### MCMC arguments
+## Diagnostics with CODA
+
+In essence, the diagnostics are used to give the analyst confidence that the posterior distributions of the parameters is unbiased, with simetric non correlated distributions of each parameter, over which one can make inference.
+
+There's a large body of literature about MCMC convergence. In this section we'll focus on convergence, stationarity and mixing, which are essential for ensuring that the chain provides reliable samples from the target posterior distribution.
+
+**[, are: (i) stationarity, the chain should converge to its stationary distribution; (ii) mixing, the chain should mix well, meaning it should explore the sample space efficiently without being overly correlated; and (iii) convergence, the chain should converge to the posterior distribution. Mixing in MCMC refers to how well the chain explores the parameter space. Poor mixing means the chain is getting stuck in certain regions, leading to high autocorrelation and slow convergence.]**
+
+We use the package `CODA` to run the diagnostics on MCMC fits. One needs to convert the `sca` output into a `mcmc` CODA object over which several diagostics can be ran. The mcmc object is a matrix with the parameters (row = iters, cols= pars).
+
+```{r}
+library(coda)
+```
+
+The out-of-the-box methods available to the stock assessment scientist are trace plots, autocorrelation analysis, geweke diagnostic, acceptance rate, distribution density and cumulative means.
+
+A trace plot shows the sampled values of a parameter over iterations. A plot that looks like a random, stable "cloud" of points with no trends or drifts, with rapid fluctuactions, is a signal of convergence, meaning the chain mixes well and is stationary. If the trace plot shows a strong trend or periodicity, drifts, or long autocorrelated stretches, it means the chain hasn't converged.
+
+For demonstration purposes we'll create a chain with 1000 samples (`mcmc=1000`) and save every iter (`mcsave=1`), which will create a highly correlated and unstable chain, and update the initial MCMC fit to also have 1000 samples (`mcmc=10000`, `mcsave=100`).
+
+```{r}
+# update initial fit
+mc <- SCAMCMC(mcmc=10000, mcsave=100)
+fitmc01 <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=mc)
+fitmc01.mc <- FLa4a::as.mcmc(fitmc01)
+# highly correlated fit
+mc <- SCAMCMC(mcmc=1000, mcsave=1)
+fitmc02 <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=mc)
+fitmc02.mc <- FLa4a::as.mcmc(fitmc02)
+```
+
+Figures \@ref(fig:chain01) and \@ref(fig:chain02) cleary depicts this difference.
+
+Ploting the chain for the parameter clearly shows autocorrelation for the first parameter but also the initial phase where the chain seems to be stuck in a single value (Figure \@ref(fig:chain01)).
+
+```{r, chain01, "MCMC chain trace with high autocorrelation and burnin period (left panel). Parameter density showing a double mode distribution (right panel).", fig.show="hold", out.width="50%"}
+plot(fitmc01.mc[,1])
+plot(fitmc02.mc[,1])
+```
+
+
+The initial phase is called the "burn-in" phase, where there's no information about the parameter. These iterations can be dropped with the `burnin` method (Figure \@ref(fig:chain01b)), although it doesn't sort out the autocorrelation or the parameter density.
+
+```{r, chain01b, "MCMC chain with high autocorrelation after removing the initial 250 samples (burnin period)."}
+plot(FLa4a::as.mcmc(burnin(fitmc02, 250))[,1])
+```
+
+Autocorrelation analysis is useful to assess stationarity, a stationary chain should have low autocorrelation, meaning that each sample is approximately independent. On the opposite, high autocorrelation indicates slow mixing and possible non-stationarity. The autocorrelation plot produced by the `acf` function, will show correlation along the chain for each parameter at a large set of lags. Figure \@ref(fig:acf01) shows there's a strong autocorrelation for the first parameter, which we'd like to avoid.
+
+```{r, acf01, "Autocorrelation plot of the first parameter in the MCMC chain"}
+acf(fitmc02.mc[,1])
+```
+
+A common way to deal with autocorrelation is to increase the thining of the chain, the number of samples that are kept in each run. This decision requires the chain to run for longer since a number of samples will be discarded. In `sca` this is managed by the argument `save`. To keep 1000 samples, as before, with a thining of 200, which means we'll keep one sample every 200, one needs to draw $200x1000=200000$ draws.
+
+```{r}
+mc <- SCAMCMC(mcmc=200000, mcsave=200)
+fitmc03 <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=mc)
+fitmc03.mc <- FLa4a::as.mcmc(fitmc03)
+```
+
+```{r, chain02, "MCMC chain trace with a thining of 200 samples. No autocorrelation and burnin period apears to exist (left panel). Parameter density shows a well behaved simetric distribution (right panel)."}
+plot(fitmc02.mc[,1])
+```
+
+Figure \@ref(fig:acf02) shows the new chain autocorrelation, which is mostly gone.
+
+```{r, acf02, "Autocorrelation plot of the first parameter in the MCMC chain, with a thining of 200."}
+acf(fitmc03.mc[,1])
+```
+
+The geweke diagnostic computes the Geweke-Brooks Z-score, which indicates if the first and following parts of a sample from a Markov chain are drawn from the same distribution. It's useful to decide if the first few iterations should be discarded and provide information about the stability of the chain. Figure \@ref(fig:gew01) shows the geweke plot for the MCMC run without thining and Figure \@ref(fig:gew01) when the thining was set at 200 samples.
+
+```{r, gew01, "Geweke plot of the first parameter in the MCMC chain"}
+geweke.plot(fitmc02.mc[,1])
+```
+
+The first plot slearly shows the z-score statistic out of the confdemce intervals until 400 samples are discarded, which points to the need to drop a set of initial samples. The second plot shows a much more regular chain, where the different blocks of data point to similar distributions, which points to a stationary chain and no need of burnin. With a thining of 200 it means the initial 199 samples were dropped, it's no surprise that the burnin of 250 samples is not necessary anymore.
+
+```{r, gew02, "Geweke plot of the first parameter in the MCMC chain, with a thining of 200."}
+geweke.plot(fitmc03.mc[,1])
+```
+
+### Mixing
+
+
+Autocorrelation analysis is also useful for this diagnostics. In a good mixed chain autocorrelation drops quickly to near zero, while a poor mixing will display high autocorrelation, meaning successive samples are too correlated, reducing efficiency. Figures \@ref(fig:acf01) and \@ref(fig:acf02) cleary depicts this difference.
+
+The geweke diagnostic is also a good way to look at mixing by comparing the mean and variance of the first part of the chain to the last part. Good mixing will show no significant difference between early and late samples.
+Poor mixing will show large differences, indicating the chain has not explored the posterior fully.
+
+Inspecting the cumulative mean along the chain is another good way to check for the stability of the chain. When the mixing is good the mean stabilizes quickly, and vice-versa if not.
+
+```{r, cmean01, "Cumulative mean along the MCMC chain."}
+obj <- fitmc02.mc[,1]
+obj <- cumsum(obj) / seq_along(obj)
+plot(obj, type="l", xlab="samples", ylab="mean")
+```
+
+```{r, cmean02, "Cumulative mean along the MCMC chain with thining of 200."}
+obj <- fitmc03.mc[,1]
+obj <- cumsum(obj) / seq_along(obj)
+plot(obj, type="l", xlab="samples", ylab="mean")
+```
+
+To improve mixing one should use longer chains, larger thining and drop initial samples.
+
+### Convergence
+
+Convergence in **Markov Chain Monte Carlo (MCMC)** means that the chain has reached the **stationary (target) distribution**, ensuring that samples are representative of the posterior. Here are the key ways to check for convergence:
+
+---
+
+### **1. Trace Plots (Visual Inspection)**
+   - Plot the parameter values over iterations.
+   - **Converged:** The plot looks like a **random, stationary cloud** with no trends or drifts.
+   - **Not Converged:** If the chain shows strong trends, drifts, or long autocorrelated stretches, it hasn't converged.
+
+---
+
+### **3. Autocorrelation Analysis**
+   - Compute the **autocorrelation function (ACF)** for different lags.
+   - **Converged:** Autocorrelation decreases rapidly (i.e., samples are independent).
+   - **Not Converged:** High autocorrelation suggests the chain is stuck in certain regions.
+
+---
+
+### **5. Running Mean (Cumulative Mean Plots)**
+   - Plot the **cumulative mean** of a parameter over iterations.
+   - **Converged:** The mean stabilizes after the burn-in.
+   - **Not Converged:** The mean keeps shifting, indicating ongoing drift.
+
+---
+
+### **6. Geweke Diagnostic**
+   - Compares the **mean and variance** of the first part of the chain with the last part.
+   - **Converged:** No significant difference.
+   - **Not Converged:** Large differences suggest the chain has not settled into the posterior.
+
+---
+
+### **7. Heidelberger-Welch Test**
+   - Automatically tests for convergence and suggests a burn-in period.
+   - **Converged:** Test passes, and burn-in is short.
+   - **Not Converged:** Test fails, meaning more samples or a longer burn-in are needed.
+
+---
+
+### **How to Improve Convergence If It's Poor**
+- **Run the chain longer** to allow better exploration.
+- **Use better tuning** (adjust step sizes in Metropolis-Hastings or Hamiltonian Monte Carlo).
+- **Reparameterize the model** to improve efficiency.
+- **Use multiple independent chains** to compare behavior.
+- **Use a more advanced sampler** (e.g., **Hamiltonian Monte Carlo** instead of random-walk Metropolis).
+
+Ensuring convergence is **critical** for making valid statistical inferences from MCMC! 🚀
+
+## MCMC arguments
 
 As mentioned above `ADMB` has several options for MCMC. Here we demonstrate one of them, `mcprobe` which sets a fat-tailed proposal distribution, as an example of how to use the `SCAMCMC` objects.
 
@@ -111,9 +268,19 @@ mcprobe
 For some models, there may be concern of being “stuck” in a local minimum and simply never proposing a value far enough away to escape it and find other regions of high density. Obviously this problem would present issues for maximum likelihood inference as well. ADMB has a built-in algorithm which modifies the default proposal distribution so it occasionally proposes very distant parameters (i.e. “probes”)5. The mcprobe X argument initiates this option. The modified proposal distribution is a mixture distribution of normal and Cauchy distributions. The argument X controls how the two distributions are mixed, with larger values being more Cauchy (fatter tails, larger jumps). The range of valid inputs is 0.00001 to 0.499, and if no value is supplied a default of 0.05 is used
 
 ```{r}
-mc <- SCAMCMC(mcprobe=0.0005)
-fitmc01 <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=mc)
+mc <- SCAMCMC(mcprobe=0.1)
+fitmc01 <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=SCAMCMC())
 fitSumm(fitmc01)
+fitmc01p <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=mc)
+fitSumm(fitmc01p)
+mc <- SCAMCMC(mcmc=1000, mcsave=1, mcprobe=0.0005)
+fitmc02p <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=mc)
+fitSumm(fitmc02p)
+mc <- SCAMCMC(mcmc=200000, mcsave=200, mcprobe=0.0005)
+fitmc03p <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=mc)
+fitSumm(fitmc03p)
+
+
 ```
 
 All fits together
@@ -121,97 +288,4 @@ All fits together
 ```{r}
 plot(FLStocks(ll=hke1567 + fit, mc=hke1567 + fitmc00, mc_alt=hke1567 + fitmc01))
 ```
-
-## Diagnostics with CODA
-
-We use the package `CODA` to run the diagnostics on MCMC fits. One needs to convert the `a4a` output into a `mcmc` CODA object over which several diagostics can be ran. The mcmc object is a matrix with the parameters (row = iters, cols= pars).
-
-Common diagnostics for MCMC chains is to look at the burn-in period, auto-correlation and cross correlation^[ToBe Added]. The first can be dealt by droping an initial set of iterations, which is done using the function `burnin`. The second can be managed by thinning the chain, in `ADMB` this is done through the parameter `mcsave N`, which defines the iteration's saving rate (the inverse of the thinning rate). This is the rate at which samples of the parameters are saved, such that thinning is effectively discarding draws.
-
-Next fit will run 1000 iterations and save every iter (`mcsave=1`). 
-
-```{r}
-library(coda)
-mc <- SCAMCMC(mcmc=1000, mcsave=1)
-fitmc02 <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=mc)
-fitmc02.mc <- FLa4a::as.mcmc(fitmc02)
-```
-
-The autocorrelation plots will show the very strong correlation across samples, which we want to avoid. Figure \@ref(fig:acf01) shows autocorrelation for the first parameter.
-
-<<acf01>>=
-acf(fitmc02.mc[,1])
-```
-
-Ploting the chain for the parameter clearly shows the autocorrelation but also the burnin phase, where there's no information about the parameter. These iterations must to be dropped. 
-
-<<chain01>>=
-xyplot(fitmc02.mc[,1])
-```
-
-It's also important to check if the distribution of the parameters is normal, which can be done with the `densityplot`:
-
-<<dens01>>=
-densityplot(fitmc02.mc[,1])
-```
-
-Another interesting diagnostic is the Geweke-Brooks Z-score check. This diagnostic indicates if the first and last part of a sample from a Markov chain may not be drawn from the same distribution. It's useful to decide if the first few iterations should e discarded.
-
-<<gew01>>=
-geweke.plot(fitmc02.mc[,1])
-```
-
-It's clear from the above diagnostics that a burnin phase of about 200 iterations should be considered. With relation to thining one needs to try several values until no autocorrelation exits. 
-
-Next fit will run 10000 iterations and save every 10th iteration (`mcsave=10`), so that the same 1000 iters are generated by the method. 
-
-```{r}
-mc <- SCAMCMC(mcmc=10000, mcsave=10)
-fitmc03 <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=mc)
-fitmc03.mc <- FLa4a::as.mcmc(fitmc03)
-```
-
-The autocorrelation plots still shows a strong correlation across samples, although less than in the previous model.
-
-```{r}
-acf(fitmc03.mc[,1])
-```
-
-Next fit will run 100000 iterations and save every 100th iteration (`mcsave=100`), so that the same 1000 iters are generated by the method. Autocorrelation is much weaker, could still be reduced by increasing `mcsave`. 
-
-```{r}
-mc <- SCAMCMC(mcmc=100000, mcsave=100)
-fitmc03 <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=mc)
-fitmc03.mc <- FLa4a::as.mcmc(fitmc03)
-```
-
-Next fit will run 200000 iterations and save every 200th iteration (`mcsave=200`). 
-
-```{r}
-mc <- SCAMCMC(mcmc=200000, mcsave=200)
-fitmc03 <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=mc)
-fitmc03.mc <- FLa4a::as.mcmc(fitmc03)
-```
-
-```{r}
-acf(fitmc03.mc[,1])
-```
-
-All diagnostics improved with the new thining rate although some other improvements can be done. Note these diagnostics should be checked for all parameters. For the sake of space the demonstration uses only on the first.
-
-```{r}
-xyplot(fitmc03.mc[,1])
-```
-
-```{r}
-densityplot(fitmc03.mc[,1])
-```
-
-```{r}
-geweke.plot(fitmc03.mc[,1])
-```
-
-Note: add correlation across parameters
-
-
 

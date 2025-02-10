@@ -195,3 +195,13 @@ propagate-uncertainty-into-stock-assessment
 modelling-fleet-selectivity
 modelling-spatial-effects
 sections-to-be-added
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
+stationarity
+mixing
+convergence
+trace-plots-visual-inspection
+autocorrelation-analysis
+running-mean-cumulative-mean-plots
+geweke-diagnostic
+heidelberger-welch-test
+how-to-improve-convergence-if-its-poor
