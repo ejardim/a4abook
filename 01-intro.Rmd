@@ -59,7 +59,7 @@ When data are limited, the stock assessment model requires more structure, but t
 
 On the other hand, since natural mortality and individual growth are very important processes acting at a very low level in terms of data processing, there are specific methods to deal with conditioning those processes, in case there's no data or limited data available, and to provide the opportuinity to propagate their uncertainty into stock assessment.
 
-## Stock assessment as a linear model
+## Stock assessment as a linear model [COLIN]
 
 The submodels formulation uses linear models, which opens the possibility of using the linear modelling tools available in `R`. For example, [`mgcv`](http://cran.r-project.org/web/packages/mgcv/index.html) gam formulas or factorial design formulas using `lm()`.
 

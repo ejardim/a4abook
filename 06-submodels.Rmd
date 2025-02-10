@@ -101,10 +101,6 @@ wireframe(harvest(fit3), main='cohort effect')
 
 ## The submodel class and methods
 
-%====================================================================
-% COLIN TO CHECK THE SECTION
-%====================================================================
-
 Although the specification of each submodel is done through a R formula, internally the `a4a` sca fit creates an object (of class 'submodel') which stores more information and allows a wide number of methods to be applied. The most important cases are prediction and simulation methods.
 
 The submodel class is a S4 class with the following slots:
@@ -126,9 +122,13 @@ For example begining with a simple `a4a` fit:
              n1model = ~ s(age, k = 5),
              vmodel = list( ~ 1, ~ 1, ~ 1),
              verbose = FALSE)
- fit0
 ```
 
+```{r, echo=FALSE}
+  fit0
+```
+
+[SECTION NEEDS REVISION, WE NOW HAVE STKMODEL]
 Within the sca fit object there's a collection of submodels for each component of the `a4a` stock assessment model (fishing mortality, survey catchability, stock recruitment relationship, initial population and the observation variance for catch numbers and survey indices). For readability the following example will use the fishing mortality submodel although the methods and models described can be applied to each of the 5 submodels.
 
 The submodel can be extracted using:
@@ -145,6 +145,10 @@ inside this object is a formula, the coeficients estimated by the model and thei
 ```
 
 it is also possible to get the data behind the fit and the design matrix required to get the fitted values
+
+
+[COLIN] do we still have the getX method?
+
 
 ```{r,results = 'hide', eval=FALSE}
  as.data.frame(fmod)

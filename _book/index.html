@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-02-05" />
+<meta name="date" content="2025-02-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -153,7 +153,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#the-assessment-for-all-initiative-a4a"><i class="fa fa-check"></i><b>2.1</b> The “Assessment for All” Initiative (a4a)</a></li>
 <li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#multi-stage-modelling-approach"><i class="fa fa-check"></i><b>2.2</b> Multi-stage modelling approach</a></li>
 <li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#stock-assessment-process"><i class="fa fa-check"></i><b>2.3</b> Stock Assessment Process</a></li>
-<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#stock-assessment-as-a-linear-model"><i class="fa fa-check"></i><b>2.4</b> Stock assessment as a linear model</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#stock-assessment-as-a-linear-model-colin"><i class="fa fa-check"></i><b>2.4</b> Stock assessment as a linear model [COLIN]</a></li>
 <li class="chapter" data-level="2.5" data-path="introduction.html"><a href="introduction.html#data-used-in-the-book"><i class="fa fa-check"></i><b>2.5</b> Data used in the book</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="introduction.html"><a href="introduction.html#plaice-in-area-fao-27-ices-area-iv"><i class="fa fa-check"></i><b>2.5.1</b> Plaice in area FAO 27, ICES area IV</a></li>
@@ -313,7 +313,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1 class="title">Fish stock assessment with R</h1>
 <h2 class="subtitle"><em>The a4a Initiative</em></h2>
 <p class="author"><em>John Doe and friends</em></p>
-<p class="date"><em>2025-02-05</em></p>
+<p class="date"><em>2025-02-07</em></p>
 </div>
 <div id="before-starting" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">1</span> Before starting<a href="index.html#before-starting" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -398,7 +398,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## x=&quot;Copula&quot;, y=&quot;ANY&quot;
 ## x=&quot;FLBiol&quot;, y=&quot;missing&quot;
 ## x=&quot;FLBiols&quot;, y=&quot;missing&quot;
-## x=&quot;FLBRP&quot;, y=&quot;missing&quot;
 ## x=&quot;FLCohort&quot;, y=&quot;missing&quot;
 ## x=&quot;FLIndex&quot;, y=&quot;missing&quot;
 ## x=&quot;FLIndexBiomass&quot;, y=&quot;missing&quot;
@@ -414,13 +413,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## x=&quot;FLQuants&quot;, y=&quot;missing&quot;
 ## x=&quot;FLSR&quot;, y=&quot;missing&quot;
 ## x=&quot;FLSRs&quot;, y=&quot;ANY&quot;
-## x=&quot;FLStock&quot;, y=&quot;FLBRP&quot;
 ## x=&quot;FLStock&quot;, y=&quot;FLPar&quot;
 ## x=&quot;FLStock&quot;, y=&quot;FLStock&quot;
 ## x=&quot;FLStock&quot;, y=&quot;FLStocks&quot;
 ## x=&quot;FLStock&quot;, y=&quot;missing&quot;
-## x=&quot;FLStocks&quot;, y=&quot;FLBRP&quot;
-## x=&quot;FLStocks&quot;, y=&quot;FLBRPs&quot;
 ## x=&quot;FLStocks&quot;, y=&quot;FLPar&quot;
 ## x=&quot;FLStocks&quot;, y=&quot;missing&quot;
 ## x=&quot;mvdc&quot;, y=&quot;ANY&quot;
@@ -461,7 +457,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     }
 ##     .local(x, ...)
 ## }
-## &lt;bytecode: 0x56aa37f749e8&gt;
+## &lt;bytecode: 0x64f485116758&gt;
 ## &lt;environment: namespace:ggplotFL&gt;
 ## 
 ## Signatures:

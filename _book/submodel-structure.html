@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-02-05" />
+<meta name="date" content="2025-02-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -153,7 +153,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#the-assessment-for-all-initiative-a4a"><i class="fa fa-check"></i><b>2.1</b> The “Assessment for All” Initiative (a4a)</a></li>
 <li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#multi-stage-modelling-approach"><i class="fa fa-check"></i><b>2.2</b> Multi-stage modelling approach</a></li>
 <li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#stock-assessment-process"><i class="fa fa-check"></i><b>2.3</b> Stock Assessment Process</a></li>
-<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#stock-assessment-as-a-linear-model"><i class="fa fa-check"></i><b>2.4</b> Stock assessment as a linear model</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#stock-assessment-as-a-linear-model-colin"><i class="fa fa-check"></i><b>2.4</b> Stock assessment as a linear model [COLIN]</a></li>
 <li class="chapter" data-level="2.5" data-path="introduction.html"><a href="introduction.html#data-used-in-the-book"><i class="fa fa-check"></i><b>2.5</b> Data used in the book</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="introduction.html"><a href="introduction.html#plaice-in-area-fao-27-ices-area-iv"><i class="fa fa-check"></i><b>2.5.1</b> Plaice in area FAO 27, ICES area IV</a></li>
@@ -326,38 +326,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The elements available to build submodels formulas are ‘age’ and ‘year’, which can be used to build models with different structures.</p>
 <p>In R’s linear modelling language, a constant model is coded as $ 1$, while a slope over time would simply be <span class="math inline">\(\sim year\)</span>, a smoother over time <span class="math inline">\(\sim s(year, k=10)\)</span>, a model with a coefficient for each year would be <span class="math inline">\(\sim factor(year)\)</span>. Transformations of the variables are as usual, e.g. <span class="math inline">\(\sim sqrt(year)\)</span>, etc; while combinations of all the above can be done although non-convergence will limit the possibilities.</p>
 <p>Using the <span class="math inline">\(F\)</span> submodel as example the following specifies the models described in the previous paragraph:</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="submodel-structure.html#cb126-1" tabindex="-1"></a><span class="co"># models</span></span>
-<span id="cb126-2"><a href="submodel-structure.html#cb126-2" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="er">~</span><span class="dv">1</span></span>
-<span id="cb126-3"><a href="submodel-structure.html#cb126-3" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="er">~</span> year</span>
-<span id="cb126-4"><a href="submodel-structure.html#cb126-4" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">10</span>)</span>
-<span id="cb126-5"><a href="submodel-structure.html#cb126-5" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">factor</span>(year)</span>
-<span id="cb126-6"><a href="submodel-structure.html#cb126-6" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">sqrt</span>(year)</span>
-<span id="cb126-7"><a href="submodel-structure.html#cb126-7" tabindex="-1"></a></span>
-<span id="cb126-8"><a href="submodel-structure.html#cb126-8" tabindex="-1"></a><span class="co"># fits</span></span>
-<span id="cb126-9"><a href="submodel-structure.html#cb126-9" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>m1, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span>
-<span id="cb126-10"><a href="submodel-structure.html#cb126-10" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>m2, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span>
-<span id="cb126-11"><a href="submodel-structure.html#cb126-11" tabindex="-1"></a>fit3 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>m3, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span>
-<span id="cb126-12"><a href="submodel-structure.html#cb126-12" tabindex="-1"></a>fit4 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>m4, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span>
-<span id="cb126-13"><a href="submodel-structure.html#cb126-13" tabindex="-1"></a>fit5 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>m5, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span>
-<span id="cb126-14"><a href="submodel-structure.html#cb126-14" tabindex="-1"></a></span>
-<span id="cb126-15"><a href="submodel-structure.html#cb126-15" tabindex="-1"></a><span class="co"># plot</span></span>
-<span id="cb126-16"><a href="submodel-structure.html#cb126-16" tabindex="-1"></a>lst <span class="ot">&lt;-</span> <span class="fu">FLStocks</span>(<span class="at">constant=</span>ple4<span class="sc">+</span>fit1, <span class="at">linear=</span>ple4<span class="sc">+</span>fit2, <span class="at">smooth=</span>ple4<span class="sc">+</span>fit3, <span class="at">factor=</span>ple4<span class="sc">+</span>fit4, <span class="at">sqrt=</span>ple4<span class="sc">+</span>fit5)</span>
-<span id="cb126-17"><a href="submodel-structure.html#cb126-17" tabindex="-1"></a>lst <span class="ot">&lt;-</span> <span class="fu">lapply</span>(lst, fbar)</span>
-<span id="cb126-18"><a href="submodel-structure.html#cb126-18" tabindex="-1"></a>lgnd <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">points=</span><span class="cn">FALSE</span>, <span class="at">lines=</span><span class="cn">TRUE</span>, <span class="at">space=</span><span class="st">&#39;right&#39;</span>)</span>
-<span id="cb126-19"><a href="submodel-structure.html#cb126-19" tabindex="-1"></a><span class="fu">xyplot</span>(data<span class="sc">~</span>year, <span class="at">groups=</span>qname, lst, <span class="at">auto.key=</span>lgnd, <span class="at">type=</span><span class="st">&#39;l&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;fishing mortality&#39;</span>)</span></code></pre></div>
-<div class="figure">
-<img src="_main_files/figure-html/fund_forms-1.png" alt="Example of fundamental R formulas" width="672" />
-<p class="caption">
-(#fig:fund_forms)Example of fundamental R formulas
-</p>
-</div>
-<p>The models above and their combinations can be used to model both ‘age’ and ‘year’. The corresponding fits for age are:</p>
 <div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="submodel-structure.html#cb127-1" tabindex="-1"></a><span class="co"># models</span></span>
 <span id="cb127-2"><a href="submodel-structure.html#cb127-2" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="er">~</span><span class="dv">1</span></span>
-<span id="cb127-3"><a href="submodel-structure.html#cb127-3" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="er">~</span> age</span>
-<span id="cb127-4"><a href="submodel-structure.html#cb127-4" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">3</span>)</span>
-<span id="cb127-5"><a href="submodel-structure.html#cb127-5" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">factor</span>(age)</span>
-<span id="cb127-6"><a href="submodel-structure.html#cb127-6" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">sqrt</span>(age)</span>
+<span id="cb127-3"><a href="submodel-structure.html#cb127-3" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="er">~</span> year</span>
+<span id="cb127-4"><a href="submodel-structure.html#cb127-4" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">10</span>)</span>
+<span id="cb127-5"><a href="submodel-structure.html#cb127-5" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">factor</span>(year)</span>
+<span id="cb127-6"><a href="submodel-structure.html#cb127-6" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">sqrt</span>(year)</span>
 <span id="cb127-7"><a href="submodel-structure.html#cb127-7" tabindex="-1"></a></span>
 <span id="cb127-8"><a href="submodel-structure.html#cb127-8" tabindex="-1"></a><span class="co"># fits</span></span>
 <span id="cb127-9"><a href="submodel-structure.html#cb127-9" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>m1, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span>
@@ -368,8 +342,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb127-14"><a href="submodel-structure.html#cb127-14" tabindex="-1"></a></span>
 <span id="cb127-15"><a href="submodel-structure.html#cb127-15" tabindex="-1"></a><span class="co"># plot</span></span>
 <span id="cb127-16"><a href="submodel-structure.html#cb127-16" tabindex="-1"></a>lst <span class="ot">&lt;-</span> <span class="fu">FLStocks</span>(<span class="at">constant=</span>ple4<span class="sc">+</span>fit1, <span class="at">linear=</span>ple4<span class="sc">+</span>fit2, <span class="at">smooth=</span>ple4<span class="sc">+</span>fit3, <span class="at">factor=</span>ple4<span class="sc">+</span>fit4, <span class="at">sqrt=</span>ple4<span class="sc">+</span>fit5)</span>
-<span id="cb127-17"><a href="submodel-structure.html#cb127-17" tabindex="-1"></a>lst <span class="ot">&lt;-</span> <span class="fu">lapply</span>(lst, <span class="cf">function</span>(x) <span class="fu">harvest</span>(x)[,<span class="st">&#39;2000&#39;</span>])</span>
-<span id="cb127-18"><a href="submodel-structure.html#cb127-18" tabindex="-1"></a><span class="fu">xyplot</span>(data<span class="sc">~</span>age, <span class="at">groups=</span>qname, lst, <span class="at">auto.key=</span>lgnd, <span class="at">type=</span><span class="st">&#39;l&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;fishing mortality in 2000&#39;</span>)</span></code></pre></div>
+<span id="cb127-17"><a href="submodel-structure.html#cb127-17" tabindex="-1"></a>lst <span class="ot">&lt;-</span> <span class="fu">lapply</span>(lst, fbar)</span>
+<span id="cb127-18"><a href="submodel-structure.html#cb127-18" tabindex="-1"></a>lgnd <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">points=</span><span class="cn">FALSE</span>, <span class="at">lines=</span><span class="cn">TRUE</span>, <span class="at">space=</span><span class="st">&#39;right&#39;</span>)</span>
+<span id="cb127-19"><a href="submodel-structure.html#cb127-19" tabindex="-1"></a><span class="fu">xyplot</span>(data<span class="sc">~</span>year, <span class="at">groups=</span>qname, lst, <span class="at">auto.key=</span>lgnd, <span class="at">type=</span><span class="st">&#39;l&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;fishing mortality&#39;</span>)</span></code></pre></div>
+<div class="figure">
+<img src="_main_files/figure-html/fund_forms-1.png" alt="Example of fundamental R formulas" width="672" />
+<p class="caption">
+(#fig:fund_forms)Example of fundamental R formulas
+</p>
+</div>
+<p>The models above and their combinations can be used to model both ‘age’ and ‘year’. The corresponding fits for age are:</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="submodel-structure.html#cb128-1" tabindex="-1"></a><span class="co"># models</span></span>
+<span id="cb128-2"><a href="submodel-structure.html#cb128-2" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="er">~</span><span class="dv">1</span></span>
+<span id="cb128-3"><a href="submodel-structure.html#cb128-3" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="er">~</span> age</span>
+<span id="cb128-4"><a href="submodel-structure.html#cb128-4" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">3</span>)</span>
+<span id="cb128-5"><a href="submodel-structure.html#cb128-5" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">factor</span>(age)</span>
+<span id="cb128-6"><a href="submodel-structure.html#cb128-6" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">sqrt</span>(age)</span>
+<span id="cb128-7"><a href="submodel-structure.html#cb128-7" tabindex="-1"></a></span>
+<span id="cb128-8"><a href="submodel-structure.html#cb128-8" tabindex="-1"></a><span class="co"># fits</span></span>
+<span id="cb128-9"><a href="submodel-structure.html#cb128-9" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>m1, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span>
+<span id="cb128-10"><a href="submodel-structure.html#cb128-10" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>m2, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span>
+<span id="cb128-11"><a href="submodel-structure.html#cb128-11" tabindex="-1"></a>fit3 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>m3, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span>
+<span id="cb128-12"><a href="submodel-structure.html#cb128-12" tabindex="-1"></a>fit4 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>m4, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span>
+<span id="cb128-13"><a href="submodel-structure.html#cb128-13" tabindex="-1"></a>fit5 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>m5, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span>
+<span id="cb128-14"><a href="submodel-structure.html#cb128-14" tabindex="-1"></a></span>
+<span id="cb128-15"><a href="submodel-structure.html#cb128-15" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb128-16"><a href="submodel-structure.html#cb128-16" tabindex="-1"></a>lst <span class="ot">&lt;-</span> <span class="fu">FLStocks</span>(<span class="at">constant=</span>ple4<span class="sc">+</span>fit1, <span class="at">linear=</span>ple4<span class="sc">+</span>fit2, <span class="at">smooth=</span>ple4<span class="sc">+</span>fit3, <span class="at">factor=</span>ple4<span class="sc">+</span>fit4, <span class="at">sqrt=</span>ple4<span class="sc">+</span>fit5)</span>
+<span id="cb128-17"><a href="submodel-structure.html#cb128-17" tabindex="-1"></a>lst <span class="ot">&lt;-</span> <span class="fu">lapply</span>(lst, <span class="cf">function</span>(x) <span class="fu">harvest</span>(x)[,<span class="st">&#39;2000&#39;</span>])</span>
+<span id="cb128-18"><a href="submodel-structure.html#cb128-18" tabindex="-1"></a><span class="fu">xyplot</span>(data<span class="sc">~</span>age, <span class="at">groups=</span>qname, lst, <span class="at">auto.key=</span>lgnd, <span class="at">type=</span><span class="st">&#39;l&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;fishing mortality in 2000&#39;</span>)</span></code></pre></div>
 <div class="figure">
 <img src="_main_files/figure-html/fund_forms_age-1.png" alt="Example of fundamental R formulas" width="672" />
 <p class="caption">
@@ -380,35 +380,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="the-major-effects-available-for-modelling" class="section level2 hasAnchor" number="7.2">
 <h2><span class="header-section-number">7.2</span> The major effects available for modelling<a href="submodel-structure.html#the-major-effects-available-for-modelling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Although the building blocks for formulas are ‘age’ and ‘year’, in fact there are three effects that can be modelled for each submodel: ‘age’, ‘year’ and ‘cohort’. As examples note the following models for fishing mortality.</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="submodel-structure.html#cb128-1" tabindex="-1"></a><span class="co"># the age effect</span></span>
-<span id="cb128-2"><a href="submodel-structure.html#cb128-2" tabindex="-1"></a>ageeffect <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">factor</span>(age)</span>
-<span id="cb128-3"><a href="submodel-structure.html#cb128-3" tabindex="-1"></a></span>
-<span id="cb128-4"><a href="submodel-structure.html#cb128-4" tabindex="-1"></a><span class="co"># the year effect</span></span>
-<span id="cb128-5"><a href="submodel-structure.html#cb128-5" tabindex="-1"></a>yeareffect <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">factor</span>(year)</span>
-<span id="cb128-6"><a href="submodel-structure.html#cb128-6" tabindex="-1"></a></span>
-<span id="cb128-7"><a href="submodel-structure.html#cb128-7" tabindex="-1"></a><span class="co"># the cohort</span></span>
-<span id="cb128-8"><a href="submodel-structure.html#cb128-8" tabindex="-1"></a>cohorteffect <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">factor</span>(year<span class="sc">-</span>age)</span>
-<span id="cb128-9"><a href="submodel-structure.html#cb128-9" tabindex="-1"></a></span>
-<span id="cb128-10"><a href="submodel-structure.html#cb128-10" tabindex="-1"></a><span class="co"># the fits</span></span>
-<span id="cb128-11"><a href="submodel-structure.html#cb128-11" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>yeareffect)</span>
-<span id="cb128-12"><a href="submodel-structure.html#cb128-12" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>ageeffect)</span>
-<span id="cb128-13"><a href="submodel-structure.html#cb128-13" tabindex="-1"></a>fit3 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>cohorteffect)</span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="submodel-structure.html#cb129-1" tabindex="-1"></a><span class="co"># the age effect</span></span>
+<span id="cb129-2"><a href="submodel-structure.html#cb129-2" tabindex="-1"></a>ageeffect <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">factor</span>(age)</span>
+<span id="cb129-3"><a href="submodel-structure.html#cb129-3" tabindex="-1"></a></span>
+<span id="cb129-4"><a href="submodel-structure.html#cb129-4" tabindex="-1"></a><span class="co"># the year effect</span></span>
+<span id="cb129-5"><a href="submodel-structure.html#cb129-5" tabindex="-1"></a>yeareffect <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">factor</span>(year)</span>
+<span id="cb129-6"><a href="submodel-structure.html#cb129-6" tabindex="-1"></a></span>
+<span id="cb129-7"><a href="submodel-structure.html#cb129-7" tabindex="-1"></a><span class="co"># the cohort</span></span>
+<span id="cb129-8"><a href="submodel-structure.html#cb129-8" tabindex="-1"></a>cohorteffect <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">factor</span>(year<span class="sc">-</span>age)</span>
+<span id="cb129-9"><a href="submodel-structure.html#cb129-9" tabindex="-1"></a></span>
+<span id="cb129-10"><a href="submodel-structure.html#cb129-10" tabindex="-1"></a><span class="co"># the fits</span></span>
+<span id="cb129-11"><a href="submodel-structure.html#cb129-11" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>yeareffect)</span>
+<span id="cb129-12"><a href="submodel-structure.html#cb129-12" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>ageeffect)</span>
+<span id="cb129-13"><a href="submodel-structure.html#cb129-13" tabindex="-1"></a>fit3 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>cohorteffect)</span></code></pre></div>
 <p>and the graphical representation of the three models in Figures <a href="submodel-structure.html#fig:majeffy">7.1</a> to <a href="submodel-structure.html#fig:majeffc">7.3</a>.</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="submodel-structure.html#cb129-1" tabindex="-1"></a><span class="fu">wireframe</span>(<span class="fu">harvest</span>(fit1), <span class="at">main=</span><span class="st">&#39;year effect&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="submodel-structure.html#cb130-1" tabindex="-1"></a><span class="fu">wireframe</span>(<span class="fu">harvest</span>(fit1), <span class="at">main=</span><span class="st">&#39;year effect&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:majeffy"></span>
 <img src="_main_files/figure-html/majeffy-1.png" alt="Major effects: the year effect (~ factor(year))" width="672" />
 <p class="caption">
 Figure 7.1: Major effects: the year effect (~ factor(year))
 </p>
 </div>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="submodel-structure.html#cb130-1" tabindex="-1"></a><span class="fu">wireframe</span>(<span class="fu">harvest</span>(fit2), <span class="at">main=</span><span class="st">&#39;age effect&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="submodel-structure.html#cb131-1" tabindex="-1"></a><span class="fu">wireframe</span>(<span class="fu">harvest</span>(fit2), <span class="at">main=</span><span class="st">&#39;age effect&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:majeffa"></span>
 <img src="_main_files/figure-html/majeffa-1.png" alt="Major effects: the age effect (~ factor(age))" width="672" />
 <p class="caption">
 Figure 7.2: Major effects: the age effect (~ factor(age))
 </p>
 </div>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="submodel-structure.html#cb131-1" tabindex="-1"></a><span class="fu">wireframe</span>(<span class="fu">harvest</span>(fit3), <span class="at">main=</span><span class="st">&#39;cohort effect&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="submodel-structure.html#cb132-1" tabindex="-1"></a><span class="fu">wireframe</span>(<span class="fu">harvest</span>(fit3), <span class="at">main=</span><span class="st">&#39;cohort effect&#39;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:majeffc"></span>
 <img src="_main_files/figure-html/majeffc-1.png" alt="Major effects: the cohort effect (~ factor(year-age))" width="672" />
 <p class="caption">
@@ -418,12 +418,9 @@ Figure 7.3: Major effects: the cohort effect (~ factor(year-age))
 </div>
 <div id="the-submodel-class-and-methods" class="section level2 hasAnchor" number="7.3">
 <h2><span class="header-section-number">7.3</span> The submodel class and methods<a href="submodel-structure.html#the-submodel-class-and-methods" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>%====================================================================
-% COLIN TO CHECK THE SECTION
-%====================================================================</p>
 <p>Although the specification of each submodel is done through a R formula, internally the <code>a4a</code> sca fit creates an object (of class ‘submodel’) which stores more information and allows a wide number of methods to be applied. The most important cases are prediction and simulation methods.</p>
 <p>The submodel class is a S4 class with the following slots:</p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="submodel-structure.html#cb132-1" tabindex="-1"></a><span class="fu">showClass</span>(<span class="st">&quot;submodel&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="submodel-structure.html#cb133-1" tabindex="-1"></a><span class="fu">showClass</span>(<span class="st">&quot;submodel&quot;</span>)</span></code></pre></div>
 <pre><code>## Class &quot;submodel&quot; [package &quot;FLa4a&quot;]
 ## 
 ## Slots:
@@ -437,15 +434,14 @@ Figure 7.3: Major effects: the cohort effect (~ factor(year-age))
 ## Extends: &quot;FLComp&quot;</code></pre>
 <p>Objects of class ‘submodel’ are created in the fitting process using the formulas set by the user (or defaults if missing) and information from the fit.</p>
 <p>For example begining with a simple <code>a4a</code> fit:</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="submodel-structure.html#cb134-1" tabindex="-1"></a> <span class="co"># fit a model with indices &quot;IBTS_Q1&quot; and &quot;IBTS_Q3&quot;</span></span>
-<span id="cb134-2"><a href="submodel-structure.html#cb134-2" tabindex="-1"></a> fit0 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices[<span class="fu">c</span>(<span class="st">&quot;IBTS_Q1&quot;</span>, <span class="st">&quot;IBTS_Q3&quot;</span>)],</span>
-<span id="cb134-3"><a href="submodel-structure.html#cb134-3" tabindex="-1"></a>             <span class="at">fmodel =</span> <span class="sc">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">5</span>),</span>
-<span id="cb134-4"><a href="submodel-structure.html#cb134-4" tabindex="-1"></a>             <span class="at">qmodel =</span> <span class="fu">list</span>( <span class="sc">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">4</span>), <span class="sc">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">4</span>)),</span>
-<span id="cb134-5"><a href="submodel-structure.html#cb134-5" tabindex="-1"></a>             <span class="at">srmodel =</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb134-6"><a href="submodel-structure.html#cb134-6" tabindex="-1"></a>             <span class="at">n1model =</span> <span class="sc">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">5</span>),</span>
-<span id="cb134-7"><a href="submodel-structure.html#cb134-7" tabindex="-1"></a>             <span class="at">vmodel =</span> <span class="fu">list</span>( <span class="sc">~</span> <span class="dv">1</span>, <span class="sc">~</span> <span class="dv">1</span>, <span class="sc">~</span> <span class="dv">1</span>),</span>
-<span id="cb134-8"><a href="submodel-structure.html#cb134-8" tabindex="-1"></a>             <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb134-9"><a href="submodel-structure.html#cb134-9" tabindex="-1"></a> fit0</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="submodel-structure.html#cb135-1" tabindex="-1"></a> <span class="co"># fit a model with indices &quot;IBTS_Q1&quot; and &quot;IBTS_Q3&quot;</span></span>
+<span id="cb135-2"><a href="submodel-structure.html#cb135-2" tabindex="-1"></a> fit0 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices[<span class="fu">c</span>(<span class="st">&quot;IBTS_Q1&quot;</span>, <span class="st">&quot;IBTS_Q3&quot;</span>)],</span>
+<span id="cb135-3"><a href="submodel-structure.html#cb135-3" tabindex="-1"></a>             <span class="at">fmodel =</span> <span class="sc">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">5</span>),</span>
+<span id="cb135-4"><a href="submodel-structure.html#cb135-4" tabindex="-1"></a>             <span class="at">qmodel =</span> <span class="fu">list</span>( <span class="sc">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">4</span>), <span class="sc">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">4</span>)),</span>
+<span id="cb135-5"><a href="submodel-structure.html#cb135-5" tabindex="-1"></a>             <span class="at">srmodel =</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb135-6"><a href="submodel-structure.html#cb135-6" tabindex="-1"></a>             <span class="at">n1model =</span> <span class="sc">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">5</span>),</span>
+<span id="cb135-7"><a href="submodel-structure.html#cb135-7" tabindex="-1"></a>             <span class="at">vmodel =</span> <span class="fu">list</span>( <span class="sc">~</span> <span class="dv">1</span>, <span class="sc">~</span> <span class="dv">1</span>, <span class="sc">~</span> <span class="dv">1</span>),</span>
+<span id="cb135-8"><a href="submodel-structure.html#cb135-8" tabindex="-1"></a>             <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## a4a model fit for: PLE 
 ## 
 ## Call:
@@ -454,7 +450,7 @@ Figure 7.3: Major effects: the cohort effect (~ factor(year-age))
 ## 
 ## Time used:
 ##  Pre-processing     Running a4a Post-processing           Total 
-##      0.25646472      0.48889232      0.03848958      0.78384662 
+##      0.26840878      0.55698133      0.04089189      0.86628199 
 ## 
 ## Submodels:
 ##   fmodel: ~s(age, k = 5)
@@ -467,71 +463,73 @@ Figure 7.3: Major effects: the cohort effect (~ factor(year-age))
 ##     catch:   ~1
 ##     IBTS_Q1: ~1
 ##     IBTS_Q3: ~1</code></pre>
-<p>Within the sca fit object there’s a collection of submodels for each component of the <code>a4a</code> stock assessment model (fishing mortality, survey catchability, stock recruitment relationship, initial population and the observation variance for catch numbers and survey indices). For readability the following example will use the fishing mortality submodel although the methods and models described can be applied to each of the 5 submodels.</p>
+<p>[SECTION NEEDS REVISION, WE NOW HAVE STKMODEL]
+Within the sca fit object there’s a collection of submodels for each component of the <code>a4a</code> stock assessment model (fishing mortality, survey catchability, stock recruitment relationship, initial population and the observation variance for catch numbers and survey indices). For readability the following example will use the fishing mortality submodel although the methods and models described can be applied to each of the 5 submodels.</p>
 <p>The submodel can be extracted using:</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="submodel-structure.html#cb136-1" tabindex="-1"></a> fmod <span class="ot">&lt;-</span> <span class="fu">fmodel</span>(fit0)</span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="submodel-structure.html#cb137-1" tabindex="-1"></a> fmod <span class="ot">&lt;-</span> <span class="fu">fmodel</span>(fit0)</span></code></pre></div>
 <p>inside this object is a formula, the coeficients estimated by the model and their covariance matrix.</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="submodel-structure.html#cb137-1" tabindex="-1"></a> <span class="fu">coef</span>(fmod)</span>
-<span id="cb137-2"><a href="submodel-structure.html#cb137-2" tabindex="-1"></a> <span class="fu">vcov</span>(fmod)</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="submodel-structure.html#cb138-1" tabindex="-1"></a> <span class="fu">coef</span>(fmod)</span>
+<span id="cb138-2"><a href="submodel-structure.html#cb138-2" tabindex="-1"></a> <span class="fu">vcov</span>(fmod)</span></code></pre></div>
 <p>it is also possible to get the data behind the fit and the design matrix required to get the fitted values</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="submodel-structure.html#cb138-1" tabindex="-1"></a> <span class="fu">as.data.frame</span>(fmod)</span>
-<span id="cb138-2"><a href="submodel-structure.html#cb138-2" tabindex="-1"></a> <span class="fu">getX</span>(fmod)</span></code></pre></div>
+<p>[COLIN] do we still have the getX method?</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="submodel-structure.html#cb139-1" tabindex="-1"></a> <span class="fu">as.data.frame</span>(fmod)</span>
+<span id="cb139-2"><a href="submodel-structure.html#cb139-2" tabindex="-1"></a> <span class="fu">getX</span>(fmod)</span></code></pre></div>
 <p>this makes it possble to check the fit manually like this (note that the data is centered in the model, which is addressed by adding the centering after the prediction is made, see code below):</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="submodel-structure.html#cb139-1" tabindex="-1"></a> dat <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(fmod)</span>
-<span id="cb139-2"><a href="submodel-structure.html#cb139-2" tabindex="-1"></a> X <span class="ot">&lt;-</span> <span class="fu">getX</span>(fmod)</span>
-<span id="cb139-3"><a href="submodel-structure.html#cb139-3" tabindex="-1"></a> b <span class="ot">&lt;-</span> <span class="fu">coef</span>(fmod)</span>
-<span id="cb139-4"><a href="submodel-structure.html#cb139-4" tabindex="-1"></a> dat<span class="sc">$</span>fit <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">c</span>(X <span class="sc">%*%</span> b))<span class="co"># + dat$data.centering)</span></span>
-<span id="cb139-5"><a href="submodel-structure.html#cb139-5" tabindex="-1"></a></span>
-<span id="cb139-6"><a href="submodel-structure.html#cb139-6" tabindex="-1"></a> <span class="fu">plot</span>(fit <span class="sc">~</span> age, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">data =</span> dat[dat<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2016</span>,],</span>
-<span id="cb139-7"><a href="submodel-structure.html#cb139-7" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">&quot;Estimated fishing mortality at age&quot;</span>,</span>
-<span id="cb139-8"><a href="submodel-structure.html#cb139-8" tabindex="-1"></a>      <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(dat<span class="sc">$</span>fit)), <span class="at">las =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="submodel-structure.html#cb140-1" tabindex="-1"></a> dat <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(fmod)</span>
+<span id="cb140-2"><a href="submodel-structure.html#cb140-2" tabindex="-1"></a> X <span class="ot">&lt;-</span> <span class="fu">getX</span>(fmod)</span>
+<span id="cb140-3"><a href="submodel-structure.html#cb140-3" tabindex="-1"></a> b <span class="ot">&lt;-</span> <span class="fu">coef</span>(fmod)</span>
+<span id="cb140-4"><a href="submodel-structure.html#cb140-4" tabindex="-1"></a> dat<span class="sc">$</span>fit <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">c</span>(X <span class="sc">%*%</span> b))<span class="co"># + dat$data.centering)</span></span>
+<span id="cb140-5"><a href="submodel-structure.html#cb140-5" tabindex="-1"></a></span>
+<span id="cb140-6"><a href="submodel-structure.html#cb140-6" tabindex="-1"></a> <span class="fu">plot</span>(fit <span class="sc">~</span> age, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">data =</span> dat[dat<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2016</span>,],</span>
+<span id="cb140-7"><a href="submodel-structure.html#cb140-7" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">&quot;Estimated fishing mortality at age&quot;</span>,</span>
+<span id="cb140-8"><a href="submodel-structure.html#cb140-8" tabindex="-1"></a>      <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(dat<span class="sc">$</span>fit)), <span class="at">las =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p>or simulate from the fit by resampling based on the variance matrix of the coefficients, which is done by simulating many coefficients (here called <code>bsim</code>).</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="submodel-structure.html#cb140-1" tabindex="-1"></a> <span class="co"># get the variance matrix of the coefficients and simulate</span></span>
-<span id="cb140-2"><a href="submodel-structure.html#cb140-2" tabindex="-1"></a> Sigma <span class="ot">&lt;-</span> <span class="fu">vcov</span>(fmod)[,,<span class="dv">1</span>]</span>
-<span id="cb140-3"><a href="submodel-structure.html#cb140-3" tabindex="-1"></a> bsim <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(<span class="dv">999</span>, b, Sigma)</span>
-<span id="cb140-4"><a href="submodel-structure.html#cb140-4" tabindex="-1"></a></span>
-<span id="cb140-5"><a href="submodel-structure.html#cb140-5" tabindex="-1"></a> fit_sim <span class="ot">&lt;-</span> <span class="fu">exp</span>(X <span class="sc">%*%</span> bsim)</span>
-<span id="cb140-6"><a href="submodel-structure.html#cb140-6" tabindex="-1"></a> dat<span class="sc">$</span>ci_lower <span class="ot">&lt;-</span> <span class="fu">apply</span>(fit_sim, <span class="dv">1</span>, quantile, <span class="at">p =</span> <span class="fl">0.025</span>)</span>
-<span id="cb140-7"><a href="submodel-structure.html#cb140-7" tabindex="-1"></a> dat<span class="sc">$</span>ci_upper <span class="ot">&lt;-</span> <span class="fu">apply</span>(fit_sim, <span class="dv">1</span>, quantile, <span class="at">p =</span> <span class="fl">0.975</span>)</span>
-<span id="cb140-8"><a href="submodel-structure.html#cb140-8" tabindex="-1"></a></span>
-<span id="cb140-9"><a href="submodel-structure.html#cb140-9" tabindex="-1"></a> <span class="fu">plot</span>(fit <span class="sc">~</span> age, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">data =</span> dat[dat<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2016</span>,],</span>
-<span id="cb140-10"><a href="submodel-structure.html#cb140-10" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">&quot;Estimated fishing mortality at age&quot;</span>,</span>
-<span id="cb140-11"><a href="submodel-structure.html#cb140-11" tabindex="-1"></a>      <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(dat<span class="sc">$</span>ci_upper)), <span class="at">las =</span> <span class="dv">1</span>)</span>
-<span id="cb140-12"><a href="submodel-structure.html#cb140-12" tabindex="-1"></a> <span class="fu">lines</span>(ci_lower <span class="sc">~</span> age, <span class="at">data =</span> dat[dat<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2016</span>,], <span class="at">lty =</span> <span class="dv">2</span>)</span>
-<span id="cb140-13"><a href="submodel-structure.html#cb140-13" tabindex="-1"></a> <span class="fu">lines</span>(ci_upper <span class="sc">~</span> age, <span class="at">data =</span> dat[dat<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2016</span>,], <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="submodel-structure.html#cb141-1" tabindex="-1"></a> <span class="co"># get the variance matrix of the coefficients and simulate</span></span>
+<span id="cb141-2"><a href="submodel-structure.html#cb141-2" tabindex="-1"></a> Sigma <span class="ot">&lt;-</span> <span class="fu">vcov</span>(fmod)[,,<span class="dv">1</span>]</span>
+<span id="cb141-3"><a href="submodel-structure.html#cb141-3" tabindex="-1"></a> bsim <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(<span class="dv">999</span>, b, Sigma)</span>
+<span id="cb141-4"><a href="submodel-structure.html#cb141-4" tabindex="-1"></a></span>
+<span id="cb141-5"><a href="submodel-structure.html#cb141-5" tabindex="-1"></a> fit_sim <span class="ot">&lt;-</span> <span class="fu">exp</span>(X <span class="sc">%*%</span> bsim)</span>
+<span id="cb141-6"><a href="submodel-structure.html#cb141-6" tabindex="-1"></a> dat<span class="sc">$</span>ci_lower <span class="ot">&lt;-</span> <span class="fu">apply</span>(fit_sim, <span class="dv">1</span>, quantile, <span class="at">p =</span> <span class="fl">0.025</span>)</span>
+<span id="cb141-7"><a href="submodel-structure.html#cb141-7" tabindex="-1"></a> dat<span class="sc">$</span>ci_upper <span class="ot">&lt;-</span> <span class="fu">apply</span>(fit_sim, <span class="dv">1</span>, quantile, <span class="at">p =</span> <span class="fl">0.975</span>)</span>
+<span id="cb141-8"><a href="submodel-structure.html#cb141-8" tabindex="-1"></a></span>
+<span id="cb141-9"><a href="submodel-structure.html#cb141-9" tabindex="-1"></a> <span class="fu">plot</span>(fit <span class="sc">~</span> age, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">data =</span> dat[dat<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2016</span>,],</span>
+<span id="cb141-10"><a href="submodel-structure.html#cb141-10" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">&quot;Estimated fishing mortality at age&quot;</span>,</span>
+<span id="cb141-11"><a href="submodel-structure.html#cb141-11" tabindex="-1"></a>      <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(dat<span class="sc">$</span>ci_upper)), <span class="at">las =</span> <span class="dv">1</span>)</span>
+<span id="cb141-12"><a href="submodel-structure.html#cb141-12" tabindex="-1"></a> <span class="fu">lines</span>(ci_lower <span class="sc">~</span> age, <span class="at">data =</span> dat[dat<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2016</span>,], <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb141-13"><a href="submodel-structure.html#cb141-13" tabindex="-1"></a> <span class="fu">lines</span>(ci_upper <span class="sc">~</span> age, <span class="at">data =</span> dat[dat<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2016</span>,], <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p>The above code is to show how it is possible to use an <code>FLa4a</code> submodel to predict and simulate, and not intended to be used by the user. The recomended way to predict from a submodel and make simulations is to use the <code>genFLQuant</code> function (and for finer control, there is also a <code>simulate</code> function). The above example can be done using <code>FLa4a</code> functions as follows:</p>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="submodel-structure.html#cb141-1" tabindex="-1"></a> fmod_fit <span class="ot">&lt;-</span> <span class="fu">genFLQuant</span>(fmod)</span>
-<span id="cb141-2"><a href="submodel-structure.html#cb141-2" tabindex="-1"></a> dat <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(fmod_fit)</span>
-<span id="cb141-3"><a href="submodel-structure.html#cb141-3" tabindex="-1"></a></span>
-<span id="cb141-4"><a href="submodel-structure.html#cb141-4" tabindex="-1"></a> <span class="fu">plot</span>(data <span class="sc">~</span> age, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">data =</span> dat[dat<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2016</span>,],</span>
-<span id="cb141-5"><a href="submodel-structure.html#cb141-5" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">&quot;Estimated fishing mortality at age&quot;</span>,</span>
-<span id="cb141-6"><a href="submodel-structure.html#cb141-6" tabindex="-1"></a>      <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(dat<span class="sc">$</span>data)), <span class="at">las =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p>or using the <code>ggplotFL</code> package:</p>
 <div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="submodel-structure.html#cb142-1" tabindex="-1"></a> fmod_fit <span class="ot">&lt;-</span> <span class="fu">genFLQuant</span>(fmod)</span>
-<span id="cb142-2"><a href="submodel-structure.html#cb142-2" tabindex="-1"></a></span>
-<span id="cb142-3"><a href="submodel-structure.html#cb142-3" tabindex="-1"></a> <span class="fu">ggplot</span>(<span class="at">data =</span> fmod_fit[,<span class="st">&quot;2016&quot;</span>], <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> data)) <span class="sc">+</span> </span>
-<span id="cb142-4"><a href="submodel-structure.html#cb142-4" tabindex="-1"></a>   <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb142-5"><a href="submodel-structure.html#cb142-5" tabindex="-1"></a>   <span class="fu">ylab</span>(<span class="st">&quot;Estimated fishing mortality at age&quot;</span>) <span class="sc">+</span></span>
-<span id="cb142-6"><a href="submodel-structure.html#cb142-6" tabindex="-1"></a>   <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fu">max</span>(fmod_fit))</span></code></pre></div>
+<span id="cb142-2"><a href="submodel-structure.html#cb142-2" tabindex="-1"></a> dat <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(fmod_fit)</span>
+<span id="cb142-3"><a href="submodel-structure.html#cb142-3" tabindex="-1"></a></span>
+<span id="cb142-4"><a href="submodel-structure.html#cb142-4" tabindex="-1"></a> <span class="fu">plot</span>(data <span class="sc">~</span> age, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">data =</span> dat[dat<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2016</span>,],</span>
+<span id="cb142-5"><a href="submodel-structure.html#cb142-5" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">&quot;Estimated fishing mortality at age&quot;</span>,</span>
+<span id="cb142-6"><a href="submodel-structure.html#cb142-6" tabindex="-1"></a>      <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(dat<span class="sc">$</span>data)), <span class="at">las =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p>or using the <code>ggplotFL</code> package:</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="submodel-structure.html#cb143-1" tabindex="-1"></a> fmod_fit <span class="ot">&lt;-</span> <span class="fu">genFLQuant</span>(fmod)</span>
+<span id="cb143-2"><a href="submodel-structure.html#cb143-2" tabindex="-1"></a></span>
+<span id="cb143-3"><a href="submodel-structure.html#cb143-3" tabindex="-1"></a> <span class="fu">ggplot</span>(<span class="at">data =</span> fmod_fit[,<span class="st">&quot;2016&quot;</span>], <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> data)) <span class="sc">+</span> </span>
+<span id="cb143-4"><a href="submodel-structure.html#cb143-4" tabindex="-1"></a>   <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb143-5"><a href="submodel-structure.html#cb143-5" tabindex="-1"></a>   <span class="fu">ylab</span>(<span class="st">&quot;Estimated fishing mortality at age&quot;</span>) <span class="sc">+</span></span>
+<span id="cb143-6"><a href="submodel-structure.html#cb143-6" tabindex="-1"></a>   <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fu">max</span>(fmod_fit))</span></code></pre></div>
 <p>and the simulations and confidence intervals are easily computed:</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="submodel-structure.html#cb143-1" tabindex="-1"></a> <span class="co"># simulate 999 </span></span>
-<span id="cb143-2"><a href="submodel-structure.html#cb143-2" tabindex="-1"></a> fmod_fit_sim <span class="ot">&lt;-</span> <span class="fu">genFLQuant</span>(fmod, <span class="at">nsim =</span> <span class="dv">999</span>)</span>
-<span id="cb143-3"><a href="submodel-structure.html#cb143-3" tabindex="-1"></a></span>
-<span id="cb143-4"><a href="submodel-structure.html#cb143-4" tabindex="-1"></a> <span class="co"># reduce to quantiles</span></span>
-<span id="cb143-5"><a href="submodel-structure.html#cb143-5" tabindex="-1"></a> fmod_fit_sim <span class="ot">&lt;-</span> <span class="fu">quantile</span>(fmod_fit_sim[,<span class="st">&quot;2016&quot;</span>], <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.50</span>, <span class="fl">0.975</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="submodel-structure.html#cb144-1" tabindex="-1"></a> <span class="co"># simulate 999 </span></span>
+<span id="cb144-2"><a href="submodel-structure.html#cb144-2" tabindex="-1"></a> fmod_fit_sim <span class="ot">&lt;-</span> <span class="fu">genFLQuant</span>(fmod, <span class="at">nsim =</span> <span class="dv">999</span>)</span>
+<span id="cb144-3"><a href="submodel-structure.html#cb144-3" tabindex="-1"></a></span>
+<span id="cb144-4"><a href="submodel-structure.html#cb144-4" tabindex="-1"></a> <span class="co"># reduce to quantiles</span></span>
+<span id="cb144-5"><a href="submodel-structure.html#cb144-5" tabindex="-1"></a> fmod_fit_sim <span class="ot">&lt;-</span> <span class="fu">quantile</span>(fmod_fit_sim[,<span class="st">&quot;2016&quot;</span>], <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.50</span>, <span class="fl">0.975</span>))</span></code></pre></div>
 <p>plotting can be done by converting to a data.frame, reshaping and using standard <code>ggplot2</code> functionality</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="submodel-structure.html#cb144-1" tabindex="-1"></a> dat <span class="ot">&lt;-</span> </span>
-<span id="cb144-2"><a href="submodel-structure.html#cb144-2" tabindex="-1"></a>   <span class="fu">reshape</span>(</span>
-<span id="cb144-3"><a href="submodel-structure.html#cb144-3" tabindex="-1"></a>     <span class="fu">as.data.frame</span>(fmod_fit_sim, <span class="at">drop=</span><span class="cn">TRUE</span>), </span>
-<span id="cb144-4"><a href="submodel-structure.html#cb144-4" tabindex="-1"></a>     <span class="at">timevar =</span> <span class="st">&quot;iter&quot;</span>, <span class="at">idvar =</span> <span class="st">&quot;age&quot;</span>, <span class="at">direction =</span> <span class="st">&quot;wide&quot;</span>  </span>
-<span id="cb144-5"><a href="submodel-structure.html#cb144-5" tabindex="-1"></a>   )</span>
-<span id="cb144-6"><a href="submodel-structure.html#cb144-6" tabindex="-1"></a></span>
-<span id="cb144-7"><a href="submodel-structure.html#cb144-7" tabindex="-1"></a> <span class="fu">ggplot</span>(<span class="at">data=</span>dat, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> <span class="st">`</span><span class="at">data.50%</span><span class="st">`</span>)) <span class="sc">+</span></span>
-<span id="cb144-8"><a href="submodel-structure.html#cb144-8" tabindex="-1"></a>   <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> <span class="st">`</span><span class="at">data.2.5%</span><span class="st">`</span>, <span class="at">ymax =</span> <span class="st">`</span><span class="at">data.97.5%</span><span class="st">`</span>), </span>
-<span id="cb144-9"><a href="submodel-structure.html#cb144-9" tabindex="-1"></a>               <span class="at">fill=</span><span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> .<span class="dv">15</span>) <span class="sc">+</span></span>
-<span id="cb144-10"><a href="submodel-structure.html#cb144-10" tabindex="-1"></a>   <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb144-11"><a href="submodel-structure.html#cb144-11" tabindex="-1"></a>   <span class="fu">ylab</span>(<span class="st">&quot;Estimated fishing mortality at age&quot;</span>) <span class="sc">+</span></span>
-<span id="cb144-12"><a href="submodel-structure.html#cb144-12" tabindex="-1"></a>   <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fu">max</span>(fmod_fit_sim))</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="submodel-structure.html#cb145-1" tabindex="-1"></a> dat <span class="ot">&lt;-</span> </span>
+<span id="cb145-2"><a href="submodel-structure.html#cb145-2" tabindex="-1"></a>   <span class="fu">reshape</span>(</span>
+<span id="cb145-3"><a href="submodel-structure.html#cb145-3" tabindex="-1"></a>     <span class="fu">as.data.frame</span>(fmod_fit_sim, <span class="at">drop=</span><span class="cn">TRUE</span>), </span>
+<span id="cb145-4"><a href="submodel-structure.html#cb145-4" tabindex="-1"></a>     <span class="at">timevar =</span> <span class="st">&quot;iter&quot;</span>, <span class="at">idvar =</span> <span class="st">&quot;age&quot;</span>, <span class="at">direction =</span> <span class="st">&quot;wide&quot;</span>  </span>
+<span id="cb145-5"><a href="submodel-structure.html#cb145-5" tabindex="-1"></a>   )</span>
+<span id="cb145-6"><a href="submodel-structure.html#cb145-6" tabindex="-1"></a></span>
+<span id="cb145-7"><a href="submodel-structure.html#cb145-7" tabindex="-1"></a> <span class="fu">ggplot</span>(<span class="at">data=</span>dat, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> <span class="st">`</span><span class="at">data.50%</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb145-8"><a href="submodel-structure.html#cb145-8" tabindex="-1"></a>   <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> <span class="st">`</span><span class="at">data.2.5%</span><span class="st">`</span>, <span class="at">ymax =</span> <span class="st">`</span><span class="at">data.97.5%</span><span class="st">`</span>), </span>
+<span id="cb145-9"><a href="submodel-structure.html#cb145-9" tabindex="-1"></a>               <span class="at">fill=</span><span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> .<span class="dv">15</span>) <span class="sc">+</span></span>
+<span id="cb145-10"><a href="submodel-structure.html#cb145-10" tabindex="-1"></a>   <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb145-11"><a href="submodel-structure.html#cb145-11" tabindex="-1"></a>   <span class="fu">ylab</span>(<span class="st">&quot;Estimated fishing mortality at age&quot;</span>) <span class="sc">+</span></span>
+<span id="cb145-12"><a href="submodel-structure.html#cb145-12" tabindex="-1"></a>   <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fu">max</span>(fmod_fit_sim))</span></code></pre></div>
 
 </div>
 </div>

@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-02-05" />
+<meta name="date" content="2025-02-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -153,7 +153,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#the-assessment-for-all-initiative-a4a"><i class="fa fa-check"></i><b>2.1</b> The “Assessment for All” Initiative (a4a)</a></li>
 <li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#multi-stage-modelling-approach"><i class="fa fa-check"></i><b>2.2</b> Multi-stage modelling approach</a></li>
 <li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#stock-assessment-process"><i class="fa fa-check"></i><b>2.3</b> Stock Assessment Process</a></li>
-<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#stock-assessment-as-a-linear-model"><i class="fa fa-check"></i><b>2.4</b> Stock assessment as a linear model</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#stock-assessment-as-a-linear-model-colin"><i class="fa fa-check"></i><b>2.4</b> Stock assessment as a linear model [COLIN]</a></li>
 <li class="chapter" data-level="2.5" data-path="introduction.html"><a href="introduction.html#data-used-in-the-book"><i class="fa fa-check"></i><b>2.5</b> Data used in the book</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="introduction.html"><a href="introduction.html#plaice-in-area-fao-27-ices-area-iv"><i class="fa fa-check"></i><b>2.5.1</b> Plaice in area FAO 27, ICES area IV</a></li>
@@ -375,8 +375,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>When data are limited, the stock assessment model requires more structure, but this constraint reduces the information available to manage parameter correlations. Striking this balance is challenging. The a4a approach incorporates stock-recruitment relationships, as these are believed to exhibit lower correlation with other model parameters compared to natural mortality or individual growth.</p>
 <p>On the other hand, since natural mortality and individual growth are very important processes acting at a very low level in terms of data processing, there are specific methods to deal with conditioning those processes, in case there’s no data or limited data available, and to provide the opportuinity to propagate their uncertainty into stock assessment.</p>
 </div>
-<div id="stock-assessment-as-a-linear-model" class="section level2 hasAnchor" number="2.4">
-<h2><span class="header-section-number">2.4</span> Stock assessment as a linear model<a href="introduction.html#stock-assessment-as-a-linear-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="stock-assessment-as-a-linear-model-colin" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Stock assessment as a linear model [COLIN]<a href="introduction.html#stock-assessment-as-a-linear-model-colin" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The submodels formulation uses linear models, which opens the possibility of using the linear modelling tools available in <code>R</code>. For example, <a href="http://cran.r-project.org/web/packages/mgcv/index.html"><code>mgcv</code></a> gam formulas or factorial design formulas using <code>lm()</code>.</p>
 <p>The ‘language’ of linear models has been developing within the statistical community for many years, and constitutes an elegant way of defining models without going through the complexity of mathematical representations. This approach makes it also easier to communicate among scientists:</p>
 <ul>

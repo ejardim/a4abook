@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-02-05" />
+<meta name="date" content="2025-02-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -153,7 +153,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#the-assessment-for-all-initiative-a4a"><i class="fa fa-check"></i><b>2.1</b> The “Assessment for All” Initiative (a4a)</a></li>
 <li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#multi-stage-modelling-approach"><i class="fa fa-check"></i><b>2.2</b> Multi-stage modelling approach</a></li>
 <li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#stock-assessment-process"><i class="fa fa-check"></i><b>2.3</b> Stock Assessment Process</a></li>
-<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#stock-assessment-as-a-linear-model"><i class="fa fa-check"></i><b>2.4</b> Stock assessment as a linear model</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#stock-assessment-as-a-linear-model-colin"><i class="fa fa-check"></i><b>2.4</b> Stock assessment as a linear model [COLIN]</a></li>
 <li class="chapter" data-level="2.5" data-path="introduction.html"><a href="introduction.html#data-used-in-the-book"><i class="fa fa-check"></i><b>2.5</b> Data used in the book</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="introduction.html"><a href="introduction.html#plaice-in-area-fao-27-ices-area-iv"><i class="fa fa-check"></i><b>2.5.1</b> Plaice in area FAO 27, ICES area IV</a></li>
@@ -311,18 +311,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="modelling-spatial-effects" class="section level1 hasAnchor" number="17">
 <h1><span class="header-section-number">17</span> Modelling spatial effects<a href="modelling-spatial-effects.html#modelling-spatial-effects" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="modelling-spatial-effects.html#cb338-1" tabindex="-1"></a>ridx01 <span class="ot">&lt;-</span> stk0<span class="sc">@</span>stock.n[<span class="dv">1</span>]<span class="sc">*</span><span class="fl">0.7</span><span class="sc">*</span><span class="fl">0.001</span></span>
-<span id="cb338-2"><a href="modelling-spatial-effects.html#cb338-2" tabindex="-1"></a>ridx01 <span class="ot">&lt;-</span> <span class="fu">log</span>(ridx01<span class="sc">*</span><span class="fu">rlnorm</span>(ridx01))</span>
-<span id="cb338-3"><a href="modelling-spatial-effects.html#cb338-3" tabindex="-1"></a>ridx02 <span class="ot">&lt;-</span> stk0<span class="sc">@</span>stock.n[<span class="dv">1</span>]<span class="sc">*</span><span class="fl">0.3</span><span class="sc">*</span><span class="fl">0.001</span></span>
-<span id="cb338-4"><a href="modelling-spatial-effects.html#cb338-4" tabindex="-1"></a>ridx02 <span class="ot">&lt;-</span> <span class="fu">log</span>(ridx02<span class="sc">*</span><span class="fu">rlnorm</span>(ridx02))</span>
-<span id="cb338-5"><a href="modelling-spatial-effects.html#cb338-5" tabindex="-1"></a></span>
-<span id="cb338-6"><a href="modelling-spatial-effects.html#cb338-6" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">geomean</span>(a<span class="sc">~</span>ridx01<span class="sc">+</span>ridx02, <span class="at">CV=</span><span class="fl">0.5</span>)</span>
-<span id="cb338-7"><a href="modelling-spatial-effects.html#cb338-7" tabindex="-1"></a>cvar <span class="ot">&lt;-</span> <span class="fu">FLQuants</span>(<span class="at">ridx01 =</span> ridx01, <span class="at">ridx02 =</span> ridx02)</span>
-<span id="cb338-8"><a href="modelling-spatial-effects.html#cb338-8" tabindex="-1"></a>fit01 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stock,tun.sel[<span class="fu">c</span>(<span class="dv">1</span>)],<span class="at">fmodel=</span>fmod,<span class="at">qmodel=</span>qmod, <span class="at">srmodel=</span>srmod, <span class="at">covar=</span>cvar)</span>
-<span id="cb338-9"><a href="modelling-spatial-effects.html#cb338-9" tabindex="-1"></a><span class="fu">coef</span>(fit01)</span>
-<span id="cb338-10"><a href="modelling-spatial-effects.html#cb338-10" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">geomean</span>(<span class="at">CV=</span><span class="fl">0.1</span>)</span>
-<span id="cb338-11"><a href="modelling-spatial-effects.html#cb338-11" tabindex="-1"></a>fit02 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stock,tun.sel[<span class="fu">c</span>(<span class="dv">1</span>)],<span class="at">fmodel=</span>fmod,<span class="at">qmodel=</span>qmod, <span class="at">srmodel=</span>srmod)</span>
-<span id="cb338-12"><a href="modelling-spatial-effects.html#cb338-12" tabindex="-1"></a><span class="fu">coef</span>(fit02)</span></code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="modelling-spatial-effects.html#cb339-1" tabindex="-1"></a>ridx01 <span class="ot">&lt;-</span> stk0<span class="sc">@</span>stock.n[<span class="dv">1</span>]<span class="sc">*</span><span class="fl">0.7</span><span class="sc">*</span><span class="fl">0.001</span></span>
+<span id="cb339-2"><a href="modelling-spatial-effects.html#cb339-2" tabindex="-1"></a>ridx01 <span class="ot">&lt;-</span> <span class="fu">log</span>(ridx01<span class="sc">*</span><span class="fu">rlnorm</span>(ridx01))</span>
+<span id="cb339-3"><a href="modelling-spatial-effects.html#cb339-3" tabindex="-1"></a>ridx02 <span class="ot">&lt;-</span> stk0<span class="sc">@</span>stock.n[<span class="dv">1</span>]<span class="sc">*</span><span class="fl">0.3</span><span class="sc">*</span><span class="fl">0.001</span></span>
+<span id="cb339-4"><a href="modelling-spatial-effects.html#cb339-4" tabindex="-1"></a>ridx02 <span class="ot">&lt;-</span> <span class="fu">log</span>(ridx02<span class="sc">*</span><span class="fu">rlnorm</span>(ridx02))</span>
+<span id="cb339-5"><a href="modelling-spatial-effects.html#cb339-5" tabindex="-1"></a></span>
+<span id="cb339-6"><a href="modelling-spatial-effects.html#cb339-6" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">geomean</span>(a<span class="sc">~</span>ridx01<span class="sc">+</span>ridx02, <span class="at">CV=</span><span class="fl">0.5</span>)</span>
+<span id="cb339-7"><a href="modelling-spatial-effects.html#cb339-7" tabindex="-1"></a>cvar <span class="ot">&lt;-</span> <span class="fu">FLQuants</span>(<span class="at">ridx01 =</span> ridx01, <span class="at">ridx02 =</span> ridx02)</span>
+<span id="cb339-8"><a href="modelling-spatial-effects.html#cb339-8" tabindex="-1"></a>fit01 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stock,tun.sel[<span class="fu">c</span>(<span class="dv">1</span>)],<span class="at">fmodel=</span>fmod,<span class="at">qmodel=</span>qmod, <span class="at">srmodel=</span>srmod, <span class="at">covar=</span>cvar)</span>
+<span id="cb339-9"><a href="modelling-spatial-effects.html#cb339-9" tabindex="-1"></a><span class="fu">coef</span>(fit01)</span>
+<span id="cb339-10"><a href="modelling-spatial-effects.html#cb339-10" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">geomean</span>(<span class="at">CV=</span><span class="fl">0.1</span>)</span>
+<span id="cb339-11"><a href="modelling-spatial-effects.html#cb339-11" tabindex="-1"></a>fit02 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stock,tun.sel[<span class="fu">c</span>(<span class="dv">1</span>)],<span class="at">fmodel=</span>fmod,<span class="at">qmodel=</span>qmod, <span class="at">srmodel=</span>srmod)</span>
+<span id="cb339-12"><a href="modelling-spatial-effects.html#cb339-12" tabindex="-1"></a><span class="fu">coef</span>(fit02)</span></code></pre></div>
 <ul>
 <li>check situation where the two areas are negatively correlated</li>
 <li>the two covariates need to be at the same scale, in the sense of representing the same process</li>

@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-02-05" />
+<meta name="date" content="2025-02-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -153,7 +153,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#the-assessment-for-all-initiative-a4a"><i class="fa fa-check"></i><b>2.1</b> The “Assessment for All” Initiative (a4a)</a></li>
 <li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#multi-stage-modelling-approach"><i class="fa fa-check"></i><b>2.2</b> Multi-stage modelling approach</a></li>
 <li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#stock-assessment-process"><i class="fa fa-check"></i><b>2.3</b> Stock Assessment Process</a></li>
-<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#stock-assessment-as-a-linear-model"><i class="fa fa-check"></i><b>2.4</b> Stock assessment as a linear model</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#stock-assessment-as-a-linear-model-colin"><i class="fa fa-check"></i><b>2.4</b> Stock assessment as a linear model [COLIN]</a></li>
 <li class="chapter" data-level="2.5" data-path="introduction.html"><a href="introduction.html#data-used-in-the-book"><i class="fa fa-check"></i><b>2.5</b> Data used in the book</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="introduction.html"><a href="introduction.html#plaice-in-area-fao-27-ices-area-iv"><i class="fa fa-check"></i><b>2.5.1</b> Plaice in area FAO 27, ICES area IV</a></li>
@@ -312,7 +312,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="predict-and-simulate" class="section level1 hasAnchor" number="13">
 <h1><span class="header-section-number">13</span> Predict and simulate <a href="predict-and-simulate.html#predict-and-simulate" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>To predict and simulate <code>R</code> uses the methods <code>predict()</code> and <code>simulate()</code>, which were implemented in <code>FLa4a</code> in the same fashion.</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="predict-and-simulate.html#cb302-1" tabindex="-1"></a>fit0 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.index, <span class="at">fit=</span><span class="st">&quot;assessment&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="predict-and-simulate.html#cb303-1" tabindex="-1"></a>fit0 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.index, <span class="at">fit=</span><span class="st">&quot;assessment&quot;</span>)</span></code></pre></div>
 <div id="basic-functions" class="section level2 hasAnchor" number="13.1">
 <h2><span class="header-section-number">13.1</span> Basic functions}<a href="predict-and-simulate.html#basic-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Simulation and prediction in FLa4a is based on three functions: <code>simulate</code> and <code>genFLQuant</code>.</p>
@@ -329,36 +329,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="submodels" class="section level2 hasAnchor" number="13.2">
 <h2><span class="header-section-number">13.2</span> submodels<a href="predict-and-simulate.html#submodels" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In an <code>sca</code> fit individual submodel objects are often combined into a collection of <code>submodels</code>, for example the models for survey catchability are a collection of submodels</p>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="predict-and-simulate.html#cb303-1" tabindex="-1"></a>qmod <span class="ot">&lt;-</span> <span class="fu">qmodel</span>(fit0)</span></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="predict-and-simulate.html#cb304-1" tabindex="-1"></a>qmod <span class="ot">&lt;-</span> <span class="fu">qmodel</span>(fit0)</span></code></pre></div>
 <p>which contains a submodel for each survey catchability. Now (almost) the same code can be run as before to plot the estimates with confidence intervals, the difference with submodels is all the results will be <code>FLQuants</code> so, <code>lapply</code> must be used to do computations on the predictions for each submodel seperately.</p>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="predict-and-simulate.html#cb304-1" tabindex="-1"></a>qmod_fit_sim <span class="ot">&lt;-</span> <span class="fu">genFLQuant</span>(qmod, <span class="at">nsim =</span> <span class="dv">999</span>)</span>
-<span id="cb304-2"><a href="predict-and-simulate.html#cb304-2" tabindex="-1"></a></span>
-<span id="cb304-3"><a href="predict-and-simulate.html#cb304-3" tabindex="-1"></a><span class="co"># reduce to quantiles</span></span>
-<span id="cb304-4"><a href="predict-and-simulate.html#cb304-4" tabindex="-1"></a>qmod_fit_sim <span class="ot">&lt;-</span> <span class="fu">lapply</span>(qmod_fit_sim, <span class="st">&quot;[&quot;</span>, <span class="at">j =</span> <span class="st">&quot;2016&quot;</span>)</span>
-<span id="cb304-5"><a href="predict-and-simulate.html#cb304-5" tabindex="-1"></a>qmod_fit_sim <span class="ot">&lt;-</span> <span class="fu">lapply</span>(qmod_fit_sim, quantile, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.50</span>, <span class="fl">0.975</span>))</span>
-<span id="cb304-6"><a href="predict-and-simulate.html#cb304-6" tabindex="-1"></a></span>
-<span id="cb304-7"><a href="predict-and-simulate.html#cb304-7" tabindex="-1"></a><span class="co"># reshape</span></span>
-<span id="cb304-8"><a href="predict-and-simulate.html#cb304-8" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">reshape</span>(</span>
-<span id="cb304-9"><a href="predict-and-simulate.html#cb304-9" tabindex="-1"></a>    <span class="fu">as.data.frame</span>(qmod_fit_sim, <span class="at">drop=</span><span class="cn">TRUE</span>), </span>
-<span id="cb304-10"><a href="predict-and-simulate.html#cb304-10" tabindex="-1"></a>    <span class="at">timevar =</span> <span class="st">&quot;iter&quot;</span>, <span class="at">idvar =</span> <span class="fu">c</span>(<span class="st">&quot;age&quot;</span>, <span class="st">&quot;qname&quot;</span>), <span class="at">direction =</span> <span class="st">&quot;wide&quot;</span>  </span>
-<span id="cb304-11"><a href="predict-and-simulate.html#cb304-11" tabindex="-1"></a>  )</span>
-<span id="cb304-12"><a href="predict-and-simulate.html#cb304-12" tabindex="-1"></a></span>
-<span id="cb304-13"><a href="predict-and-simulate.html#cb304-13" tabindex="-1"></a><span class="co"># plot</span></span>
-<span id="cb304-14"><a href="predict-and-simulate.html#cb304-14" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>dat, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> <span class="st">`</span><span class="at">data.50%</span><span class="st">`</span>)) <span class="sc">+</span></span>
-<span id="cb304-15"><a href="predict-and-simulate.html#cb304-15" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> <span class="st">`</span><span class="at">data.2.5%</span><span class="st">`</span>, <span class="at">ymax =</span> <span class="st">`</span><span class="at">data.97.5%</span><span class="st">`</span>), </span>
-<span id="cb304-16"><a href="predict-and-simulate.html#cb304-16" tabindex="-1"></a>              <span class="at">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> .<span class="dv">15</span>) <span class="sc">+</span></span>
-<span id="cb304-17"><a href="predict-and-simulate.html#cb304-17" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb304-18"><a href="predict-and-simulate.html#cb304-18" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Estimated catchability at age&quot;</span>) <span class="sc">+</span></span>
-<span id="cb304-19"><a href="predict-and-simulate.html#cb304-19" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> qname, <span class="at">scales =</span> <span class="st">&quot;free_x&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="predict-and-simulate.html#cb305-1" tabindex="-1"></a>qmod_fit_sim <span class="ot">&lt;-</span> <span class="fu">genFLQuant</span>(qmod, <span class="at">nsim =</span> <span class="dv">999</span>)</span>
+<span id="cb305-2"><a href="predict-and-simulate.html#cb305-2" tabindex="-1"></a></span>
+<span id="cb305-3"><a href="predict-and-simulate.html#cb305-3" tabindex="-1"></a><span class="co"># reduce to quantiles</span></span>
+<span id="cb305-4"><a href="predict-and-simulate.html#cb305-4" tabindex="-1"></a>qmod_fit_sim <span class="ot">&lt;-</span> <span class="fu">lapply</span>(qmod_fit_sim, <span class="st">&quot;[&quot;</span>, <span class="at">j =</span> <span class="st">&quot;2016&quot;</span>)</span>
+<span id="cb305-5"><a href="predict-and-simulate.html#cb305-5" tabindex="-1"></a>qmod_fit_sim <span class="ot">&lt;-</span> <span class="fu">lapply</span>(qmod_fit_sim, quantile, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.50</span>, <span class="fl">0.975</span>))</span>
+<span id="cb305-6"><a href="predict-and-simulate.html#cb305-6" tabindex="-1"></a></span>
+<span id="cb305-7"><a href="predict-and-simulate.html#cb305-7" tabindex="-1"></a><span class="co"># reshape</span></span>
+<span id="cb305-8"><a href="predict-and-simulate.html#cb305-8" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">reshape</span>(</span>
+<span id="cb305-9"><a href="predict-and-simulate.html#cb305-9" tabindex="-1"></a>    <span class="fu">as.data.frame</span>(qmod_fit_sim, <span class="at">drop=</span><span class="cn">TRUE</span>), </span>
+<span id="cb305-10"><a href="predict-and-simulate.html#cb305-10" tabindex="-1"></a>    <span class="at">timevar =</span> <span class="st">&quot;iter&quot;</span>, <span class="at">idvar =</span> <span class="fu">c</span>(<span class="st">&quot;age&quot;</span>, <span class="st">&quot;qname&quot;</span>), <span class="at">direction =</span> <span class="st">&quot;wide&quot;</span>  </span>
+<span id="cb305-11"><a href="predict-and-simulate.html#cb305-11" tabindex="-1"></a>  )</span>
+<span id="cb305-12"><a href="predict-and-simulate.html#cb305-12" tabindex="-1"></a></span>
+<span id="cb305-13"><a href="predict-and-simulate.html#cb305-13" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb305-14"><a href="predict-and-simulate.html#cb305-14" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>dat, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> <span class="st">`</span><span class="at">data.50%</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb305-15"><a href="predict-and-simulate.html#cb305-15" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> <span class="st">`</span><span class="at">data.2.5%</span><span class="st">`</span>, <span class="at">ymax =</span> <span class="st">`</span><span class="at">data.97.5%</span><span class="st">`</span>), </span>
+<span id="cb305-16"><a href="predict-and-simulate.html#cb305-16" tabindex="-1"></a>              <span class="at">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> .<span class="dv">15</span>) <span class="sc">+</span></span>
+<span id="cb305-17"><a href="predict-and-simulate.html#cb305-17" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb305-18"><a href="predict-and-simulate.html#cb305-18" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Estimated catchability at age&quot;</span>) <span class="sc">+</span></span>
+<span id="cb305-19"><a href="predict-and-simulate.html#cb305-19" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> qname, <span class="at">scales =</span> <span class="st">&quot;free_x&quot;</span>)</span></code></pre></div>
 <p>as before the data, coefficients and variance covariance are all available via</p>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="predict-and-simulate.html#cb305-1" tabindex="-1"></a><span class="fu">coef</span>(qmod)</span>
-<span id="cb305-2"><a href="predict-and-simulate.html#cb305-2" tabindex="-1"></a><span class="fu">vcov</span>(qmod)</span></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="predict-and-simulate.html#cb306-1" tabindex="-1"></a><span class="fu">coef</span>(qmod)</span>
+<span id="cb306-2"><a href="predict-and-simulate.html#cb306-2" tabindex="-1"></a><span class="fu">vcov</span>(qmod)</span></code></pre></div>
 </div>
 <div id="predict" class="section level2 hasAnchor" number="13.3">
 <h2><span class="header-section-number">13.3</span> Predict<a href="predict-and-simulate.html#predict" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Predict simply computes the quantities of interest using the estimated coefficients and the design matrix of the model.</p>
-<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="predict-and-simulate.html#cb306-1" tabindex="-1"></a>fit.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit0)</span>
-<span id="cb306-2"><a href="predict-and-simulate.html#cb306-2" tabindex="-1"></a><span class="fu">lapply</span>(fit.pred, names)</span></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="predict-and-simulate.html#cb307-1" tabindex="-1"></a>fit.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit0)</span>
+<span id="cb307-2"><a href="predict-and-simulate.html#cb307-2" tabindex="-1"></a><span class="fu">lapply</span>(fit.pred, names)</span></code></pre></div>
 <pre><code>## $stkmodel
 ## [1] &quot;harvest&quot; &quot;rec&quot;     &quot;ny1&quot;    
 ## 
@@ -376,21 +376,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="simulate-1" class="section level2 hasAnchor" number="13.4">
 <h2><span class="header-section-number">13.4</span> Simulate<a href="predict-and-simulate.html#simulate-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Simulate uses the variance-covariance matrix computed from the Hessian returned by <code>ADMB</code> and the fitted parameters, to parametrize a multivariate normal distribution. The simulations are carried out using the method <code>mvrnorm()</code> provided by the R package <a href="http://cran.r-project.org/web/packages/MASS/">MASS</a>. Figure <a href="predict-and-simulate.html#fig:sim">13.1</a> shows a comparison between the estimated values and the medians of the simulation, while Figure <a href="predict-and-simulate.html#fig:sim2">13.2</a> presents the stock summary of the simulated and fitted data.</p>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="predict-and-simulate.html#cb308-1" tabindex="-1"></a>fits <span class="ot">&lt;-</span> <span class="fu">simulate</span>(fit0, <span class="dv">100</span>)</span>
-<span id="cb308-2"><a href="predict-and-simulate.html#cb308-2" tabindex="-1"></a>flqs <span class="ot">&lt;-</span> <span class="fu">FLQuants</span>(<span class="at">sim=</span><span class="fu">iterMedians</span>(<span class="fu">stock.n</span>(fits)), <span class="at">det=</span><span class="fu">stock.n</span>(fit0))</span></code></pre></div>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="predict-and-simulate.html#cb309-1" tabindex="-1"></a><span class="fu">xyplot</span>(data<span class="sc">~</span>year<span class="sc">|</span>age, <span class="at">groups=</span>qname, <span class="at">data=</span>flqs, <span class="at">type=</span><span class="st">&quot;l&quot;</span>,</span>
-<span id="cb309-2"><a href="predict-and-simulate.html#cb309-2" tabindex="-1"></a>       <span class="at">scales=</span><span class="fu">list</span>(<span class="at">y=</span><span class="fu">list</span>(<span class="at">relation=</span><span class="st">&quot;free&quot;</span>, <span class="at">draw=</span><span class="cn">FALSE</span>)),</span>
-<span id="cb309-3"><a href="predict-and-simulate.html#cb309-3" tabindex="-1"></a>       <span class="at">auto.key=</span><span class="fu">list</span>(<span class="at">points=</span><span class="cn">FALSE</span>, <span class="at">lines=</span><span class="cn">TRUE</span>, <span class="at">columns=</span><span class="dv">2</span>),</span>
-<span id="cb309-4"><a href="predict-and-simulate.html#cb309-4" tabindex="-1"></a>       <span class="at">par.settings=</span><span class="fu">list</span>(<span class="at">superpose.line=</span><span class="fu">list</span>(<span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;gray35&quot;</span>, <span class="st">&quot;black&quot;</span>)),</span>
-<span id="cb309-5"><a href="predict-and-simulate.html#cb309-5" tabindex="-1"></a>       <span class="at">strip.background=</span><span class="fu">list</span>(<span class="at">col=</span><span class="st">&quot;gray90&quot;</span>)), <span class="at">ylab=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="predict-and-simulate.html#cb309-1" tabindex="-1"></a>fits <span class="ot">&lt;-</span> <span class="fu">simulate</span>(fit0, <span class="dv">100</span>)</span>
+<span id="cb309-2"><a href="predict-and-simulate.html#cb309-2" tabindex="-1"></a>flqs <span class="ot">&lt;-</span> <span class="fu">FLQuants</span>(<span class="at">sim=</span><span class="fu">iterMedians</span>(<span class="fu">stock.n</span>(fits)), <span class="at">det=</span><span class="fu">stock.n</span>(fit0))</span></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="predict-and-simulate.html#cb310-1" tabindex="-1"></a><span class="fu">xyplot</span>(data<span class="sc">~</span>year<span class="sc">|</span>age, <span class="at">groups=</span>qname, <span class="at">data=</span>flqs, <span class="at">type=</span><span class="st">&quot;l&quot;</span>,</span>
+<span id="cb310-2"><a href="predict-and-simulate.html#cb310-2" tabindex="-1"></a>       <span class="at">scales=</span><span class="fu">list</span>(<span class="at">y=</span><span class="fu">list</span>(<span class="at">relation=</span><span class="st">&quot;free&quot;</span>, <span class="at">draw=</span><span class="cn">FALSE</span>)),</span>
+<span id="cb310-3"><a href="predict-and-simulate.html#cb310-3" tabindex="-1"></a>       <span class="at">auto.key=</span><span class="fu">list</span>(<span class="at">points=</span><span class="cn">FALSE</span>, <span class="at">lines=</span><span class="cn">TRUE</span>, <span class="at">columns=</span><span class="dv">2</span>),</span>
+<span id="cb310-4"><a href="predict-and-simulate.html#cb310-4" tabindex="-1"></a>       <span class="at">par.settings=</span><span class="fu">list</span>(<span class="at">superpose.line=</span><span class="fu">list</span>(<span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;gray35&quot;</span>, <span class="st">&quot;black&quot;</span>)),</span>
+<span id="cb310-5"><a href="predict-and-simulate.html#cb310-5" tabindex="-1"></a>       <span class="at">strip.background=</span><span class="fu">list</span>(<span class="at">col=</span><span class="st">&quot;gray90&quot;</span>)), <span class="at">ylab=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:sim"></span>
 <img src="_main_files/figure-html/sim-1.png" alt="Median simulations VS fit" width="672" />
 <p class="caption">
 Figure 13.1: Median simulations VS fit
 </p>
 </div>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="predict-and-simulate.html#cb310-1" tabindex="-1"></a>stks <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> fits</span>
-<span id="cb310-2"><a href="predict-and-simulate.html#cb310-2" tabindex="-1"></a><span class="fu">plot</span>(stks)</span></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="predict-and-simulate.html#cb311-1" tabindex="-1"></a>stks <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> fits</span>
+<span id="cb311-2"><a href="predict-and-simulate.html#cb311-2" tabindex="-1"></a><span class="fu">plot</span>(stks)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:sim2"></span>
 <img src="_main_files/figure-html/sim2-1.png" alt="Stock summary of the simulated and fitted data" width="672" />
 <p class="caption">
