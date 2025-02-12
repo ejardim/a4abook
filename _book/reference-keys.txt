@@ -205,3 +205,12 @@ running-mean-cumulative-mean-plots
 geweke-diagnostic
 heidelberger-welch-test
 how-to-improve-convergence-if-its-poor
+fig:chain01
+fig:chain01b
+fig:acf01
+fig:gew01
+traceplots
+fig:cmean01
+fig:dens01
+cumulative-means
+distribution-density
