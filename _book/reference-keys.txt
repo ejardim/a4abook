@@ -214,3 +214,12 @@ fig:cmean01
 fig:dens01
 cumulative-means
 distribution-density
+fig:gelm01
+gelman-rubin-statistic
+references-2
+acceptance-rate
+admbs-arguments-to-tune-the-mcmc-algorithm
+thinning-rate
+acceptance-rate-1
+mcprobe
+mcrb
