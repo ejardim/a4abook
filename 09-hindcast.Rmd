@@ -1,3 +1,0 @@
-# Hindcast
-
-alternative setups and metrics and what it means (EJ to share an initial structure)

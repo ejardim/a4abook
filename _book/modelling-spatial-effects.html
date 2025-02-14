@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>17 Modelling spatial effects | Fish stock assessment with R</title>
+  <title>16 Modelling spatial effects | Fish stock assessment with R</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
   <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="17 Modelling spatial effects | Fish stock assessment with R" />
+  <meta property="og:title" content="16 Modelling spatial effects | Fish stock assessment with R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="How to do stock assessment in R using the a4a framework" />
   <meta name="github-repo" content="ejardim/a4abook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="17 Modelling spatial effects | Fish stock assessment with R" />
+  <meta name="twitter:title" content="16 Modelling spatial effects | Fish stock assessment with R" />
   
   <meta name="twitter:description" content="How to do stock assessment in R using the a4a framework" />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-02-07" />
+<meta name="date" content="2025-02-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -233,31 +233,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3" data-path="diagnostics.html"><a href="diagnostics.html#aggreagted-catch-in-weight"><i class="fa fa-check"></i><b>9.3</b> Aggreagted catch in weight</a></li>
 <li class="chapter" data-level="9.4" data-path="diagnostics.html"><a href="diagnostics.html#fit-summary-information-and-cross-validation-metrics"><i class="fa fa-check"></i><b>9.4</b> Fit summary, information and cross-validation metrics</a></li>
 <li class="chapter" data-level="9.5" data-path="diagnostics.html"><a href="diagnostics.html#the-package-a4adiags"><i class="fa fa-check"></i><b>9.5</b> The package a4adiags</a></li>
-<li class="chapter" data-level="9.6" data-path="diagnostics.html"><a href="diagnostics.html#residuals-and-submodels-misspecifiction"><i class="fa fa-check"></i><b>9.6</b> Residuals and submodels misspecifiction</a>
-<ul>
-<li class="chapter" data-level="9.6.1" data-path="diagnostics.html"><a href="diagnostics.html#the-mean-model"><i class="fa fa-check"></i><b>9.6.1</b> The “mean” model</a></li>
-<li class="chapter" data-level="9.6.2" data-path="diagnostics.html"><a href="diagnostics.html#the-age-effects"><i class="fa fa-check"></i><b>9.6.2</b> The age effects</a></li>
-<li class="chapter" data-level="9.6.3" data-path="diagnostics.html"><a href="diagnostics.html#the-fishing-mortality-year-model"><i class="fa fa-check"></i><b>9.6.3</b> The fishing mortality year model</a></li>
-<li class="chapter" data-level="9.6.4" data-path="diagnostics.html"><a href="diagnostics.html#the-initial-year-population-abundance-model-aka-n1"><i class="fa fa-check"></i><b>9.6.4</b> The initial year population abundance model, aka N1</a></li>
-<li class="chapter" data-level="9.6.5" data-path="diagnostics.html"><a href="diagnostics.html#the-stock-recruitment-submodel"><i class="fa fa-check"></i><b>9.6.5</b> The stock recruitment submodel</a></li>
-<li class="chapter" data-level="9.6.6" data-path="diagnostics.html"><a href="diagnostics.html#the-variance-submodel"><i class="fa fa-check"></i><b>9.6.6</b> The variance submodel</a></li>
+<li class="chapter" data-level="9.6" data-path="diagnostics.html"><a href="diagnostics.html#retrospective-analysis"><i class="fa fa-check"></i><b>9.6</b> Retrospective analysis</a></li>
+<li class="chapter" data-level="9.7" data-path="diagnostics.html"><a href="diagnostics.html#hindcast"><i class="fa fa-check"></i><b>9.7</b> Hindcast</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="hindcast.html"><a href="hindcast.html"><i class="fa fa-check"></i><b>10</b> Hindcast</a></li>
-<li class="chapter" data-level="11" data-path="reference-points.html"><a href="reference-points.html"><i class="fa fa-check"></i><b>11</b> Reference Points</a>
+<li class="chapter" data-level="10" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html"><i class="fa fa-check"></i><b>10</b> Predict and simulate </a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="reference-points.html"><a href="reference-points.html#yield-per-recruit-reference-points"><i class="fa fa-check"></i><b>11.1</b> Yield per recruit reference points</a></li>
-<li class="chapter" data-level="11.2" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-relationship-based-reference-points"><i class="fa fa-check"></i><b>11.2</b> Stock recruitment relationship based reference points</a>
+<li class="chapter" data-level="10.1" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#basic-functions"><i class="fa fa-check"></i><b>10.1</b> Basic functions}</a>
 <ul>
-<li class="chapter" data-level="11.2.1" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-after-fitting-the-stock-assessment-model"><i class="fa fa-check"></i><b>11.2.1</b> Stock recruitment after fitting the stock assessment model</a></li>
-<li class="chapter" data-level="11.2.2" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-during-fitting-the-stock-assessment-model"><i class="fa fa-check"></i><b>11.2.2</b> Stock recruitment during fitting the stock assessment model</a></li>
+<li class="chapter" data-level="10.1.1" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#simulate"><i class="fa fa-check"></i><b>10.1.1</b> simulate()</a></li>
+<li class="chapter" data-level="10.1.2" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#genflquant"><i class="fa fa-check"></i><b>10.1.2</b> genFLQuant()</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="reference-points.html"><a href="reference-points.html#economics-reference-points"><i class="fa fa-check"></i><b>11.3</b> Economics reference points</a></li>
-<li class="chapter" data-level="11.4" data-path="reference-points.html"><a href="reference-points.html#computing-user-specific-reference-points"><i class="fa fa-check"></i><b>11.4</b> Computing user specific reference points</a></li>
+<li class="chapter" data-level="10.2" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#submodels"><i class="fa fa-check"></i><b>10.2</b> submodels</a></li>
+<li class="chapter" data-level="10.3" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#predict"><i class="fa fa-check"></i><b>10.3</b> Predict</a></li>
+<li class="chapter" data-level="10.4" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#simulate-1"><i class="fa fa-check"></i><b>10.4</b> Simulate</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>11</b> The statistical catch-at-age stock assessment framework with Markov Chain Monte Carlo (MCMC) </a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#the-mcmc-method-for-sca"><i class="fa fa-check"></i><b>11.1</b> The MCMC method for <code>sca</code></a></li>
+<li class="chapter" data-level="11.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#diagnostics-with-coda"><i class="fa fa-check"></i><b>11.2</b> Diagnostics with CODA</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#traceplots"><i class="fa fa-check"></i><b>11.2.1</b> Traceplots</a></li>
+<li class="chapter" data-level="11.2.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#autocorrelation-analysis"><i class="fa fa-check"></i><b>11.2.2</b> Autocorrelation analysis</a></li>
+<li class="chapter" data-level="11.2.3" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#geweke-diagnostic"><i class="fa fa-check"></i><b>11.2.3</b> Geweke diagnostic</a></li>
+<li class="chapter" data-level="11.2.4" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cumulative-means"><i class="fa fa-check"></i><b>11.2.4</b> Cumulative means</a></li>
+<li class="chapter" data-level="11.2.5" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#distribution-density"><i class="fa fa-check"></i><b>11.2.5</b> Distribution density</a></li>
+<li class="chapter" data-level="11.2.6" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#gelman-rubin-statistic"><i class="fa fa-check"></i><b>11.2.6</b> Gelman-Rubin statistic</a></li>
+<li class="chapter" data-level="11.2.7" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#acceptance-rate"><i class="fa fa-check"></i><b>11.2.7</b> Acceptance rate</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#admbs-arguments-to-tune-the-mcmc-algorithm"><i class="fa fa-check"></i><b>11.3</b> <code>ADMB</code>’s arguments to tune the MCMC algorithm</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#thinning-rate"><i class="fa fa-check"></i><b>11.3.1</b> Thinning rate</a></li>
+<li class="chapter" data-level="11.3.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#mcscale-and-mcnoscale"><i class="fa fa-check"></i><b>11.3.2</b> mcscale and mcnoscale</a></li>
+<li class="chapter" data-level="11.3.3" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#mcprobe"><i class="fa fa-check"></i><b>11.3.3</b> mcprobe</a></li>
+<li class="chapter" data-level="11.3.4" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#mcrb"><i class="fa fa-check"></i><b>11.3.4</b> mcrb</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#references"><i class="fa fa-check"></i><b>11.4</b> References:</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>12</b> Projections and harvest control rules</a>
 <ul>
-<li class="chapter" data-level="12.0.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#references"><i class="fa fa-check"></i><b>12.0.1</b> References:</a></li>
+<li class="chapter" data-level="12.0.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#references-1"><i class="fa fa-check"></i><b>12.0.1</b> References:</a></li>
 <li class="chapter" data-level="12.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#simple-workflow"><i class="fa fa-check"></i><b>12.1</b> Simple workflow</a></li>
 <li class="chapter" data-level="12.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#initial-condition-assumptions-check-fwdwindow"><i class="fa fa-check"></i><b>12.2</b> Initial condition assumptions [CHECK fwdWindow]</a></li>
 <li class="chapter" data-level="12.3" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#scenarios"><i class="fa fa-check"></i><b>12.3</b> Scenarios</a></li>
@@ -265,30 +279,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.5" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#limits"><i class="fa fa-check"></i><b>12.5</b> Limits</a></li>
 <li class="chapter" data-level="12.6" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#harvest-control-rule"><i class="fa fa-check"></i><b>12.6</b> Harvest Control Rule</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html"><i class="fa fa-check"></i><b>13</b> Predict and simulate </a>
+<li class="chapter" data-level="13" data-path="reference-points.html"><a href="reference-points.html"><i class="fa fa-check"></i><b>13</b> Reference Points</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#basic-functions"><i class="fa fa-check"></i><b>13.1</b> Basic functions}</a>
+<li class="chapter" data-level="13.1" data-path="reference-points.html"><a href="reference-points.html#yield-per-recruit-reference-points"><i class="fa fa-check"></i><b>13.1</b> Yield per recruit reference points</a></li>
+<li class="chapter" data-level="13.2" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-relationship-based-reference-points"><i class="fa fa-check"></i><b>13.2</b> Stock recruitment relationship based reference points</a>
 <ul>
-<li class="chapter" data-level="13.1.1" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#simulate"><i class="fa fa-check"></i><b>13.1.1</b> simulate()</a></li>
-<li class="chapter" data-level="13.1.2" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#genflquant"><i class="fa fa-check"></i><b>13.1.2</b> genFLQuant()</a></li>
+<li class="chapter" data-level="13.2.1" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-after-fitting-the-stock-assessment-model"><i class="fa fa-check"></i><b>13.2.1</b> Stock recruitment after fitting the stock assessment model</a></li>
+<li class="chapter" data-level="13.2.2" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-during-fitting-the-stock-assessment-model"><i class="fa fa-check"></i><b>13.2.2</b> Stock recruitment during fitting the stock assessment model</a></li>
 </ul></li>
-<li class="chapter" data-level="13.2" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#submodels"><i class="fa fa-check"></i><b>13.2</b> submodels</a></li>
-<li class="chapter" data-level="13.3" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#predict"><i class="fa fa-check"></i><b>13.3</b> Predict</a></li>
-<li class="chapter" data-level="13.4" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#simulate-1"><i class="fa fa-check"></i><b>13.4</b> Simulate</a></li>
+<li class="chapter" data-level="13.3" data-path="reference-points.html"><a href="reference-points.html#economics-reference-points"><i class="fa fa-check"></i><b>13.3</b> Economics reference points</a></li>
+<li class="chapter" data-level="13.4" data-path="reference-points.html"><a href="reference-points.html#computing-user-specific-reference-points"><i class="fa fa-check"></i><b>13.4</b> Computing user specific reference points</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>14</b> The statistical catch-at-age stock assessment framework with Markov Chain Monte Carlo (MCMC) </a>
+<li class="chapter" data-level="14" data-path="propagate-uncertainty-into-stock-assessment.html"><a href="propagate-uncertainty-into-stock-assessment.html"><i class="fa fa-check"></i><b>14</b> Propagate uncertainty into stock assessment</a></li>
+<li class="chapter" data-level="15" data-path="modelling-fleet-selectivity.html"><a href="modelling-fleet-selectivity.html"><i class="fa fa-check"></i><b>15</b> Modelling fleet selectivity</a></li>
+<li class="chapter" data-level="16" data-path="modelling-spatial-effects.html"><a href="modelling-spatial-effects.html"><i class="fa fa-check"></i><b>16</b> Modelling spatial effects</a></li>
+<li class="chapter" data-level="17" data-path="sections-to-be-added.html"><a href="sections-to-be-added.html"><i class="fa fa-check"></i><b>17</b> Sections to be added!?</a></li>
+<li class="chapter" data-level="18" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html"><i class="fa fa-check"></i><b>18</b> Annex - stock assessment workflow</a>
 <ul>
-<li class="chapter" data-level="14.0.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#references-1"><i class="fa fa-check"></i><b>14.0.1</b> References:</a></li>
-<li class="chapter" data-level="14.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#the-mcmc-method-for-sca"><i class="fa fa-check"></i><b>14.1</b> The MCMC method for <code>sca</code></a>
+<li class="chapter" data-level="18.1" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-mean-model"><i class="fa fa-check"></i><b>18.1</b> The “mean” model</a></li>
+<li class="chapter" data-level="18.2" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-age-effects"><i class="fa fa-check"></i><b>18.2</b> The age effects</a></li>
+<li class="chapter" data-level="18.3" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-fishing-mortality-year-model"><i class="fa fa-check"></i><b>18.3</b> The fishing mortality year model</a>
 <ul>
-<li class="chapter" data-level="14.1.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#mcmc-arguments"><i class="fa fa-check"></i><b>14.1.1</b> MCMC arguments</a></li>
+<li class="chapter" data-level="18.3.1" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-initial-year-population-abundance-model-aka-n1"><i class="fa fa-check"></i><b>18.3.1</b> The initial year population abundance model, aka N1</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#diagnostics-with-coda"><i class="fa fa-check"></i><b>14.2</b> Diagnostics with CODA</a></li>
+<li class="chapter" data-level="18.4" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-stock-recruitment-submodel"><i class="fa fa-check"></i><b>18.4</b> The stock recruitment submodel</a></li>
+<li class="chapter" data-level="18.5" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-variance-submodel"><i class="fa fa-check"></i><b>18.5</b> The variance submodel</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="propagate-uncertainty-into-stock-assessment.html"><a href="propagate-uncertainty-into-stock-assessment.html"><i class="fa fa-check"></i><b>15</b> Propagate uncertainty into stock assessment</a></li>
-<li class="chapter" data-level="16" data-path="modelling-fleet-selectivity.html"><a href="modelling-fleet-selectivity.html"><i class="fa fa-check"></i><b>16</b> Modelling fleet selectivity</a></li>
-<li class="chapter" data-level="17" data-path="modelling-spatial-effects.html"><a href="modelling-spatial-effects.html"><i class="fa fa-check"></i><b>17</b> Modelling spatial effects</a></li>
-<li class="chapter" data-level="18" data-path="sections-to-be-added.html"><a href="sections-to-be-added.html"><i class="fa fa-check"></i><b>18</b> Sections to be added!?</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -309,20 +325,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="modelling-spatial-effects" class="section level1 hasAnchor" number="17">
-<h1><span class="header-section-number">17</span> Modelling spatial effects<a href="modelling-spatial-effects.html#modelling-spatial-effects" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="modelling-spatial-effects.html#cb339-1" tabindex="-1"></a>ridx01 <span class="ot">&lt;-</span> stk0<span class="sc">@</span>stock.n[<span class="dv">1</span>]<span class="sc">*</span><span class="fl">0.7</span><span class="sc">*</span><span class="fl">0.001</span></span>
-<span id="cb339-2"><a href="modelling-spatial-effects.html#cb339-2" tabindex="-1"></a>ridx01 <span class="ot">&lt;-</span> <span class="fu">log</span>(ridx01<span class="sc">*</span><span class="fu">rlnorm</span>(ridx01))</span>
-<span id="cb339-3"><a href="modelling-spatial-effects.html#cb339-3" tabindex="-1"></a>ridx02 <span class="ot">&lt;-</span> stk0<span class="sc">@</span>stock.n[<span class="dv">1</span>]<span class="sc">*</span><span class="fl">0.3</span><span class="sc">*</span><span class="fl">0.001</span></span>
-<span id="cb339-4"><a href="modelling-spatial-effects.html#cb339-4" tabindex="-1"></a>ridx02 <span class="ot">&lt;-</span> <span class="fu">log</span>(ridx02<span class="sc">*</span><span class="fu">rlnorm</span>(ridx02))</span>
-<span id="cb339-5"><a href="modelling-spatial-effects.html#cb339-5" tabindex="-1"></a></span>
-<span id="cb339-6"><a href="modelling-spatial-effects.html#cb339-6" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">geomean</span>(a<span class="sc">~</span>ridx01<span class="sc">+</span>ridx02, <span class="at">CV=</span><span class="fl">0.5</span>)</span>
-<span id="cb339-7"><a href="modelling-spatial-effects.html#cb339-7" tabindex="-1"></a>cvar <span class="ot">&lt;-</span> <span class="fu">FLQuants</span>(<span class="at">ridx01 =</span> ridx01, <span class="at">ridx02 =</span> ridx02)</span>
-<span id="cb339-8"><a href="modelling-spatial-effects.html#cb339-8" tabindex="-1"></a>fit01 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stock,tun.sel[<span class="fu">c</span>(<span class="dv">1</span>)],<span class="at">fmodel=</span>fmod,<span class="at">qmodel=</span>qmod, <span class="at">srmodel=</span>srmod, <span class="at">covar=</span>cvar)</span>
-<span id="cb339-9"><a href="modelling-spatial-effects.html#cb339-9" tabindex="-1"></a><span class="fu">coef</span>(fit01)</span>
-<span id="cb339-10"><a href="modelling-spatial-effects.html#cb339-10" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">geomean</span>(<span class="at">CV=</span><span class="fl">0.1</span>)</span>
-<span id="cb339-11"><a href="modelling-spatial-effects.html#cb339-11" tabindex="-1"></a>fit02 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stock,tun.sel[<span class="fu">c</span>(<span class="dv">1</span>)],<span class="at">fmodel=</span>fmod,<span class="at">qmodel=</span>qmod, <span class="at">srmodel=</span>srmod)</span>
-<span id="cb339-12"><a href="modelling-spatial-effects.html#cb339-12" tabindex="-1"></a><span class="fu">coef</span>(fit02)</span></code></pre></div>
+<div id="modelling-spatial-effects" class="section level1 hasAnchor" number="16">
+<h1><span class="header-section-number">16</span> Modelling spatial effects<a href="modelling-spatial-effects.html#modelling-spatial-effects" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="modelling-spatial-effects.html#cb325-1" tabindex="-1"></a>ridx01 <span class="ot">&lt;-</span> stk0<span class="sc">@</span>stock.n[<span class="dv">1</span>]<span class="sc">*</span><span class="fl">0.7</span><span class="sc">*</span><span class="fl">0.001</span></span>
+<span id="cb325-2"><a href="modelling-spatial-effects.html#cb325-2" tabindex="-1"></a>ridx01 <span class="ot">&lt;-</span> <span class="fu">log</span>(ridx01<span class="sc">*</span><span class="fu">rlnorm</span>(ridx01))</span>
+<span id="cb325-3"><a href="modelling-spatial-effects.html#cb325-3" tabindex="-1"></a>ridx02 <span class="ot">&lt;-</span> stk0<span class="sc">@</span>stock.n[<span class="dv">1</span>]<span class="sc">*</span><span class="fl">0.3</span><span class="sc">*</span><span class="fl">0.001</span></span>
+<span id="cb325-4"><a href="modelling-spatial-effects.html#cb325-4" tabindex="-1"></a>ridx02 <span class="ot">&lt;-</span> <span class="fu">log</span>(ridx02<span class="sc">*</span><span class="fu">rlnorm</span>(ridx02))</span>
+<span id="cb325-5"><a href="modelling-spatial-effects.html#cb325-5" tabindex="-1"></a></span>
+<span id="cb325-6"><a href="modelling-spatial-effects.html#cb325-6" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">geomean</span>(a<span class="sc">~</span>ridx01<span class="sc">+</span>ridx02, <span class="at">CV=</span><span class="fl">0.5</span>)</span>
+<span id="cb325-7"><a href="modelling-spatial-effects.html#cb325-7" tabindex="-1"></a>cvar <span class="ot">&lt;-</span> <span class="fu">FLQuants</span>(<span class="at">ridx01 =</span> ridx01, <span class="at">ridx02 =</span> ridx02)</span>
+<span id="cb325-8"><a href="modelling-spatial-effects.html#cb325-8" tabindex="-1"></a>fit01 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stock,tun.sel[<span class="fu">c</span>(<span class="dv">1</span>)],<span class="at">fmodel=</span>fmod,<span class="at">qmodel=</span>qmod, <span class="at">srmodel=</span>srmod, <span class="at">covar=</span>cvar)</span>
+<span id="cb325-9"><a href="modelling-spatial-effects.html#cb325-9" tabindex="-1"></a><span class="fu">coef</span>(fit01)</span>
+<span id="cb325-10"><a href="modelling-spatial-effects.html#cb325-10" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">geomean</span>(<span class="at">CV=</span><span class="fl">0.1</span>)</span>
+<span id="cb325-11"><a href="modelling-spatial-effects.html#cb325-11" tabindex="-1"></a>fit02 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stock,tun.sel[<span class="fu">c</span>(<span class="dv">1</span>)],<span class="at">fmodel=</span>fmod,<span class="at">qmodel=</span>qmod, <span class="at">srmodel=</span>srmod)</span>
+<span id="cb325-12"><a href="modelling-spatial-effects.html#cb325-12" tabindex="-1"></a><span class="fu">coef</span>(fit02)</span></code></pre></div>
 <ul>
 <li>check situation where the two areas are negatively correlated</li>
 <li>the two covariates need to be at the same scale, in the sense of representing the same process</li>

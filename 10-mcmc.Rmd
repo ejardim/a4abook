@@ -14,21 +14,6 @@ To evaluate the quality of MCMC sampling, ADMB offers several key diagnostics. A
 
 The manual "A Guide for Bayesian Analysis in AD Model Builder" by Cole C. Monnahan, Melissa L. Muradian and Peter T. Kuriyam describe and explain a larger group of arguments that can be set when running MCMC with ADMB, which the `a4a` uses.
 
-### References:
-- Brooks, S., Gelman, A., Jones, G., & Meng, X.-L. (2011). *Handbook of Markov Chain Monte Carlo*. CRC Press.
-- Gamerman, D., & Lopes, H. F. (2006). *Markov Chain Monte Carlo: Stochastic Simulation for Bayesian Inference*. CRC Press.
-- Gelman, A., Carlin, J. B., Stern, H. S., Dunson, D. B., Vehtari, A., & Rubin, D. B. (2014). *Bayesian Data Analysis* (3rd ed.). CRC Press.
-- Neal, R. M. (1993). *Probabilistic inference using Markov Chain Monte Carlo methods*. Department of Computer Science, University of Toronto.
-- Robert, C., & Casella, G. (2013). *Monte Carlo Statistical Methods* (2nd ed.). Springer.
-- Casella, G., & Berger, R. L. (2002). *Statistical Inference* (2nd ed.). Duxbury.
-- Lehmann, E. L., & Casella, G. (1998). *Theory of Point Estimation* (2nd ed.). Springer.
-- Pawitan, Y. (2001). *In All Likelihood: Statistical Modelling and Inference Using Likelihood*. Oxford University Press.
-- van der Vaart, A. W. (1998). *Asymptotic Statistics*. Cambridge University Press.
-- Wasserman, L. (2004). *All of Statistics: A Concise Course in Statistical Inference*. Springer.
-- White, H. (1982). "Maximum Likelihood Estimation of Misspecified Models." *Econometrica*, 50(1), 1-25.
-- Fournier, D. A., Skaug, H. J., Ancheta, J., Ianelli, J., Magnusson, A., Maunder, M. N., Nielsen, A., & Sibert, J. (2012). AD Model Builder: Using automatic differentiation for statistical inference of highly parameterized complex nonlinear models. *Optimization Methods and Software, 27*(2), 233–249.
-- Gelman, A., Carlin, J. B., Stern, H. S., Dunson, D. B., Vehtari, A., & Rubin, D. B. (2013). *Bayesian Data Analysis* (3rd ed.). CRC Press.
-
 ## The MCMC method for `sca`
 
 This section shows how the `sca` methods interface with `ADMB` to use the MCMC fits. For this section we'll use the hake assessment in mediterranean areas (gsa) 1, 5, 6 and 7.
@@ -97,8 +82,8 @@ fitSumm(fitmc00)
 
 As usual `fitSumm` store relevant information about the model fit. In the case of MCMC fit the information stored is the number of model paramters (`nopar`), the number of observations (`nobs`) and the acceptance rate (`accrate`).
 
-```{r}
-plot(hke1567 + fitmc00)
+```{r, fig.cap="Stock assessment summaries of maximum likelihood (mle) and monte carlo (mc) fits."}
+plot(FLStocks(mle=hke1567 + fit, mc=hke1567 + fitmc00))
 ```
 
 ## Diagnostics with CODA
@@ -107,13 +92,15 @@ In essence, the diagnostics are used to give the analyst confidence that the pos
 
 There's a large body of literature about MCMC convergence. In this section we'll focus on the out-of-the-box methods for metropolis hastings algorythm available to the stock assessment scientist: trace plots, autocorrelation analysis, geweke diagnostic, Gelman and Rubin's convergence diagnostic, acceptance rate, cumulative means, distribution density and acceptance rate. `ADMB` has an hybrid algorythm based on Hamiltonian dynamic which will not be addressed here. The reader is invited to consult Monnahan et.al (2014) for more information.
 
+Diagnostic tools should be used together to evaluate proper mixing and convergence.
+
 We use the package `CODA` to run the diagnostics on MCMC fits. One needs to convert the `sca` output into a `mcmc` CODA object over which several diagostics can be ran. The mcmc object is a matrix with the parameters (row = iters, cols= pars).
 
 ```{r}
 library(coda)
 ```
 
-For demonstration purposes we'll create a chain with 1000 samples (`mcmc=1000`) and save every iter (`mcsave=1`), which will create a highly correlated and unstable chain, and update the initial MCMC fit to also have 1000 samples (`mcmc=100000`, `mcsave=100`). The latter will have lower correlation due to the higher thinning.
+For demonstration purposes we'll create a chain with 1000 samples (`mcmc=10000`) and save every 10 iters (`mcsave=10`), which will create a highly correlated and unstable chain, and update the initial MCMC fit to also have 1000 samples (`mcmc=100000`, `mcsave=100`). The latter will have lower correlation due to the higher thinning.
 
 ```{r}
 # update initial fit, control random seed
@@ -121,22 +108,16 @@ mc <- SCAMCMC(mcmc=100000, mcsave=100, mcseed=10)
 fitmc01 <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=mc)
 fitmc01.mc <- FLa4a::as.mcmc(fitmc01)
 # highly correlated fit, control random seed
-mc <- SCAMCMC(mcmc=1000, mcsave=1, mcseed=10)
+mc <- SCAMCMC(mcmc=10000, mcsave=10, mcseed=10)
 fitmc02 <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=mc)
 fitmc02.mc <- FLa4a::as.mcmc(fitmc02)
 ```
 
-<!-- convergence, stationarity and mixing, which are essential for ensuring that the chain provides reliable samples from the target posterior distribution. -->
-
-<!-- **[, are: (i) stationarity, the chain should converge to its stationary distribution; (ii) mixing, the chain should mix well, meaning it should explore the sample space efficiently without being overly correlated; and (iii) convergence, the chain should converge to the posterior distribution. Mixing in MCMC refers to how well the chain explores the parameter space. Poor mixing means the chain is getting stuck in certain regions, leading to high autocorrelation and slow convergence.]** -->
-
-
 ### Traceplots
-
 
 Trace plots show the sampled values of a parameter over iterations. A plot that looks like a random, stable "cloud" of points with no trends or drifts, with rapid fluctuactions, is a signal of convergence, meaning the chain mixes well and is stationary. If the trace plot shows a strong trend or periodicity, drifts, or long autocorrelated stretches, it means the chain hasn't converged. Figure \@ref(fig:chain01) cleary depicts this difference between the two runs.
 
-```{r, chain01, fig.cap="MCMC chains trace. Highly correlated chain in blue, low correlation chain in red."}
+```{r, chain01, fig.cap="MCMC chain's trace for the first parameter. High correlation chain in blue, low correlation chain in red."}
 traceplot(mcmc.list(mc01=fitmc01.mc[,1], mc02=fitmc02.mc[,2]), lwd=2, col=c(2,4), lty=1)
 ```
 
@@ -150,8 +131,8 @@ traceplot(FLa4a::as.mcmc(burnin(fitmc02, 250))[,1], lwd=2, col=4, lty=1)
 
 Autocorrelation analysis is useful to assess stationarity, a stationary chain should have low autocorrelation, meaning that each sample is approximately independent. On the opposite, high autocorrelation indicates slow mixing and possible non-stationarity. The autocorrelation plot produced by the `acf` function, will show correlation along the chain for each parameter at different lags. Figure \@ref(fig:acf01) shows there's a strong autocorrelation for the first parameter in the blue chain, which we'd like to avoid.
 
-```{r, acf01, fig.cap="Autocorrelation plot of the first parameter in the MCMC chain. Highly correlated chain in blue, low correlation chain in red."}
-acfplot(mcmc.list(mc01=fitmc01.mc[,1], mc02=fitmc02.mc[,2]), type="p", pch=19, col=c(2,4))
+```{r, acf01, fig.cap="Autocorrelation plot of the first parameter in the MCMC chain. High correlation chain in blue, low correlation chain in red."}
+acfplot(mcmc.list(mc01=fitmc01.mc[,1], mc02=fitmc02.mc[,1]), type="p", pch=19, col=c(2,4))
 ```
 
 Autocorrelation analysis is also useful for this diagnostics. In a good mixed chain autocorrelation drops quickly to near zero, while a poor mixing will display high autocorrelation, meaning successive samples are too correlated, reducing efficiency. Figure \@ref(fig:acf01) cleary depicts this difference, the blue chain shows a very high level of auto-correlation while the red chain drops very quickly to values around 0.
@@ -163,8 +144,8 @@ The geweke diagnostic computes the Geweke-Brooks Z-score (Geweke, J. (1992). "Ev
 It's useful to decide if the first few iterations should be discarded and provides information about the stability of the chain. Figure \@ref(fig:gew01) shows the geweke plot for the MCMC run without thining and Figure \@ref(fig:gew01) when the thining was set at 200 samples.
 
 ```{r, gew01, fig.cap="Geweke plot of the first parameter in the MCMC chains", fig.show="hold", out.width="50%"}
-geweke.plot(fitmc01.mc[,1], main="Low correlated chain")
-geweke.plot(fitmc02.mc[,1], main="Highly correlated chain")
+geweke.plot(fitmc01.mc[,1], main="Low correlation chain")
+geweke.plot(fitmc02.mc[,1], main="High correlation chain")
 ```
 
 The panel on the left shows a much more regular chain, where the different blocks of data show similar distributions. The panel on the right clearly shows the z-score statistic out of the confidence intervals until 400 samples are discarded, which points to the need to drop a set of initial samples.
@@ -181,8 +162,8 @@ cm01 <- fitmc01.mc[,1]
 cm01 <- cumsum(cm01) / seq_along(cm01)
 cm02 <- fitmc02.mc[,1]
 cm02 <- cumsum(cm02) / seq_along(cm02)
-plot(cm01, type="l", xlab="samples", ylab="mean", main="Low correlated chain")
-plot(cm02, type="l", xlab="samples", ylab="mean", main="High correlated chain")
+plot(cm01, type="l", xlab="samples", ylab="mean", main="Low correlation chain")
+plot(cm02, type="l", xlab="samples", ylab="mean", main="High correlation chain")
 ```
 
 ### Distribution density
@@ -192,8 +173,8 @@ An important element of MCMC is to produce symetric posterior distributions, for
 Figure \@ref(fig:dens01) shows the density plots for both runs, where it shows the symetric distribution of the uncorrelated chain (left panel) and the bimodal distribution of the correlated chain.
 
 ```{r, dens01, fig.cap="Density plots of the first parameter in the MCMC chains", fig.show="hold", out.width="50%"}
-densplot(fitmc01.mc[,1], main="Low correlated chain")
-densplot(fitmc02.mc[,1], main="High correlated chain")
+densplot(fitmc01.mc[,1], main="Low correlation chain")
+densplot(fitmc02.mc[,1], main="High correlation chain")
 ```
 
 ### Gelman-Rubin statistic
@@ -202,18 +183,15 @@ The Gelman-Rubin statistic ($\hat{R}$) (Gelman and Rubin, 1992) can be used to c
 
 To compute $\hat{R}$, multiple chains are run with different starting points. The algorithm measures how spread out the samples are within each chain and compares it to how much the chains differ from each other. If the chains have not mixed well, they will appear too different from each other, and $\hat{R}$ will be large. If the chains have mixed properly, they will have a similar spread, and the statistic will be close to 1.
 
-### **References**
-- **Gelman, A., & Rubin, D. B. (1992).** Inference from iterative simulation using multiple sequences. *Statistical Science, 7*(4), 457–472.
-
 To run another chain one makes use of the `mcseed` argument to make sure the 2 chains start from different places. The Gelman-Rubin statistics is computed by the `gelman.diag` method and depicted by the `gelman.plot` function. Ist's easy to see the difference between the two fits. While the low corrrelation fit shows values close to 1 for most parameters, the high correlation fit shows a number of large values.
 
 ```{r}
-# uncorrelated
+# low correlation
 mc <- SCAMCMC(mcmc=100000, mcsave=100, mcseed=30)
 fitmc01b <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=mc)
 fitmc01b.mc <- FLa4a::as.mcmc(fitmc01b)
 # highly correlated fit
-mc <- SCAMCMC(mcmc=1000, mcsave=1, mcseed=30)
+mc <- SCAMCMC(mcmc=10000, mcsave=10, mcseed=30)
 fitmc02b <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=mc)
 fitmc02b.mc <- FLa4a::as.mcmc(fitmc02b)
 # create lists for comparison
@@ -232,71 +210,59 @@ gelman.diag(mclst02)
 ```{r, gelm01, fig.cap="Gelman-Rubin's diagnostic plots for the first parameter.", fig.show="hold", out.width="50%"}
 mclst01 <- mcmc.list(a=fitmc01.mc[,1], b=fitmc01b.mc[,1])
 mclst02 <- mcmc.list(a=fitmc02.mc[,1], b=fitmc02b.mc[,1])
-gelman.plot(mclst01, main="Low correlated chain")
-gelman.plot(mclst02, main="High correlated chain")
+gelman.plot(mclst01, main="Low correlation chain")
+gelman.plot(mclst02, main="High correlation chain")
 ```
 
 ### Acceptance rate
 
 The acceptance rate in Markov Chain Monte Carlo (MCMC) methods plays a crucial role in balancing exploration and efficiency when sampling from a posterior distribution. It represents the proportion of proposed states that are accepted in the Markov chain and directly influences mixing, convergence, and the quality of inference.
 
-    Balancing Exploration and Efficiency
-        A low acceptance rate (e.g., <20%) means that most proposed moves are rejected, leading to slow exploration of the posterior distribution. This can result in poor mixing and high autocorrelation between samples (Gelman et al., 2013).
-        A high acceptance rate (e.g., >80%) suggests that the proposals are too conservative, leading to small moves and highly correlated samples. This reduces the effective sample size (ESS) and can make convergence extremely slow (Roberts & Rosenthal, 2001).
+A low acceptance rate (e.g., <20%) means that most proposed moves are rejected, leading to slow exploration of the posterior distribution. This can result in poor mixing and high autocorrelation between samples (Gelman et al., 2013). A high acceptance rate (e.g., >80%) suggests that the proposals are too conservative, leading to small moves and highly correlated samples.
 
-    Optimal Acceptance Rates
-        For Random Walk Metropolis-Hastings (RWMH), theoretical studies suggest an optimal acceptance rate of 23% in high-dimensional spaces (Roberts, Gelman, & Gilks, 1997).
-        For Hamiltonian Monte Carlo (HMC), higher acceptance rates (often around 60-70%) are preferred since larger moves can be made with low autocorrelation (Neal, 2011).
-        For Adaptive MCMC methods, the proposal distribution is dynamically adjusted to maintain an acceptance rate within an optimal range (Andrieu & Thoms, 2008).
+Monnahan et.al suggests that the optimal acceptance rate varies by model size, among other things, but is roughly 40%, although models with more parameters should have a lower optimal acceptance rate. Roberts, Gelman, & Gilks, 1997 complementary suggest that for Random Walk Metropolis-Hastings (RWMH) in high-dimensional spaces an optimal acceptance rate is about 23%.
 
-    Tuning the Acceptance Rate
-        The acceptance rate can be adjusted by tuning parameters such as proposal step size in Metropolis-Hastings or the leapfrog step size in HMC.
-        A well-tuned acceptance rate improves both convergence speed and the effective number of independent samples, leading to more accurate Bayesian inference (Betancourt, 2017).
-        Diagnostic tools like trace plots, effective sample size (ESS), and autocorrelation functions (ACF) should be used alongside acceptance rate analysis to ensure proper mixing and convergence.
+The acceptance rate is reported out of the MCMC fit and can be accessed with the method `fitSumm`. Inspecting the acceptance rate for the models we're using shows a higher acceptance rate for the high correlation model, although both are above the recommended optimal for high dimentional models, like the models used in stock assessment.
 
-The acceptance rate in Metropolis-Hastings (MH) algorithms for complex models depends on factors such as the dimensionality of the parameter space, the proposal distribution, and the correlation structure of the posterior distribution. Research has established general guidelines for optimal acceptance rates, particularly for high-dimensional and complex models.
-
-    Optimal Acceptance Rate for High-Dimensional Models
-        For simple low-dimensional models, an acceptance rate between 30-50% is often recommended (Gelman et al., 2013).
-        For high-dimensional models, the optimal acceptance rate decreases because the probability of proposing a move in the correct direction diminishes. Roberts, Gelman, & Gilks (1997) showed that for a random-walk Metropolis-Hastings (RWMH) algorithm, the optimal acceptance rate scales as:
-        α∗≈0.234
-        α∗≈0.234 This means that in higher dimensions, the acceptance rate should be around 23-25% for efficient sampling.
-
+```{r}
+cbind(fitSumm(fitmc01), fitSumm(fitmc02))
+```
 
 ## `ADMB`'s arguments to tune the MCMC algorithm
 
 This section is based on Monnahan et.al (2014) and describes a set of arguments and methods which the stock assessment analyst can use to tune the MCMC algorythm and be more confident on its convergence and follow up inference.
 
 ### Thinning rate
+
 For the Metropolis-Hastings algorithm, the most important tuning option available to the user is the saving
 rate (the inverse of the thinning rate). This is the rate at which parameters are saved, such that thinning
 is effectively discarding draws. This tuning option is critical since this algorithm generates autocorrelated
-parameters by design, although it may not necessary to thin in some cases ([4]).
-The user controls the thinning rate by the argument mcsave N. If N = 1, as in figure 1, every single draw
-is saved (none are thinned out). As we saw with that example, the autocorrelation is high, suggesting the
-need to thin more (save fewer).
-We now rerun the chain with mcsave 100 (figure 2), by increasing the total samples by 100 and saving
-every 100th. This helps reduce the autocorrelation and produces independent draws from the posterior of
-interest.
+parameters by design. The user controls the thinning rate by the argument `mcsave`.
 
-### Acceptance rate
-Studies have shown that there is an optimal range for acceptance rate for the Metropolis-Hastings algorithm
-(e.g. [5]). If the proposal distribution generates values too close to the current state, the chain will accept
-them (high acceptance rate) but explore the posterior slowly and need more thinning. Alternatively, if
-proposals are too far away into regions of low density (low acceptance rate) the chain will not explore the
-space. The optimal acceptance rate varies by model size, among other things, but is roughly 40%. The
-general advice is to tune the proposal distribution to achieve an efficient acceptance rate, with models with
-more parameters having a lower optimal acceptance rate.
-ADMB accomplishes this by “scaling” the covariance matrix up or down, depending on the current
-acceptance rate, during the first part of the chain. Scaling the covariance matrix down produces proposed
-sets closer to the current set, and vice versa for scaling up. By default, it scales during the first 500 iterations
-(and prints this to screen), but the user can specify this with mcscale N or turn off scaling with mcnoscale.
-ADMB rescales the covariance matrix every 200 iterations until the acceptance rate is between 0.15 and 0.4,
-or the scaling period is exceeded.
-In practice, the defaults work for many models, but the user may want to extend the scaling period for
-some models. Draws from this tuning phase should be discarded as part of the burn-in.
+If N = 1 every single draw is saved (none are thinned out), which generates high autocorrelation, suggesting the need to thin more (save fewer). This is the case of the `fitmc02` fit. In `fitmc01` `mcsave` was increased to 100, by increasing the total samples by 100 and saving every 100th. This helps reduce the autocorrelation and produces independent draws from the posterior of interest.
+
+### mcscale and mcnoscale
+
+ADMB accomplishes this by “scaling” the covariance matrix up or down, depending on the current acceptance rate, during the first part of the chain. Scaling the covariance matrix down produces proposed sets closer to the current set, and vice versa for scaling up. By default, it scales during the first 500 iterations before thining, but the user can specify this with `mcscale` or turn off scaling with `mcnoscale`. ADMB rescales the covariance matrix every 200 iterations until the acceptance rate is between 0.15 and 0.4, or the scaling period is exceeded. Draws from this tuning phase should be discarded as part of the burn-in.
+
+The code below illustrates the effect in the acceptance rate of not scaling the hessian, the acceptance rate drops significantly, which means poor mixing and higher autocorrelation.
+
+```{r}
+# no scale
+mc <- SCAMCMC(mcmc=100000, mcsave=100, mcseed=10, mcnoscale=TRUE)
+fitmc01ns <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=mc)
+fitmc01ns.mc <- FLa4a::as.mcmc(fitmc01ns)
+data.frame(hessian_scale=c(fitSumm(fitmc01)), hessian_noscale=c(fitSumm(fitmc01ns)))
+```
+
+In the next analysis we show the aiutocorrelation statistics for lags of 0, 1, 5, 10 and 50. When the hessian is not scaled the autocorreltion of lag 1 increased from 0.33 to 0.43.
+
+```{r}
+data.frame(hessian_scale=c(autocorr.diag(fitmc01.mc[,1])), hessian_noscale=c(autocorr.diag(fitmc01ns.mc[,1])))
+```
 
 ### mcprobe
+
 For some models, there may be concern of being “stuck” in a local minimum and simply never proposing
 a value far enough away to escape it and find other regions of high density. Obviously this problem would
 present issues for maximum likelihood inference as well. ADMB has a built-in algorithm which modifies
@@ -307,75 +273,58 @@ argument X controls how the two distributions are mixed, with larger values bein
 larger jumps). The range of valid inputs is 0.00001 to 0.499, and if no value is supplied a default of 0.05 is
 used6
 
-### mcrb
-The -mcrb N option (which stands for “rescaled bounded”) alters the covariance matrix used to propose new
-parameter sets in the Metropolis-Hastings algorithm. Its intended use is to create a more efficient MCMC
-sampler so the analyses run faster. This option reduces the estimated correlation between parameters. The
-value of N must be integer and between 1 and 9, inclusive, with lower values leading to a bigger reduction
-in correlation.
-The option will be most effective under circumstances where the correlation between parameters at the
-posterior mode is higher than other regions of the parameter space. In this case, the algorithm may make
-efficient proposals near the posterior mode, but inefficient proposals in other parts of the parameter space.
-By reducing the correlation using mcrb the proposal function may be more efficient on average across the
-entire parameter space and require less thinning (and hence run faster)
-If poor performance is suspected to be caused by correlations that are too high, the mcrb option provides
-a quick, convenient to try a reduced correlation matrix in the algorithm
-
-
-
-
 
 For some models, there may be concern of being “stuck” in a local minimum and simply never proposing a value far enough away to escape it and find other regions of high density. Obviously this problem would present issues for maximum likelihood inference as well. `ADMB` has a built-in algorithm which modifies the default proposal distribution so it occasionally proposes very distant parameters (i.e. “probes”). The `mcprobe` argument initiates this option. The modified proposal distribution is a mixture distribution of normal and Cauchy distributions. The argument X controls how the two distributions are mixed, with larger values being more Cauchy (fatter tails, larger jumps). The range of valid inputs is 0.00001 to 0.499, and if no value is supplied a default of 0.05 is used.
 
 
-
-
-
-
-A common way to deal with autocorrelation is to increase the thining of the chain, the number of samples that are kept in each run. This decision requires the chain to run for longer since a number of samples will be discarded. In `sca` this is managed by the argument `save`. To keep 1000 samples, as before, with a thining of 200, which means we'll keep one sample every 200, one needs to draw $200x1000=200000$ draws.
-
 ```{r}
-#mc <- SCAMCMC(mcmc=200000, mcsave=200)
-#fitmc03 <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=mc)
-#fitmc03.mc <- FLa4a::as.mcmc(fitmc03)
-```
-
-```{r, chain02, "MCMC chain trace with a thining of 200 samples. No autocorrelation and burnin period apears to exist (left panel). Parameter density shows a well behaved simetric distribution (right panel)."}
-#plot(fitmc02.mc[,1])
-```
-
-Figure \@ref(fig:acf02) shows the new chain autocorrelation, which is mostly gone.
-
-```{r, acf02, "Autocorrelation plot of the first parameter in the MCMC chain, with a thining of 200."}
-#acf(fitmc03.mc[,1])
-```
-
-
-<!--As mentioned above `ADMB` has several options for MCMC. Here we demonstrate one of them, `mcprobe` which sets a fat-tailed proposal distribution, as an example of how to use the `SCAMCMC` objects.
-
-
-
-```{r}
-mc <- SCAMCMC(mcprobe=0.1)
-fitmc01 <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=SCAMCMC())
-fitSumm(fitmc01)
-fitmc01p <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=mc)
-fitSumm(fitmc01p)
-mc <- SCAMCMC(mcmc=1000, mcsave=1, mcprobe=0.0005)
+# more Cauchy
+mc <- SCAMCMC(mcmc=1000, mcsave=1, mcseed=10, mcprobe=0.45)
 fitmc02p <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=mc)
-fitSumm(fitmc02p)
-mc <- SCAMCMC(mcmc=200000, mcsave=200, mcprobe=0.0005)
-fitmc03p <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=mc)
-fitSumm(fitmc03p)
-
-
+fitmc02p.mc <- FLa4a::as.mcmc(fitmc02p)
+data.frame(probe_0.05=c(fitSumm(fitmc02)), probe_0.45=c(fitSumm(fitmc02p)))
 ```
 
-All fits together
+In the next analysis we show the aiutocorrelation statistics for lags of 0, 1, 5, 10 and 50. When the hessian is not scaled the autocorreltion of lag 1 increased from 0.33 to 0.37.
 
 ```{r}
-plot(FLStocks(ll=hke1567 + fit, mc=hke1567 + fitmc00, mc_alt=hke1567 + fitmc01))
+data.frame(probe_0.05=c(autocorr.diag(fitmc02.mc[,1])), probe_0.45=c(autocorr.diag(fitmc02p.mc[,1])))
 ```
--->
 
+### mcrb
 
+The -mcrb N option (which stands for “rescaled bounded”) alters the covariance matrix used to propose new parameter sets in the Metropolis-Hastings algorithm. Its intended use is to create a more efficient MCMC sampler so the analyses run faster. This option reduces the estimated correlation between parameters. The value of N must be integer and between 1 and 9, inclusive, with lower values leading to a bigger reduction in correlation.
+
+The option will be most effective under circumstances where the correlation between parameters at the posterior mode is higher than other regions of the parameter space. In this case, the algorithm may make efficient proposals near the posterior mode, but inefficient proposals in other parts of the parameter space. By reducing the correlation using mcrb the proposal function may be more efficient on average across the entire parameter space and require less thinning (and hence run faster)
+
+If poor performance is suspected to be caused by correlations that are too high, the mcrb option provides a quick, convenient to try a reduced correlation matrix in the algorithm
+
+```{r}
+# reduce correlation
+mc <- SCAMCMC(mcmc=10000, mcsave=10, mcseed=10, mcrb=1)
+fitmc02r <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=mc)
+fitmc02r.mc <- FLa4a::as.mcmc(fitmc02r)
+data.frame(rslbound_no=c(fitSumm(fitmc02)), rslbound_high=c(fitSumm(fitmc02r)))
+```
+
+In the next analysis we show the autocorrelation statistics for lags of 0, 1, 5, 10 and 50. When the hessian is not scaled the autocorreltion of lag 1 increased from 0.33 to 0.37.
+
+```{r}
+data.frame(rslbound_no=c(autocorr.diag(fitmc02.mc[,1])), rslbound_high=c(autocorr.diag(fitmc02r.mc[,1])))
+```
+
+## References:
+- Brooks, S., Gelman, A., Jones, G., & Meng, X.-L. (2011). *Handbook of Markov Chain Monte Carlo*. CRC Press.
+- Gamerman, D., & Lopes, H. F. (2006). *Markov Chain Monte Carlo: Stochastic Simulation for Bayesian Inference*. CRC Press.
+- Gelman, A., Carlin, J. B., Stern, H. S., Dunson, D. B., Vehtari, A., & Rubin, D. B. (2014). *Bayesian Data Analysis* (3rd ed.). CRC Press.
+- Neal, R. M. (1993). *Probabilistic inference using Markov Chain Monte Carlo methods*. Department of Computer Science, University of Toronto.
+- Robert, C., & Casella, G. (2013). *Monte Carlo Statistical Methods* (2nd ed.). Springer.
+- Casella, G., & Berger, R. L. (2002). *Statistical Inference* (2nd ed.). Duxbury.
+- Lehmann, E. L., & Casella, G. (1998). *Theory of Point Estimation* (2nd ed.). Springer.
+- Pawitan, Y. (2001). *In All Likelihood: Statistical Modelling and Inference Using Likelihood*. Oxford University Press.
+- van der Vaart, A. W. (1998). *Asymptotic Statistics*. Cambridge University Press.
+- Wasserman, L. (2004). *All of Statistics: A Concise Course in Statistical Inference*. Springer.
+- White, H. (1982). "Maximum Likelihood Estimation of Misspecified Models." *Econometrica*, 50(1), 1-25.
+- Fournier, D. A., Skaug, H. J., Ancheta, J., Ianelli, J., Magnusson, A., Maunder, M. N., Nielsen, A., & Sibert, J. (2012). AD Model Builder: Using automatic differentiation for statistical inference of highly parameterized complex nonlinear models. *Optimization Methods and Software, 27*(2), 233–249.
+- Gelman, A., Carlin, J. B., Stern, H. S., Dunson, D. B., Vehtari, A., & Rubin, D. B. (2013). *Bayesian Data Analysis* (3rd ed.). CRC Press.
+- Gelman, A., & Rubin, D. B. (1992). Inference from iterative simulation using multiple sequences. *Statistical Science, 7*(4), 457–472.
