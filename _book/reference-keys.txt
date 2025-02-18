@@ -63,6 +63,7 @@ fig:unnamed-chunk-82
 fig:chain01
 fig:chain01b
 fig:acf01
+fig:ccr01
 fig:gew01
 fig:cmean01
 fig:dens01
@@ -177,7 +178,7 @@ the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-
 the-mcmc-method-for-sca
 diagnostics-with-coda
 traceplots
-autocorrelation-analysis
+autocorrelation-and-crosscorrelation-analysis
 geweke-diagnostic
 cumulative-means
 distribution-density

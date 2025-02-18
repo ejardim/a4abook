@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-02-14" />
+<meta name="date" content="2025-02-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -253,7 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#diagnostics-with-coda"><i class="fa fa-check"></i><b>11.2</b> Diagnostics with CODA</a>
 <ul>
 <li class="chapter" data-level="11.2.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#traceplots"><i class="fa fa-check"></i><b>11.2.1</b> Traceplots</a></li>
-<li class="chapter" data-level="11.2.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#autocorrelation-analysis"><i class="fa fa-check"></i><b>11.2.2</b> Autocorrelation analysis</a></li>
+<li class="chapter" data-level="11.2.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#autocorrelation-and-crosscorrelation-analysis"><i class="fa fa-check"></i><b>11.2.2</b> Autocorrelation and crosscorrelation analysis</a></li>
 <li class="chapter" data-level="11.2.3" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#geweke-diagnostic"><i class="fa fa-check"></i><b>11.2.3</b> Geweke diagnostic</a></li>
 <li class="chapter" data-level="11.2.4" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cumulative-means"><i class="fa fa-check"></i><b>11.2.4</b> Cumulative means</a></li>
 <li class="chapter" data-level="11.2.5" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#distribution-density"><i class="fa fa-check"></i><b>11.2.5</b> Distribution density</a></li>
@@ -327,18 +327,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="modelling-spatial-effects" class="section level1 hasAnchor" number="16">
 <h1><span class="header-section-number">16</span> Modelling spatial effects<a href="modelling-spatial-effects.html#modelling-spatial-effects" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="modelling-spatial-effects.html#cb325-1" tabindex="-1"></a>ridx01 <span class="ot">&lt;-</span> stk0<span class="sc">@</span>stock.n[<span class="dv">1</span>]<span class="sc">*</span><span class="fl">0.7</span><span class="sc">*</span><span class="fl">0.001</span></span>
-<span id="cb325-2"><a href="modelling-spatial-effects.html#cb325-2" tabindex="-1"></a>ridx01 <span class="ot">&lt;-</span> <span class="fu">log</span>(ridx01<span class="sc">*</span><span class="fu">rlnorm</span>(ridx01))</span>
-<span id="cb325-3"><a href="modelling-spatial-effects.html#cb325-3" tabindex="-1"></a>ridx02 <span class="ot">&lt;-</span> stk0<span class="sc">@</span>stock.n[<span class="dv">1</span>]<span class="sc">*</span><span class="fl">0.3</span><span class="sc">*</span><span class="fl">0.001</span></span>
-<span id="cb325-4"><a href="modelling-spatial-effects.html#cb325-4" tabindex="-1"></a>ridx02 <span class="ot">&lt;-</span> <span class="fu">log</span>(ridx02<span class="sc">*</span><span class="fu">rlnorm</span>(ridx02))</span>
-<span id="cb325-5"><a href="modelling-spatial-effects.html#cb325-5" tabindex="-1"></a></span>
-<span id="cb325-6"><a href="modelling-spatial-effects.html#cb325-6" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">geomean</span>(a<span class="sc">~</span>ridx01<span class="sc">+</span>ridx02, <span class="at">CV=</span><span class="fl">0.5</span>)</span>
-<span id="cb325-7"><a href="modelling-spatial-effects.html#cb325-7" tabindex="-1"></a>cvar <span class="ot">&lt;-</span> <span class="fu">FLQuants</span>(<span class="at">ridx01 =</span> ridx01, <span class="at">ridx02 =</span> ridx02)</span>
-<span id="cb325-8"><a href="modelling-spatial-effects.html#cb325-8" tabindex="-1"></a>fit01 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stock,tun.sel[<span class="fu">c</span>(<span class="dv">1</span>)],<span class="at">fmodel=</span>fmod,<span class="at">qmodel=</span>qmod, <span class="at">srmodel=</span>srmod, <span class="at">covar=</span>cvar)</span>
-<span id="cb325-9"><a href="modelling-spatial-effects.html#cb325-9" tabindex="-1"></a><span class="fu">coef</span>(fit01)</span>
-<span id="cb325-10"><a href="modelling-spatial-effects.html#cb325-10" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">geomean</span>(<span class="at">CV=</span><span class="fl">0.1</span>)</span>
-<span id="cb325-11"><a href="modelling-spatial-effects.html#cb325-11" tabindex="-1"></a>fit02 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stock,tun.sel[<span class="fu">c</span>(<span class="dv">1</span>)],<span class="at">fmodel=</span>fmod,<span class="at">qmodel=</span>qmod, <span class="at">srmodel=</span>srmod)</span>
-<span id="cb325-12"><a href="modelling-spatial-effects.html#cb325-12" tabindex="-1"></a><span class="fu">coef</span>(fit02)</span></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="modelling-spatial-effects.html#cb327-1" tabindex="-1"></a>ridx01 <span class="ot">&lt;-</span> stk0<span class="sc">@</span>stock.n[<span class="dv">1</span>]<span class="sc">*</span><span class="fl">0.7</span><span class="sc">*</span><span class="fl">0.001</span></span>
+<span id="cb327-2"><a href="modelling-spatial-effects.html#cb327-2" tabindex="-1"></a>ridx01 <span class="ot">&lt;-</span> <span class="fu">log</span>(ridx01<span class="sc">*</span><span class="fu">rlnorm</span>(ridx01))</span>
+<span id="cb327-3"><a href="modelling-spatial-effects.html#cb327-3" tabindex="-1"></a>ridx02 <span class="ot">&lt;-</span> stk0<span class="sc">@</span>stock.n[<span class="dv">1</span>]<span class="sc">*</span><span class="fl">0.3</span><span class="sc">*</span><span class="fl">0.001</span></span>
+<span id="cb327-4"><a href="modelling-spatial-effects.html#cb327-4" tabindex="-1"></a>ridx02 <span class="ot">&lt;-</span> <span class="fu">log</span>(ridx02<span class="sc">*</span><span class="fu">rlnorm</span>(ridx02))</span>
+<span id="cb327-5"><a href="modelling-spatial-effects.html#cb327-5" tabindex="-1"></a></span>
+<span id="cb327-6"><a href="modelling-spatial-effects.html#cb327-6" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">geomean</span>(a<span class="sc">~</span>ridx01<span class="sc">+</span>ridx02, <span class="at">CV=</span><span class="fl">0.5</span>)</span>
+<span id="cb327-7"><a href="modelling-spatial-effects.html#cb327-7" tabindex="-1"></a>cvar <span class="ot">&lt;-</span> <span class="fu">FLQuants</span>(<span class="at">ridx01 =</span> ridx01, <span class="at">ridx02 =</span> ridx02)</span>
+<span id="cb327-8"><a href="modelling-spatial-effects.html#cb327-8" tabindex="-1"></a>fit01 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stock,tun.sel[<span class="fu">c</span>(<span class="dv">1</span>)],<span class="at">fmodel=</span>fmod,<span class="at">qmodel=</span>qmod, <span class="at">srmodel=</span>srmod, <span class="at">covar=</span>cvar)</span>
+<span id="cb327-9"><a href="modelling-spatial-effects.html#cb327-9" tabindex="-1"></a><span class="fu">coef</span>(fit01)</span>
+<span id="cb327-10"><a href="modelling-spatial-effects.html#cb327-10" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">geomean</span>(<span class="at">CV=</span><span class="fl">0.1</span>)</span>
+<span id="cb327-11"><a href="modelling-spatial-effects.html#cb327-11" tabindex="-1"></a>fit02 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stock,tun.sel[<span class="fu">c</span>(<span class="dv">1</span>)],<span class="at">fmodel=</span>fmod,<span class="at">qmodel=</span>qmod, <span class="at">srmodel=</span>srmod)</span>
+<span id="cb327-12"><a href="modelling-spatial-effects.html#cb327-12" tabindex="-1"></a><span class="fu">coef</span>(fit02)</span></code></pre></div>
 <ul>
 <li>check situation where the two areas are negatively correlated</li>
 <li>the two covariates need to be at the same scale, in the sense of representing the same process</li>

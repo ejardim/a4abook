@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-02-14" />
+<meta name="date" content="2025-02-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -253,7 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#diagnostics-with-coda"><i class="fa fa-check"></i><b>11.2</b> Diagnostics with CODA</a>
 <ul>
 <li class="chapter" data-level="11.2.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#traceplots"><i class="fa fa-check"></i><b>11.2.1</b> Traceplots</a></li>
-<li class="chapter" data-level="11.2.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#autocorrelation-analysis"><i class="fa fa-check"></i><b>11.2.2</b> Autocorrelation analysis</a></li>
+<li class="chapter" data-level="11.2.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#autocorrelation-and-crosscorrelation-analysis"><i class="fa fa-check"></i><b>11.2.2</b> Autocorrelation and crosscorrelation analysis</a></li>
 <li class="chapter" data-level="11.2.3" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#geweke-diagnostic"><i class="fa fa-check"></i><b>11.2.3</b> Geweke diagnostic</a></li>
 <li class="chapter" data-level="11.2.4" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cumulative-means"><i class="fa fa-check"></i><b>11.2.4</b> Cumulative means</a></li>
 <li class="chapter" data-level="11.2.5" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#distribution-density"><i class="fa fa-check"></i><b>11.2.5</b> Distribution density</a></li>
@@ -334,10 +334,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Consider <span class="math inline">\(x_{ay}\)</span> to be either a catch-at-age matrix (<span class="math inline">\(C_{ay}\)</span>) or one abundance index (<span class="math inline">\(I_{ay}\)</span>) and <span class="math inline">\(d\)</span> to represent residuals.</p>
 <p>Raw residuals are compute by <span class="math inline">\(d_{ay} = \log{x_{ay}} - \log{\tilde{x}_{ay}}\)</span> and have distribution <span class="math inline">\(N(0,\upsilon^2_{a})\)</span>. Standardized residuals will be compute with <span class="math inline">\(d^s_{ay} = \frac{d_{ay}}{\hat{\upsilon}^2_{a}}\)</span> where <span class="math inline">\(\hat{\upsilon}^2_{a} = (n-1)^{-1} \sum_y(d_{ay})^2\)</span>. Pearson residuals scale raw residuals by the estimates of <span class="math inline">\(\sigma^2\)</span> or <span class="math inline">\(\tau^2\)</span>, as such <span class="math inline">\(d^p_{ay} = \frac{d_{ay}}{\tilde{\upsilon}^2_{a}}\)</span> where <span class="math inline">\(\tilde{\upsilon}^2_{a} = \tilde{\sigma}^2_{a}\)</span> for catches, or <span class="math inline">\(\tilde{\upsilon}^2_{a} = \tilde{\tau}^2_{a}\)</span> for each index of abundance.</p>
 <p>The <code>residuals()</code> method will compute these residuals and generate a object which can be plotted using a set of packed methods. The argument <code>type</code> will allow the user to chose which residuals will be computed. By default the method computes standardized residuals.</p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="diagnostics.html#cb212-1" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices)</span>
-<span id="cb212-2"><a href="diagnostics.html#cb212-2" tabindex="-1"></a>d_s <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit, ple4, ple4.indices)</span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="diagnostics.html#cb213-1" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices)</span>
+<span id="cb213-2"><a href="diagnostics.html#cb213-2" tabindex="-1"></a>d_s <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit, ple4, ple4.indices)</span></code></pre></div>
 <p>Figure <a href="diagnostics.html#fig:res">9.1</a> shows a scatterplot of standardized residuals with a smoother to guide (or mis-guide …) your visual analysis. Note that the standardization should produce residuals with variance=1, which means that most residual values should be between <span class="math inline">\(\sim -2\)</span> and <span class="math inline">\(\sim 2\)</span>.</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="diagnostics.html#cb213-1" tabindex="-1"></a><span class="fu">plot</span>(d_s)</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="diagnostics.html#cb214-1" tabindex="-1"></a><span class="fu">plot</span>(d_s)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:res"></span>
 <img src="_main_files/figure-html/res-1.png" alt="Standardized residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother." width="672" />
 <p class="caption">
@@ -345,7 +345,7 @@ Figure 9.1: Standardized residuals for abundance indices and catch numbers (catc
 </p>
 </div>
 <p>When plotting residuals by default the auxiliar line is a smoother. However it’s possible to use other type of lines by setting the argument “auxline” in plot. The argument can take the values used by xyplot, which are (from panel.xyplot help page) one or more of the following: “p”, “l”, “h”, “b”, “o”, “s”, “S”, “g”, “r”, “a”, “smooth”, and “spline”. If type has more than one element, an attempt is made to combine the effect of each of the components. The behaviour if any of the first five are included is similar to the effect of the corresponding type in plot: “p” and “l” stand for points and lines respectively; “b” and “o” (for ‘overlay’) plot both; “h” draws vertical (or horizontal if horizontal = TRUE) line segments from the points to the origin. Types “s” and “S” are like “l” in the sense that they join consecutive points, but instead of being joined by a straight line, points are connected by a vertical and a horizontal segment forming a ‘step’, with the vertical segment coming first for “s”, and the horizontal segment coming first for “S”. “g” adds a reference grid. Type “r” adds a linear regression line, “smooth” adds a loess fit, “spline” adds a cubic smoothing spline fit, and “a” draws line segments joining the average y value for each distinct x value. Figure <a href="diagnostics.html#fig:resaux">9.2</a> shows a regression line over the residuals instead of the loess smooother.</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="diagnostics.html#cb214-1" tabindex="-1"></a><span class="fu">plot</span>(d_s, <span class="at">auxline=</span><span class="st">&quot;r&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="diagnostics.html#cb215-1" tabindex="-1"></a><span class="fu">plot</span>(d_s, <span class="at">auxline=</span><span class="st">&quot;r&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:resaux"></span>
 <img src="_main_files/figure-html/resaux-1.png" alt="Standardized residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother." width="672" />
 <p class="caption">
@@ -353,7 +353,7 @@ Figure 9.2: Standardized residuals for abundance indices and catch numbers (catc
 </p>
 </div>
 <p>The common bubble plot (<code>bubble()</code>) are shown in Figure <a href="diagnostics.html#fig:bub">9.3</a>. It shows the same information as Figure <a href="diagnostics.html#fig:res">9.1</a> but in a multivariate perspective.</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="diagnostics.html#cb215-1" tabindex="-1"></a><span class="fu">bubbles</span>(d_s)</span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="diagnostics.html#cb216-1" tabindex="-1"></a><span class="fu">bubbles</span>(d_s)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:bub"></span>
 <img src="_main_files/figure-html/bub-1.png" alt="Bubbles plot of standardized residuals for abundance indices and for catch numbers (catch.n)." width="672" />
 <p class="caption">
@@ -361,7 +361,7 @@ Figure 9.3: Bubbles plot of standardized residuals for abundance indices and for
 </p>
 </div>
 <p>Figure <a href="diagnostics.html#fig:qq">9.4</a> shows a quantile-quantile plot to assess how well standardized residuals match a normal distribution.</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="diagnostics.html#cb216-1" tabindex="-1"></a><span class="fu">qqmath</span>(d_s)</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="diagnostics.html#cb217-1" tabindex="-1"></a><span class="fu">qqmath</span>(d_s)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:qq"></span>
 <img src="_main_files/figure-html/qq-1.png" alt="Quantile-quantile plot of standardized residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines the normal distribution quantiles." width="672" />
 <p class="caption">
@@ -369,8 +369,8 @@ Figure 9.4: Quantile-quantile plot of standardized residuals for abundance indic
 </p>
 </div>
 <p>Pearson residuals can be computed and plotted the same way as standardized residuals by setting <code>fit='pearson'</code> (Figure <a href="diagnostics.html#fig:resp">9.5</a>).</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="diagnostics.html#cb217-1" tabindex="-1"></a>d_p <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit, ple4, ple4.indices, <span class="at">type=</span><span class="st">&#39;pearson&#39;</span>)</span>
-<span id="cb217-2"><a href="diagnostics.html#cb217-2" tabindex="-1"></a><span class="fu">plot</span>(d_p)</span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="diagnostics.html#cb218-1" tabindex="-1"></a>d_p <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit, ple4, ple4.indices, <span class="at">type=</span><span class="st">&#39;pearson&#39;</span>)</span>
+<span id="cb218-2"><a href="diagnostics.html#cb218-2" tabindex="-1"></a><span class="fu">plot</span>(d_p)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:resp"></span>
 <img src="_main_files/figure-html/resp-1.png" alt="Pearson residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother." width="672" />
 <p class="caption">
@@ -378,8 +378,8 @@ Figure 9.5: Pearson residuals for abundance indices and catch numbers (catch.n).
 </p>
 </div>
 <p>Finally, the raw residuals are computed by setting <code>fit='deviances'</code> and plotted the same way as before (Figure <a href="diagnostics.html#fig:resr">9.6</a>). These residuals are usefull to identify which data points are not well modelled, showing a large dispersion of the residuals and requiring more attention from the analyst.</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="diagnostics.html#cb218-1" tabindex="-1"></a>d_r <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit, ple4, ple4.indices, <span class="at">type=</span><span class="st">&#39;deviances&#39;</span>)</span>
-<span id="cb218-2"><a href="diagnostics.html#cb218-2" tabindex="-1"></a><span class="fu">plot</span>(d_r)</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="diagnostics.html#cb219-1" tabindex="-1"></a>d_r <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit, ple4, ple4.indices, <span class="at">type=</span><span class="st">&#39;deviances&#39;</span>)</span>
+<span id="cb219-2"><a href="diagnostics.html#cb219-2" tabindex="-1"></a><span class="fu">plot</span>(d_r)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:resr"></span>
 <img src="_main_files/figure-html/resr-1.png" alt="Raw residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother." width="672" />
 <p class="caption">
@@ -390,14 +390,14 @@ Figure 9.6: Raw residuals for abundance indices and catch numbers (catch.n). Eac
 <div id="predictive-skill" class="section level2 hasAnchor" number="9.2">
 <h2><span class="header-section-number">9.2</span> Predictive skill<a href="diagnostics.html#predictive-skill" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>An important feature of stock assessment model fits is the capacity to predict, since one of the most important analysis done with these fits is forecasting future fishing opportunities under pre-defined conditions. The <code>a4a</code> framework implements a visualization of the fit’s predictive skill for both catch-at-age and abundance indices. These are generated by the method <code>plot()</code> with the fit object and a <code>FLStock</code> (Figure <a href="diagnostics.html#fig:selplt">9.7</a>) or <code>FLIndices</code> (Figure <a href="#fig:idxplt"><strong>??</strong></a>) object as arguments.</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="diagnostics.html#cb219-1" tabindex="-1"></a><span class="fu">plot</span>(fit, ple4)</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="diagnostics.html#cb220-1" tabindex="-1"></a><span class="fu">plot</span>(fit, ple4)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:selplt"></span>
 <img src="_main_files/figure-html/selplt-1.png" alt="Predict and observed catch-at-age" width="672" />
 <p class="caption">
 Figure 9.7: Predict and observed catch-at-age
 </p>
 </div>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="diagnostics.html#cb220-1" tabindex="-1"></a><span class="fu">plot</span>(fit, ple4.indices)</span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="diagnostics.html#cb221-1" tabindex="-1"></a><span class="fu">plot</span>(fit, ple4.indices)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:idxplt-1"></span>
 <img src="_main_files/figure-html/idxplt-1.png" alt="Predict and observed abundance-at-age" width="672" />
 <p class="caption">
@@ -438,8 +438,8 @@ Figure 9.13: Predict and observed abundance-at-age
 <div id="aggreagted-catch-in-weight" class="section level2 hasAnchor" number="9.3">
 <h2><span class="header-section-number">9.3</span> Aggreagted catch in weight<a href="diagnostics.html#aggreagted-catch-in-weight" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Although a statistical catch-at-age model assumes errors in catch-at-age and, as such, errors in the total catch in weight, there’s still interest to evaluate how close the model estimates are of the observed catch in weight<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. The implementation of this diagnopstics is done through the method <code>computeCatchDiagnostics()</code>, which can be visualized with <code>plot()</code> (Figure @ref(c_d)).</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="diagnostics.html#cb221-1" tabindex="-1"></a>c_d <span class="ot">&lt;-</span> <span class="fu">computeCatchDiagnostics</span>(fit, ple4)</span>
-<span id="cb221-2"><a href="diagnostics.html#cb221-2" tabindex="-1"></a><span class="fu">plot</span>(c_d)</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="diagnostics.html#cb222-1" tabindex="-1"></a>c_d <span class="ot">&lt;-</span> <span class="fu">computeCatchDiagnostics</span>(fit, ple4)</span>
+<span id="cb222-2"><a href="diagnostics.html#cb222-2" tabindex="-1"></a><span class="fu">plot</span>(c_d)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:catchdiag"></span>
 <img src="_main_files/figure-html/catchdiag-1.png" alt="Diagnostics for age aggregated catch in weight" width="672" />
 <p class="caption">
@@ -450,7 +450,7 @@ Figure 9.14: Diagnostics for age aggregated catch in weight
 <div id="fit-summary-information-and-cross-validation-metrics" class="section level2 hasAnchor" number="9.4">
 <h2><span class="header-section-number">9.4</span> Fit summary, information and cross-validation metrics<a href="diagnostics.html#fit-summary-information-and-cross-validation-metrics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To get information about the likelihood fit the method <code>fitSumm()</code> can be used to report number of parameters (<code>npar</code>), negative log-likelkihood (<code>nlogl</code>), <code>ADMB</code> maximum gradient par (<code>maxgrad</code>), number of observations (<code>nobs</code>), generalized cross validation score (<code>gcv</code>), convergence flag (<code>convergence</code>) and acceptance rate (<code>accrate</code>) relevant for MCMC fits only. The second part refers to the likelihood value for each component.</p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="diagnostics.html#cb222-1" tabindex="-1"></a><span class="fu">fitSumm</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="diagnostics.html#cb223-1" tabindex="-1"></a><span class="fu">fitSumm</span>(fit)</span></code></pre></div>
 <pre><code>##              iters
 ##                           1
 ##   nopar        2.870000e+02
@@ -468,32 +468,32 @@ Figure 9.14: Diagnostics for age aggregated catch in weight
 ##   nlogl_comp6  6.057810e+01
 ##   nlogl_comp7  3.121530e+01</code></pre>
 <p>Information criteria based metrics are reported with the methods:</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="diagnostics.html#cb224-1" tabindex="-1"></a><span class="fu">AIC</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="diagnostics.html#cb225-1" tabindex="-1"></a><span class="fu">AIC</span>(fit)</span></code></pre></div>
 <pre><code>## [1] -190.7205</code></pre>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="diagnostics.html#cb226-1" tabindex="-1"></a><span class="fu">BIC</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="diagnostics.html#cb227-1" tabindex="-1"></a><span class="fu">BIC</span>(fit)</span></code></pre></div>
 <pre><code>## [1] 1374.784</code></pre>
 </div>
 <div id="the-package-a4adiags" class="section level2 hasAnchor" number="9.5">
 <h2><span class="header-section-number">9.5</span> The package a4adiags<a href="diagnostics.html#the-package-a4adiags" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The package <code>a4adiags</code> contains some additional diagnostics based on the <code>reference</code>. Runs test checks weather the residuals are randomly distributed. A “run” is a sequence of the same sign residuals. Few runs indicate a trend or a correlation in the residuals while too many runs may suggest overfitting.</p>
 <p>The primary output of a runstest is a p-value where: a high p value <span class="math inline">\((p\leq 0.05)\)</span> suggests that the residuals are randomly distributed, a low p value indicates a non-random pattern in the residuals.</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="diagnostics.html#cb228-1" tabindex="-1"></a><span class="fu">library</span>(a4adiags)</span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="diagnostics.html#cb229-1" tabindex="-1"></a><span class="fu">library</span>(a4adiags)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;a4adiags&#39;</code></pre>
 <pre><code>## The following object is masked _by_ &#39;.GlobalEnv&#39;:
 ## 
 ##     fit</code></pre>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="diagnostics.html#cb231-1" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>())</span>
-<span id="cb231-2"><a href="diagnostics.html#cb231-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(mut09, mut09.idx, <span class="at">fmod =</span> <span class="sc">~</span><span class="fu">factor</span>(age) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">8</span>))</span>
-<span id="cb231-3"><a href="diagnostics.html#cb231-3" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit, mut09, mut09.idx)</span></code></pre></div>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="diagnostics.html#cb232-1" tabindex="-1"></a><span class="fu">plotRunstest</span>(fit, mut09.idx, <span class="at">combine =</span> F) <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>age)</span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="diagnostics.html#cb232-1" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>())</span>
+<span id="cb232-2"><a href="diagnostics.html#cb232-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(mut09, mut09.idx, <span class="at">fmod =</span> <span class="sc">~</span><span class="fu">factor</span>(age) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">8</span>))</span>
+<span id="cb232-3"><a href="diagnostics.html#cb232-3" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit, mut09, mut09.idx)</span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="diagnostics.html#cb233-1" tabindex="-1"></a><span class="fu">plotRunstest</span>(fit, mut09.idx, <span class="at">combine =</span> F) <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>age)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:idxrunstest"></span>
 <img src="_main_files/figure-html/idxrunstest-1.png" alt="Runstest for the abundance index" width="672" />
 <p class="caption">
 Figure 9.15: Runstest for the abundance index
 </p>
 </div>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="diagnostics.html#cb233-1" tabindex="-1"></a><span class="fu">plotRunstest</span>(<span class="fu">catch.n</span>(mut09), <span class="fu">catch.n</span>(mut09 <span class="sc">+</span> fit), <span class="at">combine =</span> F) <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>age)</span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="diagnostics.html#cb234-1" tabindex="-1"></a><span class="fu">plotRunstest</span>(<span class="fu">catch.n</span>(mut09), <span class="fu">catch.n</span>(mut09 <span class="sc">+</span> fit), <span class="at">combine =</span> F) <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>age)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:catchrunstest"></span>
 <img src="_main_files/figure-html/catchrunstest-1.png" alt="Runstest for the catch by age" width="672" />
 <p class="caption">

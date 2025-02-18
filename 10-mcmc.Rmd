@@ -90,9 +90,9 @@ plot(FLStocks(mle=hke1567 + fit, mc=hke1567 + fitmc00))
 
 In essence, the diagnostics are used to give the analyst confidence that the posterior distribution of the parameters is unbiased, as much as possible with symetric non correlated distributions of each parameter, over which one can make inference.
 
-There's a large body of literature about MCMC convergence. In this section we'll focus on the out-of-the-box methods for metropolis hastings algorythm available to the stock assessment scientist: trace plots, autocorrelation analysis, geweke diagnostic, Gelman and Rubin's convergence diagnostic, acceptance rate, cumulative means, distribution density and acceptance rate. `ADMB` has an hybrid algorythm based on Hamiltonian dynamic which will not be addressed here. The reader is invited to consult Monnahan et.al (2014) for more information.
+There's a large body of literature about MCMC convergence. In this section we'll focus on the out-of-the-box methods for metropolis hastings algorythm available to the stock assessment scientist: trace plots, autocorrelation and crosscorrelation analysis, geweke diagnostic, Gelman and Rubin's convergence diagnostic, acceptance rate, cumulative means, distribution density and acceptance rate. These tools should be used together to evaluate proper mixing and convergence.
 
-Diagnostic tools should be used together to evaluate proper mixing and convergence.
+`ADMB` has an hybrid algorythm based on Hamiltonian dynamic which will not be addressed here. The reader is invited to consult Monnahan et.al (2014) for more information.
 
 We use the package `CODA` to run the diagnostics on MCMC fits. One needs to convert the `sca` output into a `mcmc` CODA object over which several diagostics can be ran. The mcmc object is a matrix with the parameters (row = iters, cols= pars).
 
@@ -127,15 +127,23 @@ Ploting the chains for the parameter clearly shows autocorrelation for the first
 traceplot(FLa4a::as.mcmc(burnin(fitmc02, 250))[,1], lwd=2, col=4, lty=1)
 ```
 
-### Autocorrelation analysis
+### Autocorrelation and crosscorrelation analysis
 
-Autocorrelation analysis is useful to assess stationarity, a stationary chain should have low autocorrelation, meaning that each sample is approximately independent. On the opposite, high autocorrelation indicates slow mixing and possible non-stationarity. The autocorrelation plot produced by the `acf` function, will show correlation along the chain for each parameter at different lags. Figure \@ref(fig:acf01) shows there's a strong autocorrelation for the first parameter in the blue chain, which we'd like to avoid.
+Autocorrelation analysis is useful to assess stationarity, a stationary chain should have low autocorrelation, meaning that each sample is approximately independent. On the opposite, high autocorrelation indicates slow mixing and possible non-stationarity. furthermore, in a good mixed chain autocorrelation drops quickly to near zero, while a poor mixing will display high autocorrelation, meaning successive samples are too correlated, reducing efficiency.
 
-```{r, acf01, fig.cap="Autocorrelation plot of the first parameter in the MCMC chain. High correlation chain in blue, low correlation chain in red."}
-acfplot(mcmc.list(mc01=fitmc01.mc[,1], mc02=fitmc02.mc[,1]), type="p", pch=19, col=c(2,4))
+The autocorrelation plot produced by the `acf` function, will show correlation along the chain for each parameter at different lags. Figure \@ref(fig:acf01) shows there's a strong autocorrelation for the first parameter in the blue chain (right panel), which we'd like to avoid.
+
+```{r, acf01, fig.cap="Autocorrelation plot of the first parameter in the MCMC chain", fig.show="hold", out.width="50%"}
+acfplot(fitmc01.mc[,1], lwd=3, main="Low correlation chain")
+acfplot(fitmc02.mc[,1], lwd=3, main="High correlation chain")
 ```
 
-Autocorrelation analysis is also useful for this diagnostics. In a good mixed chain autocorrelation drops quickly to near zero, while a poor mixing will display high autocorrelation, meaning successive samples are too correlated, reducing efficiency. Figure \@ref(fig:acf01) cleary depicts this difference, the blue chain shows a very high level of auto-correlation while the red chain drops very quickly to values around 0.
+Crosscorrelation inspects the pairwise correlation of all parameters, which is a useful tool to assess the efficiency of the sampling process and the independence of the generated samples. If cross-correlations are high, it often means that transitions between states are sluggish, leading to an increased autocorrelation time and requiring a larger number of samples to achieve effective independent samples. Conversely, low cross-correlation implies that parameters are explored more independently, leading to faster convergence and better mixing.
+
+```{r, ccr01, fig.cap="Crosscorrelation plots", fig.show="hold", out.width="50%"}
+crosscorr.plot(fitmc01.mc, main="Low correlation chain")
+crosscorr.plot(fitmc02.mc, main="High correlation chain")
+```
 
 ### Geweke diagnostic
 
