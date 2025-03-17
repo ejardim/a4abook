@@ -216,3 +216,11 @@ the-fishing-mortality-year-model
 the-initial-year-population-abundance-model-aka-n1
 the-stock-recruitment-submodel
 the-variance-submodel
+fig:n1resbyage05
+fig:n1resbyage06
+fig:vresbyyear07
+fig:vresbyyear08
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
+year-effect-on-fishing-mortality
+year-effect-on-catchability
+final-comments
