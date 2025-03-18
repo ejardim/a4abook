@@ -1,7 +1,7 @@
 ---
 output:
   pdf_document:
-    extra_dependencies: ["float"] 
+    extra_dependencies: ["float"]
   html_document: default
 ---
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
@@ -11,25 +11,27 @@ library(FLCore)
 library(FLa4a)
 library(ggplotFL)
 library(ggpubr)
+drafting <- TRUE
 ```
 
 # Introduction to Splines
 
-Splines are a specific case of smoothers. A **smoother** is a method or algorithm designed to estimate a smooth function that fits data, capturing underlying trends without overfitting noise. Splines are a powerful tool for modeling complex, non-linear relationships between variables in a flexible and interpretable way. In most of the cases, they break a function into smooth, continuous polynomial segments, each called a *piece* or *basis function*, joined at specific points called *knots*. This piecewise approach allows us to capture the non-linearity in the data without overfitting. 
+Splines are a specific case of smoothers. A **smoother** is a method or algorithm designed to estimate a smooth function that fits data, capturing underlying trends without overfitting noise. Splines are a powerful tool for modeling complex, non-linear relationships between variables in a flexible and interpretable way. A common way to use splines is to break a function into smooth, continuous polynomial segments, each called a *piece* or *basis function*, joined at specific points called *knots*. This piecewise approach allows us to capture the non-linearity in the data without overfitting.
 
-*Basis functions* consist the main building block of splines.The key concept of "basis functions" is that they transform the input variable (or vector) $X$ into a set of new variables, which are then used as inputs in the model. This allows the model to remain linear in these transformed variables, even though it can capture complex, non-linear relationships in the original variable.
+*Basis functions* consist the main building block of splines.The key concept of "basis functions" is that they transform the input variable (or vector) $\mathbf{x}$ into a set of new variables, which are then used as inputs in the model. This allows the model to remain linear in these transformed variables, even though it can capture complex, non-linear relationships in the original variable.
 
-Splines build their functionality through the core concepts of linear models. Linear models assume that the relationship between data can be described by a straight line, in the case of only one predictor $X$.
+Splines build their functionality through the core concepts of linear models. Linear models assume that the relationship between data can be described by a straight line, in the case of only one predictor $\mathbf{x}$.
 We denote linear model as:
 
-$$Y = \beta_0 + \beta_1X + \epsilon$$
-Where the parameters $\beta_0$ and  $\beta_1$ uniquely determine a straight line and $\epsilon$ is the error term. Simple in its construction and representation, linear models can very rare capture the complexity of a real-world data set. The even simplest form of a linear model is the mean or average of a data set:
+$$\mathbf{y} = \beta_0 + \beta_1\mathbf{x} + \mathbf{\epsilon}$$
 
-$$Y = \beta_0 + \epsilon$$
+Where $\mathbf{y}$ are the observations, the parameters $\beta_0$ and  $\beta_1$ uniquely determine a straight line and $\mathbf{\epsilon}$ is the observation errors. Simple in its construction and representation, linear models can be limited when trying to capture the complexity of a real-world data set. The simplest form of a linear model is the mean or average of a data set:
 
-In the following graph of non linear data, we fit a simple mean value of y and a linear model:
+$$\mathbf{y} = \beta_0 + \epsilon$$
 
-```{r, fig.cap='Generated data with two linear fits, left a simple mean a right a linear model', fig.pos = 'H', fig.height = 4,echo=FALSE, message=FALSE, warning=FALSE}
+In the following graph of non linear data ($\mathbf{y}$), we fit a simple mean value of $\beta_0$ and a straight line model $\beta_0 + \beta_1\mathbf{x}$:
+
+```{r, fig.cap='Generated data with two linear fits, left a simple mean and right a straight line', fig.pos = 'H', fig.height = 4,echo=FALSE, message=FALSE, warning=FALSE}
 set.seed(1234)
 x = seq(0,10,0.1) + rnorm(101, 0, 1)
 y = 3*sin(x) + rnorm(101, 0, 0.8) +x/2
@@ -40,7 +42,7 @@ data$predicted <- predict(model)
 eq <- paste("Y =", round(coef(model)[1], 2), "+", round(coef(model)[2], 2), "X")
 eq2 <- paste("E(Y) = ", round(mean(data$y),2))
 
-p1 <- ggplot(data, aes(x, y)) + 
+p1 <- ggplot(data, aes(x, y)) +
   geom_point() +
   geom_line(aes(y = predicted), color = "blue")
   # annotate("text", x = 0, y = 10, label = eq, size = 4)
@@ -54,9 +56,9 @@ ggarrange(p2,p1)
 
 ```
 
-In this case our parameters are a simple intercept $\beta_0 =$ `r round(mean(data$y),2)` for the parallel to the x-axis line, while for the linear model $\beta_0 =$ `r round(coef(model)[1], 2)` and $\beta_1 =$ `r round(coef(model)[2], 2)`. In Figure X1 we see how by adding to the constant model $\beta_0$ the variable $X$, the model becomes a little more complex but it can also follow the general upward trend compared to the first line, although it fails to follow the peaks and the lows of the data set. 
+In this case our parameters are a $\beta_0 =$ `r round(mean(data$y),2)` for the mean (left) model, while for the straight line model, $\beta_0 =$ `r round(coef(model)[1], 2)` and $\beta_1 =$ `r round(coef(model)[2], 2)`. In Figure X1 we see how by adding to the constant model $\beta_0$ a multiple ($\beta_1$) of the variable $\mathbf{x}$, the model becomes a little more complex but it can now follow the general upward trend compared to the first line, although it fails to follow the peaks and the lows of the data set.
 
-One of the mechanisms that splines use is to split the set of values of the predictor, in our case $x$, in smaller compartments and fit in those compartments a specified model. The points where the splitting occurs are called *knots*. In Figure X2 we take a stepwise approach following the logic behind the use of piecewise polynomials in smoothing splines. First, we split our range of $x$ values in 4 subsets, by defining our knots, then we take the average of $y$ data for each of these compartments and in the final step we add a bit of complexity by fitting a linear model in each of these subsets of our original dataset. Figure X2 demonstrates a naif approach to try and follow better the trends of the data, where in each step we manage to capture a bit more. 
+One of the mechanisms that splines use is to split the set of values of the predictor, in our case $\mathbf{x}$, in smaller compartments and fit in those compartments a specified model. The points where the splitting occurs are called *knots*. In Figure X2 we take a stepwise approach following the logic behind the use of piecewise polynomials in smoothing splines. First, we split our range of $\mathbf{x}$ values in 4 subsets, by defining our knots, then we take the average of $\mathbf{y}$ data for each of these compartments and in the final step we add a bit of complexity by fitting a straight line model in each of these subsets of our original dataset. Figure X2 demonstrates a naive approach to try and follow better the trends of the data, where in each step we manage to capture a bit more.
 
 
 ```{r, fig.cap='Generated data with 4 linear fits', fig.pos = 'H', echo=FALSE, message=FALSE, warning=FALSE}
@@ -75,9 +77,9 @@ p4 <- ggplot(data, aes(x, y)) +
   geom_vline(xintercept = 6, linetype = 'dashed')+
   geom_vline(xintercept = 10, linetype = 'dashed')+
   geom_segment(x = -Inf, xend = 2, y = mean(data[data$x<2,]$y), yend = mean(data[data$x<2,]$y), color = 'blue')+
-  geom_segment(x = 2, xend = 6, y = mean(data[data$x>=2 & data$x<6,]$y), yend = mean(data[data$x>=2 & data$x<6,]$y), 
+  geom_segment(x = 2, xend = 6, y = mean(data[data$x>=2 & data$x<6,]$y), yend = mean(data[data$x>=2 & data$x<6,]$y),
                color = 'blue')+
-  geom_segment(x = 6, xend = 10, y = mean(data[data$x>=6 & data$x<10,]$y), 
+  geom_segment(x = 6, xend = 10, y = mean(data[data$x>=6 & data$x<10,]$y),
                yend = mean(data[data$x>=6 & data$x<10,]$y), color = 'blue')+
   geom_segment(x = 10, xend = Inf, y = mean(data[data$x>=10,]$y), yend = mean(data[data$x>=10,]$y), color = 'blue')+
   scale_x_continuous(breaks = c(2,6,10))
@@ -113,7 +115,7 @@ ggarrange(p3,p4,p5)
 
 ## Generalize to polynomials
 
-We explored the concept of splitting the variable space into compartments and approximating a general solution by locally fitting linear models that better capture the global trajectory of the data. Smooth functions rely on two fundamental mechanisms. The first, as mentioned earlier, involves how the domain of the function is divided for estimation. The second, which we will focus on here, involves using slightly more complex functions than linear ones, such as polynomials.
+We explored the concept of splitting the $\mathbf{x}$ variable space into compartments and developing a solution by locally fitting linear models that better capture the global trajectory of the data. Smooth functions rely on two fundamental mechanisms. The first, as mentioned earlier, involves how the domain of the function is divided for estimation. The second, which we will focus on here, involves using slightly more complex functions than linear ones, such as polynomials.
 
 By combining polynomial pieces and ensuring smoothness at their junctions, i.e. knots, we can create flexible models that adapt to the data. In regression, splines are a powerful tool for fitting complex shapes by introducing non-linear trends while maintaining control over the smoothness of the overall function. This approach allows us to balance flexibility and precision in modeling.
 
@@ -124,8 +126,8 @@ Let $S$ our spline function, that is defined in an interval $[a,b]$. We seek to 
 $S$ is going to be defined as:
 
 $$
-S(x) = 
-\begin{cases} 
+S(x) =
+\begin{cases}
 P_1(x) & \text{if } a \leq x < t_1, \\
 P_2(x) & \text{if } t_1 \leq x < t_2, \\
 \quad\vdots \\
@@ -140,46 +142,49 @@ In Figure X3 we demonstrate the fitting of cubic regression splines. In this cas
 
 The spline would be then as follows:
 
-$$Y = \beta_0 + \beta_1P_1(x) + \beta_2P_2(x) + \beta_3P_3(x) + \beta_4P_4(x) $$
+$$\mathbf{y} = \beta_0 + \beta_1P_1(\mathbf{x}) + \beta_2P_2(\mathbf{x}) + \beta_3P_3(\mathbf{x}) + \beta_4P_4(\mathbf{x}) $$
 
 
-```{r, fig.cap = "A cubic spline with 5 knots cnsists of 4 cubic polynomials",echo=FALSE, message=FALSE, warning=FALSE}
-cr <- gam(y ~ s(x, k = 5, bs = "cr"), data = data)
-data$cr_fit <- predict(cr)
+```{r, fig.cap = "A B-spline with 5 knots consists of 5 cubic polynomials",echo=FALSE, message=FALSE, warning=FALSE}
+library(splines)
+spline <- bs(data$x, df = 5, degree = 2, intercept = FALSE)
+cr <- lm(y ~ bs(data$x, df = 5, degree = 2, intercept = FALSE), data = data)
+data$cr_fit <- fitted(cr)
 
-sm_cr <- cr$smooth[[1]]
+sm_cr <- spline
 
 data$knot_range <- cut(
   data$x,
-  breaks = sm_cr$xp,
-  labels = c("25%","50%","75%","100%"),
+  breaks = c(min(data$x), attr(sm_cr, "knots"), max(data$x)),
+  labels = c("25%","50%","75%", "100%"),
   right = TRUE
 )
 
 ggplot(data, aes(x, y)) +
   geom_point() +
-  geom_line(aes(y = cr_fit), color = 'darkred')+
-  geom_vline(xintercept = sm_cr$xp, linetype = 'dashed')
+  geom_line(aes(y = cr_fit), color = "darkred") +
+  geom_vline(xintercept = attr(sm_cr, "knots"), linetype = "dashed")
 ```
 
 
-The natural cubic spline fit above is constrained at the boundaries, by putting two of the five knots there, resulting in a linear behavior at the ends of the data range. This approach is helpful for data that has an approximately linear trend at the boundaries but exhibits non-linearity in the center.
+The B-spline fit above is constrained at the boundaries, by putting two of the five knots there, resulting in a linear behavior at the ends of the data range. This approach is helpful for data that has an approximately linear trend at the boundaries but exhibits non-linearity in the center.
 
-The knots in the cubic regression splines are placed by quantile through the variable space, so in the case where the data are evenly spread across the variable space the knots will be placed evenly.
+The knots in this regression splines are placed by quantiles through the variable space, so in the case where the data are evenly spread across the variable space the knots will be placed evenly.
 
-The `gam` routine creates $k-1$ polynomials plus an intercept based on the knots:
+For the spline fitted above, there are $k$ polynomials plus an intercept (not shown) based on the knots (dashed lines):
 
-```{r, fig.cap = "basis functions for cubic regression splines", echo=FALSE, message = FALSE}
-X <- model.matrix(cr)
+```{r, fig.cap = "basis functions for a B-spline with 5 knots", echo=FALSE, message = FALSE}
+X <- spline
 
 df_x <- as.data.frame(X)
+names(df_x) <- c("(Intercept)", "s(x).1", "s(x).2", "s(x).3", "s(x).4")
 
 # multiply the coefficients with the basis splines
-df_x$`(Intercept)_b0` <- df_x$`(Intercept)`*coef(cr)[1]
-df_x$`s(x).1_b1` <- df_x$`s(x).1`*coef(cr)[2]
-df_x$`s(x).2_b2` <- df_x$`s(x).2`*coef(cr)[3]
-df_x$`s(x).3_b3` <- df_x$`s(x).3`*coef(cr)[4]
-df_x$`s(x).4_b4` <- df_x$`s(x).4`*coef(cr)[5]
+df_x$`(Intercept)_b0` <- df_x$`(Intercept)` * coef(cr)[2] + coef(cr)[1]
+df_x$`s(x).1_b1` <- df_x$`s(x).1` * coef(cr)[3] + coef(cr)[1]
+df_x$`s(x).2_b2` <- df_x$`s(x).2` * coef(cr)[4] + coef(cr)[1]
+df_x$`s(x).3_b3` <- df_x$`s(x).3` * coef(cr)[5] + coef(cr)[1]
+df_x$`s(x).4_b4` <- df_x$`s(x).4` * coef(cr)[6] + coef(cr)[1]
 
 # split two dfs
 df_x_basis <- df_x[,c(1:5)]
@@ -195,11 +200,14 @@ df_xm_basis_b$fitted <- data$cr_fit
 df_xm_basis_b$obs <- data$y
 
 ggplot(data = df_xm_basis, aes(x = x, y = value, group = variable, colour = variable)) +
-  geom_line()+theme(legend.position="bottom")+ylab("y")
+  geom_line() +
+  theme(legend.position = "bottom") +
+  geom_vline(xintercept = attr(sm_cr, "knots"), linetype = "dashed") +
+  ylab("y")
 
 ```
 
-The polynomials transform the initial variable $x$ and create a *model* matrix $X$ with $k$ columns and $n$ rows, where $n$ is the number of data points. This new transformation is being then used to fit the model and estimate the $\beta_{0}, ... ,\beta_{k-1}$ coefficients. The fitted model results from $X\beta$
+The polynomials transform the initial variable $\mathbf{x}$ and create a *model* matrix $\mathbf{X}$ with $k$ columns and $n$ rows, where $n$ is the number of data points. This new transformation is being then used to fit the model and estimate the $\beta_{0}, ... ,\beta_{k}$ coefficients, $\beta_0$ is required for the intercept. The fitted model results from $\mathbf{X} \mathbf{\beta}$
 
 ```{r}
 ggplot(data = df_xm_basis_b, aes(x = x, y = value, group = variable, colour = variable)) +
@@ -209,7 +217,7 @@ ggplot(data = df_xm_basis_b, aes(x = x, y = value, group = variable, colour = va
 
 ## Thin plate spline
 
-Thin plate splines are particularly useful for smoothing in multiple dimensions. However, they also work well with univariate data, as they offer flexibility and control over smoothness they are the default choice of the `mgcv` package.
+Thin plate splines are particularly useful for smoothing in multiple dimensions. However, they also work well with univariate data, as they offer flexibility and control over smoothness they are the default choice of the `mgcv` package.  Thin plate splines work differently from the splines we have shown so far. They are not composed of a sequence of local polynomials but from basis functions that are smooth across the entire range of the data, and capture increasing amounts of flexibility.
 
 ```{r,fig.cap="Thin plate splines fit"}
 # Fit a thin plate spline with gam()
@@ -223,9 +231,7 @@ ggplot(data, aes(x, y)) +
   geom_line(aes(y = tps_fit), color = "blue", linewidth = 1)
 ```
 
-This spline automatically adjusts its flexibility across the data, with a smoothing penalty that controls the degree of bending. Thin plate splines are ideal when you need a smooth fit without predefined knots. The knots in thin plate splines are not positioned across the variable space, instead, by default, when no knot number is specified, there are as many knots as data points which essentially define the number of basis splines. 
-
-In the case where $k$ is specified the thin plate splines use the first $k$ "principal components" in a similar way as the PCA algorithm works.
+Thin plate splines are ideal when you need a smooth fit without predefined knots. The notion of knots in thin plate splines does not have the same interpretation as for B-splines and other piecewise functions, and infact it is likely not useful to think of knots when using thin plate spines. Instead it is better to think of the number of basis functions used to represent the smooth term.
 
 ```{r, fig.cap = "basis functions for thin plate splines", echo=FALSE, message = FALSE}
 X <- model.matrix(tps_model)
@@ -261,9 +267,12 @@ As in the example before, the fitted model results from $X\beta$
 
 ```{r, message=FALSE}
 ggplot(data = df_xm_basis_b, aes(x = x, y = value, group = variable, colour = variable)) +
-  geom_line() + geom_line(aes(y = fitted), color = "darkgreen", linewidth = 1)+
-  geom_point(aes(y = obs), color = "darkgrey", alpha = 0.4)+
-  theme(legend.position="bottom")+ylab("y")
+  geom_line() +
+  geom_line(aes(y = fitted), color = "darkgreen", linewidth = 1) +
+  geom_point(aes(y = obs), color = "darkgrey", alpha = 0.4) +
+  theme(legend.position = "bottom") +
+  ylab("y") +
+  ylim(-16, 15)
 ```
 
 ## Comparison
@@ -291,13 +300,13 @@ idx <- ple4.indices
 
 The `mgcv` package provides various user input options to define the smoother functions used to construct the submodels.
 
-Under the `a4a` framework, the `mgcv` package is used to construct the model matrices of the submodels, which are then passed to the `ADMB` where the model fitting takes place. 
+Under the `a4a` framework, the `mgcv` package is used to construct the model matrices of the submodels, which are then passed to the `ADMB` where the model fitting takes place.
 
 The default option for the basis functions of the splines is `bs = tp` (thin plate splines) and is considered the optimal option. The user can define other smoothing basis functions using the `bs` argument. The user can refer to the `smooth.terms` of the `mgcv` package for a full description. There are many equivalent basis functions for the splines, and some of them have little or no effect in the context of `a4a`, since they differ only in the penalty term, which is not used in `a4a`.
 
 Examples for different smoothing terms:
 
-```{r}
+```{r, eval = !drafting}
 fmod00 <- ~s(age)+s(year, bs = 'tp', k = 10) # thin plate splines
 fmod01 <- ~s(age)+s(year, bs = 'cr', k = 10) # regression cubic splines
 fmod02 <- ~s(age)+s(year, bs = 'bs', k = 10) # b-splines
@@ -314,7 +323,7 @@ fit04 <- sca(stk, idx, fmodel = fmod04)
 In this example we are using the thin plate regression splines, cubic splines, b-splines, p-splines and adaptive smoothers
 
 
-```{r}
+```{r, eval = !drafting}
 plot(FLStocks(ThinPlate = stk + fit00,
               CubicRegressionSplines = stk + fit01,
               B_splines = stk + fit02,
@@ -324,7 +333,7 @@ plot(FLStocks(ThinPlate = stk + fit00,
 
 Functionality of `mgcv` package provides also the option to work with interactions. Although `s(age, year)` can be defined, it uses a common bivariate spline for the two variables which are very different in scale. It is preferable if interactions are assumed to use `te(age, year)`. Again is up to the user to define the basis functions for the smoothers.
 
-```{r}
+```{r, eval = !drafting}
 fmod03 <- ~te(age, year, k = c(3,10))
 fmod04 <- ~te(age, year, k = c(3,10), bs = 'cr')
 fmod05 <- ~te(age, year, bs = 'bs')
@@ -334,7 +343,7 @@ fit04 <- sca(stk, idx, fmodel = fmod04)
 fit05 <- sca(stk, idx, fmodel = fmod05)
 ```
 
-```{r}
+```{r, eval = !drafting}
 plot(FLStocks(TP_tensor = stk + fit03,
               CB_tensor = stk + fit04,
               BS_tensor = stk + fit05))+theme(legend.position = 'bottom')
@@ -344,7 +353,7 @@ plot(FLStocks(TP_tensor = stk + fit03,
 
 $k$ is the dimension of the basis used to represent the smooth term $s$. The default depends on the number of variables that the smooth is a function of. In practice k-1 (or k) sets the upper limit on the degrees of freedom associated with an s smooth (1 degree of freedom is usually lost to the intercept of the smooth). For the smooths the upper limit of the degrees of freedom is given by the product of the k values provided for each marginal smooth less one, for the constraint. The choice of the k is not critical and in general it must be large enough to allow to have enough degrees of freedom capturing the underlying process and small enough to prevent overfitting. A strong pattern in the residuals can be a sign of low $k$.
 
-```{r}
+```{r, eval = !drafting}
 fmod00 <- ~s(age)+s(year, k = 5)
 fmod01 <- ~s(age)+s(year, k = 10) # cubic splines
 fmod02 <- ~s(age)+s(year, k = 20) # b-splines
@@ -360,7 +369,7 @@ plot(FLStocks('k=5' = stk + fit00,
 
 We can check the result of choosing different $k$ values on BIC and GCV:
 
-```{r}
+```{r, eval = !drafting}
 fmodsk <- list()
 for(i in 10:20) {
   fmodsk[[paste0(i)]] <- as.formula(paste0("~s(age)+s(year, k=",i,")"))
@@ -369,6 +378,3 @@ for(i in 10:20) {
 myFits <- scas(FLStocks(stk), list(idx), fmodel = fmodsk)
 plot(myFits)
 ```
-
-
-
