@@ -190,7 +190,7 @@ df_xm_basis <- reshape2::melt(df_x_basis)
 df_xm_basis$x <- data$x
 
 df_xm_basis_b <- reshape2::melt(df_x_basis_b)
-df_xm_basis_b$x <- x
+df_xm_basis_b$x <- data$x
 df_xm_basis_b$fitted <- data$cr_fit
 df_xm_basis_b$obs <- data$y
 
@@ -245,10 +245,10 @@ df_x_basis_b <- df_x[,c(6:10)]
 
 
 df_xm_basis <- reshape2::melt(df_x_basis)
-df_xm_basis$x <- x
+df_xm_basis$x <- data$x
 
 df_xm_basis_b <- reshape2::melt(df_x_basis_b)
-df_xm_basis_b$x <- x
+df_xm_basis_b$x <- data$x
 df_xm_basis_b$fitted <- data$tps_fit
 df_xm_basis_b$obs <- data$y
 
