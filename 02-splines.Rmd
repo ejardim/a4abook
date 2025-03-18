@@ -11,7 +11,7 @@ library(FLCore)
 library(FLa4a)
 library(ggplotFL)
 library(ggpubr)
-drafting <- TRUE
+drafting <- FALSE
 ```
 
 # Introduction to Splines
@@ -323,7 +323,7 @@ fit04 <- sca(stk, idx, fmodel = fmod04)
 In this example we are using the thin plate regression splines, cubic splines, b-splines, p-splines and adaptive smoothers
 
 
-```{r, fig.cap='Multiple fits of thin plate splines, cubic splines, b-splines, p-splines and adaptive smoothers'}
+```{r, eval = !drafting, fig.cap='Multiple fits of thin plate splines, cubic splines, b-splines, p-splines and adaptive smoothers'}
 plot(FLStocks(ThinPlate = stk + fit00,
               CubicRegressionSplines = stk + fit01,
               B_splines = stk + fit02,

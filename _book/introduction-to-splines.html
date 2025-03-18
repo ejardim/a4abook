@@ -401,9 +401,9 @@ Figure 3.4: basis functions for a B-spline with 5 knots
 <span id="cb2-8"><a href="introduction-to-splines.html#cb2-8" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
 <span id="cb2-9"><a href="introduction-to-splines.html#cb2-9" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> tps_fit), <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">linewidth =</span> <span class="dv">1</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-7"></span>
-<img src="_main_files/figure-html/unnamed-chunk-7-1.png" alt="Thin plate splines fit" width="672" />
+<img src="_main_files/figure-html/unnamed-chunk-7-1.png" alt="Thin plate splines fit with k = 5" width="672" />
 <p class="caption">
-Figure 3.5: Thin plate splines fit
+Figure 3.5: Thin plate splines fit with k = 5
 </p>
 </div>
 <p>Thin plate splines are ideal when you need a smooth fit without predefined knots. The notion of knots in thin plate splines does not have the same interpretation as for B-splines and other piecewise functions, and infact it is likely not useful to think of knots when using thin plate spines. Instead it is better to think of the number of basis functions used to represent the smooth term.</p>
@@ -464,6 +464,12 @@ Figure 3.7: Thin plate splines and cubic regression splines fit
 <span id="cb7-3"><a href="introduction-to-splines.html#cb7-3" tabindex="-1"></a>              <span class="at">B_splines =</span> stk <span class="sc">+</span> fit02,</span>
 <span id="cb7-4"><a href="introduction-to-splines.html#cb7-4" tabindex="-1"></a>              <span class="at">P_splines =</span> stk <span class="sc">+</span> fit03,</span>
 <span id="cb7-5"><a href="introduction-to-splines.html#cb7-5" tabindex="-1"></a>              <span class="at">Adaptive_smoothers =</span> stk <span class="sc">+</span> fit04))<span class="sc">+</span><span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;bottom&#39;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-13"></span>
+<img src="_main_files/figure-html/unnamed-chunk-13-1.png" alt="Multiple fits of thin plate splines, cubic splines, b-splines, p-splines and adaptive smoothers" width="672" />
+<p class="caption">
+Figure 3.8: Multiple fits of thin plate splines, cubic splines, b-splines, p-splines and adaptive smoothers
+</p>
+</div>
 <p>Functionality of <code>mgcv</code> package provides also the option to work with interactions. Although <code>s(age, year)</code> can be defined, it uses a common bivariate spline for the two variables which are very different in scale. It is preferable if interactions are assumed to use <code>te(age, year)</code>. Again is up to the user to define the basis functions for the smoothers.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="introduction-to-splines.html#cb8-1" tabindex="-1"></a>fmod03 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>))</span>
 <span id="cb8-2"><a href="introduction-to-splines.html#cb8-2" tabindex="-1"></a>fmod04 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>), <span class="at">bs =</span> <span class="st">&#39;cr&#39;</span>)</span>
@@ -475,6 +481,7 @@ Figure 3.7: Thin plate splines and cubic regression splines fit
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="introduction-to-splines.html#cb9-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">FLStocks</span>(<span class="at">TP_tensor =</span> stk <span class="sc">+</span> fit03,</span>
 <span id="cb9-2"><a href="introduction-to-splines.html#cb9-2" tabindex="-1"></a>              <span class="at">CB_tensor =</span> stk <span class="sc">+</span> fit04,</span>
 <span id="cb9-3"><a href="introduction-to-splines.html#cb9-3" tabindex="-1"></a>              <span class="at">BS_tensor =</span> stk <span class="sc">+</span> fit05))<span class="sc">+</span><span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;bottom&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 </div>
 <div id="on-the-number-of-knots-k" class="section level2 hasAnchor" number="3.5">
 <h2><span class="header-section-number">3.5</span> On the number of knots <span class="math inline">\(k\)</span><a href="introduction-to-splines.html#on-the-number-of-knots-k" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -490,6 +497,7 @@ Figure 3.7: Thin plate splines and cubic regression splines fit
 <span id="cb10-9"><a href="introduction-to-splines.html#cb10-9" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">FLStocks</span>(<span class="st">&#39;k=5&#39;</span> <span class="ot">=</span> stk <span class="sc">+</span> fit00,</span>
 <span id="cb10-10"><a href="introduction-to-splines.html#cb10-10" tabindex="-1"></a>              <span class="st">&#39;k=10&#39;</span> <span class="ot">=</span> stk <span class="sc">+</span> fit01,</span>
 <span id="cb10-11"><a href="introduction-to-splines.html#cb10-11" tabindex="-1"></a>              <span class="st">&#39;k=20&#39;</span> <span class="ot">=</span> stk <span class="sc">+</span> fit02))<span class="sc">+</span><span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;bottom&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p>We can check the result of choosing different <span class="math inline">\(k\)</span> values on BIC and GCV:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="introduction-to-splines.html#cb11-1" tabindex="-1"></a>fmodsk <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
 <span id="cb11-2"><a href="introduction-to-splines.html#cb11-2" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">20</span>) {</span>
@@ -498,6 +506,7 @@ Figure 3.7: Thin plate splines and cubic regression splines fit
 <span id="cb11-5"><a href="introduction-to-splines.html#cb11-5" tabindex="-1"></a></span>
 <span id="cb11-6"><a href="introduction-to-splines.html#cb11-6" tabindex="-1"></a>myFits <span class="ot">&lt;-</span> <span class="fu">scas</span>(<span class="fu">FLStocks</span>(stk), <span class="fu">list</span>(idx), <span class="at">fmodel =</span> fmodsk)</span>
 <span id="cb11-7"><a href="introduction-to-splines.html#cb11-7" tabindex="-1"></a><span class="fu">plot</span>(myFits)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 
 </div>
 </div>

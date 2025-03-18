@@ -231,3 +231,4 @@ fig:unnamed-chunk-5
 fig:unnamed-chunk-7
 fig:unnamed-chunk-8
 generalize-to-polynomials
+fig:unnamed-chunk-13
