@@ -224,3 +224,10 @@ cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
 year-effect-on-fishing-mortality
 year-effect-on-catchability
 final-comments
+fig:unnamed-chunk-2
+fig:unnamed-chunk-3
+fig:unnamed-chunk-4
+fig:unnamed-chunk-5
+fig:unnamed-chunk-7
+fig:unnamed-chunk-8
+generalize-to-polynomials
