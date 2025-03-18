@@ -506,19 +506,20 @@ fit1 <- sca(ple4, ple4.indices, wkdir="fit1run")
 % COLIN TO CHECK THE SECTION
 %====================================================================
 
-Missing observations are encoded as `NA` for example:
+Missing observations are encoded as `NA`, and usually occure if there was no sampling for a year, or, since we model observations on the log scale, if the observation was zero. The `a4a` framework can deal with missing observations in the catch matrix and indices. The example below shows how to set up a model with missing observations in the catch matrix.
+
 ```{r missing obs}
 fit <- sca(ple4, ple4.indices)
 
 ple4_missing <- ple4
-catch.n(ple4_missing)["1", "2017"] <- NA
+catch.n(ple4_missing)["1", "2013"] <- NA
 
 fit_missing <- sca(ple4_missing, ple4.indices)
 
-pred <- ple4 + simulate(fit, 100)
-pred_missing <- ple4 + simulate(fit_missing, 100)
+pred <- ple4 + simulate(fit, 1000)
+pred_missing <- ple4 + simulate(fit_missing, 1000)
 
-flqs <- FLQuants(window(catch.n(pred), 2000)["1",], window(catch.n(pred_missing)["1",], 2000))
+flqs <- FLQuants(catch.n(pred)["1",], catch.n(pred_missing)["1",])
 
 xyplot(data ~ year,
   groups = interaction(qname, iter), data = flqs, type = "l",
@@ -528,6 +529,12 @@ xyplot(data ~ year,
     strip.background = list(col = "gray90")
   ), ylab = ""
 )
+
+flqs <- FLQuants(base = catch.n(pred)["1", "2013"], missing = catch.n(pred_missing)["1", "2013"])
+
+
+bwplot(data ~ qname | factor(age), data = as.data.frame(flqs), scales = "free", auto.key = T, ylab = "Catch at age 1 in 2013")
+
 ```
 
 How are the data interpolated etc ...
