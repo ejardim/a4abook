@@ -69,7 +69,7 @@ for(i in 1:nits){
 
 
 ```{r, mprop, fig.cap="Stock summary. Stock metrics computed over fits including uncertainty in M and estimation uncertainty"}
-plot(FLStocks("M"=stk00, "Mest_1"=stk01, "Mest_median"=stk02, "Mest_100"=stk03)
+plot(FLStocks("M"=stk00, "Mest_1"=stk01, "Mest_median"=stk02, "Mest_100"=stk03))
 ```
 
 
