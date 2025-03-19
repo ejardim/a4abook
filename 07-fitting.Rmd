@@ -1,7 +1,8 @@
 # Fitting
 
 ```{r, echo=FALSE}
-#knitr::opts_chunk$set(eval = FALSE)
+knitr::opts_chunk$set(warnings = FALSE)
+library(FLa4a)
 ```
 
 The `a4a` stock assessment framework is implemented in `R` through the method `sca()`. The method call requires as a minimum a FLStock object and a FLIndices object, in which case the default submodels will be set by the method.
@@ -13,19 +14,19 @@ data(ple4)
 data(ple4.indices)
 fit <- sca(ple4, ple4.indices)
 stk <- ple4 + fit
+```
+
+```{r, plt01, fig.cap="Stock summary"}
 plot(stk)
 ```
 
 By calling the fitted object the default submodel formulas are printed in the console:
 
-```{r}
+```{r, echo=FALSE}
 fit
 ```
 
-To set specific submodels the user has to write the relevant R formula and include it in the call. The arguments for each submodel are self-explanatory: fishing mortality is 'fmodel', indices' catchability is 'qmodel', stock-recruitment is 'srmodel', observation variance is 'vmodel' and for initial year's abundance is 'n1model'. The following model comes closer to the official stock assessment of North Sea plaice, as such we'll name it $0$ and keep it for future comparisons:
-
-
-For future referencing we'll start with a base fit to be used for future comparisons, named fit 0.
+To set specific submodels the user has to write the relevant R formula and include it in the call. The arguments for each submodel are self-explanatory: fishing mortality is 'fmodel', indices' catchability is 'qmodel', stock-recruitment is 'srmodel', observation variance is 'vmodel' and for initial year's abundance is 'n1model'. The following model comes closer to the official stock assessment of North Sea plaice, as such we'll name it $0$ and keep it for future comparisons.
 
 ```{r, fit0}
 fmod0 <- ~s(age, k=6)+s(year, k=10)+te(age, year, k=c(3,8))
@@ -38,9 +39,13 @@ stk0 <- ple4 + fit0
 plot(stk0)
 ```
 
+```{r, plt02, fig.cap="Stock summary - close to official assessment"}
+plot(stk0)
+```
+
 As before by calling the fitted object submodels' formulas are printed in the console:
 
-```{r}
+```{r, echo=FALSE}
 fit
 ```
 
@@ -227,30 +232,6 @@ fit <- sca(ple4, ple4.indices, fmod)
 wireframe(harvest(fit), zlab="F")
 ```
 
-### More models [TO BE MOVED TO ITS OWN SECTION?]
-
-More complicated models can be built with these tools. For example, Figure \@ref(fig:ageind) shows a model where the age effect is modelled as a smoother (the same thin plate spline) throughout years but independent from each other.
-
-```{r}
-fmod <- ~ factor(age) + s(year, k=10, by = breakpts(age, c(2:8)))
-fit <- sca(ple4, ple4.indices, fmod)
-```
-
-```{r, ageind, fig.cap="F-at-age as thin plate spline with 3 knots for each age"}
-wireframe(harvest(fit), zlab="F")
-```
-
-A quite complex model that implements a cohort effect can be set through the following formula. Figure \@ref(fig:coh) shows the resulting fishing mortality. Note that in this case we end up with a variable F pattern over time, but rather than using 4 * 10 = 40 parameters, it uses, 4 + 10 + 10 = 24.
-
-```{r}
-fmodel <- ~ s(age, k = 4) + s(pmax(year - age, 1957), k = 10) + s(year, k = 10)
-fit <- sca(ple4, ple4.indices, fmodel=fmodel)
-```
-
-```{r, coh, echo=FALSE, fig.cap="F-at-age with a cohort effect."}
-wireframe(harvest(fit), zlab="F")
-```
-
 ## Abundance indices catchability submodel ($Q_{ays}$)
 
 The catchability submodel is set up the same way as the $F$ submodel and the tools available are the same. The only difference is that the submodel is set up as a list of formulas, where each formula relates with one abundance index. There's no limitation in the number of indices or type that can be used for a fit. It's the analyst that has to decide based on her/his expertise and knowledge of the stock and fleet dynamics.
@@ -401,6 +382,7 @@ flqs <- FLQuants(smother=stock.n(fit1)[,1], factor=stock.n(fit2)[,1])
 
 ```{r, ny1, fig.cap="Nay=1 models"}
 pset <- list(superpose.line=list(col=c("gray50", "black"), lty=c(1,2)))
+lgnd <- list(points=FALSE, lines=TRUE, space='right')
 xyplot(data~age, groups=qname, data=flqs, type="l", auto.key=lgnd, par.settings=pset, ylab="")
 ```
 
@@ -411,6 +393,46 @@ flqs <- FLQuants(smother=stock.n(fit1), factor=stock.n(fit2))
 pset$strip.background <- list(col="gray90")
 scl <- list(y=list(relation="free", draw=FALSE))
 xyplot(data~year|factor(age), groups=qname, data=flqs, type="l", scales=scl, auto.key=lgnd, par.settings=pset, ylab="")
+```
+
+## More models
+
+More complicated models can be built with these tools. The models need to be appropriate for the fmodel dimension, e.g. the N1 model doesn't have the year dimension so setting a model with an year effect will fail, apart from that every submodel can use any model the analyst is interested in. The limitation is going to be the potential overparametrization of the model and the failure to fit if the data isn't informative enough.
+
+For example, Figure \@ref(fig:ageind) shows a model where the age effect is modelled as a smoother (the same thin plate spline) throughout years but independent from each other.
+
+```{r}
+fmod <- ~ factor(age) + s(year, k=10, by = breakpts(age, c(2:8)))
+fit <- sca(ple4, ple4.indices, fmod)
+```
+
+```{r, ageind, fig.cap="F-at-age as thin plate spline with 3 knots for each age"}
+wireframe(harvest(fit), zlab="F")
+```
+
+A quite complex model that implements a cohort effect can be set through the following formula. Figure \@ref(fig:coh) shows the resulting fishing mortality. Note that in this case we end up with a variable F pattern over time, but rather than using 4 * 10 = 40 parameters, it uses, 4 + 10 + 10 = 24.
+
+```{r}
+fmodel <- ~ s(age, k = 4) + s(pmax(year - age, 1957), k = 10) + s(year, k = 10)
+fit <- sca(ple4, ple4.indices, fmodel=fmodel)
+```
+
+```{r, coh, echo=FALSE, fig.cap="F-at-age with a cohort effect."}
+wireframe(harvest(fit), zlab="F")
+```
+
+The following model is applied to the vmodel and it introduces an time trend to reflect the increase in precision in more recent years with improvements in sampling design and increase in sampling effort.
+
+```{r}
+vmod <- list(
+       ~ s(age, k = 3) + year,
+       ~1, ~1, ~1, ~1, ~1, ~1
+       )
+fit <- sca(ple4, ple4.indices, vmodel=vmod)
+```
+
+```{r, vm, echo=FALSE, fig.cap="Catch at age variance model with a year effect."}
+wireframe(predict(fit)$vmodel[[1]], zlab="F")
 ```
 
 ## Data weigthing
@@ -467,7 +489,7 @@ nao <- seasonMeans(trim(nao, year=dimnames(stock.n(ple4))$year))
 First by simply assuming that the NAO index drives recruitment (Figure \@ref(fig:naor)).
 
 ```{r}
-srmod <- ~ nao
+srmod <- ~ s(nao, k=10)
 fit2 <- sca(ple4, ple4.indices[1], qmodel=list(~s(age, k=4)), srmodel=srmod, covar=FLQuants(nao=nao))
 flqs <- FLQuants(simple=stock.n(fit)[1], covar=stock.n(fit2)[1])
 ```
@@ -512,10 +534,8 @@ The example below shows how to set up a model with missing observations in the c
 
 ```{r missing obs, eval = TRUE}
 fit <- sca(ple4, ple4.indices)
-
 ple4_missing <- ple4
 catch.n(ple4_missing)[ac(1:2), "2013"] <- NA
-
 fit_missing <- sca(ple4_missing, ple4.indices)
 ```
 
@@ -524,10 +544,7 @@ In effect the information on F and Q for the missing observations is taken from 
 ```{r, echo = FALSE, eval = TRUE}
 pred <- ple4 + simulate(fit, 1000)
 pred_missing <- ple4 + simulate(fit_missing, 1000)
-
 flqs <- FLQuants(base = catch.n(pred)[, "2013"], missing = catch.n(pred_missing)[, "2013"])
-
-
 bwplot(data ~ qname | factor(age), data = as.data.frame(flqs), scales = "free", auto.key = T, ylab = "Catch at age in 2013")
 ```
 
