@@ -1,75 +1,87 @@
 # Propagate uncertainty into stock assessment
 
-In a multistage stock assessment process as described in this book, it's important to be able to transfer uncertainty across the different stages. This section describes a method to deal with such challenge in a simple way.
+In a multistage stock assessment process as described in this book, it's important to be able to propagate uncertainty across the different stages. This section describes methods to propagate uncertainty across stages and compares their outcomes in terms of stock assessment outputs.
 
-The method
+The idea is to add uncertainty as one moves from one stage to the next. If a stock has uncertainty on it's growth parameters, or natural mortality, or any other quantity estimated or set during the input data preparation, the model fit uncertainty will be added to it by generating iterations in the input data which are then used to fit the stock assessment model. The suggested workflow is:
 
+1. Add uncertainty in growth or M parameters.
+2. Draw from the parameters distribution.
+3. Compute metrics for stock assessment.
+    1. If there's uncertainty in growth parameters use slicing to created iterations of metrics by age, e.g. catch at age and index at age.
+    2. If there's uncertainty in M parameters draw from the distribution and generate iterations of the M matrix.
+    3. If both draw from growth and M parameters, potentially having into account correlation between those parameters, and generate iterations of age based metrics and M.
+4. Fit the stock assessment model to each iteration
+5. Simulate from each fit
+6. Aggregate results in single `FLStock` object.
 
-Representing the uncertainty in M and how this influences estimates of management quantities is therefore an important component of conducting stock assessments (Mounder et.al 2023 M paper in fishres).
+In this section we give an example of how uncertainty in natural mortality, set up using the `m()` method and the class `a4aM` (see chapter XX), is propagated through the stock assessment. We'll use the stock of Red Mullet in the Mediterranean GSA 1 (see Introduction for details) and 3 methods to add estimation uncertainty (step 5 above):
 
-Many values for M used in assessments remain based on life history theory, maximum age, and regression (LHMR) approaches. There will be cases when LHMR methods are more reliable than direct estimates and the results of stock assessments. However, LHMR methods should be used only if more direct estimates or stock assessment internal estimates are unavailable or unreliable (which, admittedly, is most of the time). If they are to be used, **they should be accompanied by measures of uncertainty (e.g., Cope and Hamel, 2022; Hamel and Cope, 2022), which should be propagated into the results of the assessment** either directly through Bayesian or related approaches, or through sensitivity analyses and profiles (Mounder et.al 2023 M paper in fishres).
+1. Take one draw of the fit
+2. Take n draws of the fit and summarize with the median
+3. Take n draws of the fit and combine all
 
+These outcomes will be compared with a fit across M iterations without any sampling from the fit.
 
-In this section we give an example of how uncertainty in natural mortality, set up using the `m()` method and the class `a4aM` (see chapter XX), is propagated through the stock assessment.
-
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(FLa4a)
 stk00 <- readRDS("data/MUT1_stk.rds")
 idx00 <- readRDS("data/MUT1_idx.rds")
 ```
 
-Using `a4a` methods we'll model natural mortality using a negative exponential model by age, Jensen's estimator for the level and a constant trend with time. We include multivariate normal uncertainty using the `mvrnorm()` method and create 10 iterations.
+Using `a4a` methods we'll model natural mortality using a negative exponential model by age, Jensen's estimator for the level and no time trend. We include multivariate normal uncertainty using the `mvrnorm()` method and create 250 iterations.
 
 ```{r}
-nits <- 100
+nits <- 250
 
 shape <- FLModelSim(model=~exp(-age-0.5))
 level <- FLModelSim(model=~k^0.66*t^0.57, params = FLPar(k=0.4, t=10),
                      vcov=matrix(c(0.002, 0.01,0.01, 1), ncol=2))
-trend <- FLModelSim(model=~b, params=FLPar(b=0.5), vcov=matrix(0.02))
+#trend <- FLModelSim(model=~b, params=FLPar(b=0.5), vcov=matrix(0.02))
 
-m4 <- a4aM(shape=shape, level=level, trend=trend)
+m4 <- a4aM(shape=shape, level=level)
 m4 <- mvrnorm(nits, m4)
 range(m4)[] <- range(stk00)[]
 range(m4)[c("minmbar","maxmbar")]<-c(1,1)
 flq <- m(m4)[]
 quant(flq) <- "age"
-stk <- propagate(stk00, nits)
-m(stk) <- flq
+stk0 <- propagate(stk00, nits)
+m(stk0) <- flq
 ```
 
-We fit the same model to the new stock object which has uncertainty in the natural mortality. The assessment is performed for each of the 10 iterations.
+The M matrix for this stock is shown in Figure\@ref(fig:m)).
+
+```{r, m, fig.cap="Natural mortality generated from M model's parameter uncertainty", echo=FALSE, message=FALSE, warning=FALSE}
+bwplot(data~factor(age), data=m(stk0))
+```
+
+We fit the same model to the new stock object which has uncertainty in the natural mortality and add estimation uncertainty following the methods described above.
+
 
 ```{r}
-stk01 <- stk
-stk02 <- stk
+# create objects to store the results
+stk01 <- stk0
+stk02 <- stk0
 stk03 <- propagate(stk00, nits*nits)
 
-stk00 <- stk00 + sca(stk, idx00)
+# run without estimation unceratainty
+stk04 <- stk00 + sca(stk0, idx00)
 
 for(i in 1:nits){
-    cat(".")
-    stk0 <- iter(stk, i)
-    iter(stk01, i) <- stk0 + simulate(sca(stk0, idx00), 1)
-}
-
-for(i in 1:nits){
-    cat(".")
-    stk0 <- iter(stk, i)
-    iter(stk02, i) <- qapply(stk0 + simulate(sca(stk0, idx00), nits), iterMedians)
-}
-
-for(i in 1:nits){
-    cat(".")
-    stk0 <- iter(stk, i)
-    iter(stk03, (nits*(i-1)+1):(nits*i)) <- stk0 + simulate(sca(stk0, idx00), nits)
+    stk <- iter(stk0, i)
+    fit <- sca(stk, idx00)
+    # Method 1
+    iter(stk01, i) <- stk + simulate(fit, 1)
+    # Method 2
+    iter(stk02, i) <- qapply(stk + simulate(fit, nits), iterMedians)
+    # Method 3
+    iter(stk03, (nits*(i-1)+1):(nits*i)) <- stk + simulate(fit, nits)
 }
 
 ```
 
 
 ```{r, mprop, fig.cap="Stock summary. Stock metrics computed over fits including uncertainty in M and estimation uncertainty"}
-plot(FLStocks("M"=stk00, "Mest_1"=stk01, "Mest_median"=stk02, "Mest_100"=stk03))
+plot(FLStocks("M"=stk04, "M + 1 estimation sample"=stk01, "M + estimation median"=stk02, "M + n estimation samples"=stk03))
 ```
 
 
