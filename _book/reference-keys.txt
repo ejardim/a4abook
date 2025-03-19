@@ -220,3 +220,7 @@ final-comments
 cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
 fig:m
 stock-assessment-process-add-something-about-using-sca-as-exploratory-data-tool
+fig:vm
+red-mullet-in-fao-27-gsa-1
+operations-with-fla4a-objects
+more-models

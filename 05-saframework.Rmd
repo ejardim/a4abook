@@ -258,3 +258,10 @@ The `qmodel` and `vmodel` slots share the `submodel` class, which describes sing
 | |range|numeric|Age and year range|
 | |vcov|array|Variance-covariance matrix|
 Table: (\#tab:submodelclass) `submodel` Class Description
+
+
+
+
+
+
+
