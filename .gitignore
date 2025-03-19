@@ -50,3 +50,7 @@ rsconnect/
 docs/search_index.json
 
 _main.Rmd
+
+_book/reference-keys.txt
+
+_book/search_index.json
