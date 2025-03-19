@@ -42,7 +42,7 @@ Two-stage models are advantageous for practical applications, such as fisheries 
 
 Despite the intuitive advantages of integrated models, it is not a panacea for poor quality data or model structure uncertainty in stock assessments. There are several disadvantages, mostly related to model misspecification, the complexity of the resulting models, and the associated, often considerable, computational requirements (e.g. the use of remotely sensed environmental information). Consequently, in some situations, the traditional two-stage approach remains a better approach (Mounder and Punt, 2013).
 
-## Stock Assessment Process
+## Stock Assessment Process [ADD SOMETHING ABOUT USING SCA AS EXPLORATORY DATA TOOL]
 
 The following table breaks down the stock assessment process into three stages: (i) input data preparation, (ii) stock assessment model fitting, and (iii) provision of scientific advice. This breakdown is designed to explain the a4a approach, offering a general framework that outlines the sequence of analyses in the stock assessment process. Each stage includes a plethora of analyses and procedures tailored to the specific stock, considering the available data, time, and resources.
 
