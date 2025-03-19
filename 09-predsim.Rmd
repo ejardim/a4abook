@@ -1,36 +1,45 @@
 # Predict and simulate \label{sec:predsim}
 
-To predict and simulate `R` uses the methods `predict()` and `simulate()`, which were implemented in `FLa4a` in the same fashion.
 
-```{r, pred0, eval=FALSE}
-fit0 <- sca(ple4, ple4.index, fit="assessment")
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(mgcv)
+library(ggplot2);theme_set(theme_bw())
+library(FLCore)
+library(FLa4a)
+library(ggplotFL)
+library(ggpubr)
+drafting <- FALSE
 ```
 
-## Basic functions}
+To predict and simulate `R` uses the methods `predict()` and `simulate()`, which are implemented in `FLa4a`, adapted to work with several of the model classes.  The simulate and predict methods only work if the mode object has be run with the option `fit = "assessment"`, and not `fit = "MP"`, and the later is used when space and time are at a premium, for example in a Management Strategy Evaluation.
 
-Simulation and prediction in FLa4a is based on three functions: `simulate` and `genFLQuant`. 
+This chapter is based on the following model:
+```{r, pred0_fit0}
+fit0 <- sca(ple4, ple4.index)
+submodels(fit0)
+```
+
+## Basic functions
+
+Simulation and prediction in FLa4a is based on two functions: `simulate` and `predict`.
 
 ### simulate()
 
 Unlike the stats function `stats::simulate`, `FLa4a::simulate` will return the same object as it was passed. For example, if you simulate from a FLa4a fit, you will get an FLa4a fit object back, in which the coefficients of the object are simulations from the model. Likewise, if you call simulate on a submodel object you will get back a submodel object inwhich the coefficients are simulations from the model. Simulations are always done by generating random draws from a multivariate normal distribution with mean given by the coeffients of the model, and variance matrix given by the estimated covariance matrix of the coefficients (in practice this is a submatrix of the inverse of the hessian matrix).
 
-Simulate works on several classes from full fits right down to the individual model compents, so if `my\_fit` is a fitted `a4a` model, then `simulate(my\_fit, nsim = 100)` will return a new fitted `a4a` model where the model coefficients now have 100 iters and are drawn from the full variance matrix of the fitted model. Similarly, `simulate(fmodel(my\_fit), nsim = 100)` will return a submodel with the same formula as the fishing mortality model as in the `a4a` fit but where the coefficients are simulated from the variance matrix of the relavent parameters. 
+Simulate works on several classes from full fits right down to the individual model compents, so if `my\_fit` is a fitted `a4a` model, then `simulate(fit0, nsim = 100)` will return a new fitted `a4a` model where the model coefficients now have 100 iters and are drawn from the full variance matrix of the fitted model. Similarly, `simulate(stkmodel(my_fit), nsim = 100)` will return a stock submodel with the same formulas as fitted model as in the `a4a` fit but where the coefficients are simulated from the variance matrix of the relavent parameters.  See also, `simulate(qmodel(my_fit), nsim = 100)` to simulate from the survey catchability submodels.
 
-### genFLQuant()
-
-This is a special function who's purpose is to return an `FLQuant` or `FLQuants`.  It essentially provides predictions from a model and provides in them as FLQuants of the correct dimensions. `genFLQuant` also has an argument `nsim` which if set to a value greater than zero produces simulated predictions from the model based on simulations of the model coefficients.
-
-## submodels
+## stock submodel
 
 In an `sca` fit individual submodel objects are often combined into a collection of `submodels`, for example the models for survey catchability are a collection of submodels
 
 ```{r, sim_pred_qsubmodels}
-qmod <- qmodel(fit0)
+stk_submodel <- stkmodel(fit0)
 ```
 
 which contains a submodel for each survey catchability. Now (almost) the same code can be run as before to plot the estimates with confidence intervals, the difference with submodels is all the results will be `FLQuants` so, `lapply` must be used to do computations on the predictions for each submodel seperately. 
 
-```{r, sim_pred_qmodel_predict_a4a, eval = FALSE}
+```{r, sim_pred_qmodel_predict_a4a}
 qmod_fit_sim <- genFLQuant(qmod, nsim = 999)
 
 # reduce to quantiles
@@ -47,12 +56,13 @@ dat <- reshape(
 ggplot(data=dat, aes(x = age, y = `data.50%`)) +
   geom_ribbon(aes(ymin = `data.2.5%`, ymax = `data.97.5%`), 
               fill = "red", alpha = .15) +
-  geom_point() + geom_line() + 
+  geom_point() + geom_line() +
   ylab("Estimated catchability at age") +
-  facet_wrap(~ qname, scales = "free_x")
+  facet_wrap(~qname, scales = "free_x") +
+  scale_x_continuous(breaks = pretty(dat$age))
 ```
 
-as before the data, coefficients and variance covariance are all available via
+the coefficients and variance covariance are all available via
 
 ```{r, results = "hide", eval = FALSE}
 coef(qmod)
@@ -90,3 +100,33 @@ stks <- ple4 + fits
 plot(stks)
 ```
 
+## Simulate and Predict
+
+The `simulate()` and `predict()` functions can be combined to simulate and then predict from each of the simulations. The following code simulates the model 100 times and then predicts the fitted quantitites from the model, resulting in simulations from the core model elements: initial age structure, recruitment, fishing mortality, survey catchability and observation variance. A plot of the initial age structure is shown as an example.
+
+```{r}
+fit_sim <- predict(simulate(fit0, 100))
+```
+
+```{r, fig.cap='Generated data with two linear fits, left a simple mean and right a straight line', fig.pos = 'H', fig.height = 4,echo=FALSE, message=FALSE, warning=FALSE}
+fit_sim_ny1 <- fit_sim$stkmodel$ny1[-1,]
+
+# reduce to quantiles
+fit_sim_ny1 <- quantile(fit_sim_ny1, prob = c(0.025, 0.50, 0.975))
+
+# reshape
+dat <- reshape(
+  as.data.frame(fit_sim_ny1, drop = TRUE),
+  timevar = "iter", idvar = c("age"), direction = "wide"
+)
+
+# plot
+ggplot(data = dat, aes(x = age, y = `data.50%`)) +
+  geom_ribbon(aes(ymin = `data.2.5%`, ymax = `data.97.5%`),
+    fill = "red", alpha = .15
+  ) +
+  geom_point() +
+  geom_line() +
+  ylab("Estimated initial age structure (numbers)") +
+  scale_x_continuous(breaks = pretty(dat$age))
+```
