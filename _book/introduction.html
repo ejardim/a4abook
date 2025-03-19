@@ -23,7 +23,7 @@
 <meta name="author" content="John Doe and friends" />
 
 
-<meta name="date" content="2025-03-18" />
+<meta name="date" content="2025-03-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="introduction-to-splines.html"/>
-<script src="libs/jquery-3.6.1/jquery-3.6.1.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -66,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -123,6 +123,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -140,7 +163,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Stock assessment framework</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Before starting</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> cover-image: path to the social sharing image like images/cover.jpg</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#license-documentation-and-development-status"><i class="fa fa-check"></i><b>1.1</b> License, documentation and development status</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installing-and-loading-libraries"><i class="fa fa-check"></i><b>1.2</b> Installing and loading libraries</a></li>
@@ -158,8 +181,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="introduction.html"><a href="introduction.html#plaice-in-area-fao-27-ices-area-iv"><i class="fa fa-check"></i><b>2.5.1</b> Plaice in area FAO 27, ICES area IV</a></li>
 <li class="chapter" data-level="2.5.2" data-path="introduction.html"><a href="introduction.html#european-hake-in-fao-37-gsas-1567"><i class="fa fa-check"></i><b>2.5.2</b> European hake in FAO 37, GSAs 1,5,6,7</a></li>
-<li class="chapter" data-level="2.5.3" data-path="introduction.html"><a href="introduction.html#mut-in-fao-37-gsas-1"><i class="fa fa-check"></i><b>2.5.3</b> MUT in FAO 37, GSAs 1</a></li>
-<li class="chapter" data-level="2.5.4" data-path="introduction.html"><a href="introduction.html#stock-xx"><i class="fa fa-check"></i><b>2.5.4</b> stock xx</a></li>
+<li class="chapter" data-level="2.5.3" data-path="introduction.html"><a href="introduction.html#red-mullet-in-fao-27-gsa-1"><i class="fa fa-check"></i><b>2.5.3</b> Red mullet in FAO 27, GSA 1</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html"><i class="fa fa-check"></i><b>3</b> Introduction to Splines</a>
@@ -329,12 +351,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="the-assessment-for-all-initiative-a4a" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> The “Assessment for All” Initiative (a4a)<a href="introduction.html#the-assessment-for-all-initiative-a4a" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The European Commission Joint Research Centre’s (JRC) “Assessment for All” Initiative (a4a) was launched to simplify and standardize the complex methodologies often employed in fisheries science, a4a focuses on creating flexible, modular frameworks that can accommodate varying data availability, regional needs, and stakeholder objectives.</p>
-<p>The JRC started its ‘Assessment for All’ Initiative (a4a), with the aim to develop, test, and distribute methods to assess a large numbers of stocks in an operational time frame, and to build the necessary capacity/expertise on stock assessment and advice provision.</p>
-<p>According to Jardim et.al (2014), the long-term strategy of a4a is to increase the number of stock assessments by reducing the workload required to run each analysis and by bringing more scientists/analysts into fisheries management advice. The first is achieved by developing a working framework with the methods required to run all the analyses a stock assessment needs. Such approach should make the model exploration and selection processes easier, as well as decreasing the burden of moving between software platforms. The second can be achieved by making the analysis more intuitive, thereby attracting more experts to join stock assessment teams.</p>
+<p>The JRC started its ‘Assessment for All’ Initiative (a4a), with the aim to develop, test, and distribute methods to assess a large numbers of stocks in an operational time frame, and to build the necessary expertise on stock assessment and advice provision.</p>
+<p>According to <span class="citation">Jardim et al. (<a href="#ref-EJ_etal_2014">2014</a>)</span>, the long-term strategy of a4a is to increase the number of stock assessments by reducing the workload required to run each analysis and by bringing more scientists into fisheries management advice. The first is achieved by developing a working framework with the methods required to run all the analyses a stock assessment needs. Such approach should make the model exploration and selection processes easier, as well as decreasing the burden of moving between software platforms. The second can be achieved by making the analysis more intuitive, thereby attracting more experts to join stock assessment teams.</p>
 <p>One major step to achieve the a4a goals was the development of a stock assessment model that could be applied rapidly to a large number of stocks and for a wide range of applications: traditional stock assessment, conditioning of operating models, forecasting, or informing harvest control rules in MSE algorithms.</p>
 <p>The modular nature of a4a allows for the integration of data from diverse sources, including biological, environmental, and socioeconomic datasets, ensuring comprehensive assessments. This inclusivity enhances the ability to predict stock dynamics and evaluate the impacts of fishing and environmental changes.</p>
 <p>While a4a simplifies traditional assessment approaches, it faces challenges such as ensuring the quality and consistency of input data, especially in regions with limited monitoring infrastructure. To address this, the initiative incorporates uncertainty into its models, leveraging MCMC frameworks and other statistical tools to account for variability in data quality and ecosystem processes.</p>
-<p>[EJ TO CHECK] The a4a framework has been applied in various European fisheries to improve stock assessment practices. For example, its use in small pelagic fisheries demonstrated the utility of simple linear models in capturing key population dynamics without the need for data-intensive methods <a href="https://typeset.io/papers/food-for-thought-what-if-stock-assessment-is-as-simple-as-a-22co3slqjr">(Jardim et al., 2014)</a>.</p>
+<p>[EJ TO CHECK] The a4a framework has been applied in various European fisheries to improve stock assessment practices, only in the Mediterranean Sea has been used for more than 200 stock assessments, as of 2024 in <a href="https://www.fao.org/gfcm/data/star/en/">(GFCM)</a>] and <a href="https://stecf.ec.europa.eu/data-dissemination/medbs_en">(STECF)</a>. Moreover, its use in small pelagic fisheries demonstrated the utility of simple linear models in capturing key population dynamics without the need for data-intensive methods <span class="citation">(<a href="#ref-EJ_etal_2014">Jardim et al. 2014</a>)</span>.</p>
 <p>Some of the key elements of stock assessment are the quantity, quality and aggregation level of the data available. As in many other models the data will condition the type of models that can be used. In <code>a4a</code> the minimum set of data, loosely defined as a “moderate data” level, consists of:</p>
 <ul>
 <li>volume of catches in weight (which should include landings and discards);</li>
@@ -349,10 +371,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="multi-stage-modelling-approach" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Multi-stage modelling approach<a href="introduction.html#multi-stage-modelling-approach" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In ecological and population dynamics modeling, one can choose between integrated models, which estimate correlated parameters together, and two-stage models, which separate estimation into distinct steps. These approaches differ in complexity, data requirements, interpretability, and their ability to address uncertainties. The selection depends largely on the study objectives, available data, and the system’s ecological complexity.</p>
-<p>Integrated models estimate all parameters within a unified framework, accounting for correlations and interactions between variables such as growth, natural mortality, recruitment, and environmental factors. This approach can provide a realistic depiction of biological systems by preserving dependencies and feedback loops, which are crucial for understanding processes like density dependence or predator-prey interactions <a href="https://typeset.io/papers/natural-mortality-theory-estimation-and-application-in-29k3o1na">(Hamel et al., 2023)</a>. Integrated models are particularly advantageous for ecosystem-based management, where interactions among multiple factors need to be captured. However, the complexity of these models makes them computationally intensive and sensitive to data quality.</p>
-<p>On the other hand, two-stage models estimate parameters such as growth or natural mortality independently before incorporating them into broader models. This step-wise approach simplifies estimation, reducing computational demands and mitigating issues like parameter confounding. For example, fisheries often use empirical relationships to estimate natural mortality (M) based on growth parameters or life history traits before including M in stock assessment models <a href="https://typeset.io/papers/assessing-the-accuracy-of-published-natural-mortality-2ejiyrxpk7">(Maceina &amp; Sammons, 2016)</a>. However, this decoupling may overlook dynamic interactions, such as how growth influences mortality, potentially leading to biased or incomplete inferences about ecosystem dynamics <a href="https://typeset.io/papers/natural-mortality-augments-population-fluctuations-of-forage-11krhr78za">(Jacobsen &amp; Essington, 2018)</a>.</p>
-<p>Dealing with uncertainty is a critical aspect of both approaches. Integrated models explicitly quantify and propagate uncertainties across correlated parameters. These models incorporate multiple sources of variability, including observation, process, and structural uncertainties, enhancing the robustness of predictions <a href="https://typeset.io/papers/incorporating-uncertainty-into-a-length-based-estimator-of-4bes19tqua">(López Quintero et al., 2017)</a>. Conversely, two-stage models often treat parameter estimates as fixed values, which can underestimate uncertainty propagation in subsequent analyses. However, by treating first-stage estimates as distributions rather than point estimates, two-stage models can partially address this limitation.</p>
-<p>For fisheries science, the choice between these models often depends on management goals and data availability. Integrated models are better suited for forecasting fish abundance or evaluating complex ecological interactions, such as predator-prey dynamics or responses to environmental variability <a href="https://typeset.io/papers/limited-temporal-variability-in-natural-mortality-for-t8tbfa2f">(Robertson et al., 2022)</a>. Meanwhile, two-stage models are practical for stock assessments, where simplicity and interpretability are prioritized.</p>
+<p>Integrated models estimate all parameters within a unified framework, accounting for correlations and interactions between variables such as growth, natural mortality, recruitment, and environmental factors. This approach can provide a realistic depiction of biological systems by preserving dependencies and feedback loops, which are crucial for understanding processes like density dependence or predator-prey interactions <span class="citation">(<a href="#ref-Hamel_etal_2023">Hamel et al. 2023</a>)</span>. Integrated models are particularly advantageous for ecosystem-based management, where interactions among multiple factors need to be captured. However, the complexity of these models makes them computationally intensive and sensitive to data quality.</p>
+<p>On the other hand, two-stage models estimate parameters such as growth or natural mortality independently before incorporating them into broader models. This step-wise approach simplifies estimation, reducing computational demands and mitigating issues like parameter confounding. For example, fisheries often use empirical relationships to estimate natural mortality (M) based on growth parameters or life history traits before including M in stock assessment models <span class="citation">(<a href="#ref-Maceina_etal_2016">Maceina and Sammons 2016</a>)</span>. However, this decoupling may overlook dynamic interactions, such as how growth influences mortality, potentially leading to biased or incomplete inferences about ecosystem dynamics <span class="citation">(<a href="#ref-Jacobsen_etal_2018">Jacobsen and Essington 2018</a>)</span>.</p>
+<p>Dealing with uncertainty is a critical aspect of both approaches. Integrated models explicitly quantify and propagate uncertainties across correlated parameters. These models incorporate multiple sources of variability, including observation, process, and structural uncertainties, enhancing the robustness of predictions <span class="citation">(<a href="#ref-López_etal_2017">López Quintero, Contreras-Reyes, and Wiff 2017</a>)</span>. Conversely, two-stage models often treat parameter estimates as fixed values, which can underestimate uncertainty propagation in subsequent analyses. However, by treating first-stage estimates as distributions rather than point estimates, two-stage models can partially address this limitation.</p>
+<p>For fisheries science, the choice between these models often depends on management goals and data availability. Integrated models are better suited for forecasting fish abundance or evaluating complex ecological interactions, such as predator-prey dynamics or responses to environmental variability <span class="citation">(<a href="#ref-Robertson_etal_2022">Robertson, Regular, and Cadigan 2022</a>)</span>. Meanwhile, two-stage models are practical for stock assessments, where simplicity and interpretability are prioritized.</p>
 <p>Two-stage models are advantageous for practical applications, such as fisheries stock assessments, where simplicity and robustness take precedence over ecological nuance. Empirical estimates of <span class="math inline">\(M\)</span>, derived from life-history traits, provide reliable inputs for subsequent models, avoiding the parameter confounding that often occurs in integrated frameworks.</p>
 <p>Despite the intuitive advantages of integrated models, it is not a panacea for poor quality data or model structure uncertainty in stock assessments. There are several disadvantages, mostly related to model misspecification, the complexity of the resulting models, and the associated, often considerable, computational requirements (e.g. the use of remotely sensed environmental information). Consequently, in some situations, the traditional two-stage approach remains a better approach (Mounder and Punt, 2013).</p>
 </div>
@@ -392,13 +414,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="stock-assessment-as-a-linear-model-colin" class="section level2 hasAnchor" number="2.4">
 <h2><span class="header-section-number">2.4</span> Stock assessment as a linear model [COLIN]<a href="introduction.html#stock-assessment-as-a-linear-model-colin" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The submodels formulation uses linear models, which opens the possibility of using the linear modelling tools available in <code>R</code>. For example, <a href="http://cran.r-project.org/web/packages/mgcv/index.html"><code>mgcv</code></a> gam formulas or factorial design formulas using <code>lm()</code>.</p>
+<p>The submodels formulation uses linear models, which opens the possibility of using the linear modelling tools available in <code>R</code>. For example, <code>mgcv</code> <span class="citation">(<a href="#ref-mgcv2017">Wood 2017</a>)</span> gam formulas or factorial design formulas using <code>lm()</code>.</p>
 <p>The ‘language’ of linear models has been developing within the statistical community for many years, and constitutes an elegant way of defining models without going through the complexity of mathematical representations. This approach makes it also easier to communicate among scientists:</p>
 <ul>
-<li><a href="http://rspa.royalsocietypublishing.org/content/283/1393/147.short">J. A. Nelder, 1965</a>, notation for randomized block design</li>
-<li><a href="http://www.jstor.org/stable/info/2346786">Wilkinson and Rodgers, 1973</a>, symbolic description for factorial designs</li>
-<li><a href="http://books.google.com/books?isbn=0412343908">Hastie and Tibshirani, 1990</a>, introduced notation for smoothers</li>
-<li><a href="http://books.google.com/books?isbn=041283040X">Chambers and Hastie, 1991</a>, further developed for use in S</li>
+<li><span class="citation">(<a href="#ref-Nelder_1965">Nelder 1965</a>)</span>, notation for randomized block design</li>
+<li><span class="citation">(<a href="#ref-Wilkinson_etal_1973">Wilkinson and Rogers 1973</a>)</span>, symbolic description for factorial designs</li>
+<li><span class="citation">(<a href="#ref-hastie1990generalized">Hastie and Tibshirani 1990</a>)</span>, introduced notation for smoothers</li>
+<li><span class="citation">(<a href="#ref-chambers1991statistical">Chambers and Hastie 1991</a>)</span>, further developed for use in S</li>
 </ul>
 </div>
 <div id="data-used-in-the-book" class="section level2 hasAnchor" number="2.5">
@@ -410,14 +432,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">2.5.2</span> European hake in FAO 37, GSAs 1,5,6,7<a href="introduction.html#european-hake-in-fao-37-gsas-1567" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>European hake is an important demersal species targeted by Mediterranean fishing fleets in several regions, mainly by bottom trawling, with In GSA 5 (Balearic Islands), bottom trawlers use different fishing tactics depending on the depth, with hake being targeted mainly on the deep shelf and the upper slope. In GSA 6, the fishery is also dominated by trawlers, with a large fleet operating on the shelf and slope and showing relatively stable catches. In GSA 7 (Gulf of Lions), hake is targeted by both French and Spanish vessels using a variety of gear types, including trawlers, gillnets and longlines.</p>
 </div>
-<div id="mut-in-fao-37-gsas-1" class="section level3 hasAnchor" number="2.5.3">
-<h3><span class="header-section-number">2.5.3</span> MUT in FAO 37, GSAs 1<a href="introduction.html#mut-in-fao-37-gsas-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-</div>
-<div id="stock-xx" class="section level3 hasAnchor" number="2.5.4">
-<h3><span class="header-section-number">2.5.4</span> stock xx<a href="introduction.html#stock-xx" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Description and summarized depiction of data</p>
+<div id="red-mullet-in-fao-27-gsa-1" class="section level3 hasAnchor" number="2.5.3">
+<h3><span class="header-section-number">2.5.3</span> Red mullet in FAO 27, GSA 1<a href="introduction.html#red-mullet-in-fao-27-gsa-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Red mullets is a key commercial species in GSA 1.They can be found in sandy and muddy areas, and most are caught by bottom trawlers. Small scale fisheries also catch some using nets. The amount of discards reported is very low and considered to be negligible. Trawl fisheries developed along the continental shelf and upper slope. Smaller vessels operate almost exclusively on the continental shelf. Red mullet is intensively exploited during its recruitment from September to November</p>
 
 </div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-chambers1991statistical" class="csl-entry">
+Chambers, J. M., and T. J. Hastie. 1991. <em>Statistical Models in s</em>. Taylor &amp; Francis. <a href="https://books.google.be/books?id=IBkLQAAACAAJ">https://books.google.be/books?id=IBkLQAAACAAJ</a>.
+</div>
+<div id="ref-Hamel_etal_2023" class="csl-entry">
+Hamel, Owen S., James N. Ianelli, Mark N. Maunder, and André E. Punt. 2023. <span>“Natural Mortality: Theory, Estimation and Application in Fishery Stock Assessment Models.”</span> <em>Fisheries Research</em> 261 (May): 106638. <a href="https://doi.org/10.1016/j.fishres.2023.106638">https://doi.org/10.1016/j.fishres.2023.106638</a>.
+</div>
+<div id="ref-hastie1990generalized" class="csl-entry">
+Hastie, T. J., and R. J. Tibshirani. 1990. <em>Generalized Additive Models</em>. Chapman &amp; Hall/CRC Monographs on Statistics &amp; Applied Probability. Taylor &amp; Francis. <a href="https://books.google.be/books?id=qa29r1Ze1coC">https://books.google.be/books?id=qa29r1Ze1coC</a>.
+</div>
+<div id="ref-Jacobsen_etal_2018" class="csl-entry">
+Jacobsen, Nis Sand, and Timothy E. Essington. 2018. <span>“Natural Mortality Augments Population Fluctuations of Forage Fish.”</span> <em>Fish and Fisheries</em> 19 (5): 791–97. <a href="https://doi.org/10.1111/FAF.12290">https://doi.org/10.1111/FAF.12290</a>.
+</div>
+<div id="ref-EJ_etal_2014" class="csl-entry">
+Jardim, Ernesto, Colin P. Millar, Iago Mosqueira, Finlay Scott, Giacomo Chato Osio, Marco Ferretti, Nekane Alzorriz, and Alessandro Orio. 2014. <span>“Food for Thought What If Stock Assessment Is as Simple as a Linear Model? The A4a Initiative,”</span> January.
+</div>
+<div id="ref-López_etal_2017" class="csl-entry">
+López Quintero, Freddy Omar, Javier E. Contreras-Reyes, and Rodrigo Wiff. 2017. <span>“Incorporating Uncertainty into a Length-Based Estimator of Natural Mortality in Fish Populations.”</span> <em>Fishery Bulletin</em> 115 (3): 355–64. <a href="https://doi.org/10.7755/FB.115.3.6">https://doi.org/10.7755/FB.115.3.6</a>.
+</div>
+<div id="ref-Maceina_etal_2016" class="csl-entry">
+Maceina, Michael J., and Steven M. Sammons. 2016. <span>“Assessing the Accuracy of Published Natural Mortality Estimators Using Rates Determined from Five Unexploited Freshwater Fish Populations.”</span> <em>North American Journal of Fisheries Management</em> 36 (2): 433–46. <a href="https://doi.org/10.1080/02755947.2015.1129002">https://doi.org/10.1080/02755947.2015.1129002</a>.
+</div>
+<div id="ref-Nelder_1965" class="csl-entry">
+Nelder, John A. 1965. <span>“The Analysis of Randomized Experiments with Orthogonal Block Structure. I. Block Structure and the Null Analysis of Variance.”</span> <em>Proceedings of The Royal Society A: Mathematical, Physical and Engineering Sciences</em> 283 (1393): 147–62. <a href="https://doi.org/10.1098/RSPA.1965.0012">https://doi.org/10.1098/RSPA.1965.0012</a>.
+</div>
+<div id="ref-Robertson_etal_2022" class="csl-entry">
+Robertson, Matthew D., Paul M. Regular, and Noel G. Cadigan. 2022. <span>“Limited Temporal Variability in Natural Mortality for Juvenile American Plaice on the Grand Bank of Newfoundland.”</span> <em>Journal of Northwest Atlantic Fishery Science</em> 53 (September): 47–56. <a href="https://doi.org/10.2960/j.v53.m738">https://doi.org/10.2960/j.v53.m738</a>.
+</div>
+<div id="ref-Wilkinson_etal_1973" class="csl-entry">
+Wilkinson, Graham N., and C. E. Rogers. 1973. <span>“Symbolic Description of Factorial Models for Analysis of Variance.”</span> <em>Applied Statistics</em> 22: 392–99. <a href="https://api.semanticscholar.org/CorpusID:118281143">https://api.semanticscholar.org/CorpusID:118281143</a>.
+</div>
+<div id="ref-mgcv2017" class="csl-entry">
+Wood, S. N. 2017. <em>Generalized Additive Models: An Introduction with r</em>. 2nd ed. Chapman; Hall/CRC.
 </div>
 </div>
             </section>
