@@ -34,7 +34,7 @@ Simulate works on several classes from full fits right down to the individual mo
 In an `sca` fit individual submodel objects are often combined into a collection of `submodels`, for example the models for survey catchability are a collection of submodels
 
 ```{r, sim_pred_qsubmodels}
-stk_submodel <- stkmodel(fit0)
+qmod <- qmodel(fit0)
 ```
 
 which contains a submodel for each survey catchability. Now (almost) the same code can be run as before to plot the estimates with confidence intervals, the difference with submodels is all the results will be `FLQuants` so, `lapply` must be used to do computations on the predictions for each submodel seperately. 
