@@ -4,9 +4,9 @@
 
 The European Commission Joint Research Centre's (JRC) "Assessment for All" Initiative (a4a) was launched to simplify and standardize the complex methodologies often employed in fisheries science, a4a focuses on creating flexible, modular frameworks that can accommodate varying data availability, regional needs, and stakeholder objectives.
 
-The JRC started its ‘Assessment for All’ Initiative (a4a), with the aim to develop, test, and distribute methods to assess a large numbers of stocks in an operational time frame, and to build the necessary capacity/expertise on stock assessment and advice provision.
+The JRC started its ‘Assessment for All’ Initiative (a4a), with the aim to develop, test, and distribute methods to assess a large numbers of stocks in an operational time frame, and to build the necessary expertise on stock assessment and advice provision.
 
-According to Jardim et.al (2014), the long-term strategy of a4a is to increase the number of stock assessments by reducing the workload required to run each analysis and by bringing more scientists/analysts into fisheries management advice. The first is achieved by developing a working framework with the methods required to run all the analyses a stock assessment needs. Such approach should make the model exploration and selection processes easier, as well as decreasing the burden of moving between software platforms. The second can be achieved by making the analysis more intuitive, thereby attracting more experts to join stock assessment teams.
+According to Jardim et.al (2014), the long-term strategy of a4a is to increase the number of stock assessments by reducing the workload required to run each analysis and by bringing more scientists into fisheries management advice. The first is achieved by developing a working framework with the methods required to run all the analyses a stock assessment needs. Such approach should make the model exploration and selection processes easier, as well as decreasing the burden of moving between software platforms. The second can be achieved by making the analysis more intuitive, thereby attracting more experts to join stock assessment teams.
 
 One major step to achieve the a4a goals was the development of a stock assessment model that could be applied rapidly to a large number of stocks and for a wide range of applications: traditional stock assessment, conditioning of operating models, forecasting, or informing harvest control rules in MSE algorithms.
 
@@ -14,7 +14,7 @@ The modular nature of a4a allows for the integration of data from diverse source
 
 While a4a simplifies traditional assessment approaches, it faces challenges such as ensuring the quality and consistency of input data, especially in regions with limited monitoring infrastructure. To address this, the initiative incorporates uncertainty into its models, leveraging MCMC frameworks and other statistical tools to account for variability in data quality and ecosystem processes.
 
-[EJ TO CHECK] The a4a framework has been applied in various European fisheries to improve stock assessment practices. For example, its use in small pelagic fisheries demonstrated the utility of simple linear models in capturing key population dynamics without the need for data-intensive methods [(Jardim et al., 2014)](https://typeset.io/papers/food-for-thought-what-if-stock-assessment-is-as-simple-as-a-22co3slqjr).
+[EJ TO CHECK] The a4a framework has been applied in various European fisheries to improve stock assessment practices, only in the Mediterranean Sea has been used for more than 200 stock assessments, as of 2024 in [(GFCM)](https://www.fao.org/gfcm/data/star/en/)] and [(STECF)](https://stecf.ec.europa.eu/data-dissemination/medbs_en). Moreover, its use in small pelagic fisheries demonstrated the utility of simple linear models in capturing key population dynamics without the need for data-intensive methods [(Jardim et al., 2014)](https://typeset.io/papers/food-for-thought-what-if-stock-assessment-is-as-simple-as-a-22co3slqjr).
 
 Some of the key elements of stock assessment are the quantity, quality and aggregation level of the data available. As in many other models the data will condition the type of models that can be used. In `a4a` the minimum set of data, loosely defined as a "moderate data" level, consists of:
 
@@ -78,12 +78,8 @@ The 'language' of linear models has been developing within the statistical commu
 
 European hake is an important demersal species targeted by Mediterranean fishing fleets in several regions, mainly by bottom trawling, with In GSA 5 (Balearic Islands), bottom trawlers use different fishing tactics depending on the depth, with hake being targeted mainly on the deep shelf and the upper slope. In GSA 6, the fishery is also dominated by trawlers, with a large fleet operating on the shelf and slope and showing relatively stable catches. In GSA 7 (Gulf of Lions), hake is targeted by both French and Spanish vessels using a variety of gear types, including trawlers, gillnets and longlines.
 
-### MUT in FAO 37, GSAs 1
+### Red mullet in FAO 27, GSA 1
 
-
-
-### stock xx
-
-Description and summarized depiction of data
+Red mullets is a key commercial species in GSA 1.They can be found in sandy and muddy areas, and most are caught by bottom trawlers. Small scale fisheries also catch some using nets. The amount of discards reported is very low and considered to be negligible. Trawl fisheries developed along the continental shelf and upper slope. Smaller vessels operate almost exclusively on the continental shelf. Red mullet is intensively exploited during its recruitment from September to November
 
 

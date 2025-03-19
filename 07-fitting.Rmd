@@ -1,5 +1,9 @@
 # Fitting
 
+```{r, echo=FALSE}
+#knitr::opts_chunk$set(eval = FALSE)
+```
+
 The `a4a` stock assessment framework is implemented in `R` through the method `sca()`. The method call requires as a minimum a FLStock object and a FLIndices object, in which case the default submodels will be set by the method.
 
 Having described building blocks, basic formulations and effects available to build a submodel's model, it's important to look into specific formulations and relate them to commonly known representations. Note that although a large number of formulations are available for each submodel, the user must carefuly decide on the full stock assessment model being build and avoid over-paramerizing. Over-parametrization may lead to non-convergence, but may also end up not being very useful for prediction/forecasting, which is one of the main objectives of stock assessment.
@@ -502,39 +506,31 @@ fit1 <- sca(ple4, ple4.indices, wkdir="fit1run")
 
 ## Missing observations in the catch matrix or index
 
-%====================================================================
-% COLIN TO CHECK THE SECTION
-%====================================================================
+Missing observations are encoded as `NA`, and usually occur if there was no sampling for a year, or, since we model observations on the log scale, if the observation was zero. The `a4a` framework can deal with missing observations in the catches and indices.
 
-Missing observations are encoded as `NA`, and usually occure if there was no sampling for a year, or, since we model observations on the log scale, if the observation was zero. The `a4a` framework can deal with missing observations in the catch matrix and indices. The example below shows how to set up a model with missing observations in the catch matrix.
+The example below shows how to set up a model with missing observations in the catch matrix, to demonstrate the effect of missing observations, using the default model settings.
 
-```{r missing obs}
+```{r missing obs, eval = TRUE}
 fit <- sca(ple4, ple4.indices)
 
 ple4_missing <- ple4
-catch.n(ple4_missing)["1", "2013"] <- NA
+catch.n(ple4_missing)[ac(1:2), "2013"] <- NA
 
 fit_missing <- sca(ple4_missing, ple4.indices)
+```
 
+In effect the information on F and Q for the missing observations is taken from the structural assumptions in the model. If a seperable F model is used, the F at age comes from the relationship between F at the other ages in that year, and the level of F from the relationship across years for the ages which have data. The same is true for the Q model. The effect of missing observations can be seen in the figures below, where box plots of the predicted catch at age with estimation error is shown.
+
+```{r, echo = FALSE, eval = TRUE}
 pred <- ple4 + simulate(fit, 1000)
 pred_missing <- ple4 + simulate(fit_missing, 1000)
 
-flqs <- FLQuants(catch.n(pred)["1",], catch.n(pred_missing)["1",])
-
-xyplot(data ~ year,
-  groups = interaction(qname, iter), data = flqs, type = "l",
-  auto.key = list(points = FALSE, lines = FALSE, draw = FALSE),
-  par.settings = list(
-    superpose.line = list(col = c("gray35", "black"), lty = c(2, 1), lwd = c(1, 1.5)),
-    strip.background = list(col = "gray90")
-  ), ylab = ""
-)
-
-flqs <- FLQuants(base = catch.n(pred)["1", "2013"], missing = catch.n(pred_missing)["1", "2013"])
+flqs <- FLQuants(base = catch.n(pred)[, "2013"], missing = catch.n(pred_missing)[, "2013"])
 
 
-bwplot(data ~ qname | factor(age), data = as.data.frame(flqs), scales = "free", auto.key = T, ylab = "Catch at age 1 in 2013")
-
+bwplot(data ~ qname | factor(age), data = as.data.frame(flqs), scales = "free", auto.key = T, ylab = "Catch at age in 2013")
 ```
 
-How are the data interpolated etc ...
+This is a simple example, but the same principle applies to more complex models. However, if there are many missing observations, the model cannot be too flexible, otherwise the model will not be able to estimate the missing observations.
+
+Another point to note, is that if observations are systematically missing, for example due to the actual observation being below a detection limit, or zero, then the model may overestimate the true catch at age. This is a common problem in stock assessment models, and is not unique to the `a4a` framework.  Proposed solutions to this issue are to replace zeros with a small number, or half of the smallest observed value.
