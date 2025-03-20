@@ -1,5 +1,11 @@
 # Diagnostics \label{sec:diagn}
 
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(FLa4a)
+data(ple4)
+data(ple4.indices)
+```
+
 There's a large number of diagnostics that can be computed for a stock assessment model, the \aFa framework implements several analysis of residuals, visualizations and statistics that can be used to evaluate the fit quality and chose across multiple fits.
 
 ## Residuals
@@ -11,6 +17,7 @@ Consider $x_{ay}$ to be either a catch-at-age matrix ($C_{ay}$) or one abundance
 Raw residuals are compute by $d_{ay} = \log{x_{ay}} - \log{\tilde{x}_{ay}}$ and have distribution $N(0,\upsilon^2_{a})$. Standardized residuals will be compute with $d^s_{ay} = \frac{d_{ay}}{\hat{\upsilon}^2_{a}}$ where $\hat{\upsilon}^2_{a} = (n-1)^{-1} \sum_y(d_{ay})^2$. Pearson residuals scale raw residuals by the estimates of $\sigma^2$ or $\tau^2$, as such $d^p_{ay} = \frac{d_{ay}}{\tilde{\upsilon}^2_{a}}$ where $\tilde{\upsilon}^2_{a} = \tilde{\sigma}^2_{a}$ for catches, or $\tilde{\upsilon}^2_{a} = \tilde{\tau}^2_{a}$ for each index of abundance.
 
 The `residuals()` method will compute these residuals and generate a object which can be plotted using a set of packed methods. The argument `type` will allow the user to chose which residuals will be computed. By default the method computes standardized residuals.
+
 
 ```{r}
 fit <- sca(ple4, ple4.indices)
@@ -118,7 +125,62 @@ Green shading indicates no evidence $(p <  0.05)$ and red shading evidence $(p  
 
 ## Retrospective analysis
 
+A legacy analysis from back when stock assessments were done with VPAs (REF Sheppeard, ...), not so relevant with statistical catch at age models, which do not backwarsd fit fishing mortality and abundance as those models did. Cadrin (2025) notes the circularity of arguments when using retrospective analysis to make decisions about the stock assessment fit.
+
+Nevertheless, most experts still relly on this analysis to make decisions about the fit. The most common statistic used to summarize the retrospective analysis is Mohn's rho (REF).
+
+Retrospective analysis consists on removing the most recent year of data, refit the model and compare estimates of metrics, e.g. the estimate of fishing mortality in year y-1 by each fit. The rationale is that a stable well fitted model would have similar estimates in both fits.
+
+In the example below the fishing mortality model is kept for all fits, without updating the smoothness factor.
+
+```{r}
+fit0 <- sca(ple4, ple4.indices)
+n <- 5
+nret <- as.list(1:n)
+stks <- FLStocks(lapply(nret, function(x){window(ple4, end=(range(ple4)["maxyear"]-x))}))
+idxs <- lapply(nret, function(x){window(ple4.indices, end=(range(ple4)["maxyear"]-x))})
+fits <- scas(stks, idxs, fmodel=list(fmodel(fit0)))
+stks <- stks + fits
+stks[[6]] <- ple4 + simulate(fit0, 250)
+```
+
+Note fmodel doesn't change:
+
+```{r, echo=FALSE}
+lapply(fits, fmodel)
+```
+
+The retrospective plot shown below presents the current fit with uncertainty and each retrospective fit on top. If the retrospective fit is not whithin the confidence interval of the current fit the analyst can argue that the estiate is different and as such reflecting a "poor" fit.
+
+```{r, retro, fig.cap="Retrospective analysis of the plaice in ICES area IV stock"}
+plot(window(stks, start=2005))
+```
+
+One could use specific submodels and pass them to the fitting function `scas`, including with some adjustments to take into account the data reduction. In the next example the fishing mortality model is set reducing the smoothness taking into account the length of the dataset. Not considering the adjustment of the model to the new dataset may result in comparisons across models which are very different due to the relationship between information contained in the data and the number of parameters in the model. This issue is more relevant for stocks with shorter time series.
+
+```{r}
+n <- 5
+nret <- as.list(1:n)
+stks <- FLStocks(lapply(nret, function(x){window(ple4, end=(range(ple4)["maxyear"]-x))}))
+idxs <- lapply(nret, function(x){window(ple4.indices, end=(range(ple4)["maxyear"]-x))})
+# each model will have smootheness scaled to length of time series
+fmod <- lapply(stks, defaultFmod)
+fits <- scas(stks, idxs, fmodel=fmod)
+stks <- stks + fits
+stks[[6]] <- ple4 + simulate(fit0, 250)
+```
+
+Note fmodel changes:
+
+```{r, echo=FALSE}
+lapply(fits, fmodel)
+```
+
+And the retrospective plot
+
+```{r, retro2, fig.cap="Retrospective analysis of the plaice in ICES area IV stock"}
+plot(window(stks, start=2005))
+```
 
 ## Hindcast
-
 
