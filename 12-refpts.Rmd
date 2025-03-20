@@ -195,7 +195,7 @@ brp2 <- brp(brp2)
 refpts(brp2)
 ```
 
-One specific case is to compute $F_{MSY}$ ranges according to Hilborn (2010) and Rindorf (2012) ideas. For this case there's already the method `msyRanges`, which takes as argument a fitted `FLBRP` object and delivers a `FLPar` object, similar to `refpts`.
+One specific case is to compute $F_{MSY}$ ranges according to @HILBORN2010193 and @Rindorf_etal_2016 ideas. For this case there's already the method `msyRanges`, which takes as argument a fitted `FLBRP` object and delivers a `FLPar` object, similar to `refpts`.
 
 ```{r}
 rp.rngs <- msyRange(brp0, range=0.05)
