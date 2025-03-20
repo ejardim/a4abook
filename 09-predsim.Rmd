@@ -14,7 +14,7 @@ drafting <- FALSE
 To predict and simulate `R` uses the methods `predict()` and `simulate()`, which are implemented in `FLa4a`, adapted to work with several of the model classes.  The simulate and predict methods only work if the mode object has be run with the option `fit = "assessment"`, and not `fit = "MP"`, the later is used when space and time are at a premium, for example in a Management Strategy Evaluation. In this chapter we will only cover prediction and simulation of full stock objects.
 
 This chapter is based on the following model:
-```{r, pred0_fit0}
+```{r, predsim_fit0}
 fit0 <- sca(ple4, ple4.index)
 submodels(fit0)
 ```
@@ -25,14 +25,14 @@ Simulation and prediction in FLa4a is based on two functions: `simulate` and `pr
 
 Predict simply computes the quantities of interest using the estimated coefficients and the design matrix of the model, defined via the formulas in the submodels. In the case of predicting from a fitted model, a list is returned, with one element for each submodel, and each element of the list is a `FLQuants` object with the following `FLQuant`s
 
-```{r}
+```{r, predsim_fit_pred}
 fit.pred <- predict(fit0)
 lapply(fit.pred, names)
 ```
 
 This allows easy access to the parameterised parts of the model, for example the initial population structure, `ny1`, can be accessed via `fit.pred$stkmodel$ny1`. If the whole stock is of interest, for example, to inspect model predictions of SSB, then the following code can be used
 
-```{r}
+```{r, predsim_stk_pred}
 stk.pred <- ple4 + fit0
 ```
 
@@ -43,10 +43,13 @@ The `+` operator is used to add the predictions from the model to the initial st
 
 Simulations are always done by generating random draws from a multivariate normal distribution with mean given by the coeffients of the model, and variance matrix given by the estimated covariance matrix of the coefficients (in practice this is a submatrix of the inverse of the hessian matrix, see details below).
 
-simulate performed on a fitted model returns a fitted model with the same structure as the original model, but with the model parameters replaced by `nsim` simulated parameters. The following code simulates the model 200 times
+simulate performed on a fitted model returns a fitted model with the same structure as the original model, but with the model parameters replaced by `nsim` simulated parameters. The following code simulates the model 200 times, and a histogram of the result show in Figure \@ref(fig:predsim_hist).
 
-```{r}
+```{r, predsim_fit_sim}
 sim.fit <- simulate(fit0, nsim = 200)
+```
+
+```{r, predsim_hist, fig.cap="Histogram of 200 draws from the approximate distribution of the estimate of survey observation error."}
 hist(
   exp(coef(sim.fit)$vmodel$IND),
   main = "200 draws of a model parameter",
@@ -80,13 +83,13 @@ plot(stks)
 
 ## simulate() and predict()
 
-The `simulate()` and `predict()` functions can be combined to simulate and then predict from each of the simulations. The following code simulates the model 100 times and then predicts the fitted quantitites from the model, resulting in simulations from the core model elements: initial age structure, recruitment, fishing mortality, survey catchability and observation variance. A plot of the initial age structure is shown as an example.
+The `simulate()` and `predict()` functions can be combined to simulate and then predict from each of the simulations. The following code simulates the model 100 times and then predicts the fitted quantitites from the model, resulting in simulations from the core model elements: initial age structure, recruitment, fishing mortality, survey catchability and observation variance. A plot of the initial age structure is shown as an example in Figure \@ref(fig:sim_ny1).
 
 ```{r}
 sim.pred <- predict(sim.fit)
 ```
 
-```{r, fig.cap='Generated data with two linear fits, left a simple mean and right a straight line', fig.pos = 'H', fig.height = 4,echo=FALSE, message=FALSE, warning=FALSE}
+```{r, sim_ny1, fig.cap='Simulations from the model prediction of initial age structure', fig.pos = 'H', fig.height = 4,echo=FALSE, message=FALSE, warning=FALSE}
 
 fit_sim_ny1 <- sim.pred$stkmodel$ny1[-1, ]
 
@@ -110,13 +113,13 @@ ggplot(data = dat, aes(x = age, y = `data.50%`)) +
   scale_x_continuous(breaks = pretty(dat$age))
 ```
 
-If interest is in the complete stock, then the `+` operator can be used to add the simulated quantities to the initial stock object, as shown below.
+If interest is in the complete stock, then the `+` operator can be used to add the simulated quantities to the initial stock object, as shown below. The stock information can be extracted, such as SSB, a plot of which is shown in Figure \@ref(fig:sim_ssb).
 
 ```{r}
 stk.sim <- ple4 + sim.fit
 ```
 
-```{r, fig.cap='Generated data with two linear fits, left a simple mean and right a straight line', fig.pos = 'H', fig.height = 4,echo=FALSE, message=FALSE, warning=FALSE}
+```{r, sim_ssb, fig.cap='Simulations from the model prediction of initial age structure', fig.pos = 'H', fig.height = 4,echo=FALSE, message=FALSE, warning=FALSE}
 
 fit_sim_ny1 <- ssb(stk.sim)
 
