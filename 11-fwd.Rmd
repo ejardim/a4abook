@@ -121,16 +121,16 @@ One can also define if those assumptions will be based on the mean value over th
 For the next examples we'll use the approach of fitting the stock recruitment within the assessment together with other parameters. We'll set to 20 the number of years to compute mean weights at age, to 10 the number of years to average across and estimate the selection pattern in terms of fishing mortality at age. Finally, we'll use a 10 year period to compute the average discard ratio.
 
 ```{r, warning=FALSE, message=FALSE}
-fit00 <- sca(ple4, ple4.indices, srmodel=~geomean()) 
-sr00 <- as(fit00, "FLSR")
-stk00 <- ple4 + fit00
-stk00 <- fwdWindow(stk00, end = endpy, years = list(wt = 20, catch.sel = 10, discards.ratio = 10), fun = list(wt = "sample"))
-trg00 <- fwdControl(year = inipy:endpy, quant = "f", value = 0.3)
-stk04 <- fwd(stk00, control=trg00, sr=sr00)
+#fit00 <- sca(ple4, ple4.indices, srmodel=~geomean())
+#sr00 <- as(fit00, "FLSR")
+#stk00 <- ple4 + fit00
+#stk00 <- fwdWindow(stk00, end = endpy, years = list(wt = 20, catch.sel = 10, discards.ratio = 10), fun = list(wt = "sample"))
+#trg00 <- fwdControl(year = inipy:endpy, quant = "f", value = 0.3)
+#stk04 <- fwd(stk00, control=trg00, sr=sr00)
 ```
 
 ```{r, echo=FALSE, fig.cap="Stochastic projections of stock for 5 years with fixed fishing mortality and recruitment. Two scenarios with different assumptions about initial conditions"}
-plot(FLStocks(default=stk01, alternative=stk04))
+#plot(FLStocks(default=stk01, alternative=stk04))
 ```
 
 ## Scenarios

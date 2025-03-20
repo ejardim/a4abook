@@ -11,7 +11,7 @@ library(ggpubr)
 drafting <- FALSE
 ```
 
-To predict and simulate `R` uses the methods `predict()` and `simulate()`, which are implemented in `FLa4a`, adapted to work with several of the model classes.  The simulate and predict methods only work if the mode object has be run with the option `fit = "assessment"`, and not `fit = "MP"`, and the later is used when space and time are at a premium, for example in a Management Strategy Evaluation.
+To predict and simulate `R` uses the methods `predict()` and `simulate()`, which are implemented in `FLa4a`, adapted to work with several of the model classes.  The simulate and predict methods only work if the mode object has be run with the option `fit = "assessment"`, and not `fit = "MP"`, the later is used when space and time are at a premium, for example in a Management Strategy Evaluation. In this chapter we will only cover prediction and simulation of full stock objects.
 
 This chapter is based on the following model:
 ```{r, pred0_fit0}
@@ -19,68 +19,44 @@ fit0 <- sca(ple4, ple4.index)
 submodels(fit0)
 ```
 
-## Basic functions
-
 Simulation and prediction in FLa4a is based on two functions: `simulate` and `predict`.
 
-### simulate()
+## predict()
 
-Unlike the stats function `stats::simulate`, `FLa4a::simulate` will return the same object as it was passed. For example, if you simulate from a FLa4a fit, you will get an FLa4a fit object back, in which the coefficients of the object are simulations from the model. Likewise, if you call simulate on a submodel object you will get back a submodel object inwhich the coefficients are simulations from the model. Simulations are always done by generating random draws from a multivariate normal distribution with mean given by the coeffients of the model, and variance matrix given by the estimated covariance matrix of the coefficients (in practice this is a submatrix of the inverse of the hessian matrix).
-
-Simulate works on several classes from full fits right down to the individual model compents, so if `my\_fit` is a fitted `a4a` model, then `simulate(fit0, nsim = 100)` will return a new fitted `a4a` model where the model coefficients now have 100 iters and are drawn from the full variance matrix of the fitted model. Similarly, `simulate(stkmodel(my_fit), nsim = 100)` will return a stock submodel with the same formulas as fitted model as in the `a4a` fit but where the coefficients are simulated from the variance matrix of the relavent parameters.  See also, `simulate(qmodel(my_fit), nsim = 100)` to simulate from the survey catchability submodels.
-
-## stock submodel
-
-In an `sca` fit individual submodel objects are often combined into a collection of `submodels`, for example the models for survey catchability are a collection of submodels
-
-```{r, sim_pred_qsubmodels}
-qmod <- qmodel(fit0)
-```
-
-which contains a submodel for each survey catchability. Now (almost) the same code can be run as before to plot the estimates with confidence intervals, the difference with submodels is all the results will be `FLQuants` so, `lapply` must be used to do computations on the predictions for each submodel seperately. 
-
-```{r, sim_pred_qmodel_predict_a4a}
-qmod_fit_sim <- genFLQuant(qmod, nsim = 999)
-
-# reduce to quantiles
-qmod_fit_sim <- lapply(qmod_fit_sim, "[", j = "2016")
-qmod_fit_sim <- lapply(qmod_fit_sim, quantile, prob = c(0.025, 0.50, 0.975))
-
-# reshape
-dat <- reshape(
-    as.data.frame(qmod_fit_sim, drop=TRUE), 
-    timevar = "iter", idvar = c("age", "qname"), direction = "wide"  
-  )
-
-# plot
-ggplot(data=dat, aes(x = age, y = `data.50%`)) +
-  geom_ribbon(aes(ymin = `data.2.5%`, ymax = `data.97.5%`), 
-              fill = "red", alpha = .15) +
-  geom_point() + geom_line() +
-  ylab("Estimated catchability at age") +
-  facet_wrap(~qname, scales = "free_x") +
-  scale_x_continuous(breaks = pretty(dat$age))
-```
-
-the coefficients and variance covariance are all available via
-
-```{r, results = "hide", eval = FALSE}
-coef(qmod)
-vcov(qmod)
-```
-
-## Predict
-
-Predict simply computes the quantities of interest using the estimated coefficients and the design matrix of the model.
+Predict simply computes the quantities of interest using the estimated coefficients and the design matrix of the model, defined via the formulas in the submodels. In the case of predicting from a fitted model, a list is returned, with one element for each submodel, and each element of the list is a `FLQuants` object with the following `FLQuant`s
 
 ```{r}
 fit.pred <- predict(fit0)
 lapply(fit.pred, names)
 ```
 
-## Simulate
+This allows easy access to the parameterised parts of the model, for example the initial population structure, `ny1`, can be accessed via `fit.pred$stkmodel$ny1`. If the whole stock is of interest, for example, to inspect model predictions of SSB, then the following code can be used
 
-Simulate uses the variance-covariance matrix computed from the Hessian returned by `ADMB` and the fitted parameters, to parametrize a multivariate normal distribution. The simulations are carried out using the method `mvrnorm()` provided by the R package [MASS](http://cran.r-project.org/web/packages/MASS/). Figure \@ref(fig:sim) shows a comparison between the estimated values and the medians of the simulation, while Figure \@ref(fig:sim2) presents the stock summary of the simulated and fitted data.
+```{r}
+stk.pred <- ple4 + fit0
+```
+
+The `+` operator is used to add the predictions from the model to the initial stock object. Then quantities can be extracted as normal, `ssb(stk.pred)`.
+
+
+## simulate()
+
+Simulations are always done by generating random draws from a multivariate normal distribution with mean given by the coeffients of the model, and variance matrix given by the estimated covariance matrix of the coefficients (in practice this is a submatrix of the inverse of the hessian matrix, see details below).
+
+simulate performed on a fitted model returns a fitted model with the same structure as the original model, but with the model parameters replaced by `nsim` simulated parameters. The following code simulates the model 200 times
+
+```{r}
+sim.fit <- simulate(fit0, nsim = 200)
+hist(
+  exp(coef(sim.fit)$vmodel$IND),
+  main = "200 draws of a model parameter",
+  nclass = 20,
+  xlab = "observation std error for survey index"
+)
+```
+
+
+The fitted model can also be used to generate some predictions, such as `harvest`, `stock.n` or `catch.n`. Figure \@ref(fig:sim) shows a comparison between the estimated values and the medians of the simulation, while Figure \@ref(fig:sim2) presents the stock summary of the simulated and fitted data.
 
 ```{r}
 fits <- simulate(fit0, 100)
@@ -100,16 +76,19 @@ stks <- ple4 + fits
 plot(stks)
 ```
 
-## Simulate and Predict
+
+
+## simulate() and predict()
 
 The `simulate()` and `predict()` functions can be combined to simulate and then predict from each of the simulations. The following code simulates the model 100 times and then predicts the fitted quantitites from the model, resulting in simulations from the core model elements: initial age structure, recruitment, fishing mortality, survey catchability and observation variance. A plot of the initial age structure is shown as an example.
 
 ```{r}
-fit_sim <- predict(simulate(fit0, 100))
+sim.pred <- predict(sim.fit)
 ```
 
 ```{r, fig.cap='Generated data with two linear fits, left a simple mean and right a straight line', fig.pos = 'H', fig.height = 4,echo=FALSE, message=FALSE, warning=FALSE}
-fit_sim_ny1 <- fit_sim$stkmodel$ny1[-1,]
+
+fit_sim_ny1 <- sim.pred$stkmodel$ny1[-1, ]
 
 # reduce to quantiles
 fit_sim_ny1 <- quantile(fit_sim_ny1, prob = c(0.025, 0.50, 0.975))
@@ -130,3 +109,39 @@ ggplot(data = dat, aes(x = age, y = `data.50%`)) +
   ylab("Estimated initial age structure (numbers)") +
   scale_x_continuous(breaks = pretty(dat$age))
 ```
+
+If interest is in the complete stock, then the `+` operator can be used to add the simulated quantities to the initial stock object, as shown below.
+
+```{r}
+stk.sim <- ple4 + sim.fit
+```
+
+```{r, fig.cap='Generated data with two linear fits, left a simple mean and right a straight line', fig.pos = 'H', fig.height = 4,echo=FALSE, message=FALSE, warning=FALSE}
+
+fit_sim_ny1 <- ssb(stk.sim)
+
+# reduce to quantiles
+fit_sim_ny1 <- quantile(fit_sim_ny1, prob = c(0.025, 0.50, 0.975))
+
+# reshape
+dat <- reshape(
+  as.data.frame(fit_sim_ny1, drop = TRUE),
+  timevar = "iter", idvar = c("year"), direction = "wide"
+)
+
+# plot
+ggplot(data = dat, aes(x = year, y = `data.50%`)) +
+  geom_ribbon(aes(ymin = `data.2.5%`, ymax = `data.97.5%`),
+    fill = "red", alpha = .15
+  ) +
+  geom_point() +
+  geom_line() +
+  ylab("Estimated spawning stock biomass") +
+  scale_x_continuous(breaks = pretty(dat$year))
+```
+
+## Details
+
+Simulate uses the variance-covariance matrix computed from the Hessian returned by `ADMB` and the fitted parameters, to parametrize a multivariate normal distribution. The simulations are carried out using the method `mvrnorm()` provided by the R package [MASS](http://cran.r-project.org/web/packages/MASS/).  Such an approach is often called a parametric bootstrap, and is a common method for generating uncertainty in the parameters of a model. It is imporatant to not that the method approximated the joint distribution of the model parameters as a multivariate normal, which is true if the model is linear and well specified.  Since stock assessment models tend to be non-linear, a more robust approach is to use MCMC methods instread.
+
+Another point to note, is that in order to save space, only the  subset of the covariance matrix is stored for each submodel. This in effect sets any correlations between submodel parameters to zero in simulations.
