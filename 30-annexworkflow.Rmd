@@ -8,11 +8,16 @@ The procedure is heavily supported by residuals' analysis. In a well specified m
 
 To start the analysis we'll fit a "mean" model, where all submodels will be set to an overall average, by using the $\sim 1$ formula. This will be our reference model to see how adding age and year effects will show up in the diagnostic tools, in particular in the residuals.
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 library(FLa4a)
 data(hke1567)
 data(hke1567.idx)
-fit01 <- sca(hke1567, hke1567.idx, fmod=~1, qmod=list(~1), srmod=~1, vmod=list(~1, ~1),  n1mod=~1)
+fit01 <- sca(hke1567, hke1567.idx,
+    fmod=~1,
+    qmod=list(~1),
+    srmod=~1,
+    vmod=list(~1, ~1),
+    n1mod=~1)
 res01 <- residuals(fit01, hke1567, hke1567.idx)
 ```
 
@@ -25,7 +30,7 @@ plot(res01)
 
 This pattern becomes more apparent when plotting the residuals by age across years.
 
-```{r, meanresbyage, fig.cap="Mean fit residuals by age",  out.extra = "angle=90", out.height="18cm", out.width="25cm", fig.height=8, fig.width=12}
+```{r, meanresbyage, fig.cap="Mean fit residuals by age"}
 plot(res01, auxline="l", by="age")
 ```
 
@@ -34,7 +39,12 @@ plot(res01, auxline="l", by="age")
 The following models will introduce age effects in the fishing mortality submodel and catchability submodel. In the fishing mortality submodel we'll introduce a `factor` which means that there will be as many parameters as ages minus 1 and each parameters will be independent of each other.
 
 ```{r}
-fit02 <- sca(hke1567, hke1567.idx, fmod=~factor(age), qmod=list(~1), srmod=~1, vmod=list(~1, ~1),  n1mod=~1)
+fit02 <- sca(hke1567, hke1567.idx,
+    fmod=~factor(age),
+    qmod=list(~1),
+    srmod=~1,
+    vmod=list(~1, ~1),
+    n1mod=~1)
 res02 <- residuals(fit02, hke1567, hke1567.idx)
 ```
 
@@ -53,7 +63,12 @@ plot(res02, auxline="l", by="age")
 We'll now proceed adding an age effect to the catchability model while removing the catch at age effect.
 
 ```{r}
-fit03 <- sca(hke1567, hke1567.idx, fmod=~1, qmod=list(~factor(age)), srmod=~1, vmod=list(~1, ~1),  n1mod=~1)
+fit03 <- sca(hke1567, hke1567.idx,
+    fmod=~1,
+    qmod=list(~factor(age)),
+    srmod=~1,
+    vmod=list(~1, ~1),
+    n1mod=~1)
 res03 <- residuals(fit03, hke1567, hke1567.idx)
 ```
 
@@ -70,7 +85,12 @@ plot(res03, auxline="l", by="age")
 Finally both effects are brought together.
 
 ```{r}
-fit04 <- sca(hke1567, hke1567.idx, fmod=~factor(age), qmod=list(~factor(age)), srmod=~1, vmod=list(~1, ~1),  n1mod=~1)
+fit04 <- sca(hke1567, hke1567.idx,
+    fmod=~factor(age),
+    qmod=list(~factor(age)),
+    srmod=~1,
+    vmod=list(~1, ~1),
+    n1mod=~1)
 res04 <- residuals(fit04, hke1567, hke1567.idx)
 ```
 
@@ -89,7 +109,12 @@ plot(res04, auxline="l", by="age")
 This model will introduce an year effect in the fishing mortality submodel on top of the F age effect added before. Inspecting the last set of residuals (Figure \@ref(fig:fqageresbyage)) one can easily see the pattern across years with more positive residuals in the beggining of the time series and more negative in the most recent years. As for age we're using a `factor` for years. The new model's residuals won't show such a pronounced effect anymore (Figures \@ref(fig:fyearresbyyear) and \@ref(fig:fyearresbyage)).
 
 ```{r}
-fit05 <- sca(hke1567, hke1567.idx, fmod=~factor(age) + factor(year), qmod=list(~1), srmod=~1, vmod=list(~1, ~1),  n1mod=~1)
+fit05 <- sca(hke1567, hke1567.idx,
+    fmod=~factor(age) + factor(year),
+    qmod=list(~1),
+    srmod=~1,
+    vmod=list(~1, ~1),
+    n1mod=~1)
 res05 <- residuals(fit05, hke1567, hke1567.idx)
 ```
 
@@ -118,7 +143,12 @@ This model sets the n-at-age in the first year of the time series, which is need
 The following model will introduce an age effect in the population abundance in the first year of the time series.
 
 ```{r}
-fit06 <- sca(hke1567, hke1567.idx, fmod=~factor(age) + factor(year), qmod=list(~factor(age)), srmod=~1, vmod=list(~1, ~1),  n1mod=~factor(age))
+fit06 <- sca(hke1567, hke1567.idx,
+    fmod=~factor(age) + factor(year),
+    qmod=list(~factor(age)),
+    srmod=~1,
+    vmod=list(~1, ~1),
+    n1mod=~factor(age))
 res06 <- residuals(fit06, hke1567, hke1567.idx)
 ```
 
@@ -148,7 +178,12 @@ Comparing the two plots it can be seen the effect of modeling abundance in the i
 In this example we'll simply add a model to allow recruitment to vary over time and we'll see how to track potential improvements in the residuals.
 
 ```{r}
-fit07 <- sca(hke1567, hke1567.idx, fmod=~factor(age) + factor(year), qmod=list(~factor(age)), srmod=~factor(year), vmod=list(~1, ~1),  n1mod=~factor(age))
+fit07 <- sca(hke1567, hke1567.idx,
+    fmod=~factor(age) + factor(year),
+    qmod=list(~factor(age)),
+    srmod=~factor(year),
+    vmod=list(~1, ~1),
+    n1mod=~factor(age))
 res07 <- residuals(fit07, hke1567, hke1567.idx)
 ```
 
@@ -165,7 +200,12 @@ Finally, we're testing the variance submodel, specifically the catch at age vari
 The variance model will use a smoother with `k=3`. The expectation is that the variance model will have a U-shape, since yourger and older ages are usually less caught and as such estomates of those ages will have larger variances than fully exploited ages.
 
 ```{r}
-fit08 <- sca(hke1567, hke1567.idx, fmod=~factor(age) + s(year, k=10), qmod=list(~factor(age)), srmod=~s(year, k=10), vmod=list(~s(age, k=3), ~1),  n1mod=~factor(age))
+fit08 <- sca(hke1567, hke1567.idx,
+    fmod=~factor(age) + s(year, k=10),
+    qmod=list(~factor(age)),
+    srmod=~s(year, k=10),
+    vmod=list(~s(age, k=3), ~1),
+    n1mod=~factor(age))
 ```
 
 We'll use the pearson residuals for this analysis since those are standardized by the predicted variances of the model and not the residual variance itself, like the more common standardized residuals. Figure \@ref(fig:vresbyyear08) shows an improve set of residuals when compared to Figure \@ref(fig:vresbyyear07) which add an intercept only model for the variance model.
@@ -185,14 +225,15 @@ plot(res08)
 
 To see what's happening with the variance model one can use predict to plot the different models fitted.
 
-```{r, vagepredbyage, fig.cap="Variance models for catch at age"}
-flqs <- FLQuants(mod08=predict(fit08)$vmodel$catch[,"2022"], mod07=predict(fit07)$vmodel$catch[,"2022"])
+```{r, vagepredbyage, fig.cap="Variance models for catch at age", echo=FALSE}
+flqs <- FLQuants(mod08=predict(fit08)$vmodel$catch[,"2022"],
+    mod07=predict(fit07)$vmodel$catch[,"2022"])
 xyplot(data~age, data=flqs, group=qname, type="l", auto.key=T)
 ```
 
 To see the effect these models have on the estimated quantities one can look at the variance of the estimates:
 
-```{r, vage, fig.cap="Estimates of population abundance with different variance models"}
+```{r, vage, fig.cap="Estimates of population abundance with different variance models", echo=FALSE}
 flqs <- FLQuants(mod08=catch.n(hke1567+simulate(fit08, nsim=500))[,"2022"], mod07=catch.n(hke1567+simulate(fit07, nsim=500))[,"2022"])
 bwplot(data~qname|factor(age),  data=as.data.frame(flqs), scales="free", auto.key=T)
 ```
@@ -204,6 +245,7 @@ The sequence presented here can be changed and eploited in any order the user is
 The approach of not allowing year effects in surveys and variance model can be modified if the user prefers to do so.
 
 The (ab)use of `factor` is for demonstration purposes only. The user is incentivised to explore other model forms, in particular smoothers.
+
 
 
 

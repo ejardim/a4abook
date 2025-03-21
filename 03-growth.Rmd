@@ -54,7 +54,7 @@ predict(vbObj, len=5:10+0.5)
 predict(vbObj, t=5:10+0.5)
 ```
 
-## Adding uncertainty to growth parameters with a multivariate normal distribution}
+## Adding uncertainty to growth parameters with a multivariate normal distribution
 
 Uncertainty in the growth model is introduced through the inclusion of parameter uncertainty. This is done by making use of the parameter variance-covariance matrix (the `vcov` slot of the `a4aGr` class) and assuming a distribution. The numbers in the variance-covariance matrix could come from the parameter uncertainty from fitting the growth model parameters.
 
@@ -102,8 +102,6 @@ vbObj <- a4aGr(
 ```
 
 First we show a simple example where we assume that the parameters are represented using a multivariate normal distribution.
-% This covariance matrix can have iterations (i.e. each iteration can have a different covariance matrix). CHECK
-% If the parameters or the covariance matrix have iterations then the medians accross iterations are computed before simulating. Check help for `mvrnorm} for more information.
 
 ```{r, simulate_vcov_example} 
 # Note that the object we have just created has a single iteration of each parameter
@@ -150,7 +148,7 @@ bwplot(value~factor(Var1), data=melt(predict(vbNorm, t=0:50+0.5)), par.settings=
 #boxplot(t(predict(vbNorm, t=0:50+0.5)))
 ```
 
-## Adding uncertainty to growth parameters with a multivariate triangle distribution}
+## Adding uncertainty to growth parameters with a multivariate triangle distribution
 \label{sec:growth_triangle_cop}
 
 One alternative to using a normal distribution is to use a [triangle distribution](http://en.wikipedia.org/wiki/Triangle\_distribution). We use the package [`triangle`](http://cran.r-project.org/web/packages/triangle/index.html) where this distribution is parametrized using the minimum, maximum and median values. This can be very attractive if the analyst needs to scrape information from the web or literature and perform some kind of meta-analysis.
@@ -202,7 +200,7 @@ bwplot(value~factor(Var1), data=melt(predict(vbTri, t=0:50+0.5)), par.settings=l
 
 Remember that the above examples use a variance-covariance matrix that we essentially made up. An alternative would be to scrape the entire growth parameters dataset from Fishbase and compute the shape of the variance-covariance matrix yourself.
 
-## Adding uncertainty to growth parameters with statistical copulas}
+## Adding uncertainty to growth parameters with statistical copulas
 
 A more general approach to adding parameter uncertainty is to make use of [statistical copulas](http://www.encyclopediaofmath.org/index.php/Copula) and marginal distributions of choice. This is possible with the `mvrcop()` function borrowed from the package [`copula`](http://cran.r-project.org/web/packages/copula/). The example below keeps the same parameters and changes only the copula type and family but a lot more can be done. Check the package `copula` for more information. 
 
@@ -225,7 +223,7 @@ bwplot(value~factor(Var1), data=melt(predict(vbCop, t=0:50+0.5)), par.settings=l
 
 ```
 
-## Converting from length to age based data - the `l2a()` method}
+## Converting from length to age based data - the `l2a()` method
 
 After introducing uncertainty in the growth model through the parameters it's time to transform the length-based dataset into an age-based dataset. The method that deals with this process is `l2a()`. The implementation of this method for the `FLQuant` class is the main workhorse. There are two other implementations, for the `FLStock` and `FLIndex` classes, which are mainly wrappers that call the `FLQuant` method several times.
 

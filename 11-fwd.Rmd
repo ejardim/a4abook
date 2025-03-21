@@ -10,12 +10,7 @@ In fisheries science, the distinction between forecasting and prediction is not 
 
 Projections typically follow stock assessments, incorporating estimates or assumptions about population dynamics—growth, reproduction, and natural mortality—to predict future catches, biomass, and abundance under specific conditions and with quantified uncertainty. By integrating both forecasting and projection methodologies, fisheries science can offer robust, scenario-based decision-making tools that aid sustainable resource management [@punt2001review].
 
-### References:
-[EJ THE REFERENCE:]
-- Massad, E., Coutinho, F. A. B., Lopez, L. F., & da Silva, D. R. (2018). *Mathematical models for infectious diseases: A theoretical companion*. Springer.
-
-
-For this section we'll be using the package `FLasher` (REF) from the FLR family of packages.
+For this section we'll be using the package `FLasher` [\flasher] from the FLR family of packages.
 
 ```{r, warning=FALSE, message=FALSE}
 library(FLa4a)
@@ -89,8 +84,6 @@ rec00 <- window(rec(stk00), inipy, endpy)
 rec00 <- rlnorm(rec00, c(yearMeans(res00)), sqrt(c(yearVars(res00))))
 stk03 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 ```
-[IAGO, check rlnorm, it doesn't work if the meanlog and sdlog are FLQuants]
-
 
 ```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment"}
 plot(stk03)
@@ -102,18 +95,18 @@ These two methods don't give very different result when the stock recruitment mo
 plot(window(FLStocks('01' = stk01, '02' = stk02, '03' = stk03), start = 2000))
 ```
 
-## Initial condition assumptions [CHECK fwdWindow]
+## Initial condition assumptions
 
 When projecting the stock forward one needs to make a number of assumptions about initial conditions, the starting point from where projections will be made. The method `fwdWindow` has a set of options that allows the analyst to decide about those assumptions:
 
-[PUT IN TABLE FORMAT AS BRP]
-
-- `wt`: Number of years to average over to get the future mean weights at age, default is 3
-- `mat`: Number of years to average over to get the future proportion mature at age, default is 3
-- `m`: Number of years to average over to get the future natural mortality at age, default is 3
-- `spwn`: Number of years to average over to get the future fraction of mortality before spawning, default is 3
-- `discards.ratio`: Number of years to average over to get the future mean proportion of discards at age. Default is 3
-- `catch.sel`: Number of years to average over to get the future selection patern (fishing mortality at age which will be scaled based on canges in $\bar{F}$). Default is 3
+| Argument | Default value | Description |
+|----:|:----|:----|
+|`wt`| 3 | Number of years to average over to get the future mean weights at age|
+|`mat`| 3 |Number of years to average over to get the future proportion mature at age|
+|`m`| 3 |Number of years to average over to get the future natural mortality at age|
+|`spwn`| 3 | Number of years to average over to get the future fraction of mortality before spawning|
+|`discards.ratio`| 3 | Number of years to average over to get the future mean proportion of discards at age|
+|`catch.sel`| 3 |Number of years to average over to get the future selection patern (fishing mortality at age which will be scaled based on canges in $\bar{F}$)|
 
 One can also define if those assumptions will be based on the mean value over the time period set, or randomly sampled from historical values, through setting the argument `fun` to `mean` or `sample`, respectively.
 
@@ -176,8 +169,6 @@ These scenarios are defined by the target quantities one's trying to achieve. In
 - fbar
 - revenue
 - effort
-
-[IAGO NEED YOUR HELP HERE]
 
 When projecting the stock under the conditions defined by the scenario one can mix several quantities. For example it may be interesting to project an initial situation of growing the stock followed by a higher exploitation to evaluate how catches would behave.
 
@@ -247,7 +238,7 @@ The HCR we're going to explore is based on a target and a limit. The target is a
 
 Such HCR could be written as
 
-$if SSB_y > 0.5xB_{MSY} then F_{y+1} = F_{MSY} or else F_{y+1} = 0.8xF_{MSY}$
+$if \quad SSB_y > 0.5xB_{MSY} \quad then \quad F_{y+1} = F_{MSY} \quad or \quad else \quad F_{y+1} = 0.8xF_{MSY}$
 
 and coded like
 
@@ -287,19 +278,3 @@ if(ssb(stk00)[,ac(maxy)] > blim){
 ```{r, echo=FALSE, fig.cap="Projection of stock for 2 years following a HCR with a target of FMSY and limit of 50% SSBMSY"}
 plot(window(stk10, start = 2000))
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

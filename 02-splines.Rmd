@@ -300,7 +300,7 @@ idx <- ple4.indices
 
 The `mgcv` package provides various user input options to define the smoother functions used to construct the submodels.
 
-Under the `a4a` framework, the `mgcv` package is used to construct the model matrices of the submodels, which are then passed to the `ADMB` where the model fitting takes place.
+Under the `a4a` framework, the `mgcv` package is used to construct the model matrices of the submodels, which are then passed to `ADMB` where the model fitting takes place.
 
 The default option for the basis functions of the splines is `bs = tp` (thin plate splines) and is considered the optimal option. The user can define other smoothing basis functions using the `bs` argument. The user can refer to the `smooth.terms` of the `mgcv` package for a full description. There are many equivalent basis functions for the splines, and some of them have little or no effect in the context of `a4a`, since they differ only in the penalty term, which is not used in `a4a`.
 

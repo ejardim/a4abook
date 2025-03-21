@@ -20,7 +20,7 @@ Recruitment is the process of input to the population, it defines the number of 
 
 Fishing mortality on the other hand is mostly dependent on the human factor, it's related with the choice to fish and the way to fish. It's the outcome of the effort the fleet deploys, the selectivity of the gear used and the availability of individuals. For example, the productivity of the stock will be different if the fleet fishes in an area with lots of young fish using a small mesh size, from a fleet fishing in an area where young fish are not common and using a large mesh size.      
 
-For this section we'll be using the package `FLBRP` (REF) from the FLR family of packages.
+For this section we'll be using the package `FLBRP` [\flbrp] from the FLR family of packages.
 
 ```{r}
 library(FLBRP)
@@ -59,11 +59,11 @@ summary(brp0)
 
 The selection pattern and other quantities can be depicted by calling `plot()` on the specific `FLBRP` object's slot.
 
-```{r, selection pattern}
+```{r, selection pattern, echo=FALSE}
 xyplot(data~age,data=catch.sel(brp0),type=c('l', 'p'))
 ```
 
-```{r, relevant quantities for reference points}
+```{r, relevant quantities for reference points, echo=FALSE}
 xyplot(data~age|qname, data=FLQuants(sel=catch.sel(brp0),
  	dsel=discards.sel(brp0), swt=stock.wt(brp0),
 	cwt =catch.wt(brp0), mat= mat(brp0), m = m(brp0)),
@@ -79,7 +79,7 @@ refpts(brp0)[c('msy', ('fmax')), ]
 
 The depiction of the reference points with the method `plot()` shows recruitment as constant over all levels of biomass and set to $1$.
 
-```{r, reference points}
+```{r, reference points, echo=FALSE}
 plot(brp0)
 ```
 
@@ -103,7 +103,7 @@ In the following example we'll use a Beverton and Holt stock recruitment reltion
 | Geomean  [REF] | | `geomean` | |
 
 
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, message=FALSE}
 sr0 <- as.FLSR(stk0, model=bevholt)
 sr0 <- fmle(sr0)
 plot(sr0)

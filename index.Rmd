@@ -1,7 +1,7 @@
 --- 
 title: "Fish stock assessment with R"
 subtitle: "The a4a Initiative"
-author: "John Doe and friends"
+author: "Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
@@ -25,25 +25,13 @@ library(knitr)
 library(formatR)
 #thm = knit_theme$get("bclear") #moe, bclear
 #knit_theme$set(thm)
-opts_chunk$set(dev='png', dev.args=list(type="cairo"))
+opts_chunk$set(dev='png', dev.args=list(type="cairo"), warning=FALSE)
 # lattice theme
 ```
 
-## License, documentation and development status
-
-The software is released under the [EUPL 1.1](https://joinup.ec.europa.eu/community/eupl/home).
-
-For more information on the a4a methodologies refer to [@EJ_etal_2014], [@Millar_etal_2014] and [@scott2016applied].
-
-Documentation can be found at <http://flr-project.org/FLa4a>. You are welcome to:
-
-- Submit suggestions and bug-reports at: <https://github.com/flr/FLa4a/issues>
-- Send a pull request on: <https://github.com/flr/FLa4a/>
-- Compose a friendly e-mail to the maintainer, see `packageDescription('FLa4a')`
-
 ## Installing and loading libraries
 
-To run the `FLa4a` methods the reader will need to install the package and its dependencies and load them. Some datasets are distributed with the package and as such need to be loaded too.
+To run the methods in this book the reader will need to install the `FLa4a` package [@fla4a] and its dependencies. Some datasets are distributed with the package and as such need to be loaded too.
 
 ```{R, eval=FALSE}
 # from CRAN
@@ -75,13 +63,13 @@ packageVersion("FLa4a")
 
 The target audience for this document are readers with some experience in R and some background on stock assessment.
 
-The document explains the approach being developed by `a4a` for fish stock assessment and scientific advice. It presents a mixture of text and code, where the first explains the concepts behind the methods, while the last shows how these can be run with the software provided. Moreover, having the code allows the reader to copy/paste and replicate the analysis presented here.
+The document explains the approach being developed by the Assessment for All Initiative (a4a) for fish stock assessment and scientific advice. It presents a mixture of text and code, where the first explains the concepts behind the methods, while the last shows how these can be run with the software provided. Moreover, having the code allows the reader to copy/paste and replicate the analysis presented here.
 
-The sections and subsections are as independent as possible, so it can be used as a reference document for the `FLa4a`. 
+The sections and subsections are as independent as possible, so they can be used as a reference document for the `FLa4a`.
 
 ## How to get help 
 
-`a4a` is build around S4 classes. S4 classes and methods in R offer an object-oriented programming framework but in order to access the documentation requires specific terminology. In this section we will demonstrate how to get information on the main building blocks of `a4a`.
+`FLa4a` is build using `R`'s object oriented implementation with S4 classes, and `FLCore`'s [@flr] class structures and methods. In order to access S4 methods and classes documentation the user needs to use specific terminology.
 
 For example, `FLStock` is one of our main components in order to run our stock assessment model. We can check the structure of an `FLStock` object as follows:
 
@@ -89,17 +77,19 @@ For example, `FLStock` is one of our main components in order to run our stock a
 showClass("FLStock")
 ```
 
-The object oriented structure of `a4a` gives the opportunity to change the behavior of a function according to the object that is applied to. For example we can check the available methods of the function `plot`
+The object oriented structure of `FLa4a` gives the opportunity to change the behavior of a function according to the object that is applied to. For example we can check the available methods of the function `plot`
 
 ```{r}
 showMethods("plot")
 ```
 
-by calling `showMethods` R prints all the possible uses of the **plot** function. We want to see what it does when it is called on an `FLStock` object with no other object. We observe that `plot` takes two arguments, `x` and `y`. So, in the signature of the `getMethod` function we are going to use, we need to define both `x` and `y`.
+by calling `showMethods` R prints all the possible uses of the `plot` function. We want to see what it does when it is called on an `FLStock` object with no other object. We observe that `plot` takes two arguments, `x` and `y`. So, in the signature of the `getMethod` function we are going to use, we need to define both `x` and `y`.
 
 ```{r}
 getMethod('plot', signature = list("FLStock","missing"))
 ```
+
+More information can be found in `R`'s documentation (https://www.r-project.org/).
 
 ## Notation
 
@@ -151,5 +141,16 @@ knitr::write_bib(c(
 ```
 
 
+## License, documentation and development status
+
+The software is released under the [EUPL 1.1](https://joinup.ec.europa.eu/community/eupl/home).
+
+For more information on the a4a methodologies refer to @EJ_etal_2014, @Millar_etal_2014 and @scott2016applied.
+
+Documentation can be found at <http://flr-project.org/FLa4a>. You are welcome to:
+
+- Submit suggestions and bug-reports at: <https://github.com/flr/FLa4a/issues>
+- Send a pull request on: <https://github.com/flr/FLa4a/>
+- Compose a friendly e-mail to the maintainer, see `packageDescription('FLa4a')`
 
 

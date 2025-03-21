@@ -74,13 +74,13 @@ plot(fit, ple4)
 plot(fit, ple4.indices)
 ```
 
-## Aggreagted catch in weight
+<!--## Aggreagted catch in weight
 
 Although a statistical catch-at-age model assumes errors in catch-at-age and, as such, errors in the total catch in weight, there's still interest to evaluate how close the model estimates are of the observed catch in weight[^07-diagnostics-1]. The implementation of this diagnopstics is done through the method `computeCatchDiagnostics()`, which can be visualized with `plot()` (Figure \@ref(fig:c_d)).
 
-[^07-diagnostics-1]: Some analysts believe this is the most important diagnostic since total catch should be trusted. Needless to say we don't agree and consider reported catch in weight one of the less reliable pieces of information available for stock assessment.
+[^07-diagnostics-1]: Some analysts believe this is the most important diagnostic since total catch should be trusted. Needless to say we don't agree and consider reported catch in weight one of the less reliable pieces of information available for stock assessment.-->
 
-```{r, catchdiag, fig.cap="Diagnostics for age aggregated catch in weight"}
+```{r, catchdiag, fig.cap="Diagnostics for age aggregated catch in weight", eval=FALSE, echo=FALSE}
 c_d <- computeCatchDiagnostics(fit, ple4)
 plot(c_d)
 ```
@@ -184,9 +184,9 @@ plot(window(stks, start=2005))
 
 ## Hindcast
 
-A hindcast is a method used in modeling and simulation where historical data is used to test and validate predictive models. In a hindcast, known outcomes from the past are compared with the model's predictions to assess the model's accuracy and performance. The primary goal of hindcasting is to improve the reliability and accuracy of predictive models by identifying discrepancies between predicted and actual outcomes and adjusting model parameters accordingly (Wilks, 2011). The term retroactive forecasting is used by Mason and Mimmack (2002) to denote the form of hindcasting in which forecasts are made for past years (e.g. 2006–2010) using data prior to those years (perhaps 1970–2005). The terminology ex post is used in business forecasting, referring to predictions for historical periods for which verification data are already available at the time of forecast.
+A hindcast is a method used in modeling and simulation where historical data is used to test and validate predictive models. In a hindcast, known outcomes from the past are compared with the model's predictions to assess the model's accuracy and performance. The primary goal of hindcasting is to improve the reliability and accuracy of predictive models by identifying discrepancies between predicted and actual outcomes and adjusting model parameters accordingly [@hc2002]. The term retroactive forecasting is used by @hc2002 to denote the form of hindcasting in which forecasts are made for past years (e.g. 2006–2010) using data prior to those years (perhaps 1970–2005). The terminology ex post is used in business forecasting, referring to predictions for historical periods for which verification data are already available at the time of forecast.
 
-For  this exercise we'll use the package `a4adiags` hindcast method, which follows the suggestions by Carvalho, et.al (2021) and Kell, et.al (2016). The hindacast is carried out by sequentially removing the most recent year in the data, similar to a retrospective analysis, refit the stock assessment model and project one year ahead. The Mean Absolute Scale Error (MASE) (Carvalho, et.al, 2021) is used to assess the predictive skill, a score higher than 1 indicates that the model forecasts have less skill than a random walk.
+For  this exercise we'll use the package `a4adiags` hindcast method, which follows the suggestions by @cookbook2021 and @KELL2016119. The hindacast is carried out by sequentially removing the most recent year in the data, similar to a retrospective analysis, refit the stock assessment model and project one year ahead. The Mean Absolute Scale Error (MASE) [@cookbook2021] is used to assess the predictive skill, a score higher than 1 indicates that the model forecasts have less skill than a random walk.
 
 ```{r}
 nyears <- 5
@@ -202,39 +202,3 @@ plotXval2(hc$indices)
 ```
 
 
-@article{CARVALHO2021105959,
-title = {A cookbook for using model diagnostics in integrated stock assessments},
-journal = {Fisheries Research},
-volume = {240},
-pages = {105959},
-year = {2021},
-issn = {0165-7836},
-doi = {https://doi.org/10.1016/j.fishres.2021.105959},
-url = {https://www.sciencedirect.com/science/article/pii/S0165783621000874},
-author = {Felipe Carvalho and Henning Winker and Dean Courtney and Maia Kapur and Laurence Kell and Massimiliano Cardinale and Michael Schirripa and Toshihide Kitakado and Dawit Yemane and Kevin R. Piner and Mark N. Maunder and Ian Taylor and Chantel R. Wetzel and Kathryn Doering and Kelli F. Johnson and Richard D. Methot}
-}
-
-@article{KELL2016119,
-title = {Evaluation of the prediction skill of stock assessment using hindcasting},
-journal = {Fisheries Research},
-volume = {183},
-pages = {119-127},
-year = {2016},
-issn = {0165-7836},
-doi = {https://doi.org/10.1016/j.fishres.2016.05.017},
-url = {https://www.sciencedirect.com/science/article/pii/S0165783616301540},
-author = {Laurence T. Kell and Ai Kimoto and Toshihide Kitakado}
-}
-
-References:
-- Wilks, D. S. (2011). *Statistical Methods in the Atmospheric Sciences* (3rd ed.). Academic Press.
-
-@article{article,
-author = {Mason, Simon and Mimmack, G.},
-year = {2002},
-month = {02},
-pages = {},
-title = {2001: Comparison of some statistical methods of probabilistic forecasting of ENSO},
-volume = {15},
-journal = {Journal of Climate}
-}

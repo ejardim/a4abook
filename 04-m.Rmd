@@ -42,7 +42,6 @@ m2
 Note that the `shape` model has `age` as a parameter of the model but is not set using the `params` argument.
 
 The `shape` model does not have to be age-based. For example, here we set up a `shape` model using Gislason's second estimator (Kenshington, 2013): $M_l=K(\frac{L_{\inf}}{l})^{1.5}$. We use the default `level` and `trend` models.
-% Current m() method is not ideal for length based methods as you cannot specify length range and half-widths to make compatible with FLStockLen
 
 ```{r, gis_shape}
 shape_len <- FLModelSim(model=~K*(linf/len)^1.5, params=FLPar(linf=60, K=0.4))
@@ -120,8 +119,6 @@ m4 <- a4aM(shape=shape4, level=mvrnorm(100, level4), trend=mvrnorm(100, trend4))
 ## Adding uncertainty to natural mortality parameters with statistical copulas
 
 We can also use copulas to add parameter uncertainty to the natural mortality model, similar to the way we use them for the growth model in Section \ref{sec:growth_triangle_cop}. As stated above these processes make use of the methods implemented for the `FLModelSim` class.
-
-% EXPAND...
 
 In the following example we'll use again Gislason's second estimator, $M_l=K(\frac{L_{\inf}}{l})^{1.5}$ and a triangle copula to model parameter uncertainty. The method `mvrtriangle()` is used to create 1000 iterations. 
 

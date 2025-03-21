@@ -21,7 +21,7 @@ submodels(fit0)
 
 Simulation and prediction in FLa4a is based on two functions: `simulate` and `predict`.
 
-## predict()
+## predict
 
 Predict simply computes the quantities of interest using the estimated coefficients and the design matrix of the model, defined via the formulas in the submodels. In the case of predicting from a fitted model, a list is returned, with one element for each submodel, and each element of the list is a `FLQuants` object with the following `FLQuant`s
 
@@ -38,8 +38,7 @@ stk.pred <- ple4 + fit0
 
 The `+` operator is used to add the predictions from the model to the initial stock object. Then quantities can be extracted as normal, `ssb(stk.pred)`.
 
-
-## simulate()
+## simulate
 
 Simulations are always done by generating random draws from a multivariate normal distribution with mean given by the coeffients of the model, and variance matrix given by the estimated covariance matrix of the coefficients (in practice this is a submatrix of the inverse of the hessian matrix, see details below).
 
@@ -66,7 +65,7 @@ fits <- simulate(fit0, 100)
 flqs <- FLQuants(sim=iterMedians(stock.n(fits)), det=stock.n(fit0))
 ```
 
-```{r, sim, fig.cap="Median simulations VS fit"}
+```{r, sim, fig.cap="Median simulations VS fit", acho=FALSE}
 xyplot(data~year|age, groups=qname, data=flqs, type="l",
        scales=list(y=list(relation="free", draw=FALSE)),
        auto.key=list(points=FALSE, lines=TRUE, columns=2),
@@ -79,9 +78,7 @@ stks <- ple4 + fits
 plot(stks)
 ```
 
-
-
-## simulate() and predict()
+## simulate and predict
 
 The `simulate()` and `predict()` functions can be combined to simulate and then predict from each of the simulations. The following code simulates the model 100 times and then predicts the fitted quantitites from the model, resulting in simulations from the core model elements: initial age structure, recruitment, fishing mortality, survey catchability and observation variance. A plot of the initial age structure is shown as an example in Figure \@ref(fig:sim_ny1).
 
@@ -145,6 +142,6 @@ ggplot(data = dat, aes(x = year, y = `data.50%`)) +
 
 ## Details
 
-Simulate uses the variance-covariance matrix computed from the Hessian returned by `ADMB` and the fitted parameters, to parametrize a multivariate normal distribution. The simulations are carried out using the method `mvrnorm()` provided by the R package [MASS](http://cran.r-project.org/web/packages/MASS/).  Such an approach is often called a parametric bootstrap, and is a common method for generating uncertainty in the parameters of a model. It is imporatant to not that the method approximated the joint distribution of the model parameters as a multivariate normal, which is true if the model is linear and well specified.  Since stock assessment models tend to be non-linear, a more robust approach is to use MCMC methods instread.
+Simulate uses the variance-covariance matrix computed from the Hessian returned by `ADMB` and the fitted parameters, to parametrize a multivariate normal distribution. The simulations are carried out using the method `mvrnorm()` provided by the R package [MASS](http://cran.r-project.org/web/packages/MASS/).  Such an approach is often called a parametric bootstrap, and is a common method for generating uncertainty in the parameters of a model. It is imporatant to note that the method approximates the joint distribution of the model parameters as a multivariate normal, which is true if the model is linear and well specified.  Since stock assessment models tend to be non-linear, a more robust approach is to use MCMC methods instread.
 
-Another point to note, is that in order to save space, only the  subset of the covariance matrix is stored for each submodel. This in effect sets any correlations between submodel parameters to zero in simulations.
+Another point to note, is that in order to save space, only the subset of the covariance matrix is stored for each submodel. This in effect sets any correlations between submodel parameters to zero in simulations.

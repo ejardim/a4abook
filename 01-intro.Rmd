@@ -14,7 +14,7 @@ The modular nature of a4a allows for the integration of data from diverse source
 
 While a4a simplifies traditional assessment approaches, it faces challenges such as ensuring the quality and consistency of input data, especially in regions with limited monitoring infrastructure. To address this, the initiative incorporates uncertainty into its models, leveraging MCMC frameworks and other statistical tools to account for variability in data quality and ecosystem processes.
 
-[EJ TO CHECK] The a4a framework has been applied in various European fisheries to improve stock assessment practices, only in the Mediterranean Sea has been used for more than 200 stock assessments, as of 2024 in [(GFCM)](https://www.fao.org/gfcm/data/star/en/)] and [(STECF)](https://stecf.ec.europa.eu/data-dissemination/medbs_en). Moreover, its use in small pelagic fisheries demonstrated the utility of simple linear models in capturing key population dynamics without the need for data-intensive methods [@EJ_etal_2014].
+The a4a framework has been applied in various European fisheries to improve stock assessment practices, only in the Mediterranean Sea has been used for more than 200 stock assessments, as of 2024 in [(GFCM)](https://www.fao.org/gfcm/data/star/en/)] and [(STECF)](https://stecf.ec.europa.eu/data-dissemination/medbs_en). Moreover, its use in small pelagic fisheries demonstrated the utility of simple linear models in capturing key population dynamics without the need for data-intensive methods [@EJ_etal_2014].
 
 Some of the key elements of stock assessment are the quantity, quality and aggregation level of the data available. As in many other models the data will condition the type of models that can be used. In `a4a` the minimum set of data, loosely defined as a "moderate data" level, consists of:
 
@@ -42,7 +42,7 @@ Two-stage models are advantageous for practical applications, such as fisheries 
 
 Despite the intuitive advantages of integrated models, it is not a panacea for poor quality data or model structure uncertainty in stock assessments. There are several disadvantages, mostly related to model misspecification, the complexity of the resulting models, and the associated, often considerable, computational requirements (e.g. the use of remotely sensed environmental information). Consequently, in some situations, the traditional two-stage approach remains a better approach (Mounder and Punt, 2013).
 
-## Stock Assessment Process [ADD SOMETHING ABOUT USING SCA AS EXPLORATORY DATA TOOL]
+## Stock Assessment Process
 
 The following table breaks down the stock assessment process into three stages: (i) input data preparation, (ii) stock assessment model fitting, and (iii) provision of scientific advice. This breakdown is designed to explain the a4a approach, offering a general framework that outlines the sequence of analyses in the stock assessment process. Each stage includes a plethora of analyses and procedures tailored to the specific stock, considering the available data, time, and resources.
 
@@ -59,7 +59,7 @@ When data are limited, the stock assessment model requires more structure, but t
 
 On the other hand, since natural mortality and individual growth are very important processes acting at a very low level in terms of data processing, there are specific methods to deal with conditioning those processes, in case there's no data or limited data available, and to provide the opportuinity to propagate their uncertainty into stock assessment.
 
-## Stock assessment as a linear model [COLIN]
+## Stock assessment as a linear model
 
 The submodels formulation uses linear models, which opens the possibility of using the linear modelling tools available in `R`. For example, `mgcv` [@mgcv2017] gam formulas or factorial design formulas using `lm()`.
 
@@ -73,6 +73,8 @@ The 'language' of linear models has been developing within the statistical commu
 ## Data used in the book
 
 ### Plaice in area FAO 27, ICES area IV
+
+[ToDo]
 
 ### European hake in FAO 37, GSAs 1,5,6,7
 
