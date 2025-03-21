@@ -50,15 +50,14 @@ fit
 
 The method `sca` has other arguments which may be set by the user:
 
-- [covar:] a `FLQuant} with covariates;
-- [wkdir:] a folder (character) where the \ADMB files will be saved for posterior inspection by the user;
-- [verbose:] be more verbose (logical);
-- [fit:] type of fit (character),
-  - 'MP' runs the minimizer without trying to invert the hessian and as such doesn't return the covariance matrix of the parameters, normally used inside \MSE loops where parameter variance may not be relevant;
-  - 'assessment' runs minimizer and inverts hessian, returns the covariance matrix of the estimated parameters and the convergence criteria set in \ADMB;
-  - 'MCMC' runs \ADMB's MCMC fit
-- [center:] shall observations be centered before fitting (logical);
-- [mcmc:] \ADMB's MCMC arguments (character vector), must be paired with `fit="MCMC"}.
+| Argument | Description |
+|----:|:----|
+|covar| a `FLQuant` with covariates|
+|wkdir| a folder (character) where the \ADMB files will be saved for posterior inspection by the user|
+|verbose| be more verbose (logical)|
+|fit| type of fit (character): 'MP' runs the minimizer without trying to invert the hessian and as such doesn't return the covariance matrix of the parameters, normally used inside MSE loops where parameter variance may not be relevant; 'assessment' runs minimizer and inverts hessian, returns the covariance matrix of the estimated parameters and the convergence criteria set in `ADMB`; 'MCMC' runs `ADMB`'s MCMC fit|
+|center| shall observations be centered before fitting (logical)|
+|mcmc| `ADMB`'s MCMC arguments (character vector), must be paired with `fit="MCMC"|
 
 There are a set of methods for `a4a` fit objects which help manipulating `sca()` results, namely:
 
@@ -437,6 +436,18 @@ fit <- sca(ple4, ple4.indices, vmodel=vmod)
 
 ```{r, vm, echo=FALSE, fig.cap="Catch at age variance model with a year effect.", echo=FALSE}
 wireframe(predict(fit)$vmodel[[1]], zlab="F")
+```
+
+
+This model fits smoothers to different sets of ages.
+
+```{r}
+fmod <- ~s(age, k = 3, by = breakpts(age, 5)) + s(year, k = 10)
+fit <- sca(ple4, ple4.indices, fmodel = fmod)
+```
+
+```{r, danai01, echo=FALSE, fig.cap="Catch at age variance model with a year effect.", echo=FALSE}
+wireframe(harvest(fit), zlab="F")
 ```
 
 ## Data weigthing

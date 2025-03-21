@@ -1,6 +1,12 @@
 # Diagnostics \label{sec:diagn}
 
-There's a large number of diagnostics that can be computed for a stock assessment model, the \aFa framework implements several analysis of residuals, visualizations and statistics that can be used to evaluate the fit quality and chose across multiple fits.
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(FLa4a)
+data(ple4)
+data(ple4.indices)
+```
+
+There's a large number of diagnostics that can be computed for a stock assessment model, the `a4a` framework implements several analysis of residuals, visualizations and statistics that can be used to evaluate the fit quality and chose across multiple fits.
 
 ## Residuals
 
@@ -11,6 +17,7 @@ Consider $x_{ay}$ to be either a catch-at-age matrix ($C_{ay}$) or one abundance
 Raw residuals are compute by $d_{ay} = \log{x_{ay}} - \log{\tilde{x}_{ay}}$ and have distribution $N(0,\upsilon^2_{a})$. Standardized residuals will be compute with $d^s_{ay} = \frac{d_{ay}}{\hat{\upsilon}^2_{a}}$ where $\hat{\upsilon}^2_{a} = (n-1)^{-1} \sum_y(d_{ay})^2$. Pearson residuals scale raw residuals by the estimates of $\sigma^2$ or $\tau^2$, as such $d^p_{ay} = \frac{d_{ay}}{\tilde{\upsilon}^2_{a}}$ where $\tilde{\upsilon}^2_{a} = \tilde{\sigma}^2_{a}$ for catches, or $\tilde{\upsilon}^2_{a} = \tilde{\tau}^2_{a}$ for each index of abundance.
 
 The `residuals()` method will compute these residuals and generate a object which can be plotted using a set of packed methods. The argument `type` will allow the user to chose which residuals will be computed. By default the method computes standardized residuals.
+
 
 ```{r}
 fit <- sca(ple4, ple4.indices)
@@ -69,7 +76,7 @@ plot(fit, ple4.indices)
 
 ## Aggreagted catch in weight
 
-Although a statistical catch-at-age model assumes errors in catch-at-age and, as such, errors in the total catch in weight, there's still interest to evaluate how close the model estimates are of the observed catch in weight[^07-diagnostics-1]. The implementation of this diagnopstics is done through the method `computeCatchDiagnostics()`, which can be visualized with `plot()` (Figure \@ref(c_d)).
+Although a statistical catch-at-age model assumes errors in catch-at-age and, as such, errors in the total catch in weight, there's still interest to evaluate how close the model estimates are of the observed catch in weight[^07-diagnostics-1]. The implementation of this diagnopstics is done through the method `computeCatchDiagnostics()`, which can be visualized with `plot()` (Figure \@ref(fig:c_d)).
 
 [^07-diagnostics-1]: Some analysts believe this is the most important diagnostic since total catch should be trusted. Needless to say we don't agree and consider reported catch in weight one of the less reliable pieces of information available for stock assessment.
 
@@ -118,7 +125,116 @@ Green shading indicates no evidence $(p <  0.05)$ and red shading evidence $(p  
 
 ## Retrospective analysis
 
+A legacy analysis from back when stock assessments were done with VPAs (REF Sheppeard, ...), not so relevant with statistical catch at age models, which do not backwarsd fit fishing mortality and abundance as those models did. Cadrin (2025) notes the circularity of arguments when using retrospective analysis to make decisions about the stock assessment fit.
+
+Nevertheless, most experts still relly on this analysis to make decisions about the fit. The most common statistic used to summarize the retrospective analysis is Mohn's rho (REF).
+
+Retrospective analysis consists on removing the most recent year of data, refit the model and compare estimates of metrics, e.g. the estimate of fishing mortality in year y-1 by each fit. The rationale is that a stable well fitted model would have similar estimates in both fits.
+
+In the example below the fishing mortality model is kept for all fits, without updating the smoothness factor.
+
+```{r}
+fit0 <- sca(ple4, ple4.indices)
+n <- 5
+nret <- as.list(1:n)
+stks <- FLStocks(lapply(nret, function(x){window(ple4, end=(range(ple4)["maxyear"]-x))}))
+idxs <- lapply(nret, function(x){window(ple4.indices, end=(range(ple4)["maxyear"]-x))})
+fits <- scas(stks, idxs, fmodel=list(fmodel(fit0)))
+stks <- stks + fits
+stks[[6]] <- ple4 + simulate(fit0, 250)
+```
+
+Note fmodel doesn't change:
+
+```{r, echo=FALSE}
+lapply(fits, fmodel)
+```
+
+The retrospective plot shown below presents the current fit with uncertainty and each retrospective fit on top. If the retrospective fit is not whithin the confidence interval of the current fit the analyst can argue that the estiate is different and as such reflecting a "poor" fit.
+
+```{r, retro, fig.cap="Retrospective analysis of the plaice in ICES area IV stock"}
+plot(window(stks, start=2005))
+```
+
+One could use specific submodels and pass them to the fitting function `scas`, including with some adjustments to take into account the data reduction. In the next example the fishing mortality model is set reducing the smoothness taking into account the length of the dataset. Not considering the adjustment of the model to the new dataset may result in comparisons across models which are very different due to the relationship between information contained in the data and the number of parameters in the model. This issue is more relevant for stocks with shorter time series.
+
+```{r}
+n <- 5
+nret <- as.list(1:n)
+stks <- FLStocks(lapply(nret, function(x){window(ple4, end=(range(ple4)["maxyear"]-x))}))
+idxs <- lapply(nret, function(x){window(ple4.indices, end=(range(ple4)["maxyear"]-x))})
+# each model will have smootheness scaled to length of time series
+fmod <- lapply(stks, defaultFmod)
+fits <- scas(stks, idxs, fmodel=fmod)
+stks <- stks + fits
+stks[[6]] <- ple4 + simulate(fit0, 250)
+```
+
+Note fmodel changes:
+
+```{r, echo=FALSE}
+lapply(fits, fmodel)
+```
+
+And the retrospective plot
+
+```{r, retro2, fig.cap="Retrospective analysis of the plaice in ICES area IV stock"}
+plot(window(stks, start=2005))
+```
 
 ## Hindcast
 
+A hindcast is a method used in modeling and simulation where historical data is used to test and validate predictive models. In a hindcast, known outcomes from the past are compared with the model's predictions to assess the model's accuracy and performance. The primary goal of hindcasting is to improve the reliability and accuracy of predictive models by identifying discrepancies between predicted and actual outcomes and adjusting model parameters accordingly (Wilks, 2011). The term retroactive forecasting is used by Mason and Mimmack (2002) to denote the form of hindcasting in which forecasts are made for past years (e.g. 2006–2010) using data prior to those years (perhaps 1970–2005). The terminology ex post is used in business forecasting, referring to predictions for historical periods for which verification data are already available at the time of forecast.
 
+For  this exercise we'll use the package `a4adiags` hindcast method, which follows the suggestions by Carvalho, et.al (2021) and Kell, et.al (2016). The hindacast is carried out by sequentially removing the most recent year in the data, similar to a retrospective analysis, refit the stock assessment model and project one year ahead. The Mean Absolute Scale Error (MASE) (Carvalho, et.al, 2021) is used to assess the predictive skill, a score higher than 1 indicates that the model forecasts have less skill than a random walk.
+
+```{r}
+nyears <- 5
+# set number of year for average biology and selectivity
+nsq <- 3
+hc <- a4ahcxval(ple4, ple4.indices, nyears = nyears, nsq = nsq)
+```
+
+Figure \@ref(fig:hc) depicts the hincast results for the abudance indices used in the assessment. The MASE value is included in the strip above the plot. In this case one can see that 3 out of the 5 surveys are not better predictors than a random walk.
+
+```{r, hc, echo=FALSE, fig.cap="Survey predictions of year ahead indices in hindcast process. The MASE is presented in the strip about the index and is related to the predictive skill of the index."}
+plotXval2(hc$indices)
+```
+
+
+@article{CARVALHO2021105959,
+title = {A cookbook for using model diagnostics in integrated stock assessments},
+journal = {Fisheries Research},
+volume = {240},
+pages = {105959},
+year = {2021},
+issn = {0165-7836},
+doi = {https://doi.org/10.1016/j.fishres.2021.105959},
+url = {https://www.sciencedirect.com/science/article/pii/S0165783621000874},
+author = {Felipe Carvalho and Henning Winker and Dean Courtney and Maia Kapur and Laurence Kell and Massimiliano Cardinale and Michael Schirripa and Toshihide Kitakado and Dawit Yemane and Kevin R. Piner and Mark N. Maunder and Ian Taylor and Chantel R. Wetzel and Kathryn Doering and Kelli F. Johnson and Richard D. Methot}
+}
+
+@article{KELL2016119,
+title = {Evaluation of the prediction skill of stock assessment using hindcasting},
+journal = {Fisheries Research},
+volume = {183},
+pages = {119-127},
+year = {2016},
+issn = {0165-7836},
+doi = {https://doi.org/10.1016/j.fishres.2016.05.017},
+url = {https://www.sciencedirect.com/science/article/pii/S0165783616301540},
+author = {Laurence T. Kell and Ai Kimoto and Toshihide Kitakado}
+}
+
+References:
+- Wilks, D. S. (2011). *Statistical Methods in the Atmospheric Sciences* (3rd ed.). Academic Press.
+
+@article{article,
+author = {Mason, Simon and Mimmack, G.},
+year = {2002},
+month = {02},
+pages = {},
+title = {2001: Comparison of some statistical methods of probabilistic forecasting of ENSO},
+volume = {15},
+journal = {Journal of Climate}
+}

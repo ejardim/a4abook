@@ -13,8 +13,7 @@ cp2 <- 1-cp1
 fmod <- ~ s(year, k = 20, by = cp1) + s(year, k = 20, by = cp2) + s(age, k = 5)
 fit <- sca(ple4, ple4.indices, fmodel=fmod, covar=FLQuants(cp1=cp1, cp2=cp2))
 
-fmod <- ~s(year, k=20) + s(age, k=5)
-fit0 <- sca(ple4, ple4.indices, fmodel=fmod)
+This approach allows the inclusion of mean length in the catch of each fleet, as an indicator of fleet's selctivity, to model fishing mortality. This approach wouldn't model individual fleet selectivity, it would bring information about fleet selectivity to help fitting the fishing mortality.
 
 plot(FLStocks(f1=ple4+fit, f0=ple4+fit0))
 ```

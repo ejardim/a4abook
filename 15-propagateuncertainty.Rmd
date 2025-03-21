@@ -1,5 +1,11 @@
 # Propagate uncertainty into stock assessment
 
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(FLa4a)
+stk00 <- readRDS("data/MUT1_stk.rds")
+idx00 <- readRDS("data/MUT1_idx.rds")
+```
+
 In a multistage stock assessment process as described in this book, it's important to be able to propagate uncertainty across the different stages. This section describes methods to propagate uncertainty across stages and compares their outcomes in terms of stock assessment outputs.
 
 The idea is to add uncertainty as one moves from one stage to the next. If a stock has uncertainty on it's growth parameters, or natural mortality, or any other quantity estimated or set during the input data preparation, the model fit uncertainty will be added to it by generating iterations in the input data which are then used to fit the stock assessment model. The suggested workflow is:
@@ -21,12 +27,6 @@ In this section we give an example of how uncertainty in natural mortality, set 
 3. Take n draws of the fit and combine all
 
 These outcomes will be compared with a fit across M iterations without any sampling from the fit.
-
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
-library(FLa4a)
-stk00 <- readRDS("data/MUT1_stk.rds")
-idx00 <- readRDS("data/MUT1_idx.rds")
-```
 
 Using `a4a` methods we'll model natural mortality using a negative exponential model by age, Jensen's estimator for the level and no time trend. We include multivariate normal uncertainty using the `mvrnorm()` method and create 250 iterations.
 
