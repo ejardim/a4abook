@@ -128,3 +128,110 @@ For example begining with a simple `a4a` fit:
   fit0
 ```
 
+[SECTION NEEDS REVISION, WE NOW HAVE STKMODEL]
+Within the sca fit object there's a collection of submodels for each component of the `a4a` stock assessment model (fishing mortality, survey catchability, stock recruitment relationship, initial population and the observation variance for catch numbers and survey indices). For readability the following example will use the fishing mortality submodel although the methods and models described can be applied to each of the 5 submodels.
+
+The submodel can be extracted using:
+
+```{r,}
+ fmod <- fmodel(fit0)
+```
+
+inside this object is a formula, the coeficients estimated by the model and their covariance matrix.
+
+```{r,sim_pred_fmodel_coef, results = 'hide', eval=FALSE}
+ coef(fmod)
+ vcov(fmod)
+```
+
+it is also possible to get the data behind the fit and the design matrix required to get the fitted values
+
+
+[COLIN] do we still have the getX method?
+
+
+```{r,results = 'hide', eval=FALSE}
+ as.data.frame(fmod)
+ getX(fmod)
+```
+
+this makes it possble to check the fit manually like this (note that the data is centered in the model, which is addressed by adding the centering after the prediction is made, see code below):
+
+```{r, eval=FALSE} 
+ dat <- as.data.frame(fmod)
+ X <- getX(fmod)
+ b <- coef(fmod)
+ dat$fit <- exp(c(X %*% b))# + dat$data.centering)
+
+ plot(fit ~ age, type = "l", data = dat[dat$year == 2016,],
+      ylab = "Estimated fishing mortality at age",
+      ylim = c(0, max(dat$fit)), las = 1)
+```
+
+or simulate from the fit by resampling based on the variance matrix of the coefficients, which is done by simulating many coefficients (here called `bsim`).
+
+```{r, eval=FALSE}
+ # get the variance matrix of the coefficients and simulate
+ Sigma <- vcov(fmod)[,,1]
+ bsim <- mvrnorm(999, b, Sigma)
+
+ fit_sim <- exp(X %*% bsim)
+ dat$ci_lower <- apply(fit_sim, 1, quantile, p = 0.025)
+ dat$ci_upper <- apply(fit_sim, 1, quantile, p = 0.975)
+
+ plot(fit ~ age, type = "l", data = dat[dat$year == 2016,],
+      ylab = "Estimated fishing mortality at age",
+      ylim = c(0, max(dat$ci_upper)), las = 1)
+ lines(ci_lower ~ age, data = dat[dat$year == 2016,], lty = 2)
+ lines(ci_upper ~ age, data = dat[dat$year == 2016,], lty = 2)
+```
+
+The above code is to show how it is possible to use an `FLa4a` submodel to predict and simulate, and not intended to be used by the user.  The recomended way to predict from a submodel and make simulations is to use the `genFLQuant` function (and for finer control, there is also a `simulate` function). The above example can be done using `FLa4a` functions as follows:
+
+```{r, eval=FALSE}
+ fmod_fit <- genFLQuant(fmod)
+ dat <- as.data.frame(fmod_fit)
+
+ plot(data ~ age, type = "l", data = dat[dat$year == 2016,],
+      ylab = "Estimated fishing mortality at age",
+      ylim = c(0, max(dat$data)), las = 1)
+```
+or using the `ggplotFL` package:
+
+```{r, eval=FALSE}
+ fmod_fit <- genFLQuant(fmod)
+
+ ggplot(data = fmod_fit[,"2016"], aes(x = age, y = data)) + 
+   geom_point() + geom_line() + 
+   ylab("Estimated fishing mortality at age") +
+   ylim(0, max(fmod_fit))
+```
+
+and the simulations and confidence intervals are easily computed:
+
+```{r,  eval=FALSE}
+ # simulate 999 
+ fmod_fit_sim <- genFLQuant(fmod, nsim = 999)
+
+ # reduce to quantiles
+ fmod_fit_sim <- quantile(fmod_fit_sim[,"2016"], c(0.025, 0.50, 0.975))
+```
+
+plotting can be done by converting to a data.frame, reshaping and using standard `ggplot2` functionality
+
+```{r,  eval=FALSE}
+ dat <- 
+   reshape(
+     as.data.frame(fmod_fit_sim, drop=TRUE), 
+     timevar = "iter", idvar = "age", direction = "wide"  
+   )
+
+ ggplot(data=dat, aes(x = age, y = `data.50%`)) +
+   geom_ribbon(aes(ymin = `data.2.5%`, ymax = `data.97.5%`), 
+               fill="red", alpha = .15) +
+   geom_point() + geom_line() + 
+   ylab("Estimated fishing mortality at age") +
+   ylim(0, max(fmod_fit_sim))
+```
+
+

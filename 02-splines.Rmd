@@ -25,13 +25,13 @@ We denote linear model as:
 
 $$\mathbf{y} = \beta_0 + \beta_1\mathbf{x} + \mathbf{\epsilon}$$
 
-Where $\mathbf{y}$ are the observations, the parameters $\beta_0$ and  $\beta_1$ uniquely determine a straight line and $\mathbf{\epsilon}$ is the observation errors. Simple in its construction and representation, linear models can be limited when trying to capture the complexity of a real-world data set. The simplest form of a linear model is the mean or average of a data set:
+Where $\mathbf{y}$ are the observations, the parameters $\beta_0$ and  $\beta_1$ uniquely determine a straight line and $\mathbf{\epsilon}$ is the observation error. Simple in its construction and representation, linear models can be limited when trying to capture the complexity of a real-world data set. The simplest form of a linear model is the mean or average of a data set:
 
 $$\mathbf{y} = \beta_0 + \epsilon$$
 
 In the following graph of non linear data ($\mathbf{y}$), we fit a simple mean value of $\beta_0$ and a straight line model $\beta_0 + \beta_1\mathbf{x}$:
 
-```{r, fig.cap='Generated data with two linear fits, left a simple mean and right a straight line', fig.pos = 'H', fig.height = 4,echo=FALSE, message=FALSE, warning=FALSE}
+```{r, meanandlinear, fig.cap='Generated data with two linear fits, left a simple mean and right a straight line', fig.pos = 'H', fig.height = 4,echo=FALSE, message=FALSE, warning=FALSE}
 set.seed(1234)
 x = seq(0,10,0.1) + rnorm(101, 0, 1)
 y = 3*sin(x) + rnorm(101, 0, 0.8) +x/2
@@ -56,12 +56,12 @@ ggarrange(p2,p1)
 
 ```
 
-In this case our parameters are a $\beta_0 =$ `r round(mean(data$y),2)` for the mean (left) model, while for the straight line model, $\beta_0 =$ `r round(coef(model)[1], 2)` and $\beta_1 =$ `r round(coef(model)[2], 2)`. In Figure X1 we see how by adding to the constant model $\beta_0$ a multiple ($\beta_1$) of the variable $\mathbf{x}$, the model becomes a little more complex but it can now follow the general upward trend compared to the first line, although it fails to follow the peaks and the lows of the data set.
+In this case our parameters are a $\beta_0 =$ `r round(mean(data$y),2)` for the mean (left) model, while for the straight line model, $\beta_0 =$ `r round(coef(model)[1], 2)` and $\beta_1 =$ `r round(coef(model)[2], 2)`. In Figure \@ref(fig:meanandlinear) we see how by adding to the constant model $\beta_0$ a multiple ($\beta_1$) of the variable $\mathbf{x}$, the model becomes a little more complex but it can now follow the general upward trend compared to the first line, although it fails to follow the peaks and the lows of the data set.
 
-One of the mechanisms that splines use is to split the set of values of the predictor, in our case $\mathbf{x}$, in smaller compartments and fit in those compartments a specified model. The points where the splitting occurs are called *knots*. In Figure X2 we take a stepwise approach following the logic behind the use of piecewise polynomials in smoothing splines. First, we split our range of $\mathbf{x}$ values in 4 subsets, by defining our knots, then we take the average of $\mathbf{y}$ data for each of these compartments and in the final step we add a bit of complexity by fitting a straight line model in each of these subsets of our original dataset. Figure X2 demonstrates a naive approach to try and follow better the trends of the data, where in each step we manage to capture a bit more.
+One of the mechanisms that splines use is to split the set of values of the predictor, in our case $\mathbf{x}$, in smaller compartments and fit in those compartments a specified model. The points where the splitting occurs are called *knots*. In Figure \@ref(fig:knots) we take a stepwise approach following the logic behind the use of piecewise polynomials in smoothing splines. First, we split our range of $\mathbf{x}$ values in 4 subsets, by defining our knots, then we take the average of $\mathbf{y}$ data for each of these compartments and in the final step we add a bit of complexity by fitting a straight line model in each of these subsets of our original dataset. Figure X2 demonstrates a naive approach to try and follow better the trends of the data, where in each step we manage to capture a bit more.
 
 
-```{r, fig.cap='Generated data with 4 linear fits', fig.pos = 'H', echo=FALSE, message=FALSE, warning=FALSE}
+```{r, knots, fig.cap='Effect of breaking the data in sections, by knots, and fitting the mean or a linear model to each section.', fig.pos = 'H', echo=FALSE, message=FALSE, warning=FALSE}
 data <- data[order(x),]
 
 p3 <- ggplot(data, aes(x, y)) +
@@ -108,7 +108,7 @@ p5 <- ggplot(data, aes(x, y, group = model)) +
   geom_path(aes(y = predicted2), color = "blue", na.rm = TRUE)+
   scale_x_continuous(breaks = c(2,6,10))
 
-ggarrange(p3,p4,p5)
+ggarrange(p3,p4,p5, ncol=3)
 
 ```
 
@@ -135,17 +135,18 @@ P_{k-1}(x) & \text{if } t_k \leq x \leq b,
 \end{cases}
 $$
 
+**[Souldn't the above be t_{k-1}?]**
 
 The above definition is a simplified version of how splines work and can help as an intuitive approach. In reality splines need to satisfy some extra conditions like continuity, i.e. $P_{i-1}(t_{i}) = P_{i}(t_{i})$ on the points of junction, and of the first and second derivative. Depending on the basis functions the conditions may differ.
 
-In Figure X3 we demonstrate the fitting of cubic regression splines. In this case the highest order of the polynomials $P_i(x)$ are 3rd degree polynomials and it comprises 4 cubic segments, i.e basis functions.
+In Figure \@ref(fig:naivespline) we demonstrate the fitting of cubic regression splines. In this case the highest order of the polynomials $P_i(x)$ are 3rd degree polynomials and it comprises 4 cubic segments, i.e basis functions.
 
 The spline would be then as follows:
 
 $$\mathbf{y} = \beta_0 + \beta_1P_1(\mathbf{x}) + \beta_2P_2(\mathbf{x}) + \beta_3P_3(\mathbf{x}) + \beta_4P_4(\mathbf{x}) $$
 
 
-```{r, fig.cap = "A B-spline with 5 knots consists of 5 cubic polynomials",echo=FALSE, message=FALSE, warning=FALSE}
+```{r, naivespline, fig.cap = "A B-spline with 5 knots consists of 5 cubic polynomials",echo=FALSE, message=FALSE, warning=FALSE, warning=FALSE}
 library(splines)
 spline <- bs(data$x, df = 5, degree = 2, intercept = FALSE)
 cr <- lm(y ~ bs(data$x, df = 5, degree = 2, intercept = FALSE), data = data)
@@ -169,11 +170,11 @@ ggplot(data, aes(x, y)) +
 
 The B-spline fit above is constrained at the boundaries, by putting two of the five knots there, resulting in a linear behavior at the ends of the data range. This approach is helpful for data that has an approximately linear trend at the boundaries but exhibits non-linearity in the center.
 
-The knots in this regression splines are placed by quantiles through the variable space, so in the case where the data are evenly spread across the variable space the knots will be placed evenly.
+The knots in this regression spline are placed by quantiles through the variable space, so in the case where the data are evenly spread across the variable space the knots will be placed evenly.
 
-For the spline fitted above, there are $k$ polynomials plus an intercept (not shown) based on the knots (dashed lines):
+For the spline fitted above, there are $k$ polynomials plus an intercept (not shown) based on the knots (dashed lines). See Figure \@ref(fig:splinebasis) for a depiction of the basis functions.
 
-```{r, fig.cap = "basis functions for a B-spline with 5 knots", echo=FALSE, message = FALSE}
+```{r, splinebasis, fig.cap = "basis functions for a B-spline with 5 knots", echo=FALSE, message = FALSE, warning=FALSE}
 X <- spline
 
 df_x <- as.data.frame(X)
@@ -207,9 +208,11 @@ ggplot(data = df_xm_basis, aes(x = x, y = value, group = variable, colour = vari
 
 ```
 
-The polynomials transform the initial variable $\mathbf{x}$ and create a *model* matrix $\mathbf{X}$ with $k$ columns and $n$ rows, where $n$ is the number of data points. This new transformation is being then used to fit the model and estimate the $\beta_{0}, ... ,\beta_{k}$ coefficients, $\beta_0$ is required for the intercept. The fitted model results from $\mathbf{X} \mathbf{\beta}$
+**[A bit confused here ... should it be 5 polinomials? are you sure what you're calling intercet is correct?]**
 
-```{r}
+The polynomials transform the initial variable $\mathbf{x}$ and create a *model* matrix $\mathbf{X}$ with $k$ columns and $n$ rows, where $n$ is the number of data points. This new transformation is being then used to fit the model and estimate the $\beta_{0}, ... ,\beta_{k}$ coefficients, $\beta_0$ is required for the intercept. The fitted model results from $\mathbf{X} \mathbf{\beta}$ (Figure \@ref(fig:splinebasisandmodel)).
+
+```{r, splinebasisandmodel, fig.cap = "basis functions for a B-spline with 5 knots", echo=FALSE, message = FALSE, warning=FALSE}
 ggplot(data = df_xm_basis_b, aes(x = x, y = value, group = variable, colour = variable)) +
   geom_line() + geom_line(aes(y = fitted), color = "darkgreen", linewidth = 1)+
   geom_point(aes(y = obs), color = "darkgrey", alpha = 0.4)+ theme(legend.position="bottom")+ylab("y")
@@ -217,23 +220,26 @@ ggplot(data = df_xm_basis_b, aes(x = x, y = value, group = variable, colour = va
 
 ## Thin plate spline
 
-Thin plate splines are particularly useful for smoothing in multiple dimensions. However, they also work well with univariate data, as they offer flexibility and control over smoothness they are the default choice of the `mgcv` package.  Thin plate splines work differently from the splines we have shown so far. They are not composed of a sequence of local polynomials but from basis functions that are smooth across the entire range of the data, and capture increasing amounts of flexibility.
+Thin plate splines are particularly useful for smoothing in multiple dimensions. However, they also work well with univariate data, as they offer flexibility and control over smoothness they are the default choice of the `mgcv` package.  Thin plate splines work differently from the splines we have shown so far. They are not composed of a sequence of local polynomials but from basis functions that are smooth across the entire range of the data, and capture increasing amounts of flexibility (Figure \@ref(fig:tps)).
 
-```{r,fig.cap="Thin plate splines fit with k = 5"}
+```{r}
 # Fit a thin plate spline with gam()
 tps_model <- gam(y ~ s(x, k = 5, bs = "tp"), data = data)
 
-# Predict and plot
+# Predict
 data$tps_fit <- predict(tps_model)
 
+```
+
+```{r, tps, fig.cap="Thin plate splines fit with k = 5", echo=FALSE, message = FALSE, warning=FALSE}
 ggplot(data, aes(x, y)) +
   geom_point(alpha = 0.4) +
   geom_line(aes(y = tps_fit), color = "blue", linewidth = 1)
 ```
 
-Thin plate splines are ideal when you need a smooth fit without predefined knots. The notion of knots in thin plate splines does not have the same interpretation as for B-splines and other piecewise functions, and infact it is likely not useful to think of knots when using thin plate spines. Instead it is better to think of the number of basis functions used to represent the smooth term.
+Thin plate splines are ideal when you need a smooth fit without predefined knots. The notion of knots in thin plate splines does not have the same interpretation as for B-splines and other piecewise functions, and infact it is likely not useful to think of knots when using thin plate spines. Instead it is better to think of the number of basis functions used to represent the smooth term (Figure \@ref(fig:tpsbasis)).
 
-```{r, fig.cap = "basis functions for thin plate splines", echo=FALSE, message = FALSE}
+```{r, tpsbasis, fig.cap = "basis functions for thin plate splines", echo=FALSE, message = FALSE, warning=FALSE}
 X <- model.matrix(tps_model)
 
 df_x <- as.data.frame(X)
@@ -263,9 +269,9 @@ ggplot(data = df_xm_basis, aes(x = x, y = value, group = variable, colour = vari
 
 ```
 
-As in the example before, the fitted model results from $X\beta$
+As in the example before, the fitted model results from $X\beta$ (Figure \@ref(fig:tpsbasisandmodel)).
 
-```{r, message=FALSE}
+```{r, tpsbasisandmodel, fig.cap = "Basis functions for thin plate splines and the fitted model", echo=FALSE, message = FALSE, warning=FALSE}
 ggplot(data = df_xm_basis_b, aes(x = x, y = value, group = variable, colour = variable)) +
   geom_line() +
   geom_line(aes(y = fitted), color = "darkgreen", linewidth = 1) +
@@ -275,11 +281,11 @@ ggplot(data = df_xm_basis_b, aes(x = x, y = value, group = variable, colour = va
   ylim(-16, 15)
 ```
 
-## Comparison
+Figure \@ref(fig:spliesandtps) shows both models fitted to the dataset, both fits use the same number of knots.
 
-Plotting together thin plate spline and cubic spline fits with the same number of knots.
+**[Can we say a bit more here?]**
 
-```{r, fig.cap="Thin plate splines and cubic regression splines fit"}
+```{r, spliesandtps, fig.cap="Thin plate splines and cubic regression splines fit", echo=FALSE, message = FALSE, warning=FALSE}
 ggplot(data, aes(x, y)) +
   geom_point(alpha = 0.4) +
   geom_line(aes(y = tps_fit), color = "blue", linewidth = 1) +
@@ -287,7 +293,6 @@ ggplot(data, aes(x, y)) +
   labs(color = "Spline Type") +
   scale_color_manual(values = c("blue", "darkgreen"))
 ```
-
 
 ## The `mgcv` package inside `a4a`
 
@@ -320,10 +325,9 @@ fit03 <- sca(stk, idx, fmodel = fmod03)
 fit04 <- sca(stk, idx, fmodel = fmod04)
 ```
 
-In this example we are using the thin plate regression splines, cubic splines, b-splines, p-splines and adaptive smoothers
+In this example we are using the thin plate regression splines, cubic splines, b-splines, p-splines and adaptive smoothers. Figure \@ref(fig:a4asplines) shows the different fits together, where it's clear the differences are very small.
 
-
-```{r, eval = !drafting, fig.cap='Multiple fits of thin plate splines, cubic splines, b-splines, p-splines and adaptive smoothers'}
+```{r, a4asplines, eval = !drafting, fig.cap='Multiple fits of thin plate splines, cubic splines, b-splines, p-splines and adaptive smoothers', echo=FALSE, message = FALSE, warning=FALSE}
 plot(FLStocks(ThinPlate = stk + fit00,
               CubicRegressionSplines = stk + fit01,
               B_splines = stk + fit02,
@@ -331,7 +335,9 @@ plot(FLStocks(ThinPlate = stk + fit00,
               Adaptive_smoothers = stk + fit04))+theme(legend.position = 'bottom')
 ```
 
-Functionality of `mgcv` package provides also the option to work with interactions. Although `s(age, year)` can be defined, it uses a common bivariate spline for the two variables which are very different in scale. It is preferable if interactions are assumed to use `te(age, year)`. Again is up to the user to define the basis functions for the smoothers.
+Functionality of `mgcv` package provides also the option to work with interactions. Although `s(age, year)` can be defined, it uses a common bivariate spline for the two variables which are very different in scale. It is preferable if interactions are assumed to use `te(age, year)`. Again is up to the user to define the basis functions for the smoothers. Figure \@ref(fig:te) shows the differences when using different basis for the tensor product.
+
+**[The paragraph above needs a bit more explanation about what a tensor is]**
 
 ```{r, eval = !drafting}
 fmod03 <- ~te(age, year, k = c(3,10))
@@ -343,7 +349,7 @@ fit04 <- sca(stk, idx, fmodel = fmod04)
 fit05 <- sca(stk, idx, fmodel = fmod05)
 ```
 
-```{r, eval = !drafting}
+```{r, te, eval = !drafting, fig.cap='Multiple basis for a tensor and their effects in the fit', echo=FALSE, message = FALSE, warning=FALSE}
 plot(FLStocks(TP_tensor = stk + fit03,
               CB_tensor = stk + fit04,
               BS_tensor = stk + fit05))+theme(legend.position = 'bottom')
@@ -351,23 +357,25 @@ plot(FLStocks(TP_tensor = stk + fit03,
 
 ## On the number of knots $k$
 
-$k$ is the dimension of the basis used to represent the smooth term $s$. The default depends on the number of variables that the smooth is a function of. In practice k-1 (or k) sets the upper limit on the degrees of freedom associated with an s smooth (1 degree of freedom is usually lost to the intercept of the smooth). For the smooths the upper limit of the degrees of freedom is given by the product of the k values provided for each marginal smooth less one, for the constraint. The choice of the k is not critical and in general it must be large enough to allow to have enough degrees of freedom capturing the underlying process and small enough to prevent overfitting. A strong pattern in the residuals can be a sign of low $k$.
+$k$ is the dimension of the basis used to represent the smooth term $s$. The default depends on the number of variables that the smooth is a function of. In practice k-1 (or k) sets the upper limit on the degrees of freedom associated with an s smooth (1 degree of freedom is usually lost to the intercept of the smooth). For the smooths the upper limit of the degrees of freedom is given by the product of the k values provided for each marginal smooth less one, for the constraint. The choice of the k is not critical and in general it must be large enough to allow to have enough degrees of freedom capturing the underlying process and small enough to prevent overfitting (Figure \@ref(fig:ks)). A strong pattern in the residuals can be a sign of low $k$.
 
 ```{r, eval = !drafting}
 fmod00 <- ~s(age)+s(year, k = 5)
-fmod01 <- ~s(age)+s(year, k = 10) # cubic splines
-fmod02 <- ~s(age)+s(year, k = 20) # b-splines
+fmod01 <- ~s(age)+s(year, k = 10) # cubic splines [Why is this cubic]
+fmod02 <- ~s(age)+s(year, k = 20) # b-splines [and this b?]
 
 fit00 <- sca(stk, idx, fmodel = fmod00)
 fit01 <- sca(stk, idx, fmodel = fmod01)
 fit02 <- sca(stk, idx, fmodel = fmod02)
+```
 
+```{r, ks, eval = !drafting, fig.cap='Multiple ks and their effects in the fit', echo=FALSE, message = FALSE, warning=FALSE}
 plot(FLStocks('k=5' = stk + fit00,
               'k=10' = stk + fit01,
               'k=20' = stk + fit02))+theme(legend.position = 'bottom')
 ```
 
-We can check the result of choosing different $k$ values on BIC and GCV:
+We can check the result of choosing different $k$ values on BIC (Bayesian Information Criteria) and GCV (Generalized Cross Validation score) by running the stock assessment model with different k and looking at the values of those stastics (Figure \@ref(fig:bic)).
 
 ```{r, eval = !drafting}
 fmodsk <- list()
@@ -375,6 +383,10 @@ for(i in 10:20) {
   fmodsk[[paste0(i)]] <- as.formula(paste0("~s(age)+s(year, k=",i,")"))
 }
 
+myFits <- scas(FLStocks(stk), list(idx), fmodel = fmodsk)
+```
+
+```{r, bic, fig.cap="BIC (Bayesian Information Criteria) and GCV (Generalized Cross Validation score) profiles based on changing the value of k.", eval = !drafting, echo=FALSE, message = FALSE, warning=FALSE}
 myFits <- scas(FLStocks(stk), list(idx), fmodel = fmodsk)
 plot(myFits)
 ```
