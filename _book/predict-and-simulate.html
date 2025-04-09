@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>10 Predict and simulate  | Fish stock assessment with R</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="10 Predict and simulate  | Fish stock assessment with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-03-21" />
+<meta name="date" content="2025-04-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
 <link rel="prev" href="diagnostics.html"/>
 <link rel="next" href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"/>
-<script src="libs/jquery-3.6.1/jquery-3.6.1.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -168,7 +168,8 @@ div.csl-indent {
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#how-to-read-this-document"><i class="fa fa-check"></i><b>1.2</b> How to read this document</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#how-to-get-help"><i class="fa fa-check"></i><b>1.3</b> How to get help</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#notation"><i class="fa fa-check"></i><b>1.4</b> Notation</a></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#license-documentation-and-development-status"><i class="fa fa-check"></i><b>1.5</b> License, documentation and development status</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.5</b> Acknowledgements</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#license-documentation-and-development-status"><i class="fa fa-check"></i><b>1.6</b> License, documentation and development status</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
 <ul>
@@ -187,9 +188,8 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="3.1" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#generalize-to-polynomials"><i class="fa fa-check"></i><b>3.1</b> Generalize to polynomials</a></li>
 <li class="chapter" data-level="3.2" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#thin-plate-spline"><i class="fa fa-check"></i><b>3.2</b> Thin plate spline</a></li>
-<li class="chapter" data-level="3.3" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#comparison"><i class="fa fa-check"></i><b>3.3</b> Comparison</a></li>
-<li class="chapter" data-level="3.4" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#the-mgcv-package-inside-a4a"><i class="fa fa-check"></i><b>3.4</b> The <code>mgcv</code> package inside <code>a4a</code></a></li>
-<li class="chapter" data-level="3.5" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#on-the-number-of-knots-k"><i class="fa fa-check"></i><b>3.5</b> On the number of knots <span class="math inline">\(k\)</span></a></li>
+<li class="chapter" data-level="3.3" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#the-mgcv-package-inside-a4a"><i class="fa fa-check"></i><b>3.3</b> The <code>mgcv</code> package inside <code>a4a</code></a></li>
+<li class="chapter" data-level="3.4" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#on-the-number-of-knots-k"><i class="fa fa-check"></i><b>3.4</b> On the number of knots <span class="math inline">\(k\)</span></a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><i class="fa fa-check"></i><b>4</b> Modelling Individual Growth and Using Stochastic Slicing to Convert Length-based Data Into Age-based Data</a>
 <ul>
@@ -303,18 +303,24 @@ div.csl-indent {
 <li class="chapter" data-level="13.4" data-path="reference-points.html"><a href="reference-points.html#computing-user-specific-reference-points"><i class="fa fa-check"></i><b>13.4</b> Computing user specific reference points</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="propagate-uncertainty-into-stock-assessment.html"><a href="propagate-uncertainty-into-stock-assessment.html"><i class="fa fa-check"></i><b>14</b> Propagate uncertainty into stock assessment</a></li>
-<li class="chapter" data-level="15" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html"><i class="fa fa-check"></i><b>15</b> Annex - stock assessment workflow</a>
+<li class="chapter" data-level="15" data-path="modelling-fleet-selectivity.html"><a href="modelling-fleet-selectivity.html"><i class="fa fa-check"></i><b>15</b> Modelling fleet selectivity</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-mean-model"><i class="fa fa-check"></i><b>15.1</b> The “mean” model</a></li>
-<li class="chapter" data-level="15.2" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-age-effects"><i class="fa fa-check"></i><b>15.2</b> The age effects</a></li>
-<li class="chapter" data-level="15.3" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#year-effect-on-fishing-mortality"><i class="fa fa-check"></i><b>15.3</b> Year effect on fishing mortality</a></li>
-<li class="chapter" data-level="15.4" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#year-effect-on-catchability"><i class="fa fa-check"></i><b>15.4</b> Year effect on catchability</a></li>
-<li class="chapter" data-level="15.5" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-initial-year-population-abundance-model-aka-n1"><i class="fa fa-check"></i><b>15.5</b> The initial year population abundance model, aka N1</a></li>
-<li class="chapter" data-level="15.6" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-stock-recruitment-submodel"><i class="fa fa-check"></i><b>15.6</b> The stock recruitment submodel</a></li>
-<li class="chapter" data-level="15.7" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-variance-submodel"><i class="fa fa-check"></i><b>15.7</b> The variance submodel</a></li>
-<li class="chapter" data-level="15.8" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#final-comments"><i class="fa fa-check"></i><b>15.8</b> Final comments</a></li>
+<li class="chapter" data-level="15.1" data-path="modelling-fleet-selectivity.html"><a href="modelling-fleet-selectivity.html#modelling-fleets-with-different-proportions-of-the-catch-covariate"><i class="fa fa-check"></i><b>15.1</b> Modelling fleets with different proportions of the catch covariate</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>16</b> References</a></li>
+<li class="chapter" data-level="16" data-path="modelling-spatial-effects.html"><a href="modelling-spatial-effects.html"><i class="fa fa-check"></i><b>16</b> Modelling spatial effects</a></li>
+<li class="chapter" data-level="17" data-path="sections-to-be-added.html"><a href="sections-to-be-added.html"><i class="fa fa-check"></i><b>17</b> Sections to be added!?</a></li>
+<li class="chapter" data-level="18" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html"><i class="fa fa-check"></i><b>18</b> Annex - stock assessment workflow</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-mean-model"><i class="fa fa-check"></i><b>18.1</b> The “mean” model</a></li>
+<li class="chapter" data-level="18.2" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-age-effects"><i class="fa fa-check"></i><b>18.2</b> The age effects</a></li>
+<li class="chapter" data-level="18.3" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#year-effect-on-fishing-mortality"><i class="fa fa-check"></i><b>18.3</b> Year effect on fishing mortality</a></li>
+<li class="chapter" data-level="18.4" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#year-effect-on-catchability"><i class="fa fa-check"></i><b>18.4</b> Year effect on catchability</a></li>
+<li class="chapter" data-level="18.5" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-initial-year-population-abundance-model-aka-n1"><i class="fa fa-check"></i><b>18.5</b> The initial year population abundance model, aka N1</a></li>
+<li class="chapter" data-level="18.6" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-stock-recruitment-submodel"><i class="fa fa-check"></i><b>18.6</b> The stock recruitment submodel</a></li>
+<li class="chapter" data-level="18.7" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-variance-submodel"><i class="fa fa-check"></i><b>18.7</b> The variance submodel</a></li>
+<li class="chapter" data-level="18.8" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#final-comments"><i class="fa fa-check"></i><b>18.8</b> Final comments</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>19</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -339,8 +345,8 @@ div.csl-indent {
 <h1><span class="header-section-number">10</span> Predict and simulate <a href="predict-and-simulate.html#predict-and-simulate" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>To predict and simulate <code>R</code> uses the methods <code>predict()</code> and <code>simulate()</code>, which are implemented in <code>FLa4a</code>, adapted to work with several of the model classes. The simulate and predict methods only work if the mode object has be run with the option <code>fit = "assessment"</code>, and not <code>fit = "MP"</code>, the later is used when space and time are at a premium, for example in a Management Strategy Evaluation. In this chapter we will only cover prediction and simulation of full stock objects.</p>
 <p>This chapter is based on the following model:</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="predict-and-simulate.html#cb217-1" tabindex="-1"></a>fit0 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.index)</span>
-<span id="cb217-2"><a href="predict-and-simulate.html#cb217-2" tabindex="-1"></a><span class="fu">submodels</span>(fit0)</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="predict-and-simulate.html#cb203-1" tabindex="-1"></a>fit0 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.index)</span>
+<span id="cb203-2"><a href="predict-and-simulate.html#cb203-2" tabindex="-1"></a><span class="fu">submodels</span>(fit0)</span></code></pre></div>
 <pre><code>##   fmodel: ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
 ##  srmodel: ~factor(year)
 ##  n1model: ~s(age, k = 3)
@@ -353,8 +359,8 @@ div.csl-indent {
 <div id="predict" class="section level2 hasAnchor" number="10.1">
 <h2><span class="header-section-number">10.1</span> predict<a href="predict-and-simulate.html#predict" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Predict simply computes the quantities of interest using the estimated coefficients and the design matrix of the model, defined via the formulas in the submodels. In the case of predicting from a fitted model, a list is returned, with one element for each submodel, and each element of the list is a <code>FLQuants</code> object with the following <code>FLQuant</code>s</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="predict-and-simulate.html#cb219-1" tabindex="-1"></a>fit.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit0)</span>
-<span id="cb219-2"><a href="predict-and-simulate.html#cb219-2" tabindex="-1"></a><span class="fu">lapply</span>(fit.pred, names)</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="predict-and-simulate.html#cb205-1" tabindex="-1"></a>fit.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit0)</span>
+<span id="cb205-2"><a href="predict-and-simulate.html#cb205-2" tabindex="-1"></a><span class="fu">lapply</span>(fit.pred, names)</span></code></pre></div>
 <pre><code>## $stkmodel
 ## [1] &quot;harvest&quot; &quot;rec&quot;     &quot;ny1&quot;    
 ## 
@@ -364,20 +370,20 @@ div.csl-indent {
 ## $vmodel
 ## [1] &quot;catch&quot; &quot;IND&quot;</code></pre>
 <p>This allows easy access to the parameterised parts of the model, for example the initial population structure, <code>ny1</code>, can be accessed via <code>fit.pred$stkmodel$ny1</code>. If the whole stock is of interest, for example, to inspect model predictions of SSB, then the following code can be used</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="predict-and-simulate.html#cb221-1" tabindex="-1"></a>stk.pred <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> fit0</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="predict-and-simulate.html#cb207-1" tabindex="-1"></a>stk.pred <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> fit0</span></code></pre></div>
 <p>The <code>+</code> operator is used to add the predictions from the model to the initial stock object. Then quantities can be extracted as normal, <code>ssb(stk.pred)</code>.</p>
 </div>
 <div id="simulate" class="section level2 hasAnchor" number="10.2">
 <h2><span class="header-section-number">10.2</span> simulate<a href="predict-and-simulate.html#simulate" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Simulations are always done by generating random draws from a multivariate normal distribution with mean given by the coeffients of the model, and variance matrix given by the estimated covariance matrix of the coefficients (in practice this is a submatrix of the inverse of the hessian matrix, see details below).</p>
 <p>simulate performed on a fitted model returns a fitted model with the same structure as the original model, but with the model parameters replaced by <code>nsim</code> simulated parameters. The following code simulates the model 200 times, and a histogram of the result show in Figure @ref(fig:predsim_hist).</p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="predict-and-simulate.html#cb222-1" tabindex="-1"></a>sim.fit <span class="ot">&lt;-</span> <span class="fu">simulate</span>(fit0, <span class="at">nsim =</span> <span class="dv">200</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="predict-and-simulate.html#cb223-1" tabindex="-1"></a><span class="fu">hist</span>(</span>
-<span id="cb223-2"><a href="predict-and-simulate.html#cb223-2" tabindex="-1"></a>  <span class="fu">exp</span>(<span class="fu">coef</span>(sim.fit)<span class="sc">$</span>vmodel<span class="sc">$</span>IND),</span>
-<span id="cb223-3"><a href="predict-and-simulate.html#cb223-3" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;200 draws of a model parameter&quot;</span>,</span>
-<span id="cb223-4"><a href="predict-and-simulate.html#cb223-4" tabindex="-1"></a>  <span class="at">nclass =</span> <span class="dv">20</span>,</span>
-<span id="cb223-5"><a href="predict-and-simulate.html#cb223-5" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;observation std error for survey index&quot;</span></span>
-<span id="cb223-6"><a href="predict-and-simulate.html#cb223-6" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="predict-and-simulate.html#cb208-1" tabindex="-1"></a>sim.fit <span class="ot">&lt;-</span> <span class="fu">simulate</span>(fit0, <span class="at">nsim =</span> <span class="dv">200</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="predict-and-simulate.html#cb209-1" tabindex="-1"></a><span class="fu">hist</span>(</span>
+<span id="cb209-2"><a href="predict-and-simulate.html#cb209-2" tabindex="-1"></a>  <span class="fu">exp</span>(<span class="fu">coef</span>(sim.fit)<span class="sc">$</span>vmodel<span class="sc">$</span>IND),</span>
+<span id="cb209-3"><a href="predict-and-simulate.html#cb209-3" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;200 draws of a model parameter&quot;</span>,</span>
+<span id="cb209-4"><a href="predict-and-simulate.html#cb209-4" tabindex="-1"></a>  <span class="at">nclass =</span> <span class="dv">20</span>,</span>
+<span id="cb209-5"><a href="predict-and-simulate.html#cb209-5" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;observation std error for survey index&quot;</span></span>
+<span id="cb209-6"><a href="predict-and-simulate.html#cb209-6" tabindex="-1"></a>)</span></code></pre></div>
 <div class="figure">
 <img src="_main_files/figure-html/predsim_hist-1.png" alt="Histogram of 200 draws from the approximate distribution of the estimate of survey observation error." width="672" />
 <p class="caption">
@@ -385,21 +391,21 @@ div.csl-indent {
 </p>
 </div>
 <p>The fitted model can also be used to generate some predictions, such as <code>harvest</code>, <code>stock.n</code> or <code>catch.n</code>. Figure <a href="predict-and-simulate.html#fig:sim">10.1</a> shows a comparison between the estimated values and the medians of the simulation, while Figure <a href="predict-and-simulate.html#fig:sim2">10.2</a> presents the stock summary of the simulated and fitted data.</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="predict-and-simulate.html#cb224-1" tabindex="-1"></a>fits <span class="ot">&lt;-</span> <span class="fu">simulate</span>(fit0, <span class="dv">100</span>)</span>
-<span id="cb224-2"><a href="predict-and-simulate.html#cb224-2" tabindex="-1"></a>flqs <span class="ot">&lt;-</span> <span class="fu">FLQuants</span>(<span class="at">sim=</span><span class="fu">iterMedians</span>(<span class="fu">stock.n</span>(fits)), <span class="at">det=</span><span class="fu">stock.n</span>(fit0))</span></code></pre></div>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="predict-and-simulate.html#cb225-1" tabindex="-1"></a><span class="fu">xyplot</span>(data<span class="sc">~</span>year<span class="sc">|</span>age, <span class="at">groups=</span>qname, <span class="at">data=</span>flqs, <span class="at">type=</span><span class="st">&quot;l&quot;</span>,</span>
-<span id="cb225-2"><a href="predict-and-simulate.html#cb225-2" tabindex="-1"></a>       <span class="at">scales=</span><span class="fu">list</span>(<span class="at">y=</span><span class="fu">list</span>(<span class="at">relation=</span><span class="st">&quot;free&quot;</span>, <span class="at">draw=</span><span class="cn">FALSE</span>)),</span>
-<span id="cb225-3"><a href="predict-and-simulate.html#cb225-3" tabindex="-1"></a>       <span class="at">auto.key=</span><span class="fu">list</span>(<span class="at">points=</span><span class="cn">FALSE</span>, <span class="at">lines=</span><span class="cn">TRUE</span>, <span class="at">columns=</span><span class="dv">2</span>),</span>
-<span id="cb225-4"><a href="predict-and-simulate.html#cb225-4" tabindex="-1"></a>       <span class="at">par.settings=</span><span class="fu">list</span>(<span class="at">superpose.line=</span><span class="fu">list</span>(<span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;gray35&quot;</span>, <span class="st">&quot;black&quot;</span>)),</span>
-<span id="cb225-5"><a href="predict-and-simulate.html#cb225-5" tabindex="-1"></a>       <span class="at">strip.background=</span><span class="fu">list</span>(<span class="at">col=</span><span class="st">&quot;gray90&quot;</span>)), <span class="at">ylab=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="predict-and-simulate.html#cb210-1" tabindex="-1"></a>fits <span class="ot">&lt;-</span> <span class="fu">simulate</span>(fit0, <span class="dv">100</span>)</span>
+<span id="cb210-2"><a href="predict-and-simulate.html#cb210-2" tabindex="-1"></a>flqs <span class="ot">&lt;-</span> <span class="fu">FLQuants</span>(<span class="at">sim=</span><span class="fu">iterMedians</span>(<span class="fu">stock.n</span>(fits)), <span class="at">det=</span><span class="fu">stock.n</span>(fit0))</span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="predict-and-simulate.html#cb211-1" tabindex="-1"></a><span class="fu">xyplot</span>(data<span class="sc">~</span>year<span class="sc">|</span>age, <span class="at">groups=</span>qname, <span class="at">data=</span>flqs, <span class="at">type=</span><span class="st">&quot;l&quot;</span>,</span>
+<span id="cb211-2"><a href="predict-and-simulate.html#cb211-2" tabindex="-1"></a>       <span class="at">scales=</span><span class="fu">list</span>(<span class="at">y=</span><span class="fu">list</span>(<span class="at">relation=</span><span class="st">&quot;free&quot;</span>, <span class="at">draw=</span><span class="cn">FALSE</span>)),</span>
+<span id="cb211-3"><a href="predict-and-simulate.html#cb211-3" tabindex="-1"></a>       <span class="at">auto.key=</span><span class="fu">list</span>(<span class="at">points=</span><span class="cn">FALSE</span>, <span class="at">lines=</span><span class="cn">TRUE</span>, <span class="at">columns=</span><span class="dv">2</span>),</span>
+<span id="cb211-4"><a href="predict-and-simulate.html#cb211-4" tabindex="-1"></a>       <span class="at">par.settings=</span><span class="fu">list</span>(<span class="at">superpose.line=</span><span class="fu">list</span>(<span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;gray35&quot;</span>, <span class="st">&quot;black&quot;</span>)),</span>
+<span id="cb211-5"><a href="predict-and-simulate.html#cb211-5" tabindex="-1"></a>       <span class="at">strip.background=</span><span class="fu">list</span>(<span class="at">col=</span><span class="st">&quot;gray90&quot;</span>)), <span class="at">ylab=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:sim"></span>
 <img src="_main_files/figure-html/sim-1.png" alt="Median simulations VS fit" width="672" />
 <p class="caption">
 Figure 10.1: Median simulations VS fit
 </p>
 </div>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="predict-and-simulate.html#cb226-1" tabindex="-1"></a>stks <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> fits</span>
-<span id="cb226-2"><a href="predict-and-simulate.html#cb226-2" tabindex="-1"></a><span class="fu">plot</span>(stks)</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="predict-and-simulate.html#cb212-1" tabindex="-1"></a>stks <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> fits</span>
+<span id="cb212-2"><a href="predict-and-simulate.html#cb212-2" tabindex="-1"></a><span class="fu">plot</span>(stks)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:sim2"></span>
 <img src="_main_files/figure-html/sim2-1.png" alt="Stock summary of the simulated and fitted data" width="672" />
 <p class="caption">
@@ -410,7 +416,7 @@ Figure 10.2: Stock summary of the simulated and fitted data
 <div id="simulate-and-predict" class="section level2 hasAnchor" number="10.3">
 <h2><span class="header-section-number">10.3</span> simulate and predict<a href="predict-and-simulate.html#simulate-and-predict" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>simulate()</code> and <code>predict()</code> functions can be combined to simulate and then predict from each of the simulations. The following code simulates the model 100 times and then predicts the fitted quantitites from the model, resulting in simulations from the core model elements: initial age structure, recruitment, fishing mortality, survey catchability and observation variance. A plot of the initial age structure is shown as an example in Figure @ref(fig:sim_ny1).</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="predict-and-simulate.html#cb227-1" tabindex="-1"></a>sim.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(sim.fit)</span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="predict-and-simulate.html#cb213-1" tabindex="-1"></a>sim.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(sim.fit)</span></code></pre></div>
 <div class="figure">
 <img src="_main_files/figure-html/sim_ny1-1.png" alt="Simulations from the model prediction of initial age structure" width="672" />
 <p class="caption">
@@ -418,7 +424,7 @@ Figure 10.2: Stock summary of the simulated and fitted data
 </p>
 </div>
 <p>If interest is in the complete stock, then the <code>+</code> operator can be used to add the simulated quantities to the initial stock object, as shown below. The stock information can be extracted, such as SSB, a plot of which is shown in Figure @ref(fig:sim_ssb).</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="predict-and-simulate.html#cb228-1" tabindex="-1"></a>stk.sim <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> sim.fit</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="predict-and-simulate.html#cb214-1" tabindex="-1"></a>stk.sim <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> sim.fit</span></code></pre></div>
 <div class="figure">
 <img src="_main_files/figure-html/sim_ssb-1.png" alt="Simulations from the model prediction of initial age structure" width="672" />
 <p class="caption">

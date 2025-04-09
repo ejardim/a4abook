@@ -140,6 +140,9 @@ knitr::write_bib(c(
 ), 'packages.bib')
 ```
 
+## Acknowledgements
+
+
 
 ## License, documentation and development status
 

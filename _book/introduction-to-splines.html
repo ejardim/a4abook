@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3 Introduction to Splines | Fish stock assessment with R</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3 Introduction to Splines | Fish stock assessment with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-04-04" />
+<meta name="date" content="2025-04-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
 <link rel="prev" href="introduction.html"/>
 <link rel="next" href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"/>
-<script src="libs/jquery-3.6.1/jquery-3.6.1.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -123,6 +123,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -140,13 +162,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Stock assessment framework</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> cover-image: path to the social sharing image like images/cover.jpg</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Before starting</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#installing-and-loading-libraries"><i class="fa fa-check"></i><b>1.1</b> Installing and loading libraries</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#how-to-read-this-document"><i class="fa fa-check"></i><b>1.2</b> How to read this document</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#how-to-get-help"><i class="fa fa-check"></i><b>1.3</b> How to get help</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#notation"><i class="fa fa-check"></i><b>1.4</b> Notation</a></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#license-documentation-and-development-status"><i class="fa fa-check"></i><b>1.5</b> License, documentation and development status</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.5</b> Acknowledgements</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#license-documentation-and-development-status"><i class="fa fa-check"></i><b>1.6</b> License, documentation and development status</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
 <ul>
@@ -355,14 +378,13 @@ S(x) =
 P_1(x) &amp; \text{if } a \leq x &lt; t_1, \\
 P_2(x) &amp; \text{if } t_1 \leq x &lt; t_2, \\
 \quad\vdots \\
-P_{k-1}(x) &amp; \text{if } t_k \leq x \leq b,
+P_{k-1}(x) &amp; \text{if } t_{k-1} \leq x \leq b,
 \end{cases}
 \]</span></p>
-<p><strong>[Souldn’t the above be t_{k-1}?]</strong></p>
 <p>The above definition is a simplified version of how splines work and can help as an intuitive approach. In reality splines need to satisfy some extra conditions like continuity, i.e. <span class="math inline">\(P_{i-1}(t_{i}) = P_{i}(t_{i})\)</span> on the points of junction, and of the first and second derivative. Depending on the basis functions the conditions may differ.</p>
 <p>In Figure <a href="introduction-to-splines.html#fig:naivespline">3.3</a> we demonstrate the fitting of cubic regression splines. In this case the highest order of the polynomials <span class="math inline">\(P_i(x)\)</span> are 3rd degree polynomials and it comprises 4 cubic segments, i.e basis functions.</p>
 <p>The spline would be then as follows:</p>
-<p><span class="math display">\[\mathbf{y} = \beta_0 + \beta_1P_1(\mathbf{x}) + \beta_2P_2(\mathbf{x}) + \beta_3P_3(\mathbf{x}) + \beta_4P_4(\mathbf{x}) \]</span></p>
+<p><span class="math display">\[\mathbf{y} = \beta_0 + \beta_1P_1(\mathbf{x}) + \beta_2P_2(\mathbf{x}) + \beta_3P_3(\mathbf{x}) + \beta_4P_4(\mathbf{x})+\beta_5P_5(\mathbf{x}) \]</span></p>
 <div class="figure"><span style="display:block;" id="fig:naivespline"></span>
 <img src="_main_files/figure-html/naivespline-1.png" alt="A B-spline with 5 knots consists of 5 cubic polynomials" width="672" />
 <p class="caption">
@@ -390,11 +412,11 @@ Figure 3.5: basis functions for a B-spline with 5 knots
 <div id="thin-plate-spline" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Thin plate spline<a href="introduction-to-splines.html#thin-plate-spline" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Thin plate splines are particularly useful for smoothing in multiple dimensions. However, they also work well with univariate data, as they offer flexibility and control over smoothness they are the default choice of the <code>mgcv</code> package. Thin plate splines work differently from the splines we have shown so far. They are not composed of a sequence of local polynomials but from basis functions that are smooth across the entire range of the data, and capture increasing amounts of flexibility (Figure <a href="introduction-to-splines.html#fig:tps">3.6</a>).</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="introduction-to-splines.html#cb1-1" tabindex="-1"></a><span class="co"># Fit a thin plate spline with gam()</span></span>
-<span id="cb1-2"><a href="introduction-to-splines.html#cb1-2" tabindex="-1"></a>tps_model <span class="ot">&lt;-</span> <span class="fu">gam</span>(y <span class="sc">~</span> <span class="fu">s</span>(x, <span class="at">k =</span> <span class="dv">5</span>, <span class="at">bs =</span> <span class="st">&quot;tp&quot;</span>), <span class="at">data =</span> data)</span>
-<span id="cb1-3"><a href="introduction-to-splines.html#cb1-3" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="introduction-to-splines.html#cb1-4" tabindex="-1"></a><span class="co"># Predict</span></span>
-<span id="cb1-5"><a href="introduction-to-splines.html#cb1-5" tabindex="-1"></a>data<span class="sc">$</span>tps_fit <span class="ot">&lt;-</span> <span class="fu">predict</span>(tps_model)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="introduction-to-splines.html#cb13-1" tabindex="-1"></a><span class="co"># Fit a thin plate spline with gam()</span></span>
+<span id="cb13-2"><a href="introduction-to-splines.html#cb13-2" tabindex="-1"></a>tps_model <span class="ot">&lt;-</span> <span class="fu">gam</span>(y <span class="sc">~</span> <span class="fu">s</span>(x, <span class="at">k =</span> <span class="dv">5</span>, <span class="at">bs =</span> <span class="st">&quot;tp&quot;</span>), <span class="at">data =</span> data)</span>
+<span id="cb13-3"><a href="introduction-to-splines.html#cb13-3" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="introduction-to-splines.html#cb13-4" tabindex="-1"></a><span class="co"># Predict</span></span>
+<span id="cb13-5"><a href="introduction-to-splines.html#cb13-5" tabindex="-1"></a>data<span class="sc">$</span>tps_fit <span class="ot">&lt;-</span> <span class="fu">predict</span>(tps_model)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:tps"></span>
 <img src="_main_files/figure-html/tps-1.png" alt="Thin plate splines fit with k = 5" width="672" />
 <p class="caption">
@@ -430,17 +452,17 @@ Figure 3.9: Thin plate splines and cubic regression splines fit
 <p>Under the <code>a4a</code> framework, the <code>mgcv</code> package is used to construct the model matrices of the submodels, which are then passed to <code>ADMB</code> where the model fitting takes place.</p>
 <p>The default option for the basis functions of the splines is <code>bs = tp</code> (thin plate splines) and is considered the optimal option. The user can define other smoothing basis functions using the <code>bs</code> argument. The user can refer to the <code>smooth.terms</code> of the <code>mgcv</code> package for a full description. There are many equivalent basis functions for the splines, and some of them have little or no effect in the context of <code>a4a</code>, since they differ only in the penalty term, which is not used in <code>a4a</code>.</p>
 <p>Examples for different smoothing terms:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="introduction-to-splines.html#cb2-1" tabindex="-1"></a>fmod00 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;tp&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># thin plate splines</span></span>
-<span id="cb2-2"><a href="introduction-to-splines.html#cb2-2" tabindex="-1"></a>fmod01 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;cr&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># regression cubic splines</span></span>
-<span id="cb2-3"><a href="introduction-to-splines.html#cb2-3" tabindex="-1"></a>fmod02 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;bs&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># b-splines</span></span>
-<span id="cb2-4"><a href="introduction-to-splines.html#cb2-4" tabindex="-1"></a>fmod03 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;ps&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># p-splines</span></span>
-<span id="cb2-5"><a href="introduction-to-splines.html#cb2-5" tabindex="-1"></a>fmod04 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;ad&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># Adaptive smoothers</span></span>
-<span id="cb2-6"><a href="introduction-to-splines.html#cb2-6" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="introduction-to-splines.html#cb2-7" tabindex="-1"></a>fit00 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod00)</span>
-<span id="cb2-8"><a href="introduction-to-splines.html#cb2-8" tabindex="-1"></a>fit01 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod01)</span>
-<span id="cb2-9"><a href="introduction-to-splines.html#cb2-9" tabindex="-1"></a>fit02 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod02)</span>
-<span id="cb2-10"><a href="introduction-to-splines.html#cb2-10" tabindex="-1"></a>fit03 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod03)</span>
-<span id="cb2-11"><a href="introduction-to-splines.html#cb2-11" tabindex="-1"></a>fit04 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod04)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="introduction-to-splines.html#cb14-1" tabindex="-1"></a>fmod00 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;tp&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># thin plate splines</span></span>
+<span id="cb14-2"><a href="introduction-to-splines.html#cb14-2" tabindex="-1"></a>fmod01 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;cr&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># regression cubic splines</span></span>
+<span id="cb14-3"><a href="introduction-to-splines.html#cb14-3" tabindex="-1"></a>fmod02 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;bs&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># b-splines</span></span>
+<span id="cb14-4"><a href="introduction-to-splines.html#cb14-4" tabindex="-1"></a>fmod03 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;ps&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># p-splines</span></span>
+<span id="cb14-5"><a href="introduction-to-splines.html#cb14-5" tabindex="-1"></a>fmod04 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;ad&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># Adaptive smoothers</span></span>
+<span id="cb14-6"><a href="introduction-to-splines.html#cb14-6" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="introduction-to-splines.html#cb14-7" tabindex="-1"></a>fit00 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod00)</span>
+<span id="cb14-8"><a href="introduction-to-splines.html#cb14-8" tabindex="-1"></a>fit01 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod01)</span>
+<span id="cb14-9"><a href="introduction-to-splines.html#cb14-9" tabindex="-1"></a>fit02 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod02)</span>
+<span id="cb14-10"><a href="introduction-to-splines.html#cb14-10" tabindex="-1"></a>fit03 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod03)</span>
+<span id="cb14-11"><a href="introduction-to-splines.html#cb14-11" tabindex="-1"></a>fit04 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod04)</span></code></pre></div>
 <p>In this example we are using the thin plate regression splines, cubic splines, b-splines, p-splines and adaptive smoothers. Figure <a href="introduction-to-splines.html#fig:a4asplines">3.10</a> shows the different fits together, where it’s clear the differences are very small.</p>
 <div class="figure"><span style="display:block;" id="fig:a4asplines"></span>
 <img src="_main_files/figure-html/a4asplines-1.png" alt="Multiple fits of thin plate splines, cubic splines, b-splines, p-splines and adaptive smoothers" width="672" />
@@ -450,13 +472,13 @@ Figure 3.10: Multiple fits of thin plate splines, cubic splines, b-splines, p-sp
 </div>
 <p>Functionality of <code>mgcv</code> package provides also the option to work with interactions. Although <code>s(age, year)</code> can be defined, it uses a common bivariate spline for the two variables which are very different in scale. It is preferable if interactions are assumed to use <code>te(age, year)</code>. Again is up to the user to define the basis functions for the smoothers. Figure <a href="introduction-to-splines.html#fig:te">3.11</a> shows the differences when using different basis for the tensor product.</p>
 <p><strong>[The paragraph above needs a bit more explanation about what a tensor is]</strong></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="introduction-to-splines.html#cb3-1" tabindex="-1"></a>fmod03 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>))</span>
-<span id="cb3-2"><a href="introduction-to-splines.html#cb3-2" tabindex="-1"></a>fmod04 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>), <span class="at">bs =</span> <span class="st">&#39;cr&#39;</span>)</span>
-<span id="cb3-3"><a href="introduction-to-splines.html#cb3-3" tabindex="-1"></a>fmod05 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">te</span>(age, year, <span class="at">bs =</span> <span class="st">&#39;bs&#39;</span>)</span>
-<span id="cb3-4"><a href="introduction-to-splines.html#cb3-4" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="introduction-to-splines.html#cb3-5" tabindex="-1"></a>fit03 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod03)</span>
-<span id="cb3-6"><a href="introduction-to-splines.html#cb3-6" tabindex="-1"></a>fit04 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod04)</span>
-<span id="cb3-7"><a href="introduction-to-splines.html#cb3-7" tabindex="-1"></a>fit05 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod05)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="introduction-to-splines.html#cb15-1" tabindex="-1"></a>fmod03 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>))</span>
+<span id="cb15-2"><a href="introduction-to-splines.html#cb15-2" tabindex="-1"></a>fmod04 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>), <span class="at">bs =</span> <span class="st">&#39;cr&#39;</span>)</span>
+<span id="cb15-3"><a href="introduction-to-splines.html#cb15-3" tabindex="-1"></a>fmod05 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">te</span>(age, year, <span class="at">bs =</span> <span class="st">&#39;bs&#39;</span>)</span>
+<span id="cb15-4"><a href="introduction-to-splines.html#cb15-4" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="introduction-to-splines.html#cb15-5" tabindex="-1"></a>fit03 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod03)</span>
+<span id="cb15-6"><a href="introduction-to-splines.html#cb15-6" tabindex="-1"></a>fit04 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod04)</span>
+<span id="cb15-7"><a href="introduction-to-splines.html#cb15-7" tabindex="-1"></a>fit05 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod05)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:te"></span>
 <img src="_main_files/figure-html/te-1.png" alt="Multiple basis for a tensor and their effects in the fit" width="672" />
 <p class="caption">
@@ -467,13 +489,13 @@ Figure 3.11: Multiple basis for a tensor and their effects in the fit
 <div id="on-the-number-of-knots-k" class="section level2 hasAnchor" number="3.4">
 <h2><span class="header-section-number">3.4</span> On the number of knots <span class="math inline">\(k\)</span><a href="introduction-to-splines.html#on-the-number-of-knots-k" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><span class="math inline">\(k\)</span> is the dimension of the basis used to represent the smooth term <span class="math inline">\(s\)</span>. The default depends on the number of variables that the smooth is a function of. In practice k-1 (or k) sets the upper limit on the degrees of freedom associated with an s smooth (1 degree of freedom is usually lost to the intercept of the smooth). For the smooths the upper limit of the degrees of freedom is given by the product of the k values provided for each marginal smooth less one, for the constraint. The choice of the k is not critical and in general it must be large enough to allow to have enough degrees of freedom capturing the underlying process and small enough to prevent overfitting (Figure <a href="introduction-to-splines.html#fig:ks">3.12</a>). A strong pattern in the residuals can be a sign of low <span class="math inline">\(k\)</span>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="introduction-to-splines.html#cb4-1" tabindex="-1"></a>fmod00 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">5</span>)</span>
-<span id="cb4-2"><a href="introduction-to-splines.html#cb4-2" tabindex="-1"></a>fmod01 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># cubic splines [Why is this cubic]</span></span>
-<span id="cb4-3"><a href="introduction-to-splines.html#cb4-3" tabindex="-1"></a>fmod02 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">20</span>) <span class="co"># b-splines [and this b?]</span></span>
-<span id="cb4-4"><a href="introduction-to-splines.html#cb4-4" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="introduction-to-splines.html#cb4-5" tabindex="-1"></a>fit00 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod00)</span>
-<span id="cb4-6"><a href="introduction-to-splines.html#cb4-6" tabindex="-1"></a>fit01 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod01)</span>
-<span id="cb4-7"><a href="introduction-to-splines.html#cb4-7" tabindex="-1"></a>fit02 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod02)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="introduction-to-splines.html#cb16-1" tabindex="-1"></a>fmod00 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">5</span>)</span>
+<span id="cb16-2"><a href="introduction-to-splines.html#cb16-2" tabindex="-1"></a>fmod01 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># cubic splines [Why is this cubic]</span></span>
+<span id="cb16-3"><a href="introduction-to-splines.html#cb16-3" tabindex="-1"></a>fmod02 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">20</span>) <span class="co"># b-splines [and this b?]</span></span>
+<span id="cb16-4"><a href="introduction-to-splines.html#cb16-4" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="introduction-to-splines.html#cb16-5" tabindex="-1"></a>fit00 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod00)</span>
+<span id="cb16-6"><a href="introduction-to-splines.html#cb16-6" tabindex="-1"></a>fit01 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod01)</span>
+<span id="cb16-7"><a href="introduction-to-splines.html#cb16-7" tabindex="-1"></a>fit02 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod02)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:ks"></span>
 <img src="_main_files/figure-html/ks-1.png" alt="Multiple ks and their effects in the fit" width="672" />
 <p class="caption">
@@ -481,12 +503,12 @@ Figure 3.12: Multiple ks and their effects in the fit
 </p>
 </div>
 <p>We can check the result of choosing different <span class="math inline">\(k\)</span> values on BIC (Bayesian Information Criteria) and GCV (Generalized Cross Validation score) by running the stock assessment model with different k and looking at the values of those stastics (Figure <a href="introduction-to-splines.html#fig:bic">3.13</a>).</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="introduction-to-splines.html#cb5-1" tabindex="-1"></a>fmodsk <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb5-2"><a href="introduction-to-splines.html#cb5-2" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">20</span>) {</span>
-<span id="cb5-3"><a href="introduction-to-splines.html#cb5-3" tabindex="-1"></a>  fmodsk[[<span class="fu">paste0</span>(i)]] <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">paste0</span>(<span class="st">&quot;~s(age)+s(year, k=&quot;</span>,i,<span class="st">&quot;)&quot;</span>))</span>
-<span id="cb5-4"><a href="introduction-to-splines.html#cb5-4" tabindex="-1"></a>}</span>
-<span id="cb5-5"><a href="introduction-to-splines.html#cb5-5" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="introduction-to-splines.html#cb5-6" tabindex="-1"></a>myFits <span class="ot">&lt;-</span> <span class="fu">scas</span>(<span class="fu">FLStocks</span>(stk), <span class="fu">list</span>(idx), <span class="at">fmodel =</span> fmodsk)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="introduction-to-splines.html#cb17-1" tabindex="-1"></a>fmodsk <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb17-2"><a href="introduction-to-splines.html#cb17-2" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">20</span>) {</span>
+<span id="cb17-3"><a href="introduction-to-splines.html#cb17-3" tabindex="-1"></a>  fmodsk[[<span class="fu">paste0</span>(i)]] <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">paste0</span>(<span class="st">&quot;~s(age)+s(year, k=&quot;</span>,i,<span class="st">&quot;)&quot;</span>))</span>
+<span id="cb17-4"><a href="introduction-to-splines.html#cb17-4" tabindex="-1"></a>}</span>
+<span id="cb17-5"><a href="introduction-to-splines.html#cb17-5" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="introduction-to-splines.html#cb17-6" tabindex="-1"></a>myFits <span class="ot">&lt;-</span> <span class="fu">scas</span>(<span class="fu">FLStocks</span>(stk), <span class="fu">list</span>(idx), <span class="at">fmodel =</span> fmodsk)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:bic"></span>
 <img src="_main_files/figure-html/bic-1.png" alt="BIC (Bayesian Information Criteria) and GCV (Generalized Cross Validation score) profiles based on changing the value of k." width="672" />
 <p class="caption">

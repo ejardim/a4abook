@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>14 Propagate uncertainty into stock assessment | Fish stock assessment with R</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="14 Propagate uncertainty into stock assessment | Fish stock assessment with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-03-21" />
+<meta name="date" content="2025-04-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,8 +31,8 @@
   
   
 <link rel="prev" href="reference-points.html"/>
-<link rel="next" href="annex---stock-assessment-workflow.html"/>
-<script src="libs/jquery-3.6.1/jquery-3.6.1.min.js"></script>
+<link rel="next" href="modelling-fleet-selectivity.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -168,7 +168,8 @@ div.csl-indent {
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#how-to-read-this-document"><i class="fa fa-check"></i><b>1.2</b> How to read this document</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#how-to-get-help"><i class="fa fa-check"></i><b>1.3</b> How to get help</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#notation"><i class="fa fa-check"></i><b>1.4</b> Notation</a></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#license-documentation-and-development-status"><i class="fa fa-check"></i><b>1.5</b> License, documentation and development status</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.5</b> Acknowledgements</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#license-documentation-and-development-status"><i class="fa fa-check"></i><b>1.6</b> License, documentation and development status</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
 <ul>
@@ -187,9 +188,8 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="3.1" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#generalize-to-polynomials"><i class="fa fa-check"></i><b>3.1</b> Generalize to polynomials</a></li>
 <li class="chapter" data-level="3.2" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#thin-plate-spline"><i class="fa fa-check"></i><b>3.2</b> Thin plate spline</a></li>
-<li class="chapter" data-level="3.3" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#comparison"><i class="fa fa-check"></i><b>3.3</b> Comparison</a></li>
-<li class="chapter" data-level="3.4" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#the-mgcv-package-inside-a4a"><i class="fa fa-check"></i><b>3.4</b> The <code>mgcv</code> package inside <code>a4a</code></a></li>
-<li class="chapter" data-level="3.5" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#on-the-number-of-knots-k"><i class="fa fa-check"></i><b>3.5</b> On the number of knots <span class="math inline">\(k\)</span></a></li>
+<li class="chapter" data-level="3.3" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#the-mgcv-package-inside-a4a"><i class="fa fa-check"></i><b>3.3</b> The <code>mgcv</code> package inside <code>a4a</code></a></li>
+<li class="chapter" data-level="3.4" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#on-the-number-of-knots-k"><i class="fa fa-check"></i><b>3.4</b> On the number of knots <span class="math inline">\(k\)</span></a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><i class="fa fa-check"></i><b>4</b> Modelling Individual Growth and Using Stochastic Slicing to Convert Length-based Data Into Age-based Data</a>
 <ul>
@@ -303,18 +303,24 @@ div.csl-indent {
 <li class="chapter" data-level="13.4" data-path="reference-points.html"><a href="reference-points.html#computing-user-specific-reference-points"><i class="fa fa-check"></i><b>13.4</b> Computing user specific reference points</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="propagate-uncertainty-into-stock-assessment.html"><a href="propagate-uncertainty-into-stock-assessment.html"><i class="fa fa-check"></i><b>14</b> Propagate uncertainty into stock assessment</a></li>
-<li class="chapter" data-level="15" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html"><i class="fa fa-check"></i><b>15</b> Annex - stock assessment workflow</a>
+<li class="chapter" data-level="15" data-path="modelling-fleet-selectivity.html"><a href="modelling-fleet-selectivity.html"><i class="fa fa-check"></i><b>15</b> Modelling fleet selectivity</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-mean-model"><i class="fa fa-check"></i><b>15.1</b> The “mean” model</a></li>
-<li class="chapter" data-level="15.2" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-age-effects"><i class="fa fa-check"></i><b>15.2</b> The age effects</a></li>
-<li class="chapter" data-level="15.3" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#year-effect-on-fishing-mortality"><i class="fa fa-check"></i><b>15.3</b> Year effect on fishing mortality</a></li>
-<li class="chapter" data-level="15.4" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#year-effect-on-catchability"><i class="fa fa-check"></i><b>15.4</b> Year effect on catchability</a></li>
-<li class="chapter" data-level="15.5" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-initial-year-population-abundance-model-aka-n1"><i class="fa fa-check"></i><b>15.5</b> The initial year population abundance model, aka N1</a></li>
-<li class="chapter" data-level="15.6" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-stock-recruitment-submodel"><i class="fa fa-check"></i><b>15.6</b> The stock recruitment submodel</a></li>
-<li class="chapter" data-level="15.7" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-variance-submodel"><i class="fa fa-check"></i><b>15.7</b> The variance submodel</a></li>
-<li class="chapter" data-level="15.8" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#final-comments"><i class="fa fa-check"></i><b>15.8</b> Final comments</a></li>
+<li class="chapter" data-level="15.1" data-path="modelling-fleet-selectivity.html"><a href="modelling-fleet-selectivity.html#modelling-fleets-with-different-proportions-of-the-catch-covariate"><i class="fa fa-check"></i><b>15.1</b> Modelling fleets with different proportions of the catch covariate</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>16</b> References</a></li>
+<li class="chapter" data-level="16" data-path="modelling-spatial-effects.html"><a href="modelling-spatial-effects.html"><i class="fa fa-check"></i><b>16</b> Modelling spatial effects</a></li>
+<li class="chapter" data-level="17" data-path="sections-to-be-added.html"><a href="sections-to-be-added.html"><i class="fa fa-check"></i><b>17</b> Sections to be added!?</a></li>
+<li class="chapter" data-level="18" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html"><i class="fa fa-check"></i><b>18</b> Annex - stock assessment workflow</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-mean-model"><i class="fa fa-check"></i><b>18.1</b> The “mean” model</a></li>
+<li class="chapter" data-level="18.2" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-age-effects"><i class="fa fa-check"></i><b>18.2</b> The age effects</a></li>
+<li class="chapter" data-level="18.3" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#year-effect-on-fishing-mortality"><i class="fa fa-check"></i><b>18.3</b> Year effect on fishing mortality</a></li>
+<li class="chapter" data-level="18.4" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#year-effect-on-catchability"><i class="fa fa-check"></i><b>18.4</b> Year effect on catchability</a></li>
+<li class="chapter" data-level="18.5" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-initial-year-population-abundance-model-aka-n1"><i class="fa fa-check"></i><b>18.5</b> The initial year population abundance model, aka N1</a></li>
+<li class="chapter" data-level="18.6" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-stock-recruitment-submodel"><i class="fa fa-check"></i><b>18.6</b> The stock recruitment submodel</a></li>
+<li class="chapter" data-level="18.7" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-variance-submodel"><i class="fa fa-check"></i><b>18.7</b> The variance submodel</a></li>
+<li class="chapter" data-level="18.8" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#final-comments"><i class="fa fa-check"></i><b>18.8</b> Final comments</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>19</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -360,21 +366,21 @@ div.csl-indent {
 </ol>
 <p>These outcomes will be compared with a fit across M iterations without any sampling from the fit.</p>
 <p>Using <code>a4a</code> methods we’ll model natural mortality using a negative exponential model by age, Jensen’s estimator for the level and no time trend. We include multivariate normal uncertainty using the <code>mvrnorm()</code> method and create 250 iterations.</p>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="propagate-uncertainty-into-stock-assessment.html#cb305-1" tabindex="-1"></a>nits <span class="ot">&lt;-</span> <span class="dv">250</span></span>
-<span id="cb305-2"><a href="propagate-uncertainty-into-stock-assessment.html#cb305-2" tabindex="-1"></a></span>
-<span id="cb305-3"><a href="propagate-uncertainty-into-stock-assessment.html#cb305-3" tabindex="-1"></a>shape <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span><span class="fu">exp</span>(<span class="sc">-</span>age<span class="fl">-0.5</span>))</span>
-<span id="cb305-4"><a href="propagate-uncertainty-into-stock-assessment.html#cb305-4" tabindex="-1"></a>level <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span>k<span class="sc">^</span><span class="fl">0.66</span><span class="sc">*</span>t<span class="sc">^</span><span class="fl">0.57</span>, <span class="at">params =</span> <span class="fu">FLPar</span>(<span class="at">k=</span><span class="fl">0.4</span>, <span class="at">t=</span><span class="dv">10</span>),</span>
-<span id="cb305-5"><a href="propagate-uncertainty-into-stock-assessment.html#cb305-5" tabindex="-1"></a>                     <span class="at">vcov=</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.002</span>, <span class="fl">0.01</span>,<span class="fl">0.01</span>, <span class="dv">1</span>), <span class="at">ncol=</span><span class="dv">2</span>))</span>
-<span id="cb305-6"><a href="propagate-uncertainty-into-stock-assessment.html#cb305-6" tabindex="-1"></a><span class="co">#trend &lt;- FLModelSim(model=~b, params=FLPar(b=0.5), vcov=matrix(0.02))</span></span>
-<span id="cb305-7"><a href="propagate-uncertainty-into-stock-assessment.html#cb305-7" tabindex="-1"></a></span>
-<span id="cb305-8"><a href="propagate-uncertainty-into-stock-assessment.html#cb305-8" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">a4aM</span>(<span class="at">shape=</span>shape, <span class="at">level=</span>level)</span>
-<span id="cb305-9"><a href="propagate-uncertainty-into-stock-assessment.html#cb305-9" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(nits, m4)</span>
-<span id="cb305-10"><a href="propagate-uncertainty-into-stock-assessment.html#cb305-10" tabindex="-1"></a><span class="fu">range</span>(m4)[] <span class="ot">&lt;-</span> <span class="fu">range</span>(stk00)[]</span>
-<span id="cb305-11"><a href="propagate-uncertainty-into-stock-assessment.html#cb305-11" tabindex="-1"></a><span class="fu">range</span>(m4)[<span class="fu">c</span>(<span class="st">&quot;minmbar&quot;</span>,<span class="st">&quot;maxmbar&quot;</span>)]<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>)</span>
-<span id="cb305-12"><a href="propagate-uncertainty-into-stock-assessment.html#cb305-12" tabindex="-1"></a>flq <span class="ot">&lt;-</span> <span class="fu">m</span>(m4)[]</span>
-<span id="cb305-13"><a href="propagate-uncertainty-into-stock-assessment.html#cb305-13" tabindex="-1"></a><span class="fu">quant</span>(flq) <span class="ot">&lt;-</span> <span class="st">&quot;age&quot;</span></span>
-<span id="cb305-14"><a href="propagate-uncertainty-into-stock-assessment.html#cb305-14" tabindex="-1"></a>stk0 <span class="ot">&lt;-</span> <span class="fu">propagate</span>(stk00, nits)</span>
-<span id="cb305-15"><a href="propagate-uncertainty-into-stock-assessment.html#cb305-15" tabindex="-1"></a><span class="fu">m</span>(stk0) <span class="ot">&lt;-</span> flq</span></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="propagate-uncertainty-into-stock-assessment.html#cb291-1" tabindex="-1"></a>nits <span class="ot">&lt;-</span> <span class="dv">250</span></span>
+<span id="cb291-2"><a href="propagate-uncertainty-into-stock-assessment.html#cb291-2" tabindex="-1"></a></span>
+<span id="cb291-3"><a href="propagate-uncertainty-into-stock-assessment.html#cb291-3" tabindex="-1"></a>shape <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span><span class="fu">exp</span>(<span class="sc">-</span>age<span class="fl">-0.5</span>))</span>
+<span id="cb291-4"><a href="propagate-uncertainty-into-stock-assessment.html#cb291-4" tabindex="-1"></a>level <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span>k<span class="sc">^</span><span class="fl">0.66</span><span class="sc">*</span>t<span class="sc">^</span><span class="fl">0.57</span>, <span class="at">params =</span> <span class="fu">FLPar</span>(<span class="at">k=</span><span class="fl">0.4</span>, <span class="at">t=</span><span class="dv">10</span>),</span>
+<span id="cb291-5"><a href="propagate-uncertainty-into-stock-assessment.html#cb291-5" tabindex="-1"></a>                     <span class="at">vcov=</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.002</span>, <span class="fl">0.01</span>,<span class="fl">0.01</span>, <span class="dv">1</span>), <span class="at">ncol=</span><span class="dv">2</span>))</span>
+<span id="cb291-6"><a href="propagate-uncertainty-into-stock-assessment.html#cb291-6" tabindex="-1"></a><span class="co">#trend &lt;- FLModelSim(model=~b, params=FLPar(b=0.5), vcov=matrix(0.02))</span></span>
+<span id="cb291-7"><a href="propagate-uncertainty-into-stock-assessment.html#cb291-7" tabindex="-1"></a></span>
+<span id="cb291-8"><a href="propagate-uncertainty-into-stock-assessment.html#cb291-8" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">a4aM</span>(<span class="at">shape=</span>shape, <span class="at">level=</span>level)</span>
+<span id="cb291-9"><a href="propagate-uncertainty-into-stock-assessment.html#cb291-9" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(nits, m4)</span>
+<span id="cb291-10"><a href="propagate-uncertainty-into-stock-assessment.html#cb291-10" tabindex="-1"></a><span class="fu">range</span>(m4)[] <span class="ot">&lt;-</span> <span class="fu">range</span>(stk00)[]</span>
+<span id="cb291-11"><a href="propagate-uncertainty-into-stock-assessment.html#cb291-11" tabindex="-1"></a><span class="fu">range</span>(m4)[<span class="fu">c</span>(<span class="st">&quot;minmbar&quot;</span>,<span class="st">&quot;maxmbar&quot;</span>)]<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb291-12"><a href="propagate-uncertainty-into-stock-assessment.html#cb291-12" tabindex="-1"></a>flq <span class="ot">&lt;-</span> <span class="fu">m</span>(m4)[]</span>
+<span id="cb291-13"><a href="propagate-uncertainty-into-stock-assessment.html#cb291-13" tabindex="-1"></a><span class="fu">quant</span>(flq) <span class="ot">&lt;-</span> <span class="st">&quot;age&quot;</span></span>
+<span id="cb291-14"><a href="propagate-uncertainty-into-stock-assessment.html#cb291-14" tabindex="-1"></a>stk0 <span class="ot">&lt;-</span> <span class="fu">propagate</span>(stk00, nits)</span>
+<span id="cb291-15"><a href="propagate-uncertainty-into-stock-assessment.html#cb291-15" tabindex="-1"></a><span class="fu">m</span>(stk0) <span class="ot">&lt;-</span> flq</span></code></pre></div>
 <p>The M matrix for this stock is shown in Figure<a href="propagate-uncertainty-into-stock-assessment.html#fig:m">14.1</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:m"></span>
 <img src="_main_files/figure-html/m-1.png" alt="Natural mortality generated from M model's parameter uncertainty" width="672" />
@@ -383,25 +389,25 @@ Figure 14.1: Natural mortality generated from M model’s parameter uncertainty
 </p>
 </div>
 <p>We fit the same model to the new stock object which has uncertainty in the natural mortality and add estimation uncertainty following the methods described above.</p>
-<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="propagate-uncertainty-into-stock-assessment.html#cb306-1" tabindex="-1"></a><span class="co"># create objects to store the results</span></span>
-<span id="cb306-2"><a href="propagate-uncertainty-into-stock-assessment.html#cb306-2" tabindex="-1"></a>stk01 <span class="ot">&lt;-</span> stk0</span>
-<span id="cb306-3"><a href="propagate-uncertainty-into-stock-assessment.html#cb306-3" tabindex="-1"></a>stk02 <span class="ot">&lt;-</span> stk0</span>
-<span id="cb306-4"><a href="propagate-uncertainty-into-stock-assessment.html#cb306-4" tabindex="-1"></a>stk03 <span class="ot">&lt;-</span> <span class="fu">propagate</span>(stk00, nits<span class="sc">*</span>nits)</span>
-<span id="cb306-5"><a href="propagate-uncertainty-into-stock-assessment.html#cb306-5" tabindex="-1"></a></span>
-<span id="cb306-6"><a href="propagate-uncertainty-into-stock-assessment.html#cb306-6" tabindex="-1"></a><span class="co"># run without estimation unceratainty</span></span>
-<span id="cb306-7"><a href="propagate-uncertainty-into-stock-assessment.html#cb306-7" tabindex="-1"></a>stk04 <span class="ot">&lt;-</span> stk00 <span class="sc">+</span> <span class="fu">sca</span>(stk0, idx00)</span>
-<span id="cb306-8"><a href="propagate-uncertainty-into-stock-assessment.html#cb306-8" tabindex="-1"></a></span>
-<span id="cb306-9"><a href="propagate-uncertainty-into-stock-assessment.html#cb306-9" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nits){</span>
-<span id="cb306-10"><a href="propagate-uncertainty-into-stock-assessment.html#cb306-10" tabindex="-1"></a>    stk <span class="ot">&lt;-</span> <span class="fu">iter</span>(stk0, i)</span>
-<span id="cb306-11"><a href="propagate-uncertainty-into-stock-assessment.html#cb306-11" tabindex="-1"></a>    fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx00)</span>
-<span id="cb306-12"><a href="propagate-uncertainty-into-stock-assessment.html#cb306-12" tabindex="-1"></a>    <span class="co"># Method 1</span></span>
-<span id="cb306-13"><a href="propagate-uncertainty-into-stock-assessment.html#cb306-13" tabindex="-1"></a>    <span class="fu">iter</span>(stk01, i) <span class="ot">&lt;-</span> stk <span class="sc">+</span> <span class="fu">simulate</span>(fit, <span class="dv">1</span>)</span>
-<span id="cb306-14"><a href="propagate-uncertainty-into-stock-assessment.html#cb306-14" tabindex="-1"></a>    <span class="co"># Method 2</span></span>
-<span id="cb306-15"><a href="propagate-uncertainty-into-stock-assessment.html#cb306-15" tabindex="-1"></a>    <span class="fu">iter</span>(stk02, i) <span class="ot">&lt;-</span> <span class="fu">qapply</span>(stk <span class="sc">+</span> <span class="fu">simulate</span>(fit, nits), iterMedians)</span>
-<span id="cb306-16"><a href="propagate-uncertainty-into-stock-assessment.html#cb306-16" tabindex="-1"></a>    <span class="co"># Method 3</span></span>
-<span id="cb306-17"><a href="propagate-uncertainty-into-stock-assessment.html#cb306-17" tabindex="-1"></a>    <span class="fu">iter</span>(stk03, (nits<span class="sc">*</span>(i<span class="dv">-1</span>)<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>(nits<span class="sc">*</span>i)) <span class="ot">&lt;-</span> stk <span class="sc">+</span> <span class="fu">simulate</span>(fit, nits)</span>
-<span id="cb306-18"><a href="propagate-uncertainty-into-stock-assessment.html#cb306-18" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="propagate-uncertainty-into-stock-assessment.html#cb307-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">FLStocks</span>(<span class="st">&quot;M&quot;</span><span class="ot">=</span>stk04, <span class="st">&quot;M + 1 estimation sample&quot;</span><span class="ot">=</span>stk01, <span class="st">&quot;M + estimation median&quot;</span><span class="ot">=</span>stk02, <span class="st">&quot;M + n estimation samples&quot;</span><span class="ot">=</span>stk03))</span></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="propagate-uncertainty-into-stock-assessment.html#cb292-1" tabindex="-1"></a><span class="co"># create objects to store the results</span></span>
+<span id="cb292-2"><a href="propagate-uncertainty-into-stock-assessment.html#cb292-2" tabindex="-1"></a>stk01 <span class="ot">&lt;-</span> stk0</span>
+<span id="cb292-3"><a href="propagate-uncertainty-into-stock-assessment.html#cb292-3" tabindex="-1"></a>stk02 <span class="ot">&lt;-</span> stk0</span>
+<span id="cb292-4"><a href="propagate-uncertainty-into-stock-assessment.html#cb292-4" tabindex="-1"></a>stk03 <span class="ot">&lt;-</span> <span class="fu">propagate</span>(stk00, nits<span class="sc">*</span>nits)</span>
+<span id="cb292-5"><a href="propagate-uncertainty-into-stock-assessment.html#cb292-5" tabindex="-1"></a></span>
+<span id="cb292-6"><a href="propagate-uncertainty-into-stock-assessment.html#cb292-6" tabindex="-1"></a><span class="co"># run without estimation unceratainty</span></span>
+<span id="cb292-7"><a href="propagate-uncertainty-into-stock-assessment.html#cb292-7" tabindex="-1"></a>stk04 <span class="ot">&lt;-</span> stk00 <span class="sc">+</span> <span class="fu">sca</span>(stk0, idx00)</span>
+<span id="cb292-8"><a href="propagate-uncertainty-into-stock-assessment.html#cb292-8" tabindex="-1"></a></span>
+<span id="cb292-9"><a href="propagate-uncertainty-into-stock-assessment.html#cb292-9" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nits){</span>
+<span id="cb292-10"><a href="propagate-uncertainty-into-stock-assessment.html#cb292-10" tabindex="-1"></a>    stk <span class="ot">&lt;-</span> <span class="fu">iter</span>(stk0, i)</span>
+<span id="cb292-11"><a href="propagate-uncertainty-into-stock-assessment.html#cb292-11" tabindex="-1"></a>    fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx00)</span>
+<span id="cb292-12"><a href="propagate-uncertainty-into-stock-assessment.html#cb292-12" tabindex="-1"></a>    <span class="co"># Method 1</span></span>
+<span id="cb292-13"><a href="propagate-uncertainty-into-stock-assessment.html#cb292-13" tabindex="-1"></a>    <span class="fu">iter</span>(stk01, i) <span class="ot">&lt;-</span> stk <span class="sc">+</span> <span class="fu">simulate</span>(fit, <span class="dv">1</span>)</span>
+<span id="cb292-14"><a href="propagate-uncertainty-into-stock-assessment.html#cb292-14" tabindex="-1"></a>    <span class="co"># Method 2</span></span>
+<span id="cb292-15"><a href="propagate-uncertainty-into-stock-assessment.html#cb292-15" tabindex="-1"></a>    <span class="fu">iter</span>(stk02, i) <span class="ot">&lt;-</span> <span class="fu">qapply</span>(stk <span class="sc">+</span> <span class="fu">simulate</span>(fit, nits), iterMedians)</span>
+<span id="cb292-16"><a href="propagate-uncertainty-into-stock-assessment.html#cb292-16" tabindex="-1"></a>    <span class="co"># Method 3</span></span>
+<span id="cb292-17"><a href="propagate-uncertainty-into-stock-assessment.html#cb292-17" tabindex="-1"></a>    <span class="fu">iter</span>(stk03, (nits<span class="sc">*</span>(i<span class="dv">-1</span>)<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>(nits<span class="sc">*</span>i)) <span class="ot">&lt;-</span> stk <span class="sc">+</span> <span class="fu">simulate</span>(fit, nits)</span>
+<span id="cb292-18"><a href="propagate-uncertainty-into-stock-assessment.html#cb292-18" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="propagate-uncertainty-into-stock-assessment.html#cb293-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">FLStocks</span>(<span class="st">&quot;M&quot;</span><span class="ot">=</span>stk04, <span class="st">&quot;M + 1 estimation sample&quot;</span><span class="ot">=</span>stk01, <span class="st">&quot;M + estimation median&quot;</span><span class="ot">=</span>stk02, <span class="st">&quot;M + n estimation samples&quot;</span><span class="ot">=</span>stk03))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:mprop"></span>
 <img src="_main_files/figure-html/mprop-1.png" alt="Stock summary. Stock metrics computed over fits including uncertainty in M and estimation uncertainty" width="672" />
 <p class="caption">
@@ -416,7 +422,7 @@ Figure 14.2: Stock summary. Stock metrics computed over fits including uncertain
         </div>
       </div>
 <a href="reference-points.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="annex---stock-assessment-workflow.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="modelling-fleet-selectivity.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
