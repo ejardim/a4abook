@@ -131,11 +131,11 @@ S(x) =
 P_1(x) & \text{if } a \leq x < t_1, \\
 P_2(x) & \text{if } t_1 \leq x < t_2, \\
 \quad\vdots \\
-P_{k-1}(x) & \text{if } t_k \leq x \leq b,
+P_{k-1}(x) & \text{if } t_{k-1} \leq x \leq b,
 \end{cases}
 $$
 
-**[Souldn't the above be t_{k-1}?]**
+
 
 The above definition is a simplified version of how splines work and can help as an intuitive approach. In reality splines need to satisfy some extra conditions like continuity, i.e. $P_{i-1}(t_{i}) = P_{i}(t_{i})$ on the points of junction, and of the first and second derivative. Depending on the basis functions the conditions may differ.
 
@@ -143,7 +143,7 @@ In Figure \@ref(fig:naivespline) we demonstrate the fitting of cubic regression 
 
 The spline would be then as follows:
 
-$$\mathbf{y} = \beta_0 + \beta_1P_1(\mathbf{x}) + \beta_2P_2(\mathbf{x}) + \beta_3P_3(\mathbf{x}) + \beta_4P_4(\mathbf{x}) $$
+$$\mathbf{y} = \beta_0 + \beta_1P_1(\mathbf{x}) + \beta_2P_2(\mathbf{x}) + \beta_3P_3(\mathbf{x}) + \beta_4P_4(\mathbf{x})+\beta_5P_5(\mathbf{x}) $$
 
 
 ```{r, naivespline, fig.cap = "A B-spline with 5 knots consists of 5 cubic polynomials",echo=FALSE, message=FALSE, warning=FALSE, warning=FALSE}
@@ -178,14 +178,14 @@ For the spline fitted above, there are $k$ polynomials plus an intercept (not sh
 X <- spline
 
 df_x <- as.data.frame(X)
-names(df_x) <- c("(Intercept)", "s(x).1", "s(x).2", "s(x).3", "s(x).4")
+names(df_x) <- c("s(x).1", "s(x).2", "s(x).3", "s(x).4","s(x).5")
 
 # multiply the coefficients with the basis splines
-df_x$`(Intercept)_b0` <- df_x$`(Intercept)` * coef(cr)[2] + coef(cr)[1]
-df_x$`s(x).1_b1` <- df_x$`s(x).1` * coef(cr)[3] + coef(cr)[1]
-df_x$`s(x).2_b2` <- df_x$`s(x).2` * coef(cr)[4] + coef(cr)[1]
-df_x$`s(x).3_b3` <- df_x$`s(x).3` * coef(cr)[5] + coef(cr)[1]
-df_x$`s(x).4_b4` <- df_x$`s(x).4` * coef(cr)[6] + coef(cr)[1]
+df_x$`s(x).1_b1` <- df_x$`s(x).1` * coef(cr)[2] + coef(cr)[1]
+df_x$`s(x).2_b2` <- df_x$`s(x).2` * coef(cr)[3] + coef(cr)[1]
+df_x$`s(x).3_b3` <- df_x$`s(x).3` * coef(cr)[4] + coef(cr)[1]
+df_x$`s(x).4_b4` <- df_x$`s(x).4` * coef(cr)[5] + coef(cr)[1]
+df_x$`s(x).5_b5` <- df_x$`s(x).5` * coef(cr)[6] + coef(cr)[1]
 
 # split two dfs
 df_x_basis <- df_x[,c(1:5)]
