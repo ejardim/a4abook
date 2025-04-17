@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2 Introduction | Fish stock assessment with R</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 Introduction | Fish stock assessment with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-04-09" />
+<meta name="date" content="2025-04-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -182,6 +182,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.5.1" data-path="introduction.html"><a href="introduction.html#plaice-in-area-fao-27-ices-area-iv"><i class="fa fa-check"></i><b>2.5.1</b> Plaice in area FAO 27, ICES area IV</a></li>
 <li class="chapter" data-level="2.5.2" data-path="introduction.html"><a href="introduction.html#european-hake-in-fao-37-gsas-1567"><i class="fa fa-check"></i><b>2.5.2</b> European hake in FAO 37, GSAs 1,5,6,7</a></li>
 <li class="chapter" data-level="2.5.3" data-path="introduction.html"><a href="introduction.html#red-mullet-in-fao-27-gsa-1"><i class="fa fa-check"></i><b>2.5.3</b> Red mullet in FAO 27, GSA 1</a></li>
+<li class="chapter" data-level="2.5.4" data-path="introduction.html"><a href="introduction.html#redfish-simulated-length-data"><i class="fa fa-check"></i><b>2.5.4</b> Redfish simulated length data</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html"><i class="fa fa-check"></i><b>3</b> Introduction to Splines</a>
@@ -191,13 +192,13 @@ div.csl-indent {
 <li class="chapter" data-level="3.3" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#the-mgcv-package-inside-a4a"><i class="fa fa-check"></i><b>3.3</b> The <code>mgcv</code> package inside <code>a4a</code></a></li>
 <li class="chapter" data-level="3.4" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#on-the-number-of-knots-k"><i class="fa fa-check"></i><b>3.4</b> On the number of knots <span class="math inline">\(k\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><i class="fa fa-check"></i><b>4</b> Modelling Individual Growth and Using Stochastic Slicing to Convert Length-based Data Into Age-based Data</a>
+<li class="chapter" data-level="4" data-path="growth.html"><a href="growth.html"><i class="fa fa-check"></i><b>4</b> Modelling Individual Growth and Using Stochastic Slicing to Convert Length-based Data Into Age-based Data</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#a4agr---the-growth-class"><i class="fa fa-check"></i><b>4.1</b> a4aGr - The growth class</a></li>
-<li class="chapter" data-level="4.2" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>4.2</b> Adding uncertainty to growth parameters with a multivariate normal distribution</a></li>
-<li class="chapter" data-level="4.3" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-triangle-distribution"><i class="fa fa-check"></i><b>4.3</b> Adding uncertainty to growth parameters with a multivariate triangle distribution</a></li>
-<li class="chapter" data-level="4.4" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#adding-uncertainty-to-growth-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>4.4</b> Adding uncertainty to growth parameters with statistical copulas</a></li>
-<li class="chapter" data-level="4.5" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#converting-from-length-to-age-based-data---the-l2a-method"><i class="fa fa-check"></i><b>4.5</b> Converting from length to age based data - the <code>l2a()</code> method</a></li>
+<li class="chapter" data-level="4.1" data-path="growth.html"><a href="growth.html#a4agr---the-growth-class"><i class="fa fa-check"></i><b>4.1</b> a4aGr - The growth class</a></li>
+<li class="chapter" data-level="4.2" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>4.2</b> Adding uncertainty to growth parameters with a multivariate normal distribution</a></li>
+<li class="chapter" data-level="4.3" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-triangle-distribution"><i class="fa fa-check"></i><b>4.3</b> Adding uncertainty to growth parameters with a multivariate triangle distribution</a></li>
+<li class="chapter" data-level="4.4" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>4.4</b> Adding uncertainty to growth parameters with statistical copulas</a></li>
+<li class="chapter" data-level="4.5" data-path="growth.html"><a href="growth.html#converting-from-length-to-age-based-data---the-l2a-method"><i class="fa fa-check"></i><b>4.5</b> Converting from length to age based data - the <code>l2a()</code> method</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html"><i class="fa fa-check"></i><b>5</b> Modelling Natural Mortality</a>
 <ul>
@@ -366,7 +367,7 @@ div.csl-indent {
 <div id="multi-stage-modelling-approach" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Multi-stage modelling approach<a href="introduction.html#multi-stage-modelling-approach" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In ecological and population dynamics modeling, one can choose between integrated models, which estimate correlated parameters together, and two-stage models, which separate estimation into distinct steps. These approaches differ in complexity, data requirements, interpretability, and their ability to address uncertainties. The selection depends largely on the study objectives, available data, and the system’s ecological complexity.</p>
-<p>Integrated models estimate all parameters within a unified framework, accounting for correlations and interactions between variables such as growth, natural mortality, recruitment, and environmental factors. This approach can provide a realistic depiction of biological systems by preserving dependencies and feedback loops, which are crucial for understanding processes like density dependence or predator-prey interactions <span class="citation">(<a href="#ref-Hamel_etal_2023">Hamel et al. 2023</a>)</span>. Integrated models are particularly advantageous for ecosystem-based management, where interactions among multiple factors need to be captured. However, the complexity of these models makes them computationally intensive and sensitive to data quality.</p>
+<p>Integrated models estimate all parameters within a unified framework, accounting for correlations and interactions between variables such as growth, natural mortality, recruitment, and environmental factors. This approach can provide a realistic depiction of biological systems by preserving dependencies and feedback loops, which are crucial for understanding processes like density dependence or predator-prey interactions <span class="citation">(<a href="#ref-Hamel_etal_2023">Hamel et al. 2023b</a>)</span>. Integrated models are particularly advantageous for ecosystem-based management, where interactions among multiple factors need to be captured. However, the complexity of these models makes them computationally intensive and sensitive to data quality.</p>
 <p>On the other hand, two-stage models estimate parameters such as growth or natural mortality independently before incorporating them into broader models. This step-wise approach simplifies estimation, reducing computational demands and mitigating issues like parameter confounding. For example, fisheries often use empirical relationships to estimate natural mortality (M) based on growth parameters or life history traits before including M in stock assessment models <span class="citation">(<a href="#ref-Maceina_etal_2016">Maceina and Sammons 2016</a>)</span>. However, this decoupling may overlook dynamic interactions, such as how growth influences mortality, potentially leading to biased or incomplete inferences about ecosystem dynamics <span class="citation">(<a href="#ref-Jacobsen_etal_2018">Jacobsen and Essington 2018</a>)</span>.</p>
 <p>Dealing with uncertainty is a critical aspect of both approaches. Integrated models explicitly quantify and propagate uncertainties across correlated parameters. These models incorporate multiple sources of variability, including observation, process, and structural uncertainties, enhancing the robustness of predictions <span class="citation">(<a href="#ref-López_etal_2017">López Quintero, Contreras-Reyes, and Wiff 2017</a>)</span>. Conversely, two-stage models often treat parameter estimates as fixed values, which can underestimate uncertainty propagation in subsequent analyses. However, by treating first-stage estimates as distributions rather than point estimates, two-stage models can partially address this limitation.</p>
 <p>For fisheries science, the choice between these models often depends on management goals and data availability. Integrated models are better suited for forecasting fish abundance or evaluating complex ecological interactions, such as predator-prey dynamics or responses to environmental variability <span class="citation">(<a href="#ref-Robertson_etal_2022">Robertson, Regular, and Cadigan 2022</a>)</span>. Meanwhile, two-stage models are practical for stock assessments, where simplicity and interpretability are prioritized.</p>
@@ -409,7 +410,7 @@ div.csl-indent {
 </div>
 <div id="stock-assessment-as-a-linear-model" class="section level2 hasAnchor" number="2.4">
 <h2><span class="header-section-number">2.4</span> Stock assessment as a linear model<a href="introduction.html#stock-assessment-as-a-linear-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The submodels formulation uses linear models, which opens the possibility of using the linear modelling tools available in <code>R</code>. For example, <code>mgcv</code> <span class="citation">(<a href="#ref-mgcv2017"><strong>mgcv2017?</strong></a>)</span> gam formulas or factorial design formulas using <code>lm()</code>.</p>
+<p>The submodels formulation uses linear models, which opens the possibility of using the linear modelling tools available in <code>R</code>. For example, <code>mgcv</code> <span class="citation">(<a href="#ref-mgcv2017">Wood 2017</a>)</span> gam formulas or factorial design formulas using <code>lm()</code>.</p>
 <p>The ‘language’ of linear models has been developing within the statistical community for many years, and constitutes an elegant way of defining models without going through the complexity of mathematical representations. This approach makes it also easier to communicate among scientists:</p>
 <ul>
 <li><span class="citation">(<a href="#ref-Nelder_1965">Nelder 1965</a>)</span>, notation for randomized block design</li>
@@ -431,6 +432,10 @@ div.csl-indent {
 <div id="red-mullet-in-fao-27-gsa-1" class="section level3 hasAnchor" number="2.5.3">
 <h3><span class="header-section-number">2.5.3</span> Red mullet in FAO 27, GSA 1<a href="introduction.html#red-mullet-in-fao-27-gsa-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Red mullets is a key commercial species in GSA 1.They can be found in sandy and muddy areas, and most are caught by bottom trawlers. Small scale fisheries also catch some using nets. The amount of discards reported is very low and considered to be negligible. Trawl fisheries developed along the continental shelf and upper slope. Smaller vessels operate almost exclusively on the continental shelf. Red mullet is intensively exploited during its recruitment from September to November</p>
+</div>
+<div id="redfish-simulated-length-data" class="section level3 hasAnchor" number="2.5.4">
+<h3><span class="header-section-number">2.5.4</span> Redfish simulated length data<a href="introduction.html#redfish-simulated-length-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This is a length based dataset simulated with GADGET (REF).</p>
 
 </div>
 </div>
@@ -441,7 +446,7 @@ div.csl-indent {
 Chambers, J. M., and T. J. Hastie. 1991. <em>Statistical Models in s</em>. Taylor &amp; Francis. <a href="https://books.google.be/books?id=IBkLQAAACAAJ">https://books.google.be/books?id=IBkLQAAACAAJ</a>.
 </div>
 <div id="ref-Hamel_etal_2023" class="csl-entry">
-Hamel, Owen S., James N. Ianelli, Mark N. Maunder, and André E. Punt. 2023. <span>“Natural Mortality: Theory, Estimation and Application in Fishery Stock Assessment Models.”</span> <em>Fisheries Research</em> 261 (May): 106638. <a href="https://doi.org/10.1016/j.fishres.2023.106638">https://doi.org/10.1016/j.fishres.2023.106638</a>.
+———. 2023b. <span>“Natural Mortality: Theory, Estimation and Application in Fishery Stock Assessment Models.”</span> <em>Fisheries Research</em> 261 (May): 106638. <a href="https://doi.org/10.1016/j.fishres.2023.106638">https://doi.org/10.1016/j.fishres.2023.106638</a>.
 </div>
 <div id="ref-hastie1990generalized" class="csl-entry">
 Hastie, T. J., and R. J. Tibshirani. 1990. <em>Generalized Additive Models</em>. Chapman &amp; Hall/CRC Monographs on Statistics &amp; Applied Probability. Taylor &amp; Francis. <a href="https://books.google.be/books?id=qa29r1Ze1coC">https://books.google.be/books?id=qa29r1Ze1coC</a>.
@@ -467,6 +472,9 @@ Robertson, Matthew D., Paul M. Regular, and Noel G. Cadigan. 2022. <span>“Limi
 <div id="ref-Wilkinson_etal_1973" class="csl-entry">
 Wilkinson, Graham N., and C. E. Rogers. 1973. <span>“Symbolic Description of Factorial Models for Analysis of Variance.”</span> <em>Applied Statistics</em> 22: 392–99. <a href="https://api.semanticscholar.org/CorpusID:118281143">https://api.semanticscholar.org/CorpusID:118281143</a>.
 </div>
+<div id="ref-mgcv2017" class="csl-entry">
+Wood, S. N. 2017. <em>Generalized Additive Models: An Introduction with r</em>. 2nd ed. Chapman; Hall/CRC.
+</div>
 </div>
             </section>
 
@@ -488,42 +496,42 @@ Wilkinson, Graham N., and C. E. Rogers. 1973. <span>“Symbolic Description of F
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-intro.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["_main.pdf", "_main.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-intro.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

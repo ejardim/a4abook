@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5 Modelling Natural Mortality | Fish stock assessment with R</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5 Modelling Natural Mortality | Fish stock assessment with R" />
   <meta property="og:type" content="book" />
@@ -23,14 +23,14 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-04-09" />
+<meta name="date" content="2025-04-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"/>
+<link rel="prev" href="growth.html"/>
 <link rel="next" href="stock-assessment-framework.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -182,6 +182,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.5.1" data-path="introduction.html"><a href="introduction.html#plaice-in-area-fao-27-ices-area-iv"><i class="fa fa-check"></i><b>2.5.1</b> Plaice in area FAO 27, ICES area IV</a></li>
 <li class="chapter" data-level="2.5.2" data-path="introduction.html"><a href="introduction.html#european-hake-in-fao-37-gsas-1567"><i class="fa fa-check"></i><b>2.5.2</b> European hake in FAO 37, GSAs 1,5,6,7</a></li>
 <li class="chapter" data-level="2.5.3" data-path="introduction.html"><a href="introduction.html#red-mullet-in-fao-27-gsa-1"><i class="fa fa-check"></i><b>2.5.3</b> Red mullet in FAO 27, GSA 1</a></li>
+<li class="chapter" data-level="2.5.4" data-path="introduction.html"><a href="introduction.html#redfish-simulated-length-data"><i class="fa fa-check"></i><b>2.5.4</b> Redfish simulated length data</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html"><i class="fa fa-check"></i><b>3</b> Introduction to Splines</a>
@@ -191,13 +192,13 @@ div.csl-indent {
 <li class="chapter" data-level="3.3" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#the-mgcv-package-inside-a4a"><i class="fa fa-check"></i><b>3.3</b> The <code>mgcv</code> package inside <code>a4a</code></a></li>
 <li class="chapter" data-level="3.4" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#on-the-number-of-knots-k"><i class="fa fa-check"></i><b>3.4</b> On the number of knots <span class="math inline">\(k\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><i class="fa fa-check"></i><b>4</b> Modelling Individual Growth and Using Stochastic Slicing to Convert Length-based Data Into Age-based Data</a>
+<li class="chapter" data-level="4" data-path="growth.html"><a href="growth.html"><i class="fa fa-check"></i><b>4</b> Modelling Individual Growth and Using Stochastic Slicing to Convert Length-based Data Into Age-based Data</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#a4agr---the-growth-class"><i class="fa fa-check"></i><b>4.1</b> a4aGr - The growth class</a></li>
-<li class="chapter" data-level="4.2" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>4.2</b> Adding uncertainty to growth parameters with a multivariate normal distribution</a></li>
-<li class="chapter" data-level="4.3" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-triangle-distribution"><i class="fa fa-check"></i><b>4.3</b> Adding uncertainty to growth parameters with a multivariate triangle distribution</a></li>
-<li class="chapter" data-level="4.4" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#adding-uncertainty-to-growth-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>4.4</b> Adding uncertainty to growth parameters with statistical copulas</a></li>
-<li class="chapter" data-level="4.5" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#converting-from-length-to-age-based-data---the-l2a-method"><i class="fa fa-check"></i><b>4.5</b> Converting from length to age based data - the <code>l2a()</code> method</a></li>
+<li class="chapter" data-level="4.1" data-path="growth.html"><a href="growth.html#a4agr---the-growth-class"><i class="fa fa-check"></i><b>4.1</b> a4aGr - The growth class</a></li>
+<li class="chapter" data-level="4.2" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>4.2</b> Adding uncertainty to growth parameters with a multivariate normal distribution</a></li>
+<li class="chapter" data-level="4.3" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-triangle-distribution"><i class="fa fa-check"></i><b>4.3</b> Adding uncertainty to growth parameters with a multivariate triangle distribution</a></li>
+<li class="chapter" data-level="4.4" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>4.4</b> Adding uncertainty to growth parameters with statistical copulas</a></li>
+<li class="chapter" data-level="4.5" data-path="growth.html"><a href="growth.html#converting-from-length-to-age-based-data---the-l2a-method"><i class="fa fa-check"></i><b>4.5</b> Converting from length to age based data - the <code>l2a()</code> method</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html"><i class="fa fa-check"></i><b>5</b> Modelling Natural Mortality</a>
 <ul>
@@ -343,19 +344,22 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="modelling-natural-mortality" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">5</span> Modelling Natural Mortality<a href="modelling-natural-mortality.html#modelling-natural-mortality" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>In the <code>a4a</code> natural mortality is dealt with as an external parameter to the stock assessment model. The rationale to modelling natural mortality is similar to that of growth: one should be able to collect information from a range of sources and feed it into the assessment. The analyst should be able to use distinct models like Gislasson’s, Charnov’s, Pauly’s, etc in a coherent framework making it possible to compare the outcomes of the assessment.</p>
+<p>Natural mortality (<span class="math inline">\(M\)</span>) is a critical parameter in stock assessment models, representing all sources of mortality not related to fishing or harvest (<span class="math inline">\(F\)</span>). Combined, these two sources constitute the total mortality (<span class="math inline">\(Z\)</span>) that individuals experience, with <span class="math inline">\(Z = F + M\)</span>.</p>
+<p>However, natural mortality is notoriously difficult to observe and estimate. Only a few methods, such as mark-recapture studies, provide direct estimates of <span class="math inline">\(M\)</span>. However, these methods are not applicable to all species and are often costly. As an alternative, life-history theory is commonly used to derive values for <span class="math inline">\(M\)</span> that are consistent with individual growth and reproduction.</p>
+<p>There is an extensive body of literature on natural mortality. Works by <span class="citation">Pauly (<a href="#ref-pauly1980">1980</a>)</span>, <span class="citation">Gislason et al. (<a href="#ref-gislason2010">2010</a>)</span>, <span class="citation">Charnov (<a href="#ref-charnov1993">1993</a>)</span>, <span class="citation">Maunder et al. (<a href="#ref-maunder2023mrev">2023</a>)</span> and <span class="citation">Quinn and Deriso (<a href="#ref-quinn1999">1999</a>)</span>, as well as a dedicated special issue in Fisheries Research <span class="citation">(<a href="#ref-MCAPAM2023">Hamel et al. 2023a</a>)</span>, offer valuable insights and serve as excellent starting points. Given the parameter’s importance and the difficulty of obtaining direct observations, natural mortality is widely regarded as one of the most significant sources of uncertainty in stock assessments.</p>
+<p>Within the a4a framework, natural mortality is treated as an externally fixed parameter in the stock assessment model. Our aim is to develop a system that enables analysts to explore alternative models for <span class="math inline">\(M\)</span> and compare the resulting assessment outcomes. This approach provides a more comprehensive information base to support informed decision-making throughout the stock assessment process.</p>
 <p>Within the <code>a4a</code> framework, the general method for adding natural mortality in the stock assessment model is to:</p>
-<ul>
+<ol style="list-style-type: decimal">
 <li>Create an object of class <code>a4aM</code> which holds the natural mortality model and parameters.</li>
 <li>Add uncertainty to the parameters in the <code>a4aM</code> object.</li>
 <li>Apply the <code>m()</code> method to the <code>a4aM</code> object to create an age or length based <code>FLQuant</code> object of the required dimensions.</li>
-</ul>
+</ol>
 <p>The resulting <code>FLQuant</code> object can then be directly inserted into an <code>FLStock</code> object to be used for the assessment.</p>
 <p>In this section we go through each of the steps in detail using a variety of different models.</p>
 <div id="a4am---the-m-class" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> <code>a4aM</code> - The M class<a href="modelling-natural-mortality.html#a4am---the-m-class" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Natural mortality is implemented in a class named <code>a4aM</code>. This class is made up of three objects of the class <code>FLModelSim</code>. Each object is a model that represents one effect: an age or length effect, a scaling (level) effect and a time trend, named <code>shape</code>, <code>level</code> and <code>trend</code>, respectively. The impact of the models is multiplicative, i.e. the overal natural mortality is given by <code>shape</code> x <code>level</code> x <code>trend</code>. Check the help files for more information.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="modelling-natural-mortality.html#cb58-1" tabindex="-1"></a><span class="fu">showClass</span>(<span class="st">&quot;a4aM&quot;</span>)</span></code></pre></div>
+<p>Natural mortality is implemented in a class named <code>a4aM</code>. This class is made up of three objects of the class <code>FLModelSim</code>. Each object is a model that represents one effect: an age or length effect, a scaling (level) effect and a time trend, named <code>shape</code>, <code>level</code> and <code>trend</code>, respectively. The impact of the models is multiplicative, i.e. the overal natural mortality is given by <code>shape</code> x <code>level</code> x <code>trend</code>.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="modelling-natural-mortality.html#cb54-1" tabindex="-1"></a><span class="fu">showClass</span>(<span class="st">&quot;a4aM&quot;</span>)</span></code></pre></div>
 <pre><code>## Class &quot;a4aM&quot; [package &quot;FLa4a&quot;]
 ## 
 ## Slots:
@@ -366,43 +370,43 @@ div.csl-indent {
 ## Extends: &quot;FLComp&quot;</code></pre>
 <p>The <code>a4aM</code> constructor requires that the models and parameters are provided. The default method will build each of these models as a constant value of 1.</p>
 <p>As a simple example, the usual “0.2” guessestimate could be set up by setting the <code>level</code> model to have a single parameter with a fixed value, while the other two models, <code>shape</code> and <code>trend</code>, have a default value of 1 (meaning that they have no effect).</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="modelling-natural-mortality.html#cb60-1" tabindex="-1"></a>mod02 <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span>a, <span class="at">params=</span><span class="fu">FLPar</span>(<span class="at">a=</span><span class="fl">0.2</span>))</span>
-<span id="cb60-2"><a href="modelling-natural-mortality.html#cb60-2" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">a4aM</span>(<span class="at">level=</span>mod02)</span>
-<span id="cb60-3"><a href="modelling-natural-mortality.html#cb60-3" tabindex="-1"></a>m1</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="modelling-natural-mortality.html#cb56-1" tabindex="-1"></a>mod02 <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span>a, <span class="at">params=</span><span class="fu">FLPar</span>(<span class="at">a=</span><span class="fl">0.2</span>))</span>
+<span id="cb56-2"><a href="modelling-natural-mortality.html#cb56-2" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">a4aM</span>(<span class="at">level=</span>mod02)</span>
+<span id="cb56-3"><a href="modelling-natural-mortality.html#cb56-3" tabindex="-1"></a>m1</span></code></pre></div>
 <pre><code>## a4aM object:
 ##   shape: ~1
 ##   level: ~a
 ##   trend: ~1</code></pre>
-<p>More interesting natural mortality shapes can be set up using biological knowledge. The following example uses an exponential decay over ages (implying that the resulting <code>FLQuant</code>} generated by the <code>m()</code> method will be age based). We also use Jensen’s second estimator (<a href="http://onlinelibrary.wiley.com/doi/10.1111/faf.12027/abstract">Kenchington, 2014</a>) as a scaling <code>level</code> model, which is based on the von Bertalanffy <span class="math inline">\(K\)</span> parameter, <span class="math inline">\(M=1.5K\)</span>.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="modelling-natural-mortality.html#cb62-1" tabindex="-1"></a>shape2 <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span><span class="fu">exp</span>(<span class="sc">-</span>age<span class="fl">-0.5</span>))</span>
-<span id="cb62-2"><a href="modelling-natural-mortality.html#cb62-2" tabindex="-1"></a>level2 <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span><span class="fl">1.5</span><span class="sc">*</span>k, <span class="at">params=</span><span class="fu">FLPar</span>(<span class="at">k=</span><span class="fl">0.4</span>))</span>
-<span id="cb62-3"><a href="modelling-natural-mortality.html#cb62-3" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">a4aM</span>(<span class="at">shape=</span>shape2, <span class="at">level=</span>level2)</span>
-<span id="cb62-4"><a href="modelling-natural-mortality.html#cb62-4" tabindex="-1"></a>m2</span></code></pre></div>
+<p>More interesting natural mortality shapes can be set up using biological knowledge. The following example uses an exponential decay over ages (implying that the resulting <code>FLQuant</code>} generated by the <code>m()</code> method will be age based). We also use Jensen’s second estimator <span class="citation">(<a href="#ref-Kenchington2014">Kenchington 2014</a>)</span> as a scaling <code>level</code> model, which is based on the von Bertalanffy <span class="math inline">\(K\)</span> parameter, <span class="math inline">\(M=1.5K\)</span>.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="modelling-natural-mortality.html#cb58-1" tabindex="-1"></a>shape2 <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span><span class="fu">exp</span>(<span class="sc">-</span>age<span class="fl">-0.5</span>))</span>
+<span id="cb58-2"><a href="modelling-natural-mortality.html#cb58-2" tabindex="-1"></a>level2 <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span><span class="fl">1.5</span><span class="sc">*</span>k, <span class="at">params=</span><span class="fu">FLPar</span>(<span class="at">k=</span><span class="fl">0.4</span>))</span>
+<span id="cb58-3"><a href="modelling-natural-mortality.html#cb58-3" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">a4aM</span>(<span class="at">shape=</span>shape2, <span class="at">level=</span>level2)</span>
+<span id="cb58-4"><a href="modelling-natural-mortality.html#cb58-4" tabindex="-1"></a>m2</span></code></pre></div>
 <pre><code>## a4aM object:
 ##   shape: ~exp(-age - 0.5)
 ##   level: ~1.5 * k
 ##   trend: ~1</code></pre>
 <p>Note that the <code>shape</code> model has <code>age</code> as a parameter of the model but is not set using the <code>params</code> argument.</p>
-<p>The <code>shape</code> model does not have to be age-based. For example, here we set up a <code>shape</code> model using Gislason’s second estimator (Kenshington, 2013): <span class="math inline">\(M_l=K(\frac{L_{\inf}}{l})^{1.5}\)</span>. We use the default <code>level</code> and <code>trend</code> models.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="modelling-natural-mortality.html#cb64-1" tabindex="-1"></a>shape_len <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span>K<span class="sc">*</span>(linf<span class="sc">/</span>len)<span class="sc">^</span><span class="fl">1.5</span>, <span class="at">params=</span><span class="fu">FLPar</span>(<span class="at">linf=</span><span class="dv">60</span>, <span class="at">K=</span><span class="fl">0.4</span>))</span>
-<span id="cb64-2"><a href="modelling-natural-mortality.html#cb64-2" tabindex="-1"></a>m_len <span class="ot">&lt;-</span> <span class="fu">a4aM</span>(<span class="at">shape=</span>shape_len)</span></code></pre></div>
-<p>Another option is to model how an external factor may impact the natural mortality. This can be added through the <code>trend</code> model. Suppose natural mortality can be modelled with a dependency on the NAO index, due to some mechanism that results in having lower mortality when NAO is negative and higher when it’s positive. In this example, the impact is represented by the NAO value on the quarter before spawning, which occurs in the second quarter.</p>
+<p>The <code>shape</code> model does not have to be age-based. For example, here we set up a <code>shape</code> model using Gislason’s second estimator <span class="citation">(<a href="#ref-Kenchington2014">Kenchington 2014</a>)</span>: <span class="math inline">\(M_l=K(\frac{L_{\inf}}{l})^{1.5}\)</span>. We use the default <code>level</code> and <code>trend</code> models.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="modelling-natural-mortality.html#cb60-1" tabindex="-1"></a>shape_len <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span>K<span class="sc">*</span>(linf<span class="sc">/</span>len)<span class="sc">^</span><span class="fl">1.5</span>, <span class="at">params=</span><span class="fu">FLPar</span>(<span class="at">linf=</span><span class="dv">60</span>, <span class="at">K=</span><span class="fl">0.4</span>))</span>
+<span id="cb60-2"><a href="modelling-natural-mortality.html#cb60-2" tabindex="-1"></a>m_len <span class="ot">&lt;-</span> <span class="fu">a4aM</span>(<span class="at">shape=</span>shape_len)</span></code></pre></div>
+<p>Another option is to model how an external factor may impact natural mortality. This can be added through the <code>trend</code> model. Suppose natural mortality can be modelled with a dependency on the NAO index, due to some mechanism that results in having lower mortality when NAO is negative and higher when it’s positive. In this example, the impact is represented by the NAO value on the quarter before spawning, which occurs in the second quarter.</p>
 <p>We use this to make a complex natural mortality model with an age based shape model, a level model based on <span class="math inline">\(K\)</span> and a trend model driven by NAO, where mortality increases by 50% if NAO is positive on the first quarter.</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="modelling-natural-mortality.html#cb65-1" tabindex="-1"></a><span class="co"># Get NAO</span></span>
-<span id="cb65-2"><a href="modelling-natural-mortality.html#cb65-2" tabindex="-1"></a>nao <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://www.cpc.ncep.noaa.gov/products/precip/CWlink/pna/norm.nao.monthly.b5001.current.ascii.table&quot;</span>, <span class="at">skip=</span><span class="dv">1</span>, <span class="at">fill=</span><span class="cn">TRUE</span>, <span class="at">na.strings=</span><span class="st">&quot;-99.90&quot;</span>)</span>
-<span id="cb65-3"><a href="modelling-natural-mortality.html#cb65-3" tabindex="-1"></a>dnms <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">quant=</span><span class="st">&quot;nao&quot;</span>, <span class="at">year=</span><span class="dv">1950</span><span class="sc">:</span><span class="dv">2024</span>, <span class="at">unit=</span><span class="st">&quot;unique&quot;</span>, <span class="at">season=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">area=</span><span class="st">&quot;unique&quot;</span>)</span>
-<span id="cb65-4"><a href="modelling-natural-mortality.html#cb65-4" tabindex="-1"></a><span class="co"># Build an FLQuant from the NAO data</span></span>
-<span id="cb65-5"><a href="modelling-natural-mortality.html#cb65-5" tabindex="-1"></a>nao.flq <span class="ot">&lt;-</span> <span class="fu">FLQuant</span>(<span class="fu">unlist</span>(nao[,<span class="sc">-</span><span class="dv">1</span>]), <span class="at">dimnames=</span>dnms, <span class="at">units=</span><span class="st">&quot;nao&quot;</span>)</span>
-<span id="cb65-6"><a href="modelling-natural-mortality.html#cb65-6" tabindex="-1"></a><span class="co"># Build covar by calculating mean over the first 3 months</span></span>
-<span id="cb65-7"><a href="modelling-natural-mortality.html#cb65-7" tabindex="-1"></a>nao <span class="ot">&lt;-</span> <span class="fu">seasonMeans</span>(<span class="fu">trim</span>(nao.flq, <span class="at">year=</span><span class="fu">dimnames</span>(<span class="fu">stock.n</span>(ple4))<span class="sc">$</span>year))</span>
-<span id="cb65-8"><a href="modelling-natural-mortality.html#cb65-8" tabindex="-1"></a><span class="co"># Turn into Boolean</span></span>
-<span id="cb65-9"><a href="modelling-natural-mortality.html#cb65-9" tabindex="-1"></a>nao <span class="ot">&lt;-</span> (nao<span class="sc">&gt;</span><span class="dv">0</span>)</span>
-<span id="cb65-10"><a href="modelling-natural-mortality.html#cb65-10" tabindex="-1"></a><span class="co"># Constructor</span></span>
-<span id="cb65-11"><a href="modelling-natural-mortality.html#cb65-11" tabindex="-1"></a>trend3 <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span><span class="dv">1</span><span class="sc">+</span>b<span class="sc">*</span>nao, <span class="at">params=</span><span class="fu">FLPar</span>(<span class="at">b=</span><span class="fl">0.5</span>))</span>
-<span id="cb65-12"><a href="modelling-natural-mortality.html#cb65-12" tabindex="-1"></a>shape3 <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span><span class="fu">exp</span>(<span class="sc">-</span>age<span class="fl">-0.5</span>))</span>
-<span id="cb65-13"><a href="modelling-natural-mortality.html#cb65-13" tabindex="-1"></a>level3 <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span><span class="fl">1.5</span><span class="sc">*</span>k, <span class="at">params=</span><span class="fu">FLPar</span>(<span class="at">k=</span><span class="fl">0.4</span>))</span>
-<span id="cb65-14"><a href="modelling-natural-mortality.html#cb65-14" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fu">a4aM</span>(<span class="at">shape=</span>shape3, <span class="at">level=</span>level3, <span class="at">trend=</span>trend3)</span>
-<span id="cb65-15"><a href="modelling-natural-mortality.html#cb65-15" tabindex="-1"></a>m3</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="modelling-natural-mortality.html#cb61-1" tabindex="-1"></a><span class="co"># Get NAO</span></span>
+<span id="cb61-2"><a href="modelling-natural-mortality.html#cb61-2" tabindex="-1"></a>nao <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://www.cpc.ncep.noaa.gov/products/precip/CWlink/pna/norm.nao.monthly.b5001.current.ascii.table&quot;</span>, <span class="at">skip=</span><span class="dv">1</span>, <span class="at">fill=</span><span class="cn">TRUE</span>, <span class="at">na.strings=</span><span class="st">&quot;-99.90&quot;</span>)</span>
+<span id="cb61-3"><a href="modelling-natural-mortality.html#cb61-3" tabindex="-1"></a>dnms <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">quant=</span><span class="st">&quot;nao&quot;</span>, <span class="at">year=</span><span class="dv">1950</span><span class="sc">:</span><span class="dv">2024</span>, <span class="at">unit=</span><span class="st">&quot;unique&quot;</span>, <span class="at">season=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">area=</span><span class="st">&quot;unique&quot;</span>)</span>
+<span id="cb61-4"><a href="modelling-natural-mortality.html#cb61-4" tabindex="-1"></a><span class="co"># Build an FLQuant from the NAO data</span></span>
+<span id="cb61-5"><a href="modelling-natural-mortality.html#cb61-5" tabindex="-1"></a>nao.flq <span class="ot">&lt;-</span> <span class="fu">FLQuant</span>(<span class="fu">unlist</span>(nao[,<span class="sc">-</span><span class="dv">1</span>]), <span class="at">dimnames=</span>dnms, <span class="at">units=</span><span class="st">&quot;nao&quot;</span>)</span>
+<span id="cb61-6"><a href="modelling-natural-mortality.html#cb61-6" tabindex="-1"></a><span class="co"># Build covar by calculating mean over the first 3 months</span></span>
+<span id="cb61-7"><a href="modelling-natural-mortality.html#cb61-7" tabindex="-1"></a>nao <span class="ot">&lt;-</span> <span class="fu">seasonMeans</span>(<span class="fu">trim</span>(nao.flq, <span class="at">year=</span><span class="fu">dimnames</span>(<span class="fu">stock.n</span>(ple4))<span class="sc">$</span>year))</span>
+<span id="cb61-8"><a href="modelling-natural-mortality.html#cb61-8" tabindex="-1"></a><span class="co"># Turn into Boolean</span></span>
+<span id="cb61-9"><a href="modelling-natural-mortality.html#cb61-9" tabindex="-1"></a>nao <span class="ot">&lt;-</span> (nao<span class="sc">&gt;</span><span class="dv">0</span>)</span>
+<span id="cb61-10"><a href="modelling-natural-mortality.html#cb61-10" tabindex="-1"></a><span class="co"># Constructor</span></span>
+<span id="cb61-11"><a href="modelling-natural-mortality.html#cb61-11" tabindex="-1"></a>trend3 <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span><span class="dv">1</span><span class="sc">+</span>b<span class="sc">*</span>nao, <span class="at">params=</span><span class="fu">FLPar</span>(<span class="at">b=</span><span class="fl">0.5</span>))</span>
+<span id="cb61-12"><a href="modelling-natural-mortality.html#cb61-12" tabindex="-1"></a>shape3 <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span><span class="fu">exp</span>(<span class="sc">-</span>age<span class="fl">-0.5</span>))</span>
+<span id="cb61-13"><a href="modelling-natural-mortality.html#cb61-13" tabindex="-1"></a>level3 <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span><span class="fl">1.5</span><span class="sc">*</span>k, <span class="at">params=</span><span class="fu">FLPar</span>(<span class="at">k=</span><span class="fl">0.4</span>))</span>
+<span id="cb61-14"><a href="modelling-natural-mortality.html#cb61-14" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fu">a4aM</span>(<span class="at">shape=</span>shape3, <span class="at">level=</span>level3, <span class="at">trend=</span>trend3)</span>
+<span id="cb61-15"><a href="modelling-natural-mortality.html#cb61-15" tabindex="-1"></a>m3</span></code></pre></div>
 <pre><code>## a4aM object:
 ##   shape: ~exp(-age - 0.5)
 ##   level: ~1.5 * k
@@ -411,22 +415,26 @@ div.csl-indent {
 <div id="adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> Adding uncertainty to natural mortality parameters with a multivariate normal distribution<a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Uncertainty on natural mortality is added through uncertainty on the parameters.</p>
-<p>In this section we’ll’ show how to add multivariate normal uncertainty. We make use of the class <code>FLModelSim</code> method <code>mvrnorm()</code>, which is a wrapper for the method <code>mvrnorm()</code> distributed by the package <code>MASS</code>.</p>
-<p>We’ll create an <code>a4aM</code> object with an exponential shape, a <code>level</code> model based on <span class="math inline">\(k\)</span> and temperature (Jensen’s third estimator), and a <code>trend</code> model driven by the NAO (as above). Afterwards a variance-covariance matrix for the <code>level</code> and <code>trend</code> models will be included. Finally, create an object with 100 iterations using the <code>mvrnorm()</code> method.</p>
+<p>In this section we’ll’ show how to add multivariate normal uncertainty. We make use of the class <code>FLModelSim</code> method <code>mvrnorm()</code>, which is a wrapper for the method <code>mvrnorm()</code> distributed by the package <code>MASS</code> <span class="citation">(<a href="#ref-mass"><strong>mass?</strong></a>)</span>.</p>
+<p>We’ll create an <code>a4aM</code> object with an exponential shape, a <code>level</code> model based on <span class="math inline">\(k\)</span> and temperature, Jensen’s third estimator <span class="citation">(<a href="#ref-Kenchington2014">Kenchington 2014</a>)</span>, and a <code>trend</code> model driven by the NAO (as above). Afterwards a variance-covariance matrix for the <code>level</code> and <code>trend</code> models will be included. Finally, create an object with 100 iterations using the <code>mvrnorm()</code> method.</p>
 <p>Create the object:</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="modelling-natural-mortality.html#cb67-1" tabindex="-1"></a>shape4 <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span><span class="fu">exp</span>(<span class="sc">-</span>age<span class="fl">-0.5</span>))</span>
-<span id="cb67-2"><a href="modelling-natural-mortality.html#cb67-2" tabindex="-1"></a>level4 <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span>k<span class="sc">^</span><span class="fl">0.66</span><span class="sc">*</span>t<span class="sc">^</span><span class="fl">0.57</span>, <span class="at">params=</span><span class="fu">FLPar</span>(<span class="at">k=</span><span class="fl">0.4</span>, <span class="at">t=</span><span class="dv">10</span>), <span class="at">vcov=</span><span class="fu">array</span>(<span class="fu">c</span>(<span class="fl">0.002</span>, <span class="fl">0.01</span>,<span class="fl">0.01</span>, <span class="dv">1</span>), <span class="at">dim=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)))</span>
-<span id="cb67-3"><a href="modelling-natural-mortality.html#cb67-3" tabindex="-1"></a>trend4 <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span><span class="dv">1</span><span class="sc">+</span>b<span class="sc">*</span>nao, <span class="at">params=</span><span class="fu">FLPar</span>(<span class="at">b=</span><span class="fl">0.5</span>), <span class="at">vcov=</span><span class="fu">matrix</span>(<span class="fl">0.02</span>))</span>
-<span id="cb67-4"><a href="modelling-natural-mortality.html#cb67-4" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">a4aM</span>(<span class="at">shape=</span>shape4, <span class="at">level=</span>level4, <span class="at">trend=</span>trend4)</span>
-<span id="cb67-5"><a href="modelling-natural-mortality.html#cb67-5" tabindex="-1"></a><span class="co"># Call mvrnorm()</span></span>
-<span id="cb67-6"><a href="modelling-natural-mortality.html#cb67-6" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(<span class="dv">100</span>, m4)</span>
-<span id="cb67-7"><a href="modelling-natural-mortality.html#cb67-7" tabindex="-1"></a>m4</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="modelling-natural-mortality.html#cb63-1" tabindex="-1"></a>shape4 <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span><span class="fu">exp</span>(<span class="sc">-</span>age<span class="fl">-0.5</span>))</span>
+<span id="cb63-2"><a href="modelling-natural-mortality.html#cb63-2" tabindex="-1"></a>level4 <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span>k<span class="sc">^</span><span class="fl">0.66</span><span class="sc">*</span>t<span class="sc">^</span><span class="fl">0.57</span>,</span>
+<span id="cb63-3"><a href="modelling-natural-mortality.html#cb63-3" tabindex="-1"></a>    <span class="at">params=</span><span class="fu">FLPar</span>(<span class="at">k=</span><span class="fl">0.4</span>, <span class="at">t=</span><span class="dv">10</span>),</span>
+<span id="cb63-4"><a href="modelling-natural-mortality.html#cb63-4" tabindex="-1"></a>    <span class="at">vcov=</span><span class="fu">array</span>(<span class="fu">c</span>(<span class="fl">0.002</span>, <span class="fl">0.01</span>,<span class="fl">0.01</span>, <span class="dv">1</span>), <span class="at">dim=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)))</span>
+<span id="cb63-5"><a href="modelling-natural-mortality.html#cb63-5" tabindex="-1"></a>trend4 <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span><span class="dv">1</span><span class="sc">+</span>b<span class="sc">*</span>nao,</span>
+<span id="cb63-6"><a href="modelling-natural-mortality.html#cb63-6" tabindex="-1"></a>    <span class="at">params=</span><span class="fu">FLPar</span>(<span class="at">b=</span><span class="fl">0.5</span>),</span>
+<span id="cb63-7"><a href="modelling-natural-mortality.html#cb63-7" tabindex="-1"></a>    <span class="at">vcov=</span><span class="fu">matrix</span>(<span class="fl">0.02</span>))</span>
+<span id="cb63-8"><a href="modelling-natural-mortality.html#cb63-8" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">a4aM</span>(<span class="at">shape=</span>shape4, <span class="at">level=</span>level4, <span class="at">trend=</span>trend4)</span>
+<span id="cb63-9"><a href="modelling-natural-mortality.html#cb63-9" tabindex="-1"></a><span class="co"># Call mvrnorm()</span></span>
+<span id="cb63-10"><a href="modelling-natural-mortality.html#cb63-10" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(<span class="dv">100</span>, m4)</span>
+<span id="cb63-11"><a href="modelling-natural-mortality.html#cb63-11" tabindex="-1"></a>m4</span></code></pre></div>
 <pre><code>## a4aM object:
 ##   shape: ~exp(-age - 0.5)
 ##   level: ~k^0.66 * t^0.57
 ##   trend: ~1 + b * nao</code></pre>
 <p>Inspect the level model (for example):</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="modelling-natural-mortality.html#cb69-1" tabindex="-1"></a>m4<span class="sc">@</span>level</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="modelling-natural-mortality.html#cb65-1" tabindex="-1"></a><span class="fu">level</span>(m4)</span></code></pre></div>
 <pre><code>## An object of class &quot;FLModelSim&quot;
 ## Slot &quot;model&quot;:
 ## ~k^0.66 * t^0.57
@@ -436,8 +444,8 @@ div.csl-indent {
 ## iters:  100 
 ## 
 ## params
-##                k                t 
-##  0.39936(0.0456) 10.06803(0.8405) 
+##               k               t 
+## 0.40072(0.0427) 9.97178(0.8938) 
 ## units:  NA 
 ## 
 ## Slot &quot;vcov&quot;:
@@ -448,48 +456,50 @@ div.csl-indent {
 ## Slot &quot;distr&quot;:
 ## [1] &quot;norm&quot;</code></pre>
 <p>Note the variance in the parameters:</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="modelling-natural-mortality.html#cb71-1" tabindex="-1"></a><span class="fu">params</span>(<span class="fu">trend</span>(m4))</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="modelling-natural-mortality.html#cb67-1" tabindex="-1"></a><span class="fu">params</span>(<span class="fu">trend</span>(m4))</span></code></pre></div>
 <pre><code>## An object of class &quot;FLPar&quot;
 ## iters:  100 
 ## 
 ## params
 ##              b 
-## 0.49115(0.135) 
+## 0.50803(0.159) 
 ## units:  NA</code></pre>
 <p>Note the shape model has no parameters and no uncertainty:</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="modelling-natural-mortality.html#cb73-1" tabindex="-1"></a><span class="fu">params</span>(<span class="fu">shape</span>(m4))</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="modelling-natural-mortality.html#cb69-1" tabindex="-1"></a><span class="fu">params</span>(<span class="fu">shape</span>(m4))</span></code></pre></div>
 <pre><code>## An object of class &quot;FLPar&quot;
 ## params
 ##    
 ## NA 
 ## units:  NA</code></pre>
-<p>In this particular case, the <code>shape</code> model will not be randomized because it doesn’t have a variance-covariance matrix. Also note that because there is only one parameter in the <code>trend</code> model, the randomization will use a univariate normal distribution.</p>
-<p>The same model could be achieved by using <code>mnrnorm()</code> on each model component:</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="modelling-natural-mortality.html#cb75-1" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">a4aM</span>(<span class="at">shape=</span>shape4, <span class="at">level=</span><span class="fu">mvrnorm</span>(<span class="dv">100</span>, level4), <span class="at">trend=</span><span class="fu">mvrnorm</span>(<span class="dv">100</span>, trend4))</span></code></pre></div>
+<p>In this particular case, the <code>shape</code> model will not be randomized because it doesn’t have a variance-covariance matrix. Also note that because there is only one parameter in the <code>trend</code> model, the randomization will use a univariate normal distribution. The same model could be achieved by using <code>mnrnorm()</code> on each model component:</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="modelling-natural-mortality.html#cb71-1" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">a4aM</span>(<span class="at">shape=</span>shape4,</span>
+<span id="cb71-2"><a href="modelling-natural-mortality.html#cb71-2" tabindex="-1"></a>    <span class="at">level=</span><span class="fu">mvrnorm</span>(<span class="dv">100</span>, level4),</span>
+<span id="cb71-3"><a href="modelling-natural-mortality.html#cb71-3" tabindex="-1"></a>    <span class="at">trend=</span><span class="fu">mvrnorm</span>(<span class="dv">100</span>, trend4))</span></code></pre></div>
+<p>an exact match would require to control the random seed so that the draws would be exactly the same.</p>
 </div>
 <div id="adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas" class="section level2 hasAnchor" number="5.3">
 <h2><span class="header-section-number">5.3</span> Adding uncertainty to natural mortality parameters with statistical copulas<a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We can also use copulas to add parameter uncertainty to the natural mortality model, similar to the way we use them for the growth model in Section <span class="math inline">\(\ref{sec:growth_triangle_cop}\)</span>. As stated above these processes make use of the methods implemented for the <code>FLModelSim</code> class.</p>
+<p>We can also use copulas to add parameter uncertainty to the natural mortality model, similar to the way we use them for the growth model in Section <a href="growth.html#growth">4</a>. As stated above these processes make use of the methods implemented for the <code>FLModelSim</code> class.</p>
 <p>In the following example we’ll use again Gislason’s second estimator, <span class="math inline">\(M_l=K(\frac{L_{\inf}}{l})^{1.5}\)</span> and a triangle copula to model parameter uncertainty. The method <code>mvrtriangle()</code> is used to create 1000 iterations.</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="modelling-natural-mortality.html#cb76-1" tabindex="-1"></a>linf <span class="ot">&lt;-</span> <span class="dv">60</span></span>
-<span id="cb76-2"><a href="modelling-natural-mortality.html#cb76-2" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="fl">0.4</span></span>
-<span id="cb76-3"><a href="modelling-natural-mortality.html#cb76-3" tabindex="-1"></a><span class="co"># vcov matrix (make up some values)</span></span>
-<span id="cb76-4"><a href="modelling-natural-mortality.html#cb76-4" tabindex="-1"></a>mm <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">nrow=</span><span class="dv">2</span>)</span>
-<span id="cb76-5"><a href="modelling-natural-mortality.html#cb76-5" tabindex="-1"></a><span class="co"># 10% cv</span></span>
-<span id="cb76-6"><a href="modelling-natural-mortality.html#cb76-6" tabindex="-1"></a><span class="fu">diag</span>(mm) <span class="ot">&lt;-</span> <span class="fu">c</span>((linf<span class="sc">*</span><span class="fl">0.1</span>)<span class="sc">^</span><span class="dv">2</span>, (k<span class="sc">*</span><span class="fl">0.1</span>)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb76-7"><a href="modelling-natural-mortality.html#cb76-7" tabindex="-1"></a><span class="co"># 0.2 correlation</span></span>
-<span id="cb76-8"><a href="modelling-natural-mortality.html#cb76-8" tabindex="-1"></a>mm[<span class="fu">upper.tri</span>(mm)] <span class="ot">&lt;-</span> mm[<span class="fu">lower.tri</span>(mm)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.05</span>)</span>
-<span id="cb76-9"><a href="modelling-natural-mortality.html#cb76-9" tabindex="-1"></a><span class="co"># a good way to check is using cov2cor</span></span>
-<span id="cb76-10"><a href="modelling-natural-mortality.html#cb76-10" tabindex="-1"></a><span class="fu">cov2cor</span>(mm)</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="modelling-natural-mortality.html#cb72-1" tabindex="-1"></a>linf <span class="ot">&lt;-</span> <span class="dv">60</span></span>
+<span id="cb72-2"><a href="modelling-natural-mortality.html#cb72-2" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="fl">0.4</span></span>
+<span id="cb72-3"><a href="modelling-natural-mortality.html#cb72-3" tabindex="-1"></a><span class="co"># vcov matrix (make up some values)</span></span>
+<span id="cb72-4"><a href="modelling-natural-mortality.html#cb72-4" tabindex="-1"></a>mm <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">nrow=</span><span class="dv">2</span>)</span>
+<span id="cb72-5"><a href="modelling-natural-mortality.html#cb72-5" tabindex="-1"></a><span class="co"># 10% cv</span></span>
+<span id="cb72-6"><a href="modelling-natural-mortality.html#cb72-6" tabindex="-1"></a><span class="fu">diag</span>(mm) <span class="ot">&lt;-</span> <span class="fu">c</span>((linf<span class="sc">*</span><span class="fl">0.1</span>)<span class="sc">^</span><span class="dv">2</span>, (k<span class="sc">*</span><span class="fl">0.1</span>)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb72-7"><a href="modelling-natural-mortality.html#cb72-7" tabindex="-1"></a><span class="co"># 0.2 correlation</span></span>
+<span id="cb72-8"><a href="modelling-natural-mortality.html#cb72-8" tabindex="-1"></a>mm[<span class="fu">upper.tri</span>(mm)] <span class="ot">&lt;-</span> mm[<span class="fu">lower.tri</span>(mm)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.05</span>)</span>
+<span id="cb72-9"><a href="modelling-natural-mortality.html#cb72-9" tabindex="-1"></a><span class="co"># a good way to check is using cov2cor</span></span>
+<span id="cb72-10"><a href="modelling-natural-mortality.html#cb72-10" tabindex="-1"></a><span class="fu">cov2cor</span>(mm)</span></code></pre></div>
 <pre><code>##           [,1]      [,2]
 ## [1,] 1.0000000 0.2083333
 ## [2,] 0.2083333 1.0000000</code></pre>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="modelling-natural-mortality.html#cb78-1" tabindex="-1"></a><span class="co"># create object</span></span>
-<span id="cb78-2"><a href="modelling-natural-mortality.html#cb78-2" tabindex="-1"></a>mgis2 <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span>k<span class="sc">*</span>(linf<span class="sc">/</span>len)<span class="sc">^</span><span class="fl">1.5</span>, <span class="at">params=</span><span class="fu">FLPar</span>(<span class="at">linf=</span>linf, <span class="at">k=</span>k), <span class="at">vcov=</span>mm)</span>
-<span id="cb78-3"><a href="modelling-natural-mortality.html#cb78-3" tabindex="-1"></a><span class="co"># set the lower, upper and (optionally) centre of the parameters (without the centre, the triangle is symmetrical)</span></span>
-<span id="cb78-4"><a href="modelling-natural-mortality.html#cb78-4" tabindex="-1"></a>pars <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">list</span>(<span class="at">a=</span><span class="dv">55</span>,<span class="at">b=</span><span class="dv">65</span>), <span class="fu">list</span>(<span class="at">a=</span><span class="fl">0.3</span>, <span class="at">b=</span><span class="fl">0.6</span>, <span class="at">c=</span><span class="fl">0.35</span>))</span>
-<span id="cb78-5"><a href="modelling-natural-mortality.html#cb78-5" tabindex="-1"></a>mgis2 <span class="ot">&lt;-</span> <span class="fu">mvrtriangle</span>(<span class="dv">1000</span>, mgis2, <span class="at">paramMargins=</span>pars)</span>
-<span id="cb78-6"><a href="modelling-natural-mortality.html#cb78-6" tabindex="-1"></a>mgis2</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="modelling-natural-mortality.html#cb74-1" tabindex="-1"></a><span class="co"># create object</span></span>
+<span id="cb74-2"><a href="modelling-natural-mortality.html#cb74-2" tabindex="-1"></a>mgis2 <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span>k<span class="sc">*</span>(linf<span class="sc">/</span>len)<span class="sc">^</span><span class="fl">1.5</span>, <span class="at">params=</span><span class="fu">FLPar</span>(<span class="at">linf=</span>linf, <span class="at">k=</span>k), <span class="at">vcov=</span>mm)</span>
+<span id="cb74-3"><a href="modelling-natural-mortality.html#cb74-3" tabindex="-1"></a><span class="co"># set the lower, upper and centre of the parameters</span></span>
+<span id="cb74-4"><a href="modelling-natural-mortality.html#cb74-4" tabindex="-1"></a>pars <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">list</span>(<span class="at">a=</span><span class="dv">55</span>,<span class="at">b=</span><span class="dv">65</span>), <span class="fu">list</span>(<span class="at">a=</span><span class="fl">0.3</span>, <span class="at">b=</span><span class="fl">0.6</span>, <span class="at">c=</span><span class="fl">0.35</span>))</span>
+<span id="cb74-5"><a href="modelling-natural-mortality.html#cb74-5" tabindex="-1"></a>mgis2 <span class="ot">&lt;-</span> <span class="fu">mvrtriangle</span>(<span class="dv">1000</span>, mgis2, <span class="at">paramMargins=</span>pars)</span>
+<span id="cb74-6"><a href="modelling-natural-mortality.html#cb74-6" tabindex="-1"></a>mgis2</span></code></pre></div>
 <pre><code>## An object of class &quot;FLModelSim&quot;
 ## Slot &quot;model&quot;:
 ## ~k * (linf/len)^1.5
@@ -500,7 +510,7 @@ div.csl-indent {
 ## 
 ## params
 ##             linf                k 
-## 60.10235(2.1804)  0.40479(0.0724) 
+## 60.04353(2.0645)  0.41196(0.0723) 
 ## units:  NA 
 ## 
 ## Slot &quot;vcov&quot;:
@@ -510,44 +520,43 @@ div.csl-indent {
 ## 
 ## Slot &quot;distr&quot;:
 ## [1] &quot;un &lt;deprecated slot&gt; triangle&quot;</code></pre>
-<p>The resulting parameter estimates and marginal distributions can be seen in Figure @ref(fig:plot_tri_gis_m) and @ref(fig:plot_tri_gis_m_hist).</p>
-<div class="figure">
-<img src="_main_files/figure-html/plot_tri_gis_m-1.png" alt="Parameter estimates for Gislason's second natural mortality model from using a triangle distribution." width="672" />
+<p>The resulting parameter estimates and marginal distributions can be seen in Figures <a href="modelling-natural-mortality.html#fig:plottrigism">5.1</a> and <a href="modelling-natural-mortality.html#fig:plottrigismhist">5.2</a>. By default the method uses an elliptical copula of t family (see <code>?ellipCopula</code> for more information).</p>
+<div class="figure"><span style="display:block;" id="fig:plottrigism"></span>
+<img src="_main_files/figure-html/plottrigism-1.png" alt="Pairwise depiction of Gislason's second natural mortality model estimates using a 't' family elliptic copula and triangle distribution margins." width="672" />
 <p class="caption">
-(#fig:plot_tri_gis_m)Parameter estimates for Gislason’s second natural mortality model from using a triangle distribution.
+Figure 5.1: Pairwise depiction of Gislason’s second natural mortality model estimates using a ‘t’ family elliptic copula and triangle distribution margins.
 </p>
 </div>
-<div class="figure">
-<img src="_main_files/figure-html/plot_tri_gis_m_hist-1.png" alt="Marginal distributions of the parameters for Gislason's second natural mortality model using a triangle distribution." width="672" />
+<div class="figure"><span style="display:block;" id="fig:plottrigismhist"></span>
+<img src="_main_files/figure-html/plottrigismhist-1.png" alt="Marginal distributions of the parameters for Gislason's second natural mortality model using triangle distributions." width="672" />
 <p class="caption">
-(#fig:plot_tri_gis_m_hist)Marginal distributions of the parameters for Gislason’s second natural mortality model using a triangle distribution.
+Figure 5.2: Marginal distributions of the parameters for Gislason’s second natural mortality model using triangle distributions.
 </p>
 </div>
 <p>We now have a new model that can be used for the <code>shape</code> model. You can use the constructor or the set method to add the new model. Note that we have a quite complex method now for M. A length based <code>shape</code> model from Gislason’s work, Jensen’s third model based on temperature <code>level</code> and a time <code>trend</code> depending on NAO. All of the component models have uncertainty in their parameters.</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="modelling-natural-mortality.html#cb80-1" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> <span class="fu">a4aM</span>(<span class="at">shape=</span>mgis2, <span class="at">level=</span>level4, <span class="at">trend=</span>trend4)</span>
-<span id="cb80-2"><a href="modelling-natural-mortality.html#cb80-2" tabindex="-1"></a><span class="co"># or</span></span>
-<span id="cb80-3"><a href="modelling-natural-mortality.html#cb80-3" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> m4</span>
-<span id="cb80-4"><a href="modelling-natural-mortality.html#cb80-4" tabindex="-1"></a><span class="fu">shape</span>(m5) <span class="ot">&lt;-</span> mgis2</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="modelling-natural-mortality.html#cb76-1" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> <span class="fu">a4aM</span>(<span class="at">shape=</span>mgis2, <span class="at">level=</span>level4, <span class="at">trend=</span>trend4)</span>
+<span id="cb76-2"><a href="modelling-natural-mortality.html#cb76-2" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb76-3"><a href="modelling-natural-mortality.html#cb76-3" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> m4</span>
+<span id="cb76-4"><a href="modelling-natural-mortality.html#cb76-4" tabindex="-1"></a><span class="fu">shape</span>(m5) <span class="ot">&lt;-</span> mgis2</span></code></pre></div>
 </div>
 <div id="computing-natural-mortality-time-series---the-m-method" class="section level2 hasAnchor" number="5.4">
 <h2><span class="header-section-number">5.4</span> Computing natural mortality time series - the “m” method<a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Now that we have set up the natural mortality <code>a4aM</code> model and added parameter uncertainty to each component, we are ready to generate the <code>FLQuant</code> of natural mortality. For that we need the <code>m()</code> method.</p>
-<p>The <code>m()</code> method is the workhorse method for computing natural mortality. The method returns an <code>FLQuant</code> that can be inserted in an <code>FLStock</code> for usage by the assessment method.</p>
-<p>The size of the <code>FLQuant</code> object is determined by the <code>min</code>, <code>max</code>, <code>minyear</code> and <code>maxyear</code> elements of the <code>range</code> slot of the <code>a4aM</code> object. By default the values of these elements are set to 0. Giving an <code>FLQuant</code> with length 1 in the <code>quant</code> and <code>year</code> dimension. The <code>range</code> slot can be set by hand, or by using the <code>rngquant()</code> and <code>rngyear()</code> methods.</p>
+<p>Now that we have set up the natural mortality <code>a4aM</code> model and added parameter uncertainty to each component, we are ready to generate the <code>FLQuant</code> of natural mortality with <code>m()</code>. The <code>m()</code> method is the workhorse method for computing natural mortality. The method returns a <code>FLQuant</code> that can be inserted in an <code>FLStock</code> to be used in the assessment method.</p>
+<p>The size of the <code>FLQuant</code> object is determined by the <code>min</code>, <code>max</code>, <code>minyear</code> and <code>maxyear</code> elements of the <code>range</code> slot of the <code>a4aM</code> object. By default the values of these elements are set to 0, which generates a <code>FLQuant</code> with length 1 in the <code>quant</code> and <code>year</code> dimension. The <code>range</code> slot can be set by hand, or by using the <code>rngquant()</code> and <code>rngyear()</code> methods.</p>
 <p>The name of the first dimension of the output <code>FLQuant</code> (e.g. ‘age’ or ‘len’) is determined by the parameters of the <code>shape</code> model. If it is not clear what the name should be then the name is set to ‘quant’.</p>
 <p>Here we demonstrate <code>m()</code> using the simple <code>a4aM</code> object we created above that has constant natural mortality.</p>
 <p>Start with the simplest model:</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="modelling-natural-mortality.html#cb81-1" tabindex="-1"></a>m1</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="modelling-natural-mortality.html#cb77-1" tabindex="-1"></a>m1</span></code></pre></div>
 <pre><code>## a4aM object:
 ##   shape: ~1
 ##   level: ~a
 ##   trend: ~1</code></pre>
 <p>Check the range:</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="modelling-natural-mortality.html#cb83-1" tabindex="-1"></a><span class="fu">range</span>(m1)</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="modelling-natural-mortality.html#cb79-1" tabindex="-1"></a><span class="fu">range</span>(m1)</span></code></pre></div>
 <pre><code>##       min       max plusgroup   minyear   maxyear   minmbar   maxmbar 
 ##         0         0         0         0         0         0         0</code></pre>
-<p>Simple - no ages or years:</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="modelling-natural-mortality.html#cb85-1" tabindex="-1"></a><span class="fu">m</span>(m1)</span></code></pre></div>
+<p>The <span class="math inline">\(M\)</span> <code>FLQuant</code> won’t have ages or years:</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="modelling-natural-mortality.html#cb81-1" tabindex="-1"></a><span class="fu">m</span>(m1)</span></code></pre></div>
 <pre><code>## An object of class &quot;FLQuant&quot;
 ## , , unit = unique, season = all, area = unique
 ## 
@@ -556,14 +565,16 @@ div.csl-indent {
 ##     0 0.2
 ## 
 ## units:  NA</code></pre>
-<p>Set the quant and year ranges:</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="modelling-natural-mortality.html#cb87-1" tabindex="-1"></a><span class="fu">range</span>(m1, <span class="fu">c</span>(<span class="st">&quot;min&quot;</span>,<span class="st">&quot;max&quot;</span>)) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">7</span>) <span class="co"># set the quant range</span></span>
-<span id="cb87-2"><a href="modelling-natural-mortality.html#cb87-2" tabindex="-1"></a><span class="fu">range</span>(m1, <span class="fu">c</span>(<span class="st">&quot;minyear&quot;</span>,<span class="st">&quot;maxyear&quot;</span>)) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2000</span>, <span class="dv">2010</span>) <span class="co"># set the year range</span></span>
-<span id="cb87-3"><a href="modelling-natural-mortality.html#cb87-3" tabindex="-1"></a><span class="fu">range</span>(m1)</span></code></pre></div>
+<p>To have a more useful matrix of values that cover the ages and years in the <code>FLStock</code> object, the analyst needs to set the quant and year ranges.</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="modelling-natural-mortality.html#cb83-1" tabindex="-1"></a><span class="co"># set the quant range</span></span>
+<span id="cb83-2"><a href="modelling-natural-mortality.html#cb83-2" tabindex="-1"></a><span class="fu">range</span>(m1, <span class="fu">c</span>(<span class="st">&quot;min&quot;</span>,<span class="st">&quot;max&quot;</span>)) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">7</span>)</span>
+<span id="cb83-3"><a href="modelling-natural-mortality.html#cb83-3" tabindex="-1"></a><span class="co"># set the year range</span></span>
+<span id="cb83-4"><a href="modelling-natural-mortality.html#cb83-4" tabindex="-1"></a><span class="fu">range</span>(m1, <span class="fu">c</span>(<span class="st">&quot;minyear&quot;</span>,<span class="st">&quot;maxyear&quot;</span>)) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2000</span>, <span class="dv">2010</span>)</span>
+<span id="cb83-5"><a href="modelling-natural-mortality.html#cb83-5" tabindex="-1"></a><span class="fu">range</span>(m1)</span></code></pre></div>
 <pre><code>##       min       max plusgroup   minyear   maxyear   minmbar   maxmbar 
 ##         0         7         0      2000      2010         0         0</code></pre>
 <p>Create the object with the M estimates by age and year, note the name of the first dimension is ‘quant’.</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="modelling-natural-mortality.html#cb89-1" tabindex="-1"></a><span class="fu">m</span>(m1)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="modelling-natural-mortality.html#cb85-1" tabindex="-1"></a><span class="fu">m</span>(m1)</span></code></pre></div>
 <pre><code>## An object of class &quot;FLQuant&quot;
 ## , , unit = unique, season = all, area = unique
 ## 
@@ -579,19 +590,22 @@ div.csl-indent {
 ##     7 0.2  0.2  0.2  0.2  0.2  0.2  0.2  0.2  0.2  0.2  0.2 
 ## 
 ## units:  NA</code></pre>
-<p>The next example has an age-based shape. As the <code>shape</code> model has ‘age’ as a variable which is not included in the <code>FLPar</code> slot it is used as the name of the first dimension of the resulting <code>FLQuant</code>. Note that in this case the <code>mbar</code> values in the range become relevant, once that <code>mbar</code> is used to compute the mean level. This mean level will match the value given by the <code>level</code> model. The <code>mbar</code> range can be changed with the <code>rngmbar()</code> method. We illustrate this by making an <code>FLQuant</code> with age varying natural mortality.</p>
+<p>The next example has an age-based shape (model “m2” from above). As the <code>shape</code> model has ‘age’ as a variable which is not included in the <code>FLPar</code> slot it is used as the name of the first dimension of the resulting <code>FLQuant</code>.</p>
+<p>An important feature of the <code>m()</code> method is the use of the <code>level</code> model. The outcome of the <code>level</code> model will be applied to a range of ages or lengths, set by the <code>mbar</code> information in the range slot. In this example the level model is <span class="math inline">\(1.5*K\)</span> and since <span class="math inline">\(K=0.4\)</span>, the level predicted by the model will be <span class="math inline">\(0.6\)</span>. The <code>m()</code> model will use the information in the range, <code>minmbar</code> and <code>maxmbar</code> to compute the mean level. This mean level will match the value given by the <code>level</code> model. The <code>mbar</code> range can be changed with the <code>rngmbar()</code> method. We illustrate this by making an <code>FLQuant</code> with age varying natural mortality.</p>
 <p>Check the model and set the ranges:</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="modelling-natural-mortality.html#cb91-1" tabindex="-1"></a>m2</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="modelling-natural-mortality.html#cb87-1" tabindex="-1"></a>m2</span></code></pre></div>
 <pre><code>## a4aM object:
 ##   shape: ~exp(-age - 0.5)
 ##   level: ~1.5 * k
 ##   trend: ~1</code></pre>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="modelling-natural-mortality.html#cb93-1" tabindex="-1"></a><span class="fu">range</span>(m2, <span class="fu">c</span>(<span class="st">&quot;min&quot;</span>,<span class="st">&quot;max&quot;</span>)) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">7</span>) <span class="co"># set the quant range</span></span>
-<span id="cb93-2"><a href="modelling-natural-mortality.html#cb93-2" tabindex="-1"></a><span class="fu">range</span>(m2, <span class="fu">c</span>(<span class="st">&quot;minyear&quot;</span>,<span class="st">&quot;maxyear&quot;</span>)) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2000</span>, <span class="dv">2003</span>) <span class="co"># set the year range</span></span>
-<span id="cb93-3"><a href="modelling-natural-mortality.html#cb93-3" tabindex="-1"></a><span class="fu">range</span>(m2)</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="modelling-natural-mortality.html#cb89-1" tabindex="-1"></a><span class="co"># set the quant range</span></span>
+<span id="cb89-2"><a href="modelling-natural-mortality.html#cb89-2" tabindex="-1"></a><span class="fu">range</span>(m2, <span class="fu">c</span>(<span class="st">&quot;min&quot;</span>,<span class="st">&quot;max&quot;</span>)) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">7</span>)</span>
+<span id="cb89-3"><a href="modelling-natural-mortality.html#cb89-3" tabindex="-1"></a><span class="co"># set the year range</span></span>
+<span id="cb89-4"><a href="modelling-natural-mortality.html#cb89-4" tabindex="-1"></a><span class="fu">range</span>(m2, <span class="fu">c</span>(<span class="st">&quot;minyear&quot;</span>,<span class="st">&quot;maxyear&quot;</span>)) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2000</span>, <span class="dv">2003</span>)</span>
+<span id="cb89-5"><a href="modelling-natural-mortality.html#cb89-5" tabindex="-1"></a><span class="fu">range</span>(m2)</span></code></pre></div>
 <pre><code>##       min       max plusgroup   minyear   maxyear   minmbar   maxmbar 
 ##         0         7         0      2000      2003         0         0</code></pre>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="modelling-natural-mortality.html#cb95-1" tabindex="-1"></a><span class="fu">m</span>(m2)</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="modelling-natural-mortality.html#cb91-1" tabindex="-1"></a><span class="fu">m</span>(m2)</span></code></pre></div>
 <pre><code>## An object of class &quot;FLQuant&quot;
 ## , , unit = unique, season = all, area = unique
 ## 
@@ -608,12 +622,12 @@ div.csl-indent {
 ## 
 ## units:  NA</code></pre>
 <p>Note that the level value is:</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="modelling-natural-mortality.html#cb97-1" tabindex="-1"></a><span class="fu">predict</span>(<span class="fu">level</span>(m2))</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="modelling-natural-mortality.html#cb93-1" tabindex="-1"></a><span class="fu">predict</span>(<span class="fu">level</span>(m2))</span></code></pre></div>
 <pre><code>##    iter
 ##       1
 ##   1 0.6</code></pre>
 <p>Which is the same as:</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="modelling-natural-mortality.html#cb99-1" tabindex="-1"></a><span class="fu">m</span>(m2)[<span class="st">&quot;0&quot;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="modelling-natural-mortality.html#cb95-1" tabindex="-1"></a><span class="fu">m</span>(m2)[<span class="st">&quot;0&quot;</span>]</span></code></pre></div>
 <pre><code>## An object of class &quot;FLQuant&quot;
 ## , , unit = unique, season = all, area = unique
 ## 
@@ -622,14 +636,14 @@ div.csl-indent {
 ##   0 0.6  0.6  0.6  0.6 
 ## 
 ## units:  NA</code></pre>
-<p>This is because the mbar range is currently set to “0” and “0” (see above) and the mean natural mortality value over this range is given by the level model.</p>
+<p>This is because the <code>mbar</code> range is currently set to “0” and “0” (see above) and the mean natural mortality value over this range is given by the level model.</p>
 <p>We can change the <code>mbar</code> range:</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="modelling-natural-mortality.html#cb101-1" tabindex="-1"></a><span class="fu">range</span>(m2, <span class="fu">c</span>(<span class="st">&quot;minmbar&quot;</span>,<span class="st">&quot;maxmbar&quot;</span>)) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>)</span>
-<span id="cb101-2"><a href="modelling-natural-mortality.html#cb101-2" tabindex="-1"></a><span class="fu">range</span>(m2)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="modelling-natural-mortality.html#cb97-1" tabindex="-1"></a><span class="fu">range</span>(m2, <span class="fu">c</span>(<span class="st">&quot;minmbar&quot;</span>,<span class="st">&quot;maxmbar&quot;</span>)) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>)</span>
+<span id="cb97-2"><a href="modelling-natural-mortality.html#cb97-2" tabindex="-1"></a><span class="fu">range</span>(m2)</span></code></pre></div>
 <pre><code>##       min       max plusgroup   minyear   maxyear   minmbar   maxmbar 
 ##         0         7         0      2000      2003         0         5</code></pre>
 <p>Which rescales the the natural mortality at age:</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="modelling-natural-mortality.html#cb103-1" tabindex="-1"></a><span class="fu">m</span>(m2)</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="modelling-natural-mortality.html#cb99-1" tabindex="-1"></a><span class="fu">m</span>(m2)</span></code></pre></div>
 <pre><code>## An object of class &quot;FLQuant&quot;
 ## , , unit = unique, season = all, area = unique
 ## 
@@ -646,7 +660,7 @@ div.csl-indent {
 ## 
 ## units:  NA</code></pre>
 <p>Check that the mortality over the mean range is the same as the level model:</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="modelling-natural-mortality.html#cb105-1" tabindex="-1"></a><span class="fu">quantMeans</span>(<span class="fu">m</span>(m2)[<span class="fu">as.character</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="modelling-natural-mortality.html#cb101-1" tabindex="-1"></a><span class="fu">quantMeans</span>(<span class="fu">m</span>(m2)[<span class="fu">ac</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>)])</span></code></pre></div>
 <pre><code>## An object of class &quot;FLQuant&quot;
 ## , , unit = unique, season = all, area = unique
 ## 
@@ -657,7 +671,7 @@ div.csl-indent {
 ## units:  NA</code></pre>
 <p>The next example uses a time trend for the <code>trend</code> model. We use the <code>m3</code> model we made earlier. The <code>trend</code> model for this model has a covariate, ‘nao’. This needs to be passed to the <code>m()</code> method. The year range of the ‘nao’ covariate should match that of the <code>range</code> slot.</p>
 <p>Simple, pass in a single nao value (only one year):</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="modelling-natural-mortality.html#cb107-1" tabindex="-1"></a><span class="fu">m</span>(m3, <span class="at">nao=</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="modelling-natural-mortality.html#cb103-1" tabindex="-1"></a><span class="fu">m</span>(m3, <span class="at">nao=</span><span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## An object of class &quot;FLQuant&quot;
 ## , , unit = unique, season = all, area = unique
 ## 
@@ -667,8 +681,8 @@ div.csl-indent {
 ## 
 ## units:  NA</code></pre>
 <p>Set ages:</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="modelling-natural-mortality.html#cb109-1" tabindex="-1"></a><span class="fu">range</span>(m3, <span class="fu">c</span>(<span class="st">&quot;min&quot;</span>,<span class="st">&quot;max&quot;</span>)) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">7</span>)</span>
-<span id="cb109-2"><a href="modelling-natural-mortality.html#cb109-2" tabindex="-1"></a><span class="fu">m</span>(m3, <span class="at">nao=</span><span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="modelling-natural-mortality.html#cb105-1" tabindex="-1"></a><span class="fu">range</span>(m3, <span class="fu">c</span>(<span class="st">&quot;min&quot;</span>,<span class="st">&quot;max&quot;</span>)) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">7</span>)</span>
+<span id="cb105-2"><a href="modelling-natural-mortality.html#cb105-2" tabindex="-1"></a><span class="fu">m</span>(m3, <span class="at">nao=</span><span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## An object of class &quot;FLQuant&quot;
 ## , , unit = unique, season = all, area = unique
 ## 
@@ -685,8 +699,8 @@ div.csl-indent {
 ## 
 ## units:  NA</code></pre>
 <p>With ages and years - passing in the NAO data as numeric (1,0,1,0)</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="modelling-natural-mortality.html#cb111-1" tabindex="-1"></a><span class="fu">range</span>(m3, <span class="fu">c</span>(<span class="st">&quot;minyear&quot;</span>,<span class="st">&quot;maxyear&quot;</span>)) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2000</span>, <span class="dv">2003</span>)</span>
-<span id="cb111-2"><a href="modelling-natural-mortality.html#cb111-2" tabindex="-1"></a><span class="fu">m</span>(m3, <span class="at">nao=</span><span class="fu">as.numeric</span>(nao[,<span class="fu">as.character</span>(<span class="dv">2000</span><span class="sc">:</span><span class="dv">2003</span>)]))</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="modelling-natural-mortality.html#cb107-1" tabindex="-1"></a><span class="fu">range</span>(m3, <span class="fu">c</span>(<span class="st">&quot;minyear&quot;</span>,<span class="st">&quot;maxyear&quot;</span>)) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2000</span>, <span class="dv">2003</span>)</span>
+<span id="cb107-2"><a href="modelling-natural-mortality.html#cb107-2" tabindex="-1"></a><span class="fu">m</span>(m3, <span class="at">nao=</span><span class="fu">as.numeric</span>(nao[,<span class="fu">as.character</span>(<span class="dv">2000</span><span class="sc">:</span><span class="dv">2003</span>)]))</span></code></pre></div>
 <pre><code>## An object of class &quot;FLQuant&quot;
 ## , , unit = unique, season = all, area = unique
 ## 
@@ -702,11 +716,11 @@ div.csl-indent {
 ##   7 0.000547 0.000821 0.000547 0.000821
 ## 
 ## units:  NA</code></pre>
-<p>The final example show how <code>m()</code> can be used to make an <code>FLQuant</code> with uncertainty (see Figure @ref(fig:uncertain_m)). We use the <code>m4</code> object from earlier with uncertainty on the <code>level</code> and <code>trend</code> parameters.</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="modelling-natural-mortality.html#cb113-1" tabindex="-1"></a><span class="fu">range</span>(m4, <span class="fu">c</span>(<span class="st">&quot;min&quot;</span>,<span class="st">&quot;max&quot;</span>)) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">7</span>)</span>
-<span id="cb113-2"><a href="modelling-natural-mortality.html#cb113-2" tabindex="-1"></a><span class="fu">range</span>(m4, <span class="fu">c</span>(<span class="st">&quot;minyear&quot;</span>,<span class="st">&quot;maxyear&quot;</span>)) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2000</span>, <span class="dv">2003</span>)</span>
-<span id="cb113-3"><a href="modelling-natural-mortality.html#cb113-3" tabindex="-1"></a>flq <span class="ot">&lt;-</span> <span class="fu">m</span>(m4, <span class="at">nao=</span><span class="fu">as.numeric</span>(nao[,<span class="fu">as.character</span>(<span class="dv">2000</span><span class="sc">:</span><span class="dv">2003</span>)]))</span>
-<span id="cb113-4"><a href="modelling-natural-mortality.html#cb113-4" tabindex="-1"></a>flq</span></code></pre></div>
+<p>The final example show how <code>m()</code> can be used to make an <code>FLQuant</code> with uncertainty (see Figure <a href="modelling-natural-mortality.html#fig:uncertainm">5.3</a>). We use the <code>m4</code> object from earlier with uncertainty on the <code>level</code> and <code>trend</code> parameters.</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="modelling-natural-mortality.html#cb109-1" tabindex="-1"></a><span class="fu">range</span>(m4, <span class="fu">c</span>(<span class="st">&quot;min&quot;</span>,<span class="st">&quot;max&quot;</span>)) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">7</span>)</span>
+<span id="cb109-2"><a href="modelling-natural-mortality.html#cb109-2" tabindex="-1"></a><span class="fu">range</span>(m4, <span class="fu">c</span>(<span class="st">&quot;minyear&quot;</span>,<span class="st">&quot;maxyear&quot;</span>)) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2000</span>, <span class="dv">2003</span>)</span>
+<span id="cb109-3"><a href="modelling-natural-mortality.html#cb109-3" tabindex="-1"></a>flq <span class="ot">&lt;-</span> <span class="fu">m</span>(m4, <span class="at">nao=</span><span class="fu">c</span>(nao[,<span class="fu">ac</span>(<span class="dv">2000</span><span class="sc">:</span><span class="dv">2003</span>)]))</span>
+<span id="cb109-4"><a href="modelling-natural-mortality.html#cb109-4" tabindex="-1"></a>flq</span></code></pre></div>
 <pre><code>## An object of class &quot;FLQuant&quot;
 ## iters:  100 
 ## 
@@ -714,26 +728,50 @@ div.csl-indent {
 ## 
 ##    year
 ## age 2000              2001              2002              2003             
-##   0 2.01877(0.137182) 2.90544(0.344474) 2.01877(0.137182) 2.90544(0.344474)
-##   1 0.74266(0.050466) 1.06885(0.126725) 0.74266(0.050466) 1.06885(0.126725)
-##   2 0.27321(0.018566) 0.39321(0.046619) 0.27321(0.018566) 0.39321(0.046619)
-##   3 0.10051(0.006830) 0.14465(0.017150) 0.10051(0.006830) 0.14465(0.017150)
-##   4 0.03698(0.002513) 0.05321(0.006309) 0.03698(0.002513) 0.05321(0.006309)
-##   5 0.01360(0.000924) 0.01958(0.002321) 0.01360(0.000924) 0.01958(0.002321)
-##   6 0.00500(0.000340) 0.00720(0.000854) 0.00500(0.000340) 0.00720(0.000854)
-##   7 0.00184(0.000125) 0.00265(0.000314) 0.00184(0.000125) 0.00265(0.000314)
+##   0 2.01905(0.204543) 3.06740(0.433415) 2.01905(0.204543) 3.06740(0.433415)
+##   1 0.74277(0.075247) 1.12843(0.159445) 0.74277(0.075247) 1.12843(0.159445)
+##   2 0.27325(0.027682) 0.41513(0.058656) 0.27325(0.027682) 0.41513(0.058656)
+##   3 0.10052(0.010184) 0.15272(0.021578) 0.10052(0.010184) 0.15272(0.021578)
+##   4 0.03698(0.003746) 0.05618(0.007938) 0.03698(0.003746) 0.05618(0.007938)
+##   5 0.01360(0.001378) 0.02067(0.002920) 0.01360(0.001378) 0.02067(0.002920)
+##   6 0.00500(0.000507) 0.00760(0.001074) 0.00500(0.000507) 0.00760(0.001074)
+##   7 0.00184(0.000187) 0.00280(0.000395) 0.00184(0.000187) 0.00280(0.000395)
 ## 
 ## units:  NA</code></pre>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="modelling-natural-mortality.html#cb115-1" tabindex="-1"></a><span class="fu">dim</span>(flq)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="modelling-natural-mortality.html#cb111-1" tabindex="-1"></a><span class="fu">dim</span>(flq)</span></code></pre></div>
 <pre><code>## [1]   8   4   1   1   1 100</code></pre>
-<div class="figure">
-<img src="_main_files/figure-html/uncertain_m-1.png" alt="Natural mortality with age and year trend." width="672" />
+<div class="figure"><span style="display:block;" id="fig:uncertainm"></span>
+<img src="_main_files/figure-html/uncertainm-1.png" alt="Natural mortality with age and year trend." width="672" />
 <p class="caption">
-(#fig:uncertain_m)Natural mortality with age and year trend.
+Figure 5.3: Natural mortality with age and year trend.
 </p>
 </div>
 <p>Notably, the last example created a M model that varies with time, based on an environmental variable, and adds estimation uncertainty, showing the huge flexibility this method can deal with.</p>
 
+</div>
+</div>
+<h3> References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-charnov1993" class="csl-entry">
+Charnov, Eric L. 1993. <em>Life History Invariants: Some Explorations of Symmetry in Evolutionary Ecology</em>. Oxford University Press.
+</div>
+<div id="ref-gislason2010" class="csl-entry">
+Gislason, Henrik, Niels Daan, Jake C Rice, and John G Pope. 2010. <span>“Size, Growth, Temperature and the Natural Mortality of Marine Fish.”</span> <em>Fish and Fisheries</em> 11 (2): 149–58. <a href="https://doi.org/10.1111/j.1467-2979.2009.00350.x">https://doi.org/10.1111/j.1467-2979.2009.00350.x</a>.
+</div>
+<div id="ref-MCAPAM2023" class="csl-entry">
+Hamel, Owen S., James N. Ianelli, Mark N. Maunder, and André E. Punt. 2023a. <span>“Natural Mortality: Theory, Estimation and Application in Fishery Stock Assessment Models.”</span> <em>Fisheries Research</em> 261: 106638. https://doi.org/<a href="https://doi.org/10.1016/j.fishres.2023.106638">https://doi.org/10.1016/j.fishres.2023.106638</a>.
+</div>
+<div id="ref-Kenchington2014" class="csl-entry">
+Kenchington, Trevor J. 2014. <span>“Natural Mortality Estimators for Information-Limited Fisheries.”</span> <em>Fish and Fisheries</em> 15 (4): 533–62. https://doi.org/<a href="https://doi.org/10.1111/faf.12027">https://doi.org/10.1111/faf.12027</a>.
+</div>
+<div id="ref-maunder2023mrev" class="csl-entry">
+Maunder, Mark N, Owen S Hamel, Hee-Haeng Lee, Kevin R Piner, Jason M Cope, André E Punt, James N Ianelli, Cristian Castillo-Jordan, and Manasa S Kapur. 2023. <span>“A Review of Estimation Methods for Natural Mortality and Their Performance in the Context of Fishery Stock Assessment.”</span> <em>Fisheries Research</em> 257: 106489. <a href="https://doi.org/10.1016/j.fishres.2022.106489">https://doi.org/10.1016/j.fishres.2022.106489</a>.
+</div>
+<div id="ref-pauly1980" class="csl-entry">
+Pauly, Daniel. 1980. <span>“On the Interrelationships Between Natural Mortality, Growth Parameters, and Mean Environmental Temperature in 175 Fish Stocks.”</span> <em>ICES Journal of Marine Science</em> 39 (2): 175–92. <a href="https://doi.org/10.1093/icesjms/39.2.175">https://doi.org/10.1093/icesjms/39.2.175</a>.
+</div>
+<div id="ref-quinn1999" class="csl-entry">
+Quinn, Terrance J, and Richard B Deriso. 1999. <em>Quantitative Fish Dynamics</em>. Oxford University Press.
 </div>
 </div>
             </section>
@@ -741,7 +779,7 @@ div.csl-indent {
           </div>
         </div>
       </div>
-<a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="growth.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="stock-assessment-framework.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -756,42 +794,42 @@ div.csl-indent {
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-m.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["_main.pdf", "_main.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-m.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

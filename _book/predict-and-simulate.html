@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>10 Predict and simulate  | Fish stock assessment with R</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="10 Predict and simulate  | Fish stock assessment with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-04-09" />
+<meta name="date" content="2025-04-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -182,6 +182,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.5.1" data-path="introduction.html"><a href="introduction.html#plaice-in-area-fao-27-ices-area-iv"><i class="fa fa-check"></i><b>2.5.1</b> Plaice in area FAO 27, ICES area IV</a></li>
 <li class="chapter" data-level="2.5.2" data-path="introduction.html"><a href="introduction.html#european-hake-in-fao-37-gsas-1567"><i class="fa fa-check"></i><b>2.5.2</b> European hake in FAO 37, GSAs 1,5,6,7</a></li>
 <li class="chapter" data-level="2.5.3" data-path="introduction.html"><a href="introduction.html#red-mullet-in-fao-27-gsa-1"><i class="fa fa-check"></i><b>2.5.3</b> Red mullet in FAO 27, GSA 1</a></li>
+<li class="chapter" data-level="2.5.4" data-path="introduction.html"><a href="introduction.html#redfish-simulated-length-data"><i class="fa fa-check"></i><b>2.5.4</b> Redfish simulated length data</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html"><i class="fa fa-check"></i><b>3</b> Introduction to Splines</a>
@@ -191,13 +192,13 @@ div.csl-indent {
 <li class="chapter" data-level="3.3" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#the-mgcv-package-inside-a4a"><i class="fa fa-check"></i><b>3.3</b> The <code>mgcv</code> package inside <code>a4a</code></a></li>
 <li class="chapter" data-level="3.4" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#on-the-number-of-knots-k"><i class="fa fa-check"></i><b>3.4</b> On the number of knots <span class="math inline">\(k\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><i class="fa fa-check"></i><b>4</b> Modelling Individual Growth and Using Stochastic Slicing to Convert Length-based Data Into Age-based Data</a>
+<li class="chapter" data-level="4" data-path="growth.html"><a href="growth.html"><i class="fa fa-check"></i><b>4</b> Modelling Individual Growth and Using Stochastic Slicing to Convert Length-based Data Into Age-based Data</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#a4agr---the-growth-class"><i class="fa fa-check"></i><b>4.1</b> a4aGr - The growth class</a></li>
-<li class="chapter" data-level="4.2" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>4.2</b> Adding uncertainty to growth parameters with a multivariate normal distribution</a></li>
-<li class="chapter" data-level="4.3" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-triangle-distribution"><i class="fa fa-check"></i><b>4.3</b> Adding uncertainty to growth parameters with a multivariate triangle distribution</a></li>
-<li class="chapter" data-level="4.4" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#adding-uncertainty-to-growth-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>4.4</b> Adding uncertainty to growth parameters with statistical copulas</a></li>
-<li class="chapter" data-level="4.5" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#converting-from-length-to-age-based-data---the-l2a-method"><i class="fa fa-check"></i><b>4.5</b> Converting from length to age based data - the <code>l2a()</code> method</a></li>
+<li class="chapter" data-level="4.1" data-path="growth.html"><a href="growth.html#a4agr---the-growth-class"><i class="fa fa-check"></i><b>4.1</b> a4aGr - The growth class</a></li>
+<li class="chapter" data-level="4.2" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>4.2</b> Adding uncertainty to growth parameters with a multivariate normal distribution</a></li>
+<li class="chapter" data-level="4.3" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-triangle-distribution"><i class="fa fa-check"></i><b>4.3</b> Adding uncertainty to growth parameters with a multivariate triangle distribution</a></li>
+<li class="chapter" data-level="4.4" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>4.4</b> Adding uncertainty to growth parameters with statistical copulas</a></li>
+<li class="chapter" data-level="4.5" data-path="growth.html"><a href="growth.html#converting-from-length-to-age-based-data---the-l2a-method"><i class="fa fa-check"></i><b>4.5</b> Converting from length to age based data - the <code>l2a()</code> method</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html"><i class="fa fa-check"></i><b>5</b> Modelling Natural Mortality</a>
 <ul>
@@ -345,8 +346,8 @@ div.csl-indent {
 <h1><span class="header-section-number">10</span> Predict and simulate <a href="predict-and-simulate.html#predict-and-simulate" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>To predict and simulate <code>R</code> uses the methods <code>predict()</code> and <code>simulate()</code>, which are implemented in <code>FLa4a</code>, adapted to work with several of the model classes. The simulate and predict methods only work if the mode object has be run with the option <code>fit = "assessment"</code>, and not <code>fit = "MP"</code>, the later is used when space and time are at a premium, for example in a Management Strategy Evaluation. In this chapter we will only cover prediction and simulation of full stock objects.</p>
 <p>This chapter is based on the following model:</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="predict-and-simulate.html#cb203-1" tabindex="-1"></a>fit0 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.index)</span>
-<span id="cb203-2"><a href="predict-and-simulate.html#cb203-2" tabindex="-1"></a><span class="fu">submodels</span>(fit0)</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="predict-and-simulate.html#cb199-1" tabindex="-1"></a>fit0 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.index)</span>
+<span id="cb199-2"><a href="predict-and-simulate.html#cb199-2" tabindex="-1"></a><span class="fu">submodels</span>(fit0)</span></code></pre></div>
 <pre><code>##   fmodel: ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
 ##  srmodel: ~factor(year)
 ##  n1model: ~s(age, k = 3)
@@ -359,8 +360,8 @@ div.csl-indent {
 <div id="predict" class="section level2 hasAnchor" number="10.1">
 <h2><span class="header-section-number">10.1</span> predict<a href="predict-and-simulate.html#predict" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Predict simply computes the quantities of interest using the estimated coefficients and the design matrix of the model, defined via the formulas in the submodels. In the case of predicting from a fitted model, a list is returned, with one element for each submodel, and each element of the list is a <code>FLQuants</code> object with the following <code>FLQuant</code>s</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="predict-and-simulate.html#cb205-1" tabindex="-1"></a>fit.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit0)</span>
-<span id="cb205-2"><a href="predict-and-simulate.html#cb205-2" tabindex="-1"></a><span class="fu">lapply</span>(fit.pred, names)</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="predict-and-simulate.html#cb201-1" tabindex="-1"></a>fit.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit0)</span>
+<span id="cb201-2"><a href="predict-and-simulate.html#cb201-2" tabindex="-1"></a><span class="fu">lapply</span>(fit.pred, names)</span></code></pre></div>
 <pre><code>## $stkmodel
 ## [1] &quot;harvest&quot; &quot;rec&quot;     &quot;ny1&quot;    
 ## 
@@ -370,20 +371,20 @@ div.csl-indent {
 ## $vmodel
 ## [1] &quot;catch&quot; &quot;IND&quot;</code></pre>
 <p>This allows easy access to the parameterised parts of the model, for example the initial population structure, <code>ny1</code>, can be accessed via <code>fit.pred$stkmodel$ny1</code>. If the whole stock is of interest, for example, to inspect model predictions of SSB, then the following code can be used</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="predict-and-simulate.html#cb207-1" tabindex="-1"></a>stk.pred <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> fit0</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="predict-and-simulate.html#cb203-1" tabindex="-1"></a>stk.pred <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> fit0</span></code></pre></div>
 <p>The <code>+</code> operator is used to add the predictions from the model to the initial stock object. Then quantities can be extracted as normal, <code>ssb(stk.pred)</code>.</p>
 </div>
 <div id="simulate" class="section level2 hasAnchor" number="10.2">
 <h2><span class="header-section-number">10.2</span> simulate<a href="predict-and-simulate.html#simulate" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Simulations are always done by generating random draws from a multivariate normal distribution with mean given by the coeffients of the model, and variance matrix given by the estimated covariance matrix of the coefficients (in practice this is a submatrix of the inverse of the hessian matrix, see details below).</p>
 <p>simulate performed on a fitted model returns a fitted model with the same structure as the original model, but with the model parameters replaced by <code>nsim</code> simulated parameters. The following code simulates the model 200 times, and a histogram of the result show in Figure @ref(fig:predsim_hist).</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="predict-and-simulate.html#cb208-1" tabindex="-1"></a>sim.fit <span class="ot">&lt;-</span> <span class="fu">simulate</span>(fit0, <span class="at">nsim =</span> <span class="dv">200</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="predict-and-simulate.html#cb209-1" tabindex="-1"></a><span class="fu">hist</span>(</span>
-<span id="cb209-2"><a href="predict-and-simulate.html#cb209-2" tabindex="-1"></a>  <span class="fu">exp</span>(<span class="fu">coef</span>(sim.fit)<span class="sc">$</span>vmodel<span class="sc">$</span>IND),</span>
-<span id="cb209-3"><a href="predict-and-simulate.html#cb209-3" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;200 draws of a model parameter&quot;</span>,</span>
-<span id="cb209-4"><a href="predict-and-simulate.html#cb209-4" tabindex="-1"></a>  <span class="at">nclass =</span> <span class="dv">20</span>,</span>
-<span id="cb209-5"><a href="predict-and-simulate.html#cb209-5" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;observation std error for survey index&quot;</span></span>
-<span id="cb209-6"><a href="predict-and-simulate.html#cb209-6" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="predict-and-simulate.html#cb204-1" tabindex="-1"></a>sim.fit <span class="ot">&lt;-</span> <span class="fu">simulate</span>(fit0, <span class="at">nsim =</span> <span class="dv">200</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="predict-and-simulate.html#cb205-1" tabindex="-1"></a><span class="fu">hist</span>(</span>
+<span id="cb205-2"><a href="predict-and-simulate.html#cb205-2" tabindex="-1"></a>  <span class="fu">exp</span>(<span class="fu">coef</span>(sim.fit)<span class="sc">$</span>vmodel<span class="sc">$</span>IND),</span>
+<span id="cb205-3"><a href="predict-and-simulate.html#cb205-3" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;200 draws of a model parameter&quot;</span>,</span>
+<span id="cb205-4"><a href="predict-and-simulate.html#cb205-4" tabindex="-1"></a>  <span class="at">nclass =</span> <span class="dv">20</span>,</span>
+<span id="cb205-5"><a href="predict-and-simulate.html#cb205-5" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;observation std error for survey index&quot;</span></span>
+<span id="cb205-6"><a href="predict-and-simulate.html#cb205-6" tabindex="-1"></a>)</span></code></pre></div>
 <div class="figure">
 <img src="_main_files/figure-html/predsim_hist-1.png" alt="Histogram of 200 draws from the approximate distribution of the estimate of survey observation error." width="672" />
 <p class="caption">
@@ -391,21 +392,21 @@ div.csl-indent {
 </p>
 </div>
 <p>The fitted model can also be used to generate some predictions, such as <code>harvest</code>, <code>stock.n</code> or <code>catch.n</code>. Figure <a href="predict-and-simulate.html#fig:sim">10.1</a> shows a comparison between the estimated values and the medians of the simulation, while Figure <a href="predict-and-simulate.html#fig:sim2">10.2</a> presents the stock summary of the simulated and fitted data.</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="predict-and-simulate.html#cb210-1" tabindex="-1"></a>fits <span class="ot">&lt;-</span> <span class="fu">simulate</span>(fit0, <span class="dv">100</span>)</span>
-<span id="cb210-2"><a href="predict-and-simulate.html#cb210-2" tabindex="-1"></a>flqs <span class="ot">&lt;-</span> <span class="fu">FLQuants</span>(<span class="at">sim=</span><span class="fu">iterMedians</span>(<span class="fu">stock.n</span>(fits)), <span class="at">det=</span><span class="fu">stock.n</span>(fit0))</span></code></pre></div>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="predict-and-simulate.html#cb211-1" tabindex="-1"></a><span class="fu">xyplot</span>(data<span class="sc">~</span>year<span class="sc">|</span>age, <span class="at">groups=</span>qname, <span class="at">data=</span>flqs, <span class="at">type=</span><span class="st">&quot;l&quot;</span>,</span>
-<span id="cb211-2"><a href="predict-and-simulate.html#cb211-2" tabindex="-1"></a>       <span class="at">scales=</span><span class="fu">list</span>(<span class="at">y=</span><span class="fu">list</span>(<span class="at">relation=</span><span class="st">&quot;free&quot;</span>, <span class="at">draw=</span><span class="cn">FALSE</span>)),</span>
-<span id="cb211-3"><a href="predict-and-simulate.html#cb211-3" tabindex="-1"></a>       <span class="at">auto.key=</span><span class="fu">list</span>(<span class="at">points=</span><span class="cn">FALSE</span>, <span class="at">lines=</span><span class="cn">TRUE</span>, <span class="at">columns=</span><span class="dv">2</span>),</span>
-<span id="cb211-4"><a href="predict-and-simulate.html#cb211-4" tabindex="-1"></a>       <span class="at">par.settings=</span><span class="fu">list</span>(<span class="at">superpose.line=</span><span class="fu">list</span>(<span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;gray35&quot;</span>, <span class="st">&quot;black&quot;</span>)),</span>
-<span id="cb211-5"><a href="predict-and-simulate.html#cb211-5" tabindex="-1"></a>       <span class="at">strip.background=</span><span class="fu">list</span>(<span class="at">col=</span><span class="st">&quot;gray90&quot;</span>)), <span class="at">ylab=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="predict-and-simulate.html#cb206-1" tabindex="-1"></a>fits <span class="ot">&lt;-</span> <span class="fu">simulate</span>(fit0, <span class="dv">100</span>)</span>
+<span id="cb206-2"><a href="predict-and-simulate.html#cb206-2" tabindex="-1"></a>flqs <span class="ot">&lt;-</span> <span class="fu">FLQuants</span>(<span class="at">sim=</span><span class="fu">iterMedians</span>(<span class="fu">stock.n</span>(fits)), <span class="at">det=</span><span class="fu">stock.n</span>(fit0))</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="predict-and-simulate.html#cb207-1" tabindex="-1"></a><span class="fu">xyplot</span>(data<span class="sc">~</span>year<span class="sc">|</span>age, <span class="at">groups=</span>qname, <span class="at">data=</span>flqs, <span class="at">type=</span><span class="st">&quot;l&quot;</span>,</span>
+<span id="cb207-2"><a href="predict-and-simulate.html#cb207-2" tabindex="-1"></a>       <span class="at">scales=</span><span class="fu">list</span>(<span class="at">y=</span><span class="fu">list</span>(<span class="at">relation=</span><span class="st">&quot;free&quot;</span>, <span class="at">draw=</span><span class="cn">FALSE</span>)),</span>
+<span id="cb207-3"><a href="predict-and-simulate.html#cb207-3" tabindex="-1"></a>       <span class="at">auto.key=</span><span class="fu">list</span>(<span class="at">points=</span><span class="cn">FALSE</span>, <span class="at">lines=</span><span class="cn">TRUE</span>, <span class="at">columns=</span><span class="dv">2</span>),</span>
+<span id="cb207-4"><a href="predict-and-simulate.html#cb207-4" tabindex="-1"></a>       <span class="at">par.settings=</span><span class="fu">list</span>(<span class="at">superpose.line=</span><span class="fu">list</span>(<span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;gray35&quot;</span>, <span class="st">&quot;black&quot;</span>)),</span>
+<span id="cb207-5"><a href="predict-and-simulate.html#cb207-5" tabindex="-1"></a>       <span class="at">strip.background=</span><span class="fu">list</span>(<span class="at">col=</span><span class="st">&quot;gray90&quot;</span>)), <span class="at">ylab=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:sim"></span>
 <img src="_main_files/figure-html/sim-1.png" alt="Median simulations VS fit" width="672" />
 <p class="caption">
 Figure 10.1: Median simulations VS fit
 </p>
 </div>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="predict-and-simulate.html#cb212-1" tabindex="-1"></a>stks <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> fits</span>
-<span id="cb212-2"><a href="predict-and-simulate.html#cb212-2" tabindex="-1"></a><span class="fu">plot</span>(stks)</span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="predict-and-simulate.html#cb208-1" tabindex="-1"></a>stks <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> fits</span>
+<span id="cb208-2"><a href="predict-and-simulate.html#cb208-2" tabindex="-1"></a><span class="fu">plot</span>(stks)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:sim2"></span>
 <img src="_main_files/figure-html/sim2-1.png" alt="Stock summary of the simulated and fitted data" width="672" />
 <p class="caption">
@@ -416,7 +417,7 @@ Figure 10.2: Stock summary of the simulated and fitted data
 <div id="simulate-and-predict" class="section level2 hasAnchor" number="10.3">
 <h2><span class="header-section-number">10.3</span> simulate and predict<a href="predict-and-simulate.html#simulate-and-predict" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>simulate()</code> and <code>predict()</code> functions can be combined to simulate and then predict from each of the simulations. The following code simulates the model 100 times and then predicts the fitted quantitites from the model, resulting in simulations from the core model elements: initial age structure, recruitment, fishing mortality, survey catchability and observation variance. A plot of the initial age structure is shown as an example in Figure @ref(fig:sim_ny1).</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="predict-and-simulate.html#cb213-1" tabindex="-1"></a>sim.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(sim.fit)</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="predict-and-simulate.html#cb209-1" tabindex="-1"></a>sim.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(sim.fit)</span></code></pre></div>
 <div class="figure">
 <img src="_main_files/figure-html/sim_ny1-1.png" alt="Simulations from the model prediction of initial age structure" width="672" />
 <p class="caption">
@@ -424,7 +425,7 @@ Figure 10.2: Stock summary of the simulated and fitted data
 </p>
 </div>
 <p>If interest is in the complete stock, then the <code>+</code> operator can be used to add the simulated quantities to the initial stock object, as shown below. The stock information can be extracted, such as SSB, a plot of which is shown in Figure @ref(fig:sim_ssb).</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="predict-and-simulate.html#cb214-1" tabindex="-1"></a>stk.sim <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> sim.fit</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="predict-and-simulate.html#cb210-1" tabindex="-1"></a>stk.sim <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> sim.fit</span></code></pre></div>
 <div class="figure">
 <img src="_main_files/figure-html/sim_ssb-1.png" alt="Simulations from the model prediction of initial age structure" width="672" />
 <p class="caption">
@@ -459,42 +460,42 @@ Figure 10.2: Stock summary of the simulated and fitted data
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/09-predsim.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["_main.pdf", "_main.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/09-predsim.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

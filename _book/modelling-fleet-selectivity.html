@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>15 Modelling fleet selectivity | Fish stock assessment with R</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="15 Modelling fleet selectivity | Fish stock assessment with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-04-09" />
+<meta name="date" content="2025-04-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -182,6 +182,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.5.1" data-path="introduction.html"><a href="introduction.html#plaice-in-area-fao-27-ices-area-iv"><i class="fa fa-check"></i><b>2.5.1</b> Plaice in area FAO 27, ICES area IV</a></li>
 <li class="chapter" data-level="2.5.2" data-path="introduction.html"><a href="introduction.html#european-hake-in-fao-37-gsas-1567"><i class="fa fa-check"></i><b>2.5.2</b> European hake in FAO 37, GSAs 1,5,6,7</a></li>
 <li class="chapter" data-level="2.5.3" data-path="introduction.html"><a href="introduction.html#red-mullet-in-fao-27-gsa-1"><i class="fa fa-check"></i><b>2.5.3</b> Red mullet in FAO 27, GSA 1</a></li>
+<li class="chapter" data-level="2.5.4" data-path="introduction.html"><a href="introduction.html#redfish-simulated-length-data"><i class="fa fa-check"></i><b>2.5.4</b> Redfish simulated length data</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html"><i class="fa fa-check"></i><b>3</b> Introduction to Splines</a>
@@ -191,13 +192,13 @@ div.csl-indent {
 <li class="chapter" data-level="3.3" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#the-mgcv-package-inside-a4a"><i class="fa fa-check"></i><b>3.3</b> The <code>mgcv</code> package inside <code>a4a</code></a></li>
 <li class="chapter" data-level="3.4" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#on-the-number-of-knots-k"><i class="fa fa-check"></i><b>3.4</b> On the number of knots <span class="math inline">\(k\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><i class="fa fa-check"></i><b>4</b> Modelling Individual Growth and Using Stochastic Slicing to Convert Length-based Data Into Age-based Data</a>
+<li class="chapter" data-level="4" data-path="growth.html"><a href="growth.html"><i class="fa fa-check"></i><b>4</b> Modelling Individual Growth and Using Stochastic Slicing to Convert Length-based Data Into Age-based Data</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#a4agr---the-growth-class"><i class="fa fa-check"></i><b>4.1</b> a4aGr - The growth class</a></li>
-<li class="chapter" data-level="4.2" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>4.2</b> Adding uncertainty to growth parameters with a multivariate normal distribution</a></li>
-<li class="chapter" data-level="4.3" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-triangle-distribution"><i class="fa fa-check"></i><b>4.3</b> Adding uncertainty to growth parameters with a multivariate triangle distribution</a></li>
-<li class="chapter" data-level="4.4" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#adding-uncertainty-to-growth-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>4.4</b> Adding uncertainty to growth parameters with statistical copulas</a></li>
-<li class="chapter" data-level="4.5" data-path="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html"><a href="modelling-individual-growth-and-using-stochastic-slicing-to-convert-length-based-data-into-age-based-data.html#converting-from-length-to-age-based-data---the-l2a-method"><i class="fa fa-check"></i><b>4.5</b> Converting from length to age based data - the <code>l2a()</code> method</a></li>
+<li class="chapter" data-level="4.1" data-path="growth.html"><a href="growth.html#a4agr---the-growth-class"><i class="fa fa-check"></i><b>4.1</b> a4aGr - The growth class</a></li>
+<li class="chapter" data-level="4.2" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>4.2</b> Adding uncertainty to growth parameters with a multivariate normal distribution</a></li>
+<li class="chapter" data-level="4.3" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-triangle-distribution"><i class="fa fa-check"></i><b>4.3</b> Adding uncertainty to growth parameters with a multivariate triangle distribution</a></li>
+<li class="chapter" data-level="4.4" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>4.4</b> Adding uncertainty to growth parameters with statistical copulas</a></li>
+<li class="chapter" data-level="4.5" data-path="growth.html"><a href="growth.html#converting-from-length-to-age-based-data---the-l2a-method"><i class="fa fa-check"></i><b>4.5</b> Converting from length to age based data - the <code>l2a()</code> method</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html"><i class="fa fa-check"></i><b>5</b> Modelling Natural Mortality</a>
 <ul>
@@ -345,118 +346,118 @@ div.csl-indent {
 <h1><span class="header-section-number">15</span> Modelling fleet selectivity<a href="modelling-fleet-selectivity.html#modelling-fleet-selectivity" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="modelling-fleets-with-different-proportions-of-the-catch-covariate" class="section level2 hasAnchor" number="15.1">
 <h2><span class="header-section-number">15.1</span> Modelling fleets with different proportions of the catch covariate<a href="modelling-fleet-selectivity.html#modelling-fleets-with-different-proportions-of-the-catch-covariate" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="modelling-fleet-selectivity.html#cb294-1" tabindex="-1"></a>cp1 <span class="ot">&lt;-</span> cp2 <span class="ot">&lt;-</span> <span class="fu">catch.n</span>(ple4)</span>
-<span id="cb294-2"><a href="modelling-fleet-selectivity.html#cb294-2" tabindex="-1"></a>pa <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>, <span class="fl">0.7</span>, <span class="fl">0.6</span>, <span class="fl">0.6</span>, <span class="fl">0.6</span>, <span class="fl">0.6</span>)</span>
-<span id="cb294-3"><a href="modelling-fleet-selectivity.html#cb294-3" tabindex="-1"></a>na <span class="ot">&lt;-</span> <span class="fu">nrow</span>(cp1)</span>
-<span id="cb294-4"><a href="modelling-fleet-selectivity.html#cb294-4" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>na) cp1[i][] <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">rbinom</span>(<span class="dv">100</span>, <span class="dv">1</span>, pa[i]))</span>
-<span id="cb294-5"><a href="modelling-fleet-selectivity.html#cb294-5" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>na) cp2[i][] <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">rbinom</span>(<span class="dv">100</span>, <span class="dv">1</span>, <span class="dv">1</span><span class="sc">-</span>pa[i]))</span>
-<span id="cb294-6"><a href="modelling-fleet-selectivity.html#cb294-6" tabindex="-1"></a>cp2 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">-</span>cp1</span>
-<span id="cb294-7"><a href="modelling-fleet-selectivity.html#cb294-7" tabindex="-1"></a></span>
-<span id="cb294-8"><a href="modelling-fleet-selectivity.html#cb294-8" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">20</span>, <span class="at">by =</span> cp1) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">20</span>, <span class="at">by =</span> cp2) <span class="sc">+</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">5</span>)</span>
-<span id="cb294-9"><a href="modelling-fleet-selectivity.html#cb294-9" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>fmod, <span class="at">covar=</span><span class="fu">FLQuants</span>(<span class="at">cp1=</span>cp1, <span class="at">cp2=</span>cp2))</span>
-<span id="cb294-10"><a href="modelling-fleet-selectivity.html#cb294-10" tabindex="-1"></a></span>
-<span id="cb294-11"><a href="modelling-fleet-selectivity.html#cb294-11" tabindex="-1"></a>This approach allows the inclusion of mean length <span class="cf">in</span> the catch of each fleet, as an indicator of fleet<span class="st">&#39;s selctivity, to model fishing mortality. This approach wouldn&#39;</span>t model individual fleet selectivity, it would bring information about fleet selectivity to help fitting the fishing mortality.</span>
-<span id="cb294-12"><a href="modelling-fleet-selectivity.html#cb294-12" tabindex="-1"></a></span>
-<span id="cb294-13"><a href="modelling-fleet-selectivity.html#cb294-13" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">FLStocks</span>(<span class="at">f1=</span>ple4<span class="sc">+</span>fit, <span class="at">f0=</span>ple4<span class="sc">+</span>fit0))</span></code></pre></div>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="modelling-fleet-selectivity.html#cb295-1" tabindex="-1"></a>fit</span>
-<span id="cb295-2"><a href="modelling-fleet-selectivity.html#cb295-2" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">simulate</span>(<span class="fu">stkmodel</span>(fit), <span class="at">nsim =</span> <span class="dv">100</span>))</span>
-<span id="cb295-3"><a href="modelling-fleet-selectivity.html#cb295-3" tabindex="-1"></a>by1 <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;fMod:s[(]age[)]:by1&quot;</span>, <span class="fu">dimnames</span>(b)<span class="sc">$</span>params)</span>
-<span id="cb295-4"><a href="modelling-fleet-selectivity.html#cb295-4" tabindex="-1"></a>by2 <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;fMod:s[(]age[)]:by2&quot;</span>, <span class="fu">dimnames</span>(b)<span class="sc">$</span>params)</span>
-<span id="cb295-5"><a href="modelling-fleet-selectivity.html#cb295-5" tabindex="-1"></a></span>
-<span id="cb295-6"><a href="modelling-fleet-selectivity.html#cb295-6" tabindex="-1"></a><span class="co"># doesnt work</span></span>
-<span id="cb295-7"><a href="modelling-fleet-selectivity.html#cb295-7" tabindex="-1"></a><span class="fu">getX</span>(<span class="sc">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">3</span>), <span class="fu">data.frame</span>(<span class="at">age =</span> <span class="fu">dims</span>(ple4)<span class="sc">$</span>min<span class="sc">:</span><span class="fu">dims</span>(ple4)<span class="sc">$</span>max))</span>
-<span id="cb295-8"><a href="modelling-fleet-selectivity.html#cb295-8" tabindex="-1"></a></span>
-<span id="cb295-9"><a href="modelling-fleet-selectivity.html#cb295-9" tabindex="-1"></a><span class="co"># need covars to make it work</span></span>
-<span id="cb295-10"><a href="modelling-fleet-selectivity.html#cb295-10" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb295-11"><a href="modelling-fleet-selectivity.html#cb295-11" tabindex="-1"></a>  <span class="at">year =</span> <span class="fu">rep</span>(<span class="fu">dims</span>(ple4)<span class="sc">$</span>minyear<span class="sc">:</span><span class="fu">dims</span>(ple4)<span class="sc">$</span>maxyear, <span class="at">each =</span> <span class="fu">dims</span>(ple4)<span class="sc">$</span>age),</span>
-<span id="cb295-12"><a href="modelling-fleet-selectivity.html#cb295-12" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">dims</span>(ple4)<span class="sc">$</span>min<span class="sc">:</span><span class="fu">dims</span>(ple4)<span class="sc">$</span>max,</span>
-<span id="cb295-13"><a href="modelling-fleet-selectivity.html#cb295-13" tabindex="-1"></a>  <span class="at">cp1 =</span> <span class="fu">c</span>(cp1[, <span class="dv">1</span>]),</span>
-<span id="cb295-14"><a href="modelling-fleet-selectivity.html#cb295-14" tabindex="-1"></a>  <span class="at">cp2 =</span> <span class="fu">c</span>(cp2[, <span class="dv">1</span>])</span>
-<span id="cb295-15"><a href="modelling-fleet-selectivity.html#cb295-15" tabindex="-1"></a>)</span>
-<span id="cb295-16"><a href="modelling-fleet-selectivity.html#cb295-16" tabindex="-1"></a></span>
-<span id="cb295-17"><a href="modelling-fleet-selectivity.html#cb295-17" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">getX</span>(<span class="fu">fmodel</span>(fit), df)</span>
-<span id="cb295-18"><a href="modelling-fleet-selectivity.html#cb295-18" tabindex="-1"></a><span class="co"># just keep first 10 rows (ages 1:10)</span></span>
-<span id="cb295-19"><a href="modelling-fleet-selectivity.html#cb295-19" tabindex="-1"></a>X <span class="ot">&lt;-</span> X[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,]</span>
-<span id="cb295-20"><a href="modelling-fleet-selectivity.html#cb295-20" tabindex="-1"></a></span>
-<span id="cb295-21"><a href="modelling-fleet-selectivity.html#cb295-21" tabindex="-1"></a>sims1 <span class="ot">&lt;-</span> <span class="fu">exp</span>(X[,by1] <span class="sc">%*%</span> b[by1,])</span>
-<span id="cb295-22"><a href="modelling-fleet-selectivity.html#cb295-22" tabindex="-1"></a>sims2 <span class="ot">&lt;-</span> <span class="fu">exp</span>(X[,by2] <span class="sc">%*%</span> b[by2,])</span>
-<span id="cb295-23"><a href="modelling-fleet-selectivity.html#cb295-23" tabindex="-1"></a></span>
-<span id="cb295-24"><a href="modelling-fleet-selectivity.html#cb295-24" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>))</span>
-<span id="cb295-25"><a href="modelling-fleet-selectivity.html#cb295-25" tabindex="-1"></a><span class="fu">matplot</span>(sims1, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>)</span>
-<span id="cb295-26"><a href="modelling-fleet-selectivity.html#cb295-26" tabindex="-1"></a><span class="fu">matplot</span>(sims2, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="modelling-fleet-selectivity.html#cb296-1" tabindex="-1"></a>fmodel0 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">5</span>) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">10</span>)</span>
-<span id="cb296-2"><a href="modelling-fleet-selectivity.html#cb296-2" tabindex="-1"></a>fit0 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel =</span> fmodel0)</span>
-<span id="cb296-3"><a href="modelling-fleet-selectivity.html#cb296-3" tabindex="-1"></a></span>
-<span id="cb296-4"><a href="modelling-fleet-selectivity.html#cb296-4" tabindex="-1"></a></span>
-<span id="cb296-5"><a href="modelling-fleet-selectivity.html#cb296-5" tabindex="-1"></a><span class="fu">plot</span>(splines<span class="sc">::</span><span class="fu">bs</span>(year) <span class="sc">%*%</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb296-6"><a href="modelling-fleet-selectivity.html#cb296-6" tabindex="-1"></a></span>
-<span id="cb296-7"><a href="modelling-fleet-selectivity.html#cb296-7" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">pnorm</span>(year, <span class="dv">1990</span>, <span class="dv">5</span>), <span class="at">type =</span> <span class="st">&quot;b&quot;</span>)</span>
-<span id="cb296-8"><a href="modelling-fleet-selectivity.html#cb296-8" tabindex="-1"></a></span>
-<span id="cb296-9"><a href="modelling-fleet-selectivity.html#cb296-9" tabindex="-1"></a></span>
-<span id="cb296-10"><a href="modelling-fleet-selectivity.html#cb296-10" tabindex="-1"></a>fmodel2 <span class="ot">&lt;-</span> <span class="er">~</span></span>
-<span id="cb296-11"><a href="modelling-fleet-selectivity.html#cb296-11" tabindex="-1"></a>  <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">3</span>, <span class="at">by =</span> <span class="fu">cbind</span>(<span class="fu">pnorm</span>(year, <span class="dv">1990</span>, <span class="dv">5</span>), <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(year, <span class="dv">1990</span>, <span class="dv">5</span>))) <span class="sc">+</span></span>
-<span id="cb296-12"><a href="modelling-fleet-selectivity.html#cb296-12" tabindex="-1"></a>  <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">18</span>)</span>
-<span id="cb296-13"><a href="modelling-fleet-selectivity.html#cb296-13" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel =</span> fmodel2)</span>
-<span id="cb296-14"><a href="modelling-fleet-selectivity.html#cb296-14" tabindex="-1"></a></span>
-<span id="cb296-15"><a href="modelling-fleet-selectivity.html#cb296-15" tabindex="-1"></a><span class="fu">xyplot</span>(data <span class="sc">~</span> age <span class="sc">|</span> year <span class="sc">&gt;</span> <span class="dv">1990</span>, <span class="at">groups =</span> year, <span class="at">data =</span> <span class="fu">harvest</span>(fit2), <span class="at">type =</span> <span class="st">&quot;l&quot;</span>)</span>
-<span id="cb296-16"><a href="modelling-fleet-selectivity.html#cb296-16" tabindex="-1"></a></span>
-<span id="cb296-17"><a href="modelling-fleet-selectivity.html#cb296-17" tabindex="-1"></a><span class="fu">wireframe</span>(<span class="fu">harvest</span>(fit2))</span>
-<span id="cb296-18"><a href="modelling-fleet-selectivity.html#cb296-18" tabindex="-1"></a></span>
-<span id="cb296-19"><a href="modelling-fleet-selectivity.html#cb296-19" tabindex="-1"></a></span>
-<span id="cb296-20"><a href="modelling-fleet-selectivity.html#cb296-20" tabindex="-1"></a></span>
-<span id="cb296-21"><a href="modelling-fleet-selectivity.html#cb296-21" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">simulate</span>(<span class="fu">stkmodel</span>(fit2), <span class="at">nsim =</span> <span class="dv">1000</span>))</span>
-<span id="cb296-22"><a href="modelling-fleet-selectivity.html#cb296-22" tabindex="-1"></a>by1 <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;fMod:s[(]age[).]&quot;</span>, <span class="fu">dimnames</span>(b)<span class="sc">$</span>params)</span>
-<span id="cb296-23"><a href="modelling-fleet-selectivity.html#cb296-23" tabindex="-1"></a>by2 <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;fMod:s[(]age[)]:&quot;</span>, <span class="fu">dimnames</span>(b)<span class="sc">$</span>params)</span>
-<span id="cb296-24"><a href="modelling-fleet-selectivity.html#cb296-24" tabindex="-1"></a></span>
-<span id="cb296-25"><a href="modelling-fleet-selectivity.html#cb296-25" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">getX</span>(<span class="fu">fmodel</span>(fit2), <span class="fu">as.data.frame</span>(<span class="fu">catch.n</span>(ple4)))</span>
-<span id="cb296-26"><a href="modelling-fleet-selectivity.html#cb296-26" tabindex="-1"></a></span>
-<span id="cb296-27"><a href="modelling-fleet-selectivity.html#cb296-27" tabindex="-1"></a>sims1 <span class="ot">&lt;-</span> X[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, by1] <span class="sc">%*%</span> b[by1, ]</span>
-<span id="cb296-28"><a href="modelling-fleet-selectivity.html#cb296-28" tabindex="-1"></a>sims2 <span class="ot">&lt;-</span> X[<span class="fu">nrow</span>(X) <span class="sc">-</span> (<span class="dv">10</span><span class="sc">:</span><span class="dv">1</span>) <span class="sc">+</span> <span class="dv">1</span>, by2] <span class="sc">%*%</span> b[by2, ]</span>
-<span id="cb296-29"><a href="modelling-fleet-selectivity.html#cb296-29" tabindex="-1"></a></span>
-<span id="cb296-30"><a href="modelling-fleet-selectivity.html#cb296-30" tabindex="-1"></a><span class="co"># get quantiles</span></span>
-<span id="cb296-31"><a href="modelling-fleet-selectivity.html#cb296-31" tabindex="-1"></a>simsqs1 <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">apply</span>(sims1, <span class="dv">1</span>, quantile, <span class="fu">c</span>(<span class="fl">0.25</span>, .<span class="dv">5</span>)))</span>
-<span id="cb296-32"><a href="modelling-fleet-selectivity.html#cb296-32" tabindex="-1"></a></span>
-<span id="cb296-33"><a href="modelling-fleet-selectivity.html#cb296-33" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>))</span>
-<span id="cb296-34"><a href="modelling-fleet-selectivity.html#cb296-34" tabindex="-1"></a><span class="fu">matplot</span>(sims1, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>)</span>
-<span id="cb296-35"><a href="modelling-fleet-selectivity.html#cb296-35" tabindex="-1"></a><span class="fu">matplot</span>(sims2, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="modelling-fleet-selectivity.html#cb297-1" tabindex="-1"></a>dm <span class="ot">&lt;-</span> <span class="fu">dims</span>(ple4)</span>
-<span id="cb297-2"><a href="modelling-fleet-selectivity.html#cb297-2" tabindex="-1"></a><span class="co"># simulate a simple model</span></span>
-<span id="cb297-3"><a href="modelling-fleet-selectivity.html#cb297-3" tabindex="-1"></a>age <span class="ot">&lt;-</span> dm<span class="sc">$</span>min<span class="sc">:</span>dm<span class="sc">$</span>max</span>
-<span id="cb297-4"><a href="modelling-fleet-selectivity.html#cb297-4" tabindex="-1"></a>year <span class="ot">&lt;-</span> dm<span class="sc">$</span>minyear<span class="sc">:</span>dm<span class="sc">$</span>maxyear</span>
-<span id="cb297-5"><a href="modelling-fleet-selectivity.html#cb297-5" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="fu">c</span>(splines<span class="sc">::</span><span class="fu">bs</span>(age) <span class="sc">%*%</span> <span class="fu">c</span>(.<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb297-6"><a href="modelling-fleet-selectivity.html#cb297-6" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="fu">c</span>(splines<span class="sc">::</span><span class="fu">bs</span>(age) <span class="sc">%*%</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
-<span id="cb297-7"><a href="modelling-fleet-selectivity.html#cb297-7" tabindex="-1"></a></span>
-<span id="cb297-8"><a href="modelling-fleet-selectivity.html#cb297-8" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> s1 <span class="sc">/</span> <span class="fu">max</span>(s1)</span>
-<span id="cb297-9"><a href="modelling-fleet-selectivity.html#cb297-9" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> s2 <span class="sc">/</span> <span class="fu">max</span>(s2)</span>
-<span id="cb297-10"><a href="modelling-fleet-selectivity.html#cb297-10" tabindex="-1"></a></span>
-<span id="cb297-11"><a href="modelling-fleet-selectivity.html#cb297-11" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(year, <span class="dv">1990</span>, <span class="dv">5</span>)</span>
-<span id="cb297-12"><a href="modelling-fleet-selectivity.html#cb297-12" tabindex="-1"></a></span>
-<span id="cb297-13"><a href="modelling-fleet-selectivity.html#cb297-13" tabindex="-1"></a>obj <span class="ot">&lt;-</span> <span class="fu">catch.n</span>(ple4)</span>
-<span id="cb297-14"><a href="modelling-fleet-selectivity.html#cb297-14" tabindex="-1"></a></span>
-<span id="cb297-15"><a href="modelling-fleet-selectivity.html#cb297-15" tabindex="-1"></a>y <span class="ot">&lt;-</span> s1 <span class="sc">%o%</span> weight <span class="sc">+</span> s2 <span class="sc">%o%</span> (<span class="dv">1</span> <span class="sc">-</span> weight)</span>
-<span id="cb297-16"><a href="modelling-fleet-selectivity.html#cb297-16" tabindex="-1"></a></span>
-<span id="cb297-17"><a href="modelling-fleet-selectivity.html#cb297-17" tabindex="-1"></a>yobs <span class="ot">&lt;-</span> y <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="fu">length</span>(y), <span class="dv">0</span>, <span class="fl">0.01</span>)</span>
-<span id="cb297-18"><a href="modelling-fleet-selectivity.html#cb297-18" tabindex="-1"></a></span>
-<span id="cb297-19"><a href="modelling-fleet-selectivity.html#cb297-19" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb297-20"><a href="modelling-fleet-selectivity.html#cb297-20" tabindex="-1"></a>  <span class="at">year =</span> <span class="fu">rep</span>(year, <span class="at">each =</span> <span class="fu">length</span>(age)),</span>
-<span id="cb297-21"><a href="modelling-fleet-selectivity.html#cb297-21" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">rep</span>(age, <span class="fu">length</span>(year)),</span>
-<span id="cb297-22"><a href="modelling-fleet-selectivity.html#cb297-22" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(yobs)</span>
-<span id="cb297-23"><a href="modelling-fleet-selectivity.html#cb297-23" tabindex="-1"></a>)</span>
-<span id="cb297-24"><a href="modelling-fleet-selectivity.html#cb297-24" tabindex="-1"></a></span>
-<span id="cb297-25"><a href="modelling-fleet-selectivity.html#cb297-25" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="fu">rep</span>(weight, <span class="at">each =</span> dm<span class="sc">$</span>age), <span class="dv">1</span> <span class="sc">-</span> <span class="fu">rep</span>(weight, <span class="at">each =</span> dm<span class="sc">$</span>age))</span>
-<span id="cb297-26"><a href="modelling-fleet-selectivity.html#cb297-26" tabindex="-1"></a></span>
-<span id="cb297-27"><a href="modelling-fleet-selectivity.html#cb297-27" tabindex="-1"></a>agem <span class="ot">&lt;-</span> <span class="fu">cbind</span>(dat<span class="sc">$</span>age, dat<span class="sc">$</span>age)</span>
-<span id="cb297-28"><a href="modelling-fleet-selectivity.html#cb297-28" tabindex="-1"></a></span>
-<span id="cb297-29"><a href="modelling-fleet-selectivity.html#cb297-29" tabindex="-1"></a><span class="fu">library</span>(mgcv)</span>
-<span id="cb297-30"><a href="modelling-fleet-selectivity.html#cb297-30" tabindex="-1"></a>fit0 <span class="ot">&lt;-</span> <span class="fu">gam</span>(y <span class="sc">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">5</span>) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">20</span>), <span class="at">data =</span> dat)</span>
-<span id="cb297-31"><a href="modelling-fleet-selectivity.html#cb297-31" tabindex="-1"></a></span>
-<span id="cb297-32"><a href="modelling-fleet-selectivity.html#cb297-32" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">gam</span>(y <span class="sc">~</span> <span class="fu">s</span>(agem, <span class="at">k =</span> <span class="dv">5</span>, <span class="at">by =</span> L), <span class="at">data =</span> dat)</span>
-<span id="cb297-33"><a href="modelling-fleet-selectivity.html#cb297-33" tabindex="-1"></a></span>
-<span id="cb297-34"><a href="modelling-fleet-selectivity.html#cb297-34" tabindex="-1"></a></span>
-<span id="cb297-35"><a href="modelling-fleet-selectivity.html#cb297-35" tabindex="-1"></a>obj[] <span class="ot">&lt;-</span> <span class="fu">fitted</span>(fit1)</span>
-<span id="cb297-36"><a href="modelling-fleet-selectivity.html#cb297-36" tabindex="-1"></a></span>
-<span id="cb297-37"><a href="modelling-fleet-selectivity.html#cb297-37" tabindex="-1"></a><span class="fu">wireframe</span>(obj)</span>
-<span id="cb297-38"><a href="modelling-fleet-selectivity.html#cb297-38" tabindex="-1"></a><span class="fu">xyplot</span>(data <span class="sc">~</span> age <span class="sc">|</span> year <span class="sc">&gt;</span> <span class="dv">1990</span>, <span class="at">groups =</span> year, <span class="at">data =</span> obj, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="modelling-fleet-selectivity.html#cb290-1" tabindex="-1"></a>cp1 <span class="ot">&lt;-</span> cp2 <span class="ot">&lt;-</span> <span class="fu">catch.n</span>(ple4)</span>
+<span id="cb290-2"><a href="modelling-fleet-selectivity.html#cb290-2" tabindex="-1"></a>pa <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>, <span class="fl">0.7</span>, <span class="fl">0.6</span>, <span class="fl">0.6</span>, <span class="fl">0.6</span>, <span class="fl">0.6</span>)</span>
+<span id="cb290-3"><a href="modelling-fleet-selectivity.html#cb290-3" tabindex="-1"></a>na <span class="ot">&lt;-</span> <span class="fu">nrow</span>(cp1)</span>
+<span id="cb290-4"><a href="modelling-fleet-selectivity.html#cb290-4" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>na) cp1[i][] <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">rbinom</span>(<span class="dv">100</span>, <span class="dv">1</span>, pa[i]))</span>
+<span id="cb290-5"><a href="modelling-fleet-selectivity.html#cb290-5" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>na) cp2[i][] <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">rbinom</span>(<span class="dv">100</span>, <span class="dv">1</span>, <span class="dv">1</span><span class="sc">-</span>pa[i]))</span>
+<span id="cb290-6"><a href="modelling-fleet-selectivity.html#cb290-6" tabindex="-1"></a>cp2 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">-</span>cp1</span>
+<span id="cb290-7"><a href="modelling-fleet-selectivity.html#cb290-7" tabindex="-1"></a></span>
+<span id="cb290-8"><a href="modelling-fleet-selectivity.html#cb290-8" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">20</span>, <span class="at">by =</span> cp1) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">20</span>, <span class="at">by =</span> cp2) <span class="sc">+</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">5</span>)</span>
+<span id="cb290-9"><a href="modelling-fleet-selectivity.html#cb290-9" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>fmod, <span class="at">covar=</span><span class="fu">FLQuants</span>(<span class="at">cp1=</span>cp1, <span class="at">cp2=</span>cp2))</span>
+<span id="cb290-10"><a href="modelling-fleet-selectivity.html#cb290-10" tabindex="-1"></a></span>
+<span id="cb290-11"><a href="modelling-fleet-selectivity.html#cb290-11" tabindex="-1"></a>This approach allows the inclusion of mean length <span class="cf">in</span> the catch of each fleet, as an indicator of fleet<span class="st">&#39;s selctivity, to model fishing mortality. This approach wouldn&#39;</span>t model individual fleet selectivity, it would bring information about fleet selectivity to help fitting the fishing mortality.</span>
+<span id="cb290-12"><a href="modelling-fleet-selectivity.html#cb290-12" tabindex="-1"></a></span>
+<span id="cb290-13"><a href="modelling-fleet-selectivity.html#cb290-13" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">FLStocks</span>(<span class="at">f1=</span>ple4<span class="sc">+</span>fit, <span class="at">f0=</span>ple4<span class="sc">+</span>fit0))</span></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="modelling-fleet-selectivity.html#cb291-1" tabindex="-1"></a>fit</span>
+<span id="cb291-2"><a href="modelling-fleet-selectivity.html#cb291-2" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">simulate</span>(<span class="fu">stkmodel</span>(fit), <span class="at">nsim =</span> <span class="dv">100</span>))</span>
+<span id="cb291-3"><a href="modelling-fleet-selectivity.html#cb291-3" tabindex="-1"></a>by1 <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;fMod:s[(]age[)]:by1&quot;</span>, <span class="fu">dimnames</span>(b)<span class="sc">$</span>params)</span>
+<span id="cb291-4"><a href="modelling-fleet-selectivity.html#cb291-4" tabindex="-1"></a>by2 <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;fMod:s[(]age[)]:by2&quot;</span>, <span class="fu">dimnames</span>(b)<span class="sc">$</span>params)</span>
+<span id="cb291-5"><a href="modelling-fleet-selectivity.html#cb291-5" tabindex="-1"></a></span>
+<span id="cb291-6"><a href="modelling-fleet-selectivity.html#cb291-6" tabindex="-1"></a><span class="co"># doesnt work</span></span>
+<span id="cb291-7"><a href="modelling-fleet-selectivity.html#cb291-7" tabindex="-1"></a><span class="fu">getX</span>(<span class="sc">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">3</span>), <span class="fu">data.frame</span>(<span class="at">age =</span> <span class="fu">dims</span>(ple4)<span class="sc">$</span>min<span class="sc">:</span><span class="fu">dims</span>(ple4)<span class="sc">$</span>max))</span>
+<span id="cb291-8"><a href="modelling-fleet-selectivity.html#cb291-8" tabindex="-1"></a></span>
+<span id="cb291-9"><a href="modelling-fleet-selectivity.html#cb291-9" tabindex="-1"></a><span class="co"># need covars to make it work</span></span>
+<span id="cb291-10"><a href="modelling-fleet-selectivity.html#cb291-10" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb291-11"><a href="modelling-fleet-selectivity.html#cb291-11" tabindex="-1"></a>  <span class="at">year =</span> <span class="fu">rep</span>(<span class="fu">dims</span>(ple4)<span class="sc">$</span>minyear<span class="sc">:</span><span class="fu">dims</span>(ple4)<span class="sc">$</span>maxyear, <span class="at">each =</span> <span class="fu">dims</span>(ple4)<span class="sc">$</span>age),</span>
+<span id="cb291-12"><a href="modelling-fleet-selectivity.html#cb291-12" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">dims</span>(ple4)<span class="sc">$</span>min<span class="sc">:</span><span class="fu">dims</span>(ple4)<span class="sc">$</span>max,</span>
+<span id="cb291-13"><a href="modelling-fleet-selectivity.html#cb291-13" tabindex="-1"></a>  <span class="at">cp1 =</span> <span class="fu">c</span>(cp1[, <span class="dv">1</span>]),</span>
+<span id="cb291-14"><a href="modelling-fleet-selectivity.html#cb291-14" tabindex="-1"></a>  <span class="at">cp2 =</span> <span class="fu">c</span>(cp2[, <span class="dv">1</span>])</span>
+<span id="cb291-15"><a href="modelling-fleet-selectivity.html#cb291-15" tabindex="-1"></a>)</span>
+<span id="cb291-16"><a href="modelling-fleet-selectivity.html#cb291-16" tabindex="-1"></a></span>
+<span id="cb291-17"><a href="modelling-fleet-selectivity.html#cb291-17" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">getX</span>(<span class="fu">fmodel</span>(fit), df)</span>
+<span id="cb291-18"><a href="modelling-fleet-selectivity.html#cb291-18" tabindex="-1"></a><span class="co"># just keep first 10 rows (ages 1:10)</span></span>
+<span id="cb291-19"><a href="modelling-fleet-selectivity.html#cb291-19" tabindex="-1"></a>X <span class="ot">&lt;-</span> X[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,]</span>
+<span id="cb291-20"><a href="modelling-fleet-selectivity.html#cb291-20" tabindex="-1"></a></span>
+<span id="cb291-21"><a href="modelling-fleet-selectivity.html#cb291-21" tabindex="-1"></a>sims1 <span class="ot">&lt;-</span> <span class="fu">exp</span>(X[,by1] <span class="sc">%*%</span> b[by1,])</span>
+<span id="cb291-22"><a href="modelling-fleet-selectivity.html#cb291-22" tabindex="-1"></a>sims2 <span class="ot">&lt;-</span> <span class="fu">exp</span>(X[,by2] <span class="sc">%*%</span> b[by2,])</span>
+<span id="cb291-23"><a href="modelling-fleet-selectivity.html#cb291-23" tabindex="-1"></a></span>
+<span id="cb291-24"><a href="modelling-fleet-selectivity.html#cb291-24" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>))</span>
+<span id="cb291-25"><a href="modelling-fleet-selectivity.html#cb291-25" tabindex="-1"></a><span class="fu">matplot</span>(sims1, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>)</span>
+<span id="cb291-26"><a href="modelling-fleet-selectivity.html#cb291-26" tabindex="-1"></a><span class="fu">matplot</span>(sims2, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="modelling-fleet-selectivity.html#cb292-1" tabindex="-1"></a>fmodel0 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">5</span>) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">10</span>)</span>
+<span id="cb292-2"><a href="modelling-fleet-selectivity.html#cb292-2" tabindex="-1"></a>fit0 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel =</span> fmodel0)</span>
+<span id="cb292-3"><a href="modelling-fleet-selectivity.html#cb292-3" tabindex="-1"></a></span>
+<span id="cb292-4"><a href="modelling-fleet-selectivity.html#cb292-4" tabindex="-1"></a></span>
+<span id="cb292-5"><a href="modelling-fleet-selectivity.html#cb292-5" tabindex="-1"></a><span class="fu">plot</span>(splines<span class="sc">::</span><span class="fu">bs</span>(year) <span class="sc">%*%</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb292-6"><a href="modelling-fleet-selectivity.html#cb292-6" tabindex="-1"></a></span>
+<span id="cb292-7"><a href="modelling-fleet-selectivity.html#cb292-7" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">pnorm</span>(year, <span class="dv">1990</span>, <span class="dv">5</span>), <span class="at">type =</span> <span class="st">&quot;b&quot;</span>)</span>
+<span id="cb292-8"><a href="modelling-fleet-selectivity.html#cb292-8" tabindex="-1"></a></span>
+<span id="cb292-9"><a href="modelling-fleet-selectivity.html#cb292-9" tabindex="-1"></a></span>
+<span id="cb292-10"><a href="modelling-fleet-selectivity.html#cb292-10" tabindex="-1"></a>fmodel2 <span class="ot">&lt;-</span> <span class="er">~</span></span>
+<span id="cb292-11"><a href="modelling-fleet-selectivity.html#cb292-11" tabindex="-1"></a>  <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">3</span>, <span class="at">by =</span> <span class="fu">cbind</span>(<span class="fu">pnorm</span>(year, <span class="dv">1990</span>, <span class="dv">5</span>), <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(year, <span class="dv">1990</span>, <span class="dv">5</span>))) <span class="sc">+</span></span>
+<span id="cb292-12"><a href="modelling-fleet-selectivity.html#cb292-12" tabindex="-1"></a>  <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">18</span>)</span>
+<span id="cb292-13"><a href="modelling-fleet-selectivity.html#cb292-13" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel =</span> fmodel2)</span>
+<span id="cb292-14"><a href="modelling-fleet-selectivity.html#cb292-14" tabindex="-1"></a></span>
+<span id="cb292-15"><a href="modelling-fleet-selectivity.html#cb292-15" tabindex="-1"></a><span class="fu">xyplot</span>(data <span class="sc">~</span> age <span class="sc">|</span> year <span class="sc">&gt;</span> <span class="dv">1990</span>, <span class="at">groups =</span> year, <span class="at">data =</span> <span class="fu">harvest</span>(fit2), <span class="at">type =</span> <span class="st">&quot;l&quot;</span>)</span>
+<span id="cb292-16"><a href="modelling-fleet-selectivity.html#cb292-16" tabindex="-1"></a></span>
+<span id="cb292-17"><a href="modelling-fleet-selectivity.html#cb292-17" tabindex="-1"></a><span class="fu">wireframe</span>(<span class="fu">harvest</span>(fit2))</span>
+<span id="cb292-18"><a href="modelling-fleet-selectivity.html#cb292-18" tabindex="-1"></a></span>
+<span id="cb292-19"><a href="modelling-fleet-selectivity.html#cb292-19" tabindex="-1"></a></span>
+<span id="cb292-20"><a href="modelling-fleet-selectivity.html#cb292-20" tabindex="-1"></a></span>
+<span id="cb292-21"><a href="modelling-fleet-selectivity.html#cb292-21" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">simulate</span>(<span class="fu">stkmodel</span>(fit2), <span class="at">nsim =</span> <span class="dv">1000</span>))</span>
+<span id="cb292-22"><a href="modelling-fleet-selectivity.html#cb292-22" tabindex="-1"></a>by1 <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;fMod:s[(]age[).]&quot;</span>, <span class="fu">dimnames</span>(b)<span class="sc">$</span>params)</span>
+<span id="cb292-23"><a href="modelling-fleet-selectivity.html#cb292-23" tabindex="-1"></a>by2 <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;fMod:s[(]age[)]:&quot;</span>, <span class="fu">dimnames</span>(b)<span class="sc">$</span>params)</span>
+<span id="cb292-24"><a href="modelling-fleet-selectivity.html#cb292-24" tabindex="-1"></a></span>
+<span id="cb292-25"><a href="modelling-fleet-selectivity.html#cb292-25" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">getX</span>(<span class="fu">fmodel</span>(fit2), <span class="fu">as.data.frame</span>(<span class="fu">catch.n</span>(ple4)))</span>
+<span id="cb292-26"><a href="modelling-fleet-selectivity.html#cb292-26" tabindex="-1"></a></span>
+<span id="cb292-27"><a href="modelling-fleet-selectivity.html#cb292-27" tabindex="-1"></a>sims1 <span class="ot">&lt;-</span> X[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, by1] <span class="sc">%*%</span> b[by1, ]</span>
+<span id="cb292-28"><a href="modelling-fleet-selectivity.html#cb292-28" tabindex="-1"></a>sims2 <span class="ot">&lt;-</span> X[<span class="fu">nrow</span>(X) <span class="sc">-</span> (<span class="dv">10</span><span class="sc">:</span><span class="dv">1</span>) <span class="sc">+</span> <span class="dv">1</span>, by2] <span class="sc">%*%</span> b[by2, ]</span>
+<span id="cb292-29"><a href="modelling-fleet-selectivity.html#cb292-29" tabindex="-1"></a></span>
+<span id="cb292-30"><a href="modelling-fleet-selectivity.html#cb292-30" tabindex="-1"></a><span class="co"># get quantiles</span></span>
+<span id="cb292-31"><a href="modelling-fleet-selectivity.html#cb292-31" tabindex="-1"></a>simsqs1 <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">apply</span>(sims1, <span class="dv">1</span>, quantile, <span class="fu">c</span>(<span class="fl">0.25</span>, .<span class="dv">5</span>)))</span>
+<span id="cb292-32"><a href="modelling-fleet-selectivity.html#cb292-32" tabindex="-1"></a></span>
+<span id="cb292-33"><a href="modelling-fleet-selectivity.html#cb292-33" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>))</span>
+<span id="cb292-34"><a href="modelling-fleet-selectivity.html#cb292-34" tabindex="-1"></a><span class="fu">matplot</span>(sims1, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>)</span>
+<span id="cb292-35"><a href="modelling-fleet-selectivity.html#cb292-35" tabindex="-1"></a><span class="fu">matplot</span>(sims2, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="modelling-fleet-selectivity.html#cb293-1" tabindex="-1"></a>dm <span class="ot">&lt;-</span> <span class="fu">dims</span>(ple4)</span>
+<span id="cb293-2"><a href="modelling-fleet-selectivity.html#cb293-2" tabindex="-1"></a><span class="co"># simulate a simple model</span></span>
+<span id="cb293-3"><a href="modelling-fleet-selectivity.html#cb293-3" tabindex="-1"></a>age <span class="ot">&lt;-</span> dm<span class="sc">$</span>min<span class="sc">:</span>dm<span class="sc">$</span>max</span>
+<span id="cb293-4"><a href="modelling-fleet-selectivity.html#cb293-4" tabindex="-1"></a>year <span class="ot">&lt;-</span> dm<span class="sc">$</span>minyear<span class="sc">:</span>dm<span class="sc">$</span>maxyear</span>
+<span id="cb293-5"><a href="modelling-fleet-selectivity.html#cb293-5" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="fu">c</span>(splines<span class="sc">::</span><span class="fu">bs</span>(age) <span class="sc">%*%</span> <span class="fu">c</span>(.<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb293-6"><a href="modelling-fleet-selectivity.html#cb293-6" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="fu">c</span>(splines<span class="sc">::</span><span class="fu">bs</span>(age) <span class="sc">%*%</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb293-7"><a href="modelling-fleet-selectivity.html#cb293-7" tabindex="-1"></a></span>
+<span id="cb293-8"><a href="modelling-fleet-selectivity.html#cb293-8" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> s1 <span class="sc">/</span> <span class="fu">max</span>(s1)</span>
+<span id="cb293-9"><a href="modelling-fleet-selectivity.html#cb293-9" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> s2 <span class="sc">/</span> <span class="fu">max</span>(s2)</span>
+<span id="cb293-10"><a href="modelling-fleet-selectivity.html#cb293-10" tabindex="-1"></a></span>
+<span id="cb293-11"><a href="modelling-fleet-selectivity.html#cb293-11" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(year, <span class="dv">1990</span>, <span class="dv">5</span>)</span>
+<span id="cb293-12"><a href="modelling-fleet-selectivity.html#cb293-12" tabindex="-1"></a></span>
+<span id="cb293-13"><a href="modelling-fleet-selectivity.html#cb293-13" tabindex="-1"></a>obj <span class="ot">&lt;-</span> <span class="fu">catch.n</span>(ple4)</span>
+<span id="cb293-14"><a href="modelling-fleet-selectivity.html#cb293-14" tabindex="-1"></a></span>
+<span id="cb293-15"><a href="modelling-fleet-selectivity.html#cb293-15" tabindex="-1"></a>y <span class="ot">&lt;-</span> s1 <span class="sc">%o%</span> weight <span class="sc">+</span> s2 <span class="sc">%o%</span> (<span class="dv">1</span> <span class="sc">-</span> weight)</span>
+<span id="cb293-16"><a href="modelling-fleet-selectivity.html#cb293-16" tabindex="-1"></a></span>
+<span id="cb293-17"><a href="modelling-fleet-selectivity.html#cb293-17" tabindex="-1"></a>yobs <span class="ot">&lt;-</span> y <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="fu">length</span>(y), <span class="dv">0</span>, <span class="fl">0.01</span>)</span>
+<span id="cb293-18"><a href="modelling-fleet-selectivity.html#cb293-18" tabindex="-1"></a></span>
+<span id="cb293-19"><a href="modelling-fleet-selectivity.html#cb293-19" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb293-20"><a href="modelling-fleet-selectivity.html#cb293-20" tabindex="-1"></a>  <span class="at">year =</span> <span class="fu">rep</span>(year, <span class="at">each =</span> <span class="fu">length</span>(age)),</span>
+<span id="cb293-21"><a href="modelling-fleet-selectivity.html#cb293-21" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">rep</span>(age, <span class="fu">length</span>(year)),</span>
+<span id="cb293-22"><a href="modelling-fleet-selectivity.html#cb293-22" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(yobs)</span>
+<span id="cb293-23"><a href="modelling-fleet-selectivity.html#cb293-23" tabindex="-1"></a>)</span>
+<span id="cb293-24"><a href="modelling-fleet-selectivity.html#cb293-24" tabindex="-1"></a></span>
+<span id="cb293-25"><a href="modelling-fleet-selectivity.html#cb293-25" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="fu">rep</span>(weight, <span class="at">each =</span> dm<span class="sc">$</span>age), <span class="dv">1</span> <span class="sc">-</span> <span class="fu">rep</span>(weight, <span class="at">each =</span> dm<span class="sc">$</span>age))</span>
+<span id="cb293-26"><a href="modelling-fleet-selectivity.html#cb293-26" tabindex="-1"></a></span>
+<span id="cb293-27"><a href="modelling-fleet-selectivity.html#cb293-27" tabindex="-1"></a>agem <span class="ot">&lt;-</span> <span class="fu">cbind</span>(dat<span class="sc">$</span>age, dat<span class="sc">$</span>age)</span>
+<span id="cb293-28"><a href="modelling-fleet-selectivity.html#cb293-28" tabindex="-1"></a></span>
+<span id="cb293-29"><a href="modelling-fleet-selectivity.html#cb293-29" tabindex="-1"></a><span class="fu">library</span>(mgcv)</span>
+<span id="cb293-30"><a href="modelling-fleet-selectivity.html#cb293-30" tabindex="-1"></a>fit0 <span class="ot">&lt;-</span> <span class="fu">gam</span>(y <span class="sc">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">5</span>) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">20</span>), <span class="at">data =</span> dat)</span>
+<span id="cb293-31"><a href="modelling-fleet-selectivity.html#cb293-31" tabindex="-1"></a></span>
+<span id="cb293-32"><a href="modelling-fleet-selectivity.html#cb293-32" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">gam</span>(y <span class="sc">~</span> <span class="fu">s</span>(agem, <span class="at">k =</span> <span class="dv">5</span>, <span class="at">by =</span> L), <span class="at">data =</span> dat)</span>
+<span id="cb293-33"><a href="modelling-fleet-selectivity.html#cb293-33" tabindex="-1"></a></span>
+<span id="cb293-34"><a href="modelling-fleet-selectivity.html#cb293-34" tabindex="-1"></a></span>
+<span id="cb293-35"><a href="modelling-fleet-selectivity.html#cb293-35" tabindex="-1"></a>obj[] <span class="ot">&lt;-</span> <span class="fu">fitted</span>(fit1)</span>
+<span id="cb293-36"><a href="modelling-fleet-selectivity.html#cb293-36" tabindex="-1"></a></span>
+<span id="cb293-37"><a href="modelling-fleet-selectivity.html#cb293-37" tabindex="-1"></a><span class="fu">wireframe</span>(obj)</span>
+<span id="cb293-38"><a href="modelling-fleet-selectivity.html#cb293-38" tabindex="-1"></a><span class="fu">xyplot</span>(data <span class="sc">~</span> age <span class="sc">|</span> year <span class="sc">&gt;</span> <span class="dv">1990</span>, <span class="at">groups =</span> year, <span class="at">data =</span> obj, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>)</span></code></pre></div>
 
 </div>
 </div>
@@ -480,42 +481,42 @@ div.csl-indent {
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/16-modellingfleetsel.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["_main.pdf", "_main.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/16-modellingfleetsel.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>
