@@ -2,44 +2,7 @@
 
 ## Maths description \label{sec:math}
 
-### Observations
-
-The stock assessment model is based on two types of observations: catches, $\hat{C}$, and abundance indices, $\hat{I}$. The model predicts catches at age $C_{ay}$ and indices of abundance $I_{ays}$ for each age $a$, year $y$ and survey $s$ in the input dataset. It is assumed that the observed catches are normally distributed about the model predictions on the log scale with observation variance $\sigma^2_{ay}$. that is:
-
-\begin{equation}
-  \log \hat{C}_{ay} \sim \text{Normal} \Big( \log C_{ay}, \sigma^2_{ay}\Big)
-\end{equation}
-
-likewise, the observed survey indices are assumed to be normally distributed about the model predictions on the log scale with observation variance $\tau^2_{ays}$:
-
-\begin{equation}
-\log \hat{I}_{ays} \sim \text{Normal} \Big( \log I_{ays}, \tau^2_{ays} \Big)
-\end{equation}
-
-This leads to the definition of the log-likelihood of the observed catches
-
-\begin{equation}
-\ell_C = \sum_{ay} w^{(c)}_{ay}\ \ell_N \Big( \log C_{ay}, \sigma^2_{ay} ;\ \log \hat{C}_{ay} \Big)
-\end{equation}
-
-
-and the log-likelihood of the observed survey indices
-
-\begin{equation}
-\ell_I = \sum_s \sum_{ay} w^{(s)}_{ays}\ \ell_N \Big( \log I_{ays}, \tau_{ays}^2 ;\ \log \hat{I}_{ays} \Big)
-\end{equation}
-
-
-where $\ell_N$ is the normal log-likelihood function and $w^{(c)}_{ay}$ and $w^{(s)}_{ays}$ are optional weights for the catch and index observations, respectively. The total log-likelihood is then
-
-\begin{equation}
-\ell = \ell_C + \ell_I
-\end{equation}
-
-
-### The population dynamics model
-
-To predict catches and survey indices, the model uses the standard population dynamics model
+The stock assessment model is based on two types of observations: catches, $\hat{C}$, and abundance indices, $\hat{I}$. The model predicts catches at age $C_{ay}$ and indices of abundance $I_{ays}$ for each age $a$, year $y$ and survey $s$ in the input dataset. To predict catches and survey indices, the model uses the standard population dynamics model
 
 \begin{equation}
 N_{a+1,y+1} = N_{ay} \exp \left( - F_{ay} - M_{ay} \right)
@@ -48,12 +11,10 @@ N_{a+1,y+1} = N_{ay} \exp \left( - F_{ay} - M_{ay} \right)
 
 where $N_{ay}$ is the number of individuals at age $a$ in year $y$, $F_{ay}$ is the fishing mortality at age $a$ in year $y$, and $M_{ay}$ is the natural mortality at age $a$ in year $y$.  Any fish that survived beyond the oldest age $A$ in the model are accumulated in the oldest age group and are assumed to be fished at a common rate $F_{A,y}$.
 
-
 \begin{align}
 N_{A,y+1} = &N_{A-1,y} \exp \left( - F_{A-1,y} - M_{A-1,y} \right) \\
             &+ N_{A,y} \exp \left( - F_{A,y} - M_{A,y} \right)
 \end{align}
-
 
 The numbers $N_{a,y}$ are initiated in the first year, $y=1$ and at the youngest age, $a=1$, and the matrix of numbers at age are filled in according to the population dynamics model stated above (see Figure \@ref(fig:popdyn)).
 
@@ -67,13 +28,11 @@ Defining $R_y = N_{1,y}$, the numbers at age can be written (ignoring the plus g
 N_{a,y} = \left\{ \begin{matrix} R_{y-a+1} \exp \left( - \sum^a_{i=1} F_{a-i,y-i} + M_{a-i,y-i} \right) &  y \geq a \\ N_{a-y+1,1} \exp \left( - \sum^{a-y}_{i=1} F_{a-i,y-i} + M_{a-i,y-i} \right) &  y \lt a \end{matrix} \right.
 \end{equation}
 
-
 Catches in numbers by age and year are defined in terms of the three quantities: natural mortality, fishing mortality and recruitment; using a modified form of the well known Baranov catch equation:
 
 \begin{equation}
 C_{ay} = \frac{F_{ay}}{F_{ay}+M_{ay}}\left(1 - e^{-(F_{ay}+M_{ay})}\right) R_{y}e^{-\sum (F_{ay} + M_{ay})}
 \end{equation}
-
 
 Survey indices by age and year are defined in terms of the same three quantities with the addition of survey catchability:
 
@@ -81,8 +40,7 @@ Survey indices by age and year are defined in terms of the same three quantities
 I_{ays} = Q_{ays} R_{y}e^{-\sum (F_{ay} + M_{ay})}
 \end{equation}
 
-
-Observed catches and observed survey indices are assumed to be log-normally distributed, or equivalently, normally distributed on the log-scale, with specific observation variance:
+It is assumed that the observed catches are normally distributed about the model predictions on the log scale with observation variance $\sigma^2_{ay}$. that is:
 
 \begin{equation}
 \log \hat{C}_{ay} \sim \text{Normal} \Big( \log C_{ay}, \sigma^2_{ay}\Big)
@@ -92,13 +50,11 @@ Observed catches and observed survey indices are assumed to be log-normally dist
 \log \hat{I}_{ays} \sim \text{Normal} \Big( \log I_{ays}, \tau^2_{ays} \Big)
 \end{equation}
 
-
 The log-likelihood can now be defined as the sum of the log-likelihood of the observed catches:
 
 \begin{equation}
 \ell_C = \sum_{ay} w^{(c)}_{ay}\ \ell_N \Big( \log C_{ay}, \sigma^2_{ay} ;\ \log \hat{C}_{ay} \Big)
 \end{equation}
-
 
 and the log-likelihood of the observed survey indices as:
 
@@ -106,13 +62,11 @@ and the log-likelihood of the observed survey indices as:
 \ell_I = \sum_s \sum_{ay} w^{(s)}_{ays}\ \ell_N \Big( \log I_{ays}, \tau_{ays}^2 ;\ \log \hat{I}_{ays} \Big)
 \end{equation}
 
-
 giving the total log-likelihood
 
 \begin{equation}
 \ell = \ell_C + \ell_I
 \end{equation}
-
 
 which is defined in terms of the strictly positive quantites, $M_{ay}$, $F_{ay}$, $Q_{ays}$ and $R_{y}$, and the observation variances $\sigma_{ay}$ and $\tau_{ays}$. As such, the log-likelihood is over-parameterised as there are many more parameters than observations. In order to reduce the number of parameters, $M_{ay}$ is assumed known (as is common).
 
@@ -121,7 +75,6 @@ The remaining parameters are written in terms of a linear combination of covaria
 \begin{equation}
 \log F_{ay} = \sum_k \beta_k x_{ayk}
 \end{equation}
-
 
 where $k$ is the number of parameters to be estimated and is sufficiently small. Using this tecnique the quantities $\log F$, $\log Q$, $\log \sigma$ and $\log \tau$
 %$\log \text{initial\,age\,structure}$ % this is not present in the above
@@ -170,7 +123,7 @@ This is to allow modelled recruitment $R_y$ to be shrunk towards the stock recru
 
 ## Classes Description \label{sec:classes}
 
-The data structure used to store and report the fitting process follows an object-oriented paradigm (e.g., the S4 system in R) and is hierarchically organized. The `type` argument in the `sca` method defines the fitting method—either maximum likelihood or MCMC — and specifies whether the variance-covariance matrix of the parameters is calculated and returned in the case of maximum likelihood. The resulting object belongs to a specific class, depending on the selected option. Figure \@ref(fig:iomod) illustrates the input/output model of the statistical stock assessment method based on catch-at-age data.
+The data structure used to store and report the fitting process follows an object-oriented paradigm (e.g. the S4 system in R) and is hierarchically organized. The `type` argument in the `sca` method defines the fitting method - either maximum likelihood or MCMC - and specifies whether the variance-covariance matrix of the parameters is calculated and returned in the case of maximum likelihood. The resulting object belongs to a specific class, depending on the selected option. Figure \@ref(fig:iomod) illustrates the input/output model of the statistical stock assessment method based on catch-at-age data.
 
 
 ```{r, iomod, fig.align="center", fig.cap="The fit process input/output model", echo=FALSE, out.width="120%"}
@@ -183,10 +136,16 @@ Table \@ref(tab:scatype) provides details about the type of fit approach and com
 |:--|:--|:--|:--|
 |MP|Maximum Likelihood|No|`a4aFit`|
 |Assessment|Maximum Likelihood|Yes|`a4aFitSA`|
-|MCMC|MCMC|Yes(check)|`a4aFitMCMC`|
+|MCMC|MCMC|No|`a4aFitMCMC`|
 Table: (\#tab:scatype) Fit Types and Associated Classes
 
-Type `MP`, for "Management Procedure," returns an `a4aFit` class object designed for use in MSEs (Management Strategy Evaluations) with full feedback models (REF PUNT and KELL). Inverting the Jacobian to compute the variance-covariance matrix is computationally intensive in maximum likelihood models, and as MSE analyses often involve thousands of iterations, using `type="MP"` significantly speeds up the process. This option is advantageous for scenarios requiring multiple model fits. However, the lack of immediate feedback on model convergence is a drawback, as convergence is assessed by inverting the Jacobian. A failed inversion indicates non-convergence. Table \@ref(tab:a4afitclass) describes the composition of the `a4aFit` class.
+Type `MP`, for "Management Procedure," returns an `a4aFit` class object designed for use in MSEs (Management Strategy Evaluations) with full feedback models [@puntmse]. Inverting the Jacobian to compute the variance-covariance matrix is computationally intensive in maximum likelihood models, and as MSE analyses often involve thousands of iterations, using `type="MP"` significantly speeds up the process. This option is advantageous for scenarios requiring multiple model fits. However, the lack of immediate feedback on model convergence is a drawback, as convergence is assessed by inverting the Jacobian. A failed inversion indicates non-convergence.
+
+Type `Assessment`, the default, reports both the parameters and their variance-covariance, and as such requires the invertion of the jacobian. The method takes longer to run but returns a much richer dataset which allows the compution confidence intervals, simulate, etc. When the jacobian can't be inverted this method flags potential non-convergence and returns an empty object.
+
+Type `MCMC` uses the Markov Chain Monte-Carlo approach, in which case it doesn't compute likelihoods or variance-covariance matrices. It returns the full draws of the chain, which allows the computation of credible intervals, simulation kind of studies and so on.
+
+Table \@ref(tab:a4afitclass) describes the composition of the `a4aFit` class.
 
 |Class|Slot|Slot's Class|Description|
 |:--|:--|:--|:--|
