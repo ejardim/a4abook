@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>18 Annex - stock assessment workflow | Fish stock assessment with R</title>
+  <title>17 Annex - stock assessment workflow | Fish stock assessment with R</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
   <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="18 Annex - stock assessment workflow | Fish stock assessment with R" />
+  <meta property="og:title" content="17 Annex - stock assessment workflow | Fish stock assessment with R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="How to do stock assessment in R using the a4a framework" />
   <meta name="github-repo" content="ejardim/a4abook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="18 Annex - stock assessment workflow | Fish stock assessment with R" />
+  <meta name="twitter:title" content="17 Annex - stock assessment workflow | Fish stock assessment with R" />
   
   <meta name="twitter:description" content="How to do stock assessment in R using the a4a framework" />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-04-17" />
+<meta name="date" content="2025-04-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -185,143 +185,136 @@ div.csl-indent {
 <li class="chapter" data-level="2.5.4" data-path="introduction.html"><a href="introduction.html#redfish-simulated-length-data"><i class="fa fa-check"></i><b>2.5.4</b> Redfish simulated length data</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html"><i class="fa fa-check"></i><b>3</b> Introduction to Splines</a>
+<li class="chapter" data-level="3" data-path="growth.html"><a href="growth.html"><i class="fa fa-check"></i><b>3</b> Modelling Individual Growth and Using Stochastic Slicing to Convert Length-based Data Into Age-based Data</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#generalize-to-polynomials"><i class="fa fa-check"></i><b>3.1</b> Generalize to polynomials</a></li>
-<li class="chapter" data-level="3.2" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#thin-plate-spline"><i class="fa fa-check"></i><b>3.2</b> Thin plate spline</a></li>
-<li class="chapter" data-level="3.3" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#the-mgcv-package-inside-a4a"><i class="fa fa-check"></i><b>3.3</b> The <code>mgcv</code> package inside <code>a4a</code></a></li>
-<li class="chapter" data-level="3.4" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#on-the-number-of-knots-k"><i class="fa fa-check"></i><b>3.4</b> On the number of knots <span class="math inline">\(k\)</span></a></li>
+<li class="chapter" data-level="3.1" data-path="growth.html"><a href="growth.html#a4agr---the-growth-class"><i class="fa fa-check"></i><b>3.1</b> a4aGr - The growth class</a></li>
+<li class="chapter" data-level="3.2" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>3.2</b> Adding uncertainty to growth parameters with a multivariate normal distribution</a></li>
+<li class="chapter" data-level="3.3" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-triangle-distribution"><i class="fa fa-check"></i><b>3.3</b> Adding uncertainty to growth parameters with a multivariate triangle distribution</a></li>
+<li class="chapter" data-level="3.4" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>3.4</b> Adding uncertainty to growth parameters with statistical copulas</a></li>
+<li class="chapter" data-level="3.5" data-path="growth.html"><a href="growth.html#converting-from-length-to-age-based-data---the-l2a-method"><i class="fa fa-check"></i><b>3.5</b> Converting from length to age based data - the <code>l2a()</code> method</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="growth.html"><a href="growth.html"><i class="fa fa-check"></i><b>4</b> Modelling Individual Growth and Using Stochastic Slicing to Convert Length-based Data Into Age-based Data</a>
+<li class="chapter" data-level="4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html"><i class="fa fa-check"></i><b>4</b> Modelling Natural Mortality</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="growth.html"><a href="growth.html#a4agr---the-growth-class"><i class="fa fa-check"></i><b>4.1</b> a4aGr - The growth class</a></li>
-<li class="chapter" data-level="4.2" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>4.2</b> Adding uncertainty to growth parameters with a multivariate normal distribution</a></li>
-<li class="chapter" data-level="4.3" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-triangle-distribution"><i class="fa fa-check"></i><b>4.3</b> Adding uncertainty to growth parameters with a multivariate triangle distribution</a></li>
-<li class="chapter" data-level="4.4" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>4.4</b> Adding uncertainty to growth parameters with statistical copulas</a></li>
-<li class="chapter" data-level="4.5" data-path="growth.html"><a href="growth.html#converting-from-length-to-age-based-data---the-l2a-method"><i class="fa fa-check"></i><b>4.5</b> Converting from length to age based data - the <code>l2a()</code> method</a></li>
+<li class="chapter" data-level="4.1" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#a4am---the-m-class"><i class="fa fa-check"></i><b>4.1</b> <code>a4aM</code> - The M class</a></li>
+<li class="chapter" data-level="4.2" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>4.2</b> Adding uncertainty to natural mortality parameters with a multivariate normal distribution</a></li>
+<li class="chapter" data-level="4.3" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>4.3</b> Adding uncertainty to natural mortality parameters with statistical copulas</a></li>
+<li class="chapter" data-level="4.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>4.4</b> Computing natural mortality time series - the “m” method</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html"><i class="fa fa-check"></i><b>5</b> Modelling Natural Mortality</a>
+<li class="chapter" data-level="5" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html"><i class="fa fa-check"></i><b>5</b> Stock assessment framework</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#a4am---the-m-class"><i class="fa fa-check"></i><b>5.1</b> <code>a4aM</code> - The M class</a></li>
-<li class="chapter" data-level="5.2" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>5.2</b> Adding uncertainty to natural mortality parameters with a multivariate normal distribution</a></li>
-<li class="chapter" data-level="5.3" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>5.3</b> Adding uncertainty to natural mortality parameters with statistical copulas</a></li>
-<li class="chapter" data-level="5.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>5.4</b> Computing natural mortality time series - the “m” method</a></li>
+<li class="chapter" data-level="5.1" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#maths-description"><i class="fa fa-check"></i><b>5.1</b> Maths description </a></li>
+<li class="chapter" data-level="5.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#model-structure"><i class="fa fa-check"></i><b>5.2</b> Model structure </a></li>
+<li class="chapter" data-level="5.3" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#submodel-building-blocks-and-fundamental-r-formulas"><i class="fa fa-check"></i><b>5.3</b> Submodel building blocks and fundamental <code>R</code> formulas</a></li>
+<li class="chapter" data-level="5.4" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#the-major-effects-available-for-modelling"><i class="fa fa-check"></i><b>5.4</b> The major effects available for modelling</a></li>
+<li class="chapter" data-level="5.5" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#classes-description"><i class="fa fa-check"></i><b>5.5</b> Classes Description </a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html"><i class="fa fa-check"></i><b>6</b> Stock assessment framework</a>
+<li class="chapter" data-level="6" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html"><i class="fa fa-check"></i><b>6</b> Introduction to Splines</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#maths-description"><i class="fa fa-check"></i><b>6.1</b> Maths description </a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#observations"><i class="fa fa-check"></i><b>6.1.1</b> Observations</a></li>
-<li class="chapter" data-level="6.1.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#the-population-dynamics-model"><i class="fa fa-check"></i><b>6.1.2</b> The population dynamics model</a></li>
+<li class="chapter" data-level="6.1" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#generalize-to-polynomials"><i class="fa fa-check"></i><b>6.1</b> Generalize to polynomials</a></li>
+<li class="chapter" data-level="6.2" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#thin-plate-spline"><i class="fa fa-check"></i><b>6.2</b> Thin plate spline</a></li>
+<li class="chapter" data-level="6.3" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#the-mgcv-package-inside-a4a"><i class="fa fa-check"></i><b>6.3</b> The <code>mgcv</code> package inside <code>a4a</code></a></li>
+<li class="chapter" data-level="6.4" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#on-the-number-of-knots-k"><i class="fa fa-check"></i><b>6.4</b> On the number of knots <span class="math inline">\(k\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#classes-description"><i class="fa fa-check"></i><b>6.2</b> Classes Description </a></li>
+<li class="chapter" data-level="7" data-path="fitting.html"><a href="fitting.html"><i class="fa fa-check"></i><b>7</b> Fitting</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="fitting.html"><a href="fitting.html#fishing-mortality-submodel-f_ay"><i class="fa fa-check"></i><b>7.1</b> Fishing mortality submodel (<span class="math inline">\(F_{ay}\)</span>)</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="fitting.html"><a href="fitting.html#separable-model"><i class="fa fa-check"></i><b>7.1.1</b> Separable model</a></li>
+<li class="chapter" data-level="7.1.2" data-path="fitting.html"><a href="fitting.html#constant-selectivity-for-contiguous-ages-or-years"><i class="fa fa-check"></i><b>7.1.2</b> Constant selectivity for contiguous ages or years</a></li>
+<li class="chapter" data-level="7.1.3" data-path="fitting.html"><a href="fitting.html#time-blocks-selectivity"><i class="fa fa-check"></i><b>7.1.3</b> Time blocks selectivity</a></li>
+<li class="chapter" data-level="7.1.4" data-path="fitting.html"><a href="fitting.html#time-changing-selectivity"><i class="fa fa-check"></i><b>7.1.4</b> Time changing selectivity</a></li>
+<li class="chapter" data-level="7.1.5" data-path="fitting.html"><a href="fitting.html#closed-form-selection-pattern"><i class="fa fa-check"></i><b>7.1.5</b> Closed form selection pattern</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="submodel-structure.html"><a href="submodel-structure.html"><i class="fa fa-check"></i><b>7</b> Submodel structure </a>
+<li class="chapter" data-level="7.2" data-path="fitting.html"><a href="fitting.html#abundance-indices-catchability-submodel-q_ays"><i class="fa fa-check"></i><b>7.2</b> Abundance indices catchability submodel (<span class="math inline">\(Q_{ays}\)</span>)</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="submodel-structure.html"><a href="submodel-structure.html#submodel-building-blocks-and-fundamental-r-formulas"><i class="fa fa-check"></i><b>7.1</b> Submodel building blocks and fundamental <code>R</code> formulas</a></li>
-<li class="chapter" data-level="7.2" data-path="submodel-structure.html"><a href="submodel-structure.html#the-major-effects-available-for-modelling"><i class="fa fa-check"></i><b>7.2</b> The major effects available for modelling</a></li>
-<li class="chapter" data-level="7.3" data-path="submodel-structure.html"><a href="submodel-structure.html#the-submodel-class-and-methods"><i class="fa fa-check"></i><b>7.3</b> The submodel class and methods</a></li>
+<li class="chapter" data-level="7.2.1" data-path="fitting.html"><a href="fitting.html#catchability-submodel-for-age-based-indices"><i class="fa fa-check"></i><b>7.2.1</b> Catchability submodel for age based indices</a></li>
+<li class="chapter" data-level="7.2.2" data-path="fitting.html"><a href="fitting.html#catchability-submodel-for-age-aggregated-biomass-indices"><i class="fa fa-check"></i><b>7.2.2</b> Catchability submodel for age aggregated biomass indices</a></li>
+<li class="chapter" data-level="7.2.3" data-path="fitting.html"><a href="fitting.html#catchability-submodel-for-single-age-indices"><i class="fa fa-check"></i><b>7.2.3</b> Catchability submodel for single age indices</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="fitting.html"><a href="fitting.html"><i class="fa fa-check"></i><b>8</b> Fitting</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="fitting.html"><a href="fitting.html#fishing-mortality-submodel-f_ay"><i class="fa fa-check"></i><b>8.1</b> Fishing mortality submodel (<span class="math inline">\(F_{ay}\)</span>)</a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="fitting.html"><a href="fitting.html#separable-model"><i class="fa fa-check"></i><b>8.1.1</b> Separable model</a></li>
-<li class="chapter" data-level="8.1.2" data-path="fitting.html"><a href="fitting.html#constant-selectivity-for-contiguous-ages-or-years"><i class="fa fa-check"></i><b>8.1.2</b> Constant selectivity for contiguous ages or years</a></li>
-<li class="chapter" data-level="8.1.3" data-path="fitting.html"><a href="fitting.html#time-blocks-selectivity"><i class="fa fa-check"></i><b>8.1.3</b> Time blocks selectivity</a></li>
-<li class="chapter" data-level="8.1.4" data-path="fitting.html"><a href="fitting.html#time-changing-selectivity"><i class="fa fa-check"></i><b>8.1.4</b> Time changing selectivity</a></li>
-<li class="chapter" data-level="8.1.5" data-path="fitting.html"><a href="fitting.html#closed-form-selection-pattern"><i class="fa fa-check"></i><b>8.1.5</b> Closed form selection pattern</a></li>
+<li class="chapter" data-level="7.3" data-path="fitting.html"><a href="fitting.html#stock-recruitment-submodel-r_y"><i class="fa fa-check"></i><b>7.3</b> Stock-recruitment submodel (<span class="math inline">\(R_y\)</span>)</a></li>
+<li class="chapter" data-level="7.4" data-path="fitting.html"><a href="fitting.html#observation-variance-submodel-sigma2_ay-tau2_ays"><i class="fa fa-check"></i><b>7.4</b> Observation variance submodel (<span class="math inline">\(\{\sigma^2_{ay}, \tau^2_{ays}\}\)</span>)</a></li>
+<li class="chapter" data-level="7.5" data-path="fitting.html"><a href="fitting.html#initial-year-abundance-submodel-n_ay1"><i class="fa fa-check"></i><b>7.5</b> Initial year abundance submodel (<span class="math inline">\(N_{a,y=1}\)</span>)</a></li>
+<li class="chapter" data-level="7.6" data-path="fitting.html"><a href="fitting.html#more-models"><i class="fa fa-check"></i><b>7.6</b> More models</a></li>
+<li class="chapter" data-level="7.7" data-path="fitting.html"><a href="fitting.html#working-with-covariates"><i class="fa fa-check"></i><b>7.7</b> Working with covariates</a></li>
+<li class="chapter" data-level="7.8" data-path="fitting.html"><a href="fitting.html#assessing-files"><i class="fa fa-check"></i><b>7.8</b> Assessing files</a></li>
+<li class="chapter" data-level="7.9" data-path="fitting.html"><a href="fitting.html#missing-observations-in-the-catch-matrix-or-index"><i class="fa fa-check"></i><b>7.9</b> Missing observations in the catch matrix or index</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="fitting.html"><a href="fitting.html#abundance-indices-catchability-submodel-q_ays"><i class="fa fa-check"></i><b>8.2</b> Abundance indices catchability submodel (<span class="math inline">\(Q_{ays}\)</span>)</a>
+<li class="chapter" data-level="8" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>8</b> Diagnostics </a>
 <ul>
-<li class="chapter" data-level="8.2.1" data-path="fitting.html"><a href="fitting.html#catchability-submodel-for-age-based-indices"><i class="fa fa-check"></i><b>8.2.1</b> Catchability submodel for age based indices</a></li>
-<li class="chapter" data-level="8.2.2" data-path="fitting.html"><a href="fitting.html#catchability-submodel-for-age-aggregated-biomass-indices"><i class="fa fa-check"></i><b>8.2.2</b> Catchability submodel for age aggregated biomass indices</a></li>
-<li class="chapter" data-level="8.2.3" data-path="fitting.html"><a href="fitting.html#catchability-submodel-for-single-age-indices"><i class="fa fa-check"></i><b>8.2.3</b> Catchability submodel for single age indices</a></li>
+<li class="chapter" data-level="8.1" data-path="diagnostics.html"><a href="diagnostics.html#residuals"><i class="fa fa-check"></i><b>8.1</b> Residuals</a></li>
+<li class="chapter" data-level="8.2" data-path="diagnostics.html"><a href="diagnostics.html#predictive-skill"><i class="fa fa-check"></i><b>8.2</b> Predictive skill</a></li>
+<li class="chapter" data-level="8.3" data-path="diagnostics.html"><a href="diagnostics.html#fit-summary-information-and-cross-validation-metrics"><i class="fa fa-check"></i><b>8.3</b> Fit summary, information and cross-validation metrics</a></li>
+<li class="chapter" data-level="8.4" data-path="diagnostics.html"><a href="diagnostics.html#the-package-a4adiags"><i class="fa fa-check"></i><b>8.4</b> The package a4adiags</a></li>
+<li class="chapter" data-level="8.5" data-path="diagnostics.html"><a href="diagnostics.html#retrospective-analysis"><i class="fa fa-check"></i><b>8.5</b> Retrospective analysis</a></li>
+<li class="chapter" data-level="8.6" data-path="diagnostics.html"><a href="diagnostics.html#hindcast"><i class="fa fa-check"></i><b>8.6</b> Hindcast</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="fitting.html"><a href="fitting.html#stock-recruitment-submodel-r_y"><i class="fa fa-check"></i><b>8.3</b> Stock-recruitment submodel (<span class="math inline">\(R_y\)</span>)</a></li>
-<li class="chapter" data-level="8.4" data-path="fitting.html"><a href="fitting.html#observation-variance-submodel-sigma2_ay-tau2_ays"><i class="fa fa-check"></i><b>8.4</b> Observation variance submodel (<span class="math inline">\(\{\sigma^2_{ay}, \tau^2_{ays}\}\)</span>)</a></li>
-<li class="chapter" data-level="8.5" data-path="fitting.html"><a href="fitting.html#initial-year-abundance-submodel-n_ay1"><i class="fa fa-check"></i><b>8.5</b> Initial year abundance submodel (<span class="math inline">\(N_{a,y=1}\)</span>)</a></li>
-<li class="chapter" data-level="8.6" data-path="fitting.html"><a href="fitting.html#more-models"><i class="fa fa-check"></i><b>8.6</b> More models</a></li>
-<li class="chapter" data-level="8.7" data-path="fitting.html"><a href="fitting.html#working-with-covariates"><i class="fa fa-check"></i><b>8.7</b> Working with covariates</a></li>
-<li class="chapter" data-level="8.8" data-path="fitting.html"><a href="fitting.html#assessing-files"><i class="fa fa-check"></i><b>8.8</b> Assessing files</a></li>
-<li class="chapter" data-level="8.9" data-path="fitting.html"><a href="fitting.html#missing-observations-in-the-catch-matrix-or-index"><i class="fa fa-check"></i><b>8.9</b> Missing observations in the catch matrix or index</a></li>
+<li class="chapter" data-level="9" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html"><i class="fa fa-check"></i><b>9</b> Predict and simulate </a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#predict"><i class="fa fa-check"></i><b>9.1</b> predict</a></li>
+<li class="chapter" data-level="9.2" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#simulate"><i class="fa fa-check"></i><b>9.2</b> simulate</a></li>
+<li class="chapter" data-level="9.3" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#simulate-and-predict"><i class="fa fa-check"></i><b>9.3</b> simulate and predict</a></li>
+<li class="chapter" data-level="9.4" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#details"><i class="fa fa-check"></i><b>9.4</b> Details</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>9</b> Diagnostics </a>
+<li class="chapter" data-level="10" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>10</b> The statistical catch-at-age stock assessment framework with Markov Chain Monte Carlo (MCMC) </a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="diagnostics.html"><a href="diagnostics.html#residuals"><i class="fa fa-check"></i><b>9.1</b> Residuals</a></li>
-<li class="chapter" data-level="9.2" data-path="diagnostics.html"><a href="diagnostics.html#predictive-skill"><i class="fa fa-check"></i><b>9.2</b> Predictive skill</a></li>
-<li class="chapter" data-level="9.3" data-path="diagnostics.html"><a href="diagnostics.html#fit-summary-information-and-cross-validation-metrics"><i class="fa fa-check"></i><b>9.3</b> Fit summary, information and cross-validation metrics</a></li>
-<li class="chapter" data-level="9.4" data-path="diagnostics.html"><a href="diagnostics.html#the-package-a4adiags"><i class="fa fa-check"></i><b>9.4</b> The package a4adiags</a></li>
-<li class="chapter" data-level="9.5" data-path="diagnostics.html"><a href="diagnostics.html#retrospective-analysis"><i class="fa fa-check"></i><b>9.5</b> Retrospective analysis</a></li>
-<li class="chapter" data-level="9.6" data-path="diagnostics.html"><a href="diagnostics.html#hindcast"><i class="fa fa-check"></i><b>9.6</b> Hindcast</a></li>
+<li class="chapter" data-level="10.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#the-mcmc-method-for-sca"><i class="fa fa-check"></i><b>10.1</b> The MCMC method for <code>sca</code></a></li>
+<li class="chapter" data-level="10.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#diagnostics-with-coda"><i class="fa fa-check"></i><b>10.2</b> Diagnostics with CODA</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#traceplots"><i class="fa fa-check"></i><b>10.2.1</b> Traceplots</a></li>
+<li class="chapter" data-level="10.2.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#autocorrelation-and-crosscorrelation-analysis"><i class="fa fa-check"></i><b>10.2.2</b> Autocorrelation and crosscorrelation analysis</a></li>
+<li class="chapter" data-level="10.2.3" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#geweke-diagnostic"><i class="fa fa-check"></i><b>10.2.3</b> Geweke diagnostic</a></li>
+<li class="chapter" data-level="10.2.4" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cumulative-means"><i class="fa fa-check"></i><b>10.2.4</b> Cumulative means</a></li>
+<li class="chapter" data-level="10.2.5" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#distribution-density"><i class="fa fa-check"></i><b>10.2.5</b> Distribution density</a></li>
+<li class="chapter" data-level="10.2.6" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#gelman-rubin-statistic"><i class="fa fa-check"></i><b>10.2.6</b> Gelman-Rubin statistic</a></li>
+<li class="chapter" data-level="10.2.7" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#acceptance-rate"><i class="fa fa-check"></i><b>10.2.7</b> Acceptance rate</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html"><i class="fa fa-check"></i><b>10</b> Predict and simulate </a>
+<li class="chapter" data-level="10.3" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#admbs-arguments-to-tune-the-mcmc-algorithm"><i class="fa fa-check"></i><b>10.3</b> <code>ADMB</code>’s arguments to tune the MCMC algorithm</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#predict"><i class="fa fa-check"></i><b>10.1</b> predict</a></li>
-<li class="chapter" data-level="10.2" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#simulate"><i class="fa fa-check"></i><b>10.2</b> simulate</a></li>
-<li class="chapter" data-level="10.3" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#simulate-and-predict"><i class="fa fa-check"></i><b>10.3</b> simulate and predict</a></li>
-<li class="chapter" data-level="10.4" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#details"><i class="fa fa-check"></i><b>10.4</b> Details</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>11</b> The statistical catch-at-age stock assessment framework with Markov Chain Monte Carlo (MCMC) </a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#the-mcmc-method-for-sca"><i class="fa fa-check"></i><b>11.1</b> The MCMC method for <code>sca</code></a></li>
-<li class="chapter" data-level="11.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#diagnostics-with-coda"><i class="fa fa-check"></i><b>11.2</b> Diagnostics with CODA</a>
-<ul>
-<li class="chapter" data-level="11.2.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#traceplots"><i class="fa fa-check"></i><b>11.2.1</b> Traceplots</a></li>
-<li class="chapter" data-level="11.2.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#autocorrelation-and-crosscorrelation-analysis"><i class="fa fa-check"></i><b>11.2.2</b> Autocorrelation and crosscorrelation analysis</a></li>
-<li class="chapter" data-level="11.2.3" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#geweke-diagnostic"><i class="fa fa-check"></i><b>11.2.3</b> Geweke diagnostic</a></li>
-<li class="chapter" data-level="11.2.4" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cumulative-means"><i class="fa fa-check"></i><b>11.2.4</b> Cumulative means</a></li>
-<li class="chapter" data-level="11.2.5" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#distribution-density"><i class="fa fa-check"></i><b>11.2.5</b> Distribution density</a></li>
-<li class="chapter" data-level="11.2.6" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#gelman-rubin-statistic"><i class="fa fa-check"></i><b>11.2.6</b> Gelman-Rubin statistic</a></li>
-<li class="chapter" data-level="11.2.7" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#acceptance-rate"><i class="fa fa-check"></i><b>11.2.7</b> Acceptance rate</a></li>
-</ul></li>
-<li class="chapter" data-level="11.3" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#admbs-arguments-to-tune-the-mcmc-algorithm"><i class="fa fa-check"></i><b>11.3</b> <code>ADMB</code>’s arguments to tune the MCMC algorithm</a>
-<ul>
-<li class="chapter" data-level="11.3.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#thinning-rate"><i class="fa fa-check"></i><b>11.3.1</b> Thinning rate</a></li>
-<li class="chapter" data-level="11.3.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#mcscale-and-mcnoscale"><i class="fa fa-check"></i><b>11.3.2</b> mcscale and mcnoscale</a></li>
-<li class="chapter" data-level="11.3.3" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#mcprobe"><i class="fa fa-check"></i><b>11.3.3</b> mcprobe</a></li>
-<li class="chapter" data-level="11.3.4" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#mcrb"><i class="fa fa-check"></i><b>11.3.4</b> mcrb</a></li>
+<li class="chapter" data-level="10.3.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#thinning-rate"><i class="fa fa-check"></i><b>10.3.1</b> Thinning rate</a></li>
+<li class="chapter" data-level="10.3.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#mcscale-and-mcnoscale"><i class="fa fa-check"></i><b>10.3.2</b> mcscale and mcnoscale</a></li>
+<li class="chapter" data-level="10.3.3" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#mcprobe"><i class="fa fa-check"></i><b>10.3.3</b> mcprobe</a></li>
+<li class="chapter" data-level="10.3.4" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#mcrb"><i class="fa fa-check"></i><b>10.3.4</b> mcrb</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>12</b> Projections and harvest control rules</a>
+<li class="chapter" data-level="11" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>11</b> Projections and harvest control rules</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#simple-workflow"><i class="fa fa-check"></i><b>12.1</b> Simple workflow</a></li>
-<li class="chapter" data-level="12.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#initial-condition-assumptions"><i class="fa fa-check"></i><b>12.2</b> Initial condition assumptions</a></li>
-<li class="chapter" data-level="12.3" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#scenarios"><i class="fa fa-check"></i><b>12.3</b> Scenarios</a></li>
-<li class="chapter" data-level="12.4" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#relative-scenarios"><i class="fa fa-check"></i><b>12.4</b> Relative scenarios</a></li>
-<li class="chapter" data-level="12.5" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#limits"><i class="fa fa-check"></i><b>12.5</b> Limits</a></li>
-<li class="chapter" data-level="12.6" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#harvest-control-rule"><i class="fa fa-check"></i><b>12.6</b> Harvest Control Rule</a></li>
+<li class="chapter" data-level="11.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#simple-workflow"><i class="fa fa-check"></i><b>11.1</b> Simple workflow</a></li>
+<li class="chapter" data-level="11.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#initial-condition-assumptions"><i class="fa fa-check"></i><b>11.2</b> Initial condition assumptions</a></li>
+<li class="chapter" data-level="11.3" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#scenarios"><i class="fa fa-check"></i><b>11.3</b> Scenarios</a></li>
+<li class="chapter" data-level="11.4" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#relative-scenarios"><i class="fa fa-check"></i><b>11.4</b> Relative scenarios</a></li>
+<li class="chapter" data-level="11.5" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#limits"><i class="fa fa-check"></i><b>11.5</b> Limits</a></li>
+<li class="chapter" data-level="11.6" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#harvest-control-rule"><i class="fa fa-check"></i><b>11.6</b> Harvest Control Rule</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="reference-points.html"><a href="reference-points.html"><i class="fa fa-check"></i><b>13</b> Reference Points</a>
+<li class="chapter" data-level="12" data-path="reference-points.html"><a href="reference-points.html"><i class="fa fa-check"></i><b>12</b> Reference Points</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="reference-points.html"><a href="reference-points.html#yield-per-recruit-reference-points"><i class="fa fa-check"></i><b>13.1</b> Yield per recruit reference points</a></li>
-<li class="chapter" data-level="13.2" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-relationship-based-reference-points"><i class="fa fa-check"></i><b>13.2</b> Stock recruitment relationship based reference points</a>
+<li class="chapter" data-level="12.1" data-path="reference-points.html"><a href="reference-points.html#yield-per-recruit-reference-points"><i class="fa fa-check"></i><b>12.1</b> Yield per recruit reference points</a></li>
+<li class="chapter" data-level="12.2" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-relationship-based-reference-points"><i class="fa fa-check"></i><b>12.2</b> Stock recruitment relationship based reference points</a>
 <ul>
-<li class="chapter" data-level="13.2.1" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-after-fitting-the-stock-assessment-model"><i class="fa fa-check"></i><b>13.2.1</b> Stock recruitment after fitting the stock assessment model</a></li>
-<li class="chapter" data-level="13.2.2" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-during-fitting-the-stock-assessment-model"><i class="fa fa-check"></i><b>13.2.2</b> Stock recruitment during fitting the stock assessment model</a></li>
+<li class="chapter" data-level="12.2.1" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-after-fitting-the-stock-assessment-model"><i class="fa fa-check"></i><b>12.2.1</b> Stock recruitment after fitting the stock assessment model</a></li>
+<li class="chapter" data-level="12.2.2" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-during-fitting-the-stock-assessment-model"><i class="fa fa-check"></i><b>12.2.2</b> Stock recruitment during fitting the stock assessment model</a></li>
 </ul></li>
-<li class="chapter" data-level="13.3" data-path="reference-points.html"><a href="reference-points.html#economics-reference-points"><i class="fa fa-check"></i><b>13.3</b> Economics reference points</a></li>
-<li class="chapter" data-level="13.4" data-path="reference-points.html"><a href="reference-points.html#computing-user-specific-reference-points"><i class="fa fa-check"></i><b>13.4</b> Computing user specific reference points</a></li>
+<li class="chapter" data-level="12.3" data-path="reference-points.html"><a href="reference-points.html#economics-reference-points"><i class="fa fa-check"></i><b>12.3</b> Economics reference points</a></li>
+<li class="chapter" data-level="12.4" data-path="reference-points.html"><a href="reference-points.html#computing-user-specific-reference-points"><i class="fa fa-check"></i><b>12.4</b> Computing user specific reference points</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="propagate-uncertainty-into-stock-assessment.html"><a href="propagate-uncertainty-into-stock-assessment.html"><i class="fa fa-check"></i><b>14</b> Propagate uncertainty into stock assessment</a></li>
-<li class="chapter" data-level="15" data-path="modelling-fleet-selectivity.html"><a href="modelling-fleet-selectivity.html"><i class="fa fa-check"></i><b>15</b> Modelling fleet selectivity</a>
+<li class="chapter" data-level="13" data-path="propagate-uncertainty-into-stock-assessment.html"><a href="propagate-uncertainty-into-stock-assessment.html"><i class="fa fa-check"></i><b>13</b> Propagate uncertainty into stock assessment</a></li>
+<li class="chapter" data-level="14" data-path="modelling-fleet-selectivity.html"><a href="modelling-fleet-selectivity.html"><i class="fa fa-check"></i><b>14</b> Modelling fleet selectivity</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="modelling-fleet-selectivity.html"><a href="modelling-fleet-selectivity.html#modelling-fleets-with-different-proportions-of-the-catch-covariate"><i class="fa fa-check"></i><b>15.1</b> Modelling fleets with different proportions of the catch covariate</a></li>
+<li class="chapter" data-level="14.1" data-path="modelling-fleet-selectivity.html"><a href="modelling-fleet-selectivity.html#modelling-fleets-with-different-proportions-of-the-catch-covariate"><i class="fa fa-check"></i><b>14.1</b> Modelling fleets with different proportions of the catch covariate</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="modelling-spatial-effects.html"><a href="modelling-spatial-effects.html"><i class="fa fa-check"></i><b>16</b> Modelling spatial effects</a></li>
-<li class="chapter" data-level="17" data-path="sections-to-be-added.html"><a href="sections-to-be-added.html"><i class="fa fa-check"></i><b>17</b> Sections to be added!?</a></li>
-<li class="chapter" data-level="18" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html"><i class="fa fa-check"></i><b>18</b> Annex - stock assessment workflow</a>
+<li class="chapter" data-level="15" data-path="modelling-spatial-effects.html"><a href="modelling-spatial-effects.html"><i class="fa fa-check"></i><b>15</b> Modelling spatial effects</a></li>
+<li class="chapter" data-level="16" data-path="sections-to-be-added.html"><a href="sections-to-be-added.html"><i class="fa fa-check"></i><b>16</b> Sections to be added!?</a></li>
+<li class="chapter" data-level="17" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html"><i class="fa fa-check"></i><b>17</b> Annex - stock assessment workflow</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-mean-model"><i class="fa fa-check"></i><b>18.1</b> The “mean” model</a></li>
-<li class="chapter" data-level="18.2" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-age-effects"><i class="fa fa-check"></i><b>18.2</b> The age effects</a></li>
-<li class="chapter" data-level="18.3" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#year-effect-on-fishing-mortality"><i class="fa fa-check"></i><b>18.3</b> Year effect on fishing mortality</a></li>
-<li class="chapter" data-level="18.4" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#year-effect-on-catchability"><i class="fa fa-check"></i><b>18.4</b> Year effect on catchability</a></li>
-<li class="chapter" data-level="18.5" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-initial-year-population-abundance-model-aka-n1"><i class="fa fa-check"></i><b>18.5</b> The initial year population abundance model, aka N1</a></li>
-<li class="chapter" data-level="18.6" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-stock-recruitment-submodel"><i class="fa fa-check"></i><b>18.6</b> The stock recruitment submodel</a></li>
-<li class="chapter" data-level="18.7" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-variance-submodel"><i class="fa fa-check"></i><b>18.7</b> The variance submodel</a></li>
-<li class="chapter" data-level="18.8" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#final-comments"><i class="fa fa-check"></i><b>18.8</b> Final comments</a></li>
+<li class="chapter" data-level="17.1" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-mean-model"><i class="fa fa-check"></i><b>17.1</b> The “mean” model</a></li>
+<li class="chapter" data-level="17.2" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-age-effects"><i class="fa fa-check"></i><b>17.2</b> The age effects</a></li>
+<li class="chapter" data-level="17.3" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#year-effect-on-fishing-mortality"><i class="fa fa-check"></i><b>17.3</b> Year effect on fishing mortality</a></li>
+<li class="chapter" data-level="17.4" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#year-effect-on-catchability"><i class="fa fa-check"></i><b>17.4</b> Year effect on catchability</a></li>
+<li class="chapter" data-level="17.5" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-initial-year-population-abundance-model-aka-n1"><i class="fa fa-check"></i><b>17.5</b> The initial year population abundance model, aka N1</a></li>
+<li class="chapter" data-level="17.6" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-stock-recruitment-submodel"><i class="fa fa-check"></i><b>17.6</b> The stock recruitment submodel</a></li>
+<li class="chapter" data-level="17.7" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-variance-submodel"><i class="fa fa-check"></i><b>17.7</b> The variance submodel</a></li>
+<li class="chapter" data-level="17.8" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#final-comments"><i class="fa fa-check"></i><b>17.8</b> Final comments</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>19</b> References</a></li>
+<li class="chapter" data-level="18" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>18</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -342,235 +335,235 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="annex---stock-assessment-workflow" class="section level1 hasAnchor" number="18">
-<h1><span class="header-section-number">18</span> Annex - stock assessment workflow<a href="annex---stock-assessment-workflow.html#annex---stock-assessment-workflow" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="annex---stock-assessment-workflow" class="section level1 hasAnchor" number="17">
+<h1><span class="header-section-number">17</span> Annex - stock assessment workflow<a href="annex---stock-assessment-workflow.html#annex---stock-assessment-workflow" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The following sections describes a potential workflow for fitting a <code>a4a</code> stock assessment model. The idea is to explore the age and year effects in isolation and adjust the model’s smoothness to model those effects.</p>
 <p>The procedure is heavily supported by residuals’ analysis. In a well specified model residuals should show a random pattern, without any trend or very high values (outliers).</p>
-<div id="the-mean-model" class="section level2 hasAnchor" number="18.1">
-<h2><span class="header-section-number">18.1</span> The “mean” model<a href="annex---stock-assessment-workflow.html#the-mean-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-mean-model" class="section level2 hasAnchor" number="17.1">
+<h2><span class="header-section-number">17.1</span> The “mean” model<a href="annex---stock-assessment-workflow.html#the-mean-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To start the analysis we’ll fit a “mean” model, where all submodels will be set to an overall average, by using the <span class="math inline">\(\sim 1\)</span> formula. This will be our reference model to see how adding age and year effects will show up in the diagnostic tools, in particular in the residuals.</p>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="annex---stock-assessment-workflow.html#cb295-1" tabindex="-1"></a><span class="fu">library</span>(FLa4a)</span>
-<span id="cb295-2"><a href="annex---stock-assessment-workflow.html#cb295-2" tabindex="-1"></a><span class="fu">data</span>(hke1567)</span>
-<span id="cb295-3"><a href="annex---stock-assessment-workflow.html#cb295-3" tabindex="-1"></a><span class="fu">data</span>(hke1567.idx)</span>
-<span id="cb295-4"><a href="annex---stock-assessment-workflow.html#cb295-4" tabindex="-1"></a>fit01 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx,</span>
-<span id="cb295-5"><a href="annex---stock-assessment-workflow.html#cb295-5" tabindex="-1"></a>    <span class="at">fmod=</span><span class="sc">~</span><span class="dv">1</span>,</span>
-<span id="cb295-6"><a href="annex---stock-assessment-workflow.html#cb295-6" tabindex="-1"></a>    <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>),</span>
-<span id="cb295-7"><a href="annex---stock-assessment-workflow.html#cb295-7" tabindex="-1"></a>    <span class="at">srmod=</span><span class="sc">~</span><span class="dv">1</span>,</span>
-<span id="cb295-8"><a href="annex---stock-assessment-workflow.html#cb295-8" tabindex="-1"></a>    <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),</span>
-<span id="cb295-9"><a href="annex---stock-assessment-workflow.html#cb295-9" tabindex="-1"></a>    <span class="at">n1mod=</span><span class="sc">~</span><span class="dv">1</span>)</span>
-<span id="cb295-10"><a href="annex---stock-assessment-workflow.html#cb295-10" tabindex="-1"></a>res01 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit01, hke1567, hke1567.idx)</span></code></pre></div>
-<p>The common residuals plot clearly shows a time trend for each age (Figure <a href="annex---stock-assessment-workflow.html#fig:meanresbyage">18.2</a>) for both datasets. Furthermore, inspecting how catch ate age residuals are positioned across ages, by comparing the level of residuals for each age, one can see the pattern of lower than 0 residuals in age 0, reversing the signal for ages 1 and 2, close to 0 in ages 3 and 4, and again below 0 in age 5.</p>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="annex---stock-assessment-workflow.html#cb296-1" tabindex="-1"></a><span class="fu">plot</span>(res01)</span></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="annex---stock-assessment-workflow.html#cb290-1" tabindex="-1"></a><span class="fu">library</span>(FLa4a)</span>
+<span id="cb290-2"><a href="annex---stock-assessment-workflow.html#cb290-2" tabindex="-1"></a><span class="fu">data</span>(hke1567)</span>
+<span id="cb290-3"><a href="annex---stock-assessment-workflow.html#cb290-3" tabindex="-1"></a><span class="fu">data</span>(hke1567.idx)</span>
+<span id="cb290-4"><a href="annex---stock-assessment-workflow.html#cb290-4" tabindex="-1"></a>fit01 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx,</span>
+<span id="cb290-5"><a href="annex---stock-assessment-workflow.html#cb290-5" tabindex="-1"></a>    <span class="at">fmod=</span><span class="sc">~</span><span class="dv">1</span>,</span>
+<span id="cb290-6"><a href="annex---stock-assessment-workflow.html#cb290-6" tabindex="-1"></a>    <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>),</span>
+<span id="cb290-7"><a href="annex---stock-assessment-workflow.html#cb290-7" tabindex="-1"></a>    <span class="at">srmod=</span><span class="sc">~</span><span class="dv">1</span>,</span>
+<span id="cb290-8"><a href="annex---stock-assessment-workflow.html#cb290-8" tabindex="-1"></a>    <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),</span>
+<span id="cb290-9"><a href="annex---stock-assessment-workflow.html#cb290-9" tabindex="-1"></a>    <span class="at">n1mod=</span><span class="sc">~</span><span class="dv">1</span>)</span>
+<span id="cb290-10"><a href="annex---stock-assessment-workflow.html#cb290-10" tabindex="-1"></a>res01 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit01, hke1567, hke1567.idx)</span></code></pre></div>
+<p>The common residuals plot clearly shows a time trend for each age (Figure <a href="annex---stock-assessment-workflow.html#fig:meanresbyage">17.2</a>) for both datasets. Furthermore, inspecting how catch ate age residuals are positioned across ages, by comparing the level of residuals for each age, one can see the pattern of lower than 0 residuals in age 0, reversing the signal for ages 1 and 2, close to 0 in ages 3 and 4, and again below 0 in age 5.</p>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="annex---stock-assessment-workflow.html#cb291-1" tabindex="-1"></a><span class="fu">plot</span>(res01)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:meanresbyyear"></span>
 <img src="_main_files/figure-html/meanresbyyear-1.png" alt="Mean fit residuals by year)" width="672" />
 <p class="caption">
-Figure 18.1: Mean fit residuals by year)
+Figure 17.1: Mean fit residuals by year)
 </p>
 </div>
 <p>This pattern becomes more apparent when plotting the residuals by age across years.</p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="annex---stock-assessment-workflow.html#cb297-1" tabindex="-1"></a><span class="fu">plot</span>(res01, <span class="at">auxline=</span><span class="st">&quot;l&quot;</span>, <span class="at">by=</span><span class="st">&quot;age&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="annex---stock-assessment-workflow.html#cb292-1" tabindex="-1"></a><span class="fu">plot</span>(res01, <span class="at">auxline=</span><span class="st">&quot;l&quot;</span>, <span class="at">by=</span><span class="st">&quot;age&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:meanresbyage"></span>
 <img src="_main_files/figure-html/meanresbyage-1.png" alt="Mean fit residuals by age" width="672" />
 <p class="caption">
-Figure 18.2: Mean fit residuals by age
+Figure 17.2: Mean fit residuals by age
 </p>
 </div>
 </div>
-<div id="the-age-effects" class="section level2 hasAnchor" number="18.2">
-<h2><span class="header-section-number">18.2</span> The age effects<a href="annex---stock-assessment-workflow.html#the-age-effects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-age-effects" class="section level2 hasAnchor" number="17.2">
+<h2><span class="header-section-number">17.2</span> The age effects<a href="annex---stock-assessment-workflow.html#the-age-effects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The following models will introduce age effects in the fishing mortality submodel and catchability submodel. In the fishing mortality submodel we’ll introduce a <code>factor</code> which means that there will be as many parameters as ages minus 1 and each parameters will be independent of each other.</p>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="annex---stock-assessment-workflow.html#cb298-1" tabindex="-1"></a>fit02 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx,</span>
-<span id="cb298-2"><a href="annex---stock-assessment-workflow.html#cb298-2" tabindex="-1"></a>    <span class="at">fmod=</span><span class="sc">~</span><span class="fu">factor</span>(age),</span>
-<span id="cb298-3"><a href="annex---stock-assessment-workflow.html#cb298-3" tabindex="-1"></a>    <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>),</span>
-<span id="cb298-4"><a href="annex---stock-assessment-workflow.html#cb298-4" tabindex="-1"></a>    <span class="at">srmod=</span><span class="sc">~</span><span class="dv">1</span>,</span>
-<span id="cb298-5"><a href="annex---stock-assessment-workflow.html#cb298-5" tabindex="-1"></a>    <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),</span>
-<span id="cb298-6"><a href="annex---stock-assessment-workflow.html#cb298-6" tabindex="-1"></a>    <span class="at">n1mod=</span><span class="sc">~</span><span class="dv">1</span>)</span>
-<span id="cb298-7"><a href="annex---stock-assessment-workflow.html#cb298-7" tabindex="-1"></a>res02 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit02, hke1567, hke1567.idx)</span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="annex---stock-assessment-workflow.html#cb293-1" tabindex="-1"></a>fit02 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx,</span>
+<span id="cb293-2"><a href="annex---stock-assessment-workflow.html#cb293-2" tabindex="-1"></a>    <span class="at">fmod=</span><span class="sc">~</span><span class="fu">factor</span>(age),</span>
+<span id="cb293-3"><a href="annex---stock-assessment-workflow.html#cb293-3" tabindex="-1"></a>    <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>),</span>
+<span id="cb293-4"><a href="annex---stock-assessment-workflow.html#cb293-4" tabindex="-1"></a>    <span class="at">srmod=</span><span class="sc">~</span><span class="dv">1</span>,</span>
+<span id="cb293-5"><a href="annex---stock-assessment-workflow.html#cb293-5" tabindex="-1"></a>    <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),</span>
+<span id="cb293-6"><a href="annex---stock-assessment-workflow.html#cb293-6" tabindex="-1"></a>    <span class="at">n1mod=</span><span class="sc">~</span><span class="dv">1</span>)</span>
+<span id="cb293-7"><a href="annex---stock-assessment-workflow.html#cb293-7" tabindex="-1"></a>res02 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit02, hke1567, hke1567.idx)</span></code></pre></div>
 <p>The residuals plot now shows catch at age residuals less stagered, reflecting the modelling of the age effect.</p>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="annex---stock-assessment-workflow.html#cb299-1" tabindex="-1"></a><span class="fu">plot</span>(res02)</span></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="annex---stock-assessment-workflow.html#cb294-1" tabindex="-1"></a><span class="fu">plot</span>(res02)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:fageresbyyear"></span>
 <img src="_main_files/figure-html/fageresbyyear-1.png" alt="Fishing mortality model with age effect residuals by year" width="672" />
 <p class="caption">
-Figure 18.3: Fishing mortality model with age effect residuals by year
+Figure 17.3: Fishing mortality model with age effect residuals by year
 </p>
 </div>
 <p>The residuals plot by age shows the same outcome.</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="annex---stock-assessment-workflow.html#cb300-1" tabindex="-1"></a><span class="fu">plot</span>(res02, <span class="at">auxline=</span><span class="st">&quot;l&quot;</span>, <span class="at">by=</span><span class="st">&quot;age&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="annex---stock-assessment-workflow.html#cb295-1" tabindex="-1"></a><span class="fu">plot</span>(res02, <span class="at">auxline=</span><span class="st">&quot;l&quot;</span>, <span class="at">by=</span><span class="st">&quot;age&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:fageresbyage"></span>
 <img src="_main_files/figure-html/fageresbyage-1.png" alt="Fishing mortality model with age effect residuals by age" width="672" />
 <p class="caption">
-Figure 18.4: Fishing mortality model with age effect residuals by age
+Figure 17.4: Fishing mortality model with age effect residuals by age
 </p>
 </div>
 <p>We’ll now proceed adding an age effect to the catchability model while removing the catch at age effect.</p>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="annex---stock-assessment-workflow.html#cb301-1" tabindex="-1"></a>fit03 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx,</span>
-<span id="cb301-2"><a href="annex---stock-assessment-workflow.html#cb301-2" tabindex="-1"></a>    <span class="at">fmod=</span><span class="sc">~</span><span class="dv">1</span>,</span>
-<span id="cb301-3"><a href="annex---stock-assessment-workflow.html#cb301-3" tabindex="-1"></a>    <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">factor</span>(age)),</span>
-<span id="cb301-4"><a href="annex---stock-assessment-workflow.html#cb301-4" tabindex="-1"></a>    <span class="at">srmod=</span><span class="sc">~</span><span class="dv">1</span>,</span>
-<span id="cb301-5"><a href="annex---stock-assessment-workflow.html#cb301-5" tabindex="-1"></a>    <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),</span>
-<span id="cb301-6"><a href="annex---stock-assessment-workflow.html#cb301-6" tabindex="-1"></a>    <span class="at">n1mod=</span><span class="sc">~</span><span class="dv">1</span>)</span>
-<span id="cb301-7"><a href="annex---stock-assessment-workflow.html#cb301-7" tabindex="-1"></a>res03 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit03, hke1567, hke1567.idx)</span></code></pre></div>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="annex---stock-assessment-workflow.html#cb302-1" tabindex="-1"></a><span class="fu">plot</span>(res03)</span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="annex---stock-assessment-workflow.html#cb296-1" tabindex="-1"></a>fit03 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx,</span>
+<span id="cb296-2"><a href="annex---stock-assessment-workflow.html#cb296-2" tabindex="-1"></a>    <span class="at">fmod=</span><span class="sc">~</span><span class="dv">1</span>,</span>
+<span id="cb296-3"><a href="annex---stock-assessment-workflow.html#cb296-3" tabindex="-1"></a>    <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">factor</span>(age)),</span>
+<span id="cb296-4"><a href="annex---stock-assessment-workflow.html#cb296-4" tabindex="-1"></a>    <span class="at">srmod=</span><span class="sc">~</span><span class="dv">1</span>,</span>
+<span id="cb296-5"><a href="annex---stock-assessment-workflow.html#cb296-5" tabindex="-1"></a>    <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),</span>
+<span id="cb296-6"><a href="annex---stock-assessment-workflow.html#cb296-6" tabindex="-1"></a>    <span class="at">n1mod=</span><span class="sc">~</span><span class="dv">1</span>)</span>
+<span id="cb296-7"><a href="annex---stock-assessment-workflow.html#cb296-7" tabindex="-1"></a>res03 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit03, hke1567, hke1567.idx)</span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="annex---stock-assessment-workflow.html#cb297-1" tabindex="-1"></a><span class="fu">plot</span>(res03)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:qageresbyyear"></span>
 <img src="_main_files/figure-html/qageresbyyear-1.png" alt="Index catchability model with age effect residuals by year" width="672" />
 <p class="caption">
-Figure 18.5: Index catchability model with age effect residuals by year
+Figure 17.5: Index catchability model with age effect residuals by year
 </p>
 </div>
 <p>The residuals plot by age shows the same outcome.</p>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="annex---stock-assessment-workflow.html#cb303-1" tabindex="-1"></a><span class="fu">plot</span>(res03, <span class="at">auxline=</span><span class="st">&quot;l&quot;</span>, <span class="at">by=</span><span class="st">&quot;age&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="annex---stock-assessment-workflow.html#cb298-1" tabindex="-1"></a><span class="fu">plot</span>(res03, <span class="at">auxline=</span><span class="st">&quot;l&quot;</span>, <span class="at">by=</span><span class="st">&quot;age&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:qageresbyage"></span>
 <img src="_main_files/figure-html/qageresbyage-1.png" alt="Index catchability model with age effect residuals by age" width="672" />
 <p class="caption">
-Figure 18.6: Index catchability model with age effect residuals by age
+Figure 17.6: Index catchability model with age effect residuals by age
 </p>
 </div>
 <p>Finally both effects are brought together.</p>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="annex---stock-assessment-workflow.html#cb304-1" tabindex="-1"></a>fit04 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx,</span>
-<span id="cb304-2"><a href="annex---stock-assessment-workflow.html#cb304-2" tabindex="-1"></a>    <span class="at">fmod=</span><span class="sc">~</span><span class="fu">factor</span>(age),</span>
-<span id="cb304-3"><a href="annex---stock-assessment-workflow.html#cb304-3" tabindex="-1"></a>    <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">factor</span>(age)),</span>
-<span id="cb304-4"><a href="annex---stock-assessment-workflow.html#cb304-4" tabindex="-1"></a>    <span class="at">srmod=</span><span class="sc">~</span><span class="dv">1</span>,</span>
-<span id="cb304-5"><a href="annex---stock-assessment-workflow.html#cb304-5" tabindex="-1"></a>    <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),</span>
-<span id="cb304-6"><a href="annex---stock-assessment-workflow.html#cb304-6" tabindex="-1"></a>    <span class="at">n1mod=</span><span class="sc">~</span><span class="dv">1</span>)</span>
-<span id="cb304-7"><a href="annex---stock-assessment-workflow.html#cb304-7" tabindex="-1"></a>res04 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit04, hke1567, hke1567.idx)</span></code></pre></div>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="annex---stock-assessment-workflow.html#cb305-1" tabindex="-1"></a><span class="fu">plot</span>(res04)</span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="annex---stock-assessment-workflow.html#cb299-1" tabindex="-1"></a>fit04 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx,</span>
+<span id="cb299-2"><a href="annex---stock-assessment-workflow.html#cb299-2" tabindex="-1"></a>    <span class="at">fmod=</span><span class="sc">~</span><span class="fu">factor</span>(age),</span>
+<span id="cb299-3"><a href="annex---stock-assessment-workflow.html#cb299-3" tabindex="-1"></a>    <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">factor</span>(age)),</span>
+<span id="cb299-4"><a href="annex---stock-assessment-workflow.html#cb299-4" tabindex="-1"></a>    <span class="at">srmod=</span><span class="sc">~</span><span class="dv">1</span>,</span>
+<span id="cb299-5"><a href="annex---stock-assessment-workflow.html#cb299-5" tabindex="-1"></a>    <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),</span>
+<span id="cb299-6"><a href="annex---stock-assessment-workflow.html#cb299-6" tabindex="-1"></a>    <span class="at">n1mod=</span><span class="sc">~</span><span class="dv">1</span>)</span>
+<span id="cb299-7"><a href="annex---stock-assessment-workflow.html#cb299-7" tabindex="-1"></a>res04 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit04, hke1567, hke1567.idx)</span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="annex---stock-assessment-workflow.html#cb300-1" tabindex="-1"></a><span class="fu">plot</span>(res04)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:fqageresbyyear"></span>
 <img src="_main_files/figure-html/fqageresbyyear-1.png" alt="Fishing mortality and index catchability models with age effect residuals by year" width="672" />
 <p class="caption">
-Figure 18.7: Fishing mortality and index catchability models with age effect residuals by year
+Figure 17.7: Fishing mortality and index catchability models with age effect residuals by year
 </p>
 </div>
 <p>The residuals plot by age shows the same outcome.</p>
-<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="annex---stock-assessment-workflow.html#cb306-1" tabindex="-1"></a><span class="fu">plot</span>(res04, <span class="at">auxline=</span><span class="st">&quot;l&quot;</span>, <span class="at">by=</span><span class="st">&quot;age&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="annex---stock-assessment-workflow.html#cb301-1" tabindex="-1"></a><span class="fu">plot</span>(res04, <span class="at">auxline=</span><span class="st">&quot;l&quot;</span>, <span class="at">by=</span><span class="st">&quot;age&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:fqageresbyage"></span>
 <img src="_main_files/figure-html/fqageresbyage-1.png" alt="Fishing mortality and index catchability models with age effect residuals by age" width="672" />
 <p class="caption">
-Figure 18.8: Fishing mortality and index catchability models with age effect residuals by age
+Figure 17.8: Fishing mortality and index catchability models with age effect residuals by age
 </p>
 </div>
 </div>
-<div id="year-effect-on-fishing-mortality" class="section level2 hasAnchor" number="18.3">
-<h2><span class="header-section-number">18.3</span> Year effect on fishing mortality<a href="annex---stock-assessment-workflow.html#year-effect-on-fishing-mortality" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This model will introduce an year effect in the fishing mortality submodel on top of the F age effect added before. Inspecting the last set of residuals (Figure <a href="annex---stock-assessment-workflow.html#fig:fqageresbyage">18.8</a>) one can easily see the pattern across years with more positive residuals in the beggining of the time series and more negative in the most recent years. As for age we’re using a <code>factor</code> for years. The new model’s residuals won’t show such a pronounced effect anymore (Figures <a href="annex---stock-assessment-workflow.html#fig:fyearresbyyear">18.9</a> and <a href="annex---stock-assessment-workflow.html#fig:fyearresbyage">18.10</a>).</p>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="annex---stock-assessment-workflow.html#cb307-1" tabindex="-1"></a>fit05 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx,</span>
-<span id="cb307-2"><a href="annex---stock-assessment-workflow.html#cb307-2" tabindex="-1"></a>    <span class="at">fmod=</span><span class="sc">~</span><span class="fu">factor</span>(age) <span class="sc">+</span> <span class="fu">factor</span>(year),</span>
-<span id="cb307-3"><a href="annex---stock-assessment-workflow.html#cb307-3" tabindex="-1"></a>    <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>),</span>
-<span id="cb307-4"><a href="annex---stock-assessment-workflow.html#cb307-4" tabindex="-1"></a>    <span class="at">srmod=</span><span class="sc">~</span><span class="dv">1</span>,</span>
-<span id="cb307-5"><a href="annex---stock-assessment-workflow.html#cb307-5" tabindex="-1"></a>    <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),</span>
-<span id="cb307-6"><a href="annex---stock-assessment-workflow.html#cb307-6" tabindex="-1"></a>    <span class="at">n1mod=</span><span class="sc">~</span><span class="dv">1</span>)</span>
-<span id="cb307-7"><a href="annex---stock-assessment-workflow.html#cb307-7" tabindex="-1"></a>res05 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit05, hke1567, hke1567.idx)</span></code></pre></div>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="annex---stock-assessment-workflow.html#cb308-1" tabindex="-1"></a><span class="fu">plot</span>(res05)</span></code></pre></div>
+<div id="year-effect-on-fishing-mortality" class="section level2 hasAnchor" number="17.3">
+<h2><span class="header-section-number">17.3</span> Year effect on fishing mortality<a href="annex---stock-assessment-workflow.html#year-effect-on-fishing-mortality" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This model will introduce an year effect in the fishing mortality submodel on top of the F age effect added before. Inspecting the last set of residuals (Figure <a href="annex---stock-assessment-workflow.html#fig:fqageresbyage">17.8</a>) one can easily see the pattern across years with more positive residuals in the beggining of the time series and more negative in the most recent years. As for age we’re using a <code>factor</code> for years. The new model’s residuals won’t show such a pronounced effect anymore (Figures <a href="annex---stock-assessment-workflow.html#fig:fyearresbyyear">17.9</a> and <a href="annex---stock-assessment-workflow.html#fig:fyearresbyage">17.10</a>).</p>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="annex---stock-assessment-workflow.html#cb302-1" tabindex="-1"></a>fit05 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx,</span>
+<span id="cb302-2"><a href="annex---stock-assessment-workflow.html#cb302-2" tabindex="-1"></a>    <span class="at">fmod=</span><span class="sc">~</span><span class="fu">factor</span>(age) <span class="sc">+</span> <span class="fu">factor</span>(year),</span>
+<span id="cb302-3"><a href="annex---stock-assessment-workflow.html#cb302-3" tabindex="-1"></a>    <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>),</span>
+<span id="cb302-4"><a href="annex---stock-assessment-workflow.html#cb302-4" tabindex="-1"></a>    <span class="at">srmod=</span><span class="sc">~</span><span class="dv">1</span>,</span>
+<span id="cb302-5"><a href="annex---stock-assessment-workflow.html#cb302-5" tabindex="-1"></a>    <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),</span>
+<span id="cb302-6"><a href="annex---stock-assessment-workflow.html#cb302-6" tabindex="-1"></a>    <span class="at">n1mod=</span><span class="sc">~</span><span class="dv">1</span>)</span>
+<span id="cb302-7"><a href="annex---stock-assessment-workflow.html#cb302-7" tabindex="-1"></a>res05 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit05, hke1567, hke1567.idx)</span></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="annex---stock-assessment-workflow.html#cb303-1" tabindex="-1"></a><span class="fu">plot</span>(res05)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:fyearresbyyear"></span>
 <img src="_main_files/figure-html/fyearresbyyear-1.png" alt="Fishing mortality model with year effect residuals by year" width="672" />
 <p class="caption">
-Figure 18.9: Fishing mortality model with year effect residuals by year
+Figure 17.9: Fishing mortality model with year effect residuals by year
 </p>
 </div>
 <p>The residuals plot by age shows the same outcome.</p>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="annex---stock-assessment-workflow.html#cb309-1" tabindex="-1"></a><span class="fu">plot</span>(res05, <span class="at">auxline=</span><span class="st">&quot;l&quot;</span>, <span class="at">by=</span><span class="st">&quot;age&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="annex---stock-assessment-workflow.html#cb304-1" tabindex="-1"></a><span class="fu">plot</span>(res05, <span class="at">auxline=</span><span class="st">&quot;l&quot;</span>, <span class="at">by=</span><span class="st">&quot;age&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:fyearresbyage"></span>
 <img src="_main_files/figure-html/fyearresbyage-1.png" alt="Fishing mortality model with year effect residuals by age" width="672" />
 <p class="caption">
-Figure 18.10: Fishing mortality model with year effect residuals by age
+Figure 17.10: Fishing mortality model with year effect residuals by age
 </p>
 </div>
 <p>We can see now that the residuals show a lot less patterns than before. There’s still some issues, the survey catchability seems to have an year trend. However the model is not fully specified yet, stock recruitment is modelled as constant over time, the initial population abundance is also modelled as a constant as well as the variance models.</p>
 </div>
-<div id="year-effect-on-catchability" class="section level2 hasAnchor" number="18.4">
-<h2><span class="header-section-number">18.4</span> Year effect on catchability<a href="annex---stock-assessment-workflow.html#year-effect-on-catchability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="year-effect-on-catchability" class="section level2 hasAnchor" number="17.4">
+<h2><span class="header-section-number">17.4</span> Year effect on catchability<a href="annex---stock-assessment-workflow.html#year-effect-on-catchability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>It’s uncommon to include year trends on the abundance index catchability model. Such decision needs to be considered carefully as the trend in the index, in the case of a well design scientific survey, should result from a change in abundance. Modelling that trend would attribute such change to the survey design and remove it from the abundance. If the survey index is based on a commercial CPUE it becomes more likely that changes in selectivity or fishing behaviour could show up in the index as changes in abundance. Although the common process of standardizing CPUEs should deal with technical issues.</p>
 <p>In the case of adding year effects to teh catchability submode the same formulas can be used, to include period breaks, trends, etc.</p>
 </div>
-<div id="the-initial-year-population-abundance-model-aka-n1" class="section level2 hasAnchor" number="18.5">
-<h2><span class="header-section-number">18.5</span> The initial year population abundance model, aka N1<a href="annex---stock-assessment-workflow.html#the-initial-year-population-abundance-model-aka-n1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-initial-year-population-abundance-model-aka-n1" class="section level2 hasAnchor" number="17.5">
+<h2><span class="header-section-number">17.5</span> The initial year population abundance model, aka N1<a href="annex---stock-assessment-workflow.html#the-initial-year-population-abundance-model-aka-n1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This model sets the n-at-age in the first year of the time series, which is needed due to the lack of previous data to reconstruct those cohorts. It will affect the population numbers in the lower triangle of the initial population matrix and catches.</p>
 <p>The following model will introduce an age effect in the population abundance in the first year of the time series.</p>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="annex---stock-assessment-workflow.html#cb310-1" tabindex="-1"></a>fit06 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx,</span>
-<span id="cb310-2"><a href="annex---stock-assessment-workflow.html#cb310-2" tabindex="-1"></a>    <span class="at">fmod=</span><span class="sc">~</span><span class="fu">factor</span>(age) <span class="sc">+</span> <span class="fu">factor</span>(year),</span>
-<span id="cb310-3"><a href="annex---stock-assessment-workflow.html#cb310-3" tabindex="-1"></a>    <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">factor</span>(age)),</span>
-<span id="cb310-4"><a href="annex---stock-assessment-workflow.html#cb310-4" tabindex="-1"></a>    <span class="at">srmod=</span><span class="sc">~</span><span class="dv">1</span>,</span>
-<span id="cb310-5"><a href="annex---stock-assessment-workflow.html#cb310-5" tabindex="-1"></a>    <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),</span>
-<span id="cb310-6"><a href="annex---stock-assessment-workflow.html#cb310-6" tabindex="-1"></a>    <span class="at">n1mod=</span><span class="sc">~</span><span class="fu">factor</span>(age))</span>
-<span id="cb310-7"><a href="annex---stock-assessment-workflow.html#cb310-7" tabindex="-1"></a>res06 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit06, hke1567, hke1567.idx)</span></code></pre></div>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="annex---stock-assessment-workflow.html#cb305-1" tabindex="-1"></a>fit06 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx,</span>
+<span id="cb305-2"><a href="annex---stock-assessment-workflow.html#cb305-2" tabindex="-1"></a>    <span class="at">fmod=</span><span class="sc">~</span><span class="fu">factor</span>(age) <span class="sc">+</span> <span class="fu">factor</span>(year),</span>
+<span id="cb305-3"><a href="annex---stock-assessment-workflow.html#cb305-3" tabindex="-1"></a>    <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">factor</span>(age)),</span>
+<span id="cb305-4"><a href="annex---stock-assessment-workflow.html#cb305-4" tabindex="-1"></a>    <span class="at">srmod=</span><span class="sc">~</span><span class="dv">1</span>,</span>
+<span id="cb305-5"><a href="annex---stock-assessment-workflow.html#cb305-5" tabindex="-1"></a>    <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),</span>
+<span id="cb305-6"><a href="annex---stock-assessment-workflow.html#cb305-6" tabindex="-1"></a>    <span class="at">n1mod=</span><span class="sc">~</span><span class="fu">factor</span>(age))</span>
+<span id="cb305-7"><a href="annex---stock-assessment-workflow.html#cb305-7" tabindex="-1"></a>res06 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit06, hke1567, hke1567.idx)</span></code></pre></div>
 <p>The best way to inspect the effect of this model is to zoom into the initial years of the time series.</p>
-<p>Figure <a href="annex---stock-assessment-workflow.html#fig:n1resbyage05">18.11</a> zooms into the previous model, which used an intercept only model for N1, while Figure <a href="annex---stock-assessment-workflow.html#fig:n1resbyage06">18.12</a>.</p>
+<p>Figure <a href="annex---stock-assessment-workflow.html#fig:n1resbyage05">17.11</a> zooms into the previous model, which used an intercept only model for N1, while Figure <a href="annex---stock-assessment-workflow.html#fig:n1resbyage06">17.12</a>.</p>
 <div class="figure"><span style="display:block;" id="fig:n1resbyage05"></span>
 <img src="_main_files/figure-html/n1resbyage05-1.png" alt="N1 fitted as an intercept only model: 2007 - 2010 residuals by age" width="672" />
 <p class="caption">
-Figure 18.11: N1 fitted as an intercept only model: 2007 - 2010 residuals by age
+Figure 17.11: N1 fitted as an intercept only model: 2007 - 2010 residuals by age
 </p>
 </div>
 <div class="figure"><span style="display:block;" id="fig:n1resbyage06"></span>
 <img src="_main_files/figure-html/n1resbyage06-1.png" alt="N1 fitted with an age effect model: 2007 - 2010 residuals by age" width="672" />
 <p class="caption">
-Figure 18.12: N1 fitted with an age effect model: 2007 - 2010 residuals by age
+Figure 17.12: N1 fitted with an age effect model: 2007 - 2010 residuals by age
 </p>
 </div>
 <p>Comparing the two plots it can be seen the effect of modeling abundance in the initial year. Residuals for both catch at age and catchability improved considerably. The following years also improve to different levels.</p>
 </div>
-<div id="the-stock-recruitment-submodel" class="section level2 hasAnchor" number="18.6">
-<h2><span class="header-section-number">18.6</span> The stock recruitment submodel<a href="annex---stock-assessment-workflow.html#the-stock-recruitment-submodel" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-stock-recruitment-submodel" class="section level2 hasAnchor" number="17.6">
+<h2><span class="header-section-number">17.6</span> The stock recruitment submodel<a href="annex---stock-assessment-workflow.html#the-stock-recruitment-submodel" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this example we’ll simply add a model to allow recruitment to vary over time and we’ll see how to track potential improvements in the residuals.</p>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="annex---stock-assessment-workflow.html#cb311-1" tabindex="-1"></a>fit07 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx,</span>
-<span id="cb311-2"><a href="annex---stock-assessment-workflow.html#cb311-2" tabindex="-1"></a>    <span class="at">fmod=</span><span class="sc">~</span><span class="fu">factor</span>(age) <span class="sc">+</span> <span class="fu">factor</span>(year),</span>
-<span id="cb311-3"><a href="annex---stock-assessment-workflow.html#cb311-3" tabindex="-1"></a>    <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">factor</span>(age)),</span>
-<span id="cb311-4"><a href="annex---stock-assessment-workflow.html#cb311-4" tabindex="-1"></a>    <span class="at">srmod=</span><span class="sc">~</span><span class="fu">factor</span>(year),</span>
-<span id="cb311-5"><a href="annex---stock-assessment-workflow.html#cb311-5" tabindex="-1"></a>    <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),</span>
-<span id="cb311-6"><a href="annex---stock-assessment-workflow.html#cb311-6" tabindex="-1"></a>    <span class="at">n1mod=</span><span class="sc">~</span><span class="fu">factor</span>(age))</span>
-<span id="cb311-7"><a href="annex---stock-assessment-workflow.html#cb311-7" tabindex="-1"></a>res07 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit07, hke1567, hke1567.idx)</span></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="annex---stock-assessment-workflow.html#cb306-1" tabindex="-1"></a>fit07 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx,</span>
+<span id="cb306-2"><a href="annex---stock-assessment-workflow.html#cb306-2" tabindex="-1"></a>    <span class="at">fmod=</span><span class="sc">~</span><span class="fu">factor</span>(age) <span class="sc">+</span> <span class="fu">factor</span>(year),</span>
+<span id="cb306-3"><a href="annex---stock-assessment-workflow.html#cb306-3" tabindex="-1"></a>    <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">factor</span>(age)),</span>
+<span id="cb306-4"><a href="annex---stock-assessment-workflow.html#cb306-4" tabindex="-1"></a>    <span class="at">srmod=</span><span class="sc">~</span><span class="fu">factor</span>(year),</span>
+<span id="cb306-5"><a href="annex---stock-assessment-workflow.html#cb306-5" tabindex="-1"></a>    <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>),</span>
+<span id="cb306-6"><a href="annex---stock-assessment-workflow.html#cb306-6" tabindex="-1"></a>    <span class="at">n1mod=</span><span class="sc">~</span><span class="fu">factor</span>(age))</span>
+<span id="cb306-7"><a href="annex---stock-assessment-workflow.html#cb306-7" tabindex="-1"></a>res07 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit07, hke1567, hke1567.idx)</span></code></pre></div>
 <p>The residuals plot by year are very useful to see the effect of adding a varying stock recruitment model. The year trends present in previous models are not absent. Recruitment variability when left unmodelled was being picked up by trends in the survey catchability and catch at age. And due to the cohort dynamics underlying the catch at age model, where propagating into other ages’ estimates.</p>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="annex---stock-assessment-workflow.html#cb312-1" tabindex="-1"></a><span class="fu">plot</span>(res07)</span></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="annex---stock-assessment-workflow.html#cb307-1" tabindex="-1"></a><span class="fu">plot</span>(res07)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:srresbyyear"></span>
 <img src="_main_files/figure-html/srresbyyear-1.png" alt="Stock-recruitment model with year effect residuals by year" width="672" />
 <p class="caption">
-Figure 18.13: Stock-recruitment model with year effect residuals by year
+Figure 17.13: Stock-recruitment model with year effect residuals by year
 </p>
 </div>
 </div>
-<div id="the-variance-submodel" class="section level2 hasAnchor" number="18.7">
-<h2><span class="header-section-number">18.7</span> The variance submodel<a href="annex---stock-assessment-workflow.html#the-variance-submodel" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-variance-submodel" class="section level2 hasAnchor" number="17.7">
+<h2><span class="header-section-number">17.7</span> The variance submodel<a href="annex---stock-assessment-workflow.html#the-variance-submodel" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Finally, we’re testing the variance submodel, specifically the catch at age variance model. We won’t dig into the catchability variance model though. It’s common to accept that a scientific survey following a well designed sampling protocol will have equal variance across ages since no preferential areas should be sampled sampled.</p>
 <p>The variance model will use a smoother with <code>k=3</code>. The expectation is that the variance model will have a U-shape, since yourger and older ages are usually less caught and as such estomates of those ages will have larger variances than fully exploited ages.</p>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="annex---stock-assessment-workflow.html#cb313-1" tabindex="-1"></a>fit08 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx,</span>
-<span id="cb313-2"><a href="annex---stock-assessment-workflow.html#cb313-2" tabindex="-1"></a>    <span class="at">fmod=</span><span class="sc">~</span><span class="fu">factor</span>(age) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">10</span>),</span>
-<span id="cb313-3"><a href="annex---stock-assessment-workflow.html#cb313-3" tabindex="-1"></a>    <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">factor</span>(age)),</span>
-<span id="cb313-4"><a href="annex---stock-assessment-workflow.html#cb313-4" tabindex="-1"></a>    <span class="at">srmod=</span><span class="sc">~</span><span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">10</span>),</span>
-<span id="cb313-5"><a href="annex---stock-assessment-workflow.html#cb313-5" tabindex="-1"></a>    <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">3</span>), <span class="sc">~</span><span class="dv">1</span>),</span>
-<span id="cb313-6"><a href="annex---stock-assessment-workflow.html#cb313-6" tabindex="-1"></a>    <span class="at">n1mod=</span><span class="sc">~</span><span class="fu">factor</span>(age))</span></code></pre></div>
-<p>We’ll use the pearson residuals for this analysis since those are standardized by the predicted variances of the model and not the residual variance itself, like the more common standardized residuals. Figure <a href="annex---stock-assessment-workflow.html#fig:vresbyyear08">18.15</a> shows an improve set of residuals when compared to Figure <a href="annex---stock-assessment-workflow.html#fig:vresbyyear07">18.14</a> which add an intercept only model for the variance model.</p>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="annex---stock-assessment-workflow.html#cb314-1" tabindex="-1"></a>res07 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit07, hke1567, hke1567.idx, <span class="at">type=</span><span class="st">&quot;pearson&quot;</span>)</span>
-<span id="cb314-2"><a href="annex---stock-assessment-workflow.html#cb314-2" tabindex="-1"></a>res08 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit08, hke1567, hke1567.idx, <span class="at">type=</span><span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="annex---stock-assessment-workflow.html#cb315-1" tabindex="-1"></a><span class="fu">plot</span>(res07)</span></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="annex---stock-assessment-workflow.html#cb308-1" tabindex="-1"></a>fit08 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx,</span>
+<span id="cb308-2"><a href="annex---stock-assessment-workflow.html#cb308-2" tabindex="-1"></a>    <span class="at">fmod=</span><span class="sc">~</span><span class="fu">factor</span>(age) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">10</span>),</span>
+<span id="cb308-3"><a href="annex---stock-assessment-workflow.html#cb308-3" tabindex="-1"></a>    <span class="at">qmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">factor</span>(age)),</span>
+<span id="cb308-4"><a href="annex---stock-assessment-workflow.html#cb308-4" tabindex="-1"></a>    <span class="at">srmod=</span><span class="sc">~</span><span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">10</span>),</span>
+<span id="cb308-5"><a href="annex---stock-assessment-workflow.html#cb308-5" tabindex="-1"></a>    <span class="at">vmod=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">3</span>), <span class="sc">~</span><span class="dv">1</span>),</span>
+<span id="cb308-6"><a href="annex---stock-assessment-workflow.html#cb308-6" tabindex="-1"></a>    <span class="at">n1mod=</span><span class="sc">~</span><span class="fu">factor</span>(age))</span></code></pre></div>
+<p>We’ll use the pearson residuals for this analysis since those are standardized by the predicted variances of the model and not the residual variance itself, like the more common standardized residuals. Figure <a href="annex---stock-assessment-workflow.html#fig:vresbyyear08">17.15</a> shows an improve set of residuals when compared to Figure <a href="annex---stock-assessment-workflow.html#fig:vresbyyear07">17.14</a> which add an intercept only model for the variance model.</p>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="annex---stock-assessment-workflow.html#cb309-1" tabindex="-1"></a>res07 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit07, hke1567, hke1567.idx, <span class="at">type=</span><span class="st">&quot;pearson&quot;</span>)</span>
+<span id="cb309-2"><a href="annex---stock-assessment-workflow.html#cb309-2" tabindex="-1"></a>res08 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit08, hke1567, hke1567.idx, <span class="at">type=</span><span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="annex---stock-assessment-workflow.html#cb310-1" tabindex="-1"></a><span class="fu">plot</span>(res07)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:vresbyyear07"></span>
 <img src="_main_files/figure-html/vresbyyear07-1.png" alt="Variance model with intercept only age effect pearson residuals" width="672" />
 <p class="caption">
-Figure 18.14: Variance model with intercept only age effect pearson residuals
+Figure 17.14: Variance model with intercept only age effect pearson residuals
 </p>
 </div>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="annex---stock-assessment-workflow.html#cb316-1" tabindex="-1"></a><span class="fu">plot</span>(res08)</span></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="annex---stock-assessment-workflow.html#cb311-1" tabindex="-1"></a><span class="fu">plot</span>(res08)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:vresbyyear08"></span>
 <img src="_main_files/figure-html/vresbyyear08-1.png" alt="Variance model with age effect pearson residuals" width="672" />
 <p class="caption">
-Figure 18.15: Variance model with age effect pearson residuals
+Figure 17.15: Variance model with age effect pearson residuals
 </p>
 </div>
 <p>To see what’s happening with the variance model one can use predict to plot the different models fitted.</p>
 <div class="figure"><span style="display:block;" id="fig:vagepredbyage"></span>
 <img src="_main_files/figure-html/vagepredbyage-1.png" alt="Variance models for catch at age" width="672" />
 <p class="caption">
-Figure 18.16: Variance models for catch at age
+Figure 17.16: Variance models for catch at age
 </p>
 </div>
 <p>To see the effect these models have on the estimated quantities one can look at the variance of the estimates:</p>
 <div class="figure"><span style="display:block;" id="fig:vage"></span>
 <img src="_main_files/figure-html/vage-1.png" alt="Estimates of population abundance with different variance models" width="672" />
 <p class="caption">
-Figure 18.17: Estimates of population abundance with different variance models
+Figure 17.17: Estimates of population abundance with different variance models
 </p>
 </div>
 </div>
-<div id="final-comments" class="section level2 hasAnchor" number="18.8">
-<h2><span class="header-section-number">18.8</span> Final comments<a href="annex---stock-assessment-workflow.html#final-comments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="final-comments" class="section level2 hasAnchor" number="17.8">
+<h2><span class="header-section-number">17.8</span> Final comments<a href="annex---stock-assessment-workflow.html#final-comments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The sequence presented here can be changed and eploited in any order the user is interested or prefers to.</p>
 <p>The approach of not allowing year effects in surveys and variance model can be modified if the user prefers to do so.</p>
 <p>The (ab)use of <code>factor</code> is for demonstration purposes only. The user is incentivised to explore other model forms, in particular smoothers.</p>

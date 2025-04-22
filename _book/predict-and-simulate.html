@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>10 Predict and simulate  | Fish stock assessment with R</title>
+  <title>9 Predict and simulate  | Fish stock assessment with R</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
   <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="10 Predict and simulate  | Fish stock assessment with R" />
+  <meta property="og:title" content="9 Predict and simulate  | Fish stock assessment with R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="How to do stock assessment in R using the a4a framework" />
   <meta name="github-repo" content="ejardim/a4abook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="10 Predict and simulate  | Fish stock assessment with R" />
+  <meta name="twitter:title" content="9 Predict and simulate  | Fish stock assessment with R" />
   
   <meta name="twitter:description" content="How to do stock assessment in R using the a4a framework" />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-04-17" />
+<meta name="date" content="2025-04-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -185,143 +185,136 @@ div.csl-indent {
 <li class="chapter" data-level="2.5.4" data-path="introduction.html"><a href="introduction.html#redfish-simulated-length-data"><i class="fa fa-check"></i><b>2.5.4</b> Redfish simulated length data</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html"><i class="fa fa-check"></i><b>3</b> Introduction to Splines</a>
+<li class="chapter" data-level="3" data-path="growth.html"><a href="growth.html"><i class="fa fa-check"></i><b>3</b> Modelling Individual Growth and Using Stochastic Slicing to Convert Length-based Data Into Age-based Data</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#generalize-to-polynomials"><i class="fa fa-check"></i><b>3.1</b> Generalize to polynomials</a></li>
-<li class="chapter" data-level="3.2" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#thin-plate-spline"><i class="fa fa-check"></i><b>3.2</b> Thin plate spline</a></li>
-<li class="chapter" data-level="3.3" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#the-mgcv-package-inside-a4a"><i class="fa fa-check"></i><b>3.3</b> The <code>mgcv</code> package inside <code>a4a</code></a></li>
-<li class="chapter" data-level="3.4" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#on-the-number-of-knots-k"><i class="fa fa-check"></i><b>3.4</b> On the number of knots <span class="math inline">\(k\)</span></a></li>
+<li class="chapter" data-level="3.1" data-path="growth.html"><a href="growth.html#a4agr---the-growth-class"><i class="fa fa-check"></i><b>3.1</b> a4aGr - The growth class</a></li>
+<li class="chapter" data-level="3.2" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>3.2</b> Adding uncertainty to growth parameters with a multivariate normal distribution</a></li>
+<li class="chapter" data-level="3.3" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-triangle-distribution"><i class="fa fa-check"></i><b>3.3</b> Adding uncertainty to growth parameters with a multivariate triangle distribution</a></li>
+<li class="chapter" data-level="3.4" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>3.4</b> Adding uncertainty to growth parameters with statistical copulas</a></li>
+<li class="chapter" data-level="3.5" data-path="growth.html"><a href="growth.html#converting-from-length-to-age-based-data---the-l2a-method"><i class="fa fa-check"></i><b>3.5</b> Converting from length to age based data - the <code>l2a()</code> method</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="growth.html"><a href="growth.html"><i class="fa fa-check"></i><b>4</b> Modelling Individual Growth and Using Stochastic Slicing to Convert Length-based Data Into Age-based Data</a>
+<li class="chapter" data-level="4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html"><i class="fa fa-check"></i><b>4</b> Modelling Natural Mortality</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="growth.html"><a href="growth.html#a4agr---the-growth-class"><i class="fa fa-check"></i><b>4.1</b> a4aGr - The growth class</a></li>
-<li class="chapter" data-level="4.2" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>4.2</b> Adding uncertainty to growth parameters with a multivariate normal distribution</a></li>
-<li class="chapter" data-level="4.3" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-triangle-distribution"><i class="fa fa-check"></i><b>4.3</b> Adding uncertainty to growth parameters with a multivariate triangle distribution</a></li>
-<li class="chapter" data-level="4.4" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>4.4</b> Adding uncertainty to growth parameters with statistical copulas</a></li>
-<li class="chapter" data-level="4.5" data-path="growth.html"><a href="growth.html#converting-from-length-to-age-based-data---the-l2a-method"><i class="fa fa-check"></i><b>4.5</b> Converting from length to age based data - the <code>l2a()</code> method</a></li>
+<li class="chapter" data-level="4.1" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#a4am---the-m-class"><i class="fa fa-check"></i><b>4.1</b> <code>a4aM</code> - The M class</a></li>
+<li class="chapter" data-level="4.2" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>4.2</b> Adding uncertainty to natural mortality parameters with a multivariate normal distribution</a></li>
+<li class="chapter" data-level="4.3" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>4.3</b> Adding uncertainty to natural mortality parameters with statistical copulas</a></li>
+<li class="chapter" data-level="4.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>4.4</b> Computing natural mortality time series - the “m” method</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html"><i class="fa fa-check"></i><b>5</b> Modelling Natural Mortality</a>
+<li class="chapter" data-level="5" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html"><i class="fa fa-check"></i><b>5</b> Stock assessment framework</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#a4am---the-m-class"><i class="fa fa-check"></i><b>5.1</b> <code>a4aM</code> - The M class</a></li>
-<li class="chapter" data-level="5.2" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>5.2</b> Adding uncertainty to natural mortality parameters with a multivariate normal distribution</a></li>
-<li class="chapter" data-level="5.3" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>5.3</b> Adding uncertainty to natural mortality parameters with statistical copulas</a></li>
-<li class="chapter" data-level="5.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>5.4</b> Computing natural mortality time series - the “m” method</a></li>
+<li class="chapter" data-level="5.1" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#maths-description"><i class="fa fa-check"></i><b>5.1</b> Maths description </a></li>
+<li class="chapter" data-level="5.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#model-structure"><i class="fa fa-check"></i><b>5.2</b> Model structure </a></li>
+<li class="chapter" data-level="5.3" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#submodel-building-blocks-and-fundamental-r-formulas"><i class="fa fa-check"></i><b>5.3</b> Submodel building blocks and fundamental <code>R</code> formulas</a></li>
+<li class="chapter" data-level="5.4" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#the-major-effects-available-for-modelling"><i class="fa fa-check"></i><b>5.4</b> The major effects available for modelling</a></li>
+<li class="chapter" data-level="5.5" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#classes-description"><i class="fa fa-check"></i><b>5.5</b> Classes Description </a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html"><i class="fa fa-check"></i><b>6</b> Stock assessment framework</a>
+<li class="chapter" data-level="6" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html"><i class="fa fa-check"></i><b>6</b> Introduction to Splines</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#maths-description"><i class="fa fa-check"></i><b>6.1</b> Maths description </a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#observations"><i class="fa fa-check"></i><b>6.1.1</b> Observations</a></li>
-<li class="chapter" data-level="6.1.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#the-population-dynamics-model"><i class="fa fa-check"></i><b>6.1.2</b> The population dynamics model</a></li>
+<li class="chapter" data-level="6.1" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#generalize-to-polynomials"><i class="fa fa-check"></i><b>6.1</b> Generalize to polynomials</a></li>
+<li class="chapter" data-level="6.2" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#thin-plate-spline"><i class="fa fa-check"></i><b>6.2</b> Thin plate spline</a></li>
+<li class="chapter" data-level="6.3" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#the-mgcv-package-inside-a4a"><i class="fa fa-check"></i><b>6.3</b> The <code>mgcv</code> package inside <code>a4a</code></a></li>
+<li class="chapter" data-level="6.4" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#on-the-number-of-knots-k"><i class="fa fa-check"></i><b>6.4</b> On the number of knots <span class="math inline">\(k\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#classes-description"><i class="fa fa-check"></i><b>6.2</b> Classes Description </a></li>
+<li class="chapter" data-level="7" data-path="fitting.html"><a href="fitting.html"><i class="fa fa-check"></i><b>7</b> Fitting</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="fitting.html"><a href="fitting.html#fishing-mortality-submodel-f_ay"><i class="fa fa-check"></i><b>7.1</b> Fishing mortality submodel (<span class="math inline">\(F_{ay}\)</span>)</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="fitting.html"><a href="fitting.html#separable-model"><i class="fa fa-check"></i><b>7.1.1</b> Separable model</a></li>
+<li class="chapter" data-level="7.1.2" data-path="fitting.html"><a href="fitting.html#constant-selectivity-for-contiguous-ages-or-years"><i class="fa fa-check"></i><b>7.1.2</b> Constant selectivity for contiguous ages or years</a></li>
+<li class="chapter" data-level="7.1.3" data-path="fitting.html"><a href="fitting.html#time-blocks-selectivity"><i class="fa fa-check"></i><b>7.1.3</b> Time blocks selectivity</a></li>
+<li class="chapter" data-level="7.1.4" data-path="fitting.html"><a href="fitting.html#time-changing-selectivity"><i class="fa fa-check"></i><b>7.1.4</b> Time changing selectivity</a></li>
+<li class="chapter" data-level="7.1.5" data-path="fitting.html"><a href="fitting.html#closed-form-selection-pattern"><i class="fa fa-check"></i><b>7.1.5</b> Closed form selection pattern</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="submodel-structure.html"><a href="submodel-structure.html"><i class="fa fa-check"></i><b>7</b> Submodel structure </a>
+<li class="chapter" data-level="7.2" data-path="fitting.html"><a href="fitting.html#abundance-indices-catchability-submodel-q_ays"><i class="fa fa-check"></i><b>7.2</b> Abundance indices catchability submodel (<span class="math inline">\(Q_{ays}\)</span>)</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="submodel-structure.html"><a href="submodel-structure.html#submodel-building-blocks-and-fundamental-r-formulas"><i class="fa fa-check"></i><b>7.1</b> Submodel building blocks and fundamental <code>R</code> formulas</a></li>
-<li class="chapter" data-level="7.2" data-path="submodel-structure.html"><a href="submodel-structure.html#the-major-effects-available-for-modelling"><i class="fa fa-check"></i><b>7.2</b> The major effects available for modelling</a></li>
-<li class="chapter" data-level="7.3" data-path="submodel-structure.html"><a href="submodel-structure.html#the-submodel-class-and-methods"><i class="fa fa-check"></i><b>7.3</b> The submodel class and methods</a></li>
+<li class="chapter" data-level="7.2.1" data-path="fitting.html"><a href="fitting.html#catchability-submodel-for-age-based-indices"><i class="fa fa-check"></i><b>7.2.1</b> Catchability submodel for age based indices</a></li>
+<li class="chapter" data-level="7.2.2" data-path="fitting.html"><a href="fitting.html#catchability-submodel-for-age-aggregated-biomass-indices"><i class="fa fa-check"></i><b>7.2.2</b> Catchability submodel for age aggregated biomass indices</a></li>
+<li class="chapter" data-level="7.2.3" data-path="fitting.html"><a href="fitting.html#catchability-submodel-for-single-age-indices"><i class="fa fa-check"></i><b>7.2.3</b> Catchability submodel for single age indices</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="fitting.html"><a href="fitting.html"><i class="fa fa-check"></i><b>8</b> Fitting</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="fitting.html"><a href="fitting.html#fishing-mortality-submodel-f_ay"><i class="fa fa-check"></i><b>8.1</b> Fishing mortality submodel (<span class="math inline">\(F_{ay}\)</span>)</a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="fitting.html"><a href="fitting.html#separable-model"><i class="fa fa-check"></i><b>8.1.1</b> Separable model</a></li>
-<li class="chapter" data-level="8.1.2" data-path="fitting.html"><a href="fitting.html#constant-selectivity-for-contiguous-ages-or-years"><i class="fa fa-check"></i><b>8.1.2</b> Constant selectivity for contiguous ages or years</a></li>
-<li class="chapter" data-level="8.1.3" data-path="fitting.html"><a href="fitting.html#time-blocks-selectivity"><i class="fa fa-check"></i><b>8.1.3</b> Time blocks selectivity</a></li>
-<li class="chapter" data-level="8.1.4" data-path="fitting.html"><a href="fitting.html#time-changing-selectivity"><i class="fa fa-check"></i><b>8.1.4</b> Time changing selectivity</a></li>
-<li class="chapter" data-level="8.1.5" data-path="fitting.html"><a href="fitting.html#closed-form-selection-pattern"><i class="fa fa-check"></i><b>8.1.5</b> Closed form selection pattern</a></li>
+<li class="chapter" data-level="7.3" data-path="fitting.html"><a href="fitting.html#stock-recruitment-submodel-r_y"><i class="fa fa-check"></i><b>7.3</b> Stock-recruitment submodel (<span class="math inline">\(R_y\)</span>)</a></li>
+<li class="chapter" data-level="7.4" data-path="fitting.html"><a href="fitting.html#observation-variance-submodel-sigma2_ay-tau2_ays"><i class="fa fa-check"></i><b>7.4</b> Observation variance submodel (<span class="math inline">\(\{\sigma^2_{ay}, \tau^2_{ays}\}\)</span>)</a></li>
+<li class="chapter" data-level="7.5" data-path="fitting.html"><a href="fitting.html#initial-year-abundance-submodel-n_ay1"><i class="fa fa-check"></i><b>7.5</b> Initial year abundance submodel (<span class="math inline">\(N_{a,y=1}\)</span>)</a></li>
+<li class="chapter" data-level="7.6" data-path="fitting.html"><a href="fitting.html#more-models"><i class="fa fa-check"></i><b>7.6</b> More models</a></li>
+<li class="chapter" data-level="7.7" data-path="fitting.html"><a href="fitting.html#working-with-covariates"><i class="fa fa-check"></i><b>7.7</b> Working with covariates</a></li>
+<li class="chapter" data-level="7.8" data-path="fitting.html"><a href="fitting.html#assessing-files"><i class="fa fa-check"></i><b>7.8</b> Assessing files</a></li>
+<li class="chapter" data-level="7.9" data-path="fitting.html"><a href="fitting.html#missing-observations-in-the-catch-matrix-or-index"><i class="fa fa-check"></i><b>7.9</b> Missing observations in the catch matrix or index</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="fitting.html"><a href="fitting.html#abundance-indices-catchability-submodel-q_ays"><i class="fa fa-check"></i><b>8.2</b> Abundance indices catchability submodel (<span class="math inline">\(Q_{ays}\)</span>)</a>
+<li class="chapter" data-level="8" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>8</b> Diagnostics </a>
 <ul>
-<li class="chapter" data-level="8.2.1" data-path="fitting.html"><a href="fitting.html#catchability-submodel-for-age-based-indices"><i class="fa fa-check"></i><b>8.2.1</b> Catchability submodel for age based indices</a></li>
-<li class="chapter" data-level="8.2.2" data-path="fitting.html"><a href="fitting.html#catchability-submodel-for-age-aggregated-biomass-indices"><i class="fa fa-check"></i><b>8.2.2</b> Catchability submodel for age aggregated biomass indices</a></li>
-<li class="chapter" data-level="8.2.3" data-path="fitting.html"><a href="fitting.html#catchability-submodel-for-single-age-indices"><i class="fa fa-check"></i><b>8.2.3</b> Catchability submodel for single age indices</a></li>
+<li class="chapter" data-level="8.1" data-path="diagnostics.html"><a href="diagnostics.html#residuals"><i class="fa fa-check"></i><b>8.1</b> Residuals</a></li>
+<li class="chapter" data-level="8.2" data-path="diagnostics.html"><a href="diagnostics.html#predictive-skill"><i class="fa fa-check"></i><b>8.2</b> Predictive skill</a></li>
+<li class="chapter" data-level="8.3" data-path="diagnostics.html"><a href="diagnostics.html#fit-summary-information-and-cross-validation-metrics"><i class="fa fa-check"></i><b>8.3</b> Fit summary, information and cross-validation metrics</a></li>
+<li class="chapter" data-level="8.4" data-path="diagnostics.html"><a href="diagnostics.html#the-package-a4adiags"><i class="fa fa-check"></i><b>8.4</b> The package a4adiags</a></li>
+<li class="chapter" data-level="8.5" data-path="diagnostics.html"><a href="diagnostics.html#retrospective-analysis"><i class="fa fa-check"></i><b>8.5</b> Retrospective analysis</a></li>
+<li class="chapter" data-level="8.6" data-path="diagnostics.html"><a href="diagnostics.html#hindcast"><i class="fa fa-check"></i><b>8.6</b> Hindcast</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="fitting.html"><a href="fitting.html#stock-recruitment-submodel-r_y"><i class="fa fa-check"></i><b>8.3</b> Stock-recruitment submodel (<span class="math inline">\(R_y\)</span>)</a></li>
-<li class="chapter" data-level="8.4" data-path="fitting.html"><a href="fitting.html#observation-variance-submodel-sigma2_ay-tau2_ays"><i class="fa fa-check"></i><b>8.4</b> Observation variance submodel (<span class="math inline">\(\{\sigma^2_{ay}, \tau^2_{ays}\}\)</span>)</a></li>
-<li class="chapter" data-level="8.5" data-path="fitting.html"><a href="fitting.html#initial-year-abundance-submodel-n_ay1"><i class="fa fa-check"></i><b>8.5</b> Initial year abundance submodel (<span class="math inline">\(N_{a,y=1}\)</span>)</a></li>
-<li class="chapter" data-level="8.6" data-path="fitting.html"><a href="fitting.html#more-models"><i class="fa fa-check"></i><b>8.6</b> More models</a></li>
-<li class="chapter" data-level="8.7" data-path="fitting.html"><a href="fitting.html#working-with-covariates"><i class="fa fa-check"></i><b>8.7</b> Working with covariates</a></li>
-<li class="chapter" data-level="8.8" data-path="fitting.html"><a href="fitting.html#assessing-files"><i class="fa fa-check"></i><b>8.8</b> Assessing files</a></li>
-<li class="chapter" data-level="8.9" data-path="fitting.html"><a href="fitting.html#missing-observations-in-the-catch-matrix-or-index"><i class="fa fa-check"></i><b>8.9</b> Missing observations in the catch matrix or index</a></li>
+<li class="chapter" data-level="9" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html"><i class="fa fa-check"></i><b>9</b> Predict and simulate </a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#predict"><i class="fa fa-check"></i><b>9.1</b> predict</a></li>
+<li class="chapter" data-level="9.2" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#simulate"><i class="fa fa-check"></i><b>9.2</b> simulate</a></li>
+<li class="chapter" data-level="9.3" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#simulate-and-predict"><i class="fa fa-check"></i><b>9.3</b> simulate and predict</a></li>
+<li class="chapter" data-level="9.4" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#details"><i class="fa fa-check"></i><b>9.4</b> Details</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>9</b> Diagnostics </a>
+<li class="chapter" data-level="10" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>10</b> The statistical catch-at-age stock assessment framework with Markov Chain Monte Carlo (MCMC) </a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="diagnostics.html"><a href="diagnostics.html#residuals"><i class="fa fa-check"></i><b>9.1</b> Residuals</a></li>
-<li class="chapter" data-level="9.2" data-path="diagnostics.html"><a href="diagnostics.html#predictive-skill"><i class="fa fa-check"></i><b>9.2</b> Predictive skill</a></li>
-<li class="chapter" data-level="9.3" data-path="diagnostics.html"><a href="diagnostics.html#fit-summary-information-and-cross-validation-metrics"><i class="fa fa-check"></i><b>9.3</b> Fit summary, information and cross-validation metrics</a></li>
-<li class="chapter" data-level="9.4" data-path="diagnostics.html"><a href="diagnostics.html#the-package-a4adiags"><i class="fa fa-check"></i><b>9.4</b> The package a4adiags</a></li>
-<li class="chapter" data-level="9.5" data-path="diagnostics.html"><a href="diagnostics.html#retrospective-analysis"><i class="fa fa-check"></i><b>9.5</b> Retrospective analysis</a></li>
-<li class="chapter" data-level="9.6" data-path="diagnostics.html"><a href="diagnostics.html#hindcast"><i class="fa fa-check"></i><b>9.6</b> Hindcast</a></li>
+<li class="chapter" data-level="10.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#the-mcmc-method-for-sca"><i class="fa fa-check"></i><b>10.1</b> The MCMC method for <code>sca</code></a></li>
+<li class="chapter" data-level="10.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#diagnostics-with-coda"><i class="fa fa-check"></i><b>10.2</b> Diagnostics with CODA</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#traceplots"><i class="fa fa-check"></i><b>10.2.1</b> Traceplots</a></li>
+<li class="chapter" data-level="10.2.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#autocorrelation-and-crosscorrelation-analysis"><i class="fa fa-check"></i><b>10.2.2</b> Autocorrelation and crosscorrelation analysis</a></li>
+<li class="chapter" data-level="10.2.3" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#geweke-diagnostic"><i class="fa fa-check"></i><b>10.2.3</b> Geweke diagnostic</a></li>
+<li class="chapter" data-level="10.2.4" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cumulative-means"><i class="fa fa-check"></i><b>10.2.4</b> Cumulative means</a></li>
+<li class="chapter" data-level="10.2.5" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#distribution-density"><i class="fa fa-check"></i><b>10.2.5</b> Distribution density</a></li>
+<li class="chapter" data-level="10.2.6" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#gelman-rubin-statistic"><i class="fa fa-check"></i><b>10.2.6</b> Gelman-Rubin statistic</a></li>
+<li class="chapter" data-level="10.2.7" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#acceptance-rate"><i class="fa fa-check"></i><b>10.2.7</b> Acceptance rate</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html"><i class="fa fa-check"></i><b>10</b> Predict and simulate </a>
+<li class="chapter" data-level="10.3" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#admbs-arguments-to-tune-the-mcmc-algorithm"><i class="fa fa-check"></i><b>10.3</b> <code>ADMB</code>’s arguments to tune the MCMC algorithm</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#predict"><i class="fa fa-check"></i><b>10.1</b> predict</a></li>
-<li class="chapter" data-level="10.2" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#simulate"><i class="fa fa-check"></i><b>10.2</b> simulate</a></li>
-<li class="chapter" data-level="10.3" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#simulate-and-predict"><i class="fa fa-check"></i><b>10.3</b> simulate and predict</a></li>
-<li class="chapter" data-level="10.4" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#details"><i class="fa fa-check"></i><b>10.4</b> Details</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>11</b> The statistical catch-at-age stock assessment framework with Markov Chain Monte Carlo (MCMC) </a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#the-mcmc-method-for-sca"><i class="fa fa-check"></i><b>11.1</b> The MCMC method for <code>sca</code></a></li>
-<li class="chapter" data-level="11.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#diagnostics-with-coda"><i class="fa fa-check"></i><b>11.2</b> Diagnostics with CODA</a>
-<ul>
-<li class="chapter" data-level="11.2.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#traceplots"><i class="fa fa-check"></i><b>11.2.1</b> Traceplots</a></li>
-<li class="chapter" data-level="11.2.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#autocorrelation-and-crosscorrelation-analysis"><i class="fa fa-check"></i><b>11.2.2</b> Autocorrelation and crosscorrelation analysis</a></li>
-<li class="chapter" data-level="11.2.3" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#geweke-diagnostic"><i class="fa fa-check"></i><b>11.2.3</b> Geweke diagnostic</a></li>
-<li class="chapter" data-level="11.2.4" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cumulative-means"><i class="fa fa-check"></i><b>11.2.4</b> Cumulative means</a></li>
-<li class="chapter" data-level="11.2.5" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#distribution-density"><i class="fa fa-check"></i><b>11.2.5</b> Distribution density</a></li>
-<li class="chapter" data-level="11.2.6" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#gelman-rubin-statistic"><i class="fa fa-check"></i><b>11.2.6</b> Gelman-Rubin statistic</a></li>
-<li class="chapter" data-level="11.2.7" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#acceptance-rate"><i class="fa fa-check"></i><b>11.2.7</b> Acceptance rate</a></li>
-</ul></li>
-<li class="chapter" data-level="11.3" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#admbs-arguments-to-tune-the-mcmc-algorithm"><i class="fa fa-check"></i><b>11.3</b> <code>ADMB</code>’s arguments to tune the MCMC algorithm</a>
-<ul>
-<li class="chapter" data-level="11.3.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#thinning-rate"><i class="fa fa-check"></i><b>11.3.1</b> Thinning rate</a></li>
-<li class="chapter" data-level="11.3.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#mcscale-and-mcnoscale"><i class="fa fa-check"></i><b>11.3.2</b> mcscale and mcnoscale</a></li>
-<li class="chapter" data-level="11.3.3" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#mcprobe"><i class="fa fa-check"></i><b>11.3.3</b> mcprobe</a></li>
-<li class="chapter" data-level="11.3.4" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#mcrb"><i class="fa fa-check"></i><b>11.3.4</b> mcrb</a></li>
+<li class="chapter" data-level="10.3.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#thinning-rate"><i class="fa fa-check"></i><b>10.3.1</b> Thinning rate</a></li>
+<li class="chapter" data-level="10.3.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#mcscale-and-mcnoscale"><i class="fa fa-check"></i><b>10.3.2</b> mcscale and mcnoscale</a></li>
+<li class="chapter" data-level="10.3.3" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#mcprobe"><i class="fa fa-check"></i><b>10.3.3</b> mcprobe</a></li>
+<li class="chapter" data-level="10.3.4" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#mcrb"><i class="fa fa-check"></i><b>10.3.4</b> mcrb</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>12</b> Projections and harvest control rules</a>
+<li class="chapter" data-level="11" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>11</b> Projections and harvest control rules</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#simple-workflow"><i class="fa fa-check"></i><b>12.1</b> Simple workflow</a></li>
-<li class="chapter" data-level="12.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#initial-condition-assumptions"><i class="fa fa-check"></i><b>12.2</b> Initial condition assumptions</a></li>
-<li class="chapter" data-level="12.3" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#scenarios"><i class="fa fa-check"></i><b>12.3</b> Scenarios</a></li>
-<li class="chapter" data-level="12.4" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#relative-scenarios"><i class="fa fa-check"></i><b>12.4</b> Relative scenarios</a></li>
-<li class="chapter" data-level="12.5" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#limits"><i class="fa fa-check"></i><b>12.5</b> Limits</a></li>
-<li class="chapter" data-level="12.6" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#harvest-control-rule"><i class="fa fa-check"></i><b>12.6</b> Harvest Control Rule</a></li>
+<li class="chapter" data-level="11.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#simple-workflow"><i class="fa fa-check"></i><b>11.1</b> Simple workflow</a></li>
+<li class="chapter" data-level="11.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#initial-condition-assumptions"><i class="fa fa-check"></i><b>11.2</b> Initial condition assumptions</a></li>
+<li class="chapter" data-level="11.3" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#scenarios"><i class="fa fa-check"></i><b>11.3</b> Scenarios</a></li>
+<li class="chapter" data-level="11.4" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#relative-scenarios"><i class="fa fa-check"></i><b>11.4</b> Relative scenarios</a></li>
+<li class="chapter" data-level="11.5" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#limits"><i class="fa fa-check"></i><b>11.5</b> Limits</a></li>
+<li class="chapter" data-level="11.6" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#harvest-control-rule"><i class="fa fa-check"></i><b>11.6</b> Harvest Control Rule</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="reference-points.html"><a href="reference-points.html"><i class="fa fa-check"></i><b>13</b> Reference Points</a>
+<li class="chapter" data-level="12" data-path="reference-points.html"><a href="reference-points.html"><i class="fa fa-check"></i><b>12</b> Reference Points</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="reference-points.html"><a href="reference-points.html#yield-per-recruit-reference-points"><i class="fa fa-check"></i><b>13.1</b> Yield per recruit reference points</a></li>
-<li class="chapter" data-level="13.2" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-relationship-based-reference-points"><i class="fa fa-check"></i><b>13.2</b> Stock recruitment relationship based reference points</a>
+<li class="chapter" data-level="12.1" data-path="reference-points.html"><a href="reference-points.html#yield-per-recruit-reference-points"><i class="fa fa-check"></i><b>12.1</b> Yield per recruit reference points</a></li>
+<li class="chapter" data-level="12.2" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-relationship-based-reference-points"><i class="fa fa-check"></i><b>12.2</b> Stock recruitment relationship based reference points</a>
 <ul>
-<li class="chapter" data-level="13.2.1" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-after-fitting-the-stock-assessment-model"><i class="fa fa-check"></i><b>13.2.1</b> Stock recruitment after fitting the stock assessment model</a></li>
-<li class="chapter" data-level="13.2.2" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-during-fitting-the-stock-assessment-model"><i class="fa fa-check"></i><b>13.2.2</b> Stock recruitment during fitting the stock assessment model</a></li>
+<li class="chapter" data-level="12.2.1" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-after-fitting-the-stock-assessment-model"><i class="fa fa-check"></i><b>12.2.1</b> Stock recruitment after fitting the stock assessment model</a></li>
+<li class="chapter" data-level="12.2.2" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-during-fitting-the-stock-assessment-model"><i class="fa fa-check"></i><b>12.2.2</b> Stock recruitment during fitting the stock assessment model</a></li>
 </ul></li>
-<li class="chapter" data-level="13.3" data-path="reference-points.html"><a href="reference-points.html#economics-reference-points"><i class="fa fa-check"></i><b>13.3</b> Economics reference points</a></li>
-<li class="chapter" data-level="13.4" data-path="reference-points.html"><a href="reference-points.html#computing-user-specific-reference-points"><i class="fa fa-check"></i><b>13.4</b> Computing user specific reference points</a></li>
+<li class="chapter" data-level="12.3" data-path="reference-points.html"><a href="reference-points.html#economics-reference-points"><i class="fa fa-check"></i><b>12.3</b> Economics reference points</a></li>
+<li class="chapter" data-level="12.4" data-path="reference-points.html"><a href="reference-points.html#computing-user-specific-reference-points"><i class="fa fa-check"></i><b>12.4</b> Computing user specific reference points</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="propagate-uncertainty-into-stock-assessment.html"><a href="propagate-uncertainty-into-stock-assessment.html"><i class="fa fa-check"></i><b>14</b> Propagate uncertainty into stock assessment</a></li>
-<li class="chapter" data-level="15" data-path="modelling-fleet-selectivity.html"><a href="modelling-fleet-selectivity.html"><i class="fa fa-check"></i><b>15</b> Modelling fleet selectivity</a>
+<li class="chapter" data-level="13" data-path="propagate-uncertainty-into-stock-assessment.html"><a href="propagate-uncertainty-into-stock-assessment.html"><i class="fa fa-check"></i><b>13</b> Propagate uncertainty into stock assessment</a></li>
+<li class="chapter" data-level="14" data-path="modelling-fleet-selectivity.html"><a href="modelling-fleet-selectivity.html"><i class="fa fa-check"></i><b>14</b> Modelling fleet selectivity</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="modelling-fleet-selectivity.html"><a href="modelling-fleet-selectivity.html#modelling-fleets-with-different-proportions-of-the-catch-covariate"><i class="fa fa-check"></i><b>15.1</b> Modelling fleets with different proportions of the catch covariate</a></li>
+<li class="chapter" data-level="14.1" data-path="modelling-fleet-selectivity.html"><a href="modelling-fleet-selectivity.html#modelling-fleets-with-different-proportions-of-the-catch-covariate"><i class="fa fa-check"></i><b>14.1</b> Modelling fleets with different proportions of the catch covariate</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="modelling-spatial-effects.html"><a href="modelling-spatial-effects.html"><i class="fa fa-check"></i><b>16</b> Modelling spatial effects</a></li>
-<li class="chapter" data-level="17" data-path="sections-to-be-added.html"><a href="sections-to-be-added.html"><i class="fa fa-check"></i><b>17</b> Sections to be added!?</a></li>
-<li class="chapter" data-level="18" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html"><i class="fa fa-check"></i><b>18</b> Annex - stock assessment workflow</a>
+<li class="chapter" data-level="15" data-path="modelling-spatial-effects.html"><a href="modelling-spatial-effects.html"><i class="fa fa-check"></i><b>15</b> Modelling spatial effects</a></li>
+<li class="chapter" data-level="16" data-path="sections-to-be-added.html"><a href="sections-to-be-added.html"><i class="fa fa-check"></i><b>16</b> Sections to be added!?</a></li>
+<li class="chapter" data-level="17" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html"><i class="fa fa-check"></i><b>17</b> Annex - stock assessment workflow</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-mean-model"><i class="fa fa-check"></i><b>18.1</b> The “mean” model</a></li>
-<li class="chapter" data-level="18.2" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-age-effects"><i class="fa fa-check"></i><b>18.2</b> The age effects</a></li>
-<li class="chapter" data-level="18.3" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#year-effect-on-fishing-mortality"><i class="fa fa-check"></i><b>18.3</b> Year effect on fishing mortality</a></li>
-<li class="chapter" data-level="18.4" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#year-effect-on-catchability"><i class="fa fa-check"></i><b>18.4</b> Year effect on catchability</a></li>
-<li class="chapter" data-level="18.5" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-initial-year-population-abundance-model-aka-n1"><i class="fa fa-check"></i><b>18.5</b> The initial year population abundance model, aka N1</a></li>
-<li class="chapter" data-level="18.6" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-stock-recruitment-submodel"><i class="fa fa-check"></i><b>18.6</b> The stock recruitment submodel</a></li>
-<li class="chapter" data-level="18.7" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-variance-submodel"><i class="fa fa-check"></i><b>18.7</b> The variance submodel</a></li>
-<li class="chapter" data-level="18.8" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#final-comments"><i class="fa fa-check"></i><b>18.8</b> Final comments</a></li>
+<li class="chapter" data-level="17.1" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-mean-model"><i class="fa fa-check"></i><b>17.1</b> The “mean” model</a></li>
+<li class="chapter" data-level="17.2" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-age-effects"><i class="fa fa-check"></i><b>17.2</b> The age effects</a></li>
+<li class="chapter" data-level="17.3" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#year-effect-on-fishing-mortality"><i class="fa fa-check"></i><b>17.3</b> Year effect on fishing mortality</a></li>
+<li class="chapter" data-level="17.4" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#year-effect-on-catchability"><i class="fa fa-check"></i><b>17.4</b> Year effect on catchability</a></li>
+<li class="chapter" data-level="17.5" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-initial-year-population-abundance-model-aka-n1"><i class="fa fa-check"></i><b>17.5</b> The initial year population abundance model, aka N1</a></li>
+<li class="chapter" data-level="17.6" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-stock-recruitment-submodel"><i class="fa fa-check"></i><b>17.6</b> The stock recruitment submodel</a></li>
+<li class="chapter" data-level="17.7" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-variance-submodel"><i class="fa fa-check"></i><b>17.7</b> The variance submodel</a></li>
+<li class="chapter" data-level="17.8" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#final-comments"><i class="fa fa-check"></i><b>17.8</b> Final comments</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>19</b> References</a></li>
+<li class="chapter" data-level="18" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>18</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -342,12 +335,12 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="predict-and-simulate" class="section level1 hasAnchor" number="10">
-<h1><span class="header-section-number">10</span> Predict and simulate <a href="predict-and-simulate.html#predict-and-simulate" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="predict-and-simulate" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">9</span> Predict and simulate <a href="predict-and-simulate.html#predict-and-simulate" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>To predict and simulate <code>R</code> uses the methods <code>predict()</code> and <code>simulate()</code>, which are implemented in <code>FLa4a</code>, adapted to work with several of the model classes. The simulate and predict methods only work if the mode object has be run with the option <code>fit = "assessment"</code>, and not <code>fit = "MP"</code>, the later is used when space and time are at a premium, for example in a Management Strategy Evaluation. In this chapter we will only cover prediction and simulation of full stock objects.</p>
 <p>This chapter is based on the following model:</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="predict-and-simulate.html#cb199-1" tabindex="-1"></a>fit0 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.index)</span>
-<span id="cb199-2"><a href="predict-and-simulate.html#cb199-2" tabindex="-1"></a><span class="fu">submodels</span>(fit0)</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="predict-and-simulate.html#cb194-1" tabindex="-1"></a>fit0 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.index)</span>
+<span id="cb194-2"><a href="predict-and-simulate.html#cb194-2" tabindex="-1"></a><span class="fu">submodels</span>(fit0)</span></code></pre></div>
 <pre><code>##   fmodel: ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
 ##  srmodel: ~factor(year)
 ##  n1model: ~s(age, k = 3)
@@ -357,11 +350,11 @@ div.csl-indent {
 ##     catch: ~s(age, k = 3)
 ##     IND:   ~1</code></pre>
 <p>Simulation and prediction in FLa4a is based on two functions: <code>simulate</code> and <code>predict</code>.</p>
-<div id="predict" class="section level2 hasAnchor" number="10.1">
-<h2><span class="header-section-number">10.1</span> predict<a href="predict-and-simulate.html#predict" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="predict" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> predict<a href="predict-and-simulate.html#predict" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Predict simply computes the quantities of interest using the estimated coefficients and the design matrix of the model, defined via the formulas in the submodels. In the case of predicting from a fitted model, a list is returned, with one element for each submodel, and each element of the list is a <code>FLQuants</code> object with the following <code>FLQuant</code>s</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="predict-and-simulate.html#cb201-1" tabindex="-1"></a>fit.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit0)</span>
-<span id="cb201-2"><a href="predict-and-simulate.html#cb201-2" tabindex="-1"></a><span class="fu">lapply</span>(fit.pred, names)</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="predict-and-simulate.html#cb196-1" tabindex="-1"></a>fit.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit0)</span>
+<span id="cb196-2"><a href="predict-and-simulate.html#cb196-2" tabindex="-1"></a><span class="fu">lapply</span>(fit.pred, names)</span></code></pre></div>
 <pre><code>## $stkmodel
 ## [1] &quot;harvest&quot; &quot;rec&quot;     &quot;ny1&quot;    
 ## 
@@ -371,53 +364,53 @@ div.csl-indent {
 ## $vmodel
 ## [1] &quot;catch&quot; &quot;IND&quot;</code></pre>
 <p>This allows easy access to the parameterised parts of the model, for example the initial population structure, <code>ny1</code>, can be accessed via <code>fit.pred$stkmodel$ny1</code>. If the whole stock is of interest, for example, to inspect model predictions of SSB, then the following code can be used</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="predict-and-simulate.html#cb203-1" tabindex="-1"></a>stk.pred <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> fit0</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="predict-and-simulate.html#cb198-1" tabindex="-1"></a>stk.pred <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> fit0</span></code></pre></div>
 <p>The <code>+</code> operator is used to add the predictions from the model to the initial stock object. Then quantities can be extracted as normal, <code>ssb(stk.pred)</code>.</p>
 </div>
-<div id="simulate" class="section level2 hasAnchor" number="10.2">
-<h2><span class="header-section-number">10.2</span> simulate<a href="predict-and-simulate.html#simulate" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="simulate" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> simulate<a href="predict-and-simulate.html#simulate" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Simulations are always done by generating random draws from a multivariate normal distribution with mean given by the coeffients of the model, and variance matrix given by the estimated covariance matrix of the coefficients (in practice this is a submatrix of the inverse of the hessian matrix, see details below).</p>
 <p>simulate performed on a fitted model returns a fitted model with the same structure as the original model, but with the model parameters replaced by <code>nsim</code> simulated parameters. The following code simulates the model 200 times, and a histogram of the result show in Figure @ref(fig:predsim_hist).</p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="predict-and-simulate.html#cb204-1" tabindex="-1"></a>sim.fit <span class="ot">&lt;-</span> <span class="fu">simulate</span>(fit0, <span class="at">nsim =</span> <span class="dv">200</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="predict-and-simulate.html#cb205-1" tabindex="-1"></a><span class="fu">hist</span>(</span>
-<span id="cb205-2"><a href="predict-and-simulate.html#cb205-2" tabindex="-1"></a>  <span class="fu">exp</span>(<span class="fu">coef</span>(sim.fit)<span class="sc">$</span>vmodel<span class="sc">$</span>IND),</span>
-<span id="cb205-3"><a href="predict-and-simulate.html#cb205-3" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;200 draws of a model parameter&quot;</span>,</span>
-<span id="cb205-4"><a href="predict-and-simulate.html#cb205-4" tabindex="-1"></a>  <span class="at">nclass =</span> <span class="dv">20</span>,</span>
-<span id="cb205-5"><a href="predict-and-simulate.html#cb205-5" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;observation std error for survey index&quot;</span></span>
-<span id="cb205-6"><a href="predict-and-simulate.html#cb205-6" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="predict-and-simulate.html#cb199-1" tabindex="-1"></a>sim.fit <span class="ot">&lt;-</span> <span class="fu">simulate</span>(fit0, <span class="at">nsim =</span> <span class="dv">200</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="predict-and-simulate.html#cb200-1" tabindex="-1"></a><span class="fu">hist</span>(</span>
+<span id="cb200-2"><a href="predict-and-simulate.html#cb200-2" tabindex="-1"></a>  <span class="fu">exp</span>(<span class="fu">coef</span>(sim.fit)<span class="sc">$</span>vmodel<span class="sc">$</span>IND),</span>
+<span id="cb200-3"><a href="predict-and-simulate.html#cb200-3" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;200 draws of a model parameter&quot;</span>,</span>
+<span id="cb200-4"><a href="predict-and-simulate.html#cb200-4" tabindex="-1"></a>  <span class="at">nclass =</span> <span class="dv">20</span>,</span>
+<span id="cb200-5"><a href="predict-and-simulate.html#cb200-5" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;observation std error for survey index&quot;</span></span>
+<span id="cb200-6"><a href="predict-and-simulate.html#cb200-6" tabindex="-1"></a>)</span></code></pre></div>
 <div class="figure">
 <img src="_main_files/figure-html/predsim_hist-1.png" alt="Histogram of 200 draws from the approximate distribution of the estimate of survey observation error." width="672" />
 <p class="caption">
 (#fig:predsim_hist)Histogram of 200 draws from the approximate distribution of the estimate of survey observation error.
 </p>
 </div>
-<p>The fitted model can also be used to generate some predictions, such as <code>harvest</code>, <code>stock.n</code> or <code>catch.n</code>. Figure <a href="predict-and-simulate.html#fig:sim">10.1</a> shows a comparison between the estimated values and the medians of the simulation, while Figure <a href="predict-and-simulate.html#fig:sim2">10.2</a> presents the stock summary of the simulated and fitted data.</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="predict-and-simulate.html#cb206-1" tabindex="-1"></a>fits <span class="ot">&lt;-</span> <span class="fu">simulate</span>(fit0, <span class="dv">100</span>)</span>
-<span id="cb206-2"><a href="predict-and-simulate.html#cb206-2" tabindex="-1"></a>flqs <span class="ot">&lt;-</span> <span class="fu">FLQuants</span>(<span class="at">sim=</span><span class="fu">iterMedians</span>(<span class="fu">stock.n</span>(fits)), <span class="at">det=</span><span class="fu">stock.n</span>(fit0))</span></code></pre></div>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="predict-and-simulate.html#cb207-1" tabindex="-1"></a><span class="fu">xyplot</span>(data<span class="sc">~</span>year<span class="sc">|</span>age, <span class="at">groups=</span>qname, <span class="at">data=</span>flqs, <span class="at">type=</span><span class="st">&quot;l&quot;</span>,</span>
-<span id="cb207-2"><a href="predict-and-simulate.html#cb207-2" tabindex="-1"></a>       <span class="at">scales=</span><span class="fu">list</span>(<span class="at">y=</span><span class="fu">list</span>(<span class="at">relation=</span><span class="st">&quot;free&quot;</span>, <span class="at">draw=</span><span class="cn">FALSE</span>)),</span>
-<span id="cb207-3"><a href="predict-and-simulate.html#cb207-3" tabindex="-1"></a>       <span class="at">auto.key=</span><span class="fu">list</span>(<span class="at">points=</span><span class="cn">FALSE</span>, <span class="at">lines=</span><span class="cn">TRUE</span>, <span class="at">columns=</span><span class="dv">2</span>),</span>
-<span id="cb207-4"><a href="predict-and-simulate.html#cb207-4" tabindex="-1"></a>       <span class="at">par.settings=</span><span class="fu">list</span>(<span class="at">superpose.line=</span><span class="fu">list</span>(<span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;gray35&quot;</span>, <span class="st">&quot;black&quot;</span>)),</span>
-<span id="cb207-5"><a href="predict-and-simulate.html#cb207-5" tabindex="-1"></a>       <span class="at">strip.background=</span><span class="fu">list</span>(<span class="at">col=</span><span class="st">&quot;gray90&quot;</span>)), <span class="at">ylab=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p>The fitted model can also be used to generate some predictions, such as <code>harvest</code>, <code>stock.n</code> or <code>catch.n</code>. Figure <a href="predict-and-simulate.html#fig:sim">9.1</a> shows a comparison between the estimated values and the medians of the simulation, while Figure <a href="predict-and-simulate.html#fig:sim2">9.2</a> presents the stock summary of the simulated and fitted data.</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="predict-and-simulate.html#cb201-1" tabindex="-1"></a>fits <span class="ot">&lt;-</span> <span class="fu">simulate</span>(fit0, <span class="dv">100</span>)</span>
+<span id="cb201-2"><a href="predict-and-simulate.html#cb201-2" tabindex="-1"></a>flqs <span class="ot">&lt;-</span> <span class="fu">FLQuants</span>(<span class="at">sim=</span><span class="fu">iterMedians</span>(<span class="fu">stock.n</span>(fits)), <span class="at">det=</span><span class="fu">stock.n</span>(fit0))</span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="predict-and-simulate.html#cb202-1" tabindex="-1"></a><span class="fu">xyplot</span>(data<span class="sc">~</span>year<span class="sc">|</span>age, <span class="at">groups=</span>qname, <span class="at">data=</span>flqs, <span class="at">type=</span><span class="st">&quot;l&quot;</span>,</span>
+<span id="cb202-2"><a href="predict-and-simulate.html#cb202-2" tabindex="-1"></a>       <span class="at">scales=</span><span class="fu">list</span>(<span class="at">y=</span><span class="fu">list</span>(<span class="at">relation=</span><span class="st">&quot;free&quot;</span>, <span class="at">draw=</span><span class="cn">FALSE</span>)),</span>
+<span id="cb202-3"><a href="predict-and-simulate.html#cb202-3" tabindex="-1"></a>       <span class="at">auto.key=</span><span class="fu">list</span>(<span class="at">points=</span><span class="cn">FALSE</span>, <span class="at">lines=</span><span class="cn">TRUE</span>, <span class="at">columns=</span><span class="dv">2</span>),</span>
+<span id="cb202-4"><a href="predict-and-simulate.html#cb202-4" tabindex="-1"></a>       <span class="at">par.settings=</span><span class="fu">list</span>(<span class="at">superpose.line=</span><span class="fu">list</span>(<span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;gray35&quot;</span>, <span class="st">&quot;black&quot;</span>)),</span>
+<span id="cb202-5"><a href="predict-and-simulate.html#cb202-5" tabindex="-1"></a>       <span class="at">strip.background=</span><span class="fu">list</span>(<span class="at">col=</span><span class="st">&quot;gray90&quot;</span>)), <span class="at">ylab=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:sim"></span>
 <img src="_main_files/figure-html/sim-1.png" alt="Median simulations VS fit" width="672" />
 <p class="caption">
-Figure 10.1: Median simulations VS fit
+Figure 9.1: Median simulations VS fit
 </p>
 </div>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="predict-and-simulate.html#cb208-1" tabindex="-1"></a>stks <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> fits</span>
-<span id="cb208-2"><a href="predict-and-simulate.html#cb208-2" tabindex="-1"></a><span class="fu">plot</span>(stks)</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="predict-and-simulate.html#cb203-1" tabindex="-1"></a>stks <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> fits</span>
+<span id="cb203-2"><a href="predict-and-simulate.html#cb203-2" tabindex="-1"></a><span class="fu">plot</span>(stks)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:sim2"></span>
 <img src="_main_files/figure-html/sim2-1.png" alt="Stock summary of the simulated and fitted data" width="672" />
 <p class="caption">
-Figure 10.2: Stock summary of the simulated and fitted data
+Figure 9.2: Stock summary of the simulated and fitted data
 </p>
 </div>
 </div>
-<div id="simulate-and-predict" class="section level2 hasAnchor" number="10.3">
-<h2><span class="header-section-number">10.3</span> simulate and predict<a href="predict-and-simulate.html#simulate-and-predict" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="simulate-and-predict" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> simulate and predict<a href="predict-and-simulate.html#simulate-and-predict" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>simulate()</code> and <code>predict()</code> functions can be combined to simulate and then predict from each of the simulations. The following code simulates the model 100 times and then predicts the fitted quantitites from the model, resulting in simulations from the core model elements: initial age structure, recruitment, fishing mortality, survey catchability and observation variance. A plot of the initial age structure is shown as an example in Figure @ref(fig:sim_ny1).</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="predict-and-simulate.html#cb209-1" tabindex="-1"></a>sim.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(sim.fit)</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="predict-and-simulate.html#cb204-1" tabindex="-1"></a>sim.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(sim.fit)</span></code></pre></div>
 <div class="figure">
 <img src="_main_files/figure-html/sim_ny1-1.png" alt="Simulations from the model prediction of initial age structure" width="672" />
 <p class="caption">
@@ -425,7 +418,7 @@ Figure 10.2: Stock summary of the simulated and fitted data
 </p>
 </div>
 <p>If interest is in the complete stock, then the <code>+</code> operator can be used to add the simulated quantities to the initial stock object, as shown below. The stock information can be extracted, such as SSB, a plot of which is shown in Figure @ref(fig:sim_ssb).</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="predict-and-simulate.html#cb210-1" tabindex="-1"></a>stk.sim <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> sim.fit</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="predict-and-simulate.html#cb205-1" tabindex="-1"></a>stk.sim <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> sim.fit</span></code></pre></div>
 <div class="figure">
 <img src="_main_files/figure-html/sim_ssb-1.png" alt="Simulations from the model prediction of initial age structure" width="672" />
 <p class="caption">
@@ -433,8 +426,8 @@ Figure 10.2: Stock summary of the simulated and fitted data
 </p>
 </div>
 </div>
-<div id="details" class="section level2 hasAnchor" number="10.4">
-<h2><span class="header-section-number">10.4</span> Details<a href="predict-and-simulate.html#details" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="details" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> Details<a href="predict-and-simulate.html#details" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Simulate uses the variance-covariance matrix computed from the Hessian returned by <code>ADMB</code> and the fitted parameters, to parametrize a multivariate normal distribution. The simulations are carried out using the method <code>mvrnorm()</code> provided by the R package <a href="http://cran.r-project.org/web/packages/MASS/">MASS</a>. Such an approach is often called a parametric bootstrap, and is a common method for generating uncertainty in the parameters of a model. It is imporatant to note that the method approximates the joint distribution of the model parameters as a multivariate normal, which is true if the model is linear and well specified. Since stock assessment models tend to be non-linear, a more robust approach is to use MCMC methods instread.</p>
 <p>Another point to note, is that in order to save space, only the subset of the covariance matrix is stored for each submodel. This in effect sets any correlations between submodel parameters to zero in simulations.</p>
 

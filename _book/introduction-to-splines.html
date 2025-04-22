@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Introduction to Splines | Fish stock assessment with R</title>
+  <title>6 Introduction to Splines | Fish stock assessment with R</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
   <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Introduction to Splines | Fish stock assessment with R" />
+  <meta property="og:title" content="6 Introduction to Splines | Fish stock assessment with R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="How to do stock assessment in R using the a4a framework" />
   <meta name="github-repo" content="ejardim/a4abook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Introduction to Splines | Fish stock assessment with R" />
+  <meta name="twitter:title" content="6 Introduction to Splines | Fish stock assessment with R" />
   
   <meta name="twitter:description" content="How to do stock assessment in R using the a4a framework" />
   
@@ -23,15 +23,15 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-04-17" />
+<meta name="date" content="2025-04-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="introduction.html"/>
-<link rel="next" href="growth.html"/>
+<link rel="prev" href="stock-assessment-framework.html"/>
+<link rel="next" href="fitting.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -185,143 +185,136 @@ div.csl-indent {
 <li class="chapter" data-level="2.5.4" data-path="introduction.html"><a href="introduction.html#redfish-simulated-length-data"><i class="fa fa-check"></i><b>2.5.4</b> Redfish simulated length data</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html"><i class="fa fa-check"></i><b>3</b> Introduction to Splines</a>
+<li class="chapter" data-level="3" data-path="growth.html"><a href="growth.html"><i class="fa fa-check"></i><b>3</b> Modelling Individual Growth and Using Stochastic Slicing to Convert Length-based Data Into Age-based Data</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#generalize-to-polynomials"><i class="fa fa-check"></i><b>3.1</b> Generalize to polynomials</a></li>
-<li class="chapter" data-level="3.2" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#thin-plate-spline"><i class="fa fa-check"></i><b>3.2</b> Thin plate spline</a></li>
-<li class="chapter" data-level="3.3" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#the-mgcv-package-inside-a4a"><i class="fa fa-check"></i><b>3.3</b> The <code>mgcv</code> package inside <code>a4a</code></a></li>
-<li class="chapter" data-level="3.4" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#on-the-number-of-knots-k"><i class="fa fa-check"></i><b>3.4</b> On the number of knots <span class="math inline">\(k\)</span></a></li>
+<li class="chapter" data-level="3.1" data-path="growth.html"><a href="growth.html#a4agr---the-growth-class"><i class="fa fa-check"></i><b>3.1</b> a4aGr - The growth class</a></li>
+<li class="chapter" data-level="3.2" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>3.2</b> Adding uncertainty to growth parameters with a multivariate normal distribution</a></li>
+<li class="chapter" data-level="3.3" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-triangle-distribution"><i class="fa fa-check"></i><b>3.3</b> Adding uncertainty to growth parameters with a multivariate triangle distribution</a></li>
+<li class="chapter" data-level="3.4" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>3.4</b> Adding uncertainty to growth parameters with statistical copulas</a></li>
+<li class="chapter" data-level="3.5" data-path="growth.html"><a href="growth.html#converting-from-length-to-age-based-data---the-l2a-method"><i class="fa fa-check"></i><b>3.5</b> Converting from length to age based data - the <code>l2a()</code> method</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="growth.html"><a href="growth.html"><i class="fa fa-check"></i><b>4</b> Modelling Individual Growth and Using Stochastic Slicing to Convert Length-based Data Into Age-based Data</a>
+<li class="chapter" data-level="4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html"><i class="fa fa-check"></i><b>4</b> Modelling Natural Mortality</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="growth.html"><a href="growth.html#a4agr---the-growth-class"><i class="fa fa-check"></i><b>4.1</b> a4aGr - The growth class</a></li>
-<li class="chapter" data-level="4.2" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>4.2</b> Adding uncertainty to growth parameters with a multivariate normal distribution</a></li>
-<li class="chapter" data-level="4.3" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-a-multivariate-triangle-distribution"><i class="fa fa-check"></i><b>4.3</b> Adding uncertainty to growth parameters with a multivariate triangle distribution</a></li>
-<li class="chapter" data-level="4.4" data-path="growth.html"><a href="growth.html#adding-uncertainty-to-growth-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>4.4</b> Adding uncertainty to growth parameters with statistical copulas</a></li>
-<li class="chapter" data-level="4.5" data-path="growth.html"><a href="growth.html#converting-from-length-to-age-based-data---the-l2a-method"><i class="fa fa-check"></i><b>4.5</b> Converting from length to age based data - the <code>l2a()</code> method</a></li>
+<li class="chapter" data-level="4.1" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#a4am---the-m-class"><i class="fa fa-check"></i><b>4.1</b> <code>a4aM</code> - The M class</a></li>
+<li class="chapter" data-level="4.2" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>4.2</b> Adding uncertainty to natural mortality parameters with a multivariate normal distribution</a></li>
+<li class="chapter" data-level="4.3" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>4.3</b> Adding uncertainty to natural mortality parameters with statistical copulas</a></li>
+<li class="chapter" data-level="4.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>4.4</b> Computing natural mortality time series - the “m” method</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html"><i class="fa fa-check"></i><b>5</b> Modelling Natural Mortality</a>
+<li class="chapter" data-level="5" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html"><i class="fa fa-check"></i><b>5</b> Stock assessment framework</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#a4am---the-m-class"><i class="fa fa-check"></i><b>5.1</b> <code>a4aM</code> - The M class</a></li>
-<li class="chapter" data-level="5.2" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>5.2</b> Adding uncertainty to natural mortality parameters with a multivariate normal distribution</a></li>
-<li class="chapter" data-level="5.3" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>5.3</b> Adding uncertainty to natural mortality parameters with statistical copulas</a></li>
-<li class="chapter" data-level="5.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>5.4</b> Computing natural mortality time series - the “m” method</a></li>
+<li class="chapter" data-level="5.1" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#maths-description"><i class="fa fa-check"></i><b>5.1</b> Maths description </a></li>
+<li class="chapter" data-level="5.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#model-structure"><i class="fa fa-check"></i><b>5.2</b> Model structure </a></li>
+<li class="chapter" data-level="5.3" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#submodel-building-blocks-and-fundamental-r-formulas"><i class="fa fa-check"></i><b>5.3</b> Submodel building blocks and fundamental <code>R</code> formulas</a></li>
+<li class="chapter" data-level="5.4" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#the-major-effects-available-for-modelling"><i class="fa fa-check"></i><b>5.4</b> The major effects available for modelling</a></li>
+<li class="chapter" data-level="5.5" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#classes-description"><i class="fa fa-check"></i><b>5.5</b> Classes Description </a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html"><i class="fa fa-check"></i><b>6</b> Stock assessment framework</a>
+<li class="chapter" data-level="6" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html"><i class="fa fa-check"></i><b>6</b> Introduction to Splines</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#maths-description"><i class="fa fa-check"></i><b>6.1</b> Maths description </a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#observations"><i class="fa fa-check"></i><b>6.1.1</b> Observations</a></li>
-<li class="chapter" data-level="6.1.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#the-population-dynamics-model"><i class="fa fa-check"></i><b>6.1.2</b> The population dynamics model</a></li>
+<li class="chapter" data-level="6.1" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#generalize-to-polynomials"><i class="fa fa-check"></i><b>6.1</b> Generalize to polynomials</a></li>
+<li class="chapter" data-level="6.2" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#thin-plate-spline"><i class="fa fa-check"></i><b>6.2</b> Thin plate spline</a></li>
+<li class="chapter" data-level="6.3" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#the-mgcv-package-inside-a4a"><i class="fa fa-check"></i><b>6.3</b> The <code>mgcv</code> package inside <code>a4a</code></a></li>
+<li class="chapter" data-level="6.4" data-path="introduction-to-splines.html"><a href="introduction-to-splines.html#on-the-number-of-knots-k"><i class="fa fa-check"></i><b>6.4</b> On the number of knots <span class="math inline">\(k\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html#classes-description"><i class="fa fa-check"></i><b>6.2</b> Classes Description </a></li>
+<li class="chapter" data-level="7" data-path="fitting.html"><a href="fitting.html"><i class="fa fa-check"></i><b>7</b> Fitting</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="fitting.html"><a href="fitting.html#fishing-mortality-submodel-f_ay"><i class="fa fa-check"></i><b>7.1</b> Fishing mortality submodel (<span class="math inline">\(F_{ay}\)</span>)</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="fitting.html"><a href="fitting.html#separable-model"><i class="fa fa-check"></i><b>7.1.1</b> Separable model</a></li>
+<li class="chapter" data-level="7.1.2" data-path="fitting.html"><a href="fitting.html#constant-selectivity-for-contiguous-ages-or-years"><i class="fa fa-check"></i><b>7.1.2</b> Constant selectivity for contiguous ages or years</a></li>
+<li class="chapter" data-level="7.1.3" data-path="fitting.html"><a href="fitting.html#time-blocks-selectivity"><i class="fa fa-check"></i><b>7.1.3</b> Time blocks selectivity</a></li>
+<li class="chapter" data-level="7.1.4" data-path="fitting.html"><a href="fitting.html#time-changing-selectivity"><i class="fa fa-check"></i><b>7.1.4</b> Time changing selectivity</a></li>
+<li class="chapter" data-level="7.1.5" data-path="fitting.html"><a href="fitting.html#closed-form-selection-pattern"><i class="fa fa-check"></i><b>7.1.5</b> Closed form selection pattern</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="submodel-structure.html"><a href="submodel-structure.html"><i class="fa fa-check"></i><b>7</b> Submodel structure </a>
+<li class="chapter" data-level="7.2" data-path="fitting.html"><a href="fitting.html#abundance-indices-catchability-submodel-q_ays"><i class="fa fa-check"></i><b>7.2</b> Abundance indices catchability submodel (<span class="math inline">\(Q_{ays}\)</span>)</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="submodel-structure.html"><a href="submodel-structure.html#submodel-building-blocks-and-fundamental-r-formulas"><i class="fa fa-check"></i><b>7.1</b> Submodel building blocks and fundamental <code>R</code> formulas</a></li>
-<li class="chapter" data-level="7.2" data-path="submodel-structure.html"><a href="submodel-structure.html#the-major-effects-available-for-modelling"><i class="fa fa-check"></i><b>7.2</b> The major effects available for modelling</a></li>
-<li class="chapter" data-level="7.3" data-path="submodel-structure.html"><a href="submodel-structure.html#the-submodel-class-and-methods"><i class="fa fa-check"></i><b>7.3</b> The submodel class and methods</a></li>
+<li class="chapter" data-level="7.2.1" data-path="fitting.html"><a href="fitting.html#catchability-submodel-for-age-based-indices"><i class="fa fa-check"></i><b>7.2.1</b> Catchability submodel for age based indices</a></li>
+<li class="chapter" data-level="7.2.2" data-path="fitting.html"><a href="fitting.html#catchability-submodel-for-age-aggregated-biomass-indices"><i class="fa fa-check"></i><b>7.2.2</b> Catchability submodel for age aggregated biomass indices</a></li>
+<li class="chapter" data-level="7.2.3" data-path="fitting.html"><a href="fitting.html#catchability-submodel-for-single-age-indices"><i class="fa fa-check"></i><b>7.2.3</b> Catchability submodel for single age indices</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="fitting.html"><a href="fitting.html"><i class="fa fa-check"></i><b>8</b> Fitting</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="fitting.html"><a href="fitting.html#fishing-mortality-submodel-f_ay"><i class="fa fa-check"></i><b>8.1</b> Fishing mortality submodel (<span class="math inline">\(F_{ay}\)</span>)</a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="fitting.html"><a href="fitting.html#separable-model"><i class="fa fa-check"></i><b>8.1.1</b> Separable model</a></li>
-<li class="chapter" data-level="8.1.2" data-path="fitting.html"><a href="fitting.html#constant-selectivity-for-contiguous-ages-or-years"><i class="fa fa-check"></i><b>8.1.2</b> Constant selectivity for contiguous ages or years</a></li>
-<li class="chapter" data-level="8.1.3" data-path="fitting.html"><a href="fitting.html#time-blocks-selectivity"><i class="fa fa-check"></i><b>8.1.3</b> Time blocks selectivity</a></li>
-<li class="chapter" data-level="8.1.4" data-path="fitting.html"><a href="fitting.html#time-changing-selectivity"><i class="fa fa-check"></i><b>8.1.4</b> Time changing selectivity</a></li>
-<li class="chapter" data-level="8.1.5" data-path="fitting.html"><a href="fitting.html#closed-form-selection-pattern"><i class="fa fa-check"></i><b>8.1.5</b> Closed form selection pattern</a></li>
+<li class="chapter" data-level="7.3" data-path="fitting.html"><a href="fitting.html#stock-recruitment-submodel-r_y"><i class="fa fa-check"></i><b>7.3</b> Stock-recruitment submodel (<span class="math inline">\(R_y\)</span>)</a></li>
+<li class="chapter" data-level="7.4" data-path="fitting.html"><a href="fitting.html#observation-variance-submodel-sigma2_ay-tau2_ays"><i class="fa fa-check"></i><b>7.4</b> Observation variance submodel (<span class="math inline">\(\{\sigma^2_{ay}, \tau^2_{ays}\}\)</span>)</a></li>
+<li class="chapter" data-level="7.5" data-path="fitting.html"><a href="fitting.html#initial-year-abundance-submodel-n_ay1"><i class="fa fa-check"></i><b>7.5</b> Initial year abundance submodel (<span class="math inline">\(N_{a,y=1}\)</span>)</a></li>
+<li class="chapter" data-level="7.6" data-path="fitting.html"><a href="fitting.html#more-models"><i class="fa fa-check"></i><b>7.6</b> More models</a></li>
+<li class="chapter" data-level="7.7" data-path="fitting.html"><a href="fitting.html#working-with-covariates"><i class="fa fa-check"></i><b>7.7</b> Working with covariates</a></li>
+<li class="chapter" data-level="7.8" data-path="fitting.html"><a href="fitting.html#assessing-files"><i class="fa fa-check"></i><b>7.8</b> Assessing files</a></li>
+<li class="chapter" data-level="7.9" data-path="fitting.html"><a href="fitting.html#missing-observations-in-the-catch-matrix-or-index"><i class="fa fa-check"></i><b>7.9</b> Missing observations in the catch matrix or index</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="fitting.html"><a href="fitting.html#abundance-indices-catchability-submodel-q_ays"><i class="fa fa-check"></i><b>8.2</b> Abundance indices catchability submodel (<span class="math inline">\(Q_{ays}\)</span>)</a>
+<li class="chapter" data-level="8" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>8</b> Diagnostics </a>
 <ul>
-<li class="chapter" data-level="8.2.1" data-path="fitting.html"><a href="fitting.html#catchability-submodel-for-age-based-indices"><i class="fa fa-check"></i><b>8.2.1</b> Catchability submodel for age based indices</a></li>
-<li class="chapter" data-level="8.2.2" data-path="fitting.html"><a href="fitting.html#catchability-submodel-for-age-aggregated-biomass-indices"><i class="fa fa-check"></i><b>8.2.2</b> Catchability submodel for age aggregated biomass indices</a></li>
-<li class="chapter" data-level="8.2.3" data-path="fitting.html"><a href="fitting.html#catchability-submodel-for-single-age-indices"><i class="fa fa-check"></i><b>8.2.3</b> Catchability submodel for single age indices</a></li>
+<li class="chapter" data-level="8.1" data-path="diagnostics.html"><a href="diagnostics.html#residuals"><i class="fa fa-check"></i><b>8.1</b> Residuals</a></li>
+<li class="chapter" data-level="8.2" data-path="diagnostics.html"><a href="diagnostics.html#predictive-skill"><i class="fa fa-check"></i><b>8.2</b> Predictive skill</a></li>
+<li class="chapter" data-level="8.3" data-path="diagnostics.html"><a href="diagnostics.html#fit-summary-information-and-cross-validation-metrics"><i class="fa fa-check"></i><b>8.3</b> Fit summary, information and cross-validation metrics</a></li>
+<li class="chapter" data-level="8.4" data-path="diagnostics.html"><a href="diagnostics.html#the-package-a4adiags"><i class="fa fa-check"></i><b>8.4</b> The package a4adiags</a></li>
+<li class="chapter" data-level="8.5" data-path="diagnostics.html"><a href="diagnostics.html#retrospective-analysis"><i class="fa fa-check"></i><b>8.5</b> Retrospective analysis</a></li>
+<li class="chapter" data-level="8.6" data-path="diagnostics.html"><a href="diagnostics.html#hindcast"><i class="fa fa-check"></i><b>8.6</b> Hindcast</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="fitting.html"><a href="fitting.html#stock-recruitment-submodel-r_y"><i class="fa fa-check"></i><b>8.3</b> Stock-recruitment submodel (<span class="math inline">\(R_y\)</span>)</a></li>
-<li class="chapter" data-level="8.4" data-path="fitting.html"><a href="fitting.html#observation-variance-submodel-sigma2_ay-tau2_ays"><i class="fa fa-check"></i><b>8.4</b> Observation variance submodel (<span class="math inline">\(\{\sigma^2_{ay}, \tau^2_{ays}\}\)</span>)</a></li>
-<li class="chapter" data-level="8.5" data-path="fitting.html"><a href="fitting.html#initial-year-abundance-submodel-n_ay1"><i class="fa fa-check"></i><b>8.5</b> Initial year abundance submodel (<span class="math inline">\(N_{a,y=1}\)</span>)</a></li>
-<li class="chapter" data-level="8.6" data-path="fitting.html"><a href="fitting.html#more-models"><i class="fa fa-check"></i><b>8.6</b> More models</a></li>
-<li class="chapter" data-level="8.7" data-path="fitting.html"><a href="fitting.html#working-with-covariates"><i class="fa fa-check"></i><b>8.7</b> Working with covariates</a></li>
-<li class="chapter" data-level="8.8" data-path="fitting.html"><a href="fitting.html#assessing-files"><i class="fa fa-check"></i><b>8.8</b> Assessing files</a></li>
-<li class="chapter" data-level="8.9" data-path="fitting.html"><a href="fitting.html#missing-observations-in-the-catch-matrix-or-index"><i class="fa fa-check"></i><b>8.9</b> Missing observations in the catch matrix or index</a></li>
+<li class="chapter" data-level="9" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html"><i class="fa fa-check"></i><b>9</b> Predict and simulate </a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#predict"><i class="fa fa-check"></i><b>9.1</b> predict</a></li>
+<li class="chapter" data-level="9.2" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#simulate"><i class="fa fa-check"></i><b>9.2</b> simulate</a></li>
+<li class="chapter" data-level="9.3" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#simulate-and-predict"><i class="fa fa-check"></i><b>9.3</b> simulate and predict</a></li>
+<li class="chapter" data-level="9.4" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#details"><i class="fa fa-check"></i><b>9.4</b> Details</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>9</b> Diagnostics </a>
+<li class="chapter" data-level="10" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>10</b> The statistical catch-at-age stock assessment framework with Markov Chain Monte Carlo (MCMC) </a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="diagnostics.html"><a href="diagnostics.html#residuals"><i class="fa fa-check"></i><b>9.1</b> Residuals</a></li>
-<li class="chapter" data-level="9.2" data-path="diagnostics.html"><a href="diagnostics.html#predictive-skill"><i class="fa fa-check"></i><b>9.2</b> Predictive skill</a></li>
-<li class="chapter" data-level="9.3" data-path="diagnostics.html"><a href="diagnostics.html#fit-summary-information-and-cross-validation-metrics"><i class="fa fa-check"></i><b>9.3</b> Fit summary, information and cross-validation metrics</a></li>
-<li class="chapter" data-level="9.4" data-path="diagnostics.html"><a href="diagnostics.html#the-package-a4adiags"><i class="fa fa-check"></i><b>9.4</b> The package a4adiags</a></li>
-<li class="chapter" data-level="9.5" data-path="diagnostics.html"><a href="diagnostics.html#retrospective-analysis"><i class="fa fa-check"></i><b>9.5</b> Retrospective analysis</a></li>
-<li class="chapter" data-level="9.6" data-path="diagnostics.html"><a href="diagnostics.html#hindcast"><i class="fa fa-check"></i><b>9.6</b> Hindcast</a></li>
+<li class="chapter" data-level="10.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#the-mcmc-method-for-sca"><i class="fa fa-check"></i><b>10.1</b> The MCMC method for <code>sca</code></a></li>
+<li class="chapter" data-level="10.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#diagnostics-with-coda"><i class="fa fa-check"></i><b>10.2</b> Diagnostics with CODA</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#traceplots"><i class="fa fa-check"></i><b>10.2.1</b> Traceplots</a></li>
+<li class="chapter" data-level="10.2.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#autocorrelation-and-crosscorrelation-analysis"><i class="fa fa-check"></i><b>10.2.2</b> Autocorrelation and crosscorrelation analysis</a></li>
+<li class="chapter" data-level="10.2.3" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#geweke-diagnostic"><i class="fa fa-check"></i><b>10.2.3</b> Geweke diagnostic</a></li>
+<li class="chapter" data-level="10.2.4" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cumulative-means"><i class="fa fa-check"></i><b>10.2.4</b> Cumulative means</a></li>
+<li class="chapter" data-level="10.2.5" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#distribution-density"><i class="fa fa-check"></i><b>10.2.5</b> Distribution density</a></li>
+<li class="chapter" data-level="10.2.6" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#gelman-rubin-statistic"><i class="fa fa-check"></i><b>10.2.6</b> Gelman-Rubin statistic</a></li>
+<li class="chapter" data-level="10.2.7" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#acceptance-rate"><i class="fa fa-check"></i><b>10.2.7</b> Acceptance rate</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html"><i class="fa fa-check"></i><b>10</b> Predict and simulate </a>
+<li class="chapter" data-level="10.3" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#admbs-arguments-to-tune-the-mcmc-algorithm"><i class="fa fa-check"></i><b>10.3</b> <code>ADMB</code>’s arguments to tune the MCMC algorithm</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#predict"><i class="fa fa-check"></i><b>10.1</b> predict</a></li>
-<li class="chapter" data-level="10.2" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#simulate"><i class="fa fa-check"></i><b>10.2</b> simulate</a></li>
-<li class="chapter" data-level="10.3" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#simulate-and-predict"><i class="fa fa-check"></i><b>10.3</b> simulate and predict</a></li>
-<li class="chapter" data-level="10.4" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#details"><i class="fa fa-check"></i><b>10.4</b> Details</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>11</b> The statistical catch-at-age stock assessment framework with Markov Chain Monte Carlo (MCMC) </a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#the-mcmc-method-for-sca"><i class="fa fa-check"></i><b>11.1</b> The MCMC method for <code>sca</code></a></li>
-<li class="chapter" data-level="11.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#diagnostics-with-coda"><i class="fa fa-check"></i><b>11.2</b> Diagnostics with CODA</a>
-<ul>
-<li class="chapter" data-level="11.2.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#traceplots"><i class="fa fa-check"></i><b>11.2.1</b> Traceplots</a></li>
-<li class="chapter" data-level="11.2.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#autocorrelation-and-crosscorrelation-analysis"><i class="fa fa-check"></i><b>11.2.2</b> Autocorrelation and crosscorrelation analysis</a></li>
-<li class="chapter" data-level="11.2.3" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#geweke-diagnostic"><i class="fa fa-check"></i><b>11.2.3</b> Geweke diagnostic</a></li>
-<li class="chapter" data-level="11.2.4" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cumulative-means"><i class="fa fa-check"></i><b>11.2.4</b> Cumulative means</a></li>
-<li class="chapter" data-level="11.2.5" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#distribution-density"><i class="fa fa-check"></i><b>11.2.5</b> Distribution density</a></li>
-<li class="chapter" data-level="11.2.6" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#gelman-rubin-statistic"><i class="fa fa-check"></i><b>11.2.6</b> Gelman-Rubin statistic</a></li>
-<li class="chapter" data-level="11.2.7" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#acceptance-rate"><i class="fa fa-check"></i><b>11.2.7</b> Acceptance rate</a></li>
-</ul></li>
-<li class="chapter" data-level="11.3" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#admbs-arguments-to-tune-the-mcmc-algorithm"><i class="fa fa-check"></i><b>11.3</b> <code>ADMB</code>’s arguments to tune the MCMC algorithm</a>
-<ul>
-<li class="chapter" data-level="11.3.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#thinning-rate"><i class="fa fa-check"></i><b>11.3.1</b> Thinning rate</a></li>
-<li class="chapter" data-level="11.3.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#mcscale-and-mcnoscale"><i class="fa fa-check"></i><b>11.3.2</b> mcscale and mcnoscale</a></li>
-<li class="chapter" data-level="11.3.3" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#mcprobe"><i class="fa fa-check"></i><b>11.3.3</b> mcprobe</a></li>
-<li class="chapter" data-level="11.3.4" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#mcrb"><i class="fa fa-check"></i><b>11.3.4</b> mcrb</a></li>
+<li class="chapter" data-level="10.3.1" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#thinning-rate"><i class="fa fa-check"></i><b>10.3.1</b> Thinning rate</a></li>
+<li class="chapter" data-level="10.3.2" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#mcscale-and-mcnoscale"><i class="fa fa-check"></i><b>10.3.2</b> mcscale and mcnoscale</a></li>
+<li class="chapter" data-level="10.3.3" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#mcprobe"><i class="fa fa-check"></i><b>10.3.3</b> mcprobe</a></li>
+<li class="chapter" data-level="10.3.4" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#mcrb"><i class="fa fa-check"></i><b>10.3.4</b> mcrb</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>12</b> Projections and harvest control rules</a>
+<li class="chapter" data-level="11" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>11</b> Projections and harvest control rules</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#simple-workflow"><i class="fa fa-check"></i><b>12.1</b> Simple workflow</a></li>
-<li class="chapter" data-level="12.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#initial-condition-assumptions"><i class="fa fa-check"></i><b>12.2</b> Initial condition assumptions</a></li>
-<li class="chapter" data-level="12.3" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#scenarios"><i class="fa fa-check"></i><b>12.3</b> Scenarios</a></li>
-<li class="chapter" data-level="12.4" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#relative-scenarios"><i class="fa fa-check"></i><b>12.4</b> Relative scenarios</a></li>
-<li class="chapter" data-level="12.5" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#limits"><i class="fa fa-check"></i><b>12.5</b> Limits</a></li>
-<li class="chapter" data-level="12.6" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#harvest-control-rule"><i class="fa fa-check"></i><b>12.6</b> Harvest Control Rule</a></li>
+<li class="chapter" data-level="11.1" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#simple-workflow"><i class="fa fa-check"></i><b>11.1</b> Simple workflow</a></li>
+<li class="chapter" data-level="11.2" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#initial-condition-assumptions"><i class="fa fa-check"></i><b>11.2</b> Initial condition assumptions</a></li>
+<li class="chapter" data-level="11.3" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#scenarios"><i class="fa fa-check"></i><b>11.3</b> Scenarios</a></li>
+<li class="chapter" data-level="11.4" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#relative-scenarios"><i class="fa fa-check"></i><b>11.4</b> Relative scenarios</a></li>
+<li class="chapter" data-level="11.5" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#limits"><i class="fa fa-check"></i><b>11.5</b> Limits</a></li>
+<li class="chapter" data-level="11.6" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#harvest-control-rule"><i class="fa fa-check"></i><b>11.6</b> Harvest Control Rule</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="reference-points.html"><a href="reference-points.html"><i class="fa fa-check"></i><b>13</b> Reference Points</a>
+<li class="chapter" data-level="12" data-path="reference-points.html"><a href="reference-points.html"><i class="fa fa-check"></i><b>12</b> Reference Points</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="reference-points.html"><a href="reference-points.html#yield-per-recruit-reference-points"><i class="fa fa-check"></i><b>13.1</b> Yield per recruit reference points</a></li>
-<li class="chapter" data-level="13.2" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-relationship-based-reference-points"><i class="fa fa-check"></i><b>13.2</b> Stock recruitment relationship based reference points</a>
+<li class="chapter" data-level="12.1" data-path="reference-points.html"><a href="reference-points.html#yield-per-recruit-reference-points"><i class="fa fa-check"></i><b>12.1</b> Yield per recruit reference points</a></li>
+<li class="chapter" data-level="12.2" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-relationship-based-reference-points"><i class="fa fa-check"></i><b>12.2</b> Stock recruitment relationship based reference points</a>
 <ul>
-<li class="chapter" data-level="13.2.1" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-after-fitting-the-stock-assessment-model"><i class="fa fa-check"></i><b>13.2.1</b> Stock recruitment after fitting the stock assessment model</a></li>
-<li class="chapter" data-level="13.2.2" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-during-fitting-the-stock-assessment-model"><i class="fa fa-check"></i><b>13.2.2</b> Stock recruitment during fitting the stock assessment model</a></li>
+<li class="chapter" data-level="12.2.1" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-after-fitting-the-stock-assessment-model"><i class="fa fa-check"></i><b>12.2.1</b> Stock recruitment after fitting the stock assessment model</a></li>
+<li class="chapter" data-level="12.2.2" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-during-fitting-the-stock-assessment-model"><i class="fa fa-check"></i><b>12.2.2</b> Stock recruitment during fitting the stock assessment model</a></li>
 </ul></li>
-<li class="chapter" data-level="13.3" data-path="reference-points.html"><a href="reference-points.html#economics-reference-points"><i class="fa fa-check"></i><b>13.3</b> Economics reference points</a></li>
-<li class="chapter" data-level="13.4" data-path="reference-points.html"><a href="reference-points.html#computing-user-specific-reference-points"><i class="fa fa-check"></i><b>13.4</b> Computing user specific reference points</a></li>
+<li class="chapter" data-level="12.3" data-path="reference-points.html"><a href="reference-points.html#economics-reference-points"><i class="fa fa-check"></i><b>12.3</b> Economics reference points</a></li>
+<li class="chapter" data-level="12.4" data-path="reference-points.html"><a href="reference-points.html#computing-user-specific-reference-points"><i class="fa fa-check"></i><b>12.4</b> Computing user specific reference points</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="propagate-uncertainty-into-stock-assessment.html"><a href="propagate-uncertainty-into-stock-assessment.html"><i class="fa fa-check"></i><b>14</b> Propagate uncertainty into stock assessment</a></li>
-<li class="chapter" data-level="15" data-path="modelling-fleet-selectivity.html"><a href="modelling-fleet-selectivity.html"><i class="fa fa-check"></i><b>15</b> Modelling fleet selectivity</a>
+<li class="chapter" data-level="13" data-path="propagate-uncertainty-into-stock-assessment.html"><a href="propagate-uncertainty-into-stock-assessment.html"><i class="fa fa-check"></i><b>13</b> Propagate uncertainty into stock assessment</a></li>
+<li class="chapter" data-level="14" data-path="modelling-fleet-selectivity.html"><a href="modelling-fleet-selectivity.html"><i class="fa fa-check"></i><b>14</b> Modelling fleet selectivity</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="modelling-fleet-selectivity.html"><a href="modelling-fleet-selectivity.html#modelling-fleets-with-different-proportions-of-the-catch-covariate"><i class="fa fa-check"></i><b>15.1</b> Modelling fleets with different proportions of the catch covariate</a></li>
+<li class="chapter" data-level="14.1" data-path="modelling-fleet-selectivity.html"><a href="modelling-fleet-selectivity.html#modelling-fleets-with-different-proportions-of-the-catch-covariate"><i class="fa fa-check"></i><b>14.1</b> Modelling fleets with different proportions of the catch covariate</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="modelling-spatial-effects.html"><a href="modelling-spatial-effects.html"><i class="fa fa-check"></i><b>16</b> Modelling spatial effects</a></li>
-<li class="chapter" data-level="17" data-path="sections-to-be-added.html"><a href="sections-to-be-added.html"><i class="fa fa-check"></i><b>17</b> Sections to be added!?</a></li>
-<li class="chapter" data-level="18" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html"><i class="fa fa-check"></i><b>18</b> Annex - stock assessment workflow</a>
+<li class="chapter" data-level="15" data-path="modelling-spatial-effects.html"><a href="modelling-spatial-effects.html"><i class="fa fa-check"></i><b>15</b> Modelling spatial effects</a></li>
+<li class="chapter" data-level="16" data-path="sections-to-be-added.html"><a href="sections-to-be-added.html"><i class="fa fa-check"></i><b>16</b> Sections to be added!?</a></li>
+<li class="chapter" data-level="17" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html"><i class="fa fa-check"></i><b>17</b> Annex - stock assessment workflow</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-mean-model"><i class="fa fa-check"></i><b>18.1</b> The “mean” model</a></li>
-<li class="chapter" data-level="18.2" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-age-effects"><i class="fa fa-check"></i><b>18.2</b> The age effects</a></li>
-<li class="chapter" data-level="18.3" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#year-effect-on-fishing-mortality"><i class="fa fa-check"></i><b>18.3</b> Year effect on fishing mortality</a></li>
-<li class="chapter" data-level="18.4" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#year-effect-on-catchability"><i class="fa fa-check"></i><b>18.4</b> Year effect on catchability</a></li>
-<li class="chapter" data-level="18.5" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-initial-year-population-abundance-model-aka-n1"><i class="fa fa-check"></i><b>18.5</b> The initial year population abundance model, aka N1</a></li>
-<li class="chapter" data-level="18.6" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-stock-recruitment-submodel"><i class="fa fa-check"></i><b>18.6</b> The stock recruitment submodel</a></li>
-<li class="chapter" data-level="18.7" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-variance-submodel"><i class="fa fa-check"></i><b>18.7</b> The variance submodel</a></li>
-<li class="chapter" data-level="18.8" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#final-comments"><i class="fa fa-check"></i><b>18.8</b> Final comments</a></li>
+<li class="chapter" data-level="17.1" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-mean-model"><i class="fa fa-check"></i><b>17.1</b> The “mean” model</a></li>
+<li class="chapter" data-level="17.2" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-age-effects"><i class="fa fa-check"></i><b>17.2</b> The age effects</a></li>
+<li class="chapter" data-level="17.3" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#year-effect-on-fishing-mortality"><i class="fa fa-check"></i><b>17.3</b> Year effect on fishing mortality</a></li>
+<li class="chapter" data-level="17.4" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#year-effect-on-catchability"><i class="fa fa-check"></i><b>17.4</b> Year effect on catchability</a></li>
+<li class="chapter" data-level="17.5" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-initial-year-population-abundance-model-aka-n1"><i class="fa fa-check"></i><b>17.5</b> The initial year population abundance model, aka N1</a></li>
+<li class="chapter" data-level="17.6" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-stock-recruitment-submodel"><i class="fa fa-check"></i><b>17.6</b> The stock recruitment submodel</a></li>
+<li class="chapter" data-level="17.7" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-variance-submodel"><i class="fa fa-check"></i><b>17.7</b> The variance submodel</a></li>
+<li class="chapter" data-level="17.8" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#final-comments"><i class="fa fa-check"></i><b>17.8</b> Final comments</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>19</b> References</a></li>
+<li class="chapter" data-level="18" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>18</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -342,8 +335,8 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introduction-to-splines" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">3</span> Introduction to Splines<a href="introduction-to-splines.html#introduction-to-splines" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction-to-splines" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">6</span> Introduction to Splines<a href="introduction-to-splines.html#introduction-to-splines" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Splines are a specific case of smoothers. A <strong>smoother</strong> is a method or algorithm designed to estimate a smooth function that fits data, capturing underlying trends without overfitting noise. Splines are a powerful tool for modeling complex, non-linear relationships between variables in a flexible and interpretable way. A common way to use splines is to break a function into smooth, continuous polynomial segments, each called a <em>piece</em> or <em>basis function</em>, joined at specific points called <em>knots</em>. This piecewise approach allows us to capture the non-linearity in the data without overfitting.</p>
 <p><em>Basis functions</em> consist the main building block of splines.The key concept of “basis functions” is that they transform the input variable (or vector) <span class="math inline">\(\mathbf{x}\)</span> into a set of new variables, which are then used as inputs in the model. This allows the model to remain linear in these transformed variables, even though it can capture complex, non-linear relationships in the original variable.</p>
 <p>Splines build their functionality through the core concepts of linear models. Linear models assume that the relationship between data can be described by a straight line, in the case of only one predictor <span class="math inline">\(\mathbf{x}\)</span>.
@@ -355,19 +348,19 @@ We denote linear model as:</p>
 <div class="figure"><span style="display:block;" id="fig:meanandlinear"></span>
 <img src="_main_files/figure-html/meanandlinear-1.png" alt="Generated data with two linear fits, left a simple mean and right a straight line" width="672" />
 <p class="caption">
-Figure 3.1: Generated data with two linear fits, left a simple mean and right a straight line
+Figure 6.1: Generated data with two linear fits, left a simple mean and right a straight line
 </p>
 </div>
-<p>In this case our parameters are a <span class="math inline">\(\beta_0 =\)</span> 3.09 for the mean (left) model, while for the straight line model, <span class="math inline">\(\beta_0 =\)</span> 0.85 and <span class="math inline">\(\beta_1 =\)</span> 0.46. In Figure <a href="introduction-to-splines.html#fig:meanandlinear">3.1</a> we see how by adding to the constant model <span class="math inline">\(\beta_0\)</span> a multiple (<span class="math inline">\(\beta_1\)</span>) of the variable <span class="math inline">\(\mathbf{x}\)</span>, the model becomes a little more complex but it can now follow the general upward trend compared to the first line, although it fails to follow the peaks and the lows of the data set.</p>
-<p>One of the mechanisms that splines use is to split the set of values of the predictor, in our case <span class="math inline">\(\mathbf{x}\)</span>, in smaller compartments and fit in those compartments a specified model. The points where the splitting occurs are called <em>knots</em>. In Figure <a href="introduction-to-splines.html#fig:knots">3.2</a> we take a stepwise approach following the logic behind the use of piecewise polynomials in smoothing splines. First, we split our range of <span class="math inline">\(\mathbf{x}\)</span> values in 4 subsets, by defining our knots, then we take the average of <span class="math inline">\(\mathbf{y}\)</span> data for each of these compartments and in the final step we add a bit of complexity by fitting a straight line model in each of these subsets of our original dataset. Figure X2 demonstrates a naive approach to try and follow better the trends of the data, where in each step we manage to capture a bit more.</p>
+<p>In this case our parameters are a <span class="math inline">\(\beta_0 =\)</span> 3.09 for the mean (left) model, while for the straight line model, <span class="math inline">\(\beta_0 =\)</span> 0.85 and <span class="math inline">\(\beta_1 =\)</span> 0.46. In Figure <a href="introduction-to-splines.html#fig:meanandlinear">6.1</a> we see how by adding to the constant model <span class="math inline">\(\beta_0\)</span> a multiple (<span class="math inline">\(\beta_1\)</span>) of the variable <span class="math inline">\(\mathbf{x}\)</span>, the model becomes a little more complex but it can now follow the general upward trend compared to the first line, although it fails to follow the peaks and the lows of the data set.</p>
+<p>One of the mechanisms that splines use is to split the set of values of the predictor, in our case <span class="math inline">\(\mathbf{x}\)</span>, in smaller compartments and fit in those compartments a specified model. The points where the splitting occurs are called <em>knots</em>. In Figure <a href="introduction-to-splines.html#fig:knots">6.2</a> we take a stepwise approach following the logic behind the use of piecewise polynomials in smoothing splines. First, we split our range of <span class="math inline">\(\mathbf{x}\)</span> values in 4 subsets, by defining our knots, then we take the average of <span class="math inline">\(\mathbf{y}\)</span> data for each of these compartments and in the final step we add a bit of complexity by fitting a straight line model in each of these subsets of our original dataset. Figure X2 demonstrates a naive approach to try and follow better the trends of the data, where in each step we manage to capture a bit more.</p>
 <div class="figure"><span style="display:block;" id="fig:knots"></span>
 <img src="_main_files/figure-html/knots-1.png" alt="Effect of breaking the data in sections, by knots, and fitting the mean or a linear model to each section." width="672" />
 <p class="caption">
-Figure 3.2: Effect of breaking the data in sections, by knots, and fitting the mean or a linear model to each section.
+Figure 6.2: Effect of breaking the data in sections, by knots, and fitting the mean or a linear model to each section.
 </p>
 </div>
-<div id="generalize-to-polynomials" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> Generalize to polynomials<a href="introduction-to-splines.html#generalize-to-polynomials" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="generalize-to-polynomials" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Generalize to polynomials<a href="introduction-to-splines.html#generalize-to-polynomials" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We explored the concept of splitting the <span class="math inline">\(\mathbf{x}\)</span> variable space into compartments and developing a solution by locally fitting linear models that better capture the global trajectory of the data. Smooth functions rely on two fundamental mechanisms. The first, as mentioned earlier, involves how the domain of the function is divided for estimation. The second, which we will focus on here, involves using slightly more complex functions than linear ones, such as polynomials.</p>
 <p>By combining polynomial pieces and ensuring smoothness at their junctions, i.e. knots, we can create flexible models that adapt to the data. In regression, splines are a powerful tool for fitting complex shapes by introducing non-linear trends while maintaining control over the smoothness of the overall function. This approach allows us to balance flexibility and precision in modeling.</p>
 <p>The polynomials are build by transforming the predictor variable or the sets of variables into higher order polynomials (usually 2nd or 3rd grade polynomials). These polynomials need to have matching values at the knots.</p>
@@ -383,137 +376,137 @@ P_{k-1}(x) &amp; \text{if } t_{k-1} \leq x \leq b,
 \end{cases}
 \]</span></p>
 <p>The above definition is a simplified version of how splines work and can help as an intuitive approach. In reality splines need to satisfy some extra conditions like continuity, i.e. <span class="math inline">\(P_{i-1}(t_{i}) = P_{i}(t_{i})\)</span> on the points of junction, and of the first and second derivative. Depending on the basis functions the conditions may differ.</p>
-<p>In Figure <a href="introduction-to-splines.html#fig:naivespline">3.3</a> we demonstrate the fitting of cubic regression splines. In this case the highest order of the polynomials <span class="math inline">\(P_i(x)\)</span> are 3rd degree polynomials and it comprises 4 cubic segments, i.e basis functions.</p>
+<p>In Figure <a href="introduction-to-splines.html#fig:naivespline">6.3</a> we demonstrate the fitting of cubic regression splines. In this case the highest order of the polynomials <span class="math inline">\(P_i(x)\)</span> are 3rd degree polynomials and it comprises 4 cubic segments, i.e basis functions.</p>
 <p>The spline would be then as follows:</p>
 <p><span class="math display">\[\mathbf{y} = \beta_0 + \beta_1P_1(\mathbf{x}) + \beta_2P_2(\mathbf{x}) + \beta_3P_3(\mathbf{x}) + \beta_4P_4(\mathbf{x})+\beta_5P_5(\mathbf{x}) \]</span></p>
 <div class="figure"><span style="display:block;" id="fig:naivespline"></span>
 <img src="_main_files/figure-html/naivespline-1.png" alt="A B-spline with 5 knots consists of 5 cubic polynomials" width="672" />
 <p class="caption">
-Figure 3.3: A B-spline with 5 knots consists of 5 cubic polynomials
+Figure 6.3: A B-spline with 5 knots consists of 5 cubic polynomials
 </p>
 </div>
 <p>The B-spline fit above is constrained at the boundaries, by putting two of the five knots there, resulting in a linear behavior at the ends of the data range. This approach is helpful for data that has an approximately linear trend at the boundaries but exhibits non-linearity in the center.</p>
 <p>The knots in this regression spline are placed by quantiles through the variable space, so in the case where the data are evenly spread across the variable space the knots will be placed evenly.</p>
-<p>For the spline fitted above, there are <span class="math inline">\(k\)</span> polynomials plus an intercept (not shown) based on the knots (dashed lines). See Figure <a href="introduction-to-splines.html#fig:splinebasis">3.4</a> for a depiction of the basis functions.</p>
+<p>For the spline fitted above, there are <span class="math inline">\(k\)</span> polynomials plus an intercept (not shown) based on the knots (dashed lines). See Figure <a href="introduction-to-splines.html#fig:splinebasis">6.4</a> for a depiction of the basis functions.</p>
 <div class="figure"><span style="display:block;" id="fig:splinebasis"></span>
 <img src="_main_files/figure-html/splinebasis-1.png" alt="basis functions for a B-spline with 5 knots" width="672" />
 <p class="caption">
-Figure 3.4: basis functions for a B-spline with 5 knots
+Figure 6.4: basis functions for a B-spline with 5 knots
 </p>
 </div>
 <p><strong>[A bit confused here … should it be 5 polinomials? are you sure what you’re calling intercet is correct?]</strong></p>
-<p>The polynomials transform the initial variable <span class="math inline">\(\mathbf{x}\)</span> and create a <em>model</em> matrix <span class="math inline">\(\mathbf{X}\)</span> with <span class="math inline">\(k\)</span> columns and <span class="math inline">\(n\)</span> rows, where <span class="math inline">\(n\)</span> is the number of data points. This new transformation is being then used to fit the model and estimate the <span class="math inline">\(\beta_{0}, ... ,\beta_{k}\)</span> coefficients, <span class="math inline">\(\beta_0\)</span> is required for the intercept. The fitted model results from <span class="math inline">\(\mathbf{X} \mathbf{\beta}\)</span> (Figure <a href="introduction-to-splines.html#fig:splinebasisandmodel">3.5</a>).</p>
+<p>The polynomials transform the initial variable <span class="math inline">\(\mathbf{x}\)</span> and create a <em>model</em> matrix <span class="math inline">\(\mathbf{X}\)</span> with <span class="math inline">\(k\)</span> columns and <span class="math inline">\(n\)</span> rows, where <span class="math inline">\(n\)</span> is the number of data points. This new transformation is being then used to fit the model and estimate the <span class="math inline">\(\beta_{0}, ... ,\beta_{k}\)</span> coefficients, <span class="math inline">\(\beta_0\)</span> is required for the intercept. The fitted model results from <span class="math inline">\(\mathbf{X} \mathbf{\beta}\)</span> (Figure <a href="introduction-to-splines.html#fig:splinebasisandmodel">6.5</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:splinebasisandmodel"></span>
 <img src="_main_files/figure-html/splinebasisandmodel-1.png" alt="basis functions for a B-spline with 5 knots" width="672" />
 <p class="caption">
-Figure 3.5: basis functions for a B-spline with 5 knots
+Figure 6.5: basis functions for a B-spline with 5 knots
 </p>
 </div>
 </div>
-<div id="thin-plate-spline" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Thin plate spline<a href="introduction-to-splines.html#thin-plate-spline" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Thin plate splines are particularly useful for smoothing in multiple dimensions. However, they also work well with univariate data, as they offer flexibility and control over smoothness they are the default choice of the <code>mgcv</code> package. Thin plate splines work differently from the splines we have shown so far. They are not composed of a sequence of local polynomials but from basis functions that are smooth across the entire range of the data, and capture increasing amounts of flexibility (Figure <a href="introduction-to-splines.html#fig:tps">3.6</a>).</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="introduction-to-splines.html#cb13-1" tabindex="-1"></a><span class="co"># Fit a thin plate spline with gam()</span></span>
-<span id="cb13-2"><a href="introduction-to-splines.html#cb13-2" tabindex="-1"></a>tps_model <span class="ot">&lt;-</span> <span class="fu">gam</span>(y <span class="sc">~</span> <span class="fu">s</span>(x, <span class="at">k =</span> <span class="dv">5</span>, <span class="at">bs =</span> <span class="st">&quot;tp&quot;</span>), <span class="at">data =</span> data)</span>
-<span id="cb13-3"><a href="introduction-to-splines.html#cb13-3" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="introduction-to-splines.html#cb13-4" tabindex="-1"></a><span class="co"># Predict</span></span>
-<span id="cb13-5"><a href="introduction-to-splines.html#cb13-5" tabindex="-1"></a>data<span class="sc">$</span>tps_fit <span class="ot">&lt;-</span> <span class="fu">predict</span>(tps_model)</span></code></pre></div>
+<div id="thin-plate-spline" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Thin plate spline<a href="introduction-to-splines.html#thin-plate-spline" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Thin plate splines are particularly useful for smoothing in multiple dimensions. However, they also work well with univariate data, as they offer flexibility and control over smoothness they are the default choice of the <code>mgcv</code> package. Thin plate splines work differently from the splines we have shown so far. They are not composed of a sequence of local polynomials but from basis functions that are smooth across the entire range of the data, and capture increasing amounts of flexibility (Figure <a href="introduction-to-splines.html#fig:tps">6.6</a>).</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="introduction-to-splines.html#cb113-1" tabindex="-1"></a><span class="co"># Fit a thin plate spline with gam()</span></span>
+<span id="cb113-2"><a href="introduction-to-splines.html#cb113-2" tabindex="-1"></a>tps_model <span class="ot">&lt;-</span> <span class="fu">gam</span>(y <span class="sc">~</span> <span class="fu">s</span>(x, <span class="at">k =</span> <span class="dv">5</span>, <span class="at">bs =</span> <span class="st">&quot;tp&quot;</span>), <span class="at">data =</span> data)</span>
+<span id="cb113-3"><a href="introduction-to-splines.html#cb113-3" tabindex="-1"></a></span>
+<span id="cb113-4"><a href="introduction-to-splines.html#cb113-4" tabindex="-1"></a><span class="co"># Predict</span></span>
+<span id="cb113-5"><a href="introduction-to-splines.html#cb113-5" tabindex="-1"></a>data<span class="sc">$</span>tps_fit <span class="ot">&lt;-</span> <span class="fu">predict</span>(tps_model)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:tps"></span>
 <img src="_main_files/figure-html/tps-1.png" alt="Thin plate splines fit with k = 5" width="672" />
 <p class="caption">
-Figure 3.6: Thin plate splines fit with k = 5
+Figure 6.6: Thin plate splines fit with k = 5
 </p>
 </div>
-<p>Thin plate splines are ideal when you need a smooth fit without predefined knots. The notion of knots in thin plate splines does not have the same interpretation as for B-splines and other piecewise functions, and infact it is likely not useful to think of knots when using thin plate spines. Instead it is better to think of the number of basis functions used to represent the smooth term (Figure <a href="introduction-to-splines.html#fig:tpsbasis">3.7</a>).</p>
+<p>Thin plate splines are ideal when you need a smooth fit without predefined knots. The notion of knots in thin plate splines does not have the same interpretation as for B-splines and other piecewise functions, and infact it is likely not useful to think of knots when using thin plate spines. Instead it is better to think of the number of basis functions used to represent the smooth term (Figure <a href="introduction-to-splines.html#fig:tpsbasis">6.7</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:tpsbasis"></span>
 <img src="_main_files/figure-html/tpsbasis-1.png" alt="basis functions for thin plate splines" width="672" />
 <p class="caption">
-Figure 3.7: basis functions for thin plate splines
+Figure 6.7: basis functions for thin plate splines
 </p>
 </div>
-<p>As in the example before, the fitted model results from <span class="math inline">\(X\beta\)</span> (Figure <a href="introduction-to-splines.html#fig:tpsbasisandmodel">3.8</a>).</p>
+<p>As in the example before, the fitted model results from <span class="math inline">\(X\beta\)</span> (Figure <a href="introduction-to-splines.html#fig:tpsbasisandmodel">6.8</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:tpsbasisandmodel"></span>
 <img src="_main_files/figure-html/tpsbasisandmodel-1.png" alt="Basis functions for thin plate splines and the fitted model" width="672" />
 <p class="caption">
-Figure 3.8: Basis functions for thin plate splines and the fitted model
+Figure 6.8: Basis functions for thin plate splines and the fitted model
 </p>
 </div>
-<p>Figure <a href="introduction-to-splines.html#fig:spliesandtps">3.9</a> shows both models fitted to the dataset, both fits use the same number of knots.</p>
+<p>Figure <a href="introduction-to-splines.html#fig:spliesandtps">6.9</a> shows both models fitted to the dataset, both fits use the same number of knots.</p>
 <p><strong>[Can we say a bit more here?]</strong></p>
 <div class="figure"><span style="display:block;" id="fig:spliesandtps"></span>
 <img src="_main_files/figure-html/spliesandtps-1.png" alt="Thin plate splines and cubic regression splines fit" width="672" />
 <p class="caption">
-Figure 3.9: Thin plate splines and cubic regression splines fit
+Figure 6.9: Thin plate splines and cubic regression splines fit
 </p>
 </div>
 </div>
-<div id="the-mgcv-package-inside-a4a" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> The <code>mgcv</code> package inside <code>a4a</code><a href="introduction-to-splines.html#the-mgcv-package-inside-a4a" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-mgcv-package-inside-a4a" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> The <code>mgcv</code> package inside <code>a4a</code><a href="introduction-to-splines.html#the-mgcv-package-inside-a4a" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>mgcv</code> package provides various user input options to define the smoother functions used to construct the submodels.</p>
 <p>Under the <code>a4a</code> framework, the <code>mgcv</code> package is used to construct the model matrices of the submodels, which are then passed to <code>ADMB</code> where the model fitting takes place.</p>
 <p>The default option for the basis functions of the splines is <code>bs = tp</code> (thin plate splines) and is considered the optimal option. The user can define other smoothing basis functions using the <code>bs</code> argument. The user can refer to the <code>smooth.terms</code> of the <code>mgcv</code> package for a full description. There are many equivalent basis functions for the splines, and some of them have little or no effect in the context of <code>a4a</code>, since they differ only in the penalty term, which is not used in <code>a4a</code>.</p>
 <p>Examples for different smoothing terms:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="introduction-to-splines.html#cb14-1" tabindex="-1"></a>fmod00 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;tp&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># thin plate splines</span></span>
-<span id="cb14-2"><a href="introduction-to-splines.html#cb14-2" tabindex="-1"></a>fmod01 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;cr&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># regression cubic splines</span></span>
-<span id="cb14-3"><a href="introduction-to-splines.html#cb14-3" tabindex="-1"></a>fmod02 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;bs&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># b-splines</span></span>
-<span id="cb14-4"><a href="introduction-to-splines.html#cb14-4" tabindex="-1"></a>fmod03 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;ps&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># p-splines</span></span>
-<span id="cb14-5"><a href="introduction-to-splines.html#cb14-5" tabindex="-1"></a>fmod04 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;ad&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># Adaptive smoothers</span></span>
-<span id="cb14-6"><a href="introduction-to-splines.html#cb14-6" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="introduction-to-splines.html#cb14-7" tabindex="-1"></a>fit00 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod00)</span>
-<span id="cb14-8"><a href="introduction-to-splines.html#cb14-8" tabindex="-1"></a>fit01 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod01)</span>
-<span id="cb14-9"><a href="introduction-to-splines.html#cb14-9" tabindex="-1"></a>fit02 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod02)</span>
-<span id="cb14-10"><a href="introduction-to-splines.html#cb14-10" tabindex="-1"></a>fit03 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod03)</span>
-<span id="cb14-11"><a href="introduction-to-splines.html#cb14-11" tabindex="-1"></a>fit04 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod04)</span></code></pre></div>
-<p>In this example we are using the thin plate regression splines, cubic splines, b-splines, p-splines and adaptive smoothers. Figure <a href="introduction-to-splines.html#fig:a4asplines">3.10</a> shows the different fits together, where it’s clear the differences are very small.</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="introduction-to-splines.html#cb114-1" tabindex="-1"></a>fmod00 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;tp&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># thin plate splines</span></span>
+<span id="cb114-2"><a href="introduction-to-splines.html#cb114-2" tabindex="-1"></a>fmod01 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;cr&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># regression cubic splines</span></span>
+<span id="cb114-3"><a href="introduction-to-splines.html#cb114-3" tabindex="-1"></a>fmod02 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;bs&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># b-splines</span></span>
+<span id="cb114-4"><a href="introduction-to-splines.html#cb114-4" tabindex="-1"></a>fmod03 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;ps&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># p-splines</span></span>
+<span id="cb114-5"><a href="introduction-to-splines.html#cb114-5" tabindex="-1"></a>fmod04 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;ad&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># Adaptive smoothers</span></span>
+<span id="cb114-6"><a href="introduction-to-splines.html#cb114-6" tabindex="-1"></a></span>
+<span id="cb114-7"><a href="introduction-to-splines.html#cb114-7" tabindex="-1"></a>fit00 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod00)</span>
+<span id="cb114-8"><a href="introduction-to-splines.html#cb114-8" tabindex="-1"></a>fit01 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod01)</span>
+<span id="cb114-9"><a href="introduction-to-splines.html#cb114-9" tabindex="-1"></a>fit02 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod02)</span>
+<span id="cb114-10"><a href="introduction-to-splines.html#cb114-10" tabindex="-1"></a>fit03 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod03)</span>
+<span id="cb114-11"><a href="introduction-to-splines.html#cb114-11" tabindex="-1"></a>fit04 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod04)</span></code></pre></div>
+<p>In this example we are using the thin plate regression splines, cubic splines, b-splines, p-splines and adaptive smoothers. Figure <a href="introduction-to-splines.html#fig:a4asplines">6.10</a> shows the different fits together, where it’s clear the differences are very small.</p>
 <div class="figure"><span style="display:block;" id="fig:a4asplines"></span>
 <img src="_main_files/figure-html/a4asplines-1.png" alt="Multiple fits of thin plate splines, cubic splines, b-splines, p-splines and adaptive smoothers" width="672" />
 <p class="caption">
-Figure 3.10: Multiple fits of thin plate splines, cubic splines, b-splines, p-splines and adaptive smoothers
+Figure 6.10: Multiple fits of thin plate splines, cubic splines, b-splines, p-splines and adaptive smoothers
 </p>
 </div>
-<p>Functionality of <code>mgcv</code> package provides also the option to work with interactions. Although <code>s(age, year)</code> can be defined, it uses a common bivariate spline for the two variables which are very different in scale. It is preferable if interactions are assumed to use <code>te(age, year)</code>. Again is up to the user to define the basis functions for the smoothers. Figure <a href="introduction-to-splines.html#fig:te">3.11</a> shows the differences when using different basis for the tensor product.</p>
+<p>Functionality of <code>mgcv</code> package provides also the option to work with interactions. Although <code>s(age, year)</code> can be defined, it uses a common bivariate spline for the two variables which are very different in scale. It is preferable if interactions are assumed to use <code>te(age, year)</code>. Again is up to the user to define the basis functions for the smoothers. Figure <a href="introduction-to-splines.html#fig:te">6.11</a> shows the differences when using different basis for the tensor product.</p>
 <p><strong>[The paragraph above needs a bit more explanation about what a tensor is]</strong></p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="introduction-to-splines.html#cb15-1" tabindex="-1"></a>fmod03 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>))</span>
-<span id="cb15-2"><a href="introduction-to-splines.html#cb15-2" tabindex="-1"></a>fmod04 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>), <span class="at">bs =</span> <span class="st">&#39;cr&#39;</span>)</span>
-<span id="cb15-3"><a href="introduction-to-splines.html#cb15-3" tabindex="-1"></a>fmod05 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">te</span>(age, year, <span class="at">bs =</span> <span class="st">&#39;bs&#39;</span>)</span>
-<span id="cb15-4"><a href="introduction-to-splines.html#cb15-4" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="introduction-to-splines.html#cb15-5" tabindex="-1"></a>fit03 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod03)</span>
-<span id="cb15-6"><a href="introduction-to-splines.html#cb15-6" tabindex="-1"></a>fit04 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod04)</span>
-<span id="cb15-7"><a href="introduction-to-splines.html#cb15-7" tabindex="-1"></a>fit05 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod05)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="introduction-to-splines.html#cb115-1" tabindex="-1"></a>fmod03 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>))</span>
+<span id="cb115-2"><a href="introduction-to-splines.html#cb115-2" tabindex="-1"></a>fmod04 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>), <span class="at">bs =</span> <span class="st">&#39;cr&#39;</span>)</span>
+<span id="cb115-3"><a href="introduction-to-splines.html#cb115-3" tabindex="-1"></a>fmod05 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">te</span>(age, year, <span class="at">bs =</span> <span class="st">&#39;bs&#39;</span>)</span>
+<span id="cb115-4"><a href="introduction-to-splines.html#cb115-4" tabindex="-1"></a></span>
+<span id="cb115-5"><a href="introduction-to-splines.html#cb115-5" tabindex="-1"></a>fit03 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod03)</span>
+<span id="cb115-6"><a href="introduction-to-splines.html#cb115-6" tabindex="-1"></a>fit04 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod04)</span>
+<span id="cb115-7"><a href="introduction-to-splines.html#cb115-7" tabindex="-1"></a>fit05 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod05)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:te"></span>
 <img src="_main_files/figure-html/te-1.png" alt="Multiple basis for a tensor and their effects in the fit" width="672" />
 <p class="caption">
-Figure 3.11: Multiple basis for a tensor and their effects in the fit
+Figure 6.11: Multiple basis for a tensor and their effects in the fit
 </p>
 </div>
 </div>
-<div id="on-the-number-of-knots-k" class="section level2 hasAnchor" number="3.4">
-<h2><span class="header-section-number">3.4</span> On the number of knots <span class="math inline">\(k\)</span><a href="introduction-to-splines.html#on-the-number-of-knots-k" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><span class="math inline">\(k\)</span> is the dimension of the basis used to represent the smooth term <span class="math inline">\(s\)</span>. The default depends on the number of variables that the smooth is a function of. In practice k-1 (or k) sets the upper limit on the degrees of freedom associated with an s smooth (1 degree of freedom is usually lost to the intercept of the smooth). For the smooths the upper limit of the degrees of freedom is given by the product of the k values provided for each marginal smooth less one, for the constraint. The choice of the k is not critical and in general it must be large enough to allow to have enough degrees of freedom capturing the underlying process and small enough to prevent overfitting (Figure <a href="introduction-to-splines.html#fig:ks">3.12</a>). A strong pattern in the residuals can be a sign of low <span class="math inline">\(k\)</span>.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="introduction-to-splines.html#cb16-1" tabindex="-1"></a>fmod00 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">5</span>)</span>
-<span id="cb16-2"><a href="introduction-to-splines.html#cb16-2" tabindex="-1"></a>fmod01 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># cubic splines [Why is this cubic]</span></span>
-<span id="cb16-3"><a href="introduction-to-splines.html#cb16-3" tabindex="-1"></a>fmod02 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">20</span>) <span class="co"># b-splines [and this b?]</span></span>
-<span id="cb16-4"><a href="introduction-to-splines.html#cb16-4" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="introduction-to-splines.html#cb16-5" tabindex="-1"></a>fit00 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod00)</span>
-<span id="cb16-6"><a href="introduction-to-splines.html#cb16-6" tabindex="-1"></a>fit01 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod01)</span>
-<span id="cb16-7"><a href="introduction-to-splines.html#cb16-7" tabindex="-1"></a>fit02 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod02)</span></code></pre></div>
+<div id="on-the-number-of-knots-k" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> On the number of knots <span class="math inline">\(k\)</span><a href="introduction-to-splines.html#on-the-number-of-knots-k" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><span class="math inline">\(k\)</span> is the dimension of the basis used to represent the smooth term <span class="math inline">\(s\)</span>. The default depends on the number of variables that the smooth is a function of. In practice k-1 (or k) sets the upper limit on the degrees of freedom associated with an s smooth (1 degree of freedom is usually lost to the intercept of the smooth). For the smooths the upper limit of the degrees of freedom is given by the product of the k values provided for each marginal smooth less one, for the constraint. The choice of the k is not critical and in general it must be large enough to allow to have enough degrees of freedom capturing the underlying process and small enough to prevent overfitting (Figure <a href="introduction-to-splines.html#fig:ks">6.12</a>). A strong pattern in the residuals can be a sign of low <span class="math inline">\(k\)</span>.</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="introduction-to-splines.html#cb116-1" tabindex="-1"></a>fmod00 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">5</span>)</span>
+<span id="cb116-2"><a href="introduction-to-splines.html#cb116-2" tabindex="-1"></a>fmod01 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># cubic splines [Why is this cubic]</span></span>
+<span id="cb116-3"><a href="introduction-to-splines.html#cb116-3" tabindex="-1"></a>fmod02 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">20</span>) <span class="co"># b-splines [and this b?]</span></span>
+<span id="cb116-4"><a href="introduction-to-splines.html#cb116-4" tabindex="-1"></a></span>
+<span id="cb116-5"><a href="introduction-to-splines.html#cb116-5" tabindex="-1"></a>fit00 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod00)</span>
+<span id="cb116-6"><a href="introduction-to-splines.html#cb116-6" tabindex="-1"></a>fit01 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod01)</span>
+<span id="cb116-7"><a href="introduction-to-splines.html#cb116-7" tabindex="-1"></a>fit02 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod02)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:ks"></span>
 <img src="_main_files/figure-html/ks-1.png" alt="Multiple ks and their effects in the fit" width="672" />
 <p class="caption">
-Figure 3.12: Multiple ks and their effects in the fit
+Figure 6.12: Multiple ks and their effects in the fit
 </p>
 </div>
-<p>We can check the result of choosing different <span class="math inline">\(k\)</span> values on BIC (Bayesian Information Criteria) and GCV (Generalized Cross Validation score) by running the stock assessment model with different k and looking at the values of those stastics (Figure <a href="introduction-to-splines.html#fig:bic">3.13</a>).</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="introduction-to-splines.html#cb17-1" tabindex="-1"></a>fmodsk <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb17-2"><a href="introduction-to-splines.html#cb17-2" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">20</span>) {</span>
-<span id="cb17-3"><a href="introduction-to-splines.html#cb17-3" tabindex="-1"></a>  fmodsk[[<span class="fu">paste0</span>(i)]] <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">paste0</span>(<span class="st">&quot;~s(age)+s(year, k=&quot;</span>,i,<span class="st">&quot;)&quot;</span>))</span>
-<span id="cb17-4"><a href="introduction-to-splines.html#cb17-4" tabindex="-1"></a>}</span>
-<span id="cb17-5"><a href="introduction-to-splines.html#cb17-5" tabindex="-1"></a></span>
-<span id="cb17-6"><a href="introduction-to-splines.html#cb17-6" tabindex="-1"></a>myFits <span class="ot">&lt;-</span> <span class="fu">scas</span>(<span class="fu">FLStocks</span>(stk), <span class="fu">list</span>(idx), <span class="at">fmodel =</span> fmodsk)</span></code></pre></div>
+<p>We can check the result of choosing different <span class="math inline">\(k\)</span> values on BIC (Bayesian Information Criteria) and GCV (Generalized Cross Validation score) by running the stock assessment model with different k and looking at the values of those stastics (Figure <a href="introduction-to-splines.html#fig:bic">6.13</a>).</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="introduction-to-splines.html#cb117-1" tabindex="-1"></a>fmodsk <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb117-2"><a href="introduction-to-splines.html#cb117-2" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">20</span>) {</span>
+<span id="cb117-3"><a href="introduction-to-splines.html#cb117-3" tabindex="-1"></a>  fmodsk[[<span class="fu">paste0</span>(i)]] <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">paste0</span>(<span class="st">&quot;~s(age)+s(year, k=&quot;</span>,i,<span class="st">&quot;)&quot;</span>))</span>
+<span id="cb117-4"><a href="introduction-to-splines.html#cb117-4" tabindex="-1"></a>}</span>
+<span id="cb117-5"><a href="introduction-to-splines.html#cb117-5" tabindex="-1"></a></span>
+<span id="cb117-6"><a href="introduction-to-splines.html#cb117-6" tabindex="-1"></a>myFits <span class="ot">&lt;-</span> <span class="fu">scas</span>(<span class="fu">FLStocks</span>(stk), <span class="fu">list</span>(idx), <span class="at">fmodel =</span> fmodsk)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:bic"></span>
 <img src="_main_files/figure-html/bic-1.png" alt="BIC (Bayesian Information Criteria) and GCV (Generalized Cross Validation score) profiles based on changing the value of k." width="672" />
 <p class="caption">
-Figure 3.13: BIC (Bayesian Information Criteria) and GCV (Generalized Cross Validation score) profiles based on changing the value of k.
+Figure 6.13: BIC (Bayesian Information Criteria) and GCV (Generalized Cross Validation score) profiles based on changing the value of k.
 </p>
 </div>
 
@@ -524,8 +517,8 @@ Figure 3.13: BIC (Bayesian Information Criteria) and GCV (Generalized Cross Vali
           </div>
         </div>
       </div>
-<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="growth.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="stock-assessment-framework.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="fitting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -556,7 +549,7 @@ gitbook.start({
     "size": 2
   },
   "edit": {
-    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-splines.Rmd",
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/06-splines.Rmd",
     "text": "Edit"
   },
   "history": {

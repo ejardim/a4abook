@@ -1,17 +1,18 @@
 # Fitting
 
 ```{r, echo=FALSE}
-knitr::opts_chunk$set(warnings = FALSE)
-library(FLa4a)
+knitr::opts_chunk$set(warnings = FALSE, message=FALSE)
 ```
 
-The `a4a` stock assessment framework is implemented in `R` through the method `sca()`. The method call requires as a minimum a FLStock object and a FLIndices object, in which case the default submodels will be set by the method.
+The `a4a` stock assessment framework is implemented in `R` through the method `sca()`. The method call requires as a minimum a `FLStock` object and a `FLIndices` or `FLindex` object, in which case the default submodels will be set by the method.
 
-Having described building blocks, basic formulations and effects available to build a submodel's model, it's important to look into specific formulations and relate them to commonly known representations. Note that although a large number of formulations are available for each submodel, the user must carefuly decide on the full stock assessment model being build and avoid over-paramerizing. Over-parametrization may lead to non-convergence, but may also end up not being very useful for prediction/forecasting, which is one of the main objectives of stock assessment.
+Having described building blocks, basic formulations and effects available to build a submodel's model, it's important to look into specific formulations and relate them to commonly known representations. Note that although a large number of formulations are available for each submodel, the user must carefully decide on the full stock assessment model being build and avoid over-parameterize. Over-parametrization may lead to non-convergence, but may also end up not being very useful for prediction/forecasting, which is one of the main objectives of stock assessment.
 
 ```{r}
+library(FLa4a)
 data(ple4)
 data(ple4.indices)
+data(ple4.index)
 fit <- sca(ple4, ple4.indices)
 stk <- ple4 + fit
 ```
@@ -20,21 +21,31 @@ stk <- ple4 + fit
 plot(stk)
 ```
 
-By calling the fitted object the default submodel formulas are printed in the console:
+Submodels that are not explicitly defined will be set by default using the relevant call to `defaultFmod()`, `defaultQmod`, `defaultSRmod()`, `defaultN1mod` or `defaultVmod()`. These methods will use the length of the time series and number of age groups to define the models. The `show` method for `a4aFit` objects display the models used for the fit.
 
 ```{r, echo=FALSE}
 fit
 ```
 
-To set specific submodels the user has to write the relevant R formula and include it in the call. The arguments for each submodel are self-explanatory: fishing mortality is 'fmodel', indices' catchability is 'qmodel', stock-recruitment is 'srmodel', observation variance is 'vmodel' and for initial year's abundance is 'n1model'. The following model comes closer to the official stock assessment of North Sea plaice, as such we'll name it $0$ and keep it for future comparisons.
+To set specific submodels the user has to write the relevant `R` formula and include it in the call. The arguments for each submodel are self-explanatory: fishing mortality is 'fmodel', indices' catchability is 'qmodel', stock-recruitment is 'srmodel', observation variance is 'vmodel' and for initial year's abundance is 'n1model'. The following model comes closer to the official stock assessment of North Sea plaice, as such we'll name it `fit0` and keep it for future comparisons.
 
 ```{r, fit0}
 fmod0 <- ~s(age, k=6)+s(year, k=10)+te(age, year, k=c(3,8))
-qmod0 <- list(~s(age, k = 4), ~s(age, k = 3), ~s(age, k = 3)+year, ~s(age, k = 3), ~s(age, k = 4), ~s(age, k = 6))
+qmod0 <- list(~s(age, k = 4),
+       ~s(age, k = 3),
+       ~s(age, k = 3) + year,
+       ~s(age, k = 3),
+       ~s(age, k = 4),
+       ~s(age, k = 6))
 srmod0 <- ~ s(year, k=20)
 vmod0 <- list(~s(age, k=4), ~1,  ~1, ~1, ~1, ~1, ~1, ~1)
 n1mod0 <- ~ s(age, k=3)
-fit0 <- sca(ple4, ple4.indices, fmodel=fmod0, qmodel=qmod0, srmodel=srmod0, n1model=n1mod0, vmodel=vmod0)
+fit0 <- sca(ple4, ple4.indices,
+       fmodel=fmod0,
+       qmodel=qmod0,
+       srmodel=srmod0,
+       n1model=n1mod0,
+       vmodel=vmod0)
 stk0 <- ple4 + fit0
 ```
 
@@ -42,65 +53,32 @@ stk0 <- ple4 + fit0
 plot(stk0)
 ```
 
-As before by calling the fitted object submodels' formulas are printed in the console:
+As before by calling the fitted object, the submodels' formulas are printed in the console:
 
 ```{r, echo=FALSE}
-fit
+fit0
 ```
-
-The method `sca` has other arguments which may be set by the user:
-
-| Argument | Description |
-|:----|:----|
-|covar| a `FLQuant` with covariates|
-|wkdir| a folder (character) where the \ADMB files will be saved for posterior inspection by the user|
-|verbose| be more verbose (logical)|
-|fit| type of fit (character): 'MP' runs the minimizer without trying to invert the hessian and as such doesn't return the covariance matrix of the parameters, normally used inside MSE loops where parameter variance may not be relevant; 'assessment' runs minimizer and inverts hessian, returns the covariance matrix of the estimated parameters and the convergence criteria set in `ADMB`; 'MCMC' runs `ADMB`'s MCMC fit|
-|center| shall observations be centered before fitting (logical)|
-|mcmc| `ADMB`'s MCMC arguments (character vector), must be paired with `fit="MCMC"|
 
 There are a set of methods for `a4a` fit objects which help manipulating `sca()` results, namely:
 
 - [+:] update the stock object with the fitted fishing mortalities, population abundance and catch in numbers at age; can be applied to `FLStocks` and `a4aFits` objects as well.
 
+The following subsections describe common formulations used to define submodels. Although the formulas are tailored to specific submodels — *e.g.*, a separable model for $F$ — they can, in principle, be applied to any submodel. The `sca` method is agnostic to the model setup and will attempt to fit the model regardless of its specification. However, from a statistical standpoint, convergence may fail if the model is not well specified. From a fisheries modeling perspective, limitations arise in how the model is interpreted. For example, if a scientific survey is modeled with a year effect, the user is implicitly assuming that the survey’s selectivity has changed over time. Consequently, the model may attribute part of the observed trend in the survey data to changes in selectivity rather than to changes in abundance.
+
 ## Fishing mortality submodel ($F_{ay}$)
-
-We will now take a look at some examples for $F$ models and the forms that we can get.
-
-A non-separable model, where we consider age and year to interact can be modeled using a smooth interaction term in the F model using a tensor product of cubic splines with the `te` method (Figure \@ref(fig:te1)), again borrowed from [mgcv](http://cran.r-project.org/web/packages/mgcv/index.html).
-
-```{r}
-fmod <- ~ te(age, year, k = c(4,20))
-fit <- sca(ple4, ple4.indices[1], fmod)
-```
-
-```{r, te1, fig.cap="Fishing mortality smoothed non-separable model", echo=FALSE}
-wireframe(harvest(fit), zlab="F")
-```
-
-In the last examples the fishing mortalities (Fs') are linked across age and time.  What if we want to free up a specific age class because in the residuals we see a consistent pattern.  This can happen, for example, if the spatial distribution of juveniles is disconnected to the distribution of adults.  The fishery focuses on the adult fish, and therefore the the F on young fish is a function of the distribution of the juveniles and could deserve a specific model. This can be achieved by adding a component for the year effect on age 1 (Figure \@ref(fig:age1)).
-
-```{r}
-fmod <- ~ te(age, year, k = c(4,20)) + s(year, k = 5, by = as.numeric(age==1))
-fit <- sca(ple4, ple4.indices[1], fmod)
-```
-
-```{r, age1, fig.cap="Fishing mortality age-year interaction model with extra age 1 smoother.", echo=FALSE}
-wireframe(harvest(fit), zlab="F")
-```
 
 ### Separable model
 
 One of the most useful models for fishing mortality is one in which 'age' and 'year' effects are independent, that is, where the shape of the selection pattern does not change over time, but the overall level of fishing mortality do. Commonly called a 'separable model'.
 
-A full separable model in `a4a` is written using the `factor` function which converts age and year effects into categorical values, forcing a different coefficient to be estimated for each level of both effects. This model has `age x year` number of parameters.
+A full separable model in `a4a` is written using the `factor` function which converts age and year effects into categorical values, forcing a different coefficient to be estimated for each level of both effects. This model has $age x year$ number of parameters.
 
 ```{r}
 fmod1 <- ~ factor(age) + factor(year)
 fit1 <- sca(ple4, ple4.indices, fmodel=fmod1, fit="MP")
 ```
 
-One can reduce the number of parameters and add dependency along both effects, although still keeping independence of each other, by using smoothers rather than `factor`. We'll use a (unpenalised) thin plate spline provided by package [mgcv](http://cran.r-project.org/web/packages/mgcv/) method `s()`. We're using the North Sea Plaice data, and since it has 10 ages we will use a simple rule of thumb that the spline should have fewer than $\frac{10}{2} = 5$ degrees of freedom, and so we opt for 4 degrees of freedom. We will also do the same for year and model the change in $F$ through time as a smoother with 20 degrees of freedom.
+One can reduce the number of parameters and add dependency along both effects, although still keeping independence of each other, by using smoothers rather than `factor`. We're using the North Sea Plaice data, and since it has 10 ages we will use a simple rule of thumb that the spline should have fewer than $\frac{10}{2} = 5$ degrees of freedom, and so we opt for 4 degrees of freedom. We will also do the same for year and model the change in $F$ through time as a smoother with 20 degrees of freedom.
 
 ```{r}
 fmod2 <- ~ s(age, k=4) + s(year, k=20)
@@ -126,9 +104,33 @@ xyplot(data~age|qname, groups=year, data=flqs, type="l", col=1, layout=c(3,1), y
 wireframe(data~age+year|qname, data=as.data.frame(flqs), layout=c(3,1))
 ```
 
+### Model with age-year interaction
+
+A non-separable model, where we consider age and year to interact can be modeled by a smooth interaction term with a tensor product of cubic splines, the `te` method (Figure \@ref(fig:te1)), again borrowed from `mgcv` (@R-mgcv).
+
+```{r}
+fmod <- ~ te(age, year, k = c(4,20))
+fit <- sca(ple4, ple4.indices, fmod)
+```
+
+```{r, te1, fig.cap="Fishing mortality smoothed non-separable model", echo=FALSE}
+wireframe(harvest(fit), zlab="F")
+```
+
+In this example fishing mortalities are linked across age and time. What if we want to free up a specific age class because in the residuals we see a consistent pattern. This can happen, for example, if the spatial distribution of juveniles is disconnected to the distribution of adults.  The fishery focuses on the adult fish, and therefore the $F$ on young fish is a function of the distribution of the juveniles and could deserve a specific model. This can be achieved by adding a component for the year effect on age 1 (Figure \@ref(fig:age1)). We'll use `s`'s argument `by` to define the ages that the model will apply to. The `as.numeric` method over `age==1`, will result in a matrix that will be $1$ for ages 1 and $0$ for the other ages, effectively removing those ages from the `s` model. Furthermore, by not removing age 1 from the `te` component we're in effect adding the two estimates for age 1.
+
+```{r}
+fmod <- ~ te(age, year, k = c(3,20)) + s(year, k = 5, by = as.numeric(age==1))
+fit2 <- sca(ple4, ple4.indices, fmod)
+```
+
+```{r, age1, fig.cap="Fishing mortality age-year interaction model with extra age 1 smoother.", echo=FALSE}
+wireframe(harvest(fit), zlab="F")
+```
+
 ### Constant selectivity for contiguous ages or years
 
-To set these models we'll use the method `replace()` to define which ages or years will be modelled together with a single coefficient. The following example shows `replace()` in operation. The dependent variables used in the model will be changed and attributed the same age or year, as such during the fit observations of those age or year with will be seen as replicates. One can think of it as sharing the same mean value, which will be estimated by the model.
+To set these models we'll use the method `replace()` to define which ages or years will be modelled together. The following example shows `replace()` in operation. The dependent variables used in the model will be changed and attributed the same age or year, as such during the fit observations of those ages or years with will be seen as replicates. One can think of it as sharing the same mean value, which will be estimated by the model.
 
 ```{r}
 age <- 1:10
@@ -136,7 +138,6 @@ age <- 1:10
 replace(age, age>9, 9)
 # all ages after age 6
 replace(age, age>6, 6)
-
 year <- 1950:2010
 replace(year, year>2005, 2005)
 ```
@@ -160,7 +161,7 @@ fit <- sca(ple4, ple4.indices, fmod)
 ```
 
 ```{r, ctsselyear, fig.cap="F-at-age fixed for the most recent 5 years", echo=FALSE}
-wireframe(data~age+year, data=harvest(fit)[,ac(2010:2017)], screen=c(z=-130, y=0, x=-60), zlab="F")
+wireframe(data~age+year, data=harvest(fit), screen=c(z=-130, y=0, x=-60), zlab="F")
 ```
 
 ### Time blocks selectivity
@@ -177,7 +178,7 @@ breakpts(year, seq(1949, 2010, length=6))
 
 Note `seq()` computes 'left-open' intervals, which means that to include 1950 the sequence must start one year earlier.
 
-These methods can be used to create discrete time series, for which a different selection pattern is allowed in each block. This is called an interaction in statistical modelling parlance, and typically a `*` denotes an interaction term; for smoothers an interaction is achieved using the `by` argument. When this argument is a `factor` a replicate of the smooth is produced for each factor level.
+These methods can be used to create discrete time series, for which a different selection pattern is allowed in each block. This is called an interaction in statistical modelling parlance, and typically a `*` denotes an interaction term, for smoothers an interaction is achieved using the `by` argument. When this argument is a `factor` a replicate of the smooth is produced for each factor level.
 
 In the next case we'll use the `breakpts()` to split the time series at 1990, although keeping the same shape in both periods, a thin plate spline with 3 knots (Figure \@ref(fig:brk)).
 
@@ -192,19 +193,21 @@ wireframe(harvest(fit), zlab="F")
 
 ### Time changing selectivity
 
-In many cases, it may be desirable to allow the selection pattern to evolve over time, from year to year. Again there are several ways to do this, one way is to estimate a mean selection pattern, while also allowing F to vary over time for each age. This is like a seperate smoother over year, with 'age blocks' so, looking back at previous examples, we have:
+In many cases, it may be desirable to allow the selection pattern to evolve over time, from year to year. Again there are several ways to do this, one way is to estimate a mean selection pattern, while also allowing $F$ to vary over time for each age. This is like a separable smoother over year, with 'age blocks' so, looking back at previous examples, we have:
 
 ```{r}
 fmodel <- ~ s(year, k = 15, by = factor(age)) + s(age, k = 4)
 ```
 
-This is a type of interaction between age and year, but the only connection (or correlation) across ages is via the smoother on age, however there are still 15 degrees of freedom for each age, so the model 5 x 15 + 4 = 69 degrees of freedom.  To include correlation across ages and years together then the tensor product (`te()` function) is used, this has the effect of restricting the flexibility of the model for F.  In the following, there is a smoother in 2 dimensions (age and year) where there is 5 degrees of freedom in the age direction, and 15 in the year dimension, resulting in a total of 5 x 15 = 65 degrees of freedom
+This is a type of interaction between age and year, but the only connection (or correlation) across ages is via the smoother on age, however there are still 15 degrees of freedom for each age, so the model 10 x 15 + 4 = 154 degrees of freedom.
+
+To include correlation across ages and years together the tensor product (`te()`) is used, this has the effect of restricting the flexibility of the model for $F$. In the following, there is a smoother in 2 dimensions (age and year) where there is 5 degrees of freedom in the age direction, and 15 in the year dimension, resulting in a total of 5 x 15 = 65 degrees of freedom
 
 ```{r}
 fmodel <- ~ te(age, year, k = c(5, 15))
 ```
 
-Often the above formulations provide too much flexibility, and a more complicated, but simpler model is preferable:
+Often the above formulations provide too much flexibility, and a more complicated specification, but simpler model is preferable:
 
 ```{r}
 fmodel <- ~ s(age, k = 4) + s(year, k = 15) + te(age, year, k = c(3, 5))
@@ -214,7 +217,7 @@ in the above model, the main effects for age and year still have similar flexibi
 
 ### Closed form selection pattern
 
-One can use a closed form for the selection pattern. The only requirement is to be able to write it as a \R formula, the example below uses a logistic form.
+One can use a closed form for the selection pattern. The only requirement is to be able to write it as a `R` formula, the example below uses a logistic form.
 
 ```{r}
 fmod <- ~ I(1/(1+exp(-age)))
@@ -227,19 +230,21 @@ wireframe(harvest(fit), zlab="F")
 
 ## Abundance indices catchability submodel ($Q_{ays}$)
 
-The catchability submodel is set up the same way as the $F$ submodel and the tools available are the same. The only difference is that the submodel is set up as a list of formulas, where each formula relates with one abundance index. There's no limitation in the number of indices or type that can be used for a fit. It's the analyst that has to decide based on her/his expertise and knowledge of the stock and fleet dynamics.
+The catchability submodel is set up the same way as the $F$ submodel. The only difference is that the submodel is set up as a list of formulas, where each formula relates with one abundance index. There's no limitation in the number of indices or type that can be used for a fit. It's the analyst that has to decide based on her/his expertise and knowledge of the stock and fleet dynamics.
+
+In the following examples we'll use a single index instead of all available indices for plaice in ICES area 4, to simplify the code and examples.
 
 ### Catchability submodel for age based indices
 
-A first model is simply a dummy effect on age, which means that a coefficient will be estimated for each age. Note that this kind of model considers that levels of the factor are independent (Figure \@ref(fig:dummyage)).
+The first model shown is simply a dummy effect on age, which means that one coefficient will be estimated for each age. Note this kind of model considers each level of the factor to be independent from the others levels (Figure \@ref(fig:dummyage)).
 
 ```{r}
 qmod <- list(~factor(age))
-fit <- sca(ple4, ple4.indices[1], qmodel=qmod)
-qhat <- predict(fit)$qmodel[[1]]
+fit <- sca(ple4, ple4.index, qmodel=qmod)
 ```
 
 ```{r, dummyage, fig.cap="Catchability age independent model", echo=FALSE}
+qhat <- predict(fit)$qmodel[[1]]
 wireframe(qhat, zlab="q")
 ```
 
@@ -248,11 +253,10 @@ If one considers catchability at a specific age to be dependent on catchability 
 ```{r}
 qmod <- list(~ s(age, k=4))
 fit <- sca(ple4, ple4.indices[1], qmodel=qmod)
-qhat <- predict(fit)$qmodel[[1]]
-wireframe(qhat, zlab="q")
 ```
 
 ```{r, smoothage, fig.cap="Catchability smoother age model", echo=FALSE}
+qhat <- predict(fit)$qmodel[[1]]
 wireframe(qhat, zlab="q")
 ```
 
@@ -261,16 +265,18 @@ Finally, one may want to investigate a trend in catchability with time, very com
 ```{r}
 qmod <- list( ~ s(age, k=4) + year)
 fit <- sca(ple4, ple4.indices[1], qmodel=qmod)
-qhat <- predict(fit)$qmodel[[1]]
 ```
 
 ```{r, qtrend, fig.cap="Catchability with a linear trend in year", echo=FALSE}
+qhat <- predict(fit)$qmodel[[1]]
 wireframe(qhat, zlab="q")
 ```
 
 ### Catchability submodel for age aggregated biomass indices
 
-The previous section was focused on age disaggregated indices, but age aggregated indices (CPUE, biomass, DEPM, etc) may also be used to tune the total biomass of the population. In these cases a different class for the index must be used, the `FLIndexBiomass`, which uses a vector `index` with the age dimension called 'all'. Note that in this case the qmodel should be set without age factors, although it can have a 'year' component and covariates if needed. An interesting feature with biomass indices is the age range they refer to can be specified.
+The previous section focused on age-disaggregated indices, which are most often reported as standardized number of individuals, *e.g.* number of individuals caught per hour. Age-aggregated indices (such as CPUE, biomass, DEPM, etc.) may also be used to tune the population's biomass in terms of weight. These indices are linked either to the total biomass or to the weight of a specific group of age classes, defined by the age range set in the object.
+
+In such cases, a different index class must be used: FLIndexBiomass. This class uses a vector named index with an age dimension labeled as 'all'. The qmodel should be specified without age-specific factors, although it may still include a 'year' component and relevant covariates, if needed.
 
 ```{r}
 # simulating a biomass index (note the name of the first dimension element) using
@@ -286,9 +292,13 @@ index(bioidx)
 fit <- sca(ple4, FLIndices(bioidx), qmodel=list(~1))
 ```
 
-To estimate a constant selectivity over time one used the model $\sim 1$. As a matter of fact the estimate value, `r round(predict(fit)$qmodel[[1]][1,drop=TRUE],5)`, is not very far from the simulated one, 0.001.
+To estimate a constant selectivity over time one used the model $\sim 1$, resulting in the following estimate:
 
-An example where the biomass index refers only to age 2 to 4 (for example a CPUE that targets these particular ages).
+```{r}
+predict(fit)$qmodel[[1]][1,drop=TRUE]
+```
+
+The next code shows an example where the biomass index refers to age groups 2 to 4, *e.g.* the CPUE of a fleet that targets these particular ages.
 
 ```{r}
 # creating the index
@@ -304,17 +314,21 @@ range(bioidx)[c("min","max")] <- c(2,4)
 fit <- sca(ple4, FLIndices(bioidx), qmodel=list(~1))
 ```
 
-Once more the estimate value, `r round(predict(fit)$qmodel[[1]][1,drop=TRUE],5)`, is not very far from the simulated one, 0.001.
+Once more the estimate value is not very far from the simulated one, 0.001.
+
+```{r}
+predict(fit)$qmodel[[1]][1,drop=TRUE]
+```
 
 ### Catchability submodel for single age indices
 
-Similar to age aggregated indices one may have an index that relates only to one age, like a recruitment index. In this case the `FLIndex} object must have in the first dimension the age it referes to. The fit is then done relating the index with the proper age in numbers. Note that in this case the qmodel should be set without age factors, although it can have a 'year' component and covariates if needed.
+Similar to age aggregated indices one may have an index that relates only to one age, like a recruitment index. In this case the `FLIndex` object must have in the first dimension the age it refers to. The fit uses the index to tune the population abundance for the specific age. As for biomass indices, the qmodel should be set without age factors, although it can have a 'year' component and covariates if needed.
 
 ```{r}
-idx <- ple4.indices[[1]][1]
+idx <- ple4.index[1]
 fit <- sca(ple4, FLIndices(recidx=idx), qmodel=list(~1))
 # the estimated catchability is
-predict(fit)$qmodel[[1]]
+predict(fit)$qmodel[[1]][1,drop=TRUE]
 ```
 
 ## Stock-recruitment submodel ($R_y$)
@@ -324,88 +338,97 @@ The S/R submodel is a special case, in the sense that it can be set up with the 
 ```{r}
 srmod <- ~ factor(year)
 fit <- sca(ple4, ple4.indices, srmodel=srmod)
-srmod <- ~ s(year, k=10)
+srmod <- ~ s(year, k=15)
 fit1 <- sca(ple4, ple4.indices, srmodel=srmod)
-srmod <- ~ ricker(CV=0.3)
+srmod <- ~ ricker(CV=0.1)
 fit2 <- sca(ple4, ple4.indices, srmodel=srmod)
-srmod <- ~ bevholt(CV=0.3)
+srmod <- ~ bevholt(CV=0.1)
 fit3 <- sca(ple4, ple4.indices, srmodel=srmod)
-srmod <- ~ hockey(CV=0.3)
+srmod <- ~ hockey(CV=0.1)
 fit4 <- sca(ple4, ple4.indices, srmodel=srmod)
-srmod <- ~ geomean(CV=0.3)
+srmod <- ~ geomean(CV=0.1)
 fit5 <- sca(ple4, ple4.indices, srmodel=srmod)
 ```
 
-```{r, srmod, fig.cap="Stock-recruitment models fits", echo=FALSE}
+```{r, srmod, fig.cap="Recruitment estimates since 1960 by each stock-recruitment model.", echo=FALSE}
 flqs <- FLQuants(factor=stock.n(fit)[1], smother=stock.n(fit1)[1], ricker=stock.n(fit2)[1], bevholt=stock.n(fit3)[1], hockey=stock.n(fit4)[1], geomean=stock.n(fit5)[1])
+flqs <- lapply(flqs, "[", j=ac(1960:2017))
 xyplot(data~year, groups=qname, data=flqs, type="l", auto.key=list(points=FALSE, lines=TRUE, columns=3), ylab="No. recruits")
 ```
 
 ## Observation variance submodel ($\{\sigma^2_{ay}, \tau^2_{ays}\}$)
 
-The variance model allows the user to set up the shape of the observation variances $\sigma^2_{ay}$ and $\tau^2_{ays}$. This is an important subject related with fisheries data used for input to stock assessment models.
+The variance model allows the user to set up the shape of the observation variances $\sigma^2_{ay}$ and $\tau^2_{ays}$. This is an important subject for fisheries data used as input to stock assessment models.
 
-The defaults assume a U-shape model for catch-at-age and constant variance for abundance indices. The first relies on the fact that it's common to have more precision on the most represented ages and less precision on the less frequent ages which tend to  be the younger and older individuals. These sizes are less caught by the fleets and as such do not appear as often at the auction markets samples. With regards to the abundance indices, one assumes a scientific survey to have a well designed sampling scheme and protocols which keep observation error at similar levels across ages.
+The defaults assume a U-shape like model for catch-at-age and constant variance for abundance indices. The first relies on the fact that it's common to have more precision on the most represented ages and less precision on the less frequent ages which tend to  be the younger and older individuals. These sizes are less caught by the fleets and as such do not appear as often at the auction markets samples. With regards to the abundance indices, one assumes a scientific survey to have a well designed sampling scheme and protocols which keep observation error at similar levels across ages.
 
 ```{r}
+# reference model with constant variance for the survey index
 vmod <- list(~s(age, k=3), ~1)
-fit1 <- sca(ple4, ple4.indices[1], vmodel=vmod)
+fit1 <- sca(ple4, ple4.index, vmodel=vmod)
+# to compare - survey index variance modelled has a U-shape smoother
 vmod <- list(~s(age, k=3), ~s(age, k=3))
-fit2 <- sca(ple4, ple4.indices[1], vmodel=vmod)
+fit2 <- sca(ple4, ple4.index, vmodel=vmod)
 ```
 
-Variance estimated for the constant model is `r round(predict(fit)$vmodel[[2]][1,drop=TRUE],3)` while for the U-shape model, fitted with a smoother, changes with ages (Figure \@ref(fig:vmod)).
+Variance estimated for the survey is constant at `r round(predict(fit)$vmodel[[2]][1,drop=TRUE],3)` while for catches using the U-shape model, fitted with a smoother, changes with ages (Figure \@ref(fig:vmod)).
 
 ```{r, vmod, fig.cap="Abundance index observation variance estimate", echo=FALSE}
-wireframe(predict(fit2)$vmodel[[2]], zlab="variance")
+wireframe(predict(fit1)$vmodel[[1]], zlab="variance")
 ```
 
 Observation variance options have an impact in the final estimates of population abundance, which can be seen in Figure \@ref(fig:vmodimpact).
 
-```{r, vmodimpact, fig.cap="Population estimates using two different variance models", echo=FALSE}
-flqs <- FLQuants(smother=stock.n(fit1), factor=stock.n(fit2))
-xyplot(data~year|age, groups=qname, data=flqs, type="l",
+```{r, vmodimpact, fig.cap="Population estimates using two different variance models for the survey", echo=FALSE}
+flqs <- FLQuants(constant=stock.n(window(fit1, start=1990)), smoother=stock.n(window(fit2, start=1990)))
+xyplot(data~year|factor(age), groups=qname, data=flqs, type="l",
        scales=list(y=list(relation="free", draw=FALSE)),
        auto.key=list(points=FALSE, lines=TRUE, columns=2),
-       par.settings=list(superpose.line=list(col=c("gray35", "black")),
-       strip.background=list(col="gray90")), ylab="")
+       par.settings=list(superpose.line=list(col=c("red", "blue"), lwd=1.5),
+       strip.background=list(col="gray90")), ylab="", as.table=TRUE, layout=c(5,2))
 ```
 
 ## Initial year abundance submodel ($N_{a,y=1}$)
 
-The submodel for the stock number at age in the first year of the time series is set up with the usual modelling tools (Figure \@ref(fig:ny1)). Beare in mind that the year effect does not make sense here since it refers to a single year, the first in the time series of data available. This model has its influence limited to the initial lower triangle of the population matrix, which in assessments with long time series doesn't make much difference. Nevertheless, when modelling stocks with short time series in relation to the number of ages present, it becomes more important and should be given proper attention.
+The submodel for the stock number at age in the first year of the time series is set with the usual tools. The model deals with the shape of the population abundance in a single year and as such the year effect shouldn't be included (Figure \@ref(fig:ny1)).
+
+This model has its influence limited to the initial lower triangle of the population matrix, which in assessments with long time series doesn't make much difference. Nevertheless, when modelling stocks with short time series in relation to the number of ages present, it becomes more important and should be given proper attention.
 
 ```{r}
-n1mod <- ~s(age, k=3)
-fit1 <- sca(ple4, ple4.indices, fmodel=fmod0, qmodel=qmod0, srmodel=srmod0, vmodel=vmod0, n1model=n1mod)
+# model with smoother
+n1mod <- ~s(age, k=4)
+fit1 <- sca(ple4, ple4.indices, n1model=n1mod)
+# model with factor
 n1mod <- ~factor(age)
-fit2 <- sca(ple4, ple4.indices, fmodel=fmod0, qmodel=qmod0, srmodel=srmod0, vmodel=vmod0, n1model=n1mod)
-flqs <- FLQuants(smother=stock.n(fit1)[,1], factor=stock.n(fit2)[,1])
+fit2 <- sca(ple4, ple4.indices, n1model=n1mod)
 ```
 
 ```{r, ny1, fig.cap="Nay=1 models", echo=FALSE}
-pset <- list(superpose.line=list(col=c("gray50", "black"), lty=c(1,2)))
+flqs <- FLQuants(smother=stock.n(fit1)[,1], factor=stock.n(fit2)[,1])
+pset <- list(superpose.line=list(col=c("red", "blue")))
 lgnd <- list(points=FALSE, lines=TRUE, space='right')
 xyplot(data~age, groups=qname, data=flqs, type="l", auto.key=lgnd, par.settings=pset, ylab="")
 ```
 
-The impact in the overall perspective of the stock status is depicted in Figure \@ref(fig:n1modimpact). As time goes by the effect of this model vanishes and the fits become similar.
+The impact in the overall perspective of the stock status is depicted in Figure \@ref(fig:n1modimpact). Most of the changes happen in the beggining of the time series, although due to the impact on the estimates of other submodels' parameters it can have an impact over the full time series.
 
 ```{r, n1modimpact, fig.cap="Population estimates using two different variance models", echo=FALSE}
 flqs <- FLQuants(smother=stock.n(fit1), factor=stock.n(fit2))
-pset$strip.background <- list(col="gray90")
-scl <- list(y=list(relation="free", draw=FALSE))
-xyplot(data~year|factor(age), groups=qname, data=flqs, type="l", scales=scl, auto.key=lgnd, par.settings=pset, ylab="")
+xyplot(data~year|factor(age), groups=qname, data=flqs, type="l",
+       scales=list(y=list(relation="free", draw=FALSE)),
+       auto.key=list(points=FALSE, lines=TRUE, columns=2),
+       par.settings=list(superpose.line=list(col=c("red", "blue"), lwd=1.5),
+       strip.background=list(col="gray90")), ylab="", as.table=TRUE, layout=c(5,2))
 ```
 
 ## More models
 
-More complicated models can be built with these tools. The models need to be appropriate for the fmodel dimension, e.g. the N1 model doesn't have the year dimension so setting a model with an year effect will fail, apart from that every submodel can use any model the analyst is interested in. The limitation is going to be the potential overparametrization of the model and the failure to fit if the data isn't informative enough.
+More complicated models can be built with these tools. The limitation is going to be the potential overparametrization of the model and the failure to fit if the data isn't informative enough.
 
-For example, Figure \@ref(fig:ageind) shows a model where the age effect is modelled as a smoother (the same thin plate spline) throughout years but independent from each other.
+For example, Figure \@ref(fig:ageind) shows a model where the age effect is modelled as a smoother throughout years independent from each other, with the exception of ages 9 and 10 which share their parameters.
 
 ```{r}
-fmod <- ~ factor(age) + s(year, k=10, by = breakpts(age, c(2:8)))
+fmod <- ~ factor(age) + s(year, k=10, by = breakpts(age, c(0:8)))
 fit <- sca(ple4, ple4.indices, fmod)
 ```
 
@@ -413,7 +436,7 @@ fit <- sca(ple4, ple4.indices, fmod)
 wireframe(harvest(fit), zlab="F")
 ```
 
-A quite complex model that implements a cohort effect can be set through the following formula. Figure \@ref(fig:coh) shows the resulting fishing mortality. Note that in this case we end up with a variable F pattern over time, but rather than using 4 * 10 = 40 parameters, it uses, 4 + 10 + 10 = 24.
+A quite complex model that implements a cohort effect can be set through the following formula. Figure \@ref(fig:coh) shows the resulting fishing mortality. Note that in this case we end up with a variable $F$ pattern over time, but rather than using 4 * 10 = 40 parameters, it uses, 4 + 10 + 10 = 24.
 
 ```{r}
 fmodel <- ~ s(age, k = 4) + s(pmax(year - age, 1957), k = 10) + s(year, k = 10)
@@ -435,18 +458,17 @@ fit <- sca(ple4, ple4.indices, vmodel=vmod)
 ```
 
 ```{r, vm, echo=FALSE, fig.cap="Catch at age variance model with a year effect.", echo=FALSE}
-wireframe(predict(fit)$vmodel[[1]], zlab="F")
+wireframe(predict(fit)$vmodel[[1]], zlab="variance")
 ```
 
-
-This model fits smoothers to different sets of ages.
+This model fits two smoothers to different sets of ages.
 
 ```{r}
 fmod <- ~s(age, k = 3, by = breakpts(age, 5)) + s(year, k = 10)
 fit <- sca(ple4, ple4.indices, fmodel = fmod)
 ```
 
-```{r, danai01, echo=FALSE, fig.cap="Catch at age variance model with a year effect.", echo=FALSE}
+```{r, danai01, echo=FALSE, fig.cap="Smoothers fitted to two sets of ages, 1 to 4 and 5 to 10.", echo=FALSE}
 wireframe(harvest(fit), zlab="F")
 ```
 
@@ -502,13 +524,13 @@ First by simply assuming that the NAO index drives recruitment (Figure \@ref(fig
 ```{r}
 srmod <- ~ s(nao, k=10)
 fit2 <- sca(ple4, ple4.indices[1], qmodel=list(~s(age, k=4)), srmodel=srmod, covar=FLQuants(nao=nao))
-flqs <- FLQuants(simple=stock.n(fit)[1], covar=stock.n(fit2)[1])
 ```
 
 ```{r, naor, echo=FALSE, fig.cap="Recruitment model with covariates. Using the NAO index as a recruitment index.", echo=FALSE}
+flqs <- FLQuants(simple=stock.n(fit)[1], covar=stock.n(fit2)[1])
 xyplot(data~year, groups=qname, data=flqs, type="l",
        auto.key=list(points=FALSE, lines=TRUE, columns=2),
-       par.settings=list(superpose.line=list(col=c("gray35", "black"), lty=c(2,1), lwd=c(1,1.5)),
+       par.settings=list(superpose.line=list(col=c("red", "blue"), lwd=1.5),
        strip.background=list(col="gray90")), ylab="")
 ```
 
@@ -517,21 +539,21 @@ In a second model we're using the NAO index not to model recruitment directly bu
 ```{r}
 srmod <- ~ ricker(a=~nao, CV=0.25)
 fit3 <- sca(ple4, ple4.indices[1], qmodel=list(~s(age, k=4)), srmodel=srmod, covar=FLQuants(nao=nao))
-flqs <- FLQuants(simple=stock.n(fit)[1], covar=stock.n(fit3)[1])
 ```
 
 ```{r, naor2, echo=FALSE, fig.cap="Recruitment model with covariates. Using the NAO index as a covariate for the stock-recruitment model parameters.", echo=FALSE}
+flqs <- FLQuants(simple=stock.n(fit)[1], covar=stock.n(fit3)[1])
 xyplot(data~year, groups=qname, data=flqs, type="l",
        auto.key=list(points=FALSE, lines=TRUE, columns=2),
-       par.settings=list(superpose.line=list(col=c("gray35", "black"), lty=c(2,1), lwd=c(1,1.5)),
+       par.settings=list(superpose.line=list(col=c("red", "blue"), lwd=1.5),
        strip.background=list(col="gray90")), ylab="")
 ```
 
-Note that covariates can be added to any submodel using the linear model capabilities of R.
+Note that covariates can be added to any submodel using the linear model capabilities of `R`.
 
 ## Assessing \ADMB files
 
-The framework gives access to the files produced to run the `ADMB` fitting routine through the argument `wkdir`. When set up all the `ADMB` files will be left in the directory. Note that the `ADMB` tpl file is distributed with the `FLa4a`. One can get it from your `R` library, under the folder `myRlib/FLa4a/admb/`.
+The framework gives access to all files produced to run the `ADMB` fitting routine through the argument `wkdir`. When set up, all the `ADMB` files will be left in the directory. Note that the `ADMB` tpl file is distributed with the `FLa4a`. One can get it from your `R` library, under the folder `[myRlib]/FLa4a/admb/`.
 
 ```{r, eval=FALSE}
 fit1 <- sca(ple4, ple4.indices, wkdir="fit1run")
@@ -550,15 +572,32 @@ catch.n(ple4_missing)[ac(1:2), "2013"] <- NA
 fit_missing <- sca(ple4_missing, ple4.indices)
 ```
 
-In effect the information on F and Q for the missing observations is taken from the structural assumptions in the model. If a seperable F model is used, the F at age comes from the relationship between F at the other ages in that year, and the level of F from the relationship across years for the ages which have data. The same is true for the Q model. The effect of missing observations can be seen in the figures below, where box plots of the predicted catch at age with estimation error is shown.
+In effect, the information on $F$ and $Q$ for the missing observations is inferred from the structural assumptions of the model. If a separable $F$ model is used, the value of $F$ at a given age is derived from its relationship with $F$ at other ages in the same year, as well as from the temporal relationship of $F$ across years for ages with available data. The same principle applies to any other submodel.
 
-```{r, echo = FALSE, fig.cap="Stock estimates with missing observations."}
+The impact of missing observations is illustrated in Figure \@ref(fig:obsmissing), which shows box plots of the predicted catch at age, incorporating estimation error. When observations are missing, the resulting estimates for those ages are both different and more uncertain. Additionally, the estimates for nearby years are affected, although the influence of the missing data diminishes with time—estimates from years further away converge toward those obtained using the full dataset.
+
+```{r, obsmissing, echo = FALSE, fig.cap="Stock estimates with missing observations."}
 pred <- ple4 + simulate(fit, 1000)
 pred_missing <- ple4 + simulate(fit_missing, 1000)
-flqs <- FLQuants(base = catch.n(pred)[, "2013"], missing = catch.n(pred_missing)[, "2013"])
-bwplot(data ~ qname | factor(age), data = as.data.frame(flqs), scales = "free", auto.key = T, ylab = "Catch at age in 2013")
+flqs <- FLQuants(base = catch.n(pred)[ac(1:2), ac(2011:2015)], missing = catch.n(pred_missing)[ac(1:2), ac(2011:2015)])
+bwplot(data ~ qname | factor(year) + factor(age), data = as.data.frame(flqs), scales = "free", auto.key = T, ylab = "Catch at age", layout=c(7,2), as.table=TRUE, par.settings=list(box.rectangle = list(col = "black"), box.umbrella = list(col = "black"), plot.symbol = list(col = "black")))
 ```
 
-This is a simple example, but the same principle applies to more complex models. However, if there are many missing observations, the model cannot be too flexible, otherwise the model will not be able to estimate the missing observations.
+This is a simple example, but the same principle applies to more complex models. However, if there are many missing observations, the model cannot be too flexible; otherwise, it won’t be able to reliably estimate the missing data.
 
-Another point to note, is that if observations are systematically missing, for example due to the actual observation being below a detection limit, or zero, then the model may overestimate the true catch at age. This is a common problem in stock assessment models, and is not unique to the `a4a` framework.  Proposed solutions to this issue are to replace zeros with a small number, or half of the smallest observed value.
+In any case, one can always add more structure to the model to help address missing information. A common approach is to include a stock-recruitment relationship, which links the spawning stock biomass to recruitment. The example above would definitely benefit from this approach, as the missing information pertains to the first age group. See Figure \@ref(fit:obsmissing2), estimates are much more similar, although estimates from the fit to the missing data dataset show more uncertainty, as expected.
+
+```{r}
+# bevholt s/r CV was tweaked to give best results for the example
+fit2 <- sca(ple4, ple4.indices, srmodel=~bevholt(CV=0.16))
+fit_missing2 <- sca(ple4_missing, ple4.indices, srmodel=~bevholt(CV=0.16))
+```
+
+```{r, obsmissing2, echo = FALSE, fig.cap="Stock estimates with missing observations."}
+pred <- ple4 + simulate(fit2, 1000)
+pred_missing <- ple4 + simulate(fit_missing2, 1000)
+flqs2 <- FLQuants(base = catch.n(pred)[ac(1:2), ac(2011:2015)], missing = catch.n(pred_missing)[ac(1:2), ac(2011:2015)])
+bwplot(data ~ qname | factor(year) + factor(age), data = as.data.frame(flqs2), scales = "free", auto.key = T, ylab = "Catch at age", layout=c(7,2), as.table=TRUE, par.settings=list(box.rectangle = list(col = "black"), box.umbrella = list(col = "black"), plot.symbol = list(col = "black")))
+```
+
+Another point to note, is that if observations are systematically missing, for example due to the actual observation being below a detection limit, or zero, then the model may overestimate the true catch at age. This is a common problem in stock assessment models, and is not unique to the `a4a` framework. Proposed solutions to this issue are to replace zeros with a small number, or half of the smallest observed value.
