@@ -1,22 +1,25 @@
 # Diagnostics \label{sec:diagn}
 
+Statistical model diagnostics are essential to identify potential issues in the model, such as violations of assumptions, outliers, and influential data points. Without proper diagnostics, fitted models may provide misleading conclusions due to violated assumptions or undetected anomalies. For instance, residual analysis is a widely used diagnostic method that assesses the discrepancy between observed and fitted values, helping to validate underlying model assumptions [@hickey2019]
+
+The `a4a` framework implements several analysis of residuals, visualizations and statistics, that can be used to evaluate the fit quality and chose across multiple fits.
+
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(FLa4a)
 data(ple4)
 data(ple4.indices)
 ```
 
-There's a large number of diagnostics that can be computed for a stock assessment model, the `a4a` framework implements several analysis of residuals, visualizations and statistics that can be used to evaluate the fit quality and chose across multiple fits.
 
 ## Residuals
 
 Residuals are a ubiquos metrics to check quality of a fit. For `sca()` fits there are out-of-the-box methods to compute in the log scale, raw residuals (aka deviances), standardized residuals and pearson residuals. A set of plots to inspect residuals and evaluate fit quality and assumptions are implemented.
 
-Consider $x_{ay}$ to be either a catch-at-age matrix ($C_{ay}$) or one abundance index ($I_{ay}$\footnote{For simplicity of notation we'll avoid the subscript $s$ in $I$, since we're referring to individual indices}) and $d$ to represent residuals.
+Consider $x_{ay}$ to be either a catch-at-age matrix ($C_{ay}$) or one abundance index ($I_{ay}$\footnote{For simplicity of notation we'll avoid the subscript $s$ in $I$, since we're referring to individual indices}) and $d_{ay}$ to represent residuals.
 
 Raw residuals are compute by $d_{ay} = \log{x_{ay}} - \log{\tilde{x}_{ay}}$ and have distribution $N(0,\upsilon^2_{a})$. Standardized residuals will be compute with $d^s_{ay} = \frac{d_{ay}}{\hat{\upsilon}^2_{a}}$ where $\hat{\upsilon}^2_{a} = (n-1)^{-1} \sum_y(d_{ay})^2$. Pearson residuals scale raw residuals by the estimates of $\sigma^2$ or $\tau^2$, as such $d^p_{ay} = \frac{d_{ay}}{\tilde{\upsilon}^2_{a}}$ where $\tilde{\upsilon}^2_{a} = \tilde{\sigma}^2_{a}$ for catches, or $\tilde{\upsilon}^2_{a} = \tilde{\tau}^2_{a}$ for each index of abundance.
 
-The `residuals()` method will compute these residuals and generate a object which can be plotted using a set of packed methods. The argument `type` will allow the user to chose which residuals will be computed. By default the method computes standardized residuals.
+The `residuals()` method computes these residuals and generate a object which can be plotted using a set of packed methods. The argument `type` will allow the user to chose which residuals will be computed. By default the method computes standardized residuals.
 
 
 ```{r}
@@ -24,17 +27,39 @@ fit <- sca(ple4, ple4.indices)
 d_s <- residuals(fit, ple4, ple4.indices)
 ```
 
-Figure \@ref(fig:res) shows a scatterplot of standardized residuals with a smoother to guide (or mis-guide ...) your visual analysis. Note that the standardization should produce residuals with variance=1, which means that most residual values should be between $\sim -2$ and $\sim 2$.
+Figure \@ref(fig:res) shows a scatterplot of standardized residuals with a smoother to guide (or mis-guide ...) your visual analysis. Note that the standardization should produce normal residuals with variance=1, which means that most residual values should roughly be between $\sim -2$ and $\sim 2$.
 
 ```{r, res, fig.cap="Standardized residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother."}
 plot(d_s)
 ```
 
-When plotting residuals by default the auxiliar line is a smoother. However it's possible to use other type of lines by setting the argument "auxline" in plot. The argument can take the values used by xyplot, which are (from panel.xyplot help page) one or more of the following: "p", "l", "h", "b", "o", "s", "S", "g", "r", "a", "smooth", and "spline". If type has more than one element, an attempt is made to combine the effect of each of the components. The behaviour if any of the first five are included is similar to the effect of the corresponding type in plot: "p" and "l" stand for points and lines respectively; "b" and "o" (for ‘overlay’) plot both; "h" draws vertical (or horizontal if horizontal = TRUE) line segments from the points to the origin. Types "s" and "S" are like "l" in the sense that they join consecutive points, but instead of being joined by a straight line, points are connected by a vertical and a horizontal segment forming a ‘step’, with the vertical segment coming first for "s", and the horizontal segment coming first for "S". "g" adds a reference grid. Type "r" adds a linear regression line, "smooth" adds a loess fit, "spline" adds a cubic smoothing spline fit, and "a" draws line segments joining the average y value for each distinct x value. Figure \@ref(fig:resaux) shows a regression line over the residuals instead of the loess smooother.
+When plotting residuals by default the auxiliar line is a smoother. However it's possible to use other type of lines by setting the argument `auxline` in `plot`. The argument can take the values used by `xyplot`, which are (from `panel.xyplot` help page) one or more of the following: "p", "l", "h", "b", "o", "s", "S", "g", "r", "a", "smooth", and "spline". If type has more than one element, an attempt is made to combine the effect of each of the components. The behaviour if any of the first five are included is similar to the effect of the corresponding type in plot: "p" and "l" stand for points and lines respectively; "b" and "o" (for ‘overlay’) plot both; "h" draws vertical (or horizontal if horizontal = TRUE) line segments from the points to the origin. Types "s" and "S" are like "l" in the sense that they join consecutive points, but instead of being joined by a straight line, points are connected by a vertical and a horizontal segment forming a ‘step’, with the vertical segment coming first for "s", and the horizontal segment coming first for "S". "g" adds a reference grid. Type "r" adds a linear regression line, "smooth" adds a loess fit, "spline" adds a cubic smoothing spline fit, and "a" draws line segments joining the average y value for each distinct x value. Figure \@ref(fig:resaux) shows a regression line over the residuals instead of the loess smooother.
 
 ```{r, resaux, fig.cap="Standardized residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother."}
 plot(d_s, auxline="r")
 ```
+
+Pearson residuals can be computed and plotted the same way as standardized residuals by setting `type='pearson'` (Figure \@ref(fig:resp)).
+
+```{r, resp, fig.cap="Pearson residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother."}
+d_p <- residuals(fit, ple4, ple4.indices, type='pearson')
+plot(d_p)
+```
+
+Finally, the raw residuals are computed by setting `type='deviances'` and plotted the same way as before (Figure \@ref(fig:resr)). These residuals are usefull to identify which data points are not well modelled, showing a large dispersion of the residuals and requiring more attention from the analyst.
+
+```{r, resr, fig.cap="Raw residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother."}
+d_r <- residuals(fit, ple4, ple4.indices, type='deviances')
+plot(d_r)
+```
+
+The above plots can all be done grouping by year instead of ages, in which case it can help distinguish non-modeled structural year effects. The argument `by`, by default "ages", needs to be set as "year".
+
+```{r, resy, fig.cap="Standardized residuals for abundance indices and catch numbers (catch.n). Each panel is coded by year, dots represent standardized residuals and lines a simple smoother."}
+d_sy <- residuals(fit, ple4, ple4.indices, by='year')
+plot(d_sy)
+```
+
 
 The common bubble plot (`bubble()`) are shown in Figure \@ref(fig:bub). It shows the same information as Figure \@ref(fig:res) but in a multivariate perspective.
 
@@ -48,19 +73,9 @@ Figure \@ref(fig:qq) shows a quantile-quantile plot to assess how well standardi
 qqmath(d_s)
 ```
 
-Pearson residuals can be computed and plotted the same way as standardized residuals by setting `fit='pearson'` (Figure \@ref(fig:resp)).
 
-```{r, resp, fig.cap="Pearson residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother."}
-d_p <- residuals(fit, ple4, ple4.indices, type='pearson')
-plot(d_p)
-```
 
-Finally, the raw residuals are computed by setting `fit='deviances'` and plotted the same way as before (Figure \@ref(fig:resr)). These residuals are usefull to identify which data points are not well modelled, showing a large dispersion of the residuals and requiring more attention from the analyst.
 
-```{r, resr, fig.cap="Raw residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother."}
-d_r <- residuals(fit, ple4, ple4.indices, type='deviances')
-plot(d_r)
-```
 
 ## Predictive skill
 
