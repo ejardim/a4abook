@@ -1,7 +1,7 @@
 # Fitting
 
 ```{r, echo=FALSE}
-knitr::opts_chunk$set(warnings = FALSE, message=FALSE)
+knitr::opts_chunk$set(warning = FALSE, message=FALSE)
 ```
 
 The `a4a` stock assessment framework is implemented in `R` through the method `sca()`. The method call requires as a minimum a `FLStock` object and a `FLIndices` or `FLindex` object, in which case the default submodels will be set by the method.
@@ -87,7 +87,7 @@ fit2 <- sca(ple4, ple4.indices, fmodel=fmod2, fit="MP")
 
 An interesting extension of the separable model is the 'double separable' where a third factor or smoother is added for the cohort effect.
 
-```{r}
+```{r, warning=FALSE}
 fmod3 <- ~ s(age, k=4) + s(year, k=20) + s(as.numeric(year-age), k=10)
 fit3 <- sca(ple4, ple4.indices, fmodel=fmod3, fit="MP")
 ```
@@ -385,7 +385,7 @@ xyplot(data~year|factor(age), groups=qname, data=flqs, type="l",
        scales=list(y=list(relation="free", draw=FALSE)),
        auto.key=list(points=FALSE, lines=TRUE, columns=2),
        par.settings=list(superpose.line=list(col=c("red", "blue"), lwd=1.5),
-       strip.background=list(col="gray90")), ylab="", as.table=TRUE, layout=c(5,2))
+       strip.background=list(col="gray90")), ylab="", layout=c(5,2))
 ```
 
 ## Initial year abundance submodel ($N_{a,y=1}$)
@@ -418,7 +418,7 @@ xyplot(data~year|factor(age), groups=qname, data=flqs, type="l",
        scales=list(y=list(relation="free", draw=FALSE)),
        auto.key=list(points=FALSE, lines=TRUE, columns=2),
        par.settings=list(superpose.line=list(col=c("red", "blue"), lwd=1.5),
-       strip.background=list(col="gray90")), ylab="", as.table=TRUE, layout=c(5,2))
+       strip.background=list(col="gray90")), ylab="", layout=c(5,2))
 ```
 
 ## More models
@@ -580,7 +580,7 @@ The impact of missing observations is illustrated in Figure \@ref(fig:obsmissing
 pred <- ple4 + simulate(fit, 1000)
 pred_missing <- ple4 + simulate(fit_missing, 1000)
 flqs <- FLQuants(base = catch.n(pred)[ac(1:2), ac(2011:2015)], missing = catch.n(pred_missing)[ac(1:2), ac(2011:2015)])
-bwplot(data ~ qname | factor(year) + factor(age), data = as.data.frame(flqs), scales = "free", auto.key = T, ylab = "Catch at age", layout=c(7,2), as.table=TRUE, par.settings=list(box.rectangle = list(col = "black"), box.umbrella = list(col = "black"), plot.symbol = list(col = "black")))
+bwplot(data ~ qname | factor(year) + factor(age), data = as.data.frame(flqs), scales = "free", auto.key = T, ylab = "Catch at age", layout=c(7,2), par.settings=list(box.rectangle = list(col = "black"), box.umbrella = list(col = "black"), plot.symbol = list(col = "black")))
 ```
 
 This is a simple example, but the same principle applies to more complex models. However, if there are many missing observations, the model cannot be too flexible; otherwise, it won’t be able to reliably estimate the missing data.
@@ -597,7 +597,7 @@ fit_missing2 <- sca(ple4_missing, ple4.indices, srmodel=~bevholt(CV=0.16))
 pred <- ple4 + simulate(fit2, 1000)
 pred_missing <- ple4 + simulate(fit_missing2, 1000)
 flqs2 <- FLQuants(base = catch.n(pred)[ac(1:2), ac(2011:2015)], missing = catch.n(pred_missing)[ac(1:2), ac(2011:2015)])
-bwplot(data ~ qname | factor(year) + factor(age), data = as.data.frame(flqs2), scales = "free", auto.key = T, ylab = "Catch at age", layout=c(7,2), as.table=TRUE, par.settings=list(box.rectangle = list(col = "black"), box.umbrella = list(col = "black"), plot.symbol = list(col = "black")))
+bwplot(data ~ qname | factor(year) + factor(age), data = as.data.frame(flqs2), scales = "free", auto.key = T, ylab = "Catch at age", layout=c(7,2), par.settings=list(box.rectangle = list(col = "black"), box.umbrella = list(col = "black"), plot.symbol = list(col = "black")))
 ```
 
 Another point to note, is that if observations are systematically missing, for example due to the actual observation being below a detection limit, or zero, then the model may overestimate the true catch at age. This is a common problem in stock assessment models, and is not unique to the `a4a` framework. Proposed solutions to this issue are to replace zeros with a small number, or half of the smallest observed value.

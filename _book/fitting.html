@@ -23,7 +23,7 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-04-22" />
+<meta name="date" content="2025-04-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -123,6 +123,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -140,7 +162,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Stock assessment framework</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> cover-image: path to the social sharing image like images/cover.jpg</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Before starting</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#installing-and-loading-libraries"><i class="fa fa-check"></i><b>1.1</b> Installing and loading libraries</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#how-to-read-this-document"><i class="fa fa-check"></i><b>1.2</b> How to read this document</a></li>
@@ -223,9 +245,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.1" data-path="diagnostics.html"><a href="diagnostics.html#residuals"><i class="fa fa-check"></i><b>8.1</b> Residuals</a></li>
 <li class="chapter" data-level="8.2" data-path="diagnostics.html"><a href="diagnostics.html#predictive-skill"><i class="fa fa-check"></i><b>8.2</b> Predictive skill</a></li>
 <li class="chapter" data-level="8.3" data-path="diagnostics.html"><a href="diagnostics.html#fit-summary-information-and-cross-validation-metrics"><i class="fa fa-check"></i><b>8.3</b> Fit summary, information and cross-validation metrics</a></li>
-<li class="chapter" data-level="8.4" data-path="diagnostics.html"><a href="diagnostics.html#the-package-a4adiags"><i class="fa fa-check"></i><b>8.4</b> The package a4adiags</a></li>
-<li class="chapter" data-level="8.5" data-path="diagnostics.html"><a href="diagnostics.html#retrospective-analysis"><i class="fa fa-check"></i><b>8.5</b> Retrospective analysis</a></li>
-<li class="chapter" data-level="8.6" data-path="diagnostics.html"><a href="diagnostics.html#hindcast"><i class="fa fa-check"></i><b>8.6</b> Hindcast</a></li>
+<li class="chapter" data-level="8.4" data-path="diagnostics.html"><a href="diagnostics.html#retrospective-analysis"><i class="fa fa-check"></i><b>8.4</b> Retrospective analysis</a></li>
+<li class="chapter" data-level="8.5" data-path="diagnostics.html"><a href="diagnostics.html#hindcast"><i class="fa fa-check"></i><b>8.5</b> Hindcast</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html"><i class="fa fa-check"></i><b>9</b> Predict and simulate </a>
 <ul>
@@ -318,12 +339,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">7</span> Fitting<a href="fitting.html#fitting" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The <code>a4a</code> stock assessment framework is implemented in <code>R</code> through the method <code>sca()</code>. The method call requires as a minimum a <code>FLStock</code> object and a <code>FLIndices</code> or <code>FLindex</code> object, in which case the default submodels will be set by the method.</p>
 <p>Having described building blocks, basic formulations and effects available to build a submodel’s model, it’s important to look into specific formulations and relate them to commonly known representations. Note that although a large number of formulations are available for each submodel, the user must carefully decide on the full stock assessment model being build and avoid over-parameterize. Over-parametrization may lead to non-convergence, but may also end up not being very useful for prediction/forecasting, which is one of the main objectives of stock assessment.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="fitting.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(FLa4a)</span>
-<span id="cb1-2"><a href="fitting.html#cb1-2" tabindex="-1"></a><span class="fu">data</span>(ple4)</span>
-<span id="cb1-3"><a href="fitting.html#cb1-3" tabindex="-1"></a><span class="fu">data</span>(ple4.indices)</span>
-<span id="cb1-4"><a href="fitting.html#cb1-4" tabindex="-1"></a><span class="fu">data</span>(ple4.index)</span>
-<span id="cb1-5"><a href="fitting.html#cb1-5" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices)</span>
-<span id="cb1-6"><a href="fitting.html#cb1-6" tabindex="-1"></a>stk <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> fit</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="fitting.html#cb118-1" tabindex="-1"></a><span class="fu">library</span>(FLa4a)</span>
+<span id="cb118-2"><a href="fitting.html#cb118-2" tabindex="-1"></a><span class="fu">data</span>(ple4)</span>
+<span id="cb118-3"><a href="fitting.html#cb118-3" tabindex="-1"></a><span class="fu">data</span>(ple4.indices)</span>
+<span id="cb118-4"><a href="fitting.html#cb118-4" tabindex="-1"></a><span class="fu">data</span>(ple4.index)</span>
+<span id="cb118-5"><a href="fitting.html#cb118-5" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices)</span>
+<span id="cb118-6"><a href="fitting.html#cb118-6" tabindex="-1"></a>stk <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> fit</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:plt01"></span>
 <img src="_main_files/figure-html/plt01-1.png" alt="Stock summary" width="672" />
 <p class="caption">
@@ -338,7 +359,7 @@ Figure 7.1: Stock summary
 ## 
 ## Time used:
 ##  Pre-processing     Running a4a Post-processing           Total 
-##       1.2818902      14.1500819       0.3325787      15.7645507 
+##       0.9210925       9.4130342       0.1748881      10.5090148 
 ## 
 ## Submodels:
 ##   fmodel: ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
@@ -360,23 +381,23 @@ Figure 7.1: Stock summary
 ##     IBTS_Q3:                         ~1
 ##     IBTS_Q1:                         ~1</code></pre>
 <p>To set specific submodels the user has to write the relevant <code>R</code> formula and include it in the call. The arguments for each submodel are self-explanatory: fishing mortality is ‘fmodel’, indices’ catchability is ‘qmodel’, stock-recruitment is ‘srmodel’, observation variance is ‘vmodel’ and for initial year’s abundance is ‘n1model’. The following model comes closer to the official stock assessment of North Sea plaice, as such we’ll name it <code>fit0</code> and keep it for future comparisons.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="fitting.html#cb3-1" tabindex="-1"></a>fmod0 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">6</span>)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">10</span>)<span class="sc">+</span><span class="fu">te</span>(age, year, <span class="at">k=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">8</span>))</span>
-<span id="cb3-2"><a href="fitting.html#cb3-2" tabindex="-1"></a>qmod0 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">4</span>),</span>
-<span id="cb3-3"><a href="fitting.html#cb3-3" tabindex="-1"></a>       <span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">3</span>),</span>
-<span id="cb3-4"><a href="fitting.html#cb3-4" tabindex="-1"></a>       <span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">3</span>) <span class="sc">+</span> year,</span>
-<span id="cb3-5"><a href="fitting.html#cb3-5" tabindex="-1"></a>       <span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">3</span>),</span>
-<span id="cb3-6"><a href="fitting.html#cb3-6" tabindex="-1"></a>       <span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">4</span>),</span>
-<span id="cb3-7"><a href="fitting.html#cb3-7" tabindex="-1"></a>       <span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">6</span>))</span>
-<span id="cb3-8"><a href="fitting.html#cb3-8" tabindex="-1"></a>srmod0 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">20</span>)</span>
-<span id="cb3-9"><a href="fitting.html#cb3-9" tabindex="-1"></a>vmod0 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">4</span>), <span class="sc">~</span><span class="dv">1</span>,  <span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>)</span>
-<span id="cb3-10"><a href="fitting.html#cb3-10" tabindex="-1"></a>n1mod0 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">3</span>)</span>
-<span id="cb3-11"><a href="fitting.html#cb3-11" tabindex="-1"></a>fit0 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices,</span>
-<span id="cb3-12"><a href="fitting.html#cb3-12" tabindex="-1"></a>       <span class="at">fmodel=</span>fmod0,</span>
-<span id="cb3-13"><a href="fitting.html#cb3-13" tabindex="-1"></a>       <span class="at">qmodel=</span>qmod0,</span>
-<span id="cb3-14"><a href="fitting.html#cb3-14" tabindex="-1"></a>       <span class="at">srmodel=</span>srmod0,</span>
-<span id="cb3-15"><a href="fitting.html#cb3-15" tabindex="-1"></a>       <span class="at">n1model=</span>n1mod0,</span>
-<span id="cb3-16"><a href="fitting.html#cb3-16" tabindex="-1"></a>       <span class="at">vmodel=</span>vmod0)</span>
-<span id="cb3-17"><a href="fitting.html#cb3-17" tabindex="-1"></a>stk0 <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> fit0</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="fitting.html#cb120-1" tabindex="-1"></a>fmod0 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">6</span>)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">10</span>)<span class="sc">+</span><span class="fu">te</span>(age, year, <span class="at">k=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">8</span>))</span>
+<span id="cb120-2"><a href="fitting.html#cb120-2" tabindex="-1"></a>qmod0 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">4</span>),</span>
+<span id="cb120-3"><a href="fitting.html#cb120-3" tabindex="-1"></a>       <span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">3</span>),</span>
+<span id="cb120-4"><a href="fitting.html#cb120-4" tabindex="-1"></a>       <span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">3</span>) <span class="sc">+</span> year,</span>
+<span id="cb120-5"><a href="fitting.html#cb120-5" tabindex="-1"></a>       <span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">3</span>),</span>
+<span id="cb120-6"><a href="fitting.html#cb120-6" tabindex="-1"></a>       <span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">4</span>),</span>
+<span id="cb120-7"><a href="fitting.html#cb120-7" tabindex="-1"></a>       <span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">6</span>))</span>
+<span id="cb120-8"><a href="fitting.html#cb120-8" tabindex="-1"></a>srmod0 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">20</span>)</span>
+<span id="cb120-9"><a href="fitting.html#cb120-9" tabindex="-1"></a>vmod0 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">4</span>), <span class="sc">~</span><span class="dv">1</span>,  <span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>)</span>
+<span id="cb120-10"><a href="fitting.html#cb120-10" tabindex="-1"></a>n1mod0 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">3</span>)</span>
+<span id="cb120-11"><a href="fitting.html#cb120-11" tabindex="-1"></a>fit0 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices,</span>
+<span id="cb120-12"><a href="fitting.html#cb120-12" tabindex="-1"></a>       <span class="at">fmodel=</span>fmod0,</span>
+<span id="cb120-13"><a href="fitting.html#cb120-13" tabindex="-1"></a>       <span class="at">qmodel=</span>qmod0,</span>
+<span id="cb120-14"><a href="fitting.html#cb120-14" tabindex="-1"></a>       <span class="at">srmodel=</span>srmod0,</span>
+<span id="cb120-15"><a href="fitting.html#cb120-15" tabindex="-1"></a>       <span class="at">n1model=</span>n1mod0,</span>
+<span id="cb120-16"><a href="fitting.html#cb120-16" tabindex="-1"></a>       <span class="at">vmodel=</span>vmod0)</span>
+<span id="cb120-17"><a href="fitting.html#cb120-17" tabindex="-1"></a>stk0 <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> fit0</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:plt02"></span>
 <img src="_main_files/figure-html/plt02-1.png" alt="Stock summary - close to official assessment" width="672" />
 <p class="caption">
@@ -392,7 +413,7 @@ Figure 7.2: Stock summary - close to official assessment
 ## 
 ## Time used:
 ##  Pre-processing     Running a4a Post-processing           Total 
-##      0.79011393      3.55707216      0.08485723      4.43204331 
+##       0.7684972       2.5211194       0.0838728       3.3734894 
 ## 
 ## Submodels:
 ##   fmodel: ~s(age, k = 6) + s(year, k = 10) + te(age, year, k = c(3, 8))
@@ -424,17 +445,14 @@ Figure 7.2: Stock summary - close to official assessment
 <h3><span class="header-section-number">7.1.1</span> Separable model<a href="fitting.html#separable-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>One of the most useful models for fishing mortality is one in which ‘age’ and ‘year’ effects are independent, that is, where the shape of the selection pattern does not change over time, but the overall level of fishing mortality do. Commonly called a ‘separable model’.</p>
 <p>A full separable model in <code>a4a</code> is written using the <code>factor</code> function which converts age and year effects into categorical values, forcing a different coefficient to be estimated for each level of both effects. This model has <span class="math inline">\(age x year\)</span> number of parameters.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="fitting.html#cb5-1" tabindex="-1"></a>fmod1 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">factor</span>(age) <span class="sc">+</span> <span class="fu">factor</span>(year)</span>
-<span id="cb5-2"><a href="fitting.html#cb5-2" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>fmod1, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="fitting.html#cb122-1" tabindex="-1"></a>fmod1 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">factor</span>(age) <span class="sc">+</span> <span class="fu">factor</span>(year)</span>
+<span id="cb122-2"><a href="fitting.html#cb122-2" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>fmod1, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span></code></pre></div>
 <p>One can reduce the number of parameters and add dependency along both effects, although still keeping independence of each other, by using smoothers rather than <code>factor</code>. We’re using the North Sea Plaice data, and since it has 10 ages we will use a simple rule of thumb that the spline should have fewer than <span class="math inline">\(\frac{10}{2} = 5\)</span> degrees of freedom, and so we opt for 4 degrees of freedom. We will also do the same for year and model the change in <span class="math inline">\(F\)</span> through time as a smoother with 20 degrees of freedom.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="fitting.html#cb6-1" tabindex="-1"></a>fmod2 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">4</span>) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">20</span>)</span>
-<span id="cb6-2"><a href="fitting.html#cb6-2" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>fmod2, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="fitting.html#cb123-1" tabindex="-1"></a>fmod2 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">4</span>) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">20</span>)</span>
+<span id="cb123-2"><a href="fitting.html#cb123-2" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>fmod2, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span></code></pre></div>
 <p>An interesting extension of the separable model is the ‘double separable’ where a third factor or smoother is added for the cohort effect.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="fitting.html#cb7-1" tabindex="-1"></a>fmod3 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">4</span>) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">20</span>) <span class="sc">+</span> <span class="fu">s</span>(<span class="fu">as.numeric</span>(year<span class="sc">-</span>age), <span class="at">k=</span><span class="dv">10</span>)</span>
-<span id="cb7-2"><a href="fitting.html#cb7-2" tabindex="-1"></a>fit3 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>fmod3, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span></code></pre></div>
-<pre><code>## Warning: *** ~s(age, k = 4) + s(year, k = 20) + s(as.numeric(year - age),     k = 10) has 1 too many parameter(s)!!
-##     i will remove the redundant ones:
-##  s(as.numeric(year - age)).9</code></pre>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="fitting.html#cb124-1" tabindex="-1"></a>fmod3 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">4</span>) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">20</span>) <span class="sc">+</span> <span class="fu">s</span>(<span class="fu">as.numeric</span>(year<span class="sc">-</span>age), <span class="at">k=</span><span class="dv">10</span>)</span>
+<span id="cb124-2"><a href="fitting.html#cb124-2" tabindex="-1"></a>fit3 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>fmod3, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span></code></pre></div>
 <p>Figures <a href="fitting.html#fig:sep00">7.3</a> and <a href="fitting.html#fig:sep01">7.4</a> depicts the three models selectivities for each year. Each separable model has a single selectivity that changes it’s overall scale in each year, while the double separable introduces some variability over time by modeling the cohort factor.</p>
 <div class="figure"><span style="display:block;" id="fig:sep00"></span>
 <img src="_main_files/figure-html/sep00-1.png" alt="Selection pattern of separable models. Each line represents the selection pattern in a specific year. Independent age and year effects (factor), internally dependent age and year (smooth), double separable (double)." width="672" />
@@ -452,8 +470,8 @@ Figure 7.4: Fishing mortality of separable models. Independent age and year effe
 <div id="model-with-age-year-interaction" class="section level3 hasAnchor" number="7.1.2">
 <h3><span class="header-section-number">7.1.2</span> Model with age-year interaction<a href="fitting.html#model-with-age-year-interaction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A non-separable model, where we consider age and year to interact can be modeled by a smooth interaction term with a tensor product of cubic splines, the <code>te</code> method (Figure <a href="fitting.html#fig:te1">7.5</a>), again borrowed from <code>mgcv</code> (<span class="citation">(<a href="#ref-R-mgcv"><strong>R-mgcv?</strong></a>)</span>).</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="fitting.html#cb9-1" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">20</span>))</span>
-<span id="cb9-2"><a href="fitting.html#cb9-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, fmod)</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="fitting.html#cb125-1" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">20</span>))</span>
+<span id="cb125-2"><a href="fitting.html#cb125-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, fmod)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:te1"></span>
 <img src="_main_files/figure-html/te1-1.png" alt="Fishing mortality smoothed non-separable model" width="672" />
 <p class="caption">
@@ -461,8 +479,8 @@ Figure 7.5: Fishing mortality smoothed non-separable model
 </p>
 </div>
 <p>In this example fishing mortalities are linked across age and time. What if we want to free up a specific age class because in the residuals we see a consistent pattern. This can happen, for example, if the spatial distribution of juveniles is disconnected to the distribution of adults. The fishery focuses on the adult fish, and therefore the <span class="math inline">\(F\)</span> on young fish is a function of the distribution of the juveniles and could deserve a specific model. This can be achieved by adding a component for the year effect on age 1 (Figure <a href="fitting.html#fig:age1">7.6</a>). We’ll use <code>s</code>’s argument <code>by</code> to define the ages that the model will apply to. The <code>as.numeric</code> method over <code>age==1</code>, will result in a matrix that will be <span class="math inline">\(1\)</span> for ages 1 and <span class="math inline">\(0\)</span> for the other ages, effectively removing those ages from the <code>s</code> model. Furthermore, by not removing age 1 from the <code>te</code> component we’re in effect adding the two estimates for age 1.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="fitting.html#cb10-1" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">20</span>)) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">5</span>, <span class="at">by =</span> <span class="fu">as.numeric</span>(age<span class="sc">==</span><span class="dv">1</span>))</span>
-<span id="cb10-2"><a href="fitting.html#cb10-2" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, fmod)</span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="fitting.html#cb126-1" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">20</span>)) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">5</span>, <span class="at">by =</span> <span class="fu">as.numeric</span>(age<span class="sc">==</span><span class="dv">1</span>))</span>
+<span id="cb126-2"><a href="fitting.html#cb126-2" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, fmod)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:age1"></span>
 <img src="_main_files/figure-html/age1-1.png" alt="Fishing mortality age-year interaction model with extra age 1 smoother." width="672" />
 <p class="caption">
@@ -473,23 +491,23 @@ Figure 7.6: Fishing mortality age-year interaction model with extra age 1 smooth
 <div id="constant-selectivity-for-contiguous-ages-or-years" class="section level3 hasAnchor" number="7.1.3">
 <h3><span class="header-section-number">7.1.3</span> Constant selectivity for contiguous ages or years<a href="fitting.html#constant-selectivity-for-contiguous-ages-or-years" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To set these models we’ll use the method <code>replace()</code> to define which ages or years will be modelled together. The following example shows <code>replace()</code> in operation. The dependent variables used in the model will be changed and attributed the same age or year, as such during the fit observations of those ages or years with will be seen as replicates. One can think of it as sharing the same mean value, which will be estimated by the model.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="fitting.html#cb11-1" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb11-2"><a href="fitting.html#cb11-2" tabindex="-1"></a><span class="co"># last age same as previous</span></span>
-<span id="cb11-3"><a href="fitting.html#cb11-3" tabindex="-1"></a><span class="fu">replace</span>(age, age<span class="sc">&gt;</span><span class="dv">9</span>, <span class="dv">9</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="fitting.html#cb127-1" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb127-2"><a href="fitting.html#cb127-2" tabindex="-1"></a><span class="co"># last age same as previous</span></span>
+<span id="cb127-3"><a href="fitting.html#cb127-3" tabindex="-1"></a><span class="fu">replace</span>(age, age<span class="sc">&gt;</span><span class="dv">9</span>, <span class="dv">9</span>)</span></code></pre></div>
 <pre><code>##  [1] 1 2 3 4 5 6 7 8 9 9</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="fitting.html#cb13-1" tabindex="-1"></a><span class="co"># all ages after age 6</span></span>
-<span id="cb13-2"><a href="fitting.html#cb13-2" tabindex="-1"></a><span class="fu">replace</span>(age, age<span class="sc">&gt;</span><span class="dv">6</span>, <span class="dv">6</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="fitting.html#cb129-1" tabindex="-1"></a><span class="co"># all ages after age 6</span></span>
+<span id="cb129-2"><a href="fitting.html#cb129-2" tabindex="-1"></a><span class="fu">replace</span>(age, age<span class="sc">&gt;</span><span class="dv">6</span>, <span class="dv">6</span>)</span></code></pre></div>
 <pre><code>##  [1] 1 2 3 4 5 6 6 6 6 6</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="fitting.html#cb15-1" tabindex="-1"></a>year <span class="ot">&lt;-</span> <span class="dv">1950</span><span class="sc">:</span><span class="dv">2010</span></span>
-<span id="cb15-2"><a href="fitting.html#cb15-2" tabindex="-1"></a><span class="fu">replace</span>(year, year<span class="sc">&gt;</span><span class="dv">2005</span>, <span class="dv">2005</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="fitting.html#cb131-1" tabindex="-1"></a>year <span class="ot">&lt;-</span> <span class="dv">1950</span><span class="sc">:</span><span class="dv">2010</span></span>
+<span id="cb131-2"><a href="fitting.html#cb131-2" tabindex="-1"></a><span class="fu">replace</span>(year, year<span class="sc">&gt;</span><span class="dv">2005</span>, <span class="dv">2005</span>)</span></code></pre></div>
 <pre><code>##  [1] 1950 1951 1952 1953 1954 1955 1956 1957 1958 1959 1960 1961 1962 1963 1964
 ## [16] 1965 1966 1967 1968 1969 1970 1971 1972 1973 1974 1975 1976 1977 1978 1979
 ## [31] 1980 1981 1982 1983 1984 1985 1986 1987 1988 1989 1990 1991 1992 1993 1994
 ## [46] 1995 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005 2005 2005 2005 2005
 ## [61] 2005</code></pre>
 <p>In the <span class="math inline">\(F\)</span> submodel one can use this method to fix the estimation of <span class="math inline">\(F\)</span> in the plus group to be the same as in the last non-aggregated age.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="fitting.html#cb17-1" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(<span class="fu">replace</span>(age, age<span class="sc">&gt;</span><span class="dv">9</span>, <span class="dv">9</span>), <span class="at">k=</span><span class="dv">4</span>) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">20</span>)</span>
-<span id="cb17-2"><a href="fitting.html#cb17-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, fmod)</span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="fitting.html#cb133-1" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(<span class="fu">replace</span>(age, age<span class="sc">&gt;</span><span class="dv">9</span>, <span class="dv">9</span>), <span class="at">k=</span><span class="dv">4</span>) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">20</span>)</span>
+<span id="cb133-2"><a href="fitting.html#cb133-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, fmod)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:ctsselage"></span>
 <img src="_main_files/figure-html/ctsselage-1.png" alt="F-at-age fixed above age 9" width="672" />
 <p class="caption">
@@ -497,8 +515,8 @@ Figure 7.7: F-at-age fixed above age 9
 </p>
 </div>
 <p>Or estimate the average <span class="math inline">\(F\)</span> in the most recent years, instead of averaging after the assessment to compute the <em>statu quo</em> selection pattern.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="fitting.html#cb18-1" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">4</span>) <span class="sc">+</span> <span class="fu">s</span>(<span class="fu">replace</span>(year, year<span class="sc">&gt;</span><span class="dv">2013</span>, <span class="dv">2013</span>), <span class="at">k=</span><span class="dv">20</span>)</span>
-<span id="cb18-2"><a href="fitting.html#cb18-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, fmod)</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="fitting.html#cb134-1" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">4</span>) <span class="sc">+</span> <span class="fu">s</span>(<span class="fu">replace</span>(year, year<span class="sc">&gt;</span><span class="dv">2013</span>, <span class="dv">2013</span>), <span class="at">k=</span><span class="dv">20</span>)</span>
+<span id="cb134-2"><a href="fitting.html#cb134-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, fmod)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:ctsselyear"></span>
 <img src="_main_files/figure-html/ctsselyear-1.png" alt="F-at-age fixed for the most recent 5 years" width="672" />
 <p class="caption">
@@ -509,9 +527,9 @@ Figure 7.8: F-at-age fixed for the most recent 5 years
 <div id="time-blocks-selectivity" class="section level3 hasAnchor" number="7.1.4">
 <h3><span class="header-section-number">7.1.4</span> Time blocks selectivity<a href="fitting.html#time-blocks-selectivity" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To define blocks of data <code>sca()</code> uses the method <code>breakpts()</code>, which creates a factor from a vector with levels defined by the second argument.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="fitting.html#cb19-1" tabindex="-1"></a>year <span class="ot">&lt;-</span> <span class="dv">1950</span><span class="sc">:</span><span class="dv">2010</span></span>
-<span id="cb19-2"><a href="fitting.html#cb19-2" tabindex="-1"></a><span class="co"># two levels separated in 2000</span></span>
-<span id="cb19-3"><a href="fitting.html#cb19-3" tabindex="-1"></a><span class="fu">breakpts</span>(year, <span class="dv">2000</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="fitting.html#cb135-1" tabindex="-1"></a>year <span class="ot">&lt;-</span> <span class="dv">1950</span><span class="sc">:</span><span class="dv">2010</span></span>
+<span id="cb135-2"><a href="fitting.html#cb135-2" tabindex="-1"></a><span class="co"># two levels separated in 2000</span></span>
+<span id="cb135-3"><a href="fitting.html#cb135-3" tabindex="-1"></a><span class="fu">breakpts</span>(year, <span class="dv">2000</span>)</span></code></pre></div>
 <pre><code>##  [1] (1949,2000] (1949,2000] (1949,2000] (1949,2000] (1949,2000] (1949,2000]
 ##  [7] (1949,2000] (1949,2000] (1949,2000] (1949,2000] (1949,2000] (1949,2000]
 ## [13] (1949,2000] (1949,2000] (1949,2000] (1949,2000] (1949,2000] (1949,2000]
@@ -524,8 +542,8 @@ Figure 7.8: F-at-age fixed for the most recent 5 years
 ## [55] (2000,2010] (2000,2010] (2000,2010] (2000,2010] (2000,2010] (2000,2010]
 ## [61] (2000,2010]
 ## Levels: (1949,2000] (2000,2010]</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="fitting.html#cb21-1" tabindex="-1"></a><span class="co"># five periods with equal interval</span></span>
-<span id="cb21-2"><a href="fitting.html#cb21-2" tabindex="-1"></a><span class="fu">breakpts</span>(year, <span class="fu">seq</span>(<span class="dv">1949</span>, <span class="dv">2010</span>, <span class="at">length=</span><span class="dv">6</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="fitting.html#cb137-1" tabindex="-1"></a><span class="co"># five periods with equal interval</span></span>
+<span id="cb137-2"><a href="fitting.html#cb137-2" tabindex="-1"></a><span class="fu">breakpts</span>(year, <span class="fu">seq</span>(<span class="dv">1949</span>, <span class="dv">2010</span>, <span class="at">length=</span><span class="dv">6</span>))</span></code></pre></div>
 <pre><code>##  [1] (1949,1961.2]   (1949,1961.2]   (1949,1961.2]   (1949,1961.2]  
 ##  [5] (1949,1961.2]   (1949,1961.2]   (1949,1961.2]   (1949,1961.2]  
 ##  [9] (1949,1961.2]   (1949,1961.2]   (1949,1961.2]   (1949,1961.2]  
@@ -546,8 +564,8 @@ Figure 7.8: F-at-age fixed for the most recent 5 years
 <p>Note <code>seq()</code> computes ‘left-open’ intervals, which means that to include 1950 the sequence must start one year earlier.</p>
 <p>These methods can be used to create discrete time series, for which a different selection pattern is allowed in each block. This is called an interaction in statistical modelling parlance, and typically a <code>*</code> denotes an interaction term, for smoothers an interaction is achieved using the <code>by</code> argument. When this argument is a <code>factor</code> a replicate of the smooth is produced for each factor level.</p>
 <p>In the next case we’ll use the <code>breakpts()</code> to split the time series at 1990, although keeping the same shape in both periods, a thin plate spline with 3 knots (Figure <a href="fitting.html#fig:brk">7.9</a>).</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="fitting.html#cb23-1" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">3</span>, <span class="at">by =</span> <span class="fu">breakpts</span>(year, <span class="dv">1990</span>))</span>
-<span id="cb23-2"><a href="fitting.html#cb23-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, fmod)</span></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="fitting.html#cb139-1" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">3</span>, <span class="at">by =</span> <span class="fu">breakpts</span>(year, <span class="dv">1990</span>))</span>
+<span id="cb139-2"><a href="fitting.html#cb139-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, fmod)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:brk"></span>
 <img src="_main_files/figure-html/brk-1.png" alt="F-at-age in two periods using in both cases a thin plate spline with 3 knots" width="672" />
 <p class="caption">
@@ -558,19 +576,19 @@ Figure 7.9: F-at-age in two periods using in both cases a thin plate spline with
 <div id="time-changing-selectivity" class="section level3 hasAnchor" number="7.1.5">
 <h3><span class="header-section-number">7.1.5</span> Time changing selectivity<a href="fitting.html#time-changing-selectivity" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In many cases, it may be desirable to allow the selection pattern to evolve over time, from year to year. Again there are several ways to do this, one way is to estimate a mean selection pattern, while also allowing <span class="math inline">\(F\)</span> to vary over time for each age. This is like a separable smoother over year, with ‘age blocks’ so, looking back at previous examples, we have:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="fitting.html#cb24-1" tabindex="-1"></a>fmodel <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">15</span>, <span class="at">by =</span> <span class="fu">factor</span>(age)) <span class="sc">+</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="fitting.html#cb140-1" tabindex="-1"></a>fmodel <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">15</span>, <span class="at">by =</span> <span class="fu">factor</span>(age)) <span class="sc">+</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">4</span>)</span></code></pre></div>
 <p>This is a type of interaction between age and year, but the only connection (or correlation) across ages is via the smoother on age, however there are still 15 degrees of freedom for each age, so the model 10 x 15 + 4 = 154 degrees of freedom.</p>
 <p>To include correlation across ages and years together the tensor product (<code>te()</code>) is used, this has the effect of restricting the flexibility of the model for <span class="math inline">\(F\)</span>. In the following, there is a smoother in 2 dimensions (age and year) where there is 5 degrees of freedom in the age direction, and 15 in the year dimension, resulting in a total of 5 x 15 = 65 degrees of freedom</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="fitting.html#cb25-1" tabindex="-1"></a>fmodel <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">15</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="fitting.html#cb141-1" tabindex="-1"></a>fmodel <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">15</span>))</span></code></pre></div>
 <p>Often the above formulations provide too much flexibility, and a more complicated specification, but simpler model is preferable:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="fitting.html#cb26-1" tabindex="-1"></a>fmodel <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">4</span>) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">15</span>) <span class="sc">+</span> <span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="fitting.html#cb142-1" tabindex="-1"></a>fmodel <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">4</span>) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">15</span>) <span class="sc">+</span> <span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>))</span></code></pre></div>
 <p>in the above model, the main effects for age and year still have similar flexibility to the full tensor model, however, the interaction (or the change in F at age over time) has been restricted, so that the full model now has 4 + 15 + 3 x 5 = 34 degrees of freedom.</p>
 </div>
 <div id="closed-form-selection-pattern" class="section level3 hasAnchor" number="7.1.6">
 <h3><span class="header-section-number">7.1.6</span> Closed form selection pattern<a href="fitting.html#closed-form-selection-pattern" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>One can use a closed form for the selection pattern. The only requirement is to be able to write it as a <code>R</code> formula, the example below uses a logistic form.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="fitting.html#cb27-1" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">I</span>(<span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span>age)))</span>
-<span id="cb27-2"><a href="fitting.html#cb27-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, fmod)</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="fitting.html#cb143-1" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">I</span>(<span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span>age)))</span>
+<span id="cb143-2"><a href="fitting.html#cb143-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, fmod)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:logistic"></span>
 <img src="_main_files/figure-html/logistic-1.png" alt="F-at-age logistic" width="672" />
 <p class="caption">
@@ -586,8 +604,8 @@ Figure 7.10: F-at-age logistic
 <div id="catchability-submodel-for-age-based-indices" class="section level3 hasAnchor" number="7.2.1">
 <h3><span class="header-section-number">7.2.1</span> Catchability submodel for age based indices<a href="fitting.html#catchability-submodel-for-age-based-indices" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The first model shown is simply a dummy effect on age, which means that one coefficient will be estimated for each age. Note this kind of model considers each level of the factor to be independent from the others levels (Figure <a href="fitting.html#fig:dummyage">7.11</a>).</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="fitting.html#cb28-1" tabindex="-1"></a>qmod <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="sc">~</span><span class="fu">factor</span>(age))</span>
-<span id="cb28-2"><a href="fitting.html#cb28-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.index, <span class="at">qmodel=</span>qmod)</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="fitting.html#cb144-1" tabindex="-1"></a>qmod <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="sc">~</span><span class="fu">factor</span>(age))</span>
+<span id="cb144-2"><a href="fitting.html#cb144-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.index, <span class="at">qmodel=</span>qmod)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:dummyage"></span>
 <img src="_main_files/figure-html/dummyage-1.png" alt="Catchability age independent model" width="672" />
 <p class="caption">
@@ -595,8 +613,8 @@ Figure 7.11: Catchability age independent model
 </p>
 </div>
 <p>If one considers catchability at a specific age to be dependent on catchability on the other ages, similar to a selectivity modelling approach, one option is to use a smoother at age, and let the data ‘speak’ regarding the shape (Figure <a href="fitting.html#fig:smoothage">7.12</a>).</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="fitting.html#cb29-1" tabindex="-1"></a>qmod <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="sc">~</span> <span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">4</span>))</span>
-<span id="cb29-2"><a href="fitting.html#cb29-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices[<span class="dv">1</span>], <span class="at">qmodel=</span>qmod)</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="fitting.html#cb145-1" tabindex="-1"></a>qmod <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="sc">~</span> <span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">4</span>))</span>
+<span id="cb145-2"><a href="fitting.html#cb145-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices[<span class="dv">1</span>], <span class="at">qmodel=</span>qmod)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:smoothage"></span>
 <img src="_main_files/figure-html/smoothage-1.png" alt="Catchability smoother age model" width="672" />
 <p class="caption">
@@ -604,8 +622,8 @@ Figure 7.12: Catchability smoother age model
 </p>
 </div>
 <p>Finally, one may want to investigate a trend in catchability with time, very common in indices built from CPUE data. In the example given here we’ll use a linear trend in time, set up by a simple linear model (Figure <a href="fitting.html#fig:qtrend">7.13</a>).</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="fitting.html#cb30-1" tabindex="-1"></a>qmod <span class="ot">&lt;-</span> <span class="fu">list</span>( <span class="sc">~</span> <span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">4</span>) <span class="sc">+</span> year)</span>
-<span id="cb30-2"><a href="fitting.html#cb30-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices[<span class="dv">1</span>], <span class="at">qmodel=</span>qmod)</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="fitting.html#cb146-1" tabindex="-1"></a>qmod <span class="ot">&lt;-</span> <span class="fu">list</span>( <span class="sc">~</span> <span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">4</span>) <span class="sc">+</span> year)</span>
+<span id="cb146-2"><a href="fitting.html#cb146-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices[<span class="dv">1</span>], <span class="at">qmodel=</span>qmod)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:qtrend"></span>
 <img src="_main_files/figure-html/qtrend-1.png" alt="Catchability with a linear trend in year" width="672" />
 <p class="caption">
@@ -617,81 +635,81 @@ Figure 7.13: Catchability with a linear trend in year
 <h3><span class="header-section-number">7.2.2</span> Catchability submodel for age aggregated biomass indices<a href="fitting.html#catchability-submodel-for-age-aggregated-biomass-indices" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The previous section focused on age-disaggregated indices, which are most often reported as standardized number of individuals, <em>e.g.</em> number of individuals caught per hour. Age-aggregated indices (such as CPUE, biomass, DEPM, etc.) may also be used to tune the population’s biomass in terms of weight. These indices are linked either to the total biomass or to the weight of a specific group of age classes, defined by the age range set in the object.</p>
 <p>In such cases, a different index class must be used: FLIndexBiomass. This class uses a vector named index with an age dimension labeled as ‘all’. The qmodel should be specified without age-specific factors, although it may still include a ‘year’ component and relevant covariates, if needed.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="fitting.html#cb31-1" tabindex="-1"></a><span class="co"># simulating a biomass index (note the name of the first dimension element) using</span></span>
-<span id="cb31-2"><a href="fitting.html#cb31-2" tabindex="-1"></a><span class="co"># the ple4 biomass and an arbritary catchability of 0.001 plus a lognormal error.</span></span>
-<span id="cb31-3"><a href="fitting.html#cb31-3" tabindex="-1"></a>dnms <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">age=</span><span class="st">&quot;all&quot;</span>, <span class="at">year=</span><span class="fu">range</span>(ple4)[<span class="st">&quot;minyear&quot;</span>]<span class="sc">:</span><span class="fu">range</span>(ple4)[<span class="st">&quot;maxyear&quot;</span>])</span>
-<span id="cb31-4"><a href="fitting.html#cb31-4" tabindex="-1"></a>bioidx <span class="ot">&lt;-</span> <span class="fu">FLIndexBiomass</span>(<span class="fu">FLQuant</span>(<span class="cn">NA</span>, <span class="at">dimnames=</span>dnms))</span>
-<span id="cb31-5"><a href="fitting.html#cb31-5" tabindex="-1"></a><span class="fu">index</span>(bioidx) <span class="ot">&lt;-</span> <span class="fu">stock</span>(ple4)<span class="sc">*</span><span class="fl">0.001</span></span>
-<span id="cb31-6"><a href="fitting.html#cb31-6" tabindex="-1"></a><span class="fu">index</span>(bioidx) <span class="ot">&lt;-</span> <span class="fu">index</span>(bioidx)<span class="sc">*</span><span class="fu">exp</span>(<span class="fu">rnorm</span>(<span class="fu">index</span>(bioidx), <span class="at">sd=</span><span class="fl">0.1</span>))</span>
-<span id="cb31-7"><a href="fitting.html#cb31-7" tabindex="-1"></a><span class="fu">range</span>(bioidx)[<span class="fu">c</span>(<span class="st">&quot;startf&quot;</span>,<span class="st">&quot;endf&quot;</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>)</span>
-<span id="cb31-8"><a href="fitting.html#cb31-8" tabindex="-1"></a><span class="co"># note the name of the first dimension element</span></span>
-<span id="cb31-9"><a href="fitting.html#cb31-9" tabindex="-1"></a><span class="fu">index</span>(bioidx)</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="fitting.html#cb147-1" tabindex="-1"></a><span class="co"># simulating a biomass index (note the name of the first dimension element) using</span></span>
+<span id="cb147-2"><a href="fitting.html#cb147-2" tabindex="-1"></a><span class="co"># the ple4 biomass and an arbritary catchability of 0.001 plus a lognormal error.</span></span>
+<span id="cb147-3"><a href="fitting.html#cb147-3" tabindex="-1"></a>dnms <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">age=</span><span class="st">&quot;all&quot;</span>, <span class="at">year=</span><span class="fu">range</span>(ple4)[<span class="st">&quot;minyear&quot;</span>]<span class="sc">:</span><span class="fu">range</span>(ple4)[<span class="st">&quot;maxyear&quot;</span>])</span>
+<span id="cb147-4"><a href="fitting.html#cb147-4" tabindex="-1"></a>bioidx <span class="ot">&lt;-</span> <span class="fu">FLIndexBiomass</span>(<span class="fu">FLQuant</span>(<span class="cn">NA</span>, <span class="at">dimnames=</span>dnms))</span>
+<span id="cb147-5"><a href="fitting.html#cb147-5" tabindex="-1"></a><span class="fu">index</span>(bioidx) <span class="ot">&lt;-</span> <span class="fu">stock</span>(ple4)<span class="sc">*</span><span class="fl">0.001</span></span>
+<span id="cb147-6"><a href="fitting.html#cb147-6" tabindex="-1"></a><span class="fu">index</span>(bioidx) <span class="ot">&lt;-</span> <span class="fu">index</span>(bioidx)<span class="sc">*</span><span class="fu">exp</span>(<span class="fu">rnorm</span>(<span class="fu">index</span>(bioidx), <span class="at">sd=</span><span class="fl">0.1</span>))</span>
+<span id="cb147-7"><a href="fitting.html#cb147-7" tabindex="-1"></a><span class="fu">range</span>(bioidx)[<span class="fu">c</span>(<span class="st">&quot;startf&quot;</span>,<span class="st">&quot;endf&quot;</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>)</span>
+<span id="cb147-8"><a href="fitting.html#cb147-8" tabindex="-1"></a><span class="co"># note the name of the first dimension element</span></span>
+<span id="cb147-9"><a href="fitting.html#cb147-9" tabindex="-1"></a><span class="fu">index</span>(bioidx)</span></code></pre></div>
 <pre><code>## An object of class &quot;FLQuant&quot;
 ## , , unit = unique, season = all, area = unique
 ## 
 ##      year
 ## age   1957 1958 1959 1960 1961 1962 1963 1964 1965 1966 1967 1968 1969 1970
-##   all  392  409  451  527  423  659  530  501  626  603  521  525  536  381
+##   all  410  452  471  524  600  643  535  491  530  520  636  450  463  472
 ##      year
 ## age   1971 1972 1973 1974 1975 1976 1977 1978 1979 1980 1981 1982 1983 1984
-##   all  450  387  423  375  420  482  554  374  434  452  450  557  540  470
+##   all  445  422  386  451  508  515  600  532  469  436  570  511  506  590
 ##      year
 ## age   1985 1986 1987 1988 1989 1990 1991 1992 1993 1994 1995 1996 1997 1998
-##   all  642  785  787  627  629  579  527  513  388  327  350  321  323  351
+##   all  589  709  690  698  651  498  365  426  388  350  331  328  342  416
 ##      year
 ## age   1999 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010 2011 2012
-##   all  379  370  387  399  361  345  398  417  461  535  731  697  809  835
+##   all  386  343  399  396  397  400  389  470  455  565  562  708  871  711
 ##      year
 ## age   2013 2014 2015 2016 2017
-##   all  923  843 1045 1020 1084
+##   all  928 1069  982  918 1056
 ## 
 ## units:  t</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="fitting.html#cb33-1" tabindex="-1"></a><span class="co"># fitting the model</span></span>
-<span id="cb33-2"><a href="fitting.html#cb33-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, <span class="fu">FLIndices</span>(bioidx), <span class="at">qmodel=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="fitting.html#cb149-1" tabindex="-1"></a><span class="co"># fitting the model</span></span>
+<span id="cb149-2"><a href="fitting.html#cb149-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, <span class="fu">FLIndices</span>(bioidx), <span class="at">qmodel=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>))</span></code></pre></div>
 <p>To estimate a constant selectivity over time one used the model <span class="math inline">\(\sim 1\)</span>, resulting in the following estimate:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="fitting.html#cb34-1" tabindex="-1"></a><span class="fu">predict</span>(fit)<span class="sc">$</span>qmodel[[<span class="dv">1</span>]][<span class="dv">1</span>,drop<span class="ot">=</span><span class="cn">TRUE</span>]</span></code></pre></div>
-<pre><code>## [1] 0.0009827141</code></pre>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="fitting.html#cb150-1" tabindex="-1"></a><span class="fu">predict</span>(fit)<span class="sc">$</span>qmodel[[<span class="dv">1</span>]][<span class="dv">1</span>,drop<span class="ot">=</span><span class="cn">TRUE</span>]</span></code></pre></div>
+<pre><code>## [1] 0.001006285</code></pre>
 <p>The next code shows an example where the biomass index refers to age groups 2 to 4, <em>e.g.</em> the CPUE of a fleet that targets these particular ages.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="fitting.html#cb36-1" tabindex="-1"></a><span class="co"># creating the index</span></span>
-<span id="cb36-2"><a href="fitting.html#cb36-2" tabindex="-1"></a>dnms <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">age=</span><span class="st">&quot;all&quot;</span>, <span class="at">year=</span><span class="fu">range</span>(ple4)[<span class="st">&quot;minyear&quot;</span>]<span class="sc">:</span><span class="fu">range</span>(ple4)[<span class="st">&quot;maxyear&quot;</span>])</span>
-<span id="cb36-3"><a href="fitting.html#cb36-3" tabindex="-1"></a>bioidx <span class="ot">&lt;-</span> <span class="fu">FLIndexBiomass</span>(<span class="fu">FLQuant</span>(<span class="cn">NA</span>, <span class="at">dimnames=</span>dnms))</span>
-<span id="cb36-4"><a href="fitting.html#cb36-4" tabindex="-1"></a><span class="co"># but now use only ages 2:4</span></span>
-<span id="cb36-5"><a href="fitting.html#cb36-5" tabindex="-1"></a><span class="fu">index</span>(bioidx) <span class="ot">&lt;-</span> <span class="fu">tsb</span>(ple4[<span class="fu">ac</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>)])<span class="sc">*</span><span class="fl">0.001</span></span>
-<span id="cb36-6"><a href="fitting.html#cb36-6" tabindex="-1"></a><span class="fu">index</span>(bioidx) <span class="ot">&lt;-</span> <span class="fu">index</span>(bioidx)<span class="sc">*</span><span class="fu">exp</span>(<span class="fu">rnorm</span>(<span class="fu">index</span>(bioidx), <span class="at">sd=</span><span class="fl">0.1</span>))</span>
-<span id="cb36-7"><a href="fitting.html#cb36-7" tabindex="-1"></a><span class="fu">range</span>(bioidx)[<span class="fu">c</span>(<span class="st">&quot;startf&quot;</span>,<span class="st">&quot;endf&quot;</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>)</span>
-<span id="cb36-8"><a href="fitting.html#cb36-8" tabindex="-1"></a><span class="co"># to pass this information to the model one needs to specify an age range</span></span>
-<span id="cb36-9"><a href="fitting.html#cb36-9" tabindex="-1"></a><span class="fu">range</span>(bioidx)[<span class="fu">c</span>(<span class="st">&quot;min&quot;</span>,<span class="st">&quot;max&quot;</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>)</span>
-<span id="cb36-10"><a href="fitting.html#cb36-10" tabindex="-1"></a><span class="co"># fitting the model</span></span>
-<span id="cb36-11"><a href="fitting.html#cb36-11" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, <span class="fu">FLIndices</span>(bioidx), <span class="at">qmodel=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="fitting.html#cb152-1" tabindex="-1"></a><span class="co"># creating the index</span></span>
+<span id="cb152-2"><a href="fitting.html#cb152-2" tabindex="-1"></a>dnms <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">age=</span><span class="st">&quot;all&quot;</span>, <span class="at">year=</span><span class="fu">range</span>(ple4)[<span class="st">&quot;minyear&quot;</span>]<span class="sc">:</span><span class="fu">range</span>(ple4)[<span class="st">&quot;maxyear&quot;</span>])</span>
+<span id="cb152-3"><a href="fitting.html#cb152-3" tabindex="-1"></a>bioidx <span class="ot">&lt;-</span> <span class="fu">FLIndexBiomass</span>(<span class="fu">FLQuant</span>(<span class="cn">NA</span>, <span class="at">dimnames=</span>dnms))</span>
+<span id="cb152-4"><a href="fitting.html#cb152-4" tabindex="-1"></a><span class="co"># but now use only ages 2:4</span></span>
+<span id="cb152-5"><a href="fitting.html#cb152-5" tabindex="-1"></a><span class="fu">index</span>(bioidx) <span class="ot">&lt;-</span> <span class="fu">tsb</span>(ple4[<span class="fu">ac</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>)])<span class="sc">*</span><span class="fl">0.001</span></span>
+<span id="cb152-6"><a href="fitting.html#cb152-6" tabindex="-1"></a><span class="fu">index</span>(bioidx) <span class="ot">&lt;-</span> <span class="fu">index</span>(bioidx)<span class="sc">*</span><span class="fu">exp</span>(<span class="fu">rnorm</span>(<span class="fu">index</span>(bioidx), <span class="at">sd=</span><span class="fl">0.1</span>))</span>
+<span id="cb152-7"><a href="fitting.html#cb152-7" tabindex="-1"></a><span class="fu">range</span>(bioidx)[<span class="fu">c</span>(<span class="st">&quot;startf&quot;</span>,<span class="st">&quot;endf&quot;</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>)</span>
+<span id="cb152-8"><a href="fitting.html#cb152-8" tabindex="-1"></a><span class="co"># to pass this information to the model one needs to specify an age range</span></span>
+<span id="cb152-9"><a href="fitting.html#cb152-9" tabindex="-1"></a><span class="fu">range</span>(bioidx)[<span class="fu">c</span>(<span class="st">&quot;min&quot;</span>,<span class="st">&quot;max&quot;</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>)</span>
+<span id="cb152-10"><a href="fitting.html#cb152-10" tabindex="-1"></a><span class="co"># fitting the model</span></span>
+<span id="cb152-11"><a href="fitting.html#cb152-11" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, <span class="fu">FLIndices</span>(bioidx), <span class="at">qmodel=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>))</span></code></pre></div>
 <p>Once more the estimate value is not very far from the simulated one, 0.001.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="fitting.html#cb37-1" tabindex="-1"></a><span class="fu">predict</span>(fit)<span class="sc">$</span>qmodel[[<span class="dv">1</span>]][<span class="dv">1</span>,drop<span class="ot">=</span><span class="cn">TRUE</span>]</span></code></pre></div>
-<pre><code>## [1] 0.0009746023</code></pre>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="fitting.html#cb153-1" tabindex="-1"></a><span class="fu">predict</span>(fit)<span class="sc">$</span>qmodel[[<span class="dv">1</span>]][<span class="dv">1</span>,drop<span class="ot">=</span><span class="cn">TRUE</span>]</span></code></pre></div>
+<pre><code>## [1] 0.00101068</code></pre>
 </div>
 <div id="catchability-submodel-for-single-age-indices" class="section level3 hasAnchor" number="7.2.3">
 <h3><span class="header-section-number">7.2.3</span> Catchability submodel for single age indices<a href="fitting.html#catchability-submodel-for-single-age-indices" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Similar to age aggregated indices one may have an index that relates only to one age, like a recruitment index. In this case the <code>FLIndex</code> object must have in the first dimension the age it refers to. The fit uses the index to tune the population abundance for the specific age. As for biomass indices, the qmodel should be set without age factors, although it can have a ‘year’ component and covariates if needed.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="fitting.html#cb39-1" tabindex="-1"></a>idx <span class="ot">&lt;-</span> ple4.index[<span class="dv">1</span>]</span>
-<span id="cb39-2"><a href="fitting.html#cb39-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, <span class="fu">FLIndices</span>(<span class="at">recidx=</span>idx), <span class="at">qmodel=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>))</span>
-<span id="cb39-3"><a href="fitting.html#cb39-3" tabindex="-1"></a><span class="co"># the estimated catchability is</span></span>
-<span id="cb39-4"><a href="fitting.html#cb39-4" tabindex="-1"></a><span class="fu">predict</span>(fit)<span class="sc">$</span>qmodel[[<span class="dv">1</span>]][<span class="dv">1</span>,drop<span class="ot">=</span><span class="cn">TRUE</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="fitting.html#cb155-1" tabindex="-1"></a>idx <span class="ot">&lt;-</span> ple4.index[<span class="dv">1</span>]</span>
+<span id="cb155-2"><a href="fitting.html#cb155-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, <span class="fu">FLIndices</span>(<span class="at">recidx=</span>idx), <span class="at">qmodel=</span><span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span>))</span>
+<span id="cb155-3"><a href="fitting.html#cb155-3" tabindex="-1"></a><span class="co"># the estimated catchability is</span></span>
+<span id="cb155-4"><a href="fitting.html#cb155-4" tabindex="-1"></a><span class="fu">predict</span>(fit)<span class="sc">$</span>qmodel[[<span class="dv">1</span>]][<span class="dv">1</span>,drop<span class="ot">=</span><span class="cn">TRUE</span>]</span></code></pre></div>
 <pre><code>## [1] 0.06007767</code></pre>
 </div>
 </div>
 <div id="stock-recruitment-submodel-r_y" class="section level2 hasAnchor" number="7.3">
 <h2><span class="header-section-number">7.3</span> Stock-recruitment submodel (<span class="math inline">\(R_y\)</span>)<a href="fitting.html#stock-recruitment-submodel-r_y" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The S/R submodel is a special case, in the sense that it can be set up with the same linear tools as the <span class="math inline">\(F\)</span> and <span class="math inline">\(Q\)</span> models, but it can also use some hard coded models. The example shows how to set up a simple dummy model with <code>factor()</code>, a smooth model with <code>s()</code>, a Ricker model (<code>ricker()</code>), a Beverton and Holt model (<code>bevholt()</code>), a hockey stick model (<code>hockey()</code>), and a geometric mean model (<code>geomean()</code>). See Figure <a href="fitting.html#fig:srmod">7.14</a> for results. As mentioned before, the ‘structural’ models have a fixed variance, which must be set by defining the coefficient of variation.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="fitting.html#cb41-1" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">factor</span>(year)</span>
-<span id="cb41-2"><a href="fitting.html#cb41-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel=</span>srmod)</span>
-<span id="cb41-3"><a href="fitting.html#cb41-3" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">15</span>)</span>
-<span id="cb41-4"><a href="fitting.html#cb41-4" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel=</span>srmod)</span>
-<span id="cb41-5"><a href="fitting.html#cb41-5" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">ricker</span>(<span class="at">CV=</span><span class="fl">0.1</span>)</span>
-<span id="cb41-6"><a href="fitting.html#cb41-6" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel=</span>srmod)</span>
-<span id="cb41-7"><a href="fitting.html#cb41-7" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">bevholt</span>(<span class="at">CV=</span><span class="fl">0.1</span>)</span>
-<span id="cb41-8"><a href="fitting.html#cb41-8" tabindex="-1"></a>fit3 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel=</span>srmod)</span>
-<span id="cb41-9"><a href="fitting.html#cb41-9" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">hockey</span>(<span class="at">CV=</span><span class="fl">0.1</span>)</span>
-<span id="cb41-10"><a href="fitting.html#cb41-10" tabindex="-1"></a>fit4 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel=</span>srmod)</span>
-<span id="cb41-11"><a href="fitting.html#cb41-11" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">geomean</span>(<span class="at">CV=</span><span class="fl">0.1</span>)</span>
-<span id="cb41-12"><a href="fitting.html#cb41-12" tabindex="-1"></a>fit5 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel=</span>srmod)</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="fitting.html#cb157-1" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">factor</span>(year)</span>
+<span id="cb157-2"><a href="fitting.html#cb157-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel=</span>srmod)</span>
+<span id="cb157-3"><a href="fitting.html#cb157-3" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">15</span>)</span>
+<span id="cb157-4"><a href="fitting.html#cb157-4" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel=</span>srmod)</span>
+<span id="cb157-5"><a href="fitting.html#cb157-5" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">ricker</span>(<span class="at">CV=</span><span class="fl">0.1</span>)</span>
+<span id="cb157-6"><a href="fitting.html#cb157-6" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel=</span>srmod)</span>
+<span id="cb157-7"><a href="fitting.html#cb157-7" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">bevholt</span>(<span class="at">CV=</span><span class="fl">0.1</span>)</span>
+<span id="cb157-8"><a href="fitting.html#cb157-8" tabindex="-1"></a>fit3 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel=</span>srmod)</span>
+<span id="cb157-9"><a href="fitting.html#cb157-9" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">hockey</span>(<span class="at">CV=</span><span class="fl">0.1</span>)</span>
+<span id="cb157-10"><a href="fitting.html#cb157-10" tabindex="-1"></a>fit4 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel=</span>srmod)</span>
+<span id="cb157-11"><a href="fitting.html#cb157-11" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">geomean</span>(<span class="at">CV=</span><span class="fl">0.1</span>)</span>
+<span id="cb157-12"><a href="fitting.html#cb157-12" tabindex="-1"></a>fit5 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel=</span>srmod)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:srmod"></span>
 <img src="_main_files/figure-html/srmod-1.png" alt="Recruitment estimates since 1960 by each stock-recruitment model." width="672" />
 <p class="caption">
@@ -703,12 +721,12 @@ Figure 7.14: Recruitment estimates since 1960 by each stock-recruitment model.
 <h2><span class="header-section-number">7.4</span> Observation variance submodel (<span class="math inline">\(\{\sigma^2_{ay}, \tau^2_{ays}\}\)</span>)<a href="fitting.html#observation-variance-submodel-sigma2_ay-tau2_ays" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The variance model allows the user to set up the shape of the observation variances <span class="math inline">\(\sigma^2_{ay}\)</span> and <span class="math inline">\(\tau^2_{ays}\)</span>. This is an important subject for fisheries data used as input to stock assessment models.</p>
 <p>The defaults assume a U-shape like model for catch-at-age and constant variance for abundance indices. The first relies on the fact that it’s common to have more precision on the most represented ages and less precision on the less frequent ages which tend to be the younger and older individuals. These sizes are less caught by the fleets and as such do not appear as often at the auction markets samples. With regards to the abundance indices, one assumes a scientific survey to have a well designed sampling scheme and protocols which keep observation error at similar levels across ages.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="fitting.html#cb42-1" tabindex="-1"></a><span class="co"># reference model with constant variance for the survey index</span></span>
-<span id="cb42-2"><a href="fitting.html#cb42-2" tabindex="-1"></a>vmod <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">3</span>), <span class="sc">~</span><span class="dv">1</span>)</span>
-<span id="cb42-3"><a href="fitting.html#cb42-3" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.index, <span class="at">vmodel=</span>vmod)</span>
-<span id="cb42-4"><a href="fitting.html#cb42-4" tabindex="-1"></a><span class="co"># to compare - survey index variance modelled has a U-shape smoother</span></span>
-<span id="cb42-5"><a href="fitting.html#cb42-5" tabindex="-1"></a>vmod <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">3</span>), <span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">3</span>))</span>
-<span id="cb42-6"><a href="fitting.html#cb42-6" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.index, <span class="at">vmodel=</span>vmod)</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="fitting.html#cb158-1" tabindex="-1"></a><span class="co"># reference model with constant variance for the survey index</span></span>
+<span id="cb158-2"><a href="fitting.html#cb158-2" tabindex="-1"></a>vmod <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">3</span>), <span class="sc">~</span><span class="dv">1</span>)</span>
+<span id="cb158-3"><a href="fitting.html#cb158-3" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.index, <span class="at">vmodel=</span>vmod)</span>
+<span id="cb158-4"><a href="fitting.html#cb158-4" tabindex="-1"></a><span class="co"># to compare - survey index variance modelled has a U-shape smoother</span></span>
+<span id="cb158-5"><a href="fitting.html#cb158-5" tabindex="-1"></a>vmod <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">3</span>), <span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">3</span>))</span>
+<span id="cb158-6"><a href="fitting.html#cb158-6" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.index, <span class="at">vmodel=</span>vmod)</span></code></pre></div>
 <p>Variance estimated for the survey is constant at 0.476 while for catches using the U-shape model, fitted with a smoother, changes with ages (Figure <a href="fitting.html#fig:vmod">7.15</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:vmod"></span>
 <img src="_main_files/figure-html/vmod-1.png" alt="Abundance index observation variance estimate" width="672" />
@@ -728,12 +746,12 @@ Figure 7.16: Population estimates using two different variance models for the su
 <h2><span class="header-section-number">7.5</span> Initial year abundance submodel (<span class="math inline">\(N_{a,y=1}\)</span>)<a href="fitting.html#initial-year-abundance-submodel-n_ay1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The submodel for the stock number at age in the first year of the time series is set with the usual tools. The model deals with the shape of the population abundance in a single year and as such the year effect shouldn’t be included (Figure <a href="fitting.html#fig:ny1">7.17</a>).</p>
 <p>This model has its influence limited to the initial lower triangle of the population matrix, which in assessments with long time series doesn’t make much difference. Nevertheless, when modelling stocks with short time series in relation to the number of ages present, it becomes more important and should be given proper attention.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="fitting.html#cb43-1" tabindex="-1"></a><span class="co"># model with smoother</span></span>
-<span id="cb43-2"><a href="fitting.html#cb43-2" tabindex="-1"></a>n1mod <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">4</span>)</span>
-<span id="cb43-3"><a href="fitting.html#cb43-3" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">n1model=</span>n1mod)</span>
-<span id="cb43-4"><a href="fitting.html#cb43-4" tabindex="-1"></a><span class="co"># model with factor</span></span>
-<span id="cb43-5"><a href="fitting.html#cb43-5" tabindex="-1"></a>n1mod <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">factor</span>(age)</span>
-<span id="cb43-6"><a href="fitting.html#cb43-6" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">n1model=</span>n1mod)</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="fitting.html#cb159-1" tabindex="-1"></a><span class="co"># model with smoother</span></span>
+<span id="cb159-2"><a href="fitting.html#cb159-2" tabindex="-1"></a>n1mod <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">4</span>)</span>
+<span id="cb159-3"><a href="fitting.html#cb159-3" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">n1model=</span>n1mod)</span>
+<span id="cb159-4"><a href="fitting.html#cb159-4" tabindex="-1"></a><span class="co"># model with factor</span></span>
+<span id="cb159-5"><a href="fitting.html#cb159-5" tabindex="-1"></a>n1mod <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">factor</span>(age)</span>
+<span id="cb159-6"><a href="fitting.html#cb159-6" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">n1model=</span>n1mod)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:ny1"></span>
 <img src="_main_files/figure-html/ny1-1.png" alt="Nay=1 models" width="672" />
 <p class="caption">
@@ -752,8 +770,8 @@ Figure 7.18: Population estimates using two different variance models
 <h2><span class="header-section-number">7.6</span> More models<a href="fitting.html#more-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>More complicated models can be built with these tools. The limitation is going to be the potential overparametrization of the model and the failure to fit if the data isn’t informative enough.</p>
 <p>For example, Figure <a href="fitting.html#fig:ageind">7.19</a> shows a model where the age effect is modelled as a smoother throughout years independent from each other, with the exception of ages 9 and 10 which share their parameters.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="fitting.html#cb44-1" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">factor</span>(age) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">10</span>, <span class="at">by =</span> <span class="fu">breakpts</span>(age, <span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">8</span>)))</span>
-<span id="cb44-2"><a href="fitting.html#cb44-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, fmod)</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="fitting.html#cb160-1" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">factor</span>(age) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">10</span>, <span class="at">by =</span> <span class="fu">breakpts</span>(age, <span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">8</span>)))</span>
+<span id="cb160-2"><a href="fitting.html#cb160-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, fmod)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:ageind"></span>
 <img src="_main_files/figure-html/ageind-1.png" alt="F-at-age as thin plate spline with 3 knots for each age" width="672" />
 <p class="caption">
@@ -761,8 +779,8 @@ Figure 7.19: F-at-age as thin plate spline with 3 knots for each age
 </p>
 </div>
 <p>A quite complex model that implements a cohort effect can be set through the following formula. Figure <a href="fitting.html#fig:coh">7.20</a> shows the resulting fishing mortality. Note that in this case we end up with a variable <span class="math inline">\(F\)</span> pattern over time, but rather than using 4 * 10 = 40 parameters, it uses, 4 + 10 + 10 = 24.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="fitting.html#cb45-1" tabindex="-1"></a>fmodel <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">4</span>) <span class="sc">+</span> <span class="fu">s</span>(<span class="fu">pmax</span>(year <span class="sc">-</span> age, <span class="dv">1957</span>), <span class="at">k =</span> <span class="dv">10</span>) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">10</span>)</span>
-<span id="cb45-2"><a href="fitting.html#cb45-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>fmodel)</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="fitting.html#cb161-1" tabindex="-1"></a>fmodel <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">4</span>) <span class="sc">+</span> <span class="fu">s</span>(<span class="fu">pmax</span>(year <span class="sc">-</span> age, <span class="dv">1957</span>), <span class="at">k =</span> <span class="dv">10</span>) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">10</span>)</span>
+<span id="cb161-2"><a href="fitting.html#cb161-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>fmodel)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:coh"></span>
 <img src="_main_files/figure-html/coh-1.png" alt="F-at-age with a cohort effect." width="672" />
 <p class="caption">
@@ -770,11 +788,11 @@ Figure 7.20: F-at-age with a cohort effect.
 </p>
 </div>
 <p>The following model is applied to the vmodel and it introduces an time trend to reflect the increase in precision in more recent years with improvements in sampling design and increase in sampling effort.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="fitting.html#cb46-1" tabindex="-1"></a>vmod <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb46-2"><a href="fitting.html#cb46-2" tabindex="-1"></a>       <span class="sc">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">3</span>) <span class="sc">+</span> year,</span>
-<span id="cb46-3"><a href="fitting.html#cb46-3" tabindex="-1"></a>       <span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span></span>
-<span id="cb46-4"><a href="fitting.html#cb46-4" tabindex="-1"></a>       )</span>
-<span id="cb46-5"><a href="fitting.html#cb46-5" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">vmodel=</span>vmod)</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="fitting.html#cb162-1" tabindex="-1"></a>vmod <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb162-2"><a href="fitting.html#cb162-2" tabindex="-1"></a>       <span class="sc">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">3</span>) <span class="sc">+</span> year,</span>
+<span id="cb162-3"><a href="fitting.html#cb162-3" tabindex="-1"></a>       <span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span>, <span class="sc">~</span><span class="dv">1</span></span>
+<span id="cb162-4"><a href="fitting.html#cb162-4" tabindex="-1"></a>       )</span>
+<span id="cb162-5"><a href="fitting.html#cb162-5" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">vmodel=</span>vmod)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:vm"></span>
 <img src="_main_files/figure-html/vm-1.png" alt="Catch at age variance model with a year effect." width="672" />
 <p class="caption">
@@ -782,8 +800,8 @@ Figure 7.21: Catch at age variance model with a year effect.
 </p>
 </div>
 <p>This model fits two smoothers to different sets of ages.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="fitting.html#cb47-1" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">3</span>, <span class="at">by =</span> <span class="fu">breakpts</span>(age, <span class="dv">5</span>)) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">10</span>)</span>
-<span id="cb47-2"><a href="fitting.html#cb47-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel =</span> fmod)</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="fitting.html#cb163-1" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">3</span>, <span class="at">by =</span> <span class="fu">breakpts</span>(age, <span class="dv">5</span>)) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">10</span>)</span>
+<span id="cb163-2"><a href="fitting.html#cb163-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel =</span> fmod)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:danai01"></span>
 <img src="_main_files/figure-html/danai01-1.png" alt="Smoothers fitted to two sets of ages, 1 to 4 and 5 to 10." width="672" />
 <p class="caption">
@@ -793,20 +811,20 @@ Figure 7.22: Smoothers fitted to two sets of ages, 1 to 4 and 5 to 10.
 <!--## Data weigthing
 
 By default the likelihood components are not weighted and the contribution of each to the maximum likelihood depends on their own likelihood score. However, the user may change these weights by penalizing data points, the $w_{ays}$ in section \@ref(sec:maths). The likelihood score of each data point will be multiplied by the normalized weights ($\sum w_{ays} = 1$). This is done by adding a variance matrix to the `catch.n` and `index.n` slots of the stock and index objects. The values should be given as coefficients of variation on the log scale, so that variance is $\log{({CV}^2 + 1)}$. Figures \@ref(fig:likwgt) and \@ref(fig:likwgtimpact) show the results of the two fits in the population abundance and stock summary.-->
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="fitting.html#cb48-1" tabindex="-1"></a>flsts <span class="ot">&lt;-</span> <span class="fu">FLStocks</span>(<span class="at">nowgt=</span>ple4<span class="sc">+</span>fit0, <span class="at">wgt=</span>ple4 <span class="sc">+</span> fit1)</span>
-<span id="cb48-2"><a href="fitting.html#cb48-2" tabindex="-1"></a><span class="fu">plot</span>(flsts)</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="fitting.html#cb164-1" tabindex="-1"></a>flsts <span class="ot">&lt;-</span> <span class="fu">FLStocks</span>(<span class="at">nowgt=</span>ple4<span class="sc">+</span>fit0, <span class="at">wgt=</span>ple4 <span class="sc">+</span> fit1)</span>
+<span id="cb164-2"><a href="fitting.html#cb164-2" tabindex="-1"></a><span class="fu">plot</span>(flsts)</span></code></pre></div>
 <!--Note that by using a smaller CV for the index, one is increasing the contribution of the survey and penalizing catch at age, in relative terms. The ratio between likelihood scores of both fits show this effect with catch at age increasing by 2.3 while the index increases almost 8 fold.-->
 </div>
 <div id="working-with-covariates" class="section level2 hasAnchor" number="7.7">
 <h2><span class="header-section-number">7.7</span> Working with covariates<a href="fitting.html#working-with-covariates" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In linear model one can use covariates to explain part of the variance observed on the data that the ‘core’ model does not explain. The same can be done in the <code>a4a</code> framework. The example below uses the North Atlantic Oscillation (NAO) index to model recruitment.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="fitting.html#cb49-1" tabindex="-1"></a>nao <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://www.cpc.ncep.noaa.gov/products/precip/CWlink/pna/norm.nao.monthly.b5001.current.ascii.table&quot;</span>, <span class="at">skip=</span><span class="dv">1</span>, <span class="at">fill=</span><span class="cn">TRUE</span>, <span class="at">na.strings=</span><span class="st">&quot;-99.90&quot;</span>)</span>
-<span id="cb49-2"><a href="fitting.html#cb49-2" tabindex="-1"></a>dnms <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">quant=</span><span class="st">&quot;nao&quot;</span>, <span class="at">year=</span><span class="dv">1950</span><span class="sc">:</span><span class="dv">2024</span>, <span class="at">unit=</span><span class="st">&quot;unique&quot;</span>, <span class="at">season=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">area=</span><span class="st">&quot;unique&quot;</span>)</span>
-<span id="cb49-3"><a href="fitting.html#cb49-3" tabindex="-1"></a>nao <span class="ot">&lt;-</span> <span class="fu">FLQuant</span>(<span class="fu">unlist</span>(nao[,<span class="sc">-</span><span class="dv">1</span>]), <span class="at">dimnames=</span>dnms, <span class="at">units=</span><span class="st">&quot;nao&quot;</span>)</span>
-<span id="cb49-4"><a href="fitting.html#cb49-4" tabindex="-1"></a>nao <span class="ot">&lt;-</span> <span class="fu">seasonMeans</span>(<span class="fu">trim</span>(nao, <span class="at">year=</span><span class="fu">dimnames</span>(<span class="fu">stock.n</span>(ple4))<span class="sc">$</span>year))</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="fitting.html#cb165-1" tabindex="-1"></a>nao <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://www.cpc.ncep.noaa.gov/products/precip/CWlink/pna/norm.nao.monthly.b5001.current.ascii.table&quot;</span>, <span class="at">skip=</span><span class="dv">1</span>, <span class="at">fill=</span><span class="cn">TRUE</span>, <span class="at">na.strings=</span><span class="st">&quot;-99.90&quot;</span>)</span>
+<span id="cb165-2"><a href="fitting.html#cb165-2" tabindex="-1"></a>dnms <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">quant=</span><span class="st">&quot;nao&quot;</span>, <span class="at">year=</span><span class="dv">1950</span><span class="sc">:</span><span class="dv">2024</span>, <span class="at">unit=</span><span class="st">&quot;unique&quot;</span>, <span class="at">season=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">area=</span><span class="st">&quot;unique&quot;</span>)</span>
+<span id="cb165-3"><a href="fitting.html#cb165-3" tabindex="-1"></a>nao <span class="ot">&lt;-</span> <span class="fu">FLQuant</span>(<span class="fu">unlist</span>(nao[,<span class="sc">-</span><span class="dv">1</span>]), <span class="at">dimnames=</span>dnms, <span class="at">units=</span><span class="st">&quot;nao&quot;</span>)</span>
+<span id="cb165-4"><a href="fitting.html#cb165-4" tabindex="-1"></a>nao <span class="ot">&lt;-</span> <span class="fu">seasonMeans</span>(<span class="fu">trim</span>(nao, <span class="at">year=</span><span class="fu">dimnames</span>(<span class="fu">stock.n</span>(ple4))<span class="sc">$</span>year))</span></code></pre></div>
 <p>First by simply assuming that the NAO index drives recruitment (Figure <a href="fitting.html#fig:naor">7.23</a>).</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="fitting.html#cb50-1" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(nao, <span class="at">k=</span><span class="dv">10</span>)</span>
-<span id="cb50-2"><a href="fitting.html#cb50-2" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices[<span class="dv">1</span>], <span class="at">qmodel=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">4</span>)), <span class="at">srmodel=</span>srmod, <span class="at">covar=</span><span class="fu">FLQuants</span>(<span class="at">nao=</span>nao))</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="fitting.html#cb166-1" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(nao, <span class="at">k=</span><span class="dv">10</span>)</span>
+<span id="cb166-2"><a href="fitting.html#cb166-2" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices[<span class="dv">1</span>], <span class="at">qmodel=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">4</span>)), <span class="at">srmodel=</span>srmod, <span class="at">covar=</span><span class="fu">FLQuants</span>(<span class="at">nao=</span>nao))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:naor"></span>
 <img src="_main_files/figure-html/naor-1.png" alt="Recruitment model with covariates. Using the NAO index as a recruitment index." width="672" />
 <p class="caption">
@@ -814,8 +832,8 @@ Figure 7.23: Recruitment model with covariates. Using the NAO index as a recruit
 </p>
 </div>
 <p>In a second model we’re using the NAO index not to model recruitment directly but to model one of the parameters of the S/R function (Figure <a href="fitting.html#fig:naor2">7.24</a>).</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="fitting.html#cb51-1" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">ricker</span>(<span class="at">a=</span><span class="sc">~</span>nao, <span class="at">CV=</span><span class="fl">0.25</span>)</span>
-<span id="cb51-2"><a href="fitting.html#cb51-2" tabindex="-1"></a>fit3 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices[<span class="dv">1</span>], <span class="at">qmodel=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">4</span>)), <span class="at">srmodel=</span>srmod, <span class="at">covar=</span><span class="fu">FLQuants</span>(<span class="at">nao=</span>nao))</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="fitting.html#cb167-1" tabindex="-1"></a>srmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">ricker</span>(<span class="at">a=</span><span class="sc">~</span>nao, <span class="at">CV=</span><span class="fl">0.25</span>)</span>
+<span id="cb167-2"><a href="fitting.html#cb167-2" tabindex="-1"></a>fit3 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices[<span class="dv">1</span>], <span class="at">qmodel=</span><span class="fu">list</span>(<span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">4</span>)), <span class="at">srmodel=</span>srmod, <span class="at">covar=</span><span class="fu">FLQuants</span>(<span class="at">nao=</span>nao))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:naor2"></span>
 <img src="_main_files/figure-html/naor2-1.png" alt="Recruitment model with covariates. Using the NAO index as a covariate for the stock-recruitment model parameters." width="672" />
 <p class="caption">
@@ -827,16 +845,16 @@ Figure 7.24: Recruitment model with covariates. Using the NAO index as a covaria
 <div id="assessing-files" class="section level2 hasAnchor" number="7.8">
 <h2><span class="header-section-number">7.8</span> Assessing files<a href="fitting.html#assessing-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The framework gives access to all files produced to run the <code>ADMB</code> fitting routine through the argument <code>wkdir</code>. When set up, all the <code>ADMB</code> files will be left in the directory. Note that the <code>ADMB</code> tpl file is distributed with the <code>FLa4a</code>. One can get it from your <code>R</code> library, under the folder <code>[myRlib]/FLa4a/admb/</code>.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="fitting.html#cb52-1" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">wkdir=</span><span class="st">&quot;fit1run&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="fitting.html#cb168-1" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">wkdir=</span><span class="st">&quot;fit1run&quot;</span>)</span></code></pre></div>
 </div>
 <div id="missing-observations-in-the-catch-matrix-or-index" class="section level2 hasAnchor" number="7.9">
 <h2><span class="header-section-number">7.9</span> Missing observations in the catch matrix or index<a href="fitting.html#missing-observations-in-the-catch-matrix-or-index" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Missing observations are encoded as <code>NA</code>, and usually occur if there was no sampling for a year, or, since we model observations on the log scale, if the observation was zero. The <code>a4a</code> framework can deal with missing observations in the catches and indices.</p>
 <p>The example below shows how to set up a model with missing observations in the catch matrix, to demonstrate the effect of missing observations, using the default model settings.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="fitting.html#cb53-1" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices)</span>
-<span id="cb53-2"><a href="fitting.html#cb53-2" tabindex="-1"></a>ple4_missing <span class="ot">&lt;-</span> ple4</span>
-<span id="cb53-3"><a href="fitting.html#cb53-3" tabindex="-1"></a><span class="fu">catch.n</span>(ple4_missing)[<span class="fu">ac</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>), <span class="st">&quot;2013&quot;</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb53-4"><a href="fitting.html#cb53-4" tabindex="-1"></a>fit_missing <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4_missing, ple4.indices)</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="fitting.html#cb169-1" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices)</span>
+<span id="cb169-2"><a href="fitting.html#cb169-2" tabindex="-1"></a>ple4_missing <span class="ot">&lt;-</span> ple4</span>
+<span id="cb169-3"><a href="fitting.html#cb169-3" tabindex="-1"></a><span class="fu">catch.n</span>(ple4_missing)[<span class="fu">ac</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>), <span class="st">&quot;2013&quot;</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb169-4"><a href="fitting.html#cb169-4" tabindex="-1"></a>fit_missing <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4_missing, ple4.indices)</span></code></pre></div>
 <p>In effect, the information on <span class="math inline">\(F\)</span> and <span class="math inline">\(Q\)</span> for the missing observations is inferred from the structural assumptions of the model. If a separable <span class="math inline">\(F\)</span> model is used, the value of <span class="math inline">\(F\)</span> at a given age is derived from its relationship with <span class="math inline">\(F\)</span> at other ages in the same year, as well as from the temporal relationship of <span class="math inline">\(F\)</span> across years for ages with available data. The same principle applies to any other submodel.</p>
 <p>The impact of missing observations is illustrated in Figure <a href="fitting.html#fig:obsmissing">7.25</a>, which shows box plots of the predicted catch at age, incorporating estimation error. When observations are missing, the resulting estimates for those ages are both different and more uncertain. Additionally, the estimates for nearby years are affected, although the influence of the missing data diminishes with time—estimates from years further away converge toward those obtained using the full dataset.</p>
 <div class="figure"><span style="display:block;" id="fig:obsmissing"></span>
@@ -847,9 +865,9 @@ Figure 7.25: Stock estimates with missing observations.
 </div>
 <p>This is a simple example, but the same principle applies to more complex models. However, if there are many missing observations, the model cannot be too flexible; otherwise, it won’t be able to reliably estimate the missing data.</p>
 <p>In any case, one can always add more structure to the model to help address missing information. A common approach is to include a stock-recruitment relationship, which links the spawning stock biomass to recruitment. The example above would definitely benefit from this approach, as the missing information pertains to the first age group. See Figure <a href="#fit:obsmissing2"><strong>??</strong></a>, estimates are much more similar, although estimates from the fit to the missing data dataset show more uncertainty, as expected.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="fitting.html#cb54-1" tabindex="-1"></a><span class="co"># bevholt s/r CV was tweaked to give best results for the example</span></span>
-<span id="cb54-2"><a href="fitting.html#cb54-2" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel=</span><span class="sc">~</span><span class="fu">bevholt</span>(<span class="at">CV=</span><span class="fl">0.16</span>))</span>
-<span id="cb54-3"><a href="fitting.html#cb54-3" tabindex="-1"></a>fit_missing2 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4_missing, ple4.indices, <span class="at">srmodel=</span><span class="sc">~</span><span class="fu">bevholt</span>(<span class="at">CV=</span><span class="fl">0.16</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="fitting.html#cb170-1" tabindex="-1"></a><span class="co"># bevholt s/r CV was tweaked to give best results for the example</span></span>
+<span id="cb170-2"><a href="fitting.html#cb170-2" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel=</span><span class="sc">~</span><span class="fu">bevholt</span>(<span class="at">CV=</span><span class="fl">0.16</span>))</span>
+<span id="cb170-3"><a href="fitting.html#cb170-3" tabindex="-1"></a>fit_missing2 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4_missing, ple4.indices, <span class="at">srmodel=</span><span class="sc">~</span><span class="fu">bevholt</span>(<span class="at">CV=</span><span class="fl">0.16</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:obsmissing2"></span>
 <img src="_main_files/figure-html/obsmissing2-1.png" alt="Stock estimates with missing observations." width="672" />
 <p class="caption">

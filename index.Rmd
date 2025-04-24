@@ -27,6 +27,8 @@ library(formatR)
 #knit_theme$set(thm)
 opts_chunk$set(dev='png', dev.args=list(type="cairo"), warning=FALSE)
 # lattice theme
+library(lattice)
+lattice.options(default.args = list(as.table = TRUE))
 ```
 
 ## Installing and loading libraries

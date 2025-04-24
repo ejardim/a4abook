@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8 Diagnostics  | Fish stock assessment with R</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8 Diagnostics  | Fish stock assessment with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-04-23" />
+<meta name="date" content="2025-04-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -162,7 +162,7 @@ div.csl-indent {
 <li><a href="./">Stock assessment framework</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> cover-image: path to the social sharing image like images/cover.jpg</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Before starting</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#installing-and-loading-libraries"><i class="fa fa-check"></i><b>1.1</b> Installing and loading libraries</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#how-to-read-this-document"><i class="fa fa-check"></i><b>1.2</b> How to read this document</a></li>
@@ -245,9 +245,8 @@ div.csl-indent {
 <li class="chapter" data-level="8.1" data-path="diagnostics.html"><a href="diagnostics.html#residuals"><i class="fa fa-check"></i><b>8.1</b> Residuals</a></li>
 <li class="chapter" data-level="8.2" data-path="diagnostics.html"><a href="diagnostics.html#predictive-skill"><i class="fa fa-check"></i><b>8.2</b> Predictive skill</a></li>
 <li class="chapter" data-level="8.3" data-path="diagnostics.html"><a href="diagnostics.html#fit-summary-information-and-cross-validation-metrics"><i class="fa fa-check"></i><b>8.3</b> Fit summary, information and cross-validation metrics</a></li>
-<li class="chapter" data-level="8.4" data-path="diagnostics.html"><a href="diagnostics.html#the-package-a4adiags"><i class="fa fa-check"></i><b>8.4</b> The package a4adiags</a></li>
-<li class="chapter" data-level="8.5" data-path="diagnostics.html"><a href="diagnostics.html#retrospective-analysis"><i class="fa fa-check"></i><b>8.5</b> Retrospective analysis</a></li>
-<li class="chapter" data-level="8.6" data-path="diagnostics.html"><a href="diagnostics.html#hindcast"><i class="fa fa-check"></i><b>8.6</b> Hindcast</a></li>
+<li class="chapter" data-level="8.4" data-path="diagnostics.html"><a href="diagnostics.html#retrospective-analysis"><i class="fa fa-check"></i><b>8.4</b> Retrospective analysis</a></li>
+<li class="chapter" data-level="8.5" data-path="diagnostics.html"><a href="diagnostics.html#hindcast"><i class="fa fa-check"></i><b>8.5</b> Hindcast</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html"><i class="fa fa-check"></i><b>9</b> Predict and simulate </a>
 <ul>
@@ -340,110 +339,158 @@ div.csl-indent {
 <h1><span class="header-section-number">8</span> Diagnostics <a href="diagnostics.html#diagnostics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Statistical model diagnostics are essential to identify potential issues in the model, such as violations of assumptions, outliers, and influential data points. Without proper diagnostics, fitted models may provide misleading conclusions due to violated assumptions or undetected anomalies. For instance, residual analysis is a widely used diagnostic method that assesses the discrepancy between observed and fitted values, helping to validate underlying model assumptions <span class="citation">(<a href="#ref-hickey2019">Hickey et al. 2019</a>)</span></p>
 <p>The <code>a4a</code> framework implements several analysis of residuals, visualizations and statistics, that can be used to evaluate the fit quality and chose across multiple fits.</p>
+<p>For demonstration purposes we’ll use the plaice in ICES area 4 stock with a plus group at age 9, a single index “BTS-Combined (all)”, and trimmed time series to the most recent 15 years.</p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="diagnostics.html#cb171-1" tabindex="-1"></a><span class="co"># use single indices and set plus group at 9</span></span>
+<span id="cb171-2"><a href="diagnostics.html#cb171-2" tabindex="-1"></a>idx <span class="ot">&lt;-</span> ple4.indices[<span class="fu">c</span>(<span class="st">&quot;BTS-Combined (all)&quot;</span>)]</span>
+<span id="cb171-3"><a href="diagnostics.html#cb171-3" tabindex="-1"></a>idx[[<span class="dv">1</span>]] <span class="ot">&lt;-</span> idx[[<span class="dv">1</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>]</span>
+<span id="cb171-4"><a href="diagnostics.html#cb171-4" tabindex="-1"></a>stk <span class="ot">&lt;-</span> <span class="fu">setPlusGroup</span>(ple4, <span class="dv">9</span>)</span>
+<span id="cb171-5"><a href="diagnostics.html#cb171-5" tabindex="-1"></a>iy <span class="ot">&lt;-</span> <span class="dv">2003</span></span>
+<span id="cb171-6"><a href="diagnostics.html#cb171-6" tabindex="-1"></a><span class="co"># fit</span></span>
+<span id="cb171-7"><a href="diagnostics.html#cb171-7" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">8</span>) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">29</span>) <span class="sc">+</span> <span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">15</span>))</span>
+<span id="cb171-8"><a href="diagnostics.html#cb171-8" tabindex="-1"></a>qmod <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="sc">~</span><span class="fu">factor</span>(age))</span>
+<span id="cb171-9"><a href="diagnostics.html#cb171-9" tabindex="-1"></a>n1mod <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">5</span>)</span>
+<span id="cb171-10"><a href="diagnostics.html#cb171-10" tabindex="-1"></a>vmod <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">3</span>), <span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">3</span>))</span>
+<span id="cb171-11"><a href="diagnostics.html#cb171-11" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel=</span>fmod, <span class="at">qmodel=</span>qmod, <span class="at">n1model=</span>n1mod, <span class="at">vmodel=</span>vmod)</span></code></pre></div>
 <div id="residuals" class="section level2 hasAnchor" number="8.1">
 <h2><span class="header-section-number">8.1</span> Residuals<a href="diagnostics.html#residuals" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Residuals are a ubiquos metrics to check quality of a fit. For <code>sca()</code> fits there are out-of-the-box methods to compute in the log scale, raw residuals (aka deviances), standardized residuals and pearson residuals. A set of plots to inspect residuals and evaluate fit quality and assumptions are implemented.</p>
 <p>Consider <span class="math inline">\(x_{ay}\)</span> to be either a catch-at-age matrix (<span class="math inline">\(C_{ay}\)</span>) or one abundance index (<span class="math inline">\(I_{ay}\)</span>) and <span class="math inline">\(d_{ay}\)</span> to represent residuals.</p>
 <p>Raw residuals are compute by <span class="math inline">\(d_{ay} = \log{x_{ay}} - \log{\tilde{x}_{ay}}\)</span> and have distribution <span class="math inline">\(N(0,\upsilon^2_{a})\)</span>. Standardized residuals will be compute with <span class="math inline">\(d^s_{ay} = \frac{d_{ay}}{\hat{\upsilon}^2_{a}}\)</span> where <span class="math inline">\(\hat{\upsilon}^2_{a} = (n-1)^{-1} \sum_y(d_{ay})^2\)</span>. Pearson residuals scale raw residuals by the estimates of <span class="math inline">\(\sigma^2\)</span> or <span class="math inline">\(\tau^2\)</span>, as such <span class="math inline">\(d^p_{ay} = \frac{d_{ay}}{\tilde{\upsilon}^2_{a}}\)</span> where <span class="math inline">\(\tilde{\upsilon}^2_{a} = \tilde{\sigma}^2_{a}\)</span> for catches, or <span class="math inline">\(\tilde{\upsilon}^2_{a} = \tilde{\tau}^2_{a}\)</span> for each index of abundance.</p>
-<p>The <code>residuals()</code> method computes these residuals and generate a object which can be plotted using a set of packed methods. The argument <code>type</code> will allow the user to chose which residuals will be computed. By default the method computes standardized residuals.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="diagnostics.html#cb1-1" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices)</span>
-<span id="cb1-2"><a href="diagnostics.html#cb1-2" tabindex="-1"></a>d_s <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit, ple4, ple4.indices)</span></code></pre></div>
-<p>Figure <a href="diagnostics.html#fig:res">8.1</a> shows a scatterplot of standardized residuals with a smoother to guide (or mis-guide …) your visual analysis. Note that the standardization should produce normal residuals with variance=1, which means that most residual values should roughly be between <span class="math inline">\(\sim -2\)</span> and <span class="math inline">\(\sim 2\)</span>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="diagnostics.html#cb2-1" tabindex="-1"></a><span class="fu">plot</span>(d_s)</span></code></pre></div>
+<p>The <code>residuals()</code> method computes these residuals and generate a object which can be plotted using a set of out-of-the-box methods. The argument <code>type</code> will allow the user to chose which residuals will be computed. By default the method computes standardized residuals.</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="diagnostics.html#cb172-1" tabindex="-1"></a><span class="co"># residuals</span></span>
+<span id="cb172-2"><a href="diagnostics.html#cb172-2" tabindex="-1"></a>d_s <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit, stk, idx)</span>
+<span id="cb172-3"><a href="diagnostics.html#cb172-3" tabindex="-1"></a><span class="co"># shorten time series</span></span>
+<span id="cb172-4"><a href="diagnostics.html#cb172-4" tabindex="-1"></a>d_s <span class="ot">&lt;-</span> <span class="fu">window</span>(d_s, <span class="at">start=</span>iy)</span></code></pre></div>
+<p>Figure <a href="diagnostics.html#fig:res">8.1</a> shows a scatterplot of standardized residuals with a smoother to guide (or mis-guide …) your visual analysis. Note that the standardization should produce normal residuals with variance=1, which means that most residual values should roughly be between <span class="math inline">\(-2\)</span> and <span class="math inline">\(2\)</span>.</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="diagnostics.html#cb173-1" tabindex="-1"></a><span class="fu">plot</span>(d_s)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:res"></span>
 <img src="_main_files/figure-html/res-1.png" alt="Standardized residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother." width="672" />
 <p class="caption">
 Figure 8.1: Standardized residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother.
 </p>
 </div>
-<p>When plotting residuals by default the auxiliar line is a smoother. However it’s possible to use other type of lines by setting the argument <code>auxline</code> in <code>plot</code>. The argument can take the values used by <code>xyplot</code>, which are (from <code>panel.xyplot</code> help page) one or more of the following: “p”, “l”, “h”, “b”, “o”, “s”, “S”, “g”, “r”, “a”, “smooth”, and “spline”. If type has more than one element, an attempt is made to combine the effect of each of the components. The behaviour if any of the first five are included is similar to the effect of the corresponding type in plot: “p” and “l” stand for points and lines respectively; “b” and “o” (for ‘overlay’) plot both; “h” draws vertical (or horizontal if horizontal = TRUE) line segments from the points to the origin. Types “s” and “S” are like “l” in the sense that they join consecutive points, but instead of being joined by a straight line, points are connected by a vertical and a horizontal segment forming a ‘step’, with the vertical segment coming first for “s”, and the horizontal segment coming first for “S”. “g” adds a reference grid. Type “r” adds a linear regression line, “smooth” adds a loess fit, “spline” adds a cubic smoothing spline fit, and “a” draws line segments joining the average y value for each distinct x value. Figure <a href="diagnostics.html#fig:resaux">8.2</a> shows a regression line over the residuals instead of the loess smooother.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="diagnostics.html#cb3-1" tabindex="-1"></a><span class="fu">plot</span>(d_s, <span class="at">auxline=</span><span class="st">&quot;r&quot;</span>)</span></code></pre></div>
+<p>When plotting residuals, by default the auxiliar line is a smoother. However it’s possible to use other type of lines by setting the argument <code>auxline</code> in <code>plot</code> (check <code>panel.xyplot</code> help page for more information), of which the relevant ones for residuals are shown in Table <a href="diagnostics.html#tab:auxargs">8.1</a>. If type has more than one element, an attempt is made to combine the effect of each of the components.</p>
+<table>
+<caption><span id="tab:auxargs">Table 8.1: </span> Values for the argument <code>auxline</code> of residual plots</caption>
+<colgroup>
+<col width="26%" />
+<col width="73%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Argument</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">l</td>
+<td align="left">lines</td>
+</tr>
+<tr class="even">
+<td align="left">h</td>
+<td align="left">draws vertical (or horizontal if horizontal = TRUE) line segments from the points to the origin</td>
+</tr>
+<tr class="odd">
+<td align="left">s</td>
+<td align="left">like “l” in the sense that they join consecutive points, but instead of being joined by a straight line, points are connected by a vertical and a horizontal segment forming a ‘step’, with the vertical segment coming first</td>
+</tr>
+<tr class="even">
+<td align="left">S</td>
+<td align="left">same as s but the horizontal segment coming first</td>
+</tr>
+<tr class="odd">
+<td align="left">g</td>
+<td align="left">adds a reference grid</td>
+</tr>
+<tr class="even">
+<td align="left">r</td>
+<td align="left">adds a linear regression line</td>
+</tr>
+<tr class="odd">
+<td align="left">smooth</td>
+<td align="left">adds a loess fit</td>
+</tr>
+<tr class="even">
+<td align="left">spline</td>
+<td align="left">adds a cubic smoothing spline fit</td>
+</tr>
+<tr class="odd">
+<td align="left">a</td>
+<td align="left">draws line segments joining the average y value for each distinct x value</td>
+</tr>
+</tbody>
+</table>
+<p>Figure <a href="diagnostics.html#fig:resaux">8.2</a> shows a regression line over the residuals instead of the loess smooother with a grid on the background.</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="diagnostics.html#cb174-1" tabindex="-1"></a><span class="fu">plot</span>(d_s, <span class="at">auxline=</span><span class="fu">c</span>(<span class="st">&quot;r&quot;</span>,<span class="st">&quot;g&quot;</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:resaux"></span>
-<img src="_main_files/figure-html/resaux-1.png" alt="Standardized residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother." width="672" />
+<img src="_main_files/figure-html/resaux-1.png" alt="Standardized residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a regression fit." width="672" />
 <p class="caption">
-Figure 8.2: Standardized residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother.
+Figure 8.2: Standardized residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a regression fit.
 </p>
 </div>
-<p>The common bubble plot (<code>bubble()</code>) are shown in Figure <a href="diagnostics.html#fig:bub">8.3</a>. It shows the same information as Figure <a href="diagnostics.html#fig:res">8.1</a> but in a multivariate perspective.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="diagnostics.html#cb4-1" tabindex="-1"></a><span class="fu">bubbles</span>(d_s)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:bub"></span>
-<img src="_main_files/figure-html/bub-1.png" alt="Bubbles plot of standardized residuals for abundance indices and for catch numbers (catch.n)." width="672" />
-<p class="caption">
-Figure 8.3: Bubbles plot of standardized residuals for abundance indices and for catch numbers (catch.n).
-</p>
-</div>
-<p>Figure <a href="diagnostics.html#fig:qq">8.4</a> shows a quantile-quantile plot to assess how well standardized residuals match a normal distribution.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="diagnostics.html#cb5-1" tabindex="-1"></a><span class="fu">qqmath</span>(d_s)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:qq"></span>
-<img src="_main_files/figure-html/qq-1.png" alt="Quantile-quantile plot of standardized residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines the normal distribution quantiles." width="672" />
-<p class="caption">
-Figure 8.4: Quantile-quantile plot of standardized residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines the normal distribution quantiles.
-</p>
-</div>
-<p>Pearson residuals can be computed and plotted the same way as standardized residuals by setting <code>type='pearson'</code> (Figure <a href="diagnostics.html#fig:resp">8.5</a>).</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="diagnostics.html#cb6-1" tabindex="-1"></a>d_p <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit, ple4, ple4.indices, <span class="at">type=</span><span class="st">&#39;pearson&#39;</span>)</span>
-<span id="cb6-2"><a href="diagnostics.html#cb6-2" tabindex="-1"></a><span class="fu">plot</span>(d_p)</span></code></pre></div>
+<p>Pearson residuals can be computed and plotted the same way as standardized residuals by setting <code>type='pearson'</code> (Figure <a href="diagnostics.html#fig:resp">8.3</a>).</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="diagnostics.html#cb175-1" tabindex="-1"></a>d_p <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit, stk, idx, <span class="at">type=</span><span class="st">&#39;pearson&#39;</span>)</span>
+<span id="cb175-2"><a href="diagnostics.html#cb175-2" tabindex="-1"></a><span class="co"># shorten time series</span></span>
+<span id="cb175-3"><a href="diagnostics.html#cb175-3" tabindex="-1"></a>d_p <span class="ot">&lt;-</span> <span class="fu">window</span>(d_p, <span class="at">start=</span>iy)</span>
+<span id="cb175-4"><a href="diagnostics.html#cb175-4" tabindex="-1"></a><span class="fu">plot</span>(d_p)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:resp"></span>
 <img src="_main_files/figure-html/resp-1.png" alt="Pearson residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother." width="672" />
 <p class="caption">
-Figure 8.5: Pearson residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother.
+Figure 8.3: Pearson residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother.
 </p>
 </div>
-<p>Finally, the raw residuals are computed by setting <code>type='deviances'</code> and plotted the same way as before (Figure <a href="diagnostics.html#fig:resr">8.6</a>). These residuals are usefull to identify which data points are not well modelled, showing a large dispersion of the residuals and requiring more attention from the analyst.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="diagnostics.html#cb7-1" tabindex="-1"></a>d_r <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit, ple4, ple4.indices, <span class="at">type=</span><span class="st">&#39;deviances&#39;</span>)</span>
-<span id="cb7-2"><a href="diagnostics.html#cb7-2" tabindex="-1"></a><span class="fu">plot</span>(d_r)</span></code></pre></div>
+<p>Finally, the raw residuals are computed by setting <code>type='deviances'</code> and plotted the same way as before (Figure <a href="diagnostics.html#fig:resr">8.4</a>). These residuals are usefull to identify which data points are not well modelled, showing a large dispersion of the residuals and requiring more attention from the analyst.</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="diagnostics.html#cb176-1" tabindex="-1"></a>d_r <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit, stk, idx, <span class="at">type=</span><span class="st">&#39;deviances&#39;</span>)</span>
+<span id="cb176-2"><a href="diagnostics.html#cb176-2" tabindex="-1"></a><span class="co"># shorten time series</span></span>
+<span id="cb176-3"><a href="diagnostics.html#cb176-3" tabindex="-1"></a>d_r <span class="ot">&lt;-</span> <span class="fu">window</span>(d_r, <span class="at">start=</span>iy)</span>
+<span id="cb176-4"><a href="diagnostics.html#cb176-4" tabindex="-1"></a><span class="fu">plot</span>(d_r)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:resr"></span>
 <img src="_main_files/figure-html/resr-1.png" alt="Raw residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother." width="672" />
 <p class="caption">
-Figure 8.6: Raw residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother.
+Figure 8.4: Raw residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother.
+</p>
+</div>
+<p>The above plots can be done by age while grouping by year, instead of by year grouping by ages, the default, in which case it can help distinguish non-modeled structural year effects. The <code>plot</code> argument <code>by</code> needs to be set as <code>age</code>.</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="diagnostics.html#cb177-1" tabindex="-1"></a><span class="fu">plot</span>(d_s, <span class="at">by=</span><span class="st">&#39;age&#39;</span>, <span class="at">auxline=</span><span class="fu">c</span>(<span class="st">&quot;h&quot;</span>, <span class="st">&quot;g&quot;</span>))</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:resy"></span>
+<img src="_main_files/figure-html/resy-1.png" alt="Standardized residuals for abundance indices and catch numbers (catch.n). Each panel is coded by year, dots represent standardized residuals and lines a simple smoother." width="672" />
+<p class="caption">
+Figure 8.5: Standardized residuals for abundance indices and catch numbers (catch.n). Each panel is coded by year, dots represent standardized residuals and lines a simple smoother.
+</p>
+</div>
+<p>The common bubble plot (<code>bubble()</code>) are shown in Figure <a href="diagnostics.html#fig:bub">8.6</a>. It shows the same information as Figure <a href="diagnostics.html#fig:res">8.1</a> but in a multivariate perspective.</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="diagnostics.html#cb178-1" tabindex="-1"></a><span class="fu">bubbles</span>(d_s)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:bub"></span>
+<img src="_main_files/figure-html/bub-1.png" alt="Bubbles plot of standardized residuals for abundance indices and for catch numbers (catch.n)." width="672" />
+<p class="caption">
+Figure 8.6: Bubbles plot of standardized residuals for abundance indices and for catch numbers (catch.n).
+</p>
+</div>
+<p>Figure <a href="diagnostics.html#fig:qq">8.7</a> shows a quantile-quantile plot to assess how well standardized residuals match a normal distribution.</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="diagnostics.html#cb179-1" tabindex="-1"></a><span class="fu">qqmath</span>(d_s)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:qq"></span>
+<img src="_main_files/figure-html/qq-1.png" alt="Quantile-quantile plot of standardized residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines the normal distribution quantiles." width="672" />
+<p class="caption">
+Figure 8.7: Quantile-quantile plot of standardized residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines the normal distribution quantiles.
 </p>
 </div>
 </div>
 <div id="predictive-skill" class="section level2 hasAnchor" number="8.2">
 <h2><span class="header-section-number">8.2</span> Predictive skill<a href="diagnostics.html#predictive-skill" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>An important feature of stock assessment model fits is the capacity to predict, since one of the most important analysis done with these fits is forecasting future fishing opportunities under pre-defined conditions. The <code>a4a</code> framework implements a visualization of the fit’s predictive skill for both catch-at-age and abundance indices. These are generated by the method <code>plot()</code> with the fit object and a <code>FLStock</code> (Figure <a href="diagnostics.html#fig:selplt">8.7</a>) or <code>FLIndices</code> (Figure <a href="#fig:idxplt"><strong>??</strong></a>) object as arguments.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="diagnostics.html#cb8-1" tabindex="-1"></a><span class="fu">plot</span>(fit, ple4)</span></code></pre></div>
+<p>An important feature of stock assessment model fits is the capacity to predict, since one of the most important analysis done with these fits is forecasting future fishing opportunities under pre-defined conditions. The <code>a4a</code> framework implements a visualization of the fit’s predictive skill for both catch-at-age and abundance indices. These are generated by the method <code>plot()</code> with the fit object and a <code>FLStock</code> (Figure <a href="diagnostics.html#fig:selplt">8.8</a>) or <code>FLIndices</code> (Figure <a href="diagnostics.html#fig:idxplt">8.9</a>) object as arguments. As before the objects will be shortened to the most recent 15 years for demonstration purposes.</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="diagnostics.html#cb180-1" tabindex="-1"></a><span class="fu">plot</span>(fit, stk)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:selplt"></span>
 <img src="_main_files/figure-html/selplt-1.png" alt="Predict and observed catch-at-age" width="672" />
 <p class="caption">
-Figure 8.7: Predict and observed catch-at-age
+Figure 8.8: Predict and observed catch-at-age
 </p>
 </div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="diagnostics.html#cb9-1" tabindex="-1"></a><span class="fu">plot</span>(fit, ple4.indices)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:idxplt-1"></span>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="diagnostics.html#cb181-1" tabindex="-1"></a><span class="fu">plot</span>(fit, idx)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:idxplt"></span>
 <img src="_main_files/figure-html/idxplt-1.png" alt="Predict and observed abundance-at-age" width="672" />
 <p class="caption">
-Figure 8.8: Predict and observed abundance-at-age
-</p>
-</div>
-<div class="figure"><span style="display:block;" id="fig:idxplt-2"></span>
-<img src="_main_files/figure-html/idxplt-2.png" alt="Predict and observed abundance-at-age" width="672" />
-<p class="caption">
 Figure 8.9: Predict and observed abundance-at-age
-</p>
-</div>
-<div class="figure"><span style="display:block;" id="fig:idxplt-3"></span>
-<img src="_main_files/figure-html/idxplt-3.png" alt="Predict and observed abundance-at-age" width="672" />
-<p class="caption">
-Figure 8.10: Predict and observed abundance-at-age
-</p>
-</div>
-<div class="figure"><span style="display:block;" id="fig:idxplt-4"></span>
-<img src="_main_files/figure-html/idxplt-4.png" alt="Predict and observed abundance-at-age" width="672" />
-<p class="caption">
-Figure 8.11: Predict and observed abundance-at-age
-</p>
-</div>
-<div class="figure"><span style="display:block;" id="fig:idxplt-5"></span>
-<img src="_main_files/figure-html/idxplt-5.png" alt="Predict and observed abundance-at-age" width="672" />
-<p class="caption">
-Figure 8.12: Predict and observed abundance-at-age
-</p>
-</div>
-<div class="figure"><span style="display:block;" id="fig:idxplt-6"></span>
-<img src="_main_files/figure-html/idxplt-6.png" alt="Predict and observed abundance-at-age" width="672" />
-<p class="caption">
-Figure 8.13: Predict and observed abundance-at-age
 </p>
 </div>
 <!--## Aggreagted catch in weight
@@ -454,163 +501,141 @@ Although a statistical catch-at-age model assumes errors in catch-at-age and, as
 </div>
 <div id="fit-summary-information-and-cross-validation-metrics" class="section level2 hasAnchor" number="8.3">
 <h2><span class="header-section-number">8.3</span> Fit summary, information and cross-validation metrics<a href="diagnostics.html#fit-summary-information-and-cross-validation-metrics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To get information about the likelihood fit the method <code>fitSumm()</code> can be used to report number of parameters (<code>npar</code>), negative log-likelkihood (<code>nlogl</code>), <code>ADMB</code> maximum gradient par (<code>maxgrad</code>), number of observations (<code>nobs</code>), generalized cross validation score (<code>gcv</code>), convergence flag (<code>convergence</code>) and acceptance rate (<code>accrate</code>) relevant for MCMC fits only. The second part refers to the likelihood value for each component.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="diagnostics.html#cb10-1" tabindex="-1"></a><span class="fu">fitSumm</span>(fit)</span></code></pre></div>
+<p>To get information about the likelihood fit the method <code>fitSumm()</code> can be used to report number of parameters (<code>npar</code>), negative log-likelkihood (<code>nlogl</code>), <code>ADMB</code> maximum gradient par (<code>maxgrad</code>), number of observations (<code>nobs</code>), generalized cross validation score (<code>gcv</code>), convergence flag (<code>convergence</code>) and acceptance rate (<code>accrate</code>) relevant for MCMC fits only.</p>
+<p>The GCV is implemented as described by <span class="citation">Wood (<a href="#ref-Wood2017">2017</a>)</span>, where the author explains that minimizing the GCV score helps balance the trade-off between model fit and smoothness, effectively preventing overfitting by penalizing excessive complexity. For more information on the other metrics check <span class="citation">Project (<a href="#ref-admb123manual">2013</a>)</span> and <span class="citation">Cole C. Monnahan, Muradian, and Kuriyama (<a href="#ref-monnahan2014admbmcmc">2014</a>)</span>.</p>
+<p>The second part refers to the likelihood value for each component. The first component is catch-at-age, components after the first are for indices and the last component is for the recruitment model, if set.</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="diagnostics.html#cb182-1" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel=</span><span class="sc">~</span><span class="fu">bevholt</span>(<span class="at">CV=</span><span class="fl">0.2</span>))</span>
+<span id="cb182-2"><a href="diagnostics.html#cb182-2" tabindex="-1"></a><span class="fu">fitSumm</span>(fit)</span></code></pre></div>
 <pre><code>##              iters
 ##                           1
-##   nopar        2.870000e+02
-##   nlogl       -3.823602e+02
-##   maxgrad      2.060663e-04
+##   nopar        2.890000e+02
+##   nlogl       -2.458172e+02
+##   maxgrad      1.382240e-04
 ##   nobs         1.728000e+03
-##   gcv          1.185680e-01
+##   gcv          1.240412e-01
 ##   convergence  0.000000e+00
 ##   accrate                NA
-##   nlogl_comp1 -1.058450e+03
-##   nlogl_comp2  6.695020e+01
-##   nlogl_comp3  5.643150e+01
-##   nlogl_comp4  4.025550e+02
-##   nlogl_comp5  5.836470e+01
-##   nlogl_comp6  6.057810e+01
-##   nlogl_comp7  3.121530e+01</code></pre>
-<p>Information criteria based metrics are reported with the methods:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="diagnostics.html#cb12-1" tabindex="-1"></a><span class="fu">AIC</span>(fit)</span></code></pre></div>
-<pre><code>## [1] -190.7205</code></pre>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="diagnostics.html#cb14-1" tabindex="-1"></a><span class="fu">BIC</span>(fit)</span></code></pre></div>
-<pre><code>## [1] 1374.784</code></pre>
+##   nlogl_comp1 -1.054070e+03
+##   nlogl_comp2  6.733170e+01
+##   nlogl_comp3  5.910930e+01
+##   nlogl_comp4  3.965180e+02
+##   nlogl_comp5  6.138520e+01
+##   nlogl_comp6  6.335820e+01
+##   nlogl_comp7  2.962780e+01
+##   nlogl_comp8  1.309180e+02</code></pre>
+<p>Information criteria based metrics are reported with the methods <code>AIC</code> and <code>BIC</code>, check <span class="citation">Ding (<a href="#ref-ding2023information">2023</a>)</span> for a primer on these metrics. According to <span class="citation">Ding (<a href="#ref-ding2023information">2023</a>)</span> the AIC can lead to the selection of more complex models that may fit the data better, especially in smaller sample sizes, while the BIC incorporates a stronger penalty for model complexity. In both cases, when comparing models, the lower the score the better the model fits according to these information criteria.</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="diagnostics.html#cb184-1" tabindex="-1"></a><span class="fu">AIC</span>(fit)</span></code></pre></div>
+<pre><code>## [1] 86.36567</code></pre>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="diagnostics.html#cb186-1" tabindex="-1"></a><span class="fu">BIC</span>(fit)</span></code></pre></div>
+<pre><code>## [1] 1662.78</code></pre>
+<!--## The package a4adiags
+
+The package `a4adiags` contains some additional diagnostics based on the `reference`. Runs test checks weather the residuals are randomly distributed. A "run" is a sequence of the same sign residuals. Few runs indicate a trend or a correlation in the residuals while too many runs may suggest overfitting.
+
+The primary output of a runstest is a p-value where: a high p value $(p\leq 0.05)$ suggests that the residuals are randomly distributed, a low p value indicates a non-random pattern in the residuals.
+
+
+
+
+
+
+
+Green shading indicates no evidence $(p <  0.05)$ and red shading evidence $(p  >0.05)$ to reject the hypothesis of a randomly distributed time-series of residuals, respectively. The shaded (green/red) area spans three residual standard deviations to either side from zero, and the red points outside of the shading violate the '$3\sigma$ limit' for that series.-->
 </div>
-<div id="the-package-a4adiags" class="section level2 hasAnchor" number="8.4">
-<h2><span class="header-section-number">8.4</span> The package a4adiags<a href="diagnostics.html#the-package-a4adiags" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The package <code>a4adiags</code> contains some additional diagnostics based on the <code>reference</code>. Runs test checks weather the residuals are randomly distributed. A “run” is a sequence of the same sign residuals. Few runs indicate a trend or a correlation in the residuals while too many runs may suggest overfitting.</p>
-<p>The primary output of a runstest is a p-value where: a high p value <span class="math inline">\((p\leq 0.05)\)</span> suggests that the residuals are randomly distributed, a low p value indicates a non-random pattern in the residuals.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="diagnostics.html#cb16-1" tabindex="-1"></a><span class="fu">library</span>(a4adiags)</span></code></pre></div>
-<pre><code>## Loading required package: ggplot2</code></pre>
-<pre><code>## 
-## Attaching package: &#39;ggplot2&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:FLCore&#39;:
-## 
-##     %+%</code></pre>
-<pre><code>## Loading required package: ggplotFL</code></pre>
-<pre><code>## 
-## Attaching package: &#39;a4adiags&#39;</code></pre>
-<pre><code>## The following object is masked _by_ &#39;.GlobalEnv&#39;:
-## 
-##     fit</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="diagnostics.html#cb23-1" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>())</span>
-<span id="cb23-2"><a href="diagnostics.html#cb23-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(mut09, mut09.idx, <span class="at">fmod =</span> <span class="sc">~</span><span class="fu">factor</span>(age) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">8</span>))</span>
-<span id="cb23-3"><a href="diagnostics.html#cb23-3" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit, mut09, mut09.idx)</span></code></pre></div>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="diagnostics.html#cb24-1" tabindex="-1"></a><span class="fu">plotRunstest</span>(fit, mut09.idx, <span class="at">combine =</span> F) <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>age)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:idxrunstest"></span>
-<img src="_main_files/figure-html/idxrunstest-1.png" alt="Runstest for the abundance index" width="672" />
-<p class="caption">
-Figure 8.14: Runstest for the abundance index
-</p>
-</div>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="diagnostics.html#cb25-1" tabindex="-1"></a><span class="fu">plotRunstest</span>(<span class="fu">catch.n</span>(mut09), <span class="fu">catch.n</span>(mut09 <span class="sc">+</span> fit), <span class="at">combine =</span> F) <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>age)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:catchrunstest"></span>
-<img src="_main_files/figure-html/catchrunstest-1.png" alt="Runstest for the catch by age" width="672" />
-<p class="caption">
-Figure 8.15: Runstest for the catch by age
-</p>
-</div>
-<p>Green shading indicates no evidence <span class="math inline">\((p &lt; 0.05)\)</span> and red shading evidence <span class="math inline">\((p &gt;0.05)\)</span> to reject the hypothesis of a randomly distributed time-series of residuals, respectively. The shaded (green/red) area spans three residual standard deviations to either side from zero, and the red points outside of the shading violate the ‘<span class="math inline">\(3\sigma\)</span> limit’ for that series.</p>
-</div>
-<div id="retrospective-analysis" class="section level2 hasAnchor" number="8.5">
-<h2><span class="header-section-number">8.5</span> Retrospective analysis<a href="diagnostics.html#retrospective-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>A legacy analysis from back when stock assessments were done with VPAs (REF Sheppeard, …), not so relevant with statistical catch at age models, which do not backwarsd fit fishing mortality and abundance as those models did. Cadrin (2025) notes the circularity of arguments when using retrospective analysis to make decisions about the stock assessment fit.</p>
-<p>Nevertheless, most experts still relly on this analysis to make decisions about the fit. The most common statistic used to summarize the retrospective analysis is Mohn’s rho (REF).</p>
-<p>Retrospective analysis consists on removing the most recent year of data, refit the model and compare estimates of metrics, e.g. the estimate of fishing mortality in year y-1 by each fit. The rationale is that a stable well fitted model would have similar estimates in both fits.</p>
-<p>In the example below the fishing mortality model is kept for all fits, without updating the smoothness factor.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="diagnostics.html#cb26-1" tabindex="-1"></a>fit0 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices)</span>
-<span id="cb26-2"><a href="diagnostics.html#cb26-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb26-3"><a href="diagnostics.html#cb26-3" tabindex="-1"></a>nret <span class="ot">&lt;-</span> <span class="fu">as.list</span>(<span class="dv">1</span><span class="sc">:</span>n)</span>
-<span id="cb26-4"><a href="diagnostics.html#cb26-4" tabindex="-1"></a>stks <span class="ot">&lt;-</span> <span class="fu">FLStocks</span>(<span class="fu">lapply</span>(nret, <span class="cf">function</span>(x){<span class="fu">window</span>(ple4, <span class="at">end=</span>(<span class="fu">range</span>(ple4)[<span class="st">&quot;maxyear&quot;</span>]<span class="sc">-</span>x))}))</span>
-<span id="cb26-5"><a href="diagnostics.html#cb26-5" tabindex="-1"></a>idxs <span class="ot">&lt;-</span> <span class="fu">lapply</span>(nret, <span class="cf">function</span>(x){<span class="fu">window</span>(ple4.indices, <span class="at">end=</span>(<span class="fu">range</span>(ple4)[<span class="st">&quot;maxyear&quot;</span>]<span class="sc">-</span>x))})</span>
-<span id="cb26-6"><a href="diagnostics.html#cb26-6" tabindex="-1"></a>fits <span class="ot">&lt;-</span> <span class="fu">scas</span>(stks, idxs, <span class="at">fmodel=</span><span class="fu">list</span>(<span class="fu">fmodel</span>(fit0)))</span>
-<span id="cb26-7"><a href="diagnostics.html#cb26-7" tabindex="-1"></a>stks <span class="ot">&lt;-</span> stks <span class="sc">+</span> fits</span>
-<span id="cb26-8"><a href="diagnostics.html#cb26-8" tabindex="-1"></a>stks[[<span class="dv">6</span>]] <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> <span class="fu">simulate</span>(fit0, <span class="dv">250</span>)</span></code></pre></div>
+<div id="retrospective-analysis" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Retrospective analysis<a href="diagnostics.html#retrospective-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Retrospective analysis involves sequentially removing the most recent year of data, refitting the model, and comparing key metric estimates, <em>e.g.</em> the estimate of fishing mortality in year <span class="math inline">\(y_{-1}\)</span> across different fits, using a statistic like Mohn’s rho <span class="citation">(<a href="#ref-mohn1999retrospective">Mohn 1999</a>)</span>. The rationale is that a well-fitted, stable model should yield consistent estimates despite changes in the data.</p>
+<p>This method originated from Virtual Population Analysis (VPA) <span class="citation">(<a href="#ref-pope1972">Pope 1972</a>)</span>, which estimates fishing mortality and abundance by working backward from the most recent years. In contrast, retrospective analysis is less directly applicable to statistical catch-at-age models, as these models typically start from the beginning of the time series and the youngest age class, working forward through time. As noted by <span class="citation">Cadrin (<a href="#ref-cadrin2025misinterpreting">2025</a>)</span>, there is a risk of circular reasoning when this method is used to both diagnose and validate stock assessment models. Nevertheless, many experts still rely on retrospective analysis to evaluate model performance.</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="diagnostics.html#cb188-1" tabindex="-1"></a>fit0 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices)</span>
+<span id="cb188-2"><a href="diagnostics.html#cb188-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb188-3"><a href="diagnostics.html#cb188-3" tabindex="-1"></a>nret <span class="ot">&lt;-</span> <span class="fu">as.list</span>(<span class="dv">1</span><span class="sc">:</span>n)</span>
+<span id="cb188-4"><a href="diagnostics.html#cb188-4" tabindex="-1"></a>stks <span class="ot">&lt;-</span> <span class="fu">FLStocks</span>(<span class="fu">lapply</span>(nret, <span class="cf">function</span>(x){<span class="fu">window</span>(ple4, <span class="at">end=</span>(<span class="fu">range</span>(ple4)[<span class="st">&quot;maxyear&quot;</span>]<span class="sc">-</span>x))}))</span>
+<span id="cb188-5"><a href="diagnostics.html#cb188-5" tabindex="-1"></a>idxs <span class="ot">&lt;-</span> <span class="fu">lapply</span>(nret, <span class="cf">function</span>(x){<span class="fu">window</span>(ple4.indices, <span class="at">end=</span>(<span class="fu">range</span>(ple4)[<span class="st">&quot;maxyear&quot;</span>]<span class="sc">-</span>x))})</span>
+<span id="cb188-6"><a href="diagnostics.html#cb188-6" tabindex="-1"></a>fits <span class="ot">&lt;-</span> <span class="fu">scas</span>(stks, idxs, <span class="at">fmodel=</span><span class="fu">list</span>(<span class="fu">fmodel</span>(fit0)))</span>
+<span id="cb188-7"><a href="diagnostics.html#cb188-7" tabindex="-1"></a>stks <span class="ot">&lt;-</span> stks <span class="sc">+</span> fits</span>
+<span id="cb188-8"><a href="diagnostics.html#cb188-8" tabindex="-1"></a>stks[[<span class="dv">6</span>]] <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> <span class="fu">simulate</span>(fit0, <span class="dv">250</span>)</span></code></pre></div>
 <p>Note fmodel doesn’t change:</p>
 <pre><code>## $fit1
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x557fb4eab9a0&gt;
+## &lt;environment: 0x650b781e0448&gt;
 ## 
 ## $fit2
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x557fb4eab9a0&gt;
+## &lt;environment: 0x650b781e0448&gt;
 ## 
 ## $fit3
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x557fb4eab9a0&gt;
+## &lt;environment: 0x650b781e0448&gt;
 ## 
 ## $fit4
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x557fb4eab9a0&gt;
+## &lt;environment: 0x650b781e0448&gt;
 ## 
 ## $fit5
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x557fb4eab9a0&gt;</code></pre>
-<p>The retrospective plot shown below presents the current fit with uncertainty and each retrospective fit on top. If the retrospective fit is not whithin the confidence interval of the current fit the analyst can argue that the estiate is different and as such reflecting a “poor” fit.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="diagnostics.html#cb28-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">window</span>(stks, <span class="at">start=</span><span class="dv">2005</span>))</span></code></pre></div>
+## &lt;environment: 0x650b781e0448&gt;</code></pre>
+<p>The retrospective plot shown below presents the current fit with uncertainty and each retrospective fit on top. If the retrospective fit is not within the confidence interval of the current fit the analyst can argue that the estimate is different and as such reflecting a “poor” fit.</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="diagnostics.html#cb190-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">window</span>(stks, <span class="at">start=</span><span class="dv">2005</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:retro"></span>
-<img src="_main_files/figure-html/retro-1.png" alt="Retrospective analysis of the plaice in ICES area IV stock" width="672" />
+<img src="_main_files/figure-html/retro-1.png" alt="Retrospective analysis of the plaice in ICES area IV stock. Fixed F model." width="672" />
 <p class="caption">
-Figure 8.16: Retrospective analysis of the plaice in ICES area IV stock
+Figure 8.10: Retrospective analysis of the plaice in ICES area IV stock. Fixed F model.
 </p>
 </div>
 <p>One could use specific submodels and pass them to the fitting function <code>scas</code>, including with some adjustments to take into account the data reduction. In the next example the fishing mortality model is set reducing the smoothness taking into account the length of the dataset. Not considering the adjustment of the model to the new dataset may result in comparisons across models which are very different due to the relationship between information contained in the data and the number of parameters in the model. This issue is more relevant for stocks with shorter time series.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="diagnostics.html#cb29-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb29-2"><a href="diagnostics.html#cb29-2" tabindex="-1"></a>nret <span class="ot">&lt;-</span> <span class="fu">as.list</span>(<span class="dv">1</span><span class="sc">:</span>n)</span>
-<span id="cb29-3"><a href="diagnostics.html#cb29-3" tabindex="-1"></a>stks <span class="ot">&lt;-</span> <span class="fu">FLStocks</span>(<span class="fu">lapply</span>(nret, <span class="cf">function</span>(x){<span class="fu">window</span>(ple4, <span class="at">end=</span>(<span class="fu">range</span>(ple4)[<span class="st">&quot;maxyear&quot;</span>]<span class="sc">-</span>x))}))</span>
-<span id="cb29-4"><a href="diagnostics.html#cb29-4" tabindex="-1"></a>idxs <span class="ot">&lt;-</span> <span class="fu">lapply</span>(nret, <span class="cf">function</span>(x){<span class="fu">window</span>(ple4.indices, <span class="at">end=</span>(<span class="fu">range</span>(ple4)[<span class="st">&quot;maxyear&quot;</span>]<span class="sc">-</span>x))})</span>
-<span id="cb29-5"><a href="diagnostics.html#cb29-5" tabindex="-1"></a><span class="co"># each model will have smootheness scaled to length of time series</span></span>
-<span id="cb29-6"><a href="diagnostics.html#cb29-6" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="fu">lapply</span>(stks, defaultFmod)</span>
-<span id="cb29-7"><a href="diagnostics.html#cb29-7" tabindex="-1"></a>fits <span class="ot">&lt;-</span> <span class="fu">scas</span>(stks, idxs, <span class="at">fmodel=</span>fmod)</span>
-<span id="cb29-8"><a href="diagnostics.html#cb29-8" tabindex="-1"></a>stks <span class="ot">&lt;-</span> stks <span class="sc">+</span> fits</span>
-<span id="cb29-9"><a href="diagnostics.html#cb29-9" tabindex="-1"></a>stks[[<span class="dv">6</span>]] <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> <span class="fu">simulate</span>(fit0, <span class="dv">250</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="diagnostics.html#cb191-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb191-2"><a href="diagnostics.html#cb191-2" tabindex="-1"></a>nret <span class="ot">&lt;-</span> <span class="fu">as.list</span>(<span class="dv">1</span><span class="sc">:</span>n)</span>
+<span id="cb191-3"><a href="diagnostics.html#cb191-3" tabindex="-1"></a>stks <span class="ot">&lt;-</span> <span class="fu">FLStocks</span>(<span class="fu">lapply</span>(nret, <span class="cf">function</span>(x){<span class="fu">window</span>(ple4, <span class="at">end=</span>(<span class="fu">range</span>(ple4)[<span class="st">&quot;maxyear&quot;</span>]<span class="sc">-</span>x))}))</span>
+<span id="cb191-4"><a href="diagnostics.html#cb191-4" tabindex="-1"></a>idxs <span class="ot">&lt;-</span> <span class="fu">lapply</span>(nret, <span class="cf">function</span>(x){<span class="fu">window</span>(ple4.indices, <span class="at">end=</span>(<span class="fu">range</span>(ple4)[<span class="st">&quot;maxyear&quot;</span>]<span class="sc">-</span>x))})</span>
+<span id="cb191-5"><a href="diagnostics.html#cb191-5" tabindex="-1"></a><span class="co"># each model will have smootheness scaled to length of time series</span></span>
+<span id="cb191-6"><a href="diagnostics.html#cb191-6" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="fu">lapply</span>(stks, defaultFmod)</span>
+<span id="cb191-7"><a href="diagnostics.html#cb191-7" tabindex="-1"></a>fits <span class="ot">&lt;-</span> <span class="fu">scas</span>(stks, idxs, <span class="at">fmodel=</span>fmod)</span>
+<span id="cb191-8"><a href="diagnostics.html#cb191-8" tabindex="-1"></a>stks <span class="ot">&lt;-</span> stks <span class="sc">+</span> fits</span>
+<span id="cb191-9"><a href="diagnostics.html#cb191-9" tabindex="-1"></a>stks[[<span class="dv">6</span>]] <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> <span class="fu">simulate</span>(fit0, <span class="dv">250</span>)</span></code></pre></div>
 <p>Note fmodel changes:</p>
 <pre><code>## $fit1
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x557fac041e20&gt;
+## &lt;environment: 0x650b73d016c0&gt;
 ## 
 ## $fit2
 ## ~te(age, year, k = c(6, 29), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x557fabf6d300&gt;
+## &lt;environment: 0x650b73bbc5d0&gt;
 ## 
 ## $fit3
 ## ~te(age, year, k = c(6, 29), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x557fabe26d18&gt;
+## &lt;environment: 0x650b73753ca0&gt;
 ## 
 ## $fit4
 ## ~te(age, year, k = c(6, 28), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x557fabd57ef8&gt;
+## &lt;environment: 0x650b73656160&gt;
 ## 
 ## $fit5
 ## ~te(age, year, k = c(6, 28), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x557fabb480c0&gt;</code></pre>
+## &lt;environment: 0x650b73591d78&gt;</code></pre>
 <p>And the retrospective plot</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="diagnostics.html#cb31-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">window</span>(stks, <span class="at">start=</span><span class="dv">2005</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="diagnostics.html#cb193-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">window</span>(stks, <span class="at">start=</span><span class="dv">2005</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:retro2"></span>
-<img src="_main_files/figure-html/retro2-1.png" alt="Retrospective analysis of the plaice in ICES area IV stock" width="672" />
+<img src="_main_files/figure-html/retro2-1.png" alt="Retrospective analysis of the plaice in ICES area IV stock. Updating F model." width="672" />
 <p class="caption">
-Figure 8.17: Retrospective analysis of the plaice in ICES area IV stock
+Figure 8.11: Retrospective analysis of the plaice in ICES area IV stock. Updating F model.
 </p>
 </div>
 </div>
-<div id="hindcast" class="section level2 hasAnchor" number="8.6">
-<h2><span class="header-section-number">8.6</span> Hindcast<a href="diagnostics.html#hindcast" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>A hindcast is a method used in modeling and simulation where historical data is used to test and validate predictive models. In a hindcast, known outcomes from the past are compared with the model’s predictions to assess the model’s accuracy and performance. The primary goal of hindcasting is to improve the reliability and accuracy of predictive models by identifying discrepancies between predicted and actual outcomes and adjusting model parameters accordingly <span class="citation">(<a href="#ref-hc2002">Mason and Mimmack 2002</a>)</span>. The term retroactive forecasting is used by <span class="citation">Mason and Mimmack (<a href="#ref-hc2002">2002</a>)</span> to denote the form of hindcasting in which forecasts are made for past years (e.g. 2006–2010) using data prior to those years (perhaps 1970–2005). The terminology ex post is used in business forecasting, referring to predictions for historical periods for which verification data are already available at the time of forecast.</p>
-<p>For this exercise we’ll use the package <code>a4adiags</code> hindcast method, which follows the suggestions by <span class="citation">Carvalho et al. (<a href="#ref-cookbook2021">2021</a>)</span> and <span class="citation">Kell, Kimoto, and Kitakado (<a href="#ref-KELL2016119">2016</a>)</span>. The hindacast is carried out by sequentially removing the most recent year in the data, similar to a retrospective analysis, refit the stock assessment model and project one year ahead. The Mean Absolute Scale Error (MASE) <span class="citation">(<a href="#ref-cookbook2021">Carvalho et al. 2021</a>)</span> is used to assess the predictive skill, a score higher than 1 indicates that the model forecasts have less skill than a random walk.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="diagnostics.html#cb32-1" tabindex="-1"></a>nyears <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb32-2"><a href="diagnostics.html#cb32-2" tabindex="-1"></a><span class="co"># set number of year for average biology and selectivity</span></span>
-<span id="cb32-3"><a href="diagnostics.html#cb32-3" tabindex="-1"></a>nsq <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb32-4"><a href="diagnostics.html#cb32-4" tabindex="-1"></a>hc <span class="ot">&lt;-</span> <span class="fu">a4ahcxval</span>(ple4, ple4.indices, <span class="at">nyears =</span> nyears, <span class="at">nsq =</span> nsq)</span></code></pre></div>
-<pre><code>## Warning in a4ahcxval(ple4, ple4.indices, nyears = nyears, nsq = nsq): FLIndices
-## outside of year range are excluded from xval: BTS-Isis-early</code></pre>
-<pre><code>## Warning: executing %dopar% sequentially: no parallel backend registered</code></pre>
-<p>Figure <a href="diagnostics.html#fig:hc">8.18</a> depicts the hincast results for the abudance indices used in the assessment. The MASE value is included in the strip above the plot. In this case one can see that 3 out of the 5 surveys are not better predictors than a random walk.</p>
+<div id="hindcast" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> Hindcast<a href="diagnostics.html#hindcast" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A hindcast is a method used in modeling and simulation where historical data is used to test and validate predictive models. In a hindcast, known outcomes from the past are compared with the model’s predictions to assess the model’s accuracy and performance. The primary goal of hindcasting is to improve the reliability and accuracy of predictive models by identifying discrepancies between predicted and actual outcomes and adjusting model parameters accordingly <span class="citation">(<a href="#ref-hc2002">Mason and Mimmack 2002</a>)</span>. The term retroactive forecasting is used by <span class="citation">Mason and Mimmack (<a href="#ref-hc2002">2002</a>)</span> to denote the form of hindcasting in which forecasts are made for past years (e.g. 2006–2010) using data prior to those years (perhaps 1970–2005). The terminology ex-post is used in business forecasting, referring to predictions for historical periods for which verification data are already available at the time of forecast.</p>
+<p>For this exercise we’ll use the package <code>a4adiags</code> hindcast method, which follows the suggestions by <span class="citation">Carvalho et al. (<a href="#ref-cookbook2021">2021</a>)</span> and <span class="citation">Laurence T. Kell, Kimoto, and Kitakado (<a href="#ref-KELL2016119">2016</a>)</span>. The hindacast is carried out by sequentially removing the most recent year in the data, similar to a retrospective analysis, refit the stock assessment model and project one year ahead. The Mean Absolute Scale Error (MASE) <span class="citation">(<a href="#ref-cookbook2021">Carvalho et al. 2021</a>)</span> is used to assess the predictive skill, a score higher than 1 indicates that the model forecasts have less skill than a random walk.</p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="diagnostics.html#cb194-1" tabindex="-1"></a><span class="fu">library</span>(a4adiags)</span>
+<span id="cb194-2"><a href="diagnostics.html#cb194-2" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>())</span>
+<span id="cb194-3"><a href="diagnostics.html#cb194-3" tabindex="-1"></a>nyears <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb194-4"><a href="diagnostics.html#cb194-4" tabindex="-1"></a><span class="co"># set number of year for average biology and selectivity</span></span>
+<span id="cb194-5"><a href="diagnostics.html#cb194-5" tabindex="-1"></a>nsq <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb194-6"><a href="diagnostics.html#cb194-6" tabindex="-1"></a>hc <span class="ot">&lt;-</span> <span class="fu">a4ahcxval</span>(ple4, ple4.indices, <span class="at">nyears =</span> nyears, <span class="at">nsq =</span> nsq)</span></code></pre></div>
+<p>Figure <a href="diagnostics.html#fig:hc">8.12</a> depicts the hincast results for the abudance indices used in the assessment. The MASE value is included in the strip above the plot. In this case one can see that 3 out of the 5 surveys are not better predictors than a random walk.</p>
 <div class="figure"><span style="display:block;" id="fig:hc"></span>
 <img src="_main_files/figure-html/hc-1.png" alt="Survey predictions of year ahead indices in hindcast process. The MASE is presented in the strip about the index and is related to the predictive skill of the index." width="672" />
 <p class="caption">
-Figure 8.18: Survey predictions of year ahead indices in hindcast process. The MASE is presented in the strip about the index and is related to the predictive skill of the index.
+Figure 8.12: Survey predictions of year ahead indices in hindcast process. The MASE is presented in the strip about the index and is related to the predictive skill of the index.
 </p>
 </div>
 
@@ -618,8 +643,14 @@ Figure 8.18: Survey predictions of year ahead indices in hindcast process. The M
 </div>
 <h3> References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-cadrin2025misinterpreting" class="csl-entry">
+Cadrin, Steven X. 2025. <span>“Misinterpreting Retrospective Patterns in Fishery Stock Assessment.”</span> <em>ICES Journal of Marine Science</em> 82 (2): 473–88. <a href="https://doi.org/10.1093/icesjms/fsaf014">https://doi.org/10.1093/icesjms/fsaf014</a>.
+</div>
 <div id="ref-cookbook2021" class="csl-entry">
 Carvalho, Felipe, Henning Winker, Dean Courtney, Maia Kapur, Laurence Kell, Massimiliano Cardinale, Michael Schirripa, et al. 2021. <span>“A Cookbook for Using Model Diagnostics in Integrated Stock Assessments.”</span> <em>Fisheries Research</em> 240: 105959. https://doi.org/<a href="https://doi.org/10.1016/j.fishres.2021.105959">https://doi.org/10.1016/j.fishres.2021.105959</a>.
+</div>
+<div id="ref-ding2023information" class="csl-entry">
+Ding, Jie. 2023. <span>“Information Criteria for Model Selection.”</span> <em>Wiley Interdisciplinary Reviews: Computational Statistics</em> 15 (2): e1607. <a href="https://doi.org/10.1002/wics.1607">https://doi.org/10.1002/wics.1607</a>.
 </div>
 <div id="ref-hickey2019" class="csl-entry">
 Hickey, Graeme L., Evangelos Kontopantelis, Johanna J. M. Takkenberg, and Friedhelm Beyersdorf. 2019. <span>“Statistical Primer: Checking Model Assumptions with Regression Diagnostics.”</span> <em>Interactive Cardiovascular and Thoracic Surgery</em>. <a href="https://doi.org/10.1093/ICVTS/IVY207">https://doi.org/10.1093/ICVTS/IVY207</a>.
@@ -629,6 +660,21 @@ Kell, Laurence T., Ai Kimoto, and Toshihide Kitakado. 2016. <span>“Evaluation 
 </div>
 <div id="ref-hc2002" class="csl-entry">
 Mason, Simon, and G. Mimmack. 2002. <span>“2001: Comparison of Some Statistical Methods of Probabilistic Forecasting of ENSO.”</span> <em>Journal of Climate</em> 15 (February).
+</div>
+<div id="ref-mohn1999retrospective" class="csl-entry">
+Mohn, R. 1999. <span>“The Retrospective Problem in Sequential Population Analysis: An Investigation Using Cod Fishery and Simulated Data.”</span> <em>ICES Journal of Marine Science</em> 56 (4): 473–88. <a href="https://doi.org/10.1006/jmsc.1999.0481">https://doi.org/10.1006/jmsc.1999.0481</a>.
+</div>
+<div id="ref-monnahan2014admbmcmc" class="csl-entry">
+Monnahan, Cole C., Melissa L. Muradian, and Peter T. Kuriyama. 2014. <em>A Guide for Bayesian Analysis in AD Model Builder</em>. ADMB Project.
+</div>
+<div id="ref-pope1972" class="csl-entry">
+Pope, J. G. 1972. <span>“An Investigation of the Accuracy of Virtual Population Analysis Using Cohort Analysis.”</span> <em>Research Bulletin of the International Commission for the Northwest Atlantic Fisheries</em> 9: 65–74.
+</div>
+<div id="ref-admb123manual" class="csl-entry">
+Project, ADMB. 2013. <em>ADMB 12.3 Manual</em>. ADMB Foundation.
+</div>
+<div id="ref-Wood2017" class="csl-entry">
+Wood, S. N. 2017. <em>Generalized Additive Models: An Introduction with r</em>. 2nd ed. Chapman; Hall/CRC.
 </div>
 </div>
             </section>
@@ -651,42 +697,42 @@ Mason, Simon, and G. Mimmack. 2002. <span>“2001: Comparison of Some Statistica
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/08-diagnostics.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["_main.pdf", "_main.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/08-diagnostics.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

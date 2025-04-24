@@ -10,6 +10,21 @@ data(ple4)
 data(ple4.indices)
 ```
 
+For demonstration purposes we'll use the plaice in ICES area 4 stock with a plus group at age 9, a single index "BTS-Combined (all)", and trimmed time series to the most recent 15 years.
+
+```{r}
+# use single indices and set plus group at 9
+idx <- ple4.indices[c("BTS-Combined (all)")]
+idx[[1]] <- idx[[1]][1:9]
+stk <- setPlusGroup(ple4, 9)
+iy <- 2003
+# fit
+fmod <- ~ s(age, k = 8) + s(year, k = 29) + te(age, year, k = c(6, 15))
+qmod <- list(~factor(age))
+n1mod <- ~s(age, k=5)
+vmod <- list(~s(age, k=3), ~s(age, k=3))
+fit <- sca(stk, idx, fmodel=fmod, qmodel=qmod, n1model=n1mod, vmodel=vmod)
+```
 
 ## Residuals
 
@@ -19,47 +34,65 @@ Consider $x_{ay}$ to be either a catch-at-age matrix ($C_{ay}$) or one abundance
 
 Raw residuals are compute by $d_{ay} = \log{x_{ay}} - \log{\tilde{x}_{ay}}$ and have distribution $N(0,\upsilon^2_{a})$. Standardized residuals will be compute with $d^s_{ay} = \frac{d_{ay}}{\hat{\upsilon}^2_{a}}$ where $\hat{\upsilon}^2_{a} = (n-1)^{-1} \sum_y(d_{ay})^2$. Pearson residuals scale raw residuals by the estimates of $\sigma^2$ or $\tau^2$, as such $d^p_{ay} = \frac{d_{ay}}{\tilde{\upsilon}^2_{a}}$ where $\tilde{\upsilon}^2_{a} = \tilde{\sigma}^2_{a}$ for catches, or $\tilde{\upsilon}^2_{a} = \tilde{\tau}^2_{a}$ for each index of abundance.
 
-The `residuals()` method computes these residuals and generate a object which can be plotted using a set of packed methods. The argument `type` will allow the user to chose which residuals will be computed. By default the method computes standardized residuals.
-
+The `residuals()` method computes these residuals and generate a object which can be plotted using a set of out-of-the-box methods. The argument `type` will allow the user to chose which residuals will be computed. By default the method computes standardized residuals.
 
 ```{r}
-fit <- sca(ple4, ple4.indices)
-d_s <- residuals(fit, ple4, ple4.indices)
+# residuals
+d_s <- residuals(fit, stk, idx)
+# shorten time series
+d_s <- window(d_s, start=iy)
 ```
 
-Figure \@ref(fig:res) shows a scatterplot of standardized residuals with a smoother to guide (or mis-guide ...) your visual analysis. Note that the standardization should produce normal residuals with variance=1, which means that most residual values should roughly be between $\sim -2$ and $\sim 2$.
+Figure \@ref(fig:res) shows a scatterplot of standardized residuals with a smoother to guide (or mis-guide ...) your visual analysis. Note that the standardization should produce normal residuals with variance=1, which means that most residual values should roughly be between $-2$ and $2$.
 
 ```{r, res, fig.cap="Standardized residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother."}
 plot(d_s)
 ```
 
-When plotting residuals by default the auxiliar line is a smoother. However it's possible to use other type of lines by setting the argument `auxline` in `plot`. The argument can take the values used by `xyplot`, which are (from `panel.xyplot` help page) one or more of the following: "p", "l", "h", "b", "o", "s", "S", "g", "r", "a", "smooth", and "spline". If type has more than one element, an attempt is made to combine the effect of each of the components. The behaviour if any of the first five are included is similar to the effect of the corresponding type in plot: "p" and "l" stand for points and lines respectively; "b" and "o" (for ‘overlay’) plot both; "h" draws vertical (or horizontal if horizontal = TRUE) line segments from the points to the origin. Types "s" and "S" are like "l" in the sense that they join consecutive points, but instead of being joined by a straight line, points are connected by a vertical and a horizontal segment forming a ‘step’, with the vertical segment coming first for "s", and the horizontal segment coming first for "S". "g" adds a reference grid. Type "r" adds a linear regression line, "smooth" adds a loess fit, "spline" adds a cubic smoothing spline fit, and "a" draws line segments joining the average y value for each distinct x value. Figure \@ref(fig:resaux) shows a regression line over the residuals instead of the loess smooother.
+When plotting residuals, by default the auxiliar line is a smoother. However it's possible to use other type of lines by setting the argument `auxline` in `plot` (check `panel.xyplot` help page for more information), of which the relevant ones for residuals are shown in Table \@ref(tab:auxargs). If type has more than one element, an attempt is made to combine the effect of each of the components.
 
-```{r, resaux, fig.cap="Standardized residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother."}
-plot(d_s, auxline="r")
+|Argument|Description|
+|:---|:----------|
+|l|lines|
+|h|draws vertical (or horizontal if horizontal = TRUE) line segments from the points to the origin|
+|s|like "l" in the sense that they join consecutive points, but instead of being joined by a straight line, points are connected by a vertical and a horizontal segment forming a ‘step’, with the vertical segment coming first|
+|S|same as s but the horizontal segment coming first|
+|g| adds a reference grid|
+|r|adds a linear regression line|
+|smooth|adds a loess fit|
+|spline|adds a cubic smoothing spline fit|
+|a|draws line segments joining the average y value for each distinct x value|
+Table: (\#tab:auxargs) Values for the argument `auxline` of residual plots
+
+Figure \@ref(fig:resaux) shows a regression line over the residuals instead of the loess smooother with a grid on the background.
+
+```{r, resaux, fig.cap="Standardized residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a regression fit."}
+plot(d_s, auxline=c("r","g"))
 ```
 
 Pearson residuals can be computed and plotted the same way as standardized residuals by setting `type='pearson'` (Figure \@ref(fig:resp)).
 
 ```{r, resp, fig.cap="Pearson residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother."}
-d_p <- residuals(fit, ple4, ple4.indices, type='pearson')
+d_p <- residuals(fit, stk, idx, type='pearson')
+# shorten time series
+d_p <- window(d_p, start=iy)
 plot(d_p)
 ```
 
 Finally, the raw residuals are computed by setting `type='deviances'` and plotted the same way as before (Figure \@ref(fig:resr)). These residuals are usefull to identify which data points are not well modelled, showing a large dispersion of the residuals and requiring more attention from the analyst.
 
 ```{r, resr, fig.cap="Raw residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother."}
-d_r <- residuals(fit, ple4, ple4.indices, type='deviances')
+d_r <- residuals(fit, stk, idx, type='deviances')
+# shorten time series
+d_r <- window(d_r, start=iy)
 plot(d_r)
 ```
 
-The above plots can all be done grouping by year instead of ages, in which case it can help distinguish non-modeled structural year effects. The argument `by`, by default "ages", needs to be set as "year".
+The above plots can be done by age while grouping by year, instead of by year grouping by ages, the default, in which case it can help distinguish non-modeled structural year effects. The `plot` argument `by` needs to be set as `age`.
 
 ```{r, resy, fig.cap="Standardized residuals for abundance indices and catch numbers (catch.n). Each panel is coded by year, dots represent standardized residuals and lines a simple smoother."}
-d_sy <- residuals(fit, ple4, ple4.indices, by='year')
-plot(d_sy)
+plot(d_s, by='age', auxline=c("h", "g"))
 ```
-
 
 The common bubble plot (`bubble()`) are shown in Figure \@ref(fig:bub). It shows the same information as Figure \@ref(fig:res) but in a multivariate perspective.
 
@@ -73,20 +106,23 @@ Figure \@ref(fig:qq) shows a quantile-quantile plot to assess how well standardi
 qqmath(d_s)
 ```
 
-
-
-
-
 ## Predictive skill
 
-An important feature of stock assessment model fits is the capacity to predict, since one of the most important analysis done with these fits is forecasting future fishing opportunities under pre-defined conditions. The `a4a` framework implements a visualization of the fit's predictive skill for both catch-at-age and abundance indices. These are generated by the method `plot()` with the fit object and a `FLStock` (Figure \@ref(fig:selplt)) or `FLIndices` (Figure \@ref(fig:idxplt)) object as arguments.
+An important feature of stock assessment model fits is the capacity to predict, since one of the most important analysis done with these fits is forecasting future fishing opportunities under pre-defined conditions. The `a4a` framework implements a visualization of the fit's predictive skill for both catch-at-age and abundance indices. These are generated by the method `plot()` with the fit object and a `FLStock` (Figure \@ref(fig:selplt)) or `FLIndices` (Figure \@ref(fig:idxplt)) object as arguments. As before the objects will be shortened to the most recent 15 years for demonstration purposes.
+
+```{r, echo=FALSE}
+fit <- window(fit, start=iy)
+stk <- window(stk, start=iy)
+idx <- window(idx, start=iy)
+```
+
 
 ```{r, selplt, fig.cap="Predict and observed catch-at-age"}
-plot(fit, ple4)
+plot(fit, stk)
 ```
 
 ```{r, idxplt, fig.cap="Predict and observed abundance-at-age"}
-plot(fit, ple4.indices)
+plot(fit, idx)
 ```
 
 <!--## Aggreagted catch in weight
@@ -96,57 +132,58 @@ Although a statistical catch-at-age model assumes errors in catch-at-age and, as
 [^07-diagnostics-1]: Some analysts believe this is the most important diagnostic since total catch should be trusted. Needless to say we don't agree and consider reported catch in weight one of the less reliable pieces of information available for stock assessment.-->
 
 ```{r, catchdiag, fig.cap="Diagnostics for age aggregated catch in weight", eval=FALSE, echo=FALSE}
-c_d <- computeCatchDiagnostics(fit, ple4)
+c_d <- computeCatchDiagnostics(fit, stk)
 plot(c_d)
 ```
 
 ## Fit summary, information and cross-validation metrics
 
-To get information about the likelihood fit the method `fitSumm()` can be used to report number of parameters (`npar`), negative log-likelkihood (`nlogl`), `ADMB` maximum gradient par (`maxgrad`), number of observations (`nobs`), generalized cross validation score (`gcv`), convergence flag (`convergence`) and acceptance rate (`accrate`) relevant for MCMC fits only. The second part refers to the likelihood value for each component.
+To get information about the likelihood fit the method `fitSumm()` can be used to report number of parameters (`npar`), negative log-likelkihood (`nlogl`), `ADMB` maximum gradient par (`maxgrad`), number of observations (`nobs`), generalized cross validation score (`gcv`), convergence flag (`convergence`) and acceptance rate (`accrate`) relevant for MCMC fits only.
+
+The GCV is implemented as described by @Wood2017, where the author explains that minimizing the GCV score helps balance the trade-off between model fit and smoothness, effectively preventing overfitting by penalizing excessive complexity. For more information on the other metrics check @admb123manual and @monnahan2014admbmcmc.
+
+The second part refers to the likelihood value for each component. The first component is catch-at-age, components after the first are for indices and the last component is for the recruitment model, if set.
 
 ```{r}
+fit <- sca(ple4, ple4.indices, srmodel=~bevholt(CV=0.2))
 fitSumm(fit)
 ```
 
-Information criteria based metrics are reported with the methods:
+Information criteria based metrics are reported with the methods `AIC` and `BIC`, check @ding2023information for a primer on these metrics. According to @ding2023information the AIC can lead to the selection of more complex models that may fit the data better, especially in smaller sample sizes, while the BIC incorporates a stronger penalty for model complexity. In both cases, when comparing models, the lower the score the better the model fits according to these information criteria.
 
 ```{r}
 AIC(fit)
 BIC(fit)
 ```
 
-## The package a4adiags
+<!--## The package a4adiags
 
 The package `a4adiags` contains some additional diagnostics based on the `reference`. Runs test checks weather the residuals are randomly distributed. A "run" is a sequence of the same sign residuals. Few runs indicate a trend or a correlation in the residuals while too many runs may suggest overfitting.
 
 The primary output of a runstest is a p-value where: a high p value $(p\leq 0.05)$ suggests that the residuals are randomly distributed, a low p value indicates a non-random pattern in the residuals.
 
-```{r}
+```{r, echo=FALSE, eval=FALSE}
 library(a4adiags)
 theme_set(theme_bw())
 fit <- sca(mut09, mut09.idx, fmod = ~factor(age) + s(year, k = 8))
 res <- residuals(fit, mut09, mut09.idx)
 ```
 
-```{r, idxrunstest, fig.cap="Runstest for the abundance index"}
+```{r, idxrunstest, fig.cap="Runstest for the abundance index", echo=FALSE, eval=FALSE}
 plotRunstest(fit, mut09.idx, combine = F) + theme_bw() + facet_wrap(~age)
 ```
 
-```{r, catchrunstest, fig.cap="Runstest for the catch by age"}
+```{r, catchrunstest, fig.cap="Runstest for the catch by age", echo=FALSE, eval=FALSE}
 plotRunstest(catch.n(mut09), catch.n(mut09 + fit), combine = F) + theme_bw() + facet_wrap(~age)
 ```
 
-Green shading indicates no evidence $(p <  0.05)$ and red shading evidence $(p  >0.05)$ to reject the hypothesis of a randomly distributed time-series of residuals, respectively. The shaded (green/red) area spans three residual standard deviations to either side from zero, and the red points outside of the shading violate the '$3\sigma$ limit' for that series.
+Green shading indicates no evidence $(p <  0.05)$ and red shading evidence $(p  >0.05)$ to reject the hypothesis of a randomly distributed time-series of residuals, respectively. The shaded (green/red) area spans three residual standard deviations to either side from zero, and the red points outside of the shading violate the '$3\sigma$ limit' for that series.-->
 
 ## Retrospective analysis
 
-A legacy analysis from back when stock assessments were done with VPAs (REF Sheppeard, ...), not so relevant with statistical catch at age models, which do not backwarsd fit fishing mortality and abundance as those models did. Cadrin (2025) notes the circularity of arguments when using retrospective analysis to make decisions about the stock assessment fit.
+Retrospective analysis involves sequentially removing the most recent year of data, refitting the model, and comparing key metric estimates, *e.g.* the estimate of fishing mortality in year $y_{-1}$ across different fits, using a statistic like Mohn's rho [@mohn1999retrospective]. The rationale is that a well-fitted, stable model should yield consistent estimates despite changes in the data.
 
-Nevertheless, most experts still relly on this analysis to make decisions about the fit. The most common statistic used to summarize the retrospective analysis is Mohn's rho (REF).
-
-Retrospective analysis consists on removing the most recent year of data, refit the model and compare estimates of metrics, e.g. the estimate of fishing mortality in year y-1 by each fit. The rationale is that a stable well fitted model would have similar estimates in both fits.
-
-In the example below the fishing mortality model is kept for all fits, without updating the smoothness factor.
+This method originated from Virtual Population Analysis (VPA) [@pope1972], which estimates fishing mortality and abundance by working backward from the most recent years. In contrast, retrospective analysis is less directly applicable to statistical catch-at-age models, as these models typically start from the beginning of the time series and the youngest age class, working forward through time. As noted by @cadrin2025misinterpreting, there is a risk of circular reasoning when this method is used to both diagnose and validate stock assessment models. Nevertheless, many experts still rely on retrospective analysis to evaluate model performance.
 
 ```{r}
 fit0 <- sca(ple4, ple4.indices)
@@ -165,9 +202,9 @@ Note fmodel doesn't change:
 lapply(fits, fmodel)
 ```
 
-The retrospective plot shown below presents the current fit with uncertainty and each retrospective fit on top. If the retrospective fit is not whithin the confidence interval of the current fit the analyst can argue that the estiate is different and as such reflecting a "poor" fit.
+The retrospective plot shown below presents the current fit with uncertainty and each retrospective fit on top. If the retrospective fit is not within the confidence interval of the current fit the analyst can argue that the estimate is different and as such reflecting a "poor" fit.
 
-```{r, retro, fig.cap="Retrospective analysis of the plaice in ICES area IV stock"}
+```{r, retro, fig.cap="Retrospective analysis of the plaice in ICES area IV stock. Fixed F model."}
 plot(window(stks, start=2005))
 ```
 
@@ -193,17 +230,19 @@ lapply(fits, fmodel)
 
 And the retrospective plot
 
-```{r, retro2, fig.cap="Retrospective analysis of the plaice in ICES area IV stock"}
+```{r, retro2, fig.cap="Retrospective analysis of the plaice in ICES area IV stock. Updating F model."}
 plot(window(stks, start=2005))
 ```
 
 ## Hindcast
 
-A hindcast is a method used in modeling and simulation where historical data is used to test and validate predictive models. In a hindcast, known outcomes from the past are compared with the model's predictions to assess the model's accuracy and performance. The primary goal of hindcasting is to improve the reliability and accuracy of predictive models by identifying discrepancies between predicted and actual outcomes and adjusting model parameters accordingly [@hc2002]. The term retroactive forecasting is used by @hc2002 to denote the form of hindcasting in which forecasts are made for past years (e.g. 2006–2010) using data prior to those years (perhaps 1970–2005). The terminology ex post is used in business forecasting, referring to predictions for historical periods for which verification data are already available at the time of forecast.
+A hindcast is a method used in modeling and simulation where historical data is used to test and validate predictive models. In a hindcast, known outcomes from the past are compared with the model's predictions to assess the model's accuracy and performance. The primary goal of hindcasting is to improve the reliability and accuracy of predictive models by identifying discrepancies between predicted and actual outcomes and adjusting model parameters accordingly [@hc2002]. The term retroactive forecasting is used by @hc2002 to denote the form of hindcasting in which forecasts are made for past years (e.g. 2006–2010) using data prior to those years (perhaps 1970–2005). The terminology ex-post is used in business forecasting, referring to predictions for historical periods for which verification data are already available at the time of forecast.
 
 For  this exercise we'll use the package `a4adiags` hindcast method, which follows the suggestions by @cookbook2021 and @KELL2016119. The hindacast is carried out by sequentially removing the most recent year in the data, similar to a retrospective analysis, refit the stock assessment model and project one year ahead. The Mean Absolute Scale Error (MASE) [@cookbook2021] is used to assess the predictive skill, a score higher than 1 indicates that the model forecasts have less skill than a random walk.
 
-```{r}
+```{r, warning=FALSE, message=FALSE}
+library(a4adiags)
+theme_set(theme_bw())
 nyears <- 5
 # set number of year for average biology and selectivity
 nsq <- 3
@@ -212,7 +251,7 @@ hc <- a4ahcxval(ple4, ple4.indices, nyears = nyears, nsq = nsq)
 
 Figure \@ref(fig:hc) depicts the hincast results for the abudance indices used in the assessment. The MASE value is included in the strip above the plot. In this case one can see that 3 out of the 5 surveys are not better predictors than a random walk.
 
-```{r, hc, echo=FALSE, fig.cap="Survey predictions of year ahead indices in hindcast process. The MASE is presented in the strip about the index and is related to the predictive skill of the index."}
+```{r, hc, echo=FALSE, fig.cap="Survey predictions of year ahead indices in hindcast process. The MASE is presented in the strip about the index and is related to the predictive skill of the index.", warning=FALSE, message=FALSE}
 plotXval2(hc$indices)
 ```
 
