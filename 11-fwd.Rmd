@@ -16,7 +16,7 @@ For this section we'll be using the package `FLasher` [\flasher] from the FLR fa
 library(FLa4a)
 library(FLasher)
 library(FLBRP)
-library(ggplotFL)
+#library(ggplotFL)
 data(ple4)
 data(ple4.indices)
 ```
@@ -29,7 +29,8 @@ We'll start by fitting a model including, a stock recruitment model which will b
 
 ```{r, warning=FALSE, message=FALSE}
 # fit model
-fit00 <- sca(ple4, ple4.indices, srmodel=~geomean()) 
+fmod <- ~ s(age, k = 8) + s(year, k = 25) + te(age, year, k = c(6, 15))
+fit00 <- sca(ple4, ple4.indices, srmodel=~geomean(), fmodel=fmod)
 stk00 <- ple4 + fit00
 # create stock recruitment model object
 sr00 <- as(fit00, "FLSR")
@@ -108,21 +109,24 @@ When projecting the stock forward one needs to make a number of assumptions abou
 |`discards.ratio`| 3 | Number of years to average over to get the future mean proportion of discards at age|
 |`catch.sel`| 3 |Number of years to average over to get the future selection patern (fishing mortality at age which will be scaled based on canges in $\bar{F}$)|
 
+Table: (\#tab:initcond) Initial conditions
+
 One can also define if those assumptions will be based on the mean value over the time period set, or randomly sampled from historical values, through setting the argument `fun` to `mean` or `sample`, respectively.
 
 For the next examples we'll use the approach of fitting the stock recruitment within the assessment together with other parameters. We'll set to 20 the number of years to compute mean weights at age, to 10 the number of years to average across and estimate the selection pattern in terms of fishing mortality at age. Finally, we'll use a 10 year period to compute the average discard ratio.
 
 ```{r, warning=FALSE, message=FALSE}
-#fit00 <- sca(ple4, ple4.indices, srmodel=~geomean())
-#sr00 <- as(fit00, "FLSR")
-#stk00 <- ple4 + fit00
-#stk00 <- fwdWindow(stk00, end = endpy, years = list(wt = 20, catch.sel = 10, discards.ratio = 10), fun = list(wt = "sample"))
-#trg00 <- fwdControl(year = inipy:endpy, quant = "f", value = 0.3)
-#stk04 <- fwd(stk00, control=trg00, sr=sr00)
+fmod <- ~ s(age, k = 8) + s(year, k = 25) + te(age, year, k = c(6, 15))
+fit00 <- sca(ple4, ple4.indices, srmodel=~geomean(), fmodel=fmod)
+sr00 <- as(fit00, "FLSR")
+stk00 <- ple4 + fit00
+stk00 <- fwdWindow(stk00, end = endpy, years = list(wt = 20, catch.sel = 10, discards.ratio = 10), fun = list(wt = "sample"))
+trg00 <- fwdControl(year = inipy:endpy, quant = "f", value = 0.3)
+stk04 <- fwd(stk00, control=trg00, sr=sr00)
 ```
 
 ```{r, echo=FALSE, fig.cap="Stochastic projections of stock for 5 years with fixed fishing mortality and recruitment. Two scenarios with different assumptions about initial conditions"}
-#plot(FLStocks(default=stk01, alternative=stk04))
+plot(FLStocks(default=stk01, alternative=stk04))
 ```
 
 ## Scenarios
@@ -130,7 +134,8 @@ For the next examples we'll use the approach of fitting the stock recruitment wi
 There's a wide range of scenarios that can be of interest to project in order to give advice to policy makers, or to better understand the fitted stock assessment model. For example, projecting the stock in the absence of fishing for a few generations, gives good insights about the dynamics of the population being modelled.
 
 ```{r, warning=FALSE, message=FALSE}
-fit00 <- sca(ple4, ple4.indices, srmodel=~geomean())
+fmod <- ~ s(age, k = 8) + s(year, k = 25) + te(age, year, k = c(6, 15))
+fit00 <- sca(ple4, ple4.indices, srmodel=~geomean(), fmodel=fmod)
 sr00 <- as(fit00, "FLSR")
 stk00 <- ple4 + simulate(fit00, nsim)
 # set projection
@@ -151,24 +156,27 @@ stk05 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 plot(stk05)
 ```
 
-These scenarios are defined by the target quantities one's trying to achieve. In `FLasher` there are the following target quantities:
+These scenarios are defined by the target quantities one's trying to achieve. Table \@ref(tab:trgqts) `FLasher` there are the following target quantities:
 
-- srp
-- ssb_end
-- biomass_end
-- ssb_spawn
-- biomass_spawn
-- ssb_flash
-- biomass_flash
-- inmb_end
-- indb
-- catch
-- landings
-- discards
-- f
-- fbar
-- revenue
-- effort
+| Target | Description |
+|----:|:----|
+| srp | |
+| ssb_end | |
+| biomass_end | |
+| ssb_spawn | |
+| biomass_spawn | |
+| ssb_flash | |
+| biomass_flash | |
+| inmb_end | |
+| indb | |
+| catch | |
+| landings | |
+| discards | |
+| f | |
+| fbar | |
+| revenue | |
+| effort | |
+Table: (\#tab:trgqts) Target quantities and their description
 
 When projecting the stock under the conditions defined by the scenario one can mix several quantities. For example it may be interesting to project an initial situation of growing the stock followed by a higher exploitation to evaluate how catches would behave.
 
@@ -210,8 +218,8 @@ trg00 <- fwdControl(year = inipy:endpy, quant = "ssb_end", value = 1.1, relYear 
 stk08 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 ```
 
-```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 25 years with fixed SSB for 15 years followed by fixed fishing mortality for 10 years and constant recruitment"}
-plot(window(FLStocks("10% SSB growth relative to previous year" = stk07, "10% higher SSB relative to most recent estimate" = stk08), start = 2000))
+```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 25 years with fixed SSB for 15 years followed by fixed fishing mortality for 10 years and constant recruitment. scn01 = 10% SSB growth relative to previous year; scn02 = 10% higher SSB relative to most recent estimate"}
+plot(window(FLStocks(scn01 = stk07, scn02 = stk08), start = 2000))
 ```
 
 ## Limits

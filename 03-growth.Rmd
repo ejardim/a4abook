@@ -1,6 +1,7 @@
 # Modelling Individual Growth and Using Stochastic Slicing to Convert Length-based Data Into Age-based Data {#growth}
 
 ```{R, message=FALSE, warning=FALSE, echo=FALSE}
+
 # libraries
 library(devtools)
 library(FLa4a)
@@ -277,7 +278,7 @@ As well as converting one `FLQuant` at a time, we can convert entire `FLStock` a
 
 The method for `FLStock` classes takes an additional argument for the plusgroup.
 
-```{r, FLS_FLI_l2a, message=FALSE, warning=TRUE} 
+```{r, FLS_FLI_l2a, message=FALSE}
 aStk <- l2a(rfLen.stk, vbTriSmall, plusgroup=21)
 aIdx <- l2a(rfTrawl.idx, vbTriSmall)
 ```

@@ -125,15 +125,21 @@ plot(fit, stk)
 plot(fit, idx)
 ```
 
-<!--## Aggreagted catch in weight
+## Aggregated catch in weight
 
-Although a statistical catch-at-age model assumes errors in catch-at-age and, as such, errors in the total catch in weight, there's still interest to evaluate how close the model estimates are of the observed catch in weight[^07-diagnostics-1]. The implementation of this diagnopstics is done through the method `computeCatchDiagnostics()`, which can be visualized with `plot()` (Figure \@ref(fig:c_d)).
+Although a statistical catch-at-age model assumes errors in catch-at-age and, as such, errors in the total catch in weight, there's still interest to evaluate how close the model estimates are of the observed catch in weight, even if reported catch in weight is one of the less reliable pieces of information available for stock assessment. The implementation of this diagnopstics is done through the method `computeCatchDiagnostics()`, which can be visualized with `plot()` (Figure \@ref(fig:catchdiag)).
 
-[^07-diagnostics-1]: Some analysts believe this is the most important diagnostic since total catch should be trusted. Needless to say we don't agree and consider reported catch in weight one of the less reliable pieces of information available for stock assessment.-->
-
-```{r, catchdiag, fig.cap="Diagnostics for age aggregated catch in weight", eval=FALSE, echo=FALSE}
-c_d <- computeCatchDiagnostics(fit, stk)
+```{r, catchdiag, fig.cap="Diagnostics for age aggregated catch in weight", fig.height=10, fig.asp=1, out.width = '100%', warning=FALSE}
+fmod <- ~ factor(age) + factor(year) + te(age, year, k = c(5, 15))
+fit <- sca(ple4, ple4.indices, fmodel=fmod)
+c_d <- computeCatchDiagnostics(fit, ple4)
 plot(c_d)
+```
+
+The `plot` method takes 2 important arguments in this case, `type` and `probs`. Thre first allows the analyst to choose between `all`, the plot in Figure \@ref(fig:catchdiag), and `prediction` (Figure \@ref(fig:cpred)), which reports prediction error, median estimates and observations. The latter, a vector of 2 values, refers to the confidence intervals to be computed.
+
+```{r, cpred, fig.cap="Prediction of aggregated catch in weight"}
+plot(c_d, type="prediction", probs=c(0.025, 0.975))
 ```
 
 ## Fit summary, information and cross-validation metrics

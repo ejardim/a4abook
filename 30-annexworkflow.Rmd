@@ -240,7 +240,7 @@ bwplot(data~qname|factor(age),  data=as.data.frame(flqs), scales="free", auto.ke
 
 ## Final comments
 
-The sequence presented here can be changed and eploited in any order the user is interested or prefers to.
+The sequence presented here can be changed and applied in any order the user is interested or prefers to.
 
 The approach of not allowing year effects in surveys and variance model can be modified if the user prefers to do so.
 

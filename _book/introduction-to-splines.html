@@ -23,7 +23,7 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-04-24" />
+<meta name="date" content="2025-04-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -244,16 +244,21 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="8.1" data-path="diagnostics.html"><a href="diagnostics.html#residuals"><i class="fa fa-check"></i><b>8.1</b> Residuals</a></li>
 <li class="chapter" data-level="8.2" data-path="diagnostics.html"><a href="diagnostics.html#predictive-skill"><i class="fa fa-check"></i><b>8.2</b> Predictive skill</a></li>
-<li class="chapter" data-level="8.3" data-path="diagnostics.html"><a href="diagnostics.html#fit-summary-information-and-cross-validation-metrics"><i class="fa fa-check"></i><b>8.3</b> Fit summary, information and cross-validation metrics</a></li>
-<li class="chapter" data-level="8.4" data-path="diagnostics.html"><a href="diagnostics.html#retrospective-analysis"><i class="fa fa-check"></i><b>8.4</b> Retrospective analysis</a></li>
-<li class="chapter" data-level="8.5" data-path="diagnostics.html"><a href="diagnostics.html#hindcast"><i class="fa fa-check"></i><b>8.5</b> Hindcast</a></li>
+<li class="chapter" data-level="8.3" data-path="diagnostics.html"><a href="diagnostics.html#aggregated-catch-in-weight"><i class="fa fa-check"></i><b>8.3</b> Aggregated catch in weight</a></li>
+<li class="chapter" data-level="8.4" data-path="diagnostics.html"><a href="diagnostics.html#fit-summary-information-and-cross-validation-metrics"><i class="fa fa-check"></i><b>8.4</b> Fit summary, information and cross-validation metrics</a></li>
+<li class="chapter" data-level="8.5" data-path="diagnostics.html"><a href="diagnostics.html#retrospective-analysis"><i class="fa fa-check"></i><b>8.5</b> Retrospective analysis</a></li>
+<li class="chapter" data-level="8.6" data-path="diagnostics.html"><a href="diagnostics.html#hindcast"><i class="fa fa-check"></i><b>8.6</b> Hindcast</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html"><i class="fa fa-check"></i><b>9</b> Predict and simulate </a>
+<li class="chapter" data-level="9" data-path="uncertainty.html"><a href="uncertainty.html"><i class="fa fa-check"></i><b>9</b> Uncertainty </a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#predict"><i class="fa fa-check"></i><b>9.1</b> predict</a></li>
-<li class="chapter" data-level="9.2" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#simulate"><i class="fa fa-check"></i><b>9.2</b> simulate</a></li>
-<li class="chapter" data-level="9.3" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#simulate-and-predict"><i class="fa fa-check"></i><b>9.3</b> simulate and predict</a></li>
-<li class="chapter" data-level="9.4" data-path="predict-and-simulate.html"><a href="predict-and-simulate.html#details"><i class="fa fa-check"></i><b>9.4</b> Details</a></li>
+<li class="chapter" data-level="9.1" data-path="uncertainty.html"><a href="uncertainty.html#the-simulate-and-predict-methods"><i class="fa fa-check"></i><b>9.1</b> The <code>simulate</code> and <code>predict</code> methods</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="uncertainty.html"><a href="uncertainty.html#predict"><i class="fa fa-check"></i><b>9.1.1</b> <code>predict()</code></a></li>
+<li class="chapter" data-level="9.1.2" data-path="uncertainty.html"><a href="uncertainty.html#simulate"><i class="fa fa-check"></i><b>9.1.2</b> <code>simulate()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="uncertainty.html"><a href="uncertainty.html#prediction-uncertainty"><i class="fa fa-check"></i><b>9.2</b> Prediction uncertainty</a></li>
+<li class="chapter" data-level="9.3" data-path="uncertainty.html"><a href="uncertainty.html#confidence-interval-coverage"><i class="fa fa-check"></i><b>9.3</b> confidence interval coverage</a></li>
+<li class="chapter" data-level="9.4" data-path="uncertainty.html"><a href="uncertainty.html#propagate-uncertainty-into-stock-assessment"><i class="fa fa-check"></i><b>9.4</b> Propagate uncertainty into stock assessment</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>10</b> The statistical catch-at-age stock assessment framework with Markov Chain Monte Carlo (MCMC) </a>
 <ul>
@@ -296,25 +301,18 @@ div.csl-indent {
 <li class="chapter" data-level="12.3" data-path="reference-points.html"><a href="reference-points.html#economics-reference-points"><i class="fa fa-check"></i><b>12.3</b> Economics reference points</a></li>
 <li class="chapter" data-level="12.4" data-path="reference-points.html"><a href="reference-points.html#computing-user-specific-reference-points"><i class="fa fa-check"></i><b>12.4</b> Computing user specific reference points</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="propagate-uncertainty-into-stock-assessment.html"><a href="propagate-uncertainty-into-stock-assessment.html"><i class="fa fa-check"></i><b>13</b> Propagate uncertainty into stock assessment</a></li>
-<li class="chapter" data-level="14" data-path="modelling-fleet-selectivity.html"><a href="modelling-fleet-selectivity.html"><i class="fa fa-check"></i><b>14</b> Modelling fleet selectivity</a>
+<li class="chapter" data-level="13" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html"><i class="fa fa-check"></i><b>13</b> Annex - stock assessment workflow</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="modelling-fleet-selectivity.html"><a href="modelling-fleet-selectivity.html#modelling-fleets-with-different-proportions-of-the-catch-covariate"><i class="fa fa-check"></i><b>14.1</b> Modelling fleets with different proportions of the catch covariate</a></li>
+<li class="chapter" data-level="13.1" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-mean-model"><i class="fa fa-check"></i><b>13.1</b> The “mean” model</a></li>
+<li class="chapter" data-level="13.2" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-age-effects"><i class="fa fa-check"></i><b>13.2</b> The age effects</a></li>
+<li class="chapter" data-level="13.3" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#year-effect-on-fishing-mortality"><i class="fa fa-check"></i><b>13.3</b> Year effect on fishing mortality</a></li>
+<li class="chapter" data-level="13.4" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#year-effect-on-catchability"><i class="fa fa-check"></i><b>13.4</b> Year effect on catchability</a></li>
+<li class="chapter" data-level="13.5" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-initial-year-population-abundance-model-aka-n1"><i class="fa fa-check"></i><b>13.5</b> The initial year population abundance model, aka N1</a></li>
+<li class="chapter" data-level="13.6" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-stock-recruitment-submodel"><i class="fa fa-check"></i><b>13.6</b> The stock recruitment submodel</a></li>
+<li class="chapter" data-level="13.7" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-variance-submodel"><i class="fa fa-check"></i><b>13.7</b> The variance submodel</a></li>
+<li class="chapter" data-level="13.8" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#final-comments"><i class="fa fa-check"></i><b>13.8</b> Final comments</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="modelling-spatial-effects.html"><a href="modelling-spatial-effects.html"><i class="fa fa-check"></i><b>15</b> Modelling spatial effects</a></li>
-<li class="chapter" data-level="16" data-path="sections-to-be-added.html"><a href="sections-to-be-added.html"><i class="fa fa-check"></i><b>16</b> Sections to be added!?</a></li>
-<li class="chapter" data-level="17" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html"><i class="fa fa-check"></i><b>17</b> Annex - stock assessment workflow</a>
-<ul>
-<li class="chapter" data-level="17.1" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-mean-model"><i class="fa fa-check"></i><b>17.1</b> The “mean” model</a></li>
-<li class="chapter" data-level="17.2" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-age-effects"><i class="fa fa-check"></i><b>17.2</b> The age effects</a></li>
-<li class="chapter" data-level="17.3" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#year-effect-on-fishing-mortality"><i class="fa fa-check"></i><b>17.3</b> Year effect on fishing mortality</a></li>
-<li class="chapter" data-level="17.4" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#year-effect-on-catchability"><i class="fa fa-check"></i><b>17.4</b> Year effect on catchability</a></li>
-<li class="chapter" data-level="17.5" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-initial-year-population-abundance-model-aka-n1"><i class="fa fa-check"></i><b>17.5</b> The initial year population abundance model, aka N1</a></li>
-<li class="chapter" data-level="17.6" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-stock-recruitment-submodel"><i class="fa fa-check"></i><b>17.6</b> The stock recruitment submodel</a></li>
-<li class="chapter" data-level="17.7" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#the-variance-submodel"><i class="fa fa-check"></i><b>17.7</b> The variance submodel</a></li>
-<li class="chapter" data-level="17.8" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html#final-comments"><i class="fa fa-check"></i><b>17.8</b> Final comments</a></li>
-</ul></li>
-<li class="chapter" data-level="18" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>18</b> References</a></li>
+<li class="chapter" data-level="14" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>14</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -406,11 +404,11 @@ Figure 6.5: basis functions for a B-spline with 5 knots
 <div id="thin-plate-spline" class="section level2 hasAnchor" number="6.2">
 <h2><span class="header-section-number">6.2</span> Thin plate spline<a href="introduction-to-splines.html#thin-plate-spline" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Thin plate splines are particularly useful for smoothing in multiple dimensions. However, they also work well with univariate data, as they offer flexibility and control over smoothness they are the default choice of the <code>mgcv</code> package. Thin plate splines work differently from the splines we have shown so far. They are not composed of a sequence of local polynomials but from basis functions that are smooth across the entire range of the data, and capture increasing amounts of flexibility (Figure <a href="introduction-to-splines.html#fig:tps">6.6</a>).</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="introduction-to-splines.html#cb113-1" tabindex="-1"></a><span class="co"># Fit a thin plate spline with gam()</span></span>
-<span id="cb113-2"><a href="introduction-to-splines.html#cb113-2" tabindex="-1"></a>tps_model <span class="ot">&lt;-</span> <span class="fu">gam</span>(y <span class="sc">~</span> <span class="fu">s</span>(x, <span class="at">k =</span> <span class="dv">5</span>, <span class="at">bs =</span> <span class="st">&quot;tp&quot;</span>), <span class="at">data =</span> data)</span>
-<span id="cb113-3"><a href="introduction-to-splines.html#cb113-3" tabindex="-1"></a></span>
-<span id="cb113-4"><a href="introduction-to-splines.html#cb113-4" tabindex="-1"></a><span class="co"># Predict</span></span>
-<span id="cb113-5"><a href="introduction-to-splines.html#cb113-5" tabindex="-1"></a>data<span class="sc">$</span>tps_fit <span class="ot">&lt;-</span> <span class="fu">predict</span>(tps_model)</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="introduction-to-splines.html#cb108-1" tabindex="-1"></a><span class="co"># Fit a thin plate spline with gam()</span></span>
+<span id="cb108-2"><a href="introduction-to-splines.html#cb108-2" tabindex="-1"></a>tps_model <span class="ot">&lt;-</span> <span class="fu">gam</span>(y <span class="sc">~</span> <span class="fu">s</span>(x, <span class="at">k =</span> <span class="dv">5</span>, <span class="at">bs =</span> <span class="st">&quot;tp&quot;</span>), <span class="at">data =</span> data)</span>
+<span id="cb108-3"><a href="introduction-to-splines.html#cb108-3" tabindex="-1"></a></span>
+<span id="cb108-4"><a href="introduction-to-splines.html#cb108-4" tabindex="-1"></a><span class="co"># Predict</span></span>
+<span id="cb108-5"><a href="introduction-to-splines.html#cb108-5" tabindex="-1"></a>data<span class="sc">$</span>tps_fit <span class="ot">&lt;-</span> <span class="fu">predict</span>(tps_model)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:tps"></span>
 <img src="_main_files/figure-html/tps-1.png" alt="Thin plate splines fit with k = 5" width="672" />
 <p class="caption">
@@ -446,17 +444,17 @@ Figure 6.9: Thin plate splines and cubic regression splines fit
 <p>Under the <code>a4a</code> framework, the <code>mgcv</code> package is used to construct the model matrices of the submodels, which are then passed to <code>ADMB</code> where the model fitting takes place.</p>
 <p>The default option for the basis functions of the splines is <code>bs = tp</code> (thin plate splines) and is considered the optimal option. The user can define other smoothing basis functions using the <code>bs</code> argument. The user can refer to the <code>smooth.terms</code> of the <code>mgcv</code> package for a full description. There are many equivalent basis functions for the splines, and some of them have little or no effect in the context of <code>a4a</code>, since they differ only in the penalty term, which is not used in <code>a4a</code>.</p>
 <p>Examples for different smoothing terms:</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="introduction-to-splines.html#cb114-1" tabindex="-1"></a>fmod00 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;tp&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># thin plate splines</span></span>
-<span id="cb114-2"><a href="introduction-to-splines.html#cb114-2" tabindex="-1"></a>fmod01 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;cr&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># regression cubic splines</span></span>
-<span id="cb114-3"><a href="introduction-to-splines.html#cb114-3" tabindex="-1"></a>fmod02 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;bs&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># b-splines</span></span>
-<span id="cb114-4"><a href="introduction-to-splines.html#cb114-4" tabindex="-1"></a>fmod03 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;ps&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># p-splines</span></span>
-<span id="cb114-5"><a href="introduction-to-splines.html#cb114-5" tabindex="-1"></a>fmod04 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;ad&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># Adaptive smoothers</span></span>
-<span id="cb114-6"><a href="introduction-to-splines.html#cb114-6" tabindex="-1"></a></span>
-<span id="cb114-7"><a href="introduction-to-splines.html#cb114-7" tabindex="-1"></a>fit00 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod00)</span>
-<span id="cb114-8"><a href="introduction-to-splines.html#cb114-8" tabindex="-1"></a>fit01 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod01)</span>
-<span id="cb114-9"><a href="introduction-to-splines.html#cb114-9" tabindex="-1"></a>fit02 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod02)</span>
-<span id="cb114-10"><a href="introduction-to-splines.html#cb114-10" tabindex="-1"></a>fit03 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod03)</span>
-<span id="cb114-11"><a href="introduction-to-splines.html#cb114-11" tabindex="-1"></a>fit04 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod04)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="introduction-to-splines.html#cb109-1" tabindex="-1"></a>fmod00 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;tp&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># thin plate splines</span></span>
+<span id="cb109-2"><a href="introduction-to-splines.html#cb109-2" tabindex="-1"></a>fmod01 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;cr&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># regression cubic splines</span></span>
+<span id="cb109-3"><a href="introduction-to-splines.html#cb109-3" tabindex="-1"></a>fmod02 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;bs&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># b-splines</span></span>
+<span id="cb109-4"><a href="introduction-to-splines.html#cb109-4" tabindex="-1"></a>fmod03 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;ps&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># p-splines</span></span>
+<span id="cb109-5"><a href="introduction-to-splines.html#cb109-5" tabindex="-1"></a>fmod04 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">bs =</span> <span class="st">&#39;ad&#39;</span>, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># Adaptive smoothers</span></span>
+<span id="cb109-6"><a href="introduction-to-splines.html#cb109-6" tabindex="-1"></a></span>
+<span id="cb109-7"><a href="introduction-to-splines.html#cb109-7" tabindex="-1"></a>fit00 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod00)</span>
+<span id="cb109-8"><a href="introduction-to-splines.html#cb109-8" tabindex="-1"></a>fit01 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod01)</span>
+<span id="cb109-9"><a href="introduction-to-splines.html#cb109-9" tabindex="-1"></a>fit02 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod02)</span>
+<span id="cb109-10"><a href="introduction-to-splines.html#cb109-10" tabindex="-1"></a>fit03 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod03)</span>
+<span id="cb109-11"><a href="introduction-to-splines.html#cb109-11" tabindex="-1"></a>fit04 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod04)</span></code></pre></div>
 <p>In this example we are using the thin plate regression splines, cubic splines, b-splines, p-splines and adaptive smoothers. Figure <a href="introduction-to-splines.html#fig:a4asplines">6.10</a> shows the different fits together, where it’s clear the differences are very small.</p>
 <div class="figure"><span style="display:block;" id="fig:a4asplines"></span>
 <img src="_main_files/figure-html/a4asplines-1.png" alt="Multiple fits of thin plate splines, cubic splines, b-splines, p-splines and adaptive smoothers" width="672" />
@@ -466,13 +464,13 @@ Figure 6.10: Multiple fits of thin plate splines, cubic splines, b-splines, p-sp
 </div>
 <p>Functionality of <code>mgcv</code> package provides also the option to work with interactions. Although <code>s(age, year)</code> can be defined, it uses a common bivariate spline for the two variables which are very different in scale. It is preferable if interactions are assumed to use <code>te(age, year)</code>. Again is up to the user to define the basis functions for the smoothers. Figure <a href="introduction-to-splines.html#fig:te">6.11</a> shows the differences when using different basis for the tensor product.</p>
 <p><strong>[The paragraph above needs a bit more explanation about what a tensor is]</strong></p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="introduction-to-splines.html#cb115-1" tabindex="-1"></a>fmod03 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>))</span>
-<span id="cb115-2"><a href="introduction-to-splines.html#cb115-2" tabindex="-1"></a>fmod04 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>), <span class="at">bs =</span> <span class="st">&#39;cr&#39;</span>)</span>
-<span id="cb115-3"><a href="introduction-to-splines.html#cb115-3" tabindex="-1"></a>fmod05 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">te</span>(age, year, <span class="at">bs =</span> <span class="st">&#39;bs&#39;</span>)</span>
-<span id="cb115-4"><a href="introduction-to-splines.html#cb115-4" tabindex="-1"></a></span>
-<span id="cb115-5"><a href="introduction-to-splines.html#cb115-5" tabindex="-1"></a>fit03 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod03)</span>
-<span id="cb115-6"><a href="introduction-to-splines.html#cb115-6" tabindex="-1"></a>fit04 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod04)</span>
-<span id="cb115-7"><a href="introduction-to-splines.html#cb115-7" tabindex="-1"></a>fit05 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod05)</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="introduction-to-splines.html#cb110-1" tabindex="-1"></a>fmod03 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>))</span>
+<span id="cb110-2"><a href="introduction-to-splines.html#cb110-2" tabindex="-1"></a>fmod04 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>), <span class="at">bs =</span> <span class="st">&#39;cr&#39;</span>)</span>
+<span id="cb110-3"><a href="introduction-to-splines.html#cb110-3" tabindex="-1"></a>fmod05 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">te</span>(age, year, <span class="at">bs =</span> <span class="st">&#39;bs&#39;</span>)</span>
+<span id="cb110-4"><a href="introduction-to-splines.html#cb110-4" tabindex="-1"></a></span>
+<span id="cb110-5"><a href="introduction-to-splines.html#cb110-5" tabindex="-1"></a>fit03 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod03)</span>
+<span id="cb110-6"><a href="introduction-to-splines.html#cb110-6" tabindex="-1"></a>fit04 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod04)</span>
+<span id="cb110-7"><a href="introduction-to-splines.html#cb110-7" tabindex="-1"></a>fit05 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod05)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:te"></span>
 <img src="_main_files/figure-html/te-1.png" alt="Multiple basis for a tensor and their effects in the fit" width="672" />
 <p class="caption">
@@ -483,13 +481,13 @@ Figure 6.11: Multiple basis for a tensor and their effects in the fit
 <div id="on-the-number-of-knots-k" class="section level2 hasAnchor" number="6.4">
 <h2><span class="header-section-number">6.4</span> On the number of knots <span class="math inline">\(k\)</span><a href="introduction-to-splines.html#on-the-number-of-knots-k" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><span class="math inline">\(k\)</span> is the dimension of the basis used to represent the smooth term <span class="math inline">\(s\)</span>. The default depends on the number of variables that the smooth is a function of. In practice k-1 (or k) sets the upper limit on the degrees of freedom associated with an s smooth (1 degree of freedom is usually lost to the intercept of the smooth). For the smooths the upper limit of the degrees of freedom is given by the product of the k values provided for each marginal smooth less one, for the constraint. The choice of the k is not critical and in general it must be large enough to allow to have enough degrees of freedom capturing the underlying process and small enough to prevent overfitting (Figure <a href="introduction-to-splines.html#fig:ks">6.12</a>). A strong pattern in the residuals can be a sign of low <span class="math inline">\(k\)</span>.</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="introduction-to-splines.html#cb116-1" tabindex="-1"></a>fmod00 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">5</span>)</span>
-<span id="cb116-2"><a href="introduction-to-splines.html#cb116-2" tabindex="-1"></a>fmod01 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># cubic splines [Why is this cubic]</span></span>
-<span id="cb116-3"><a href="introduction-to-splines.html#cb116-3" tabindex="-1"></a>fmod02 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">20</span>) <span class="co"># b-splines [and this b?]</span></span>
-<span id="cb116-4"><a href="introduction-to-splines.html#cb116-4" tabindex="-1"></a></span>
-<span id="cb116-5"><a href="introduction-to-splines.html#cb116-5" tabindex="-1"></a>fit00 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod00)</span>
-<span id="cb116-6"><a href="introduction-to-splines.html#cb116-6" tabindex="-1"></a>fit01 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod01)</span>
-<span id="cb116-7"><a href="introduction-to-splines.html#cb116-7" tabindex="-1"></a>fit02 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod02)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="introduction-to-splines.html#cb111-1" tabindex="-1"></a>fmod00 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">5</span>)</span>
+<span id="cb111-2"><a href="introduction-to-splines.html#cb111-2" tabindex="-1"></a>fmod01 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">10</span>) <span class="co"># cubic splines [Why is this cubic]</span></span>
+<span id="cb111-3"><a href="introduction-to-splines.html#cb111-3" tabindex="-1"></a>fmod02 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">20</span>) <span class="co"># b-splines [and this b?]</span></span>
+<span id="cb111-4"><a href="introduction-to-splines.html#cb111-4" tabindex="-1"></a></span>
+<span id="cb111-5"><a href="introduction-to-splines.html#cb111-5" tabindex="-1"></a>fit00 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod00)</span>
+<span id="cb111-6"><a href="introduction-to-splines.html#cb111-6" tabindex="-1"></a>fit01 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod01)</span>
+<span id="cb111-7"><a href="introduction-to-splines.html#cb111-7" tabindex="-1"></a>fit02 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod02)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:ks"></span>
 <img src="_main_files/figure-html/ks-1.png" alt="Multiple ks and their effects in the fit" width="672" />
 <p class="caption">
@@ -497,12 +495,12 @@ Figure 6.12: Multiple ks and their effects in the fit
 </p>
 </div>
 <p>We can check the result of choosing different <span class="math inline">\(k\)</span> values on BIC (Bayesian Information Criteria) and GCV (Generalized Cross Validation score) by running the stock assessment model with different k and looking at the values of those stastics (Figure <a href="introduction-to-splines.html#fig:bic">6.13</a>).</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="introduction-to-splines.html#cb117-1" tabindex="-1"></a>fmodsk <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb117-2"><a href="introduction-to-splines.html#cb117-2" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">20</span>) {</span>
-<span id="cb117-3"><a href="introduction-to-splines.html#cb117-3" tabindex="-1"></a>  fmodsk[[<span class="fu">paste0</span>(i)]] <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">paste0</span>(<span class="st">&quot;~s(age)+s(year, k=&quot;</span>,i,<span class="st">&quot;)&quot;</span>))</span>
-<span id="cb117-4"><a href="introduction-to-splines.html#cb117-4" tabindex="-1"></a>}</span>
-<span id="cb117-5"><a href="introduction-to-splines.html#cb117-5" tabindex="-1"></a></span>
-<span id="cb117-6"><a href="introduction-to-splines.html#cb117-6" tabindex="-1"></a>myFits <span class="ot">&lt;-</span> <span class="fu">scas</span>(<span class="fu">FLStocks</span>(stk), <span class="fu">list</span>(idx), <span class="at">fmodel =</span> fmodsk)</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="introduction-to-splines.html#cb112-1" tabindex="-1"></a>fmodsk <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb112-2"><a href="introduction-to-splines.html#cb112-2" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">20</span>) {</span>
+<span id="cb112-3"><a href="introduction-to-splines.html#cb112-3" tabindex="-1"></a>  fmodsk[[<span class="fu">paste0</span>(i)]] <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">paste0</span>(<span class="st">&quot;~s(age)+s(year, k=&quot;</span>,i,<span class="st">&quot;)&quot;</span>))</span>
+<span id="cb112-4"><a href="introduction-to-splines.html#cb112-4" tabindex="-1"></a>}</span>
+<span id="cb112-5"><a href="introduction-to-splines.html#cb112-5" tabindex="-1"></a></span>
+<span id="cb112-6"><a href="introduction-to-splines.html#cb112-6" tabindex="-1"></a>myFits <span class="ot">&lt;-</span> <span class="fu">scas</span>(<span class="fu">FLStocks</span>(stk), <span class="fu">list</span>(idx), <span class="at">fmodel =</span> fmodsk)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:bic"></span>
 <img src="_main_files/figure-html/bic-1.png" alt="BIC (Bayesian Information Criteria) and GCV (Generalized Cross Validation score) profiles based on changing the value of k." width="672" />
 <p class="caption">

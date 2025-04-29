@@ -1,0 +1,215 @@
+# Uncertainty \label{sec:predsim}
+
+Uncertainty is a fundamental aspect of scientific advice, serving as a reflection of the inherent limitations within the knowledge base used to construct evidence and support scientific opinions. It highlights the gaps, variability, and potential biases present in data, methods, and modeling assumptions that underlie scientific conclusions.
+
+In fisheries science, a field that has evolved primarily to provide rigorous, evidence-based advice for the sustainable exploitation of marine and freshwater resources, acknowledging and addressing uncertainty is especially critical. Given the dynamic, complex, and partially observable nature of aquatic ecosystems, the need to systematically characterize and communicate uncertainty is paramount to ensuring robust and credible assessments (Privitera-Johnson & Punt, 2020). Uncertainty is not a weakness in fisheries science; rather, it is a hallmark of scientific integrity and a crucial factor in effective management.
+
+Fisheries operate within dynamic, complex ecosystems where variability in recruitment, environmental conditions, and socio-economic pressures make complete predictability impossible. Incorporating uncertainty explicitly into stock assessments and management frameworks strengthens the credibility and resilience of advice.
+
+In practice, failing to address uncertainty in fisheries advice can lead to overexploitation, stock collapses, and reduced economic returns. Modern fisheries governance must therefore integrate uncertainty not only at the scientific level but also within decision-making and policy frameworks. Embracing uncertainty promotes a culture of precaution, transparency, and resilience, ensuring that fisheries remain productive and viable for future generations (Folkesson, 2010).
+
+In this section we'll address two important elements of quantifying uncertainty in stock assessment results, prediction error and propagation of uncertainty across modelling stages.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(FLa4a)
+library(ggplot2)
+data(ple4)
+data(ple4.indices)
+data(ple4.index)
+```
+
+The two workhorses for this topic are `predict()` and `simulate()` which are implemented in `FLa4a`, adapted to work with several classes. For `sca` fits these methods work only if `fit = "assessment"`, and not `fit = "MP"`, since the later doesn't compute the variance-covariance matrix of the parameters, which is essential for simulating.
+
+This chapter is based on the following model:
+```{r, predsim_fit0}
+fmod <- ~ s(age, k = 8) + s(year, k = 29) + te(age, year, k = c(6, 15))
+fit0 <- sca(ple4, ple4.indices, fmodel=fmod)
+submodels(fit0)
+```
+
+## The `simulate` and `predict` methods
+
+### `predict()`
+
+The predict method computes the quantities of interest using the estimated coefficients and the design matrix of the model, defined via the formulas in the submodels. The method uses a fitted model object, created by a call to `sca`, and returns a list with one element for each submodel, where each element is a `FLQuants` object.
+
+```{r, predsim_fit_pred}
+fit.pred <- predict(fit0)
+lapply(fit.pred, names)
+```
+
+The `stkmodel` element reports `harvest`, `rec` and `ny1`. The `qmodel` reports one `FLQuant` for each index, and the `vmodel` element returns one `FLQuant` for catch (in fact `catch.n`) and one for each index. This allows easy access to the parameterised parts of the model, for example the initial population structure, `ny1`, can be accessed via `fit.pred$stkmodel$ny1`.
+
+```{r, echo=FALSE}
+fit.pred$stkmodel$ny1
+```
+
+If the fitted object has iterations, as after using the `simulate` method, predict will be applied to each iter, generating distributions of the above mentioned quantities.
+
+```{r, sim_ny1, fig.cap='Simulations from the model prediction of initial age structure', fig.pos = 'H', fig.height = 4, echo=FALSE, message=FALSE, warning=FALSE}
+sim.fit <- simulate(fit0, nsim = 250)
+sim.pred <- predict(sim.fit)
+fit_sim_ny1 <- sim.pred$stkmodel$ny1[-1, ]
+
+# reduce to quantiles
+fit_sim_ny1 <- quantile(fit_sim_ny1, prob = c(0.025, 0.50, 0.975))
+
+# reshape
+dat <- reshape(
+  as.data.frame(fit_sim_ny1, drop = TRUE),
+  timevar = "iter", idvar = c("age"), direction = "wide"
+)
+
+# plot
+ggplot(data = dat, aes(x = age, y = `data.50%`)) +
+  geom_ribbon(aes(ymin = `data.2.5%`, ymax = `data.97.5%`),
+    fill = "red", alpha = .15
+  ) +
+  geom_point() +
+  geom_line() +
+  ylab("Estimated initial age structure (numbers)") +
+  scale_x_continuous(breaks = pretty(dat$age))
+```
+
+### `simulate()`
+
+As the name implies `simulate` is used to generate simulations of the fit. It operates over objects of class `a4aFitSA` using the method `mvrnorm()` provided by the R package @MASS. The method generates random draws from a multivariate normal distribution with mean given by the coefficients of the model, and variance matrix given by the estimated covariance matrix of the coefficients (in practice this is a submatrix of the inverse of the hessian matrix). The method approximates the joint distribution of the model parameters as a multivariate normal in the log space, which is inline with the assumption made by `ADMB` when fitting the model. This approach is called 'parametric bootstrap', and it's a common method for generating uncertainty in the parameters of a model.
+
+`simulate()` operates at the submodel level, *e.g.* `simulate(fit0@pars@qmodel, nsim=250)`, when called over a `a4aFitSA` object the method simply runs `simulate()` over each of the submodels. In this case it returns an object of the same class with model parameters replaced by `nsim` simulated parameters and updated slots `stock.n`, `catch.n` and `harvest`. Figure \@ref(fig:predsimhist) depicts the distribution of a parameter, the observation error of the first survey index.
+
+```{r, predsimhist, fig.cap="Histogram of 250 draws from the approximate distribution of the estimate of survey observation error."}
+hist(
+  exp(coef(sim.fit)$vmodel[[2]]),
+  main = "250 draws of a model parameter",
+  nclass = 10,
+  xlab = "Survey index observation error"
+)
+```
+
+In some simulations studies one needs to make sure the random draws are the same, which in `R` is obtained by explicitly setting the random seed the pseudo-random generator will use to initiate the process of randomization with the method `set.seed()`. The same is achieved in this case as the example below shows.
+
+```{r}
+set.seed(1234)
+sim.fit1 <- simulate(fit0, nsim = 250)
+set.seed(1234)
+sim.fit2 <- simulate(fit0, nsim = 250)
+all.equal(sim.fit1, sim.fit2)
+```
+
+If the whole stock is of interest, for example, to inspect model predictions of $SSB$, the user should make use of the `+` with a fitted object including iterations. In such case the `stock.n`, `catch.n` and `harvest` slots of the stock object will be updated and the usual metrics can be computed and extracted, *e.g.* `ssb(stk.pred)`.
+
+```{r, fig.cap='Simulations from the model prediction of initial age structure', fig.pos = 'H', fig.height = 4, echo=FALSE, message=FALSE, warning=FALSE}
+stk.pred <- ple4 + sim.fit
+fit_sim_ssb <- ssb(stk.pred)
+plot(fit_sim_ssb)
+```
+
+```{r}
+fits <- simulate(fit0, 250)
+flqs <- FLQuants(sim=iterMedians(stock.n(fits)), det=stock.n(fit0))
+```
+
+```{r, sim, fig.cap="Median simulations VS fit", acho=FALSE}
+xyplot(data~year|factor(age), groups=qname, data=flqs, type="l",
+       scales=list(y=list(relation="free", draw=FALSE)),
+       auto.key=list(points=FALSE, lines=TRUE, columns=2),
+       par.settings=list(superpose.line=list(col=c("gray35", "black")),
+       strip.background=list(col="gray90")), ylab="", layout=c(5,2))
+```
+
+```{r, sim2, fig.cap="Stock summary of the simulated and fitted data"}
+stks <- ple4 + fits
+plot(stks)
+```
+
+## Prediction uncertainty
+
+## confidence interval coverage
+
+## Propagate uncertainty into stock assessment
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(FLa4a)
+stk00 <- readRDS("data/MUT1_stk.rds")
+idx00 <- readRDS("data/MUT1_idx.rds")
+```
+
+In a multistage stock assessment process as described in this book, it's important to be able to propagate uncertainty across the different stages. This section describes methods to propagate uncertainty across stages and compares their outcomes in terms of stock assessment outputs.
+
+The idea is to add uncertainty as one moves from one stage to the next. If a stock has uncertainty on it's growth parameters, or natural mortality, or any other quantity estimated or set during the input data preparation, the model fit uncertainty will be added to it by generating iterations in the input data which are then used to fit the stock assessment model. The suggested workflow is:
+
+1. Add uncertainty in growth or M parameters.
+2. Draw from the parameters distribution.
+3. Compute metrics for stock assessment.
+    1. If there's uncertainty in growth parameters use slicing to created iterations of metrics by age, e.g. catch at age and index at age.
+    2. If there's uncertainty in M parameters draw from the distribution and generate iterations of the M matrix.
+    3. If both draw from growth and M parameters, potentially having into account correlation between those parameters, and generate iterations of age based metrics and M.
+4. Fit the stock assessment model to each iteration
+5. Simulate from each fit
+6. Aggregate results in single `FLStock` object.
+
+In this section we give an example of how uncertainty in natural mortality, set up using the `m()` method and the class `a4aM` (see chapter XX), is propagated through the stock assessment. We'll use the stock of Red Mullet in the Mediterranean GSA 1 (see Introduction for details) and 3 methods to add estimation uncertainty (step 5 above):
+
+1. Take one draw of the fit
+2. Take n draws of the fit and summarize with the median
+3. Take n draws of the fit and combine all
+
+These outcomes will be compared with a fit across M iterations without any sampling from the fit.
+
+Using `a4a` methods we'll model natural mortality using a negative exponential model by age, Jensen's estimator for the level and no time trend. We include multivariate normal uncertainty using the `mvrnorm()` method and create 250 iterations.
+
+```{r}
+nits <- 250
+
+shape <- FLModelSim(model=~exp(-age-0.5))
+level <- FLModelSim(model=~k^0.66*t^0.57, params = FLPar(k=0.4, t=10),
+                     vcov=matrix(c(0.002, 0.01,0.01, 1), ncol=2))
+#trend <- FLModelSim(model=~b, params=FLPar(b=0.5), vcov=matrix(0.02))
+
+m4 <- a4aM(shape=shape, level=level)
+m4 <- mvrnorm(nits, m4)
+range(m4)[] <- range(stk00)[]
+range(m4)[c("minmbar","maxmbar")]<-c(1,1)
+flq <- m(m4)[]
+quant(flq) <- "age"
+stk0 <- propagate(stk00, nits)
+m(stk0) <- flq
+```
+
+The M matrix for this stock is shown in Figure\@ref(fig:m)).
+
+```{r, m, fig.cap="Natural mortality generated from M model's parameter uncertainty", echo=FALSE, message=FALSE, warning=FALSE}
+bwplot(data~factor(age), data=m(stk0))
+```
+
+We fit the same model to the new stock object which has uncertainty in the natural mortality and add estimation uncertainty following the methods described above.
+
+
+```{r}
+# create objects to store the results
+stk01 <- stk0
+stk02 <- stk0
+stk03 <- propagate(stk00, nits*nits)
+
+# run without estimation unceratainty
+stk04 <- stk00 + sca(stk0, idx00)
+
+for(i in 1:nits){
+    stk <- iter(stk0, i)
+    fit <- sca(stk, idx00)
+    # Method 1
+    iter(stk01, i) <- stk + simulate(fit, 1)
+    # Method 2
+    iter(stk02, i) <- qapply(stk + simulate(fit, nits), iterMedians)
+    # Method 3
+    iter(stk03, (nits*(i-1)+1):(nits*i)) <- stk + simulate(fit, nits)
+}
+
+```
+
+
+```{r, mprop, fig.cap="Stock summary. Stock metrics computed over fits including uncertainty in M and estimation uncertainty"}
+plot(FLStocks("M"=stk04, "M + 1 estimation sample"=stk01, "M + estimation median"=stk02, "M + n estimation samples"=stk03))
+```
+
+

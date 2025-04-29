@@ -105,7 +105,7 @@ In the following example we'll use a Beverton and Holt stock recruitment reltion
 
 ```{r, message=FALSE, warning=FALSE, message=FALSE}
 sr0 <- as.FLSR(stk0, model=bevholt)
-sr0 <- fmle(sr0)
+sr0 <- fmle(sr0, control = list(trace = 0))
 plot(sr0)
 ```
 
