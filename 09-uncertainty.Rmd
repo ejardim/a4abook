@@ -108,21 +108,6 @@ plot(FLStocks(simulated=stk.pred, fitted=stk0))
 
 ## Prediction uncertainty
 
-```{r}
-
-res0 <- residuals(fit0, hke1567, hke1567.idx, type="deviances")
-stk0 <- hke1567 + fit0
-cv <- sqrt(var(unlist(res0)))
-hrv <- exp(log(harvest(fit.sim)) + log(genFLQuant(exp(res0$catch.n), cv=sqrt(var(res0$catch.n)))))
-
-cth.pu <-
-
-
-harvest(stock.n(stk0), catch.n(stk0), m(stk0), recompute = FALSE)
-
-cth.s <- catch.n(fit.sim)
-plot(FLQuants(pu=cth.pu, s=cth.s))
-```
 
 ## confidence interval coverage
 
