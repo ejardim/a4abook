@@ -12,9 +12,6 @@
 # Example code in package build process
 *-Ex.R
 
-# Output files from R CMD build
-/*.tar.gz
-
 # Output files from R CMD check
 /*.Rcheck/
 
@@ -45,12 +42,4 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 
-*.png
-
 docs/search_index.json
-
-_main.Rmd
-
-_book/reference-keys.txt
-
-_book/search_index.json
