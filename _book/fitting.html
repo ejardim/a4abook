@@ -23,7 +23,7 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-04-30" />
+<meta name="date" content="2025-05-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -256,8 +256,8 @@ div.csl-indent {
 <li class="chapter" data-level="9.1.1" data-path="uncertainty.html"><a href="uncertainty.html#predict"><i class="fa fa-check"></i><b>9.1.1</b> <code>predict()</code></a></li>
 <li class="chapter" data-level="9.1.2" data-path="uncertainty.html"><a href="uncertainty.html#simulate"><i class="fa fa-check"></i><b>9.1.2</b> <code>simulate()</code></a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="uncertainty.html"><a href="uncertainty.html#prediction-uncertainty"><i class="fa fa-check"></i><b>9.2</b> Prediction uncertainty</a></li>
-<li class="chapter" data-level="9.3" data-path="uncertainty.html"><a href="uncertainty.html#confidence-interval-coverage"><i class="fa fa-check"></i><b>9.3</b> confidence interval coverage</a></li>
+<li class="chapter" data-level="9.2" data-path="uncertainty.html"><a href="uncertainty.html#prediction-error"><i class="fa fa-check"></i><b>9.2</b> Prediction error</a></li>
+<li class="chapter" data-level="9.3" data-path="uncertainty.html"><a href="uncertainty.html#confidence-interval-coverage"><i class="fa fa-check"></i><b>9.3</b> Confidence interval coverage</a></li>
 <li class="chapter" data-level="9.4" data-path="uncertainty.html"><a href="uncertainty.html#propagate-uncertainty-into-stock-assessment"><i class="fa fa-check"></i><b>9.4</b> Propagate uncertainty into stock assessment</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>10</b> The statistical catch-at-age stock assessment framework with Markov Chain Monte Carlo (MCMC) </a>
@@ -358,7 +358,7 @@ Figure 7.1: Stock summary
 ## 
 ## Time used:
 ##  Pre-processing     Running a4a Post-processing           Total 
-##       0.8104455       5.9422231       0.1184218       6.8710904 
+##       0.8077881       6.0760322       0.1202633       7.0040836 
 ## 
 ## Submodels:
 ##   fmodel: ~s(age, k = 8) + s(year, k = 30) + te(age, year, k = c(5, 15))
@@ -412,7 +412,7 @@ Figure 7.2: Stock summary - close to official assessment
 ## 
 ## Time used:
 ##  Pre-processing     Running a4a Post-processing           Total 
-##      0.74779105      2.35868573      0.08113122      3.18760800 
+##      0.76033330      2.39299774      0.07956314      3.23289418 
 ## 
 ## Submodels:
 ##   fmodel: ~s(age, k = 6) + s(year, k = 10) + te(age, year, k = c(3, 8))

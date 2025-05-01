@@ -23,7 +23,7 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-04-30" />
+<meta name="date" content="2025-05-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -256,8 +256,8 @@ div.csl-indent {
 <li class="chapter" data-level="9.1.1" data-path="uncertainty.html"><a href="uncertainty.html#predict"><i class="fa fa-check"></i><b>9.1.1</b> <code>predict()</code></a></li>
 <li class="chapter" data-level="9.1.2" data-path="uncertainty.html"><a href="uncertainty.html#simulate"><i class="fa fa-check"></i><b>9.1.2</b> <code>simulate()</code></a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="uncertainty.html"><a href="uncertainty.html#prediction-uncertainty"><i class="fa fa-check"></i><b>9.2</b> Prediction uncertainty</a></li>
-<li class="chapter" data-level="9.3" data-path="uncertainty.html"><a href="uncertainty.html#confidence-interval-coverage"><i class="fa fa-check"></i><b>9.3</b> confidence interval coverage</a></li>
+<li class="chapter" data-level="9.2" data-path="uncertainty.html"><a href="uncertainty.html#prediction-error"><i class="fa fa-check"></i><b>9.2</b> Prediction error</a></li>
+<li class="chapter" data-level="9.3" data-path="uncertainty.html"><a href="uncertainty.html#confidence-interval-coverage"><i class="fa fa-check"></i><b>9.3</b> Confidence interval coverage</a></li>
 <li class="chapter" data-level="9.4" data-path="uncertainty.html"><a href="uncertainty.html#propagate-uncertainty-into-stock-assessment"><i class="fa fa-check"></i><b>9.4</b> Propagate uncertainty into stock assessment</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html"><i class="fa fa-check"></i><b>10</b> The statistical catch-at-age stock assessment framework with Markov Chain Monte Carlo (MCMC) </a>
@@ -572,23 +572,23 @@ Green shading indicates no evidence $(p <  0.05)$ and red shading evidence $(p  
 <p>Note fmodel doesn’t change:</p>
 <pre><code>## $fit1
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5bfc05faf348&gt;
+## &lt;environment: 0x61c3a8146cd0&gt;
 ## 
 ## $fit2
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5bfc05faf348&gt;
+## &lt;environment: 0x61c3a8146cd0&gt;
 ## 
 ## $fit3
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5bfc05faf348&gt;
+## &lt;environment: 0x61c3a8146cd0&gt;
 ## 
 ## $fit4
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5bfc05faf348&gt;
+## &lt;environment: 0x61c3a8146cd0&gt;
 ## 
 ## $fit5
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5bfc05faf348&gt;</code></pre>
+## &lt;environment: 0x61c3a8146cd0&gt;</code></pre>
 <p>The retrospective plot shown below presents the current fit with uncertainty and each retrospective fit on top. If the retrospective fit is not within the confidence interval of the current fit the analyst can argue that the estimate is different and as such reflecting a “poor” fit.</p>
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="diagnostics.html#cb187-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">window</span>(stks, <span class="at">start=</span><span class="dv">2005</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:retro"></span>
@@ -610,23 +610,23 @@ Figure 8.12: Retrospective analysis of the plaice in ICES area IV stock. Fixed F
 <p>Note fmodel changes:</p>
 <pre><code>## $fit1
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5bfbf81146d0&gt;
+## &lt;environment: 0x61c3af2f6628&gt;
 ## 
 ## $fit2
 ## ~te(age, year, k = c(6, 29), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5bfc11bda5e0&gt;
+## &lt;environment: 0x61c3adf1b6d8&gt;
 ## 
 ## $fit3
 ## ~te(age, year, k = c(6, 29), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5bfc0f7aa318&gt;
+## &lt;environment: 0x61c3a8e231d0&gt;
 ## 
 ## $fit4
 ## ~te(age, year, k = c(6, 28), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5bfc0f1934b0&gt;
+## &lt;environment: 0x61c3adf047d8&gt;
 ## 
 ## $fit5
 ## ~te(age, year, k = c(6, 28), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5bfc0eb73ae8&gt;</code></pre>
+## &lt;environment: 0x61c3adb05830&gt;</code></pre>
 <p>And the retrospective plot</p>
 <div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="diagnostics.html#cb190-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">window</span>(stks, <span class="at">start=</span><span class="dv">2005</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:retro2"></span>
