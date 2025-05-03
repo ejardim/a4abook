@@ -23,7 +23,7 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-05-01" />
+<meta name="date" content="2025-05-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -346,7 +346,8 @@ div.csl-indent {
 <span id="cb192-4"><a href="uncertainty.html#cb192-4" tabindex="-1"></a>    <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">8</span>, <span class="at">by =</span> <span class="fu">as.numeric</span>(age <span class="sc">==</span> <span class="dv">0</span>)) <span class="sc">+</span></span>
 <span id="cb192-5"><a href="uncertainty.html#cb192-5" tabindex="-1"></a>    <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">8</span>, <span class="at">by =</span> <span class="fu">as.numeric</span>(age <span class="sc">==</span> <span class="dv">4</span>))</span>
 <span id="cb192-6"><a href="uncertainty.html#cb192-6" tabindex="-1"></a>qmod <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="sc">~</span><span class="fu">I</span>(<span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span>age))))</span>
-<span id="cb192-7"><a href="uncertainty.html#cb192-7" tabindex="-1"></a>fit0 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmodel=</span>fmod, <span class="at">qmodel=</span>qmod)</span></code></pre></div>
+<span id="cb192-7"><a href="uncertainty.html#cb192-7" tabindex="-1"></a>fit0 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmodel=</span>fmod, <span class="at">qmodel=</span>qmod)</span>
+<span id="cb192-8"><a href="uncertainty.html#cb192-8" tabindex="-1"></a>stk0 <span class="ot">&lt;-</span> hke1567 <span class="sc">+</span> fit0</span></code></pre></div>
 <div id="the-simulate-and-predict-methods" class="section level2 hasAnchor" number="9.1">
 <h2><span class="header-section-number">9.1</span> The <code>simulate</code> and <code>predict</code> methods<a href="uncertainty.html#the-simulate-and-predict-methods" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="predict" class="section level3 hasAnchor" number="9.1.1">
@@ -403,8 +404,7 @@ Figure 9.2: Histogram of 250 draws from the approximate distribution of the esti
 <pre><code>## [1] TRUE</code></pre>
 <p>If the whole stock is of interest, for example, to inspect model predictions of <span class="math inline">\(SSB\)</span>, the user should use the <code>+</code> method with a fitted object including iterations. In such case the <code>stock.n</code>, <code>catch.n</code> and <code>harvest</code> slots of the stock object will be updated and the usual metrics can be computed and extracted, <em>e.g.</em> <code>ssb(stk.pred)</code>. Figure <a href="uncertainty.html#fig:sim2">9.3</a> depicts the stock summary plot after adding estimation uncertainty through <code>simulate</code>.</p>
 <div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="uncertainty.html#cb198-1" tabindex="-1"></a>stk.pred <span class="ot">&lt;-</span> hke1567 <span class="sc">+</span> fit.sim</span>
-<span id="cb198-2"><a href="uncertainty.html#cb198-2" tabindex="-1"></a>stk0 <span class="ot">&lt;-</span> hke1567 <span class="sc">+</span> fit0</span>
-<span id="cb198-3"><a href="uncertainty.html#cb198-3" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">FLStocks</span>(<span class="at">simulated=</span>stk.pred, <span class="at">fitted=</span>stk0))</span></code></pre></div>
+<span id="cb198-2"><a href="uncertainty.html#cb198-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">FLStocks</span>(<span class="at">simulated=</span>stk.pred, <span class="at">fitted=</span>stk0))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:sim2"></span>
 <img src="_main_files/figure-html/sim2-1.png" alt="Stock summary of the simulated and fitted data" width="672" />
 <p class="caption">
@@ -428,27 +428,21 @@ Figure 9.3: Stock summary of the simulated and fitted data
   publisher={Pearson Education},
   isbn={9780134461366}
 }-->
-<p>However, in <code>sca</code> residuals are estimates of observation error (measurement noise) and model error (misspecification, omitted variables), which means, unless the model is well specified and not missing any relevant varaibles, it will be an overestimate of observation error.</p>
+<p>However, in <code>sca</code> residuals are estimates of observation error (measurement noise) and model error (misspecification, omitted variables), which means, unless the model is well specified and not missing any relevant variables, it will be an overestimate of observation error.</p>
 <p>Nevertheless, in this section we’ll assume prediction error to be the sum of residual variance and estimation variance, and will describe how to compute both elements and bringing them together in a <code>FLStock</code> object.</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="uncertainty.html#cb199-1" tabindex="-1"></a><span class="co"># compute standard deviation from residuals</span></span>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="uncertainty.html#cb199-1" tabindex="-1"></a><span class="co"># compute deviances</span></span>
 <span id="cb199-2"><a href="uncertainty.html#cb199-2" tabindex="-1"></a>res0 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit0, hke1567, hke1567.idx, <span class="at">type=</span><span class="st">&quot;deviances&quot;</span>)</span>
-<span id="cb199-3"><a href="uncertainty.html#cb199-3" tabindex="-1"></a>sd0 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">var</span>(<span class="fu">unlist</span>(res0)))</span>
-<span id="cb199-4"><a href="uncertainty.html#cb199-4" tabindex="-1"></a>flq0 <span class="ot">&lt;-</span> res0<span class="sc">$</span>catch.n</span>
-<span id="cb199-5"><a href="uncertainty.html#cb199-5" tabindex="-1"></a>flq0[]<span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb199-6"><a href="uncertainty.html#cb199-6" tabindex="-1"></a><span class="co"># build object with estimation uncertainty</span></span>
-<span id="cb199-7"><a href="uncertainty.html#cb199-7" tabindex="-1"></a>stk.s <span class="ot">&lt;-</span> hke1567 <span class="sc">+</span> <span class="fu">simulate</span>(fit0, nsim)</span>
-<span id="cb199-8"><a href="uncertainty.html#cb199-8" tabindex="-1"></a><span class="co"># build object with prediction uncertainty</span></span>
-<span id="cb199-9"><a href="uncertainty.html#cb199-9" tabindex="-1"></a>stk.pu <span class="ot">&lt;-</span> <span class="fu">propagate</span>(hke1567, nsim)</span>
-<span id="cb199-10"><a href="uncertainty.html#cb199-10" tabindex="-1"></a><span class="fu">stock.n</span>(stk.pu) <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">log</span>(<span class="fu">stock.n</span>(fit0)) <span class="sc">+</span> <span class="fu">rnorm</span>(nsim, flq0, sd0))</span>
-<span id="cb199-11"><a href="uncertainty.html#cb199-11" tabindex="-1"></a><span class="fu">catch.n</span>(stk.pu) <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">log</span>(<span class="fu">catch.n</span>(fit0)) <span class="sc">+</span> <span class="fu">rnorm</span>(nsim, flq0, sd0))</span>
-<span id="cb199-12"><a href="uncertainty.html#cb199-12" tabindex="-1"></a><span class="fu">harvest</span>(stk.pu) <span class="ot">&lt;-</span> <span class="fu">harvest</span>(<span class="fu">stock.n</span>(stk.pu), <span class="fu">catch.n</span>(stk.pu), <span class="fu">m</span>(stk.pu), <span class="at">recompute =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb199-13"><a href="uncertainty.html#cb199-13" tabindex="-1"></a><span class="fu">catch</span>(stk.pu) <span class="ot">&lt;-</span> <span class="fu">computeCatch</span>(stk.pu)</span>
-<span id="cb199-14"><a href="uncertainty.html#cb199-14" tabindex="-1"></a><span class="fu">stock</span>(stk.pu) <span class="ot">&lt;-</span> <span class="fu">computeStock</span>(stk.pu)</span></code></pre></div>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="uncertainty.html#cb200-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">FLStocks</span>(<span class="at">pu=</span>stk.pu, <span class="at">s=</span>stk.s))</span></code></pre></div>
+<span id="cb199-3"><a href="uncertainty.html#cb199-3" tabindex="-1"></a><span class="co"># build object with estimation uncertainty</span></span>
+<span id="cb199-4"><a href="uncertainty.html#cb199-4" tabindex="-1"></a>stk.eu <span class="ot">&lt;-</span> hke1567 <span class="sc">+</span> <span class="fu">simulate</span>(fit0, nsim)</span>
+<span id="cb199-5"><a href="uncertainty.html#cb199-5" tabindex="-1"></a><span class="co"># build object with residual uncertainty</span></span>
+<span id="cb199-6"><a href="uncertainty.html#cb199-6" tabindex="-1"></a>stk.ru <span class="ot">&lt;-</span> <span class="fu">propagate</span>(stk0, nsim) <span class="sc">+</span> res0</span>
+<span id="cb199-7"><a href="uncertainty.html#cb199-7" tabindex="-1"></a><span class="co"># build object with prediction uncertainty</span></span>
+<span id="cb199-8"><a href="uncertainty.html#cb199-8" tabindex="-1"></a>stk.pu <span class="ot">&lt;-</span> hke1567 <span class="sc">+</span> <span class="fu">simulate</span>(fit0, nsim) <span class="sc">+</span> res0</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="uncertainty.html#cb200-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">FLStocks</span>(<span class="at">pu=</span>stk.pu, <span class="at">eu=</span>stk.eu, <span class="at">ru=</span>stk.ru))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:preduncert"></span>
-<img src="_main_files/figure-html/preduncert-1.png" alt="Prediction and estimation uncertainty" width="672" />
+<img src="_main_files/figure-html/preduncert-1.png" alt="Prediction (pu), residual (ru) and estimation (eu) uncertainty" width="672" />
 <p class="caption">
-Figure 9.4: Prediction and estimation uncertainty
+Figure 9.4: Prediction (pu), residual (ru) and estimation (eu) uncertainty
 </p>
 </div>
 </div>

@@ -25,6 +25,7 @@ fmod <- ~s(age, k = 4) +
     s(year, k = 8, by = as.numeric(age == 4))
 qmod <- list(~I(1/(1 + exp(-age))))
 fit0 <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod)
+stk0 <- hke1567 + fit0
 ```
 
 ## The `simulate` and `predict` methods
@@ -100,7 +101,6 @@ If the whole stock is of interest, for example, to inspect model predictions of 
 
 ```{r, sim2, fig.cap="Stock summary of the simulated and fitted data"}
 stk.pred <- hke1567 + fit.sim
-stk0 <- hke1567 + fit0
 plot(FLStocks(simulated=stk.pred, fitted=stk0))
 ```
 
@@ -123,29 +123,23 @@ EJ NOTE: I think this paper supports the same idea [@harville85], although the m
   isbn={9780134461366}
 }-->
 
-However, in `sca` residuals are estimates of observation error (measurement noise) and model error (misspecification, omitted variables), which means, unless the model is well specified and not missing any relevant varaibles, it will be an overestimate of observation error.
+However, in `sca` residuals are estimates of observation error (measurement noise) and model error (misspecification, omitted variables), which means, unless the model is well specified and not missing any relevant variables, it will be an overestimate of observation error.
 
 Nevertheless, in this section we'll assume prediction error to be the sum of residual variance and estimation variance, and will describe how to compute both elements and bringing them together in a `FLStock` object.
 
 ```{r}
-# compute standard deviation from residuals
+# compute deviances
 res0 <- residuals(fit0, hke1567, hke1567.idx, type="deviances")
-sd0 <- sqrt(var(unlist(res0)))
-flq0 <- res0$catch.n
-flq0[]<- 0
 # build object with estimation uncertainty
-stk.s <- hke1567 + simulate(fit0, nsim)
+stk.eu <- hke1567 + simulate(fit0, nsim)
+# build object with residual uncertainty
+stk.ru <- propagate(stk0, nsim) + res0
 # build object with prediction uncertainty
-stk.pu <- propagate(hke1567, nsim)
-stock.n(stk.pu) <- exp(log(stock.n(fit0)) + rnorm(nsim, flq0, sd0))
-catch.n(stk.pu) <- exp(log(catch.n(fit0)) + rnorm(nsim, flq0, sd0))
-harvest(stk.pu) <- harvest(stock.n(stk.pu), catch.n(stk.pu), m(stk.pu), recompute = FALSE)
-catch(stk.pu) <- computeCatch(stk.pu)
-stock(stk.pu) <- computeStock(stk.pu)
+stk.pu <- hke1567 + simulate(fit0, nsim) + res0
 ```
 
-```{r, preduncert, fig.cap="Prediction and estimation uncertainty"}
-plot(FLStocks(pu=stk.pu, s=stk.s))
+```{r, preduncert, fig.cap="Prediction (pu), residual (ru) and estimation (eu) uncertainty"}
+plot(FLStocks(pu=stk.pu, eu=stk.eu, ru=stk.ru))
 ```
 
 ## Confidence interval coverage
