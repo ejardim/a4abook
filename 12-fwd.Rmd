@@ -103,7 +103,7 @@ plot(window(FLStocks('01' = stk01, '02' = stk02, '03' = stk03), start = 2000))
 When projecting the stock forward one needs to make a number of assumptions about initial conditions, the starting point from where projections will be made. The method `fwdWindow` has a set of options that allows the analyst to decide about those assumptions:
 
 | Argument | Default value | Description |
-|---:|:-|:------|
+|---:|:-|:---------|
 |`wt`| 3 | Number of years to average over to get the future mean weights at age|
 |`mat`| 3 |Number of years to average over to get the future proportion mature at age|
 |`m`| 3 |Number of years to average over to get the future natural mortality at age|
@@ -161,7 +161,7 @@ plot(stk05)
 These scenarios are defined by the target quantities one's trying to achieve. Table \@ref(tab:trgqts) `FLasher` there are the following target quantities:
 
 | Target | Description |
-|---:|:------|
+|---:|:---------|
 |ssb | The Spawning Stock Biomass at spawning time |
 |ssb_spawn| The Spawning Stock Biomass at spawning time |
 |ssb_end| The Spawning Stock Biomass at the end of the time period |

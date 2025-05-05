@@ -89,6 +89,7 @@ tab:mcargs
 fig:unnamed-chunk-87
 fig:chain01
 fig:chain01b
+fig:acf01hc
 fig:acf01
 fig:ccr01
 fig:gew01
