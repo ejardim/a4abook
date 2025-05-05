@@ -23,7 +23,7 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-05-03" />
+<meta name="date" content="2025-05-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -169,7 +169,7 @@ div.csl-indent {
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#how-to-get-help"><i class="fa fa-check"></i><b>1.3</b> How to get help</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#notation"><i class="fa fa-check"></i><b>1.4</b> Notation</a></li>
 <li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.5</b> Acknowledgements</a></li>
-<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#license-documentation-and-development-status"><i class="fa fa-check"></i><b>1.6</b> License, documentation and development status</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.6</b> License</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
 <ul>
@@ -299,7 +299,7 @@ div.csl-indent {
 <li class="chapter" data-level="12.3" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#scenarios"><i class="fa fa-check"></i><b>12.3</b> Scenarios</a></li>
 <li class="chapter" data-level="12.4" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#relative-scenarios"><i class="fa fa-check"></i><b>12.4</b> Relative scenarios</a></li>
 <li class="chapter" data-level="12.5" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#limits"><i class="fa fa-check"></i><b>12.5</b> Limits</a></li>
-<li class="chapter" data-level="12.6" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#harvest-control-rule"><i class="fa fa-check"></i><b>12.6</b> Harvest Control Rule</a></li>
+<li class="chapter" data-level="12.6" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#harvest-control-rules-hcr"><i class="fa fa-check"></i><b>12.6</b> Harvest Control Rules (HCR)</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html"><i class="fa fa-check"></i><b>13</b> Annex - stock assessment workflow</a>
 <ul>
@@ -335,12 +335,11 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="projections-and-harvest-control-rules" class="section level1 hasAnchor" number="12">
 <h1><span class="header-section-number">12</span> Projections and harvest control rules<a href="projections-and-harvest-control-rules.html#projections-and-harvest-control-rules" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Massad et al. (2018) provide a useful distinction between forecasting and projection in scientific prediction, stating that prediction in general science can be categorized into two main components: forecasting and projection. According to their definition, “a forecast is an attempt to predict what will happen, whereas a projection describes what would happen, given certain hypotheses” (Massad et al., 2018). This distinction is also reflected in the Organisation for Economic Co-operation and Development <span class="citation">(<a href="#ref-OECD">OECD 2009</a>)</span>, which notes that “forecasting” and “prediction” are often used interchangeably in assessing the magnitude that a given variable will assume in the future.</p>
-<p>In the context of economic and environmental modeling, the OECD distinguishes between medium-term projections, which typically extend five to six years into the future, and other predictive exercises that rely on different methodologies. The term “projection” is generally used in two interrelated senses: (1) as a future value of a time series computed based on specific assumptions about environmental changes, and (2) in probability theory, as the conditional expectation of a variable. Since regression models provide conditional expectations of dependent variables based on predictor variables, this probabilistic use of projection aligns with forecasting and predictive modeling (OECD, 2009).</p>
-<p>Applying this conceptual framework to fisheries science, the process of advising on future fishing opportunities can be viewed as a combination of forecasting and projection. When using a harvest control rule (HCR) approved by decision-makers to predict catch levels that can be extracted from a stock, the analysis falls into the realm of forecasting, as it predicts what will happen under known system conditions. Conversely, when assessing potential future outcomes based on predefined scenarios—such as climate change effects or policy interventions—the approach aligns more closely with projections.</p>
-<p>In fisheries science, the distinction between forecasting and prediction is not always explicitly made, with the discipline generally emphasizing broader predictive approaches. It is common practice to run scenarios when advising fisheries managers, testing different assumptions about future ecological and management conditions. Strictly speaking, projections are not part of the stock assessment process itself. Stock assessment concludes when analysts compare estimates of biomass and fishing mortality with reference points, allowing for determinations of whether a stock is overfished or subject to overfishing <span class="citation">(<a href="#ref-hilborn2013quantitative">Hilborn and Walters 2013</a>)</span>.</p>
-<p>Projections typically follow stock assessments, incorporating estimates or assumptions about population dynamics—growth, reproduction, and natural mortality—to predict future catches, biomass, and abundance under specific conditions and with quantified uncertainty. By integrating both forecasting and projection methodologies, fisheries science can offer robust, scenario-based decision-making tools that aid sustainable resource management <span class="citation">(<a href="#ref-punt2001review">Punt, Smith, and Cui 2001</a>)</span>.</p>
-<p>For this section we’ll be using the package <code>FLasher</code> [] from the FLR family of packages.</p>
+<p><span class="citation">Massad et al. (<a href="#ref-massad2005">2005</a>)</span> provide a useful distinction between forecasting and projection in scientific prediction, stating that prediction in general science can be categorized into two main components: forecasting and projection. According to their definition, a forecast is an attempt to predict what will happen, whereas a projection describes what would happen given certain hypotheses.</p>
+<p>This distinction is also reflected by the Organisation for Economic Co-operation and Development (OECD) <span class="citation">(<a href="#ref-OECD">OECD 2009</a>)</span>, which notes that “forecasting” and “prediction” are often used interchangeably when estimating the future value of a given variable. The term projection is generally used in two interrelated senses: (1) as a future value of a time series computed based on specific assumptions about environmental changes, and (2) in probability theory, as the conditional expectation of a variable <span class="citation">(<a href="#ref-OECD">OECD 2009</a>)</span>.</p>
+<p>Applying this conceptual framework to fisheries science, the process of advising on future fishing opportunities is best viewed as a projection exercise. Predicting future outcomes is always conditioned on assumptions about future conditions—e.g., recruitment—or used to test hypotheses—e.g., regarding levels of extraction.</p>
+<p>In the multi-stage stock assessment process described in this book, projections are not part of the stock assessment modeling itself. The assessment concludes when analysts compare estimates of biomass and fishing mortality with reference points, determining whether a stock is overfished or subject to overfishing <span class="citation">(<a href="#ref-hilborn2013quantitative">Hilborn and Walters 2013</a>)</span>. Projections typically follow this assessment and incorporate estimates or assumptions about population dynamics—such as growth, reproduction, and natural mortality—to predict future catches, biomass, and abundance under specific conditions and quantified uncertainty. This final stage aims at providing scientific advice to decision-makers about potential consequences of the decisions they need to make.</p>
+<p>For this section we’ll be using the package <code>FLasher</code> <span class="citation">(<a href="#ref-flasher">Mosqueira and Scott 2025</a>; <a href="#ref-flasher2016">Scott and Mosqueira 2016</a>)</span> from the FLR family of packages.</p>
 <div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="projections-and-harvest-control-rules.html#cb265-1" tabindex="-1"></a><span class="fu">library</span>(FLa4a)</span>
 <span id="cb265-2"><a href="projections-and-harvest-control-rules.html#cb265-2" tabindex="-1"></a><span class="fu">library</span>(FLasher)</span>
 <span id="cb265-3"><a href="projections-and-harvest-control-rules.html#cb265-3" tabindex="-1"></a><span class="fu">library</span>(FLBRP)</span>
@@ -349,7 +348,12 @@ div.csl-indent {
 <span id="cb265-6"><a href="projections-and-harvest-control-rules.html#cb265-6" tabindex="-1"></a><span class="fu">data</span>(ple4.indices)</span></code></pre></div>
 <div id="simple-workflow" class="section level2 hasAnchor" number="12.1">
 <h2><span class="header-section-number">12.1</span> Simple workflow<a href="projections-and-harvest-control-rules.html#simple-workflow" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The basic workflow to project with <code>FLasher</code> is to extend the <code>FLStock</code> object to store the predictions using the method <code>fwdWindow</code>, set the targets for the projection with method <code>fwdControl</code> and project the fishery with the method <code>fwd</code> with a <code>FLStock</code> and a <code>FLSR</code>.</p>
+<p>The basic workflow to project with <code>FLasher</code> is:</p>
+<ol style="list-style-type: decimal">
+<li>extend the <code>FLStock</code> object to store the predictions using the method <code>fwdWindow()</code></li>
+<li>set the targets for the projection with method <code>fwdControl()</code></li>
+<li>project with the method <code>fwd()</code> using a <code>FLStock</code> and a <code>FLSR</code></li>
+</ol>
 <p>We’ll start by fitting a model including, a stock recruitment model which will be used to forecast recruitment. We’ll also set the number of iterations we’ll be working with and the time period we want to project.</p>
 <div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="projections-and-harvest-control-rules.html#cb266-1" tabindex="-1"></a><span class="co"># fit model</span></span>
 <span id="cb266-2"><a href="projections-and-harvest-control-rules.html#cb266-2" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">8</span>) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">25</span>) <span class="sc">+</span> <span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">15</span>))</span>
@@ -380,7 +384,7 @@ div.csl-indent {
 Figure 12.1: Projection of stock for 5 years with fixed fishing mortality and recruitment
 </p>
 </div>
-<p>A natural addition to this forecast is to add uncertainty. We’ll do that by generating uncertainty in population numbers, catch numbers and fishing mortality, using <code>simulate</code>, and add stock recruitment uncertainty using the residuals of the fit.</p>
+<p>A natural addition to this forecast is to add uncertainty. We’ll do that by generating uncertainty in population numbers, catch numbers and fishing mortality, using <code>simulate()</code>, and add stock recruitment uncertainty using the residuals of the fit.</p>
 <div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="projections-and-harvest-control-rules.html#cb267-1" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> <span class="fu">simulate</span>(fit00, nsim)</span>
 <span id="cb267-2"><a href="projections-and-harvest-control-rules.html#cb267-2" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> <span class="fu">fwdWindow</span>(stk00, <span class="at">end =</span> endpy)</span>
 <span id="cb267-3"><a href="projections-and-harvest-control-rules.html#cb267-3" tabindex="-1"></a>res00 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(sr00)</span>
@@ -423,9 +427,9 @@ Figure 12.4: Stochastic projection of stock for 5 years with fixed fishing morta
 <table>
 <caption><span id="tab:initcond">Table 12.1: </span> Initial conditions</caption>
 <colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
+<col width="30%" />
+<col width="15%" />
+<col width="53%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -511,6 +515,10 @@ Figure 12.6: Stochastic projection of stock for 25 years in the absence of fishi
 <p>These scenarios are defined by the target quantities one’s trying to achieve. Table <a href="projections-and-harvest-control-rules.html#tab:trgqts">12.2</a> <code>FLasher</code> there are the following target quantities:</p>
 <table>
 <caption><span id="tab:trgqts">Table 12.2: </span> Target quantities and their description</caption>
+<colgroup>
+<col width="36%" />
+<col width="63%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="right">Target</th>
@@ -519,68 +527,56 @@ Figure 12.6: Stochastic projection of stock for 25 years in the absence of fishi
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">srp</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="right">ssb_end</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="right">biomass_end</td>
-<td align="left"></td>
+<td align="right">ssb</td>
+<td align="left">The Spawning Stock Biomass at spawning time</td>
 </tr>
 <tr class="even">
 <td align="right">ssb_spawn</td>
-<td align="left"></td>
+<td align="left">The Spawning Stock Biomass at spawning time</td>
 </tr>
 <tr class="odd">
-<td align="right">biomass_spawn</td>
-<td align="left"></td>
+<td align="right">ssb_end</td>
+<td align="left">The Spawning Stock Biomass at the end of the time period</td>
 </tr>
 <tr class="even">
 <td align="right">ssb_flash</td>
-<td align="left"></td>
+<td align="left">The Spawning Stock Biomass at the beginning of the following year, kept for retro compatibility with package <code>FLash</code> <span class="citation">(<a href="#ref-flash">Laurence T. Kell 2025</a>)</span></td>
 </tr>
 <tr class="odd">
-<td align="right">biomass_flash</td>
-<td align="left"></td>
+<td align="right">biomass_spawn</td>
+<td align="left">Total Stock Biomass at spawning time</td>
 </tr>
 <tr class="even">
-<td align="right">inmb_end</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="right">indb</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="right">catch</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="right">landings</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="right">discards</td>
-<td align="left"></td>
+<td align="right">biomass_end</td>
+<td align="left">Total Stock Biomass at the end of the time period</td>
 </tr>
 <tr class="odd">
 <td align="right">f</td>
-<td align="left"></td>
+<td align="left">Fishing mortality over the time period</td>
 </tr>
 <tr class="even">
 <td align="right">fbar</td>
-<td align="left"></td>
+<td align="left">Fishing mortality over the time period</td>
 </tr>
 <tr class="odd">
-<td align="right">revenue</td>
-<td align="left"></td>
+<td align="right">catch</td>
+<td align="left">The total catch over the time period</td>
+</tr>
+<tr class="even">
+<td align="right">landings</td>
+<td align="left">The total landings over the time period</td>
+</tr>
+<tr class="odd">
+<td align="right">discards</td>
+<td align="left">The total discards over the time period</td>
 </tr>
 <tr class="even">
 <td align="right">effort</td>
-<td align="left"></td>
+<td align="left">The total effort over the time period</td>
+</tr>
+<tr class="odd">
+<td align="right">revenue</td>
+<td align="left">The total revenue over the time period</td>
 </tr>
 </tbody>
 </table>
@@ -596,7 +592,7 @@ Figure 12.7: Stochastic projection of stock for 25 years with fixed SSB for 15 y
 </div>
 <div id="relative-scenarios" class="section level2 hasAnchor" number="12.4">
 <h2><span class="header-section-number">12.4</span> Relative scenarios<a href="projections-and-harvest-control-rules.html#relative-scenarios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Another scenario that is very useful when advising decision makers is to have objectives which are relative to previous preformances. For example one could increase spwanwing stock biomass by 10% each year. This is done buy using the argument <code>relYear</code> and setting <code>value</code> in relative terms, <span class="math inline">\(1.1\)</span>.</p>
+<p>Another scenario that is very useful when advising decision makers is to have objectives which are relative to previous performances. For example one could increase spawning stock biomass by 10% each year. This is done buy using the argument <code>relYear</code> and setting <code>value</code> in relative terms, 1.1.</p>
 <div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="projections-and-harvest-control-rules.html#cb272-1" tabindex="-1"></a>fit00 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel=</span><span class="sc">~</span><span class="fu">geomean</span>())</span>
 <span id="cb272-2"><a href="projections-and-harvest-control-rules.html#cb272-2" tabindex="-1"></a>sr00 <span class="ot">&lt;-</span> <span class="fu">as</span>(fit00, <span class="st">&quot;FLSR&quot;</span>)</span>
 <span id="cb272-3"><a href="projections-and-harvest-control-rules.html#cb272-3" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> ple4 <span class="sc">+</span> <span class="fu">simulate</span>(fit00, nsim)</span>
@@ -624,7 +620,7 @@ Figure 12.8: Stochastic projection of stock for 25 years with fixed SSB for 15 y
 </div>
 <div id="limits" class="section level2 hasAnchor" number="12.5">
 <h2><span class="header-section-number">12.5</span> Limits<a href="projections-and-harvest-control-rules.html#limits" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>An important element when projecting the stock forward is to keep the performance of the fishery within some boundaries. A common one requested by the industry is to keep catches within some stability. <code>fwd</code> can include those constraints using the <code>min</code> and <code>max</code> arguments. The next example sets the minimum future catches to half of mean historical catches.</p>
+<p>An important element when projecting the stock forward is to keep the performance of the fishery within some boundaries. A common one requested by the industry is to keep catches within some stability. <code>fwd()</code> can include those constraints using the <code>min</code> and <code>max</code> arguments. The next example sets the minimum future catches to half of mean historical catches.</p>
 <div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="projections-and-harvest-control-rules.html#cb274-1" tabindex="-1"></a>minc <span class="ot">&lt;-</span> <span class="fl">0.2</span><span class="sc">*</span><span class="fu">mean</span>(<span class="fu">catch</span>(stk00), <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
 <span id="cb274-2"><a href="projections-and-harvest-control-rules.html#cb274-2" tabindex="-1"></a>trg00 <span class="ot">&lt;-</span> <span class="fu">fwdControl</span>(<span class="at">year =</span> inipy<span class="sc">:</span>endpy, <span class="at">quant =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;ssb_end&quot;</span>, <span class="st">&quot;catch&quot;</span>), projy), <span class="at">value =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1500000</span>, <span class="cn">NA</span>), projy), <span class="at">min=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="cn">NA</span>, minc), projy))</span>
 <span id="cb274-3"><a href="projections-and-harvest-control-rules.html#cb274-3" tabindex="-1"></a>stk09 <span class="ot">&lt;-</span> <span class="fu">fwd</span>(stk00, <span class="at">control=</span>trg00, <span class="at">sr=</span>sr00, <span class="at">residuals=</span>rec00)</span></code></pre></div>
@@ -635,13 +631,13 @@ Figure 12.9: Stochastic projection of stock for 25 years with SSB target of 1500
 </p>
 </div>
 </div>
-<div id="harvest-control-rule" class="section level2 hasAnchor" number="12.6">
-<h2><span class="header-section-number">12.6</span> Harvest Control Rule<a href="projections-and-harvest-control-rules.html#harvest-control-rule" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="harvest-control-rules-hcr" class="section level2 hasAnchor" number="12.6">
+<h2><span class="header-section-number">12.6</span> Harvest Control Rules (HCR)<a href="projections-and-harvest-control-rules.html#harvest-control-rules-hcr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Harvest Control Rules (HCR) can be complex and of many shapes (REF). We’ll keep our examples simple to demonstrate the mechanism of coding HCR.</p>
-<p>HCR are decision algorythms that can be used to codify the decision making process, allowing for longer term stability of management decisions in fisheries.</p>
-<p>The HCR we’re going to explore is based on a target and a limit. The target is applied to the management objective and represents the intent of management. The limit is applied to the process we want to use as trigger for protective actions. For example, the objective of the management system is to extract the highest catches possible for a very long time (aka equilibrium). However, due to natural variability and scientific uncertainty, it can happen that the stock’s biomass decreases below what’s expected, in which case decision makers want to make sure the stock stays healthy and productive. This situation can be translated into a target of fishing mortality at the level that extracts the Maximum Sustainable Yield, and a biomass limit of <em>e.g.</em> half the biomass that would produce the referred catches, everything being in a stable equilibrium. If SSB falls below the limit then fishing mortality is set at 80% of the target.</p>
+<p>HCR are decision algorithms that can be used to codify the decision making process, allowing for longer term stability of management decisions in fisheries.</p>
+<p>The HCR we’re going to explore is based on a target and a limit. The target is applied to the management objective and represents the intent of management. The limit is applied to the process we want to use as trigger for protective actions. For example, the objective of the management system is to extract the highest catches possible for a very long time (aka equilibrium). However, due to natural variability and scientific uncertainty, it can happen that the stock’s biomass decreases below what’s expected, in which case decision makers want to make sure the stock stays healthy and productive. This situation can be translated into a target of fishing mortality at the level that extracts the Maximum Sustainable Yield, and a biomass limit of <em>e.g.</em> half the biomass that would produce the referred catches, everything being in a stable equilibrium. If <span class="math inline">\(SSB\)</span> falls below the limit then fishing mortality is set at 80% of the target.</p>
 <p>Such HCR could be written as</p>
-<p><span class="math inline">\(if \quad SSB_y &gt; 0.5xB_{MSY} \quad then \quad F_{y+1} = F_{MSY} \quad or \quad else \quad F_{y+1} = 0.8xF_{MSY}\)</span></p>
+<p><span class="math inline">\(if \quad SSB_y &gt; 0.5 \times B_{MSY} \quad then \quad F_{y+1} = F_{MSY} \quad or \quad else \quad F_{y+1} = 0.8 \times F_{MSY}\)</span></p>
 <p>and coded like</p>
 <div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="projections-and-harvest-control-rules.html#cb275-1" tabindex="-1"></a><span class="co"># fit model</span></span>
 <span id="cb275-2"><a href="projections-and-harvest-control-rules.html#cb275-2" tabindex="-1"></a>fit00 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel=</span><span class="sc">~</span><span class="fu">geomean</span>())</span>
@@ -687,11 +683,20 @@ Figure 12.10: Projection of stock for 2 years following a HCR with a target of F
 <div id="ref-hilborn2013quantitative" class="csl-entry">
 Hilborn, Ray, and Carl J Walters. 2013. <em>Quantitative Fisheries Stock Assessment: Choice, Dynamics and Uncertainty</em>. Springer Science &amp; Business Media.
 </div>
+<div id="ref-flash" class="csl-entry">
+Kell, Laurence T. 2025. <em>FLash: Forecasting and Projection of Fish Stocks</em>. <a href="https://github.com/flr/FLash">https://github.com/flr/FLash</a>.
+</div>
+<div id="ref-massad2005" class="csl-entry">
+Massad, Eduardo, Marcelo N. Burattini, Luis F. Lopez, and Francisco A. B. Coutinho. 2005. <span>“Forecasting Versus Projection Models in Epidemiology: The Case of the SARS Epidemics.”</span> <em>Medical Hypotheses</em> 65 (1): 17–22. https://doi.org/<a href="https://doi.org/10.1016/j.mehy.2004.09.029">https://doi.org/10.1016/j.mehy.2004.09.029</a>.
+</div>
+<div id="ref-flasher" class="csl-entry">
+Mosqueira, Iago, and Finlay Scott. 2025. <em>FLasher: Projection and Forecasting of Fish Populations, Stocks and Fleets</em>.
+</div>
 <div id="ref-OECD" class="csl-entry">
 OECD. 2009. <span>“OECD Economic Outlook.”</span> https://doi.org/<a href="https://doi.org/10.1787/eco_outlook-v2009-1-en">https://doi.org/10.1787/eco_outlook-v2009-1-en</a>.
 </div>
-<div id="ref-punt2001review" class="csl-entry">
-Punt, André E, Anthony DM Smith, and Gurong Cui. 2001. <span>“Review of Progress in the Introduction of Management Strategy Evaluation (MSE) Approaches in Australia’s South East Fishery.”</span> <em>Marine and Freshwater Research</em> 52 (4): 719–26.
+<div id="ref-flasher2016" class="csl-entry">
+Scott, Finlay, and Iago Mosqueira. 2016. <span>“Bioeconomic Modelling for Fisheries.”</span> EUR 28383 EN. European Union. <a href="https://doi.org/doi:10.2788/722156">https://doi.org/doi:10.2788/722156</a>.
 </div>
 </div>
             </section>

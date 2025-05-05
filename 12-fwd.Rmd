@@ -1,16 +1,14 @@
 # Projections and harvest control rules
 
-Massad et al. (2018) provide a useful distinction between forecasting and projection in scientific prediction, stating that prediction in general science can be categorized into two main components: forecasting and projection. According to their definition, "a forecast is an attempt to predict what will happen, whereas a projection describes what would happen, given certain hypotheses" (Massad et al., 2018). This distinction is also reflected in the Organisation for Economic Co-operation and Development [@OECD], which notes that “forecasting” and “prediction” are often used interchangeably in assessing the magnitude that a given variable will assume in the future.
+@massad2005 provide a useful distinction between forecasting and projection in scientific prediction, stating that prediction in general science can be categorized into two main components: forecasting and projection. According to their definition, a forecast is an attempt to predict what will happen, whereas a projection describes what would happen given certain hypotheses.
 
-In the context of economic and environmental modeling, the OECD distinguishes between medium-term projections, which typically extend five to six years into the future, and other predictive exercises that rely on different methodologies. The term "projection" is generally used in two interrelated senses: (1) as a future value of a time series computed based on specific assumptions about environmental changes, and (2) in probability theory, as the conditional expectation of a variable. Since regression models provide conditional expectations of dependent variables based on predictor variables, this probabilistic use of projection aligns with forecasting and predictive modeling (OECD, 2009).
+This distinction is also reflected by the Organisation for Economic Co-operation and Development (OECD) [@OECD], which notes that “forecasting” and “prediction” are often used interchangeably when estimating the future value of a given variable. The term projection is generally used in two interrelated senses: (1) as a future value of a time series computed based on specific assumptions about environmental changes, and (2) in probability theory, as the conditional expectation of a variable [@OECD].
 
-Applying this conceptual framework to fisheries science, the process of advising on future fishing opportunities can be viewed as a combination of forecasting and projection. When using a harvest control rule (HCR) approved by decision-makers to predict catch levels that can be extracted from a stock, the analysis falls into the realm of forecasting, as it predicts what will happen under known system conditions. Conversely, when assessing potential future outcomes based on predefined scenarios—such as climate change effects or policy interventions—the approach aligns more closely with projections.
+Applying this conceptual framework to fisheries science, the process of advising on future fishing opportunities is best viewed as a projection exercise. Predicting future outcomes is always conditioned on assumptions about future conditions—e.g., recruitment—or used to test hypotheses—e.g., regarding levels of extraction.
 
-In fisheries science, the distinction between forecasting and prediction is not always explicitly made, with the discipline generally emphasizing broader predictive approaches. It is common practice to run scenarios when advising fisheries managers, testing different assumptions about future ecological and management conditions. Strictly speaking, projections are not part of the stock assessment process itself. Stock assessment concludes when analysts compare estimates of biomass and fishing mortality with reference points, allowing for determinations of whether a stock is overfished or subject to overfishing [@hilborn2013quantitative].
+In the multi-stage stock assessment process described in this book, projections are not part of the stock assessment modeling itself. The assessment concludes when analysts compare estimates of biomass and fishing mortality with reference points, determining whether a stock is overfished or subject to overfishing [@hilborn2013quantitative]. Projections typically follow this assessment and incorporate estimates or assumptions about population dynamics—such as growth, reproduction, and natural mortality—to predict future catches, biomass, and abundance under specific conditions and quantified uncertainty. This final stage aims at providing scientific advice to decision-makers about potential consequences of the decisions they need to make.
 
-Projections typically follow stock assessments, incorporating estimates or assumptions about population dynamics—growth, reproduction, and natural mortality—to predict future catches, biomass, and abundance under specific conditions and with quantified uncertainty. By integrating both forecasting and projection methodologies, fisheries science can offer robust, scenario-based decision-making tools that aid sustainable resource management [@punt2001review].
-
-For this section we'll be using the package `FLasher` [\flasher] from the FLR family of packages.
+For this section we'll be using the package `FLasher` [@flasher; @flasher2016] from the FLR family of packages.
 
 ```{r, warning=FALSE, message=FALSE}
 library(FLa4a)
@@ -23,7 +21,11 @@ data(ple4.indices)
 
 ## Simple workflow
 
-The basic workflow to project with `FLasher` is to extend the `FLStock` object to store the predictions using the method `fwdWindow`, set the targets for the projection with method `fwdControl` and project the fishery with the method `fwd` with a `FLStock` and a `FLSR`.
+The basic workflow to project with `FLasher` is:
+
+1. extend the `FLStock` object to store the predictions using the method `fwdWindow()`
+2. set the targets for the projection with method `fwdControl()`
+3. project with the method `fwd()` using a `FLStock` and a `FLSR`
 
 We'll start by fitting a model including, a stock recruitment model which will be used to forecast recruitment. We'll also set the number of iterations we'll be working with and the time period we want to project.
 
@@ -57,7 +59,7 @@ stk01 <- fwd(stk00, control=trg00, sr=sr00)
 plot(stk01)
 ```
 
-A natural addition to this forecast is to add uncertainty. We'll do that by generating uncertainty in population numbers, catch numbers and fishing mortality, using `simulate`, and add stock recruitment uncertainty using the residuals of the fit. 
+A natural addition to this forecast is to add uncertainty. We'll do that by generating uncertainty in population numbers, catch numbers and fishing mortality, using `simulate()`, and add stock recruitment uncertainty using the residuals of the fit.
 
 ```{r, warning=FALSE, message=FALSE}
 stk00 <- ple4 + simulate(fit00, nsim)
@@ -101,7 +103,7 @@ plot(window(FLStocks('01' = stk01, '02' = stk02, '03' = stk03), start = 2000))
 When projecting the stock forward one needs to make a number of assumptions about initial conditions, the starting point from where projections will be made. The method `fwdWindow` has a set of options that allows the analyst to decide about those assumptions:
 
 | Argument | Default value | Description |
-|----:|:----|:----|
+|---:|:-|:------|
 |`wt`| 3 | Number of years to average over to get the future mean weights at age|
 |`mat`| 3 |Number of years to average over to get the future proportion mature at age|
 |`m`| 3 |Number of years to average over to get the future natural mortality at age|
@@ -159,23 +161,20 @@ plot(stk05)
 These scenarios are defined by the target quantities one's trying to achieve. Table \@ref(tab:trgqts) `FLasher` there are the following target quantities:
 
 | Target | Description |
-|----:|:----|
-| srp | |
-| ssb_end | |
-| biomass_end | |
-| ssb_spawn | |
-| biomass_spawn | |
-| ssb_flash | |
-| biomass_flash | |
-| inmb_end | |
-| indb | |
-| catch | |
-| landings | |
-| discards | |
-| f | |
-| fbar | |
-| revenue | |
-| effort | |
+|---:|:------|
+|ssb | The Spawning Stock Biomass at spawning time |
+|ssb_spawn| The Spawning Stock Biomass at spawning time |
+|ssb_end| The Spawning Stock Biomass at the end of the time period |
+|ssb_flash| The Spawning Stock Biomass at the beginning of the following year, kept for retro compatibility with package `FLash` [@flash] |
+|biomass_spawn| Total Stock Biomass at spawning time|
+|biomass_end| Total Stock Biomass at the end of the time period |
+|f | Fishing mortality over the time period|
+|fbar| Fishing mortality over the time period|
+|catch| The total catch over the time period|
+|landings| The total landings over the time period|
+|discards| The total discards over the time period|
+|effort| The total effort over the time period|
+|revenue| The total revenue over the time period|
 Table: (\#tab:trgqts) Target quantities and their description
 
 When projecting the stock under the conditions defined by the scenario one can mix several quantities. For example it may be interesting to project an initial situation of growing the stock followed by a higher exploitation to evaluate how catches would behave.
@@ -191,7 +190,7 @@ plot(stk06)
 
 ## Relative scenarios
 
-Another scenario that is very useful when advising decision makers is to have objectives which are relative to previous preformances. For example one could increase spwanwing stock biomass by 10% each year. This is done buy using the argument `relYear` and setting `value` in relative terms, $1.1$.
+Another scenario that is very useful when advising decision makers is to have objectives which are relative to previous performances. For example one could increase spawning stock biomass by 10% each year. This is done buy using the argument `relYear` and setting `value` in relative terms, 1.1.
 
 ```{r, warning=FALSE, message=FALSE}
 fit00 <- sca(ple4, ple4.indices, srmodel=~geomean())
@@ -224,7 +223,7 @@ plot(window(FLStocks(scn01 = stk07, scn02 = stk08), start = 2000))
 
 ## Limits
 
-An important element when projecting the stock forward is to keep the performance of the fishery within some boundaries. A common one requested by the industry is to keep catches within some stability. `fwd` can include those constraints using the `min` and `max` arguments. The next example sets the minimum future catches to half of mean historical catches.
+An important element when projecting the stock forward is to keep the performance of the fishery within some boundaries. A common one requested by the industry is to keep catches within some stability. `fwd()` can include those constraints using the `min` and `max` arguments. The next example sets the minimum future catches to half of mean historical catches.
 
 ```{r, warning=FALSE, message=FALSE}
 minc <- 0.2*mean(catch(stk00), na.rm=TRUE)
@@ -236,17 +235,17 @@ stk09 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 plot(window(stk09, start = 2000))
 ```
 
-## Harvest Control Rule
+## Harvest Control Rules (HCR)
 
 Harvest Control Rules (HCR) can be complex and of many shapes (REF). We'll keep our examples simple to demonstrate the mechanism of coding HCR.
 
-HCR are decision algorythms that can be used to codify the decision making process, allowing for longer term stability of management decisions in fisheries.
+HCR are decision algorithms that can be used to codify the decision making process, allowing for longer term stability of management decisions in fisheries.
 
-The HCR we're going to explore is based on a target and a limit. The target is applied to the management objective and represents the intent of management. The limit is applied to the process we want to use as trigger for protective actions. For example, the objective of the management system is to extract the highest catches possible for a very long time (aka equilibrium). However, due to natural variability and scientific uncertainty, it can happen that the stock's biomass decreases below what's expected, in which case decision makers want to make sure the stock stays healthy and productive. This situation can be translated into a target of fishing mortality at the level that extracts the Maximum Sustainable Yield, and a biomass limit of *e.g.* half the biomass that would produce the referred catches, everything being in a stable equilibrium. If SSB falls below the limit then fishing mortality is set at 80% of the target.
+The HCR we're going to explore is based on a target and a limit. The target is applied to the management objective and represents the intent of management. The limit is applied to the process we want to use as trigger for protective actions. For example, the objective of the management system is to extract the highest catches possible for a very long time (aka equilibrium). However, due to natural variability and scientific uncertainty, it can happen that the stock's biomass decreases below what's expected, in which case decision makers want to make sure the stock stays healthy and productive. This situation can be translated into a target of fishing mortality at the level that extracts the Maximum Sustainable Yield, and a biomass limit of *e.g.* half the biomass that would produce the referred catches, everything being in a stable equilibrium. If $SSB$ falls below the limit then fishing mortality is set at 80% of the target.
 
 Such HCR could be written as
 
-$if \quad SSB_y > 0.5xB_{MSY} \quad then \quad F_{y+1} = F_{MSY} \quad or \quad else \quad F_{y+1} = 0.8xF_{MSY}$
+$if \quad SSB_y > 0.5 \times B_{MSY} \quad then \quad F_{y+1} = F_{MSY} \quad or \quad else \quad F_{y+1} = 0.8 \times F_{MSY}$
 
 and coded like
 

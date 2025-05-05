@@ -130,7 +130,7 @@ how-to-read-this-document
 how-to-get-help
 notation
 acknowledgements
-license-documentation-and-development-status
+license
 introduction
 the-assessment-for-all-initiative-a4a
 multi-stage-modelling-approach
@@ -224,7 +224,7 @@ initial-condition-assumptions
 scenarios
 relative-scenarios
 limits
-harvest-control-rule
+harvest-control-rules-hcr
 annex---stock-assessment-workflow
 the-mean-model
 the-age-effects

@@ -1,6 +1,7 @@
-code with `
-formulas and numbers with LaTeX $
-references ??
-Methods or function arguments uses list with [foo:] for argument and description outside
+inline code with `fit <- sca(stk, idx)`
+methods with `foo()`
+packages and R with `FLa4a`
+formulas and variables with LaTeX $
+Methods or function arguments uses tables with argument, default value and description
 
 

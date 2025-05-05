@@ -23,7 +23,7 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-05-03" />
+<meta name="date" content="2025-05-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -169,7 +169,7 @@ div.csl-indent {
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#how-to-get-help"><i class="fa fa-check"></i><b>1.3</b> How to get help</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#notation"><i class="fa fa-check"></i><b>1.4</b> Notation</a></li>
 <li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.5</b> Acknowledgements</a></li>
-<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#license-documentation-and-development-status"><i class="fa fa-check"></i><b>1.6</b> License, documentation and development status</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.6</b> License</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
 <ul>
@@ -299,7 +299,7 @@ div.csl-indent {
 <li class="chapter" data-level="12.3" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#scenarios"><i class="fa fa-check"></i><b>12.3</b> Scenarios</a></li>
 <li class="chapter" data-level="12.4" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#relative-scenarios"><i class="fa fa-check"></i><b>12.4</b> Relative scenarios</a></li>
 <li class="chapter" data-level="12.5" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#limits"><i class="fa fa-check"></i><b>12.5</b> Limits</a></li>
-<li class="chapter" data-level="12.6" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#harvest-control-rule"><i class="fa fa-check"></i><b>12.6</b> Harvest Control Rule</a></li>
+<li class="chapter" data-level="12.6" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html#harvest-control-rules-hcr"><i class="fa fa-check"></i><b>12.6</b> Harvest Control Rules (HCR)</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="annex---stock-assessment-workflow.html"><a href="annex---stock-assessment-workflow.html"><i class="fa fa-check"></i><b>13</b> Annex - stock assessment workflow</a>
 <ul>
@@ -337,13 +337,13 @@ div.csl-indent {
 <h1 class="title">Fish stock assessment with R</h1>
 <h2 class="subtitle"><em>The a4a Initiative</em></h2>
 <p class="author"><em>Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira</em></p>
-<p class="date"><em>2025-05-03</em></p>
+<p class="date"><em>2025-05-05</em></p>
 </div>
 <div id="before-starting" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">1</span> Before starting<a href="index.html#before-starting" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="installing-and-loading-libraries" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> Installing and loading libraries<a href="index.html#installing-and-loading-libraries" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To run the methods in this book the reader will need to install the <code>FLa4a</code> package <span class="citation">(<a href="#ref-fla4a">C. Millar and Jardim 2025</a>)</span> and its dependencies. Some datasets are distributed with the package and as such need to be loaded too.</p>
+<p>To run the methods in this book the reader will need to install the <code>FLa4a</code> package <span class="citation">(<a href="#ref-fla4a">Millar and Jardim 2025</a>)</span> and its dependencies. Some datasets are distributed with the package and as such need to be loaded too.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" tabindex="-1"></a><span class="co"># from CRAN</span></span>
 <span id="cb1-2"><a href="index.html#cb1-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;copula&quot;</span>,<span class="st">&quot;triangle&quot;</span>, <span class="st">&quot;coda&quot;</span>, <span class="st">&quot;grid&quot;</span>, <span class="st">&quot;gridExtra&quot;</span>, <span class="st">&quot;latticeExtra&quot;</span>))</span>
 <span id="cb1-3"><a href="index.html#cb1-3" tabindex="-1"></a><span class="co"># from FLR</span></span>
@@ -472,7 +472,7 @@ div.csl-indent {
 ##     }
 ##     .local(x, ...)
 ## }
-## &lt;bytecode: 0x58885b2392b0&gt;
+## &lt;bytecode: 0x64b7f3db9858&gt;
 ## &lt;environment: namespace:ggplotFL&gt;
 ## 
 ## Signatures:
@@ -664,36 +664,22 @@ div.csl-indent {
 </div>
 <div id="acknowledgements" class="section level2 hasAnchor" number="1.5">
 <h2><span class="header-section-number">1.5</span> Acknowledgements<a href="index.html#acknowledgements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>TBD</p>
 </div>
-<div id="license-documentation-and-development-status" class="section level2 hasAnchor" number="1.6">
-<h2><span class="header-section-number">1.6</span> License, documentation and development status<a href="index.html#license-documentation-and-development-status" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The software is released under the <a href="https://joinup.ec.europa.eu/community/eupl/home">EUPL 1.1</a>.</p>
-<p>For more information on the a4a methodologies refer to <span class="citation">Jardim et al. (<a href="#ref-EJ_etal_2014">2014</a>)</span>, <span class="citation">C. P. Millar et al. (<a href="#ref-Millar_etal_2014">2014</a>)</span> and <span class="citation">Scott et al. (<a href="#ref-scott2016applied">2016</a>)</span>.</p>
-<p>Documentation can be found at <a href="http://flr-project.org/FLa4a" class="uri">http://flr-project.org/FLa4a</a>. You are welcome to:</p>
-<ul>
-<li>Submit suggestions and bug-reports at: <a href="https://github.com/flr/FLa4a/issues" class="uri">https://github.com/flr/FLa4a/issues</a></li>
-<li>Send a pull request on: <a href="https://github.com/flr/FLa4a/" class="uri">https://github.com/flr/FLa4a/</a></li>
-<li>Compose a friendly e-mail to the maintainer, see <code>packageDescription('FLa4a')</code></li>
-</ul>
+<div id="license" class="section level2 hasAnchor" number="1.6">
+<h2><span class="header-section-number">1.6</span> License<a href="index.html#license" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This book is released under a Creative Commons license <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
+<p>The <code>FLa4a</code> package is released under the <a href="https://joinup.ec.europa.eu/community/eupl/home">EUPL 1.1</a>.</p>
 
 </div>
 </div>
 <h3> References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-EJ_etal_2014" class="csl-entry">
-Jardim, Ernesto, Colin P. Millar, Iago Mosqueira, Finlay Scott, Giacomo Chato Osio, Marco Ferretti, Nekane Alzorriz, and Alessandro Orio. 2014. <span>“Food for Thought What If Stock Assessment Is as Simple as a Linear Model? The A4a Initiative.”</span> <em>ICES Journal of Marine Science</em>, January.
-</div>
 <div id="ref-flr" class="csl-entry">
 Kell, L. T., I. Mosqueira, P. Grosjean, J-M. Fromentin, D. Garcia, R. Hillary, E. Jardim, et al. 2007. <span>“FLR: An Open-Source Framework for the Evaluation and Development of Management Strategies.”</span> <em>ICES Journal of Marine Science</em> 64: 640–46.
 </div>
-<div id="ref-Millar_etal_2014" class="csl-entry">
-Millar, Colin P., Ernesto Jardim, Finlay Scott, Giacomo Chato Osio, Iago Mosqueira, and Nekane Alzorriz. 2014. <span>“Model Averaging to Streamline the Stock Assessment Process.”</span> <em>ICES Journal of Marine Science</em> 72 (1): 93–98. <a href="https://doi.org/10.1093/icesjms/fsu043">https://doi.org/10.1093/icesjms/fsu043</a>.
-</div>
 <div id="ref-fla4a" class="csl-entry">
 Millar, Colin, and Ernesto Jardim. 2025. <em>A4a: A Flexible and Robust Stock Assessment Framework</em>.
-</div>
-<div id="ref-scott2016applied" class="csl-entry">
-Scott, Finlay, Ernesto Jardim, Colin P Millar, and Santiago Cerviño. 2016. <span>“An Applied Framework for Incorporating Multiple Sources of Uncertainty in Fisheries Stock Assessments.”</span> <em>PLoS One</em> 11 (5): e0154922.
 </div>
 </div>
             </section>
