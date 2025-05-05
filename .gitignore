@@ -43,3 +43,7 @@ po/*~
 rsconnect/
 
 docs/search_index.json
+
+# mailing list
+email_list.xlsx
+
