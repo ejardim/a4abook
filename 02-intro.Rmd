@@ -14,7 +14,7 @@ The modular nature of a4a allows for the integration of data from diverse source
 
 While a4a simplifies traditional assessment approaches, it faces challenges such as ensuring the quality and consistency of input data, especially in regions with limited monitoring infrastructure. To address this, the initiative incorporates uncertainty into its models, leveraging MCMC frameworks and other statistical tools to account for variability in data quality and ecosystem processes.
 
-The a4a framework has been applied in various European fisheries to improve stock assessment practices, only in the Mediterranean Sea has been used for more than 200 stock assessments, as of 2024 in [(GFCM)](https://www.fao.org/gfcm/data/star/en/)] and [(STECF)](https://stecf.ec.europa.eu/data-dissemination/medbs_en). Moreover, its use in small pelagic fisheries demonstrated the utility of simple linear models in capturing key population dynamics without the need for data-intensive methods [@EJ_etal_2014].
+The a4a framework has been applied in various European fisheries to improve stock assessment practices, only in the Mediterranean Sea has been used for more than 200 stock assessments, as of 2024 in [(GFCM)](https://www.fao.org/gfcm/data/star/en/) and [(STECF)](https://stecf.ec.europa.eu/data-dissemination/medbs_en). Moreover, its use in small pelagic fisheries demonstrated the utility of simple linear models in capturing key population dynamics without the need for data-intensive methods [@EJ_etal_2014].
 
 Some of the key elements of stock assessment are the quantity, quality and aggregation level of the data available. As in many other models the data will condition the type of models that can be used. In `a4a` the minimum set of data, loosely defined as a "moderate data" level, consists of:
 
@@ -40,7 +40,7 @@ For fisheries science, the choice between these models often depends on manageme
 
 Two-stage models are advantageous for practical applications, such as fisheries stock assessments, where simplicity and robustness take precedence over ecological nuance. Empirical estimates of \(M\), derived from life-history traits, provide reliable inputs for subsequent models, avoiding the parameter confounding that often occurs in integrated frameworks.
 
-Despite the intuitive advantages of integrated models, it is not a panacea for poor quality data or model structure uncertainty in stock assessments. There are several disadvantages, mostly related to model misspecification, the complexity of the resulting models, and the associated, often considerable, computational requirements (e.g. the use of remotely sensed environmental information). Consequently, in some situations, the traditional two-stage approach remains a better approach (Mounder and Punt, 2013).
+Despite the intuitive advantages of integrated models, it is not a panacea for poor quality data or model structure uncertainty in stock assessments. There are several disadvantages, mostly related to model misspecification, the complexity of the resulting models, and the associated, often considerable, computational requirements (e.g. the use of remotely sensed environmental information). Consequently, in some situations, the traditional two-stage approach remains a better approach [@maunderPunt2013].
 
 ## Stock Assessment Process
 
@@ -86,4 +86,4 @@ Red mullets is a key commercial species in GSA 1.They can be found in sandy and 
 
 ### Redfish simulated length data
 
-This is a length based dataset simulated with GADGET (REF).
+This is a length based dataset simulated with GADGET [@gadget].
