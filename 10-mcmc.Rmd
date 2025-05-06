@@ -231,22 +231,25 @@ A low acceptance rate (e.g., <20%) means that most proposed moves are rejected, 
 The acceptance rate is reported out of the MCMC fit and can be accessed with `fitSumm()`. Inspecting the acceptance rate for the models we're using shows a higher acceptance rate for the high correlation model, although both are above the recommended optimal for high dimensional models, like the models used in stock assessment.
 
 ```{r}
-cbind(fitSumm(fitmc01), fitSumm(fitmc02))
+data.frame(hessian_scale=c(fitSumm(fitmc01)),
+    hessian_noscale=c(fitSumm(fitmc02)),
+    row.names=rownames(fitSumm(fitmc01)))
+
 ```
 
 ## `ADMB`'s arguments to tune the MCMC algorithm
 
-This section is based on @monnahan2019 and describes a set of arguments and methods which the stock assessment analyst can use to tune the MCMC algorythm and be more confident on its convergence and follow up inference.
+This section is based on @monnahan2019 and describes a set of arguments and methods which the stock assessment analyst can use to tune the MCMC algorithm and be more confident on its convergence and follow up inference.
 
 ### Thinning rate
 
-For the Metropolis-Hastings algorithm, the most important tuning option available to the user is the saving rate (the inverse of the thinning rate). This is the rate at which parameters are saved, such that thinning is effectively discarding draws. This tuning option is critical since this algorithm generates auto-correlated parameters by design. The user controls the thinning rate by the argument `mcsave`.
+For the Metropolis-Hastings algorithm, the most important tuning option available to the user is the saving rate (the inverse of the thinning rate). This is the rate at which parameters are saved, such that thinning is effectively discarding draws. This tuning option is critical since this algorithm generates auto-correlated parameters by design. The user controls the thinning rate with the argument `mcsave`.
 
 If N = 1 every single draw is saved (none are thinned out), which generates high autocorrelation, suggesting the need to thin more (save fewer). This is the case of the `fitmc02` fit. In `fitmc01` `mcsave` was increased to 100, by increasing the total samples by 100 and saving every 100th. This helps reduce the autocorrelation and produces independent draws from the posterior of interest.
 
 ### mcscale and mcnoscale
 
-ADMB accomplishes this by “scaling” the covariance matrix up or down, depending on the current acceptance rate, during the first part of the chain. Scaling the covariance matrix down produces proposed sets closer to the current set, and vice versa for scaling up. By default, it scales during the first 500 iterations before thinning, but the user can specify this with `mcscale` or turn off scaling with `mcnoscale`. ADMB rescales the covariance matrix every 200 iterations until the acceptance rate is between 0.15 and 0.4, or the scaling period is exceeded. Draws from this tuning phase should be discarded as part of the burn-in.
+`ADMB` "scales” the covariance matrix up or down, depending on the current acceptance rate, during the first part of the chain. Scaling the covariance matrix down produces proposed sets closer to the current set, and vice versa for scaling up. By default, it scales during the first 500 iterations before thinning, but the user can specify this with `mcscale` or turn off scaling with `mcnoscale`. `ADMB` rescales the covariance matrix every 200 iterations until the acceptance rate is between 0.15 and 0.4, or the scaling period is exceeded. Draws from this tuning phase should be discarded as part of the burn-in.
 
 The code below illustrates the effect in the acceptance rate of not scaling the hessian, the acceptance rate drops significantly, which means poor mixing and higher autocorrelation.
 
@@ -255,29 +258,33 @@ The code below illustrates the effect in the acceptance rate of not scaling the 
 mc <- SCAMCMC(mcmc=100000, mcsave=100, mcseed=10, mcnoscale=TRUE)
 fitmc01ns <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=mc)
 fitmc01ns.mc <- FLa4a::as.mcmc(fitmc01ns)
-data.frame(hessian_scale=c(fitSumm(fitmc01)), hessian_noscale=c(fitSumm(fitmc01ns)))
+data.frame(hessian_scale=c(fitSumm(fitmc01)),
+    hessian_noscale=c(fitSumm(fitmc01ns)),
+    row.names=rownames(fitSumm(fitmc01)))
 ```
 
 In the next analysis we show the autocorrelation statistics for lags of 0, 1, 5, 10 and 50. When the hessian is not scaled the autocorrelation of lag 1 increased from 0.33 to 0.43.
 
 ```{r}
-data.frame(hessian_scale=c(autocorr.diag(fitmc01.mc[,1])), hessian_noscale=c(autocorr.diag(fitmc01ns.mc[,1])))
+data.frame(hessian_scale=c(autocorr.diag(fitmc01.mc[,1])),
+    hessian_noscale=c(autocorr.diag(fitmc01ns.mc[,1])),
+    row.names=c(0, 1, 5, 10, 50))
 ```
 
 ### mcprobe
 
-For some models, there may be concern of being “stuck” in a local minimum and simply never proposing a value far enough away to escape it and find other regions of high density. Obviously this problem would present issues for maximum likelihood inference as well. `ADMB` has a built-in algorithm which modifies the default proposal distribution so it occasionally proposes very distant parameters (i.e. “probes”). The `mcprobe` argument initiates this option.
+For some models, there may be concern of being “stuck” in a local minimum and simply never proposing a value far enough away to escape it and find other regions of high density. `ADMB` has a built-in algorithm which modifies the default proposal distribution so it occasionally proposes very distant parameters (i.e. “probes”). The modified proposal distribution is a mixture distribution of Normal and Cauchy distributions.
 
-The modified proposal distribution is a mixture distribution of normal and Cauchy distributions. The argument X controls how the two distributions are mixed, with larger values being more Cauchy (fatter tails, larger jumps). The range of valid inputs is 0.00001 to 0.499, and if no value is supplied a default of 0.05 is used.
-
-For some models, there may be concern of being “stuck” in a local minimum and simply never proposing a value far enough away to escape it and find other regions of high density. Obviously this problem would present issues for maximum likelihood inference as well. `ADMB` has a built-in algorithm which modifies the default proposal distribution so it occasionally proposes very distant parameters (i.e. “probes”). The `mcprobe` argument initiates this option. The modified proposal distribution is a mixture distribution of normal and Cauchy distributions. The argument X controls how the two distributions are mixed, with larger values being more Cauchy (fatter tails, larger jumps). The range of valid inputs is 0.00001 to 0.499, and if no value is supplied a default of 0.05 is used.
+The `mcprobe` argument controls how the two distributions are mixed, with larger values being more Cauchy (fatter tails, larger jumps). The range of valid inputs is 0.00001 to 0.499, and if no value is supplied a default of 0.05 is used.
 
 ```{r}
 # more Cauchy
 mc <- SCAMCMC(mcmc=1000, mcsave=1, mcseed=10, mcprobe=0.45)
 fitmc02p <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=mc)
 fitmc02p.mc <- FLa4a::as.mcmc(fitmc02p)
-data.frame(probe_0.05=c(fitSumm(fitmc02)), probe_0.45=c(fitSumm(fitmc02p)))
+data.frame(probe_0.05=c(fitSumm(fitmc02)),
+    probe_0.45=c(fitSumm(fitmc02p)),
+    row.names=rownames(fitSumm(fitmc02)))
 ```
 
 In the next analysis we show the autocorrelation statistics for lags of 0, 1, 5, 10 and 50. When the hessian is not scaled the autocorrelation of lag 1 increased from 0.33 to 0.37.
@@ -290,19 +297,22 @@ data.frame(probe_0.05=c(autocorr.diag(fitmc02.mc[,1])), probe_0.45=c(autocorr.di
 
 The `mcrb` option (which stands for “rescaled bounded”) alters the covariance matrix used to propose new parameter sets in the Metropolis-Hastings algorithm. Its intended use is to create a more efficient MCMC sampler so the analyses run faster. This option reduces the estimated correlation between parameters. The value must be integer between 1 and 9, inclusive, with lower values leading to a bigger reduction in correlation.
 
-The option will be most effective under circumstances where the correlation between parameters at the posterior mode is higher than other regions of the parameter space. In this case, the algorithm may make efficient proposals near the posterior mode, but inefficient proposals in other parts of the parameter space. By reducing the correlation using `mcrb` the proposal function may be more efficient on average across the entire parameter space and require less thinning (and hence run faster)
+The option will be most effective under circumstances where the correlation between parameters at the posterior mode is higher than other regions of the parameter space. In this case, the algorithm may make efficient proposals near the posterior mode, but inefficient proposals in other parts of the parameter space. By reducing the correlation using `mcrb` the proposal function may be more efficient on average across the entire parameter space and require less thinning (and hence run faster).
 
 ```{r}
 # reduce correlation
-mc <- SCAMCMC(mcmc=10000, mcsave=10, mcseed=10, mcrb=1)
-fitmc02r <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=mc)
-fitmc02r.mc <- FLa4a::as.mcmc(fitmc02r)
-data.frame(rslbound_no=c(fitSumm(fitmc02)), rslbound_high=c(fitSumm(fitmc02r)))
+mc <- SCAMCMC(mcmc=100000, mcsave=100, mcseed=10, mcrb=9)
+fitmc01r <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcmc=mc)
+fitmc01r.mc <- FLa4a::as.mcmc(fitmc01r)
+data.frame(mcrb_no=c(fitSumm(fitmc01)),
+    mcrb_high=c(fitSumm(fitmc01r)),
+    row.names=rownames(fitSumm(fitmc01)))
 ```
 
-In the next analysis we show the autocorrelation statistics for lags of 0, 1, 5, 10 and 50. When the hessian is not scaled the autocorrelation of lag 1 increased from 0.33 to 0.37.
+In the next analysis we show the cross-correlation plots (Figure \@ref(fig:mcrp)).
 
-```{r}
-data.frame(rslbound_no=c(autocorr.diag(fitmc02.mc[,1])), rslbound_high=c(autocorr.diag(fitmc02r.mc[,1])))
+```{r, mcrp, fig.cap="Cross correlation for run without mcrp and mcrp of 9.", out.width="50%"}
+crosscorr.plot(fitmc01.mc, main="No mcrp")
+crosscorr.plot(fitmc01r.mc, main="mcrp = 9")
 ```
 

@@ -1,5 +1,12 @@
 # Introduction
 
+```{r, knitr_opts, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+opts_chunk$set(dev='png', dev.args=list(type="cairo"), warning=FALSE)
+library(lattice)
+lattice.options(default.args = list(as.table = TRUE))
+```
+
 ## The "Assessment for All" Initiative (a4a)
 
 The European Commission Joint Research Centre's (JRC) "Assessment for All" Initiative (a4a) was launched to simplify and standardize the complex methodologies often employed in fisheries science, a4a focuses on creating flexible, modular frameworks that can accommodate varying data availability, regional needs, and stakeholder objectives.

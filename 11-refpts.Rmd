@@ -1,26 +1,23 @@
 # Reference Points
 
-One of the primary objectives of stock assessment is the estimation of reference points. These serve as benchmarks for evaluating the outputs of assessment models and determining the status of a fish stock. Reference points are critical for effective fisheries management, guiding decisions on sustainable exploitation.
+One of the primary objectives of stock assessment is the estimation of reference points. These serve as benchmarks for evaluating the outputs of assessment models and determining the status of a fish stock. Reference points are critical for effective fisheries management, supporting decision makers setting future levels of exploitation.
 
 The most common classification of stock status is bidimensional, comparing exploitation levels and biomass sizes against target reference points. This framework allows for the assessment of whether a stock is overfished or experiencing overfishing:
 
-1. **Exploitation Levels**: Typically represented by fishing mortality (F), overfishing occurs when F exceeds the target reference point. Conversely, if F is below the reference, the stock is considered to be sustainably fished.
+1. Exploitation Levels: Typically represented by fishing mortality ($F$), overfishing occurs when $F$ exceeds the target reference point.
    
-2. **Biomass Size**: Commonly measured by spawning stock biomass (SSB), stocks are deemed overfished if the SSB falls below the reference point. 
+2. Biomass Size: Commonly measured by spawning stock biomass ($SSB$), stocks are deemed overfished if the $SSB$ falls below the reference point.
 
-These assessments often utilize tools like the Kobe plot, which visually represents stock status in relation to these metrics.
+These assessments often utilize tools like the Kobe plot, which visually represents stock status in relation to these metrics (REF).
 
-In addition to target reference points, **limit reference points** (LRPs) are commonly included in stock assessments. These represent thresholds that should not be crossed, as they signal a high risk of stock collapse or significant uncertainty in population dynamics. Effective management aims to maintain fishing pressure and biomass levels within safe biological limits, ensuring long-term sustainability and reducing the risk of adverse outcomes.
+In addition to target reference points, limit reference points (LRPs) are commonly included in stock assessments. These represent thresholds that should not be crossed, as they signal a high risk of stock collapse or significant uncertainty in population dynamics. Effective management aims to maintain fishing pressure and biomass levels away from these limits to ensure long-term sustainability and reduce the risk of adverse outcomes.
 
-Advancements in stock assessment science continue to refine these reference points. For example, **Maximum Sustainable Yield (MSY)** and its proxies, such as B\(_{MSY}\) (biomass at MSY) and F\(_{MSY}\) (fishing mortality at MSY), remain widely used.
 
-These reference points are related with the stock's productivity, which in itself is a complex interaction between recruitment, growth and mortality processes. 
+In 1982, the United Nations Convention on the Law of the Sea (UNCLOS, @unclos1982), in Article 61, required coastal states to determine and maintain, or restore, populations of harvested species at levels capable of producing the maximum sustainable yield (MSY). MSY is defined as the largest yield (catch) that can be taken from a specific fish stock over an indefinite period without causing stock depletion. Since then MSY and its proxies, such as $B_{MSY}$ (biomass at MSY) and $F_{MSY}$ (fishing mortality at MSY), remain widely used. These reference points are related with the stock's productivity, which results of a complex interaction between recruitment, individual growth and mortality processes.
 
-Recruitment is the process of input to the population, it defines the number of fish that will enter the population and are vulnerable to fishing. It encompasses the process of spawning, which depends on the reproductive potential of the individuals, and the survivability of the laervae up to entering the fishery, which mostly depends on environmental conditions. Individual growth defines the time needed for an individual to gain weight, grow in length and eventualy mature and spawn. Mortality is commonly split between mortality caused by fishing and mortality caused by natural events. Natural mortality merges together all factors by which an individual may die and are not related to fishing, for example predation from other species. These processes, recruitment, individual growth and natural mortality depend on a mix of interactions between environmental conditions and species' biology.
+Recruitment refers to the addition of new individuals to a fish population, specifically those that become vulnerable to fishing. It includes the process of spawning, which depends on the reproductive potential of adults, and the survival of larvae until they enter the fishery - a process largely influenced by environmental conditions. Individual growth determines how long it takes for a fish to gain weight, increase in length, and eventually reach maturity and reproduce. Mortality is typically divided into natural mortality and fishing mortality. Natural mortality includes all causes of death unrelated to fishing, such as predation by other species, and is influenced by both environmental factors and biological interactions. Fishing mortality, on the other hand, is primarily driven by human activity and depends on decisions related to fishing practices, including the effort exerted by the fleet, the selectivity of the gear used, and the availability of fish. For example, the productivity of a stock can differ significantly depending on whether a fleet fishes in an area with many juvenile fish using small-mesh nets, or in an area where juvenile fish are scarce and large-mesh nets are used. These processes are interconnected and influenced by a complex mix of environmental conditions and biological characteristics.
 
-Fishing mortality on the other hand is mostly dependent on the human factor, it's related with the choice to fish and the way to fish. It's the outcome of the effort the fleet deploys, the selectivity of the gear used and the availability of individuals. For example, the productivity of the stock will be different if the fleet fishes in an area with lots of young fish using a small mesh size, from a fleet fishing in an area where young fish are not common and using a large mesh size.      
-
-For this section we'll be using the package `FLBRP` [\flbrp] from the FLR family of packages.
+For this section we'll be using the package `FLBRP` [@flbrp] from the FLR family of packages and its documentation for parts of the text.
 
 ```{r}
 library(FLBRP)
@@ -31,25 +28,27 @@ fit0 <- sca(ple4, ple4.indices)
 stk0 <- ple4 + fit0
 ```
 
-To proceed with the computation of reference points we must start by creating an `FLBRP` object and afterwards run the fitting process with `brp()`. The FLBRP class has information on selection pattern, mass at age, and biological parameters. The information is stored in the object's slots which can be accessed with the usual commands, respectively `catch.sel()`, `discards.sel()`, `stock.wt()`, `catch.wt()`, `discards.wt()`, `m()` and `mat()`. These quantities are computed by averaging the 3 most recent years of the relevant stock object slots. In the case of the selection pattern it is computed by scaling F-at-age to a maximum of 1. By default `FLBRP` creates a harvest slot with 100 computations of fishing mortality at age scaled from $\bar{F}=0$ up to $F_{crash}$ or $\bar{F}=4$, if the former isn't possible to compute, which is later used to compute the reference points.
+To proceed with the computation of reference points we must start by creating an `FLBRP` object and afterwards run the fitting process with `brp()`. The FLBRP class has information on selection pattern, mass at age, and biological parameters (see `?FLBRP` for a full description of this class).
 
-A number of parameters can be set by the user to create the `FLBRP` object:
+Slots named `*.obs` will contain the related time series present in the original `FLStock` object, while other slots will contain averages across the year dimension over the last $n$ years, where $n$ is controlled by the arguments `biol.nyears`, `fbar.nyears` and `sel.nyears` (Table \@ref(tab:brpargs))
 
 | Argument | Default value | Description |
-|----:|:----|:----|
-|fbar | seq(0, 4, length.out = 101)| |
-| nyears | 3 | |
-| biol.nyears | nyears | |
-| fbar.nyears | nyears | |
-| sel.nyears |  |
-| fbar.nyears |  |
-| na.rm | TRUE | |
-| mean | "arithmetic" | |
+|---:|:---|:---------|
+|fbar | seq(0, 4, length.out = 101)| Vector of Fs to find minimum or maximum value of metric, e.g. MSY |
+| nyears | 3 | Number of years to average across to estimate input quantities for reference points estimation |
+| biol.nyears | nyears | Number of years to average across to estimate biological quantities, e.g. maturity|
+| fbar.nyears | nyears | Number of years to average across to scale F-at-age to 1 and compute selection pattern|
+| sel.nyears | nyears | Number of years to average across to compute landings and discards in number of individual per age |
+| na.rm | TRUE | Remove NA if existing|
+| mean | "arithmetic" | Statistic to average quantities above, alternative is "geometric" for the geometric mean|
+
+Table: (\#tab:brpargs) Arguments available to create `FLBRP` object.
+
+By default `FLBRP` creates a harvest slot with 100 computations of fishing mortality at age scaled from $\bar{F}=0$ up to $F_{crash}$ or $\bar{F}=4$, if the former isn't possible to compute, which is later used to find the reference points.
 
 ## Yield per recruit reference points
 
 In the case where no stock recruitment relationship exists, or was fitted, `brp()` will return yield per recruit reference points. By default it computes biomasses in the absence of fishing, also know as virgin biomass, $F_{MAX}$, $F_{0.1}$ and 40% Spawning per recruit reference points.
-
 
 ```{r}
 brp0 <- FLBRP(stk0)
@@ -85,23 +84,13 @@ plot(brp0)
 
 ## Stock recruitment relationship based reference points
 
-An important way to improve reference points is to include stock recruitment dynamics. Yield per recruit, as in previous section, ignores this dynamics and assumes recruitment will be the same no matter SSB's size, which is obviously wrong although in many cases due to unknown or very uncertain dynamics it's the best one can do.
+An important way to improve reference points is to include stock recruitment dynamics. Yield per recruit, as in the previous section, ignores these dynamics and assumes recruitment will be the same no matter $SSB$'s size. To inform `brp()` to take stock recruitment dynamics into account, the stock recruitment model must be fitted and the resulting `FLSR` object passed to the `FLBRP` call when creating the `FLBRP` object.
 
-The stock recruitment model must be fitted before computing reference points and the `FLSR` object has to be passed to the `FLBRP` call to create the object that `brp()` method will use. There's two ways of fitting stock recruitment models: (i) after fitting the stock assessment model by using its outputs, `SSB` and recruitment, as data to fit the model; (ii) inside the stock assessment model together with all other quantities. There's pros and cons on both approaches, we're not going to dwell on those now though.  
+There's two ways of fitting stock recruitment models: (i) after fitting the stock assessment model by using its outputs, `SSB` and recruitment, as data to fit the model; (ii) inside the stock assessment model together with all other quantities. There's pros and cons on both approaches, we're not going to dwell on those now though.
 
 ### Stock recruitment after fitting the stock assessment model  
 
-In the following example we'll use a Beverton and Holt stock recruitment reltionship. There are several other relationships that can be used, see Table XX (ver ?bevholt())
-
-| Model | Formula | Function | Description |
-|----:|:----|:----|:----|
-| Beverton and Holt | rec ~ a * ssb/(b + ssb) | `bevholt()` | [REF] |
-| Ricker [REF] | rec ~ a * ssb * exp(-b * ssb) | `ricker()` | |
-| Segmented regression  [REF] | rec ~ ifelse(ssb <= b, a * ssb, a * b) | `segreg` | |
-| Cushing  [REF] | rec ~ a * ssb^b | `cushing` | |
-| Shepherd  [REF] | | `shepherd` | |
-| Geomean  [REF] | | `geomean` | |
-
+In the following example we'll use a Beverton and Holt stock recruitment relationship. There are several other relationships that can be used, see `?bevholt` for more details.
 
 ```{r, message=FALSE, warning=FALSE, message=FALSE}
 sr0 <- as.FLSR(stk0, model=bevholt)
@@ -109,7 +98,7 @@ sr0 <- fmle(sr0, control = list(trace = 0))
 plot(sr0)
 ```
 
-We now need to provide the `FLSR` object, `sr0`, to the `FLBRP` call and refit the reference points. 
+We now need to provide the `FLSR` object, `sr0`, to the `FLBRP()` and refit the reference points.
 
 ```{r}
 brp0 <- FLBRP(stk0, sr=sr0)
@@ -118,7 +107,7 @@ params(brp0)
 brp0 <- brp(brp0)
 ```
 
-The new reference points can now be extracted using the `refpts` method with the `FLBRP` object as the main argument, and depict the relationships with `plot()`. Note this time by setting the flag `obs` to `TRUE` the plot will include the estimates of $SSB$ and $R$.
+The new reference points can now be extracted using `refpts()` with the `FLBRP` object as the main argument, and depict the relationships with `plot()`. Note this time by setting the flag `obs` to `TRUE` the plot will include the estimates of $SSB$ and $R$.
 
 ```{r}
 refpts(brp0)
@@ -130,19 +119,31 @@ Note $MSY$ based reference points are no longer the same as $F_{MAX}$, and recru
 plot(brp0, obs=TRUE)
 ```
 
-### Stock recruitment during fitting the stock assessment model
+### Stock recruitment during stock assessment model fit
+
+An alternative option, using `sca()`, its to fit the stock recruitment model together with the stock assessment model fit, and create the `FLSR` object from the fit object (Figure \@ref(fig:a4asr)).
 
 ```{r}
+# fit with Beverton and Holt model
 fit1 <- sca(ple4, ple4.indices, srmodel = ~ bevholt(CV = 0.5))
-
-a4aflsr <- as(stkmodel(fit1), "FLSR")
-
-# or
+# create FLSR object
 a4aflsr <- as(fit1, "FLSR")
+```
 
+```{r, a4asr, fig.cap="Stock recruitment model estimated by `sca()`"}
 plot(a4aflsr, obs = TRUE)
+```
 
+Create the `FLBRP` object with the new `FLSR` object with the stock recruitment model fitted with `sca()` and fit a new set of reference points (Figure \@ref(fig:a4arp)). Note the reference points are slightly different. The stock recruitment parameters estimated with `sca()` take into account all the other parameters and as such are not exactly the same, ultimately resulting in a distinct set of reference points.
+
+```{r}
+# create FLBRP object
 a4abrp <- FLBRP(stk0, a4aflsr)
+a4abrp <- brp(a4abrp)
+```
+
+```{r, a4arp, fig.cap="Reference points estimated with `sca()` stock recruitment fit"}
+plot(a4aflsr, obs = TRUE)
 ```
 
 ## Economics reference points
@@ -167,15 +168,15 @@ brp0 <- brp(brp0)
 refpts(brp0)
 ```
 
-The reference points table is now complete with values for `revenue`, `costs` and `profit`, as well as estimtes for $MEY$ based reference points. The point where `profits` are maximized, instead of the point where `catch` is maximized as in the case of `MSY`.
+The reference points table is now complete with values for `revenue`, `costs` and `profit`, as well as estimtes for $MEY$ based reference points. The point where `profits` are maximized, instead of the point where `catch` is maximized as in the case of `MSY` (Figure \@ref(fig:ecorp)).
 
-```{r}
+```{r ecorp, fig.cap="Reference points including economic reference points"}
 plot(brp0)
 ```
 
 ## Computing user specific reference points
 
-There is an option to calculate user defined reference points given a target F:
+The user may want to calculate specific "reference points" given F levels. The example below shows how it can be done, having in mind that by specifying F levels the user may be computing arbitrary references.
 
 ```{r}
 custom_refs <- FLPar(Ftrgt1 = 0.33, Ftrgt2 = 0.44)
@@ -183,7 +184,7 @@ brp1 <- brp0 + custom_refs
 refpts(brp1)
 ```
 
-Or create an empty FLPar with specified reference points and recalculate everything:
+<!--Or create an empty FLPar with specified reference points and recalculate everything:
 
 ```{r}
 #brp2 <- FLPar(NA,dimnames=list(refpt=c("virgin","f0.1","fmax","spr.30","spr.35","spr.45"), quantity=c("harvest","yield","rec","ssb","biomass","revenue","cost","profit"), iter=1))
@@ -194,12 +195,13 @@ brp2@refpts <- FLPar(NA, dimnames=list(refpt = c("virgin", "f0.1", "fmax", "spr.
 brp2 <- brp(brp2)
 refpts(brp2)
 ```
+Another simple way, although it onl;y works for $SPR$ based reference points, is to include other `spr.##` points in the `refpts` table.
+-->
 
-One specific case is to compute $F_{MSY}$ ranges according to @HILBORN2010193 and @Rindorf_etal_2016 ideas. For this case there's already the method `msyRanges`, which takes as argument a fitted `FLBRP` object and delivers a `FLPar` object, similar to `refpts`.
+One specific case of user tailored reference points is to compute $F_{MSY}$ ranges according to @HILBORN2010193 and @Rindorf_etal_2016 ideas. For this case there's already the method `msyRanges()`, which takes as argument a fitted `FLBRP` object and delivers a `FLPar` object, similar to `refpts` with the lower and upper boundary of F according to the specified range multiplier, e.g. if 0.05 the ranges will reflect $(1-0.05) \times F_{MSY}$ and $(1+0.05) \times F_{MSY}$.
 
 ```{r}
 rp.rngs <- msyRange(brp0, range=0.05)
 rp.rngs
 ```
 
-Another simple way, although it onl;y works for $SPR$ based reference points, is to include other `spr.##` points in the `refpts` table.

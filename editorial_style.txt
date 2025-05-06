@@ -3,5 +3,5 @@ methods with `foo()`
 packages and R with `FLa4a`
 formulas and variables with LaTeX $
 Methods or function arguments uses tables with argument, default value and description
-
+Tables to have --- for small columns and --------- for large columns. First column aligned right others left.
 

@@ -236,3 +236,12 @@ the-stock-recruitment-submodel
 the-variance-submodel
 final-comments
 references
+fig:unnamed-chunk-5
+fig:mcrp-1
+fig:mcrp-2
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
+tab:brpargs
+fig:a4asr
+fig:a4arp
+fig:ecorp
+stock-recruitment-during-stock-assessment-model-fit

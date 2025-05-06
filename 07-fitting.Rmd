@@ -550,7 +550,7 @@ xyplot(data~year, groups=qname, data=flqs, type="l",
 
 Note that covariates can be added to any submodel using the linear model capabilities of `R`.
 
-## Assessing \ADMB files
+## Assessing `ADMB` files
 
 The framework gives access to all files produced to run the `ADMB` fitting routine through the argument `wkdir`. When set up, all the `ADMB` files will be left in the directory. Note that the `ADMB` tpl file is distributed with the `FLa4a`. One can get it from your `R` library, under the folder `[myRlib]/FLa4a/admb/`.
 
