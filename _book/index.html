@@ -23,7 +23,7 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-05-05" />
+<meta name="date" content="2025-05-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -237,7 +237,7 @@ div.csl-indent {
 <li class="chapter" data-level="7.5" data-path="fitting.html"><a href="fitting.html#initial-year-abundance-submodel-n_ay1"><i class="fa fa-check"></i><b>7.5</b> Initial year abundance submodel (<span class="math inline">\(N_{a,y=1}\)</span>)</a></li>
 <li class="chapter" data-level="7.6" data-path="fitting.html"><a href="fitting.html#more-models"><i class="fa fa-check"></i><b>7.6</b> More models</a></li>
 <li class="chapter" data-level="7.7" data-path="fitting.html"><a href="fitting.html#working-with-covariates"><i class="fa fa-check"></i><b>7.7</b> Working with covariates</a></li>
-<li class="chapter" data-level="7.8" data-path="fitting.html"><a href="fitting.html#assessing-files"><i class="fa fa-check"></i><b>7.8</b> Assessing files</a></li>
+<li class="chapter" data-level="7.8" data-path="fitting.html"><a href="fitting.html#assessing-admb-files"><i class="fa fa-check"></i><b>7.8</b> Assessing <code>ADMB</code> files</a></li>
 <li class="chapter" data-level="7.9" data-path="fitting.html"><a href="fitting.html#missing-observations-in-the-catch-matrix-or-index"><i class="fa fa-check"></i><b>7.9</b> Missing observations in the catch matrix or index</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>8</b> Diagnostics </a>
@@ -287,7 +287,7 @@ div.csl-indent {
 <li class="chapter" data-level="11.2" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-relationship-based-reference-points"><i class="fa fa-check"></i><b>11.2</b> Stock recruitment relationship based reference points</a>
 <ul>
 <li class="chapter" data-level="11.2.1" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-after-fitting-the-stock-assessment-model"><i class="fa fa-check"></i><b>11.2.1</b> Stock recruitment after fitting the stock assessment model</a></li>
-<li class="chapter" data-level="11.2.2" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-during-fitting-the-stock-assessment-model"><i class="fa fa-check"></i><b>11.2.2</b> Stock recruitment during fitting the stock assessment model</a></li>
+<li class="chapter" data-level="11.2.2" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-during-stock-assessment-model-fit"><i class="fa fa-check"></i><b>11.2.2</b> Stock recruitment during stock assessment model fit</a></li>
 </ul></li>
 <li class="chapter" data-level="11.3" data-path="reference-points.html"><a href="reference-points.html#economics-reference-points"><i class="fa fa-check"></i><b>11.3</b> Economics reference points</a></li>
 <li class="chapter" data-level="11.4" data-path="reference-points.html"><a href="reference-points.html#computing-user-specific-reference-points"><i class="fa fa-check"></i><b>11.4</b> Computing user specific reference points</a></li>
@@ -337,7 +337,7 @@ div.csl-indent {
 <h1 class="title">Fish stock assessment with R</h1>
 <h2 class="subtitle"><em>The a4a Initiative</em></h2>
 <p class="author"><em>Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira</em></p>
-<p class="date"><em>2025-05-05</em></p>
+<p class="date"><em>2025-05-06</em></p>
 </div>
 <div id="before-starting" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">1</span> Before starting<a href="index.html#before-starting" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -409,28 +409,40 @@ div.csl-indent {
 ## x=&quot;ANY&quot;, y=&quot;ANY&quot;
 ## x=&quot;color&quot;, y=&quot;ANY&quot;
 ## x=&quot;Copula&quot;, y=&quot;ANY&quot;
+## x=&quot;FLBiol&quot;, y=&quot;FLFishery&quot;
 ## x=&quot;FLBiol&quot;, y=&quot;missing&quot;
 ## x=&quot;FLBiols&quot;, y=&quot;missing&quot;
+## x=&quot;FLBRP&quot;, y=&quot;missing&quot;
+## x=&quot;FLCatch&quot;, y=&quot;missing&quot;
 ## x=&quot;FLCohort&quot;, y=&quot;missing&quot;
+## x=&quot;FLFisheries&quot;, y=&quot;ANY&quot;
+## x=&quot;FLFishery&quot;, y=&quot;ANY&quot;
 ## x=&quot;FLIndex&quot;, y=&quot;missing&quot;
 ## x=&quot;FLIndexBiomass&quot;, y=&quot;missing&quot;
 ## x=&quot;FLIndices&quot;, y=&quot;missing&quot;
 ## x=&quot;FLPar&quot;, y=&quot;missing&quot;
 ## x=&quot;FLQuant&quot;, y=&quot;FLQuant&quot;
+## x=&quot;FLQuant&quot;, y=&quot;fwdControl&quot;
 ## x=&quot;FLQuant&quot;, y=&quot;missing&quot;
 ## x=&quot;FLQuantPoint&quot;, y=&quot;FLQuant&quot;
 ## x=&quot;FLQuantPoint&quot;, y=&quot;FLQuants&quot;
 ## x=&quot;FLQuantPoint&quot;, y=&quot;missing&quot;
 ## x=&quot;FLQuants&quot;, y=&quot;FLPar&quot;
 ## x=&quot;FLQuants&quot;, y=&quot;FLPars&quot;
+## x=&quot;FLQuants&quot;, y=&quot;fwdControl&quot;
 ## x=&quot;FLQuants&quot;, y=&quot;missing&quot;
 ## x=&quot;FLSR&quot;, y=&quot;missing&quot;
 ## x=&quot;FLSRs&quot;, y=&quot;ANY&quot;
+## x=&quot;FLStock&quot;, y=&quot;FLBRP&quot;
 ## x=&quot;FLStock&quot;, y=&quot;FLPar&quot;
 ## x=&quot;FLStock&quot;, y=&quot;FLStock&quot;
 ## x=&quot;FLStock&quot;, y=&quot;FLStocks&quot;
+## x=&quot;FLStock&quot;, y=&quot;fwdControl&quot;
 ## x=&quot;FLStock&quot;, y=&quot;missing&quot;
+## x=&quot;FLStocks&quot;, y=&quot;FLBRP&quot;
+## x=&quot;FLStocks&quot;, y=&quot;FLBRPs&quot;
 ## x=&quot;FLStocks&quot;, y=&quot;FLPar&quot;
+## x=&quot;FLStocks&quot;, y=&quot;fwdControl&quot;
 ## x=&quot;FLStocks&quot;, y=&quot;missing&quot;
 ## x=&quot;mvdc&quot;, y=&quot;ANY&quot;
 ## x=&quot;profile.mle&quot;, y=&quot;missing&quot;</code></pre>
@@ -472,7 +484,7 @@ div.csl-indent {
 ##     }
 ##     .local(x, ...)
 ## }
-## &lt;bytecode: 0x60021e3281b8&gt;
+## &lt;bytecode: 0x5a9295f9dba0&gt;
 ## &lt;environment: namespace:ggplotFL&gt;
 ## 
 ## Signatures:
@@ -557,12 +569,12 @@ div.csl-indent {
 <tr class="odd">
 <td align="left"></td>
 <td align="right"><span class="math inline">\(N\)</span></td>
-<td align="left">normal distribution</td>
+<td align="left">population numbers</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="right"><span class="math inline">\(\beta\)</span></td>
-<td align="left">parameter</td>
+<td align="right"><span class="math inline">\(\beta, \gamma\)</span></td>
+<td align="left">parameters</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
@@ -664,7 +676,8 @@ div.csl-indent {
 </div>
 <div id="acknowledgements" class="section level2 hasAnchor" number="1.5">
 <h2><span class="header-section-number">1.5</span> Acknowledgements<a href="index.html#acknowledgements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>TBD</p>
+<p>To be complete with version 1.0.</p>
+<p>To write this book we used AI agents (chatGPT) for some bibliographic research and grammar revisions.</p>
 </div>
 <div id="license" class="section level2 hasAnchor" number="1.6">
 <h2><span class="header-section-number">1.6</span> License<a href="index.html#license" class="anchor-section" aria-label="Anchor link to header"></a></h2>

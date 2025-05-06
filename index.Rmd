@@ -20,7 +20,7 @@ output:
 
 # Before starting
 
-```{r, knitr_opts, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
 library(formatR)
 #thm = knit_theme$get("bclear") #moe, bclear

@@ -162,7 +162,7 @@ div.csl-indent {
 <li><a href="./">Stock assessment framework</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> cover-image: path to the social sharing image like images/cover.jpg</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Before starting</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#installing-and-loading-libraries"><i class="fa fa-check"></i><b>1.1</b> Installing and loading libraries</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#how-to-read-this-document"><i class="fa fa-check"></i><b>1.2</b> How to read this document</a></li>
@@ -237,7 +237,7 @@ div.csl-indent {
 <li class="chapter" data-level="7.5" data-path="fitting.html"><a href="fitting.html#initial-year-abundance-submodel-n_ay1"><i class="fa fa-check"></i><b>7.5</b> Initial year abundance submodel (<span class="math inline">\(N_{a,y=1}\)</span>)</a></li>
 <li class="chapter" data-level="7.6" data-path="fitting.html"><a href="fitting.html#more-models"><i class="fa fa-check"></i><b>7.6</b> More models</a></li>
 <li class="chapter" data-level="7.7" data-path="fitting.html"><a href="fitting.html#working-with-covariates"><i class="fa fa-check"></i><b>7.7</b> Working with covariates</a></li>
-<li class="chapter" data-level="7.8" data-path="fitting.html"><a href="fitting.html#assessing-files"><i class="fa fa-check"></i><b>7.8</b> Assessing files</a></li>
+<li class="chapter" data-level="7.8" data-path="fitting.html"><a href="fitting.html#assessing-admb-files"><i class="fa fa-check"></i><b>7.8</b> Assessing <code>ADMB</code> files</a></li>
 <li class="chapter" data-level="7.9" data-path="fitting.html"><a href="fitting.html#missing-observations-in-the-catch-matrix-or-index"><i class="fa fa-check"></i><b>7.9</b> Missing observations in the catch matrix or index</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>8</b> Diagnostics </a>
@@ -287,7 +287,7 @@ div.csl-indent {
 <li class="chapter" data-level="11.2" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-relationship-based-reference-points"><i class="fa fa-check"></i><b>11.2</b> Stock recruitment relationship based reference points</a>
 <ul>
 <li class="chapter" data-level="11.2.1" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-after-fitting-the-stock-assessment-model"><i class="fa fa-check"></i><b>11.2.1</b> Stock recruitment after fitting the stock assessment model</a></li>
-<li class="chapter" data-level="11.2.2" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-during-fitting-the-stock-assessment-model"><i class="fa fa-check"></i><b>11.2.2</b> Stock recruitment during fitting the stock assessment model</a></li>
+<li class="chapter" data-level="11.2.2" data-path="reference-points.html"><a href="reference-points.html#stock-recruitment-during-stock-assessment-model-fit"><i class="fa fa-check"></i><b>11.2.2</b> Stock recruitment during stock assessment model fit</a></li>
 </ul></li>
 <li class="chapter" data-level="11.3" data-path="reference-points.html"><a href="reference-points.html#economics-reference-points"><i class="fa fa-check"></i><b>11.3</b> Economics reference points</a></li>
 <li class="chapter" data-level="11.4" data-path="reference-points.html"><a href="reference-points.html#computing-user-specific-reference-points"><i class="fa fa-check"></i><b>11.4</b> Computing user specific reference points</a></li>
@@ -340,21 +340,21 @@ div.csl-indent {
 <p>In this section we’ll address two important elements of quantifying uncertainty in stock assessment results, prediction error and propagation of uncertainty across modelling stages.</p>
 <p>The two workhorses for this topic are <code>predict()</code> and <code>simulate()</code> which are implemented to work with <code>sca</code> fits of type <code>"assessment"</code>. Note <code>fit = "MP"</code> doesn’t compute the variance-covariance matrix of the parameters, which is essential for simulating.</p>
 <p>This chapter is based on the following model:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="uncertainty.html#cb1-1" tabindex="-1"></a>nsim <span class="ot">&lt;-</span> <span class="dv">250</span></span>
-<span id="cb1-2"><a href="uncertainty.html#cb1-2" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb1-3"><a href="uncertainty.html#cb1-3" tabindex="-1"></a>    <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">8</span>) <span class="sc">+</span></span>
-<span id="cb1-4"><a href="uncertainty.html#cb1-4" tabindex="-1"></a>    <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">8</span>, <span class="at">by =</span> <span class="fu">as.numeric</span>(age <span class="sc">==</span> <span class="dv">0</span>)) <span class="sc">+</span></span>
-<span id="cb1-5"><a href="uncertainty.html#cb1-5" tabindex="-1"></a>    <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">8</span>, <span class="at">by =</span> <span class="fu">as.numeric</span>(age <span class="sc">==</span> <span class="dv">4</span>))</span>
-<span id="cb1-6"><a href="uncertainty.html#cb1-6" tabindex="-1"></a>qmod <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="sc">~</span><span class="fu">I</span>(<span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span>age))))</span>
-<span id="cb1-7"><a href="uncertainty.html#cb1-7" tabindex="-1"></a>fit0 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmodel=</span>fmod, <span class="at">qmodel=</span>qmod)</span>
-<span id="cb1-8"><a href="uncertainty.html#cb1-8" tabindex="-1"></a>stk0 <span class="ot">&lt;-</span> hke1567 <span class="sc">+</span> fit0</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="uncertainty.html#cb192-1" tabindex="-1"></a>nsim <span class="ot">&lt;-</span> <span class="dv">250</span></span>
+<span id="cb192-2"><a href="uncertainty.html#cb192-2" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb192-3"><a href="uncertainty.html#cb192-3" tabindex="-1"></a>    <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">8</span>) <span class="sc">+</span></span>
+<span id="cb192-4"><a href="uncertainty.html#cb192-4" tabindex="-1"></a>    <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">8</span>, <span class="at">by =</span> <span class="fu">as.numeric</span>(age <span class="sc">==</span> <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb192-5"><a href="uncertainty.html#cb192-5" tabindex="-1"></a>    <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">8</span>, <span class="at">by =</span> <span class="fu">as.numeric</span>(age <span class="sc">==</span> <span class="dv">4</span>))</span>
+<span id="cb192-6"><a href="uncertainty.html#cb192-6" tabindex="-1"></a>qmod <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="sc">~</span><span class="fu">I</span>(<span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span>age))))</span>
+<span id="cb192-7"><a href="uncertainty.html#cb192-7" tabindex="-1"></a>fit0 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmodel=</span>fmod, <span class="at">qmodel=</span>qmod)</span>
+<span id="cb192-8"><a href="uncertainty.html#cb192-8" tabindex="-1"></a>stk0 <span class="ot">&lt;-</span> hke1567 <span class="sc">+</span> fit0</span></code></pre></div>
 <div id="the-simulate-and-predict-methods" class="section level2 hasAnchor" number="9.1">
 <h2><span class="header-section-number">9.1</span> The <code>simulate</code> and <code>predict</code> methods<a href="uncertainty.html#the-simulate-and-predict-methods" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="predict" class="section level3 hasAnchor" number="9.1.1">
 <h3><span class="header-section-number">9.1.1</span> <code>predict()</code><a href="uncertainty.html#predict" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The predict method computes the quantities of interest using the estimated coefficients and the design matrix of the model, defined via the formulas in the submodels. The method uses a fitted model object, created by a call to <code>sca</code>, and returns a list with one element for each submodel, where each element is a <code>FLQuants</code> object.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="uncertainty.html#cb2-1" tabindex="-1"></a>fit.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit0)</span>
-<span id="cb2-2"><a href="uncertainty.html#cb2-2" tabindex="-1"></a><span class="fu">lapply</span>(fit.pred, names)</span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="uncertainty.html#cb193-1" tabindex="-1"></a>fit.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit0)</span>
+<span id="cb193-2"><a href="uncertainty.html#cb193-2" tabindex="-1"></a><span class="fu">lapply</span>(fit.pred, names)</span></code></pre></div>
 <pre><code>## $stkmodel
 ## [1] &quot;harvest&quot; &quot;rec&quot;     &quot;ny1&quot;    
 ## 
@@ -396,69 +396,15 @@ Figure 9.2: Histogram of 250 draws from the approximate distribution of the esti
 </p>
 </div>
 <p>In some simulation studies one needs to make sure the random draws are the same, which in <code>R</code> is obtained by explicitly setting the random seed with the method <code>set.seed()</code>. The same is achieved in this case as the example below shows.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="uncertainty.html#cb5-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb5-2"><a href="uncertainty.html#cb5-2" tabindex="-1"></a>fit.sim1 <span class="ot">&lt;-</span> <span class="fu">simulate</span>(fit0, <span class="at">nsim =</span> <span class="dv">250</span>)</span>
-<span id="cb5-3"><a href="uncertainty.html#cb5-3" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb5-4"><a href="uncertainty.html#cb5-4" tabindex="-1"></a>fit.sim2 <span class="ot">&lt;-</span> <span class="fu">simulate</span>(fit0, <span class="at">nsim =</span> <span class="dv">250</span>)</span>
-<span id="cb5-5"><a href="uncertainty.html#cb5-5" tabindex="-1"></a><span class="fu">all.equal</span>(fit.sim1, fit.sim2)</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="uncertainty.html#cb196-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb196-2"><a href="uncertainty.html#cb196-2" tabindex="-1"></a>fit.sim1 <span class="ot">&lt;-</span> <span class="fu">simulate</span>(fit0, <span class="at">nsim =</span> <span class="dv">250</span>)</span>
+<span id="cb196-3"><a href="uncertainty.html#cb196-3" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb196-4"><a href="uncertainty.html#cb196-4" tabindex="-1"></a>fit.sim2 <span class="ot">&lt;-</span> <span class="fu">simulate</span>(fit0, <span class="at">nsim =</span> <span class="dv">250</span>)</span>
+<span id="cb196-5"><a href="uncertainty.html#cb196-5" tabindex="-1"></a><span class="fu">all.equal</span>(fit.sim1, fit.sim2)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>If the whole stock is of interest, for example, to inspect model predictions of <span class="math inline">\(SSB\)</span>, the user should use the <code>+</code> method with a fitted object including iterations. In such case the <code>stock.n</code>, <code>catch.n</code> and <code>harvest</code> slots of the stock object will be updated and the usual metrics can be computed and extracted, <em>e.g.</em> <code>ssb(stk.pred)</code>. Figure <a href="uncertainty.html#fig:sim2">9.3</a> depicts the stock summary plot after adding estimation uncertainty through <code>simulate</code>.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="uncertainty.html#cb7-1" tabindex="-1"></a>stk.pred <span class="ot">&lt;-</span> hke1567 <span class="sc">+</span> fit.sim</span>
-<span id="cb7-2"><a href="uncertainty.html#cb7-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">FLStocks</span>(<span class="at">simulated=</span>stk.pred, <span class="at">fitted=</span>stk0))</span></code></pre></div>
-<pre><code>## Warning: The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?</code></pre>
-<pre><code>## New names:
-## New names:
-## • `50%` -&gt; `50%...1`
-## • `50%` -&gt; `50%...2`</code></pre>
-<pre><code>## Warning: The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?</code></pre>
-<pre><code>## New names:
-## New names:
-## • `50%` -&gt; `50%...1`
-## • `50%` -&gt; `50%...2`</code></pre>
-<pre><code>## Warning: The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?</code></pre>
-<pre><code>## New names:
-## New names:
-## • `50%` -&gt; `50%...1`
-## • `50%` -&gt; `50%...2`</code></pre>
-<pre><code>## Warning: The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?</code></pre>
-<pre><code>## New names:
-## New names:
-## • `50%` -&gt; `50%...1`
-## • `50%` -&gt; `50%...2`</code></pre>
-<pre><code>## Warning: The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?</code></pre>
-<pre><code>## Warning in grid.Call.graphics(C_polygon, x$x, x$y, index): semi-transparency is
-## not supported on this device: reported only once per page</code></pre>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="uncertainty.html#cb198-1" tabindex="-1"></a>stk.pred <span class="ot">&lt;-</span> hke1567 <span class="sc">+</span> fit.sim</span>
+<span id="cb198-2"><a href="uncertainty.html#cb198-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">FLStocks</span>(<span class="at">simulated=</span>stk.pred, <span class="at">fitted=</span>stk0))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:sim2"></span>
 <img src="_main_files/figure-html/sim2-1.png" alt="Stock summary of the simulated and fitted data" width="672" />
 <p class="caption">
@@ -469,9 +415,9 @@ Figure 9.3: Stock summary of the simulated and fitted data
 </div>
 <div id="prediction-error" class="section level2 hasAnchor" number="9.2">
 <h2><span class="header-section-number">9.2</span> Prediction error<a href="uncertainty.html#prediction-error" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To address this topic we’ll borrow from states-space modelling to define prediction error as the combination of observation error and estimation error (REF). Although <code>sca</code> is not a states-space model, some of the inherent concepts of statistical catch at age models are smilar to states-space models. <code>sca</code> estimates parameters to model underlying unobserved processes, <em>e.g.</em> recruitment, catchability or fishing mortaliy, based on indirect observations of those processes, number of fish caught by the fleet and changes in abundance at sea.</p>
-<p>Another similar approach can be found in statistical learning model. <span class="citation">Hastie, Tibshirani, and Friedman (<a href="#ref-hastie2009">2009</a>)</span> decomposes prediction error into irreducible error, square bias and variance. Where the first term refers to variance that cannot be avoided, in our case estimated by residual variance. The second term, bias is ignored as the true value isn’t known and the fits are assumed to be unbiased. The last term is the variance of the prediction due to the training dataset samples, which we’re approximating with parameter estimation variance reported by the covariance matrix of the parameters’ estimate.</p>
-<p>EJ NOTE: I think this paper supports the same idea <span class="citation">(<a href="#ref-harville85">Harville 1985</a>)</span>, although the maths are a bit (too…) much for me.</p>
+<p>To address this topic we’ll borrow from state-space modelling to define prediction error as the combination of observation error and estimation error (REF). Although <code>sca</code> is not a state-space model, some of the inherent concepts of statistical catch at age models are smilar to state-space models. <code>sca</code> estimates parameters to model underlying unobserved processes, <em>e.g.</em> recruitment, catchability or fishing mortaliy, based on indirect observations of those processes, number of fish caught by the fleet and changes in abundance at sea.</p>
+<p>Another similar approach can be found in statistical learning model. <span class="citation">T. Hastie, Tibshirani, and Friedman (<a href="#ref-hastie2009">2009</a>)</span> decomposes prediction error into irreducible error, square bias and variance. Where the first term refers to variance that cannot be avoided, in our case estimated by residual variance. The second term, bias is ignored as the true value isn’t known and the fits are assumed to be unbiased. The last term is the variance of the prediction due to the training dataset samples, which we’re approximating with parameter estimation variance.</p>
+<!--EJ NOTE: I think this paper supports the same idea [@harville85], although the maths are a bit (too...) much for me.-->
 <!--In econometrics @greene explains the need to sum random noise and estimation error to build prediction intervals.
 
 @book{greene2018econometric,
@@ -482,163 +428,16 @@ Figure 9.3: Stock summary of the simulated and fitted data
   publisher={Pearson Education},
   isbn={9780134461366}
 }-->
-<p>However, in <code>sca</code> residuals are estimates of observation error (measurement noise) and model error (misspecification, omitted variables), which means, unless the model is well specified and not missing any relevant variables, it will be an overestimate of observation error.</p>
+<p>However, <code>sca</code>’s residuals are estimates of observation error (measurement noise) and model error (misspecification, omitted variables), which means it will be an overestimate of observation error.</p>
 <p>Nevertheless, in this section we’ll assume prediction error to be the sum of residual variance and estimation variance, and will describe how to compute both elements and bringing them together in a <code>FLStock</code> object.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="uncertainty.html#cb18-1" tabindex="-1"></a><span class="co"># compute deviances</span></span>
-<span id="cb18-2"><a href="uncertainty.html#cb18-2" tabindex="-1"></a>res0 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit0, hke1567, hke1567.idx, <span class="at">type=</span><span class="st">&quot;deviances&quot;</span>)</span>
-<span id="cb18-3"><a href="uncertainty.html#cb18-3" tabindex="-1"></a><span class="co"># build object with estimation uncertainty</span></span>
-<span id="cb18-4"><a href="uncertainty.html#cb18-4" tabindex="-1"></a>stk.eu <span class="ot">&lt;-</span> hke1567 <span class="sc">+</span> <span class="fu">simulate</span>(fit0, nsim)</span>
-<span id="cb18-5"><a href="uncertainty.html#cb18-5" tabindex="-1"></a><span class="co"># build object with residual uncertainty</span></span>
-<span id="cb18-6"><a href="uncertainty.html#cb18-6" tabindex="-1"></a>stk.ru <span class="ot">&lt;-</span> <span class="fu">propagate</span>(stk0, nsim) <span class="sc">+</span> res0</span>
-<span id="cb18-7"><a href="uncertainty.html#cb18-7" tabindex="-1"></a><span class="co"># build object with prediction uncertainty</span></span>
-<span id="cb18-8"><a href="uncertainty.html#cb18-8" tabindex="-1"></a>stk.pu <span class="ot">&lt;-</span> hke1567 <span class="sc">+</span> <span class="fu">simulate</span>(fit0, nsim) <span class="sc">+</span> res0</span></code></pre></div>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="uncertainty.html#cb19-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">FLStocks</span>(<span class="at">pu=</span>stk.pu, <span class="at">eu=</span>stk.eu, <span class="at">ru=</span>stk.ru)) <span class="sc">+</span> <span class="fu">facet_grid</span>(stock<span class="sc">~</span>qname) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>)</span></code></pre></div>
-<pre><code>## Warning: The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?</code></pre>
-<pre><code>## New names:
-## • `50%` -&gt; `50%...1`
-## • `50%` -&gt; `50%...2`</code></pre>
-<pre><code>## Warning: The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?</code></pre>
-<pre><code>## New names:
-## • `50%` -&gt; `50%...1`
-## • `50%` -&gt; `50%...2`</code></pre>
-<pre><code>## Warning: The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?</code></pre>
-<pre><code>## New names:
-## • `50%` -&gt; `50%...1`
-## • `50%` -&gt; `50%...2`</code></pre>
-<pre><code>## Warning: The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?</code></pre>
-<pre><code>## New names:
-## • `50%` -&gt; `50%...1`
-## • `50%` -&gt; `50%...2`</code></pre>
-<pre><code>## Warning: The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?</code></pre>
-<pre><code>## New names:
-## • `50%` -&gt; `50%...1`
-## • `50%` -&gt; `50%...2`</code></pre>
-<pre><code>## Warning: The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?</code></pre>
-<pre><code>## New names:
-## • `50%` -&gt; `50%...1`
-## • `50%` -&gt; `50%...2`</code></pre>
-<pre><code>## Warning: The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?</code></pre>
-<pre><code>## New names:
-## • `50%` -&gt; `50%...1`
-## • `50%` -&gt; `50%...2`</code></pre>
-<pre><code>## Warning: The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?</code></pre>
-<pre><code>## New names:
-## • `50%` -&gt; `50%...1`
-## • `50%` -&gt; `50%...2`</code></pre>
-<pre><code>## Warning: The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?</code></pre>
-<pre><code>## New names:
-## • `50%` -&gt; `50%...1`
-## • `50%` -&gt; `50%...2`</code></pre>
-<pre><code>## Warning: The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?</code></pre>
-<pre><code>## New names:
-## • `50%` -&gt; `50%...1`
-## • `50%` -&gt; `50%...2`</code></pre>
-<pre><code>## Warning: The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?</code></pre>
-<pre><code>## New names:
-## • `50%` -&gt; `50%...1`
-## • `50%` -&gt; `50%...2`</code></pre>
-<pre><code>## Warning: The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?</code></pre>
-<pre><code>## New names:
-## • `50%` -&gt; `50%...1`
-## • `50%` -&gt; `50%...2`</code></pre>
-<pre><code>## Warning: The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?</code></pre>
-<pre><code>## Warning in grid.Call.graphics(C_polygon, x$x, x$y, index): semi-transparency is
-## not supported on this device: reported only once per page</code></pre>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="uncertainty.html#cb199-1" tabindex="-1"></a><span class="co"># compute deviances</span></span>
+<span id="cb199-2"><a href="uncertainty.html#cb199-2" tabindex="-1"></a>res0 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit0, hke1567, hke1567.idx, <span class="at">type=</span><span class="st">&quot;deviances&quot;</span>)</span>
+<span id="cb199-3"><a href="uncertainty.html#cb199-3" tabindex="-1"></a><span class="co"># build object with estimation uncertainty</span></span>
+<span id="cb199-4"><a href="uncertainty.html#cb199-4" tabindex="-1"></a>stk.eu <span class="ot">&lt;-</span> hke1567 <span class="sc">+</span> <span class="fu">simulate</span>(fit0, nsim)</span>
+<span id="cb199-5"><a href="uncertainty.html#cb199-5" tabindex="-1"></a><span class="co"># build object with residual uncertainty</span></span>
+<span id="cb199-6"><a href="uncertainty.html#cb199-6" tabindex="-1"></a>stk.ru <span class="ot">&lt;-</span> <span class="fu">propagate</span>(stk0, nsim) <span class="sc">+</span> res0</span>
+<span id="cb199-7"><a href="uncertainty.html#cb199-7" tabindex="-1"></a><span class="co"># build object with prediction uncertainty</span></span>
+<span id="cb199-8"><a href="uncertainty.html#cb199-8" tabindex="-1"></a>stk.pu <span class="ot">&lt;-</span> hke1567 <span class="sc">+</span> <span class="fu">simulate</span>(fit0, nsim) <span class="sc">+</span> res0</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:preduncert"></span>
 <img src="_main_files/figure-html/preduncert-1.png" alt="Prediction (pu), residual (ru) and estimation (eu) uncertainty" width="672" />
 <p class="caption">
@@ -674,21 +473,21 @@ Figure 9.4: Prediction (pu), residual (ru) and estimation (eu) uncertainty
 </ol>
 <p>These outcomes will be compared with a fit across M iterations without any sampling from the fit.</p>
 <p>Using <code>a4a</code> methods we’ll model natural mortality using a negative exponential model by age, Jensen’s estimator for the level and no time trend. We include multivariate normal uncertainty using the <code>mvrnorm()</code> method and create 250 iterations.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="uncertainty.html#cb46-1" tabindex="-1"></a>nits <span class="ot">&lt;-</span> <span class="dv">250</span></span>
-<span id="cb46-2"><a href="uncertainty.html#cb46-2" tabindex="-1"></a></span>
-<span id="cb46-3"><a href="uncertainty.html#cb46-3" tabindex="-1"></a>shape <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span><span class="fu">exp</span>(<span class="sc">-</span>age<span class="fl">-0.5</span>))</span>
-<span id="cb46-4"><a href="uncertainty.html#cb46-4" tabindex="-1"></a>level <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span>k<span class="sc">^</span><span class="fl">0.66</span><span class="sc">*</span>t<span class="sc">^</span><span class="fl">0.57</span>, <span class="at">params =</span> <span class="fu">FLPar</span>(<span class="at">k=</span><span class="fl">0.4</span>, <span class="at">t=</span><span class="dv">10</span>),</span>
-<span id="cb46-5"><a href="uncertainty.html#cb46-5" tabindex="-1"></a>                     <span class="at">vcov=</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.002</span>, <span class="fl">0.01</span>,<span class="fl">0.01</span>, <span class="dv">1</span>), <span class="at">ncol=</span><span class="dv">2</span>))</span>
-<span id="cb46-6"><a href="uncertainty.html#cb46-6" tabindex="-1"></a><span class="co">#trend &lt;- FLModelSim(model=~b, params=FLPar(b=0.5), vcov=matrix(0.02))</span></span>
-<span id="cb46-7"><a href="uncertainty.html#cb46-7" tabindex="-1"></a></span>
-<span id="cb46-8"><a href="uncertainty.html#cb46-8" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">a4aM</span>(<span class="at">shape=</span>shape, <span class="at">level=</span>level)</span>
-<span id="cb46-9"><a href="uncertainty.html#cb46-9" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(nits, m4)</span>
-<span id="cb46-10"><a href="uncertainty.html#cb46-10" tabindex="-1"></a><span class="fu">range</span>(m4)[] <span class="ot">&lt;-</span> <span class="fu">range</span>(stk00)[]</span>
-<span id="cb46-11"><a href="uncertainty.html#cb46-11" tabindex="-1"></a><span class="fu">range</span>(m4)[<span class="fu">c</span>(<span class="st">&quot;minmbar&quot;</span>,<span class="st">&quot;maxmbar&quot;</span>)]<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>)</span>
-<span id="cb46-12"><a href="uncertainty.html#cb46-12" tabindex="-1"></a>flq <span class="ot">&lt;-</span> <span class="fu">m</span>(m4)[]</span>
-<span id="cb46-13"><a href="uncertainty.html#cb46-13" tabindex="-1"></a><span class="fu">quant</span>(flq) <span class="ot">&lt;-</span> <span class="st">&quot;age&quot;</span></span>
-<span id="cb46-14"><a href="uncertainty.html#cb46-14" tabindex="-1"></a>stk0 <span class="ot">&lt;-</span> <span class="fu">propagate</span>(stk00, nits)</span>
-<span id="cb46-15"><a href="uncertainty.html#cb46-15" tabindex="-1"></a><span class="fu">m</span>(stk0) <span class="ot">&lt;-</span> flq</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="uncertainty.html#cb200-1" tabindex="-1"></a>nits <span class="ot">&lt;-</span> <span class="dv">250</span></span>
+<span id="cb200-2"><a href="uncertainty.html#cb200-2" tabindex="-1"></a></span>
+<span id="cb200-3"><a href="uncertainty.html#cb200-3" tabindex="-1"></a>shape <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span><span class="fu">exp</span>(<span class="sc">-</span>age<span class="fl">-0.5</span>))</span>
+<span id="cb200-4"><a href="uncertainty.html#cb200-4" tabindex="-1"></a>level <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span>k<span class="sc">^</span><span class="fl">0.66</span><span class="sc">*</span>t<span class="sc">^</span><span class="fl">0.57</span>, <span class="at">params =</span> <span class="fu">FLPar</span>(<span class="at">k=</span><span class="fl">0.4</span>, <span class="at">t=</span><span class="dv">10</span>),</span>
+<span id="cb200-5"><a href="uncertainty.html#cb200-5" tabindex="-1"></a>                     <span class="at">vcov=</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.002</span>, <span class="fl">0.01</span>,<span class="fl">0.01</span>, <span class="dv">1</span>), <span class="at">ncol=</span><span class="dv">2</span>))</span>
+<span id="cb200-6"><a href="uncertainty.html#cb200-6" tabindex="-1"></a><span class="co">#trend &lt;- FLModelSim(model=~b, params=FLPar(b=0.5), vcov=matrix(0.02))</span></span>
+<span id="cb200-7"><a href="uncertainty.html#cb200-7" tabindex="-1"></a></span>
+<span id="cb200-8"><a href="uncertainty.html#cb200-8" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">a4aM</span>(<span class="at">shape=</span>shape, <span class="at">level=</span>level)</span>
+<span id="cb200-9"><a href="uncertainty.html#cb200-9" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(nits, m4)</span>
+<span id="cb200-10"><a href="uncertainty.html#cb200-10" tabindex="-1"></a><span class="fu">range</span>(m4)[] <span class="ot">&lt;-</span> <span class="fu">range</span>(stk00)[]</span>
+<span id="cb200-11"><a href="uncertainty.html#cb200-11" tabindex="-1"></a><span class="fu">range</span>(m4)[<span class="fu">c</span>(<span class="st">&quot;minmbar&quot;</span>,<span class="st">&quot;maxmbar&quot;</span>)]<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb200-12"><a href="uncertainty.html#cb200-12" tabindex="-1"></a>flq <span class="ot">&lt;-</span> <span class="fu">m</span>(m4)[]</span>
+<span id="cb200-13"><a href="uncertainty.html#cb200-13" tabindex="-1"></a><span class="fu">quant</span>(flq) <span class="ot">&lt;-</span> <span class="st">&quot;age&quot;</span></span>
+<span id="cb200-14"><a href="uncertainty.html#cb200-14" tabindex="-1"></a>stk0 <span class="ot">&lt;-</span> <span class="fu">propagate</span>(stk00, nits)</span>
+<span id="cb200-15"><a href="uncertainty.html#cb200-15" tabindex="-1"></a><span class="fu">m</span>(stk0) <span class="ot">&lt;-</span> flq</span></code></pre></div>
 <p>The M matrix for this stock is shown in Figure<a href="uncertainty.html#fig:m">9.5</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:m"></span>
 <img src="_main_files/figure-html/m-1.png" alt="Natural mortality generated from M model's parameter uncertainty" width="672" />
@@ -697,87 +496,25 @@ Figure 9.5: Natural mortality generated from M model’s parameter uncertainty
 </p>
 </div>
 <p>We fit the same model to the new stock object which has uncertainty in the natural mortality and add estimation uncertainty following the methods described above.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="uncertainty.html#cb47-1" tabindex="-1"></a><span class="co"># create objects to store the results</span></span>
-<span id="cb47-2"><a href="uncertainty.html#cb47-2" tabindex="-1"></a>stk01 <span class="ot">&lt;-</span> stk0</span>
-<span id="cb47-3"><a href="uncertainty.html#cb47-3" tabindex="-1"></a>stk02 <span class="ot">&lt;-</span> stk0</span>
-<span id="cb47-4"><a href="uncertainty.html#cb47-4" tabindex="-1"></a>stk03 <span class="ot">&lt;-</span> <span class="fu">propagate</span>(stk00, nits<span class="sc">*</span>nits)</span>
-<span id="cb47-5"><a href="uncertainty.html#cb47-5" tabindex="-1"></a></span>
-<span id="cb47-6"><a href="uncertainty.html#cb47-6" tabindex="-1"></a><span class="co"># run without estimation unceratainty</span></span>
-<span id="cb47-7"><a href="uncertainty.html#cb47-7" tabindex="-1"></a>stk04 <span class="ot">&lt;-</span> stk00 <span class="sc">+</span> <span class="fu">sca</span>(stk0, idx00)</span>
-<span id="cb47-8"><a href="uncertainty.html#cb47-8" tabindex="-1"></a></span>
-<span id="cb47-9"><a href="uncertainty.html#cb47-9" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nits){</span>
-<span id="cb47-10"><a href="uncertainty.html#cb47-10" tabindex="-1"></a>    stk <span class="ot">&lt;-</span> <span class="fu">iter</span>(stk0, i)</span>
-<span id="cb47-11"><a href="uncertainty.html#cb47-11" tabindex="-1"></a>    fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx00)</span>
-<span id="cb47-12"><a href="uncertainty.html#cb47-12" tabindex="-1"></a>    <span class="co"># Method 1</span></span>
-<span id="cb47-13"><a href="uncertainty.html#cb47-13" tabindex="-1"></a>    <span class="fu">iter</span>(stk01, i) <span class="ot">&lt;-</span> stk <span class="sc">+</span> <span class="fu">simulate</span>(fit, <span class="dv">1</span>)</span>
-<span id="cb47-14"><a href="uncertainty.html#cb47-14" tabindex="-1"></a>    <span class="co"># Method 2</span></span>
-<span id="cb47-15"><a href="uncertainty.html#cb47-15" tabindex="-1"></a>    <span class="fu">iter</span>(stk02, i) <span class="ot">&lt;-</span> <span class="fu">qapply</span>(stk <span class="sc">+</span> <span class="fu">simulate</span>(fit, nits), iterMedians)</span>
-<span id="cb47-16"><a href="uncertainty.html#cb47-16" tabindex="-1"></a>    <span class="co"># Method 3</span></span>
-<span id="cb47-17"><a href="uncertainty.html#cb47-17" tabindex="-1"></a>    <span class="fu">iter</span>(stk03, (nits<span class="sc">*</span>(i<span class="dv">-1</span>)<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>(nits<span class="sc">*</span>i)) <span class="ot">&lt;-</span> stk <span class="sc">+</span> <span class="fu">simulate</span>(fit, nits)</span>
-<span id="cb47-18"><a href="uncertainty.html#cb47-18" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="uncertainty.html#cb48-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">FLStocks</span>(<span class="st">&quot;M&quot;</span><span class="ot">=</span>stk04, <span class="st">&quot;M + 1 estimation sample&quot;</span><span class="ot">=</span>stk01, <span class="st">&quot;M + estimation median&quot;</span><span class="ot">=</span>stk02, <span class="st">&quot;M + n estimation samples&quot;</span><span class="ot">=</span>stk03))</span></code></pre></div>
-<pre><code>## Warning: The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?
-## The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?</code></pre>
-<pre><code>## New names:
-## New names:
-## New names:
-## New names:
-## • `50%` -&gt; `50%...1`
-## • `50%` -&gt; `50%...2`</code></pre>
-<pre><code>## Warning: The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?</code></pre>
-<pre><code>## New names:
-## New names:
-## New names:
-## New names:
-## • `50%` -&gt; `50%...1`
-## • `50%` -&gt; `50%...2`</code></pre>
-<pre><code>## Warning: The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?</code></pre>
-<pre><code>## New names:
-## New names:
-## New names:
-## New names:
-## • `50%` -&gt; `50%...1`
-## • `50%` -&gt; `50%...2`</code></pre>
-<pre><code>## Warning: The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?</code></pre>
-<pre><code>## New names:
-## New names:
-## New names:
-## New names:
-## • `50%` -&gt; `50%...1`
-## • `50%` -&gt; `50%...2`</code></pre>
-<pre><code>## Warning: The following aesthetics were dropped during statistical transformation: y.
-## ℹ This can happen when ggplot fails to infer the correct grouping structure in the data.
-## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?</code></pre>
-<pre><code>## Warning in grid.Call.graphics(C_polygon, x$x, x$y, index): semi-transparency is
-## not supported on this device: reported only once per page</code></pre>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="uncertainty.html#cb201-1" tabindex="-1"></a><span class="co"># create objects to store the results</span></span>
+<span id="cb201-2"><a href="uncertainty.html#cb201-2" tabindex="-1"></a>stk01 <span class="ot">&lt;-</span> stk0</span>
+<span id="cb201-3"><a href="uncertainty.html#cb201-3" tabindex="-1"></a>stk02 <span class="ot">&lt;-</span> stk0</span>
+<span id="cb201-4"><a href="uncertainty.html#cb201-4" tabindex="-1"></a>stk03 <span class="ot">&lt;-</span> <span class="fu">propagate</span>(stk00, nits<span class="sc">*</span>nits)</span>
+<span id="cb201-5"><a href="uncertainty.html#cb201-5" tabindex="-1"></a></span>
+<span id="cb201-6"><a href="uncertainty.html#cb201-6" tabindex="-1"></a><span class="co"># run without estimation unceratainty</span></span>
+<span id="cb201-7"><a href="uncertainty.html#cb201-7" tabindex="-1"></a>stk04 <span class="ot">&lt;-</span> stk00 <span class="sc">+</span> <span class="fu">sca</span>(stk0, idx00)</span>
+<span id="cb201-8"><a href="uncertainty.html#cb201-8" tabindex="-1"></a></span>
+<span id="cb201-9"><a href="uncertainty.html#cb201-9" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nits){</span>
+<span id="cb201-10"><a href="uncertainty.html#cb201-10" tabindex="-1"></a>    stk <span class="ot">&lt;-</span> <span class="fu">iter</span>(stk0, i)</span>
+<span id="cb201-11"><a href="uncertainty.html#cb201-11" tabindex="-1"></a>    fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx00)</span>
+<span id="cb201-12"><a href="uncertainty.html#cb201-12" tabindex="-1"></a>    <span class="co"># Method 1</span></span>
+<span id="cb201-13"><a href="uncertainty.html#cb201-13" tabindex="-1"></a>    <span class="fu">iter</span>(stk01, i) <span class="ot">&lt;-</span> stk <span class="sc">+</span> <span class="fu">simulate</span>(fit, <span class="dv">1</span>)</span>
+<span id="cb201-14"><a href="uncertainty.html#cb201-14" tabindex="-1"></a>    <span class="co"># Method 2</span></span>
+<span id="cb201-15"><a href="uncertainty.html#cb201-15" tabindex="-1"></a>    <span class="fu">iter</span>(stk02, i) <span class="ot">&lt;-</span> <span class="fu">qapply</span>(stk <span class="sc">+</span> <span class="fu">simulate</span>(fit, nits), iterMedians)</span>
+<span id="cb201-16"><a href="uncertainty.html#cb201-16" tabindex="-1"></a>    <span class="co"># Method 3</span></span>
+<span id="cb201-17"><a href="uncertainty.html#cb201-17" tabindex="-1"></a>    <span class="fu">iter</span>(stk03, (nits<span class="sc">*</span>(i<span class="dv">-1</span>)<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>(nits<span class="sc">*</span>i)) <span class="ot">&lt;-</span> stk <span class="sc">+</span> <span class="fu">simulate</span>(fit, nits)</span>
+<span id="cb201-18"><a href="uncertainty.html#cb201-18" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="uncertainty.html#cb202-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">FLStocks</span>(<span class="st">&quot;M&quot;</span><span class="ot">=</span>stk04, <span class="st">&quot;M + 1 estimation sample&quot;</span><span class="ot">=</span>stk01, <span class="st">&quot;M + estimation median&quot;</span><span class="ot">=</span>stk02, <span class="st">&quot;M + n estimation samples&quot;</span><span class="ot">=</span>stk03))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:mprop"></span>
 <img src="_main_files/figure-html/mprop-1.png" alt="Stock summary. Stock metrics computed over fits including uncertainty in M and estimation uncertainty" width="672" />
 <p class="caption">
@@ -789,9 +526,6 @@ Figure 9.6: Stock summary. Stock metrics computed over fits including uncertaint
 </div>
 <h3> References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-harville85" class="csl-entry">
-Harville, David A. 1985. <span>“Decomposition of Prediction Error.”</span> <em>Journal of the American Statistical Association</em> 80 (389): 132–38. <a href="http://www.jstor.org/stable/2288063">http://www.jstor.org/stable/2288063</a>.
-</div>
 <div id="ref-hastie2009" class="csl-entry">
 Hastie, Trevor, Robert Tibshirani, and Jerome Friedman. 2009. <em>The Elements of Statistical Learning: Data Mining, Inference, and Prediction</em>. 2nd ed. Springer Science &amp; Business Media.
 </div>
