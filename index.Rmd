@@ -111,8 +111,8 @@ Along this chapter the notation presented in Table \@ref(tab:mathsnotation) will
 | |$S$ | spawning stock biomass |
 | |$CV$ | coefficient of variation |
 | |$D$ | residuals or deviances |
-| |$N$ | normal distribution |
-| |$\beta$ | parameter |
+| |$N$ | population numbers |
+| |$\beta, \gamma$ | parameters |
 | |$a$ | stock-recruitment parameter |
 | |$b$ | stock-recruitment parameter |
 | |$\sigma^2$ | variance of catch |

@@ -208,8 +208,6 @@ ggplot(data = df_xm_basis, aes(x = x, y = value, group = variable, colour = vari
 
 ```
 
-**[A bit confused here ... should it be 5 polinomials? are you sure what you're calling intercet is correct?]**
-
 The polynomials transform the initial variable $\mathbf{x}$ and create a *model* matrix $\mathbf{X}$ with $k$ columns and $n$ rows, where $n$ is the number of data points. This new transformation is being then used to fit the model and estimate the $\beta_{0}, ... ,\beta_{k}$ coefficients, $\beta_0$ is required for the intercept. The fitted model results from $\mathbf{X} \mathbf{\beta}$ (Figure \@ref(fig:splinebasisandmodel)).
 
 ```{r, splinebasisandmodel, fig.cap = "basis functions for a B-spline with 5 knots", echo=FALSE, message = FALSE, warning=FALSE}
@@ -335,9 +333,11 @@ plot(FLStocks(ThinPlate = stk + fit00,
               Adaptive_smoothers = stk + fit04))+theme(legend.position = 'bottom')
 ```
 
-Functionality of `mgcv` package provides also the option to work with interactions. Although `s(age, year)` can be defined, it uses a common bivariate spline for the two variables which are very different in scale. It is preferable if interactions are assumed to use `te(age, year)`. Again is up to the user to define the basis functions for the smoothers. Figure \@ref(fig:te) shows the differences when using different basis for the tensor product.
+Functionality of `mgcv` package provides also the option to work with interactions. Although `s(age, year)` can be defined, it uses a common bivariate spline for the two variables which are very different in scale. It is preferable if interactions are assumed to use a tensor `te(age, year)`. Tensors are mathematical products that help model the individual smoothness of each variable while also capturing their joint interaction. The independent variables in the case of tensors are modeled with different numbers of basis functions allowing different amount of smoothness in each dimension. 
 
-**[The paragraph above needs a bit more explanation about what a tensor is]**
+Following the example above, let now $\mathbf{x}$ and $\mathbf{z}$ two independent variables with $S_x$ and $S_z$ their spline functions of dimension $k$ and $m$, respectively. Given the nature of the basis functions, their tensor (interaction and main effects), $Te(\mathbf{x},\mathbf{z})$ can be defined as the sum of all possible multiplications of the elements of $S_x$ and $S_z$.
+
+Again is up to the user to define the basis functions for the tensor smoothers. Figure \@ref(fig:te) shows the differences when using different basis for the tensor product.
 
 ```{r, eval = !drafting}
 fmod03 <- ~te(age, year, k = c(3,10))
