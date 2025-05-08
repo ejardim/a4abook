@@ -205,3 +205,21 @@ rp.rngs <- msyRange(brp0, range=0.05)
 rp.rngs
 ```
 
+## Assessing the status of the stock
+
+One of the most important outcomes of the stock assessment process is determining the status of the stock relative to the objectives for $SSB$ and $F$.
+
+On one hand, these objectives reflect the level of risk policy makers are willing to accept, expressed as biomass levels intended to remain at sea, typically linked to the replenishing capacity of the stock and risk of collapse. For example, larger biomasses generally results in lower probability of collapse, increased recruitment and stock replenishing.
+
+On the other hand, objectives consider food production, represented by the fishing mortality levels ($F$). At similar $SSB$ levels, higher fishing mortality will result in larger catches but will also cause greater reductions in $SSB$ after the fishing season.
+
+Policy makers, with the support of scientific advisors, have to find a balance between these two objectives, food production and stock collapse, to guarantee the long term sustainability of the stocks. As such computing the status of the stock in relation to $SSB$ and $F$ becomes one of the most important pieces of information scientists can provide.
+
+For this exercise we'll use the kobe plot (REF), which depicts estimates of $SSB$ over $SSB_{target}$ and $F$ over $F_{target}$ in a plot with $SSB$ in the y axis and $F$ in the x axis. The inspection of the plot allows a quick overview of the exploitation history of the stock and the current status in relation to the objectives set.
+
+```{r}
+# code to compute kobe plot
+```
+
+
+
