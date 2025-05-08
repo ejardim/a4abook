@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Fish stock assessment with R</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Fish stock assessment with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-05-06" />
+<meta name="date" content="2025-05-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -291,6 +291,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="11.3" data-path="reference-points.html"><a href="reference-points.html#economics-reference-points"><i class="fa fa-check"></i><b>11.3</b> Economics reference points</a></li>
 <li class="chapter" data-level="11.4" data-path="reference-points.html"><a href="reference-points.html#computing-user-specific-reference-points"><i class="fa fa-check"></i><b>11.4</b> Computing user specific reference points</a></li>
+<li class="chapter" data-level="11.5" data-path="reference-points.html"><a href="reference-points.html#assessing-the-status-of-the-stock"><i class="fa fa-check"></i><b>11.5</b> Assessing the status of the stock</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>12</b> Projections and harvest control rules</a>
 <ul>
@@ -337,7 +338,7 @@ div.csl-indent {
 <h1 class="title">Fish stock assessment with R</h1>
 <h2 class="subtitle"><em>The a4a Initiative</em></h2>
 <p class="author"><em>Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira</em></p>
-<p class="date"><em>2025-05-06</em></p>
+<p class="date"><em>2025-05-08</em></p>
 </div>
 <div id="before-starting" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">1</span> Before starting<a href="index.html#before-starting" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -409,40 +410,28 @@ div.csl-indent {
 ## x=&quot;ANY&quot;, y=&quot;ANY&quot;
 ## x=&quot;color&quot;, y=&quot;ANY&quot;
 ## x=&quot;Copula&quot;, y=&quot;ANY&quot;
-## x=&quot;FLBiol&quot;, y=&quot;FLFishery&quot;
 ## x=&quot;FLBiol&quot;, y=&quot;missing&quot;
 ## x=&quot;FLBiols&quot;, y=&quot;missing&quot;
-## x=&quot;FLBRP&quot;, y=&quot;missing&quot;
-## x=&quot;FLCatch&quot;, y=&quot;missing&quot;
 ## x=&quot;FLCohort&quot;, y=&quot;missing&quot;
-## x=&quot;FLFisheries&quot;, y=&quot;ANY&quot;
-## x=&quot;FLFishery&quot;, y=&quot;ANY&quot;
 ## x=&quot;FLIndex&quot;, y=&quot;missing&quot;
 ## x=&quot;FLIndexBiomass&quot;, y=&quot;missing&quot;
 ## x=&quot;FLIndices&quot;, y=&quot;missing&quot;
 ## x=&quot;FLPar&quot;, y=&quot;missing&quot;
 ## x=&quot;FLQuant&quot;, y=&quot;FLQuant&quot;
-## x=&quot;FLQuant&quot;, y=&quot;fwdControl&quot;
 ## x=&quot;FLQuant&quot;, y=&quot;missing&quot;
 ## x=&quot;FLQuantPoint&quot;, y=&quot;FLQuant&quot;
 ## x=&quot;FLQuantPoint&quot;, y=&quot;FLQuants&quot;
 ## x=&quot;FLQuantPoint&quot;, y=&quot;missing&quot;
 ## x=&quot;FLQuants&quot;, y=&quot;FLPar&quot;
 ## x=&quot;FLQuants&quot;, y=&quot;FLPars&quot;
-## x=&quot;FLQuants&quot;, y=&quot;fwdControl&quot;
 ## x=&quot;FLQuants&quot;, y=&quot;missing&quot;
 ## x=&quot;FLSR&quot;, y=&quot;missing&quot;
 ## x=&quot;FLSRs&quot;, y=&quot;ANY&quot;
-## x=&quot;FLStock&quot;, y=&quot;FLBRP&quot;
 ## x=&quot;FLStock&quot;, y=&quot;FLPar&quot;
 ## x=&quot;FLStock&quot;, y=&quot;FLStock&quot;
 ## x=&quot;FLStock&quot;, y=&quot;FLStocks&quot;
-## x=&quot;FLStock&quot;, y=&quot;fwdControl&quot;
 ## x=&quot;FLStock&quot;, y=&quot;missing&quot;
-## x=&quot;FLStocks&quot;, y=&quot;FLBRP&quot;
-## x=&quot;FLStocks&quot;, y=&quot;FLBRPs&quot;
 ## x=&quot;FLStocks&quot;, y=&quot;FLPar&quot;
-## x=&quot;FLStocks&quot;, y=&quot;fwdControl&quot;
 ## x=&quot;FLStocks&quot;, y=&quot;missing&quot;
 ## x=&quot;mvdc&quot;, y=&quot;ANY&quot;
 ## x=&quot;profile.mle&quot;, y=&quot;missing&quot;</code></pre>
@@ -455,6 +444,9 @@ div.csl-indent {
 ##     .local &lt;- function (x, metrics = list(Rec = rec, SSB = ssb, 
 ##         Catch = catch, F = fbar), na.rm = TRUE, ...) 
 ##     {
+##         if (all(is.na(harvest(x))) &amp; missing(metrics)) 
+##             metrics &lt;- list(Catch = catch, Landings = landings, 
+##                 Discards = discards)
 ##         metrics &lt;- metrics(x, metrics = metrics)
 ##         if (&quot;F&quot; %in% names(metrics)) 
 ##             units(metrics$F) &lt;- paste0(range(x, c(&quot;minfbar&quot;, 
@@ -465,11 +457,6 @@ div.csl-indent {
 ##                   , &quot;M&quot;]
 ##                 if (&quot;Rec&quot; %in% names(metrics)) 
 ##                   metrics$Rec &lt;- unitSums(metrics$Rec)
-##             }
-##         }
-##         if (&quot;Rec&quot; %in% names(metrics)) {
-##             if (dim(metrics$Rec)[4] &gt; 1) {
-##                 metrics$Rec[metrics$Rec == 0] &lt;- NA
 ##             }
 ##         }
 ##         p &lt;- plot(metrics, na.rm = na.rm, ...) + ylim(c(0, NA))
@@ -484,7 +471,7 @@ div.csl-indent {
 ##     }
 ##     .local(x, ...)
 ## }
-## &lt;bytecode: 0x5a9295f9dba0&gt;
+## &lt;bytecode: 0x573db3367918&gt;
 ## &lt;environment: namespace:ggplotFL&gt;
 ## 
 ## Signatures:
@@ -715,42 +702,42 @@ Millar, Colin, and Ernesto Jardim. 2025. <em>A4a: A Flexible and Robust Stock As
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-  "sharing": {
-    "github": false,
-    "facebook": true,
-    "twitter": true,
-    "linkedin": false,
-    "weibo": false,
-    "instapaper": false,
-    "vk": false,
-    "whatsapp": false,
-    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-  },
-  "fontsettings": {
-    "theme": "white",
-    "family": "sans",
-    "size": 2
-  },
-  "edit": {
-    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
-    "text": "Edit"
-  },
-  "history": {
-    "link": null,
-    "text": null
-  },
-  "view": {
-    "link": null,
-    "text": null
-  },
-  "download": ["_main.pdf", "_main.epub"],
-  "search": {
-    "engine": "fuse",
-    "options": null
-  },
-  "toc": {
-    "collapse": "subsection"
-  }
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
 });
 });
 </script>

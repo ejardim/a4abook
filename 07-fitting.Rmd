@@ -409,7 +409,7 @@ lgnd <- list(points=FALSE, lines=TRUE, space='right')
 xyplot(data~age, groups=qname, data=flqs, type="l", auto.key=lgnd, par.settings=pset, ylab="")
 ```
 
-The impact in the overall perspective of the stock status is depicted in Figure \@ref(fig:n1modimpact). Most of the changes happen in the beggining of the time series, although due to the impact on the estimates of other submodels' parameters it can have an impact over the full time series.
+The impact in the overall perspective of the stock status is depicted in Figure \@ref(fig:n1modimpact). Most of the changes happen in the beginning of the time series, although due to the impact on the estimates of other submodels' parameters it can have an impact over the full time series.
 
 ```{r, n1modimpact, fig.cap="Population estimates using two different variance models", echo=FALSE}
 flqs <- FLQuants(smother=stock.n(fit1), factor=stock.n(fit2))

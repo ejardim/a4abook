@@ -49,7 +49,7 @@ Figure \@ref(fig:res) shows a scatterplot of standardized residuals with a smoot
 plot(d_s)
 ```
 
-When plotting residuals, by default the auxiliar line is a smoother. However it's possible to use other type of lines by setting the argument `auxline` in `plot` (check `panel.xyplot` help page for more information), of which the relevant ones for residuals are shown in Table \@ref(tab:auxargs). If type has more than one element, an attempt is made to combine the effect of each of the components.
+When plotting residuals, by default the auxiliary line is a smoother. However it's possible to use other type of lines by setting the argument `auxline` in `plot` (check `panel.xyplot` help page for more information), of which the relevant ones for residuals are shown in Table \@ref(tab:auxargs). If type has more than one element, an attempt is made to combine the effect of each of the components.
 
 |Argument|Description|
 |:---|:----------|
@@ -79,7 +79,7 @@ d_p <- window(d_p, start=iy)
 plot(d_p)
 ```
 
-Finally, the raw residuals are computed by setting `type='deviances'` and plotted the same way as before (Figure \@ref(fig:resr)). These residuals are usefull to identify which data points are not well modelled, showing a large dispersion of the residuals and requiring more attention from the analyst.
+Finally, the raw residuals are computed by setting `type='deviances'` and plotted the same way as before (Figure \@ref(fig:resr)). These residuals are useful to identify which data points are not well modelled, showing a large dispersion of the residuals and requiring more attention from the analyst.
 
 ```{r, resr, fig.cap="Raw residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother."}
 d_r <- residuals(fit, stk, idx, type='deviances')
@@ -127,7 +127,7 @@ plot(fit, idx)
 
 ## Aggregated catch in weight
 
-Although a statistical catch-at-age model assumes errors in catch-at-age and, as such, errors in the total catch in weight, there's still interest to evaluate how close the model estimates are of the observed catch in weight, even if reported catch in weight is one of the less reliable pieces of information available for stock assessment. The implementation of this diagnopstics is done through the method `computeCatchDiagnostics()`, which can be visualized with `plot()` (Figure \@ref(fig:catchdiag)).
+Although a statistical catch-at-age model assumes errors in catch-at-age and, as such, errors in the total catch in weight, there's still interest to evaluate how close the model estimates are of the observed catch in weight, even if reported catch in weight is one of the less reliable pieces of information available for stock assessment. The implementation of this diagnostics is done through the method `computeCatchDiagnostics()`, which can be visualized with `plot()` (Figure \@ref(fig:catchdiag)).
 
 ```{r, catchdiag, fig.cap="Diagnostics for age aggregated catch in weight", fig.height=10, fig.asp=1, out.width = '100%', warning=FALSE}
 fmod <- ~ factor(age) + factor(year) + te(age, year, k = c(5, 15))
@@ -136,7 +136,7 @@ c_d <- computeCatchDiagnostics(fit, ple4)
 plot(c_d)
 ```
 
-The `plot` method takes 2 important arguments in this case, `type` and `probs`. Thre first allows the analyst to choose between `all`, the plot in Figure \@ref(fig:catchdiag), and `prediction` (Figure \@ref(fig:cpred)), which reports prediction error, median estimates and observations. The latter, a vector of 2 values, refers to the confidence intervals to be computed.
+The `plot` method takes 2 important arguments in this case, `type` and `probs`. The first allows the analyst to choose between `all`, the plot in Figure \@ref(fig:catchdiag), and `prediction` (Figure \@ref(fig:cpred)), which reports prediction error, median estimates and observations. The latter, a vector of 2 values, refers to the confidence intervals to be computed.
 
 ```{r, cpred, fig.cap="Prediction of aggregated catch in weight"}
 plot(c_d, type="prediction", probs=c(0.025, 0.975))
@@ -244,7 +244,7 @@ plot(window(stks, start=2005))
 
 A hindcast is a method used in modeling and simulation where historical data is used to test and validate predictive models. In a hindcast, known outcomes from the past are compared with the model's predictions to assess the model's accuracy and performance. The primary goal of hindcasting is to improve the reliability and accuracy of predictive models by identifying discrepancies between predicted and actual outcomes and adjusting model parameters accordingly [@hc2002]. The term retroactive forecasting is used by @hc2002 to denote the form of hindcasting in which forecasts are made for past years (e.g. 2006–2010) using data prior to those years (perhaps 1970–2005). The terminology ex-post is used in business forecasting, referring to predictions for historical periods for which verification data are already available at the time of forecast.
 
-For  this exercise we'll use the package `a4adiags` hindcast method, which follows the suggestions by @cookbook2021 and @KELL2016119. The hindacast is carried out by sequentially removing the most recent year in the data, similar to a retrospective analysis, refit the stock assessment model and project one year ahead. The Mean Absolute Scale Error (MASE) [@cookbook2021] is used to assess the predictive skill, a score higher than 1 indicates that the model forecasts have less skill than a random walk.
+For  this exercise we'll use the package `a4adiags` hindcast method, which follows the suggestions by @cookbook2021 and @KELL2016119. The hindcast is carried out by sequentially removing the most recent year in the data, similar to a retrospective analysis, refit the stock assessment model and project one year ahead. The Mean Absolute Scale Error (MASE) [@cookbook2021] is used to assess the predictive skill, a score higher than 1 indicates that the model forecasts have less skill than a random walk.
 
 ```{r, warning=FALSE, message=FALSE}
 library(a4adiags)
@@ -255,7 +255,7 @@ nsq <- 3
 hc <- a4ahcxval(ple4, ple4.indices, nyears = nyears, nsq = nsq)
 ```
 
-Figure \@ref(fig:hc) depicts the hincast results for the abudance indices used in the assessment. The MASE value is included in the strip above the plot. In this case one can see that 3 out of the 5 surveys are not better predictors than a random walk.
+Figure \@ref(fig:hc) depicts the hincast results for the abundance indices used in the assessment. The MASE value is included in the strip above the plot. In this case one can see that 3 out of the 5 surveys are not better predictors than a random walk.
 
 ```{r, hc, echo=FALSE, fig.cap="Survey predictions of year ahead indices in hindcast process. The MASE is presented in the strip about the index and is related to the predictive skill of the index.", warning=FALSE, message=FALSE}
 plotXval2(hc$indices)

@@ -100,7 +100,7 @@ plot(window(FLStocks('01' = stk01, '02' = stk02, '03' = stk03), start = 2000))
 
 ## Initial condition assumptions
 
-When projecting the stock forward one needs to make a number of assumptions about initial conditions, the starting point from where projections will be made. The method `fwdWindow` has a set of options that allows the analyst to decide about those assumptions:
+When projecting the stock forward one needs to make a number of assumptions about initial conditions, the starting point from where projections will be made. The method `fwdWindow()` has a set of options that allows the analyst to decide about those assumptions:
 
 | Argument | Default value | Description |
 |---:|:-|:---------|
@@ -210,7 +210,7 @@ rec00 <- rlnorm(rec00, mean(res00), sqrt(var(res00)))
 stk07 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 ```
 
-Similar scenarios can be set for all quantities and any years to use as reference. The next example sets a scenario where $SSB$ levels are set in relation to the most recent estimate out of the assessmeent.
+Similar scenarios can be set for all quantities and any years to use as reference. The next example sets a scenario where $SSB$ levels are set in relation to the most recent estimate out of the assessment.
 
 ```{r, warning=FALSE, message=FALSE}
 trg00 <- fwdControl(year = inipy:endpy, quant = "ssb_end", value = 1.1, relYear = maxy)

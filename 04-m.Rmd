@@ -13,7 +13,7 @@ However, natural mortality is notoriously difficult to observe and estimate. Onl
 
 There is an extensive body of literature on natural mortality. Works by @pauly1980, @gislason2010, @charnov1993, @maunder2023mrev and @quinn1999, as well as a dedicated special issue in Fisheries Research [@MCAPAM2023], offer valuable insights and serve as excellent starting points. Given the parameter's importance and the difficulty of obtaining direct observations, natural mortality is widely regarded as one of the most significant sources of uncertainty in stock assessments.
 
-Within the a4a framework, natural mortality is treated as an externally fixed parameter in the stock assessment model. Our aim is to develop a system that enables analysts to explore alternative models for $M$ and compare the resulting assessment outcomes. This approach provides a more comprehensive information base to support informed decision-making throughout the stock assessment process.
+Within the `a4a` framework, natural mortality is treated as an externally fixed parameter in the stock assessment model. Our aim is to develop a system that enables analysts to explore alternative models for $M$ and compare the resulting assessment outcomes. This approach provides a more comprehensive information base to support informed decision-making throughout the stock assessment process.
 
 Within the `a4a` framework, the general method for adding natural mortality in the stock assessment model is to:
 
@@ -21,7 +21,7 @@ Within the `a4a` framework, the general method for adding natural mortality in t
 2. Add uncertainty to the parameters in the `a4aM` object.
 3. Apply the `m()` method to the `a4aM` object to create an age or length based `FLQuant` object of the required dimensions.
 
-The resulting `FLQuant` object can then be directly inserted into an `FLStock` object to be used for the assessment.
+The resulting `FLQuant` object can then be directly inserted into a `FLStock` object to be used in the assessment.
 
 In this section we go through each of the steps in detail using a variety of different models.
 
@@ -35,7 +35,7 @@ showClass("a4aM")
 
 The `a4aM` constructor requires that the models and parameters are provided. The default method will build each of these models as a constant value of 1.
 
-As a simple example, the usual "0.2" guessestimate could be set up by setting the `level` model to have a single parameter with a fixed value, while the other two models, `shape` and `trend`, have a default value of 1 (meaning that they have no effect).
+As a simple example, the usual "0.2" guess-estimate could be set up by setting the `level` model to have a single parameter with a fixed value, while the other two models, `shape` and `trend`, have a default value of 1 (meaning that they have no effect).
 
 ```{r, m_02}
 mod02 <- FLModelSim(model=~a, params=FLPar(a=0.2))

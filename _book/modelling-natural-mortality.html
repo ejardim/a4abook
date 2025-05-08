@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4 Modelling Natural Mortality | Fish stock assessment with R</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4 Modelling Natural Mortality | Fish stock assessment with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-05-06" />
+<meta name="date" content="2025-05-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -291,6 +291,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="11.3" data-path="reference-points.html"><a href="reference-points.html#economics-reference-points"><i class="fa fa-check"></i><b>11.3</b> Economics reference points</a></li>
 <li class="chapter" data-level="11.4" data-path="reference-points.html"><a href="reference-points.html#computing-user-specific-reference-points"><i class="fa fa-check"></i><b>11.4</b> Computing user specific reference points</a></li>
+<li class="chapter" data-level="11.5" data-path="reference-points.html"><a href="reference-points.html#assessing-the-status-of-the-stock"><i class="fa fa-check"></i><b>11.5</b> Assessing the status of the stock</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>12</b> Projections and harvest control rules</a>
 <ul>
@@ -338,14 +339,14 @@ div.csl-indent {
 <p>Natural mortality (<span class="math inline">\(M\)</span>) is a critical parameter in stock assessment models, representing all sources of mortality not related to fishing or harvest (<span class="math inline">\(F\)</span>). Combined, these two sources constitute the total mortality (<span class="math inline">\(Z\)</span>) that individuals experience, with <span class="math inline">\(Z = F + M\)</span>.</p>
 <p>However, natural mortality is notoriously difficult to observe and estimate. Only a few methods, such as mark-recapture studies, provide direct estimates of <span class="math inline">\(M\)</span>. However, these methods are not applicable to all species and are often costly. As an alternative, life-history theory is commonly used to derive values for <span class="math inline">\(M\)</span> that are consistent with individual growth and reproduction.</p>
 <p>There is an extensive body of literature on natural mortality. Works by <span class="citation">Pauly (<a href="#ref-pauly1980">1980</a>)</span>, <span class="citation">Gislason et al. (<a href="#ref-gislason2010">2010</a>)</span>, <span class="citation">Charnov (<a href="#ref-charnov1993">1993</a>)</span>, <span class="citation">Mark N. Maunder et al. (<a href="#ref-maunder2023mrev">2023</a>)</span> and <span class="citation">Quinn and Deriso (<a href="#ref-quinn1999">1999</a>)</span>, as well as a dedicated special issue in Fisheries Research <span class="citation">(<a href="#ref-MCAPAM2023">Hamel et al. 2023</a>)</span>, offer valuable insights and serve as excellent starting points. Given the parameter’s importance and the difficulty of obtaining direct observations, natural mortality is widely regarded as one of the most significant sources of uncertainty in stock assessments.</p>
-<p>Within the a4a framework, natural mortality is treated as an externally fixed parameter in the stock assessment model. Our aim is to develop a system that enables analysts to explore alternative models for <span class="math inline">\(M\)</span> and compare the resulting assessment outcomes. This approach provides a more comprehensive information base to support informed decision-making throughout the stock assessment process.</p>
+<p>Within the <code>a4a</code> framework, natural mortality is treated as an externally fixed parameter in the stock assessment model. Our aim is to develop a system that enables analysts to explore alternative models for <span class="math inline">\(M\)</span> and compare the resulting assessment outcomes. This approach provides a more comprehensive information base to support informed decision-making throughout the stock assessment process.</p>
 <p>Within the <code>a4a</code> framework, the general method for adding natural mortality in the stock assessment model is to:</p>
 <ol style="list-style-type: decimal">
 <li>Create an object of class <code>a4aM</code> which holds the natural mortality model and parameters.</li>
 <li>Add uncertainty to the parameters in the <code>a4aM</code> object.</li>
 <li>Apply the <code>m()</code> method to the <code>a4aM</code> object to create an age or length based <code>FLQuant</code> object of the required dimensions.</li>
 </ol>
-<p>The resulting <code>FLQuant</code> object can then be directly inserted into an <code>FLStock</code> object to be used for the assessment.</p>
+<p>The resulting <code>FLQuant</code> object can then be directly inserted into a <code>FLStock</code> object to be used in the assessment.</p>
 <p>In this section we go through each of the steps in detail using a variety of different models.</p>
 <div id="a4am---the-m-class" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> <code>a4aM</code> - The M class<a href="modelling-natural-mortality.html#a4am---the-m-class" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -360,7 +361,7 @@ div.csl-indent {
 ## 
 ## Extends: &quot;FLComp&quot;</code></pre>
 <p>The <code>a4aM</code> constructor requires that the models and parameters are provided. The default method will build each of these models as a constant value of 1.</p>
-<p>As a simple example, the usual “0.2” guessestimate could be set up by setting the <code>level</code> model to have a single parameter with a fixed value, while the other two models, <code>shape</code> and <code>trend</code>, have a default value of 1 (meaning that they have no effect).</p>
+<p>As a simple example, the usual “0.2” guess-estimate could be set up by setting the <code>level</code> model to have a single parameter with a fixed value, while the other two models, <code>shape</code> and <code>trend</code>, have a default value of 1 (meaning that they have no effect).</p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="modelling-natural-mortality.html#cb46-1" tabindex="-1"></a>mod02 <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span>a, <span class="at">params=</span><span class="fu">FLPar</span>(<span class="at">a=</span><span class="fl">0.2</span>))</span>
 <span id="cb46-2"><a href="modelling-natural-mortality.html#cb46-2" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">a4aM</span>(<span class="at">level=</span>mod02)</span>
 <span id="cb46-3"><a href="modelling-natural-mortality.html#cb46-3" tabindex="-1"></a>m1</span></code></pre></div>
@@ -435,8 +436,8 @@ div.csl-indent {
 ## iters:  100 
 ## 
 ## params
-##              k              t 
-## 0.4010(0.0455) 9.8058(1.1191) 
+##                k                t 
+##  0.40405(0.0469) 10.03276(0.9576) 
 ## units:  NA 
 ## 
 ## Slot &quot;vcov&quot;:
@@ -453,7 +454,7 @@ div.csl-indent {
 ## 
 ## params
 ##              b 
-## 0.48541(0.113) 
+## 0.50744(0.147) 
 ## units:  NA</code></pre>
 <p>Note the shape model has no parameters and no uncertainty:</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="modelling-natural-mortality.html#cb59-1" tabindex="-1"></a><span class="fu">params</span>(<span class="fu">shape</span>(m4))</span></code></pre></div>
@@ -501,7 +502,7 @@ div.csl-indent {
 ## 
 ## params
 ##             linf                k 
-## 59.95802(2.1806)  0.41118(0.0761) 
+## 59.94579(2.2042)  0.40746(0.0737) 
 ## units:  NA 
 ## 
 ## Slot &quot;vcov&quot;:
@@ -719,14 +720,14 @@ Figure 4.2: Marginal distributions of the parameters for Gislason’s second nat
 ## 
 ##    year
 ## age 2000              2001              2002              2003             
-##   0 2.04528(0.196946) 3.01096(0.421840) 2.04528(0.196946) 3.01096(0.421840)
-##   1 0.75242(0.072453) 1.10767(0.155186) 0.75242(0.072453) 1.10767(0.155186)
-##   2 0.27680(0.026654) 0.40749(0.057090) 0.27680(0.026654) 0.40749(0.057090)
-##   3 0.10183(0.009805) 0.14991(0.021002) 0.10183(0.009805) 0.14991(0.021002)
-##   4 0.03746(0.003607) 0.05515(0.007726) 0.03746(0.003607) 0.05515(0.007726)
-##   5 0.01378(0.001327) 0.02029(0.002842) 0.01378(0.001327) 0.02029(0.002842)
-##   6 0.00507(0.000488) 0.00746(0.001046) 0.00507(0.000488) 0.00746(0.001046)
-##   7 0.00187(0.000180) 0.00275(0.000385) 0.00187(0.000180) 0.00275(0.000385)
+##   0 2.01721(0.225411) 3.05238(0.433813) 2.01721(0.225411) 3.05238(0.433813)
+##   1 0.74209(0.082924) 1.12291(0.159591) 0.74209(0.082924) 1.12291(0.159591)
+##   2 0.27300(0.030506) 0.41309(0.058710) 0.27300(0.030506) 0.41309(0.058710)
+##   3 0.10043(0.011223) 0.15197(0.021598) 0.10043(0.011223) 0.15197(0.021598)
+##   4 0.03695(0.004129) 0.05591(0.007946) 0.03695(0.004129) 0.05591(0.007946)
+##   5 0.01359(0.001519) 0.02057(0.002923) 0.01359(0.001519) 0.02057(0.002923)
+##   6 0.00500(0.000559) 0.00757(0.001075) 0.00500(0.000559) 0.00757(0.001075)
+##   7 0.00184(0.000206) 0.00278(0.000396) 0.00184(0.000206) 0.00278(0.000396)
 ## 
 ## units:  NA</code></pre>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="modelling-natural-mortality.html#cb101-1" tabindex="-1"></a><span class="fu">dim</span>(flq)</span></code></pre></div>
@@ -788,42 +789,42 @@ Venables, W. N., and B. D. Ripley. 2002. <em>Modern Applied Statistics with s</e
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-  "sharing": {
-    "github": false,
-    "facebook": true,
-    "twitter": true,
-    "linkedin": false,
-    "weibo": false,
-    "instapaper": false,
-    "vk": false,
-    "whatsapp": false,
-    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-  },
-  "fontsettings": {
-    "theme": "white",
-    "family": "sans",
-    "size": 2
-  },
-  "edit": {
-    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-m.Rmd",
-    "text": "Edit"
-  },
-  "history": {
-    "link": null,
-    "text": null
-  },
-  "view": {
-    "link": null,
-    "text": null
-  },
-  "download": ["_main.pdf", "_main.epub"],
-  "search": {
-    "engine": "fuse",
-    "options": null
-  },
-  "toc": {
-    "collapse": "subsection"
-  }
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-m.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
 });
 });
 </script>

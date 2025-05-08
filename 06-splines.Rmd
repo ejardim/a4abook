@@ -235,7 +235,7 @@ ggplot(data, aes(x, y)) +
   geom_line(aes(y = tps_fit), color = "blue", linewidth = 1)
 ```
 
-Thin plate splines are ideal when you need a smooth fit without predefined knots. The notion of knots in thin plate splines does not have the same interpretation as for B-splines and other piecewise functions, and infact it is likely not useful to think of knots when using thin plate spines. Instead it is better to think of the number of basis functions used to represent the smooth term (Figure \@ref(fig:tpsbasis)).
+Thin plate splines are ideal when you need a smooth fit without predefined knots. The notion of knots in thin plate splines does not have the same interpretation as for B-splines and other piecewise functions, and in fact it is likely not useful to think of knots when using thin plate spines. Instead it is better to think of the number of basis functions used to represent the smooth term (Figure \@ref(fig:tpsbasis)).
 
 ```{r, tpsbasis, fig.cap = "basis functions for thin plate splines", echo=FALSE, message = FALSE, warning=FALSE}
 X <- model.matrix(tps_model)
@@ -333,7 +333,7 @@ plot(FLStocks(ThinPlate = stk + fit00,
               Adaptive_smoothers = stk + fit04))+theme(legend.position = 'bottom')
 ```
 
-Functionality of `mgcv` package provides also the option to work with interactions. Although `s(age, year)` can be defined, it uses a common bivariate spline for the two variables which are very different in scale. It is preferable if interactions are assumed to use a tensor `te(age, year)`. Tensors are mathematical products that help model the individual smoothness of each variable while also capturing their joint interaction. The independent variables in the case of tensors are modeled with different numbers of basis functions allowing different amount of smoothness in each dimension. 
+Functionality of `mgcv` package provides also the option to work with interactions. Although `s(age, year)` can be defined, it uses a common bivariate spline for the two variables which are very different in scale. It is preferable if interactions are assumed to use a tensor `te(age, year)`. Tensors are mathematical products that help model the individual smoothness of each variable while also capturing their joint interaction. The independent variables in the case of tensors are modeled with different numbers of basis functions allowing different amount of smoothness in each dimension.
 
 Following the example above, let now $\mathbf{x}$ and $\mathbf{z}$ two independent variables with $S_x$ and $S_z$ their spline functions of dimension $k$ and $m$, respectively. Given the nature of the basis functions, their tensor (interaction and main effects), $Te(\mathbf{x},\mathbf{z})$ can be defined as the sum of all possible multiplications of the elements of $S_x$ and $S_z$.
 
@@ -375,7 +375,7 @@ plot(FLStocks('k=5' = stk + fit00,
               'k=20' = stk + fit02))+theme(legend.position = 'bottom')
 ```
 
-We can check the result of choosing different $k$ values on BIC (Bayesian Information Criteria) and GCV (Generalized Cross Validation score) by running the stock assessment model with different k and looking at the values of those stastics (Figure \@ref(fig:bic)).
+We can check the result of choosing different $k$ values on BIC (Bayesian Information Criteria) and GCV (Generalized Cross Validation score) by running the stock assessment model with different k and looking at the values of those statistics (Figure \@ref(fig:bic)).
 
 ```{r, eval = !drafting}
 fmodsk <- list()

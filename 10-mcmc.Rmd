@@ -4,7 +4,7 @@ The previous methods were demonstrated using maximum likelihood estimation (MLE)
 
 One of the biggest advantages of MCMC is its flexibility when working with models that have irregular behavior, such as those with multiple peaks or abrupt changes in likelihood. Standard MLE methods assume that the likelihood function behaves smoothly, but this is rarely true in real-world applications. In fisheries, ecology, and other applied sciences, models often have parameters that interact in complex ways, creating likelihood surfaces with ridges and multiple solutions. In these cases, MLE can easily get stuck in a local peak, failing to find the best possible estimate or underestimating the real uncertainty in the system [@neal1993probabilistic]. Since MCMC uses a probabilistic sampling approach instead of strict optimization, it moves freely across the entire space of possible values, making it more robust and adaptable to challenging problems [@robert2005monte].
 
-Traditional MLE-based uncertainty estimation relies on the Hessian matrix, which essentially measures how quickly the likelihood function changes as parameters vary. This method assumes that the shape of the likelihood function is quadratic and roughly the same everywhere. However, this assumption is often unrealistic, especially in models with many parameters or correlations between them, as is common in fisheries stock assessment models
+Traditional MLE-based uncertainty estimation relies on the hessian matrix, which essentially measures how quickly the likelihood function changes as parameters vary. This method assumes that the shape of the likelihood function is quadratic and roughly the same everywhere. However, this assumption is often unrealistic, especially in models with many parameters or correlations between them, as is common in fisheries stock assessment models
 
 In fields like fisheries science, where models often involve multiple correlated parameters, MCMC provides a much more flexible and realistic way to estimate uncertainty. Unlike MLE, which assumes uncertainty follows a simple symmetrical pattern, MCMC can handle more complex distributions, giving a better representation of real-world variability. This is especially important when estimating key fisheries management indicators, such as spawning stock biomass ($SSB$) or fishing mortality ($F$), which influence critical policy decisions. Because MCMC does not impose strict mathematical assumptions about the shape of uncertainty, it produces estimates that are more reflective of real-world conditions, ultimately leading to more informed and reliable management strategies.
 
@@ -16,7 +16,7 @@ The manual "A Guide for Bayesian Analysis in AD Model Builder" [@monnahan2014adm
 
 ## The MCMC method for `sca`
 
-This section shows how the `sca()` method interfaces with `ADMB` to use MCMC. For this section we'll use the hake assessment in mediterranean areas (gsa) 1, 5, 6 and 7.
+This section shows how the `sca()` method interfaces with `ADMB` to use MCMC. For this section we'll use the hake assessment in Mediterranean areas (gsa) 1, 5, 6 and 7.
 
 We'll start buy fitting the MLE model and afterwards call MCMC methods. The outcomes of the MCMC fit need to be inspected to make sure the chain converged and the results are robust. A set of diagnostics are available to do this work.
 
@@ -75,7 +75,7 @@ fitmc00 <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcm
 fitSumm(fitmc00)
 ```
 
-As usual `fitSumm` store relevant information about the model fit. In the case of MCMC fit the information stored is the number of model paramters (`nopar`), the number of observations (`nobs`) and the acceptance rate (`accrate`).
+As usual `fitSumm` store relevant information about the model fit. In the case of MCMC fit the information stored is the number of model parameters (`nopar`), the number of observations (`nobs`) and the acceptance rate (`accrate`).
 
 ```{r, fig.cap="Stock assessment summaries of maximum likelihood (mle) and monte carlo (mc) fits."}
 plot(FLStocks(mle=hke1567 + fit, mc=hke1567 + fitmc00))
@@ -110,14 +110,14 @@ fitmc02.mc <- FLa4a::as.mcmc(fitmc02)
 
 ### Traceplots
 
-Trace plots (`traceplot()`) show the sampled values of a parameter over iterations. A plot that looks like a random, stable "cloud" of points with no trends or drifts, with rapid fluctuactions, is a signal of convergence, meaning the chain mixes well and is stationary. If the trace plot shows a strong trend or periodicity, drifts, or long autocorrelated stretches, it means the chain hasn't converged. Figure \@ref(fig:chain01) cleary depicts this difference between the two runs.
+Trace plots (`traceplot()`) show the sampled values of a parameter over iterations. A plot that looks like a random, stable "cloud" of points with no trends or drifts, with rapid fluctuations, is a signal of convergence, meaning the chain mixes well and is stationary. If the trace plot shows a strong trend or periodicity, drifts, or long autocorrelated stretches, it means the chain hasn't converged. Figure \@ref(fig:chain01) cleary depicts this difference between the two runs.
 
 ```{r, chain01, fig.cap="MCMC chain's trace for the first parameter. High correlation chain in blue, low correlation chain in red."}
 # use mcmc.list() to create a list with both runs so they're plot together
 traceplot(mcmc.list(mc01=fitmc01.mc[,1], mc02=fitmc02.mc[,2]), lwd=1.5, col=c(2,4), lty=1)
 ```
 
-Ploting the chains for the parameter clearly shows autocorrelation for the first parameter in the blue chain. It also shows an initial phase where the chain seems to be stuck in a single value. This initial phase, when the parameter seems to be stuck in a fixed position, is called the "burn-in" phase. These iterations can be dropped with the `burnin()`, although it doesn't sort out autocorrelation (Figure \@ref(fig:chain01b)).
+Plotting the chains for the parameter clearly shows autocorrelation for the first parameter in the blue chain. It also shows an initial phase where the chain seems to be stuck in a single value. This initial phase, when the parameter seems to be stuck in a fixed position, is called the "burn-in" phase. These iterations can be dropped with the `burnin()`, although it doesn't sort out autocorrelation (Figure \@ref(fig:chain01b)).
 
 ```{r, chain01b, fig.cap="MCMC chain with high autocorrelation after removing the initial 250 samples (burnin period)."}
 traceplot(FLa4a::as.mcmc(burnin(fitmc02, 250))[,1], lwd=1.5, col=4, lty=1)
@@ -137,7 +137,7 @@ acfplot(fitmc02.mc[,1], lwd=3, main="High correlation chain", ylim=c(-1, 1))
 acfplot(fitmc01.mc[,1], lwd=3, main="Low correlation chain", ylim=c(-1, 1))
 ```
 
-Crosscorrelation (`crosscorr()` and `crosscorr.plot()`) inspects the pairwise correlation of all parameters, which is a useful tool to assess the efficiency of the sampling process and the independence of the generated samples. If cross-correlations are high, it often means that transitions between states are slow, leading to an increased running time and requiring a larger number of samples to achieve effective independent samples. Conversely, low cross-correlation implies that parameters are explored more independently, leading to faster convergence and better mixing.
+Cross-correlation (`crosscorr()` and `crosscorr.plot()`) inspects the pairwise correlation of all parameters, which is a useful tool to assess the efficiency of the sampling process and the independence of the generated samples. If cross-correlations are high, it often means that transitions between states are slow, leading to an increased running time and requiring a larger number of samples to achieve effective independent samples. Conversely, low cross-correlation implies that parameters are explored more independently, leading to faster convergence and better mixing.
 
 ```{r, ccr01, fig.cap="Crosscorrelation plots", fig.show="hold", out.width="50%"}
 crosscorr.plot(fitmc01.mc, main="Low correlation chain")
@@ -146,7 +146,7 @@ crosscorr.plot(fitmc02.mc, main="High correlation chain")
 
 ### Geweke diagnostic
 
-The geweke diagnostic (`geweke.diag()` and `geweke.plot()`) computes the Geweke-Brooks Z-score [@Geweke1992], which indicates if the first and following parts of a sample from a Markov chain are drawn from the same distribution as the last part of the chain, usualy the last 50% of the samples.
+The geweke diagnostic (`geweke.diag()` and `geweke.plot()`) computes the Geweke-Brooks Z-score [@Geweke1992], which indicates if the first and following parts of a sample from a Markov chain are drawn from the same distribution as the last part of the chain, usually the last 50% of the samples.
 
 It's useful to decide if the first few iterations should be discarded and provides information about the stability of the chain. Figure \@ref(fig:gew01) shows the geweke plot for the two MCMC runs.
 
@@ -174,9 +174,9 @@ plot(cm02, type="l", xlab="samples", ylab="mean", main="High correlation chain",
 
 ### Distribution density
 
-An important element of MCMC is to produce symetric posterior distributions, for one it's a sign that the chain explored the space of the parameter, for other it makes inference about the parameters a lot more robust. If the distributions are skewed or multimodal, estimating the expected value and variance becomes a lot more complicated. As such having symetric distributions is preferred and should be checked before computing statistics of interest.
+An important element of MCMC is to produce symmetric posterior distributions, for one it's a sign that the chain explored the space of the parameter, for other it makes inference about the parameters a lot more robust. If the distributions are skewed or multimodal, estimating the expected value and variance becomes a lot more complicated. As such having symmetric distributions is preferred and should be checked before computing statistics of interest.
 
-Figure \@ref(fig:dens01) shows the density plots (`densplot()`) for both runs, where it shows the symetric distribution of the uncorrelated chain (left panel) and the bimodal distribution of the correlated chain.
+Figure \@ref(fig:dens01) shows the density plots (`densplot()`) for both runs, where it shows the symmetric distribution of the uncorrelated chain (left panel) and the bimodal distribution of the correlated chain.
 
 ```{r, dens01, fig.cap="Density plots of the first parameter in the MCMC chains", fig.show="hold", out.width="50%"}
 densplot(fitmc01.mc[,1], main="Low correlation chain")

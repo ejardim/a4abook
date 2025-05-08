@@ -28,7 +28,7 @@ fit0 <- sca(ple4, ple4.indices)
 stk0 <- ple4 + fit0
 ```
 
-To proceed with the computation of reference points we must start by creating an `FLBRP` object and afterwards run the fitting process with `brp()`. The FLBRP class has information on selection pattern, mass at age, and biological parameters (see `?FLBRP` for a full description of this class).
+To proceed with the computation of reference points we must start by creating an `FLBRP` object and afterwards run the fitting process with `brp()`. The `FLBRP` class has information on selection pattern, mass at age, and biological parameters (see `?FLBRP` for a full description of this class).
 
 Slots named `*.obs` will contain the related time series present in the original `FLStock` object, while other slots will contain averages across the year dimension over the last $n$ years, where $n$ is controlled by the arguments `biol.nyears`, `fbar.nyears` and `sel.nyears` (Table \@ref(tab:brpargs))
 
@@ -86,7 +86,7 @@ plot(brp0)
 
 An important way to improve reference points is to include stock recruitment dynamics. Yield per recruit, as in the previous section, ignores these dynamics and assumes recruitment will be the same no matter $SSB$'s size. To inform `brp()` to take stock recruitment dynamics into account, the stock recruitment model must be fitted and the resulting `FLSR` object passed to the `FLBRP` call when creating the `FLBRP` object.
 
-There's two ways of fitting stock recruitment models: (i) after fitting the stock assessment model by using its outputs, `SSB` and recruitment, as data to fit the model; (ii) inside the stock assessment model together with all other quantities. There's pros and cons on both approaches, we're not going to dwell on those now though.
+There's two ways of fitting stock recruitment models: (i) after fitting the stock assessment model by using its outputs, $SSB$ and recruitment, as data to fit the model; (ii) inside the stock assessment model together with all other quantities. There's pros and cons on both approaches, we're not going to dwell on those now though.
 
 ### Stock recruitment after fitting the stock assessment model  
 
