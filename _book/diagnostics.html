@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8 Diagnostics  | Fish stock assessment with R</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8 Diagnostics  | Fish stock assessment with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-05-08" />
+<meta name="date" content="2025-05-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -573,23 +573,23 @@ Green shading indicates no evidence $(p <  0.05)$ and red shading evidence $(p  
 <p>Note fmodel doesn’t change:</p>
 <pre><code>## $fit1
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x573dbe0d86b8&gt;
+## &lt;environment: 0x558b688ca148&gt;
 ## 
 ## $fit2
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x573dbe0d86b8&gt;
+## &lt;environment: 0x558b688ca148&gt;
 ## 
 ## $fit3
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x573dbe0d86b8&gt;
+## &lt;environment: 0x558b688ca148&gt;
 ## 
 ## $fit4
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x573dbe0d86b8&gt;
+## &lt;environment: 0x558b688ca148&gt;
 ## 
 ## $fit5
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x573dbe0d86b8&gt;</code></pre>
+## &lt;environment: 0x558b688ca148&gt;</code></pre>
 <p>The retrospective plot shown below presents the current fit with uncertainty and each retrospective fit on top. If the retrospective fit is not within the confidence interval of the current fit the analyst can argue that the estimate is different and as such reflecting a “poor” fit.</p>
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="diagnostics.html#cb187-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">window</span>(stks, <span class="at">start=</span><span class="dv">2005</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:retro"></span>
@@ -611,23 +611,23 @@ Figure 8.12: Retrospective analysis of the plaice in ICES area IV stock. Fixed F
 <p>Note fmodel changes:</p>
 <pre><code>## $fit1
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x573db1847a28&gt;
+## &lt;environment: 0x558b66992cb8&gt;
 ## 
 ## $fit2
 ## ~te(age, year, k = c(6, 29), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x573db1622e38&gt;
+## &lt;environment: 0x558b5cd41258&gt;
 ## 
 ## $fit3
 ## ~te(age, year, k = c(6, 29), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x573db14b0d00&gt;
+## &lt;environment: 0x558b602f9948&gt;
 ## 
 ## $fit4
 ## ~te(age, year, k = c(6, 28), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x573db138cab0&gt;
+## &lt;environment: 0x558b604099e8&gt;
 ## 
 ## $fit5
 ## ~te(age, year, k = c(6, 28), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x573db11f2918&gt;</code></pre>
+## &lt;environment: 0x558b5bd8afb0&gt;</code></pre>
 <p>And the retrospective plot</p>
 <div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="diagnostics.html#cb190-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">window</span>(stks, <span class="at">start=</span><span class="dv">2005</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:retro2"></span>
@@ -663,7 +663,7 @@ Figure 8.14: Survey predictions of year ahead indices in hindcast process. The M
 Cadrin, Steven X. 2025. <span>“Misinterpreting Retrospective Patterns in Fishery Stock Assessment.”</span> <em>ICES Journal of Marine Science</em> 82 (2): 473–88. <a href="https://doi.org/10.1093/icesjms/fsaf014">https://doi.org/10.1093/icesjms/fsaf014</a>.
 </div>
 <div id="ref-cookbook2021" class="csl-entry">
-Carvalho, Felipe, Henning Winker, Dean Courtney, Maia Kapur, Laurence Kell, Massimiliano Cardinale, Michael Schirripa, et al. 2021. <span>“A Cookbook for Using Model Diagnostics in Integrated Stock Assessments.”</span> <em>Fisheries Research</em> 240: 105959. https://doi.org/<a href="https://doi.org/10.1016/j.fishres.2021.105959">https://doi.org/10.1016/j.fishres.2021.105959</a>.
+Carvalho, Felipe, Henning Winker, Dean Courtney, Maia Kapur, Laurence Kell, Massimiliano Cardinale, Michael Schirripa, et al. 2021. <span>“A Cookbook for Using Model Diagnostics in Integrated Stock Assessments.”</span> <em>Fisheries Research</em> 240: 105959. <a href="https://doi.org/10.1016/j.fishres.2021.105959">https://doi.org/10.1016/j.fishres.2021.105959</a>.
 </div>
 <div id="ref-ding2023information" class="csl-entry">
 Ding, Jie. 2023. <span>“Information Criteria for Model Selection.”</span> <em>Wiley Interdisciplinary Reviews: Computational Statistics</em> 15 (2): e1607. <a href="https://doi.org/10.1002/wics.1607">https://doi.org/10.1002/wics.1607</a>.
@@ -672,7 +672,7 @@ Ding, Jie. 2023. <span>“Information Criteria for Model Selection.”</span> <e
 Hickey, Graeme L., Evangelos Kontopantelis, Johanna J. M. Takkenberg, and Friedhelm Beyersdorf. 2019. <span>“Statistical Primer: Checking Model Assumptions with Regression Diagnostics.”</span> <em>Interactive Cardiovascular and Thoracic Surgery</em>. <a href="https://doi.org/10.1093/ICVTS/IVY207">https://doi.org/10.1093/ICVTS/IVY207</a>.
 </div>
 <div id="ref-KELL2016119" class="csl-entry">
-Kell, Laurence T., Ai Kimoto, and Toshihide Kitakado. 2016. <span>“Evaluation of the Prediction Skill of Stock Assessment Using Hindcasting.”</span> <em>Fisheries Research</em> 183: 119–27. https://doi.org/<a href="https://doi.org/10.1016/j.fishres.2016.05.017">https://doi.org/10.1016/j.fishres.2016.05.017</a>.
+Kell, Laurence T., Ai Kimoto, and Toshihide Kitakado. 2016. <span>“Evaluation of the Prediction Skill of Stock Assessment Using Hindcasting.”</span> <em>Fisheries Research</em> 183: 119–27. <a href="https://doi.org/10.1016/j.fishres.2016.05.017">https://doi.org/10.1016/j.fishres.2016.05.017</a>.
 </div>
 <div id="ref-hc2002" class="csl-entry">
 Mason, Simon, and G. Mimmack. 2002. <span>“2001: Comparison of Some Statistical Methods of Probabilistic Forecasting of ENSO.”</span> <em>Journal of Climate</em> 15 (February).
@@ -713,42 +713,42 @@ Wood, S. N. 2017. <em>Generalized Additive Models: An Introduction with r</em>. 
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/08-diagnostics.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["_main.pdf", "_main.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/08-diagnostics.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

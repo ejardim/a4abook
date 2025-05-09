@@ -215,7 +215,7 @@ On the other hand, objectives consider food production, represented by the fishi
 
 Policy makers, with the support of scientific advisors, have to find a balance between these two objectives, food production and stock collapse, to guarantee the long term sustainability of the stocks. As such computing the status of the stock in relation to $SSB$ and $F$ becomes one of the most important pieces of information scientists can provide.
 
-For this exercise we'll use the kobe plot (REF), which depicts estimates of $SSB$ over $SSB_{target}$ and $F$ over $F_{target}$ in a plot with $SSB$ in the y axis and $F$ in the x axis. The inspection of the plot allows a quick overview of the exploitation history of the stock and the current status in relation to the objectives set.
+For this exercise we'll use the kobe plot [@kell2016quantification], which depicts estimates of $SSB$ over $SSB_{target}$ and $F$ over $F_{target}$ in a plot with $SSB$ in the y axis and $F$ in the x axis. The inspection of the plot allows a quick overview of the exploitation history of the stock and the current status in relation to the objectives set.
 
 ```{r}
 # code to compute kobe plot

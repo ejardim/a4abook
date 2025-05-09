@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4 Modelling Natural Mortality | Fish stock assessment with R</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4 Modelling Natural Mortality | Fish stock assessment with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-05-08" />
+<meta name="date" content="2025-05-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -436,8 +436,8 @@ div.csl-indent {
 ## iters:  100 
 ## 
 ## params
-##                k                t 
-##  0.40405(0.0469) 10.03276(0.9576) 
+##               k               t 
+## 0.40268(0.0468) 9.88893(0.9127) 
 ## units:  NA 
 ## 
 ## Slot &quot;vcov&quot;:
@@ -454,7 +454,7 @@ div.csl-indent {
 ## 
 ## params
 ##              b 
-## 0.50744(0.147) 
+## 0.50178(0.134) 
 ## units:  NA</code></pre>
 <p>Note the shape model has no parameters and no uncertainty:</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="modelling-natural-mortality.html#cb59-1" tabindex="-1"></a><span class="fu">params</span>(<span class="fu">shape</span>(m4))</span></code></pre></div>
@@ -501,8 +501,8 @@ div.csl-indent {
 ## iters:  1000 
 ## 
 ## params
-##             linf                k 
-## 59.94579(2.2042)  0.40746(0.0737) 
+##           linf              k 
+## 59.832(2.1847)  0.403(0.0712) 
 ## units:  NA 
 ## 
 ## Slot &quot;vcov&quot;:
@@ -720,14 +720,14 @@ Figure 4.2: Marginal distributions of the parameters for Gislason’s second nat
 ## 
 ##    year
 ## age 2000              2001              2002              2003             
-##   0 2.01721(0.225411) 3.05238(0.433813) 2.01721(0.225411) 3.05238(0.433813)
-##   1 0.74209(0.082924) 1.12291(0.159591) 0.74209(0.082924) 1.12291(0.159591)
-##   2 0.27300(0.030506) 0.41309(0.058710) 0.27300(0.030506) 0.41309(0.058710)
-##   3 0.10043(0.011223) 0.15197(0.021598) 0.10043(0.011223) 0.15197(0.021598)
-##   4 0.03695(0.004129) 0.05591(0.007946) 0.03695(0.004129) 0.05591(0.007946)
-##   5 0.01359(0.001519) 0.02057(0.002923) 0.01359(0.001519) 0.02057(0.002923)
-##   6 0.00500(0.000559) 0.00757(0.001075) 0.00500(0.000559) 0.00757(0.001075)
-##   7 0.00184(0.000206) 0.00278(0.000396) 0.00184(0.000206) 0.00278(0.000396)
+##   0 2.01375(0.199434) 2.98488(0.465246) 2.01375(0.199434) 2.98488(0.465246)
+##   1 0.74082(0.073368) 1.09808(0.171155) 0.74082(0.073368) 1.09808(0.171155)
+##   2 0.27253(0.026990) 0.40396(0.062964) 0.27253(0.026990) 0.40396(0.062964)
+##   3 0.10026(0.009929) 0.14861(0.023163) 0.10026(0.009929) 0.14861(0.023163)
+##   4 0.03688(0.003653) 0.05467(0.008521) 0.03688(0.003653) 0.05467(0.008521)
+##   5 0.01357(0.001344) 0.02011(0.003135) 0.01357(0.001344) 0.02011(0.003135)
+##   6 0.00499(0.000494) 0.00740(0.001153) 0.00499(0.000494) 0.00740(0.001153)
+##   7 0.00184(0.000182) 0.00272(0.000424) 0.00184(0.000182) 0.00272(0.000424)
 ## 
 ## units:  NA</code></pre>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="modelling-natural-mortality.html#cb101-1" tabindex="-1"></a><span class="fu">dim</span>(flq)</span></code></pre></div>
@@ -751,10 +751,10 @@ Charnov, Eric L. 1993. <em>Life History Invariants: Some Explorations of Symmetr
 Gislason, Henrik, Niels Daan, Jake C Rice, and John G Pope. 2010. <span>“Size, Growth, Temperature and the Natural Mortality of Marine Fish.”</span> <em>Fish and Fisheries</em> 11 (2): 149–58. <a href="https://doi.org/10.1111/j.1467-2979.2009.00350.x">https://doi.org/10.1111/j.1467-2979.2009.00350.x</a>.
 </div>
 <div id="ref-MCAPAM2023" class="csl-entry">
-Hamel, Owen S., James N. Ianelli, Mark N. Maunder, and André E. Punt. 2023. <span>“Natural Mortality: Theory, Estimation and Application in Fishery Stock Assessment Models.”</span> <em>Fisheries Research</em> 261: 106638. https://doi.org/<a href="https://doi.org/10.1016/j.fishres.2023.106638">https://doi.org/10.1016/j.fishres.2023.106638</a>.
+Hamel, Owen S., James N. Ianelli, Mark N. Maunder, and André E. Punt. 2023. <span>“Natural Mortality: Theory, Estimation and Application in Fishery Stock Assessment Models.”</span> <em>Fisheries Research</em> 261: 106638. <a href="https://doi.org/10.1016/j.fishres.2023.106638">https://doi.org/10.1016/j.fishres.2023.106638</a>.
 </div>
 <div id="ref-Kenchington2014" class="csl-entry">
-Kenchington, Trevor J. 2014. <span>“Natural Mortality Estimators for Information-Limited Fisheries.”</span> <em>Fish and Fisheries</em> 15 (4): 533–62. https://doi.org/<a href="https://doi.org/10.1111/faf.12027">https://doi.org/10.1111/faf.12027</a>.
+Kenchington, Trevor J. 2014. <span>“Natural Mortality Estimators for Information-Limited Fisheries.”</span> <em>Fish and Fisheries</em> 15 (4): 533–62. <a href="https://doi.org/10.1111/faf.12027">https://doi.org/10.1111/faf.12027</a>.
 </div>
 <div id="ref-maunder2023mrev" class="csl-entry">
 Maunder, Mark N, Owen S Hamel, Hee-Haeng Lee, Kevin R Piner, Jason M Cope, André E Punt, James N Ianelli, Cristian Castillo-Jordan, and Manasa S Kapur. 2023. <span>“A Review of Estimation Methods for Natural Mortality and Their Performance in the Context of Fishery Stock Assessment.”</span> <em>Fisheries Research</em> 257: 106489. <a href="https://doi.org/10.1016/j.fishres.2022.106489">https://doi.org/10.1016/j.fishres.2022.106489</a>.
@@ -789,42 +789,42 @@ Venables, W. N., and B. D. Ripley. 2002. <em>Modern Applied Statistics with s</e
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-m.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["_main.pdf", "_main.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-m.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

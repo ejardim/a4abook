@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Fish stock assessment with R</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Fish stock assessment with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-05-08" />
+<meta name="date" content="2025-05-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -338,7 +338,7 @@ div.csl-indent {
 <h1 class="title">Fish stock assessment with R</h1>
 <h2 class="subtitle"><em>The a4a Initiative</em></h2>
 <p class="author"><em>Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira</em></p>
-<p class="date"><em>2025-05-08</em></p>
+<p class="date"><em>2025-05-09</em></p>
 </div>
 <div id="before-starting" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">1</span> Before starting<a href="index.html#before-starting" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -444,9 +444,6 @@ div.csl-indent {
 ##     .local &lt;- function (x, metrics = list(Rec = rec, SSB = ssb, 
 ##         Catch = catch, F = fbar), na.rm = TRUE, ...) 
 ##     {
-##         if (all(is.na(harvest(x))) &amp; missing(metrics)) 
-##             metrics &lt;- list(Catch = catch, Landings = landings, 
-##                 Discards = discards)
 ##         metrics &lt;- metrics(x, metrics = metrics)
 ##         if (&quot;F&quot; %in% names(metrics)) 
 ##             units(metrics$F) &lt;- paste0(range(x, c(&quot;minfbar&quot;, 
@@ -457,6 +454,11 @@ div.csl-indent {
 ##                   , &quot;M&quot;]
 ##                 if (&quot;Rec&quot; %in% names(metrics)) 
 ##                   metrics$Rec &lt;- unitSums(metrics$Rec)
+##             }
+##         }
+##         if (&quot;Rec&quot; %in% names(metrics)) {
+##             if (dim(metrics$Rec)[4] &gt; 1) {
+##                 metrics$Rec[metrics$Rec == 0] &lt;- NA
 ##             }
 ##         }
 ##         p &lt;- plot(metrics, na.rm = na.rm, ...) + ylim(c(0, NA))
@@ -471,7 +473,7 @@ div.csl-indent {
 ##     }
 ##     .local(x, ...)
 ## }
-## &lt;bytecode: 0x573db3367918&gt;
+## &lt;bytecode: 0x558b5a3ed410&gt;
 ## &lt;environment: namespace:ggplotFL&gt;
 ## 
 ## Signatures:
@@ -702,42 +704,42 @@ Millar, Colin, and Ernesto Jardim. 2025. <em>A4a: A Flexible and Robust Stock As
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["_main.pdf", "_main.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>
