@@ -1,5 +1,5 @@
 --- 
-title: "Fish stock assessment with R"
+title: "Fish stock assessment with R - DRAFT"
 subtitle: "The a4a Initiative"
 author: "Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira"
 date: "`r Sys.Date()`"
