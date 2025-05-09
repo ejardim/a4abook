@@ -28,7 +28,7 @@ fit0 <- sca(ple4, ple4.indices)
 stk0 <- ple4 + fit0
 ```
 
-To proceed with the computation of reference points we must start by creating an `FLBRP` object and afterwards run the fitting process with `brp()`. The FLBRP class has information on selection pattern, mass at age, and biological parameters (see `?FLBRP` for a full description of this class).
+To proceed with the computation of reference points we must start by creating an `FLBRP` object and afterwards run the fitting process with `brp()`. The `FLBRP` class has information on selection pattern, mass at age, and biological parameters (see `?FLBRP` for a full description of this class).
 
 Slots named `*.obs` will contain the related time series present in the original `FLStock` object, while other slots will contain averages across the year dimension over the last $n$ years, where $n$ is controlled by the arguments `biol.nyears`, `fbar.nyears` and `sel.nyears` (Table \@ref(tab:brpargs))
 
@@ -86,7 +86,7 @@ plot(brp0)
 
 An important way to improve reference points is to include stock recruitment dynamics. Yield per recruit, as in the previous section, ignores these dynamics and assumes recruitment will be the same no matter $SSB$'s size. To inform `brp()` to take stock recruitment dynamics into account, the stock recruitment model must be fitted and the resulting `FLSR` object passed to the `FLBRP` call when creating the `FLBRP` object.
 
-There's two ways of fitting stock recruitment models: (i) after fitting the stock assessment model by using its outputs, `SSB` and recruitment, as data to fit the model; (ii) inside the stock assessment model together with all other quantities. There's pros and cons on both approaches, we're not going to dwell on those now though.
+There's two ways of fitting stock recruitment models: (i) after fitting the stock assessment model by using its outputs, $SSB$ and recruitment, as data to fit the model; (ii) inside the stock assessment model together with all other quantities. There's pros and cons on both approaches, we're not going to dwell on those now though.
 
 ### Stock recruitment after fitting the stock assessment model  
 
@@ -204,4 +204,22 @@ One specific case of user tailored reference points is to compute $F_{MSY}$ rang
 rp.rngs <- msyRange(brp0, range=0.05)
 rp.rngs
 ```
+
+## Assessing the status of the stock
+
+One of the most important outcomes of the stock assessment process is determining the status of the stock relative to the objectives for $SSB$ and $F$.
+
+On one hand, these objectives reflect the level of risk policy makers are willing to accept, expressed as biomass levels intended to remain at sea, typically linked to the replenishing capacity of the stock and risk of collapse. For example, larger biomasses generally results in lower probability of collapse, increased recruitment and stock replenishing.
+
+On the other hand, objectives consider food production, represented by the fishing mortality levels ($F$). At similar $SSB$ levels, higher fishing mortality will result in larger catches but will also cause greater reductions in $SSB$ after the fishing season.
+
+Policy makers, with the support of scientific advisors, have to find a balance between these two objectives, food production and stock collapse, to guarantee the long term sustainability of the stocks. As such computing the status of the stock in relation to $SSB$ and $F$ becomes one of the most important pieces of information scientists can provide.
+
+For this exercise we'll use the kobe plot (REF), which depicts estimates of $SSB$ over $SSB_{target}$ and $F$ over $F_{target}$ in a plot with $SSB$ in the y axis and $F$ in the x axis. The inspection of the plot allows a quick overview of the exploitation history of the stock and the current status in relation to the objectives set.
+
+```{r}
+# code to compute kobe plot
+```
+
+
 

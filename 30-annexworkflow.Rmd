@@ -48,7 +48,7 @@ fit02 <- sca(hke1567, hke1567.idx,
 res02 <- residuals(fit02, hke1567, hke1567.idx)
 ```
 
-The residuals plot now shows catch at age residuals less stagered, reflecting the modelling of the age effect.
+The residuals plot now shows catch at age residuals less staggered, reflecting the modelling of the age effect.
 
 ```{r, fageresbyyear, fig.cap="Fishing mortality model with age effect residuals by year"}
 plot(res02)
@@ -106,7 +106,7 @@ plot(res04, auxline="l", by="age")
 
 ## Year effect on fishing mortality
 
-This model will introduce an year effect in the fishing mortality submodel on top of the F age effect added before. Inspecting the last set of residuals (Figure \@ref(fig:fqageresbyage)) one can easily see the pattern across years with more positive residuals in the beggining of the time series and more negative in the most recent years. As for age we're using a `factor` for years. The new model's residuals won't show such a pronounced effect anymore (Figures \@ref(fig:fyearresbyyear) and \@ref(fig:fyearresbyage)).
+This model will introduce an year effect in the fishing mortality submodel on top of the F age effect added before. Inspecting the last set of residuals (Figure \@ref(fig:fqageresbyage)) one can easily see the pattern across years with more positive residuals in the beginning of the time series and more negative in the most recent years. As for age we're using a `factor` for years. The new model's residuals won't show such a pronounced effect anymore (Figures \@ref(fig:fyearresbyyear) and \@ref(fig:fyearresbyage)).
 
 ```{r}
 fit05 <- sca(hke1567, hke1567.idx,
@@ -134,7 +134,7 @@ We can see now that the residuals show a lot less patterns than before. There's 
 
 It's uncommon to include year trends on the abundance index catchability model. Such decision needs to be considered carefully as the trend in the index, in the case of a well design scientific survey, should result from a change in abundance. Modelling that trend would attribute such change to the survey design and remove it from the abundance. If the survey index is based on a commercial CPUE it becomes more likely that changes in selectivity or fishing behaviour could show up in the index as changes in abundance. Although the common process of standardizing CPUEs should deal with technical issues.
 
-In the case of adding year effects to teh catchability submode the same formulas can be used, to include period breaks, trends, etc.
+In the case of adding year effects to the catchability submodel the same formulas can be used, to include period breaks, trends, etc.
 
 ## The initial year population abundance model, aka N1
 
@@ -187,7 +187,7 @@ fit07 <- sca(hke1567, hke1567.idx,
 res07 <- residuals(fit07, hke1567, hke1567.idx)
 ```
 
-The residuals plot by year are very useful to see the effect of adding a varying stock recruitment model. The year trends present in previous models are not absent. Recruitment variability when left unmodelled was being picked up by trends in the survey catchability and catch at age. And due to the cohort dynamics underlying the catch at age model, where propagating into other ages' estimates.
+The residuals plot by year are very useful to see the effect of adding a varying stock recruitment model. The year trends present in previous models are not absent. Recruitment variability when not modelled was being picked up by trends in the survey catchability and catch at age. And due to the cohort dynamics underlying the catch at age model, where propagating into other ages' estimates.
 
 ```{r, srresbyyear, fig.cap="Stock-recruitment model with year effect residuals by year"}
 plot(res07)
@@ -197,7 +197,7 @@ plot(res07)
 
 Finally, we're testing the variance submodel, specifically the catch at age variance model. We won't dig into the catchability variance model though. It's common to accept that a scientific survey following a well designed sampling protocol will have equal variance across ages since no preferential areas should be sampled sampled.
 
-The variance model will use a smoother with `k=3`. The expectation is that the variance model will have a U-shape, since yourger and older ages are usually less caught and as such estomates of those ages will have larger variances than fully exploited ages.
+The variance model will use a smoother with `k=3`. The expectation is that the variance model will have a U-shape, since younger and older ages are usually less caught and as such estimates of those ages will have larger variances than fully exploited ages.
 
 ```{r}
 fit08 <- sca(hke1567, hke1567.idx,
@@ -240,11 +240,9 @@ bwplot(data~qname|factor(age),  data=as.data.frame(flqs), scales="free", auto.ke
 
 ## Final comments
 
-The sequence presented here can be changed and applied in any order the user is interested or prefers to.
-
-The approach of not allowing year effects in surveys and variance model can be modified if the user prefers to do so.
-
-The (ab)use of `factor` is for demonstration purposes only. The user is incentivised to explore other model forms, in particular smoothers.
+- The sequence presented here can be changed and applied in any order the user is interested or prefers to.
+- The approach of not allowing year effects in surveys and variance model can be modified if the user prefers to do so.
+- The (ab)use of `factor` is for demonstration purposes only. The user is incentivised to explore other model forms, in particular smoothers.
 
 
 

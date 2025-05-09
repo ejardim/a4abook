@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8 Diagnostics  | Fish stock assessment with R</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8 Diagnostics  | Fish stock assessment with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-05-06" />
+<meta name="date" content="2025-05-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -291,6 +291,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="11.3" data-path="reference-points.html"><a href="reference-points.html#economics-reference-points"><i class="fa fa-check"></i><b>11.3</b> Economics reference points</a></li>
 <li class="chapter" data-level="11.4" data-path="reference-points.html"><a href="reference-points.html#computing-user-specific-reference-points"><i class="fa fa-check"></i><b>11.4</b> Computing user specific reference points</a></li>
+<li class="chapter" data-level="11.5" data-path="reference-points.html"><a href="reference-points.html#assessing-the-status-of-the-stock"><i class="fa fa-check"></i><b>11.5</b> Assessing the status of the stock</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>12</b> Projections and harvest control rules</a>
 <ul>
@@ -367,7 +368,7 @@ div.csl-indent {
 Figure 8.1: Standardized residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother.
 </p>
 </div>
-<p>When plotting residuals, by default the auxiliar line is a smoother. However it’s possible to use other type of lines by setting the argument <code>auxline</code> in <code>plot</code> (check <code>panel.xyplot</code> help page for more information), of which the relevant ones for residuals are shown in Table <a href="diagnostics.html#tab:auxargs">8.1</a>. If type has more than one element, an attempt is made to combine the effect of each of the components.</p>
+<p>When plotting residuals, by default the auxiliary line is a smoother. However it’s possible to use other type of lines by setting the argument <code>auxline</code> in <code>plot</code> (check <code>panel.xyplot</code> help page for more information), of which the relevant ones for residuals are shown in Table <a href="diagnostics.html#tab:auxargs">8.1</a>. If type has more than one element, an attempt is made to combine the effect of each of the components.</p>
 <table>
 <caption><span id="tab:auxargs">Table 8.1: </span> Values for the argument <code>auxline</code> of residual plots</caption>
 <colgroup>
@@ -438,7 +439,7 @@ Figure 8.2: Standardized residuals for abundance indices and catch numbers (catc
 Figure 8.3: Pearson residuals for abundance indices and catch numbers (catch.n). Each panel is coded by age class, dots represent standardized residuals and lines a simple smoother.
 </p>
 </div>
-<p>Finally, the raw residuals are computed by setting <code>type='deviances'</code> and plotted the same way as before (Figure <a href="diagnostics.html#fig:resr">8.4</a>). These residuals are usefull to identify which data points are not well modelled, showing a large dispersion of the residuals and requiring more attention from the analyst.</p>
+<p>Finally, the raw residuals are computed by setting <code>type='deviances'</code> and plotted the same way as before (Figure <a href="diagnostics.html#fig:resr">8.4</a>). These residuals are useful to identify which data points are not well modelled, showing a large dispersion of the residuals and requiring more attention from the analyst.</p>
 <div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="diagnostics.html#cb171-1" tabindex="-1"></a>d_r <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit, stk, idx, <span class="at">type=</span><span class="st">&#39;deviances&#39;</span>)</span>
 <span id="cb171-2"><a href="diagnostics.html#cb171-2" tabindex="-1"></a><span class="co"># shorten time series</span></span>
 <span id="cb171-3"><a href="diagnostics.html#cb171-3" tabindex="-1"></a>d_r <span class="ot">&lt;-</span> <span class="fu">window</span>(d_r, <span class="at">start=</span>iy)</span>
@@ -494,7 +495,7 @@ Figure 8.9: Predict and observed abundance-at-age
 </div>
 <div id="aggregated-catch-in-weight" class="section level2 hasAnchor" number="8.3">
 <h2><span class="header-section-number">8.3</span> Aggregated catch in weight<a href="diagnostics.html#aggregated-catch-in-weight" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Although a statistical catch-at-age model assumes errors in catch-at-age and, as such, errors in the total catch in weight, there’s still interest to evaluate how close the model estimates are of the observed catch in weight, even if reported catch in weight is one of the less reliable pieces of information available for stock assessment. The implementation of this diagnopstics is done through the method <code>computeCatchDiagnostics()</code>, which can be visualized with <code>plot()</code> (Figure <a href="diagnostics.html#fig:catchdiag">8.10</a>).</p>
+<p>Although a statistical catch-at-age model assumes errors in catch-at-age and, as such, errors in the total catch in weight, there’s still interest to evaluate how close the model estimates are of the observed catch in weight, even if reported catch in weight is one of the less reliable pieces of information available for stock assessment. The implementation of this diagnostics is done through the method <code>computeCatchDiagnostics()</code>, which can be visualized with <code>plot()</code> (Figure <a href="diagnostics.html#fig:catchdiag">8.10</a>).</p>
 <div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="diagnostics.html#cb177-1" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">factor</span>(age) <span class="sc">+</span> <span class="fu">factor</span>(year) <span class="sc">+</span> <span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">15</span>))</span>
 <span id="cb177-2"><a href="diagnostics.html#cb177-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>fmod)</span>
 <span id="cb177-3"><a href="diagnostics.html#cb177-3" tabindex="-1"></a>c_d <span class="ot">&lt;-</span> <span class="fu">computeCatchDiagnostics</span>(fit, ple4)</span>
@@ -505,7 +506,7 @@ Figure 8.9: Predict and observed abundance-at-age
 Figure 8.10: Diagnostics for age aggregated catch in weight
 </p>
 </div>
-<p>The <code>plot</code> method takes 2 important arguments in this case, <code>type</code> and <code>probs</code>. Thre first allows the analyst to choose between <code>all</code>, the plot in Figure <a href="diagnostics.html#fig:catchdiag">8.10</a>, and <code>prediction</code> (Figure <a href="diagnostics.html#fig:cpred">8.11</a>), which reports prediction error, median estimates and observations. The latter, a vector of 2 values, refers to the confidence intervals to be computed.</p>
+<p>The <code>plot</code> method takes 2 important arguments in this case, <code>type</code> and <code>probs</code>. The first allows the analyst to choose between <code>all</code>, the plot in Figure <a href="diagnostics.html#fig:catchdiag">8.10</a>, and <code>prediction</code> (Figure <a href="diagnostics.html#fig:cpred">8.11</a>), which reports prediction error, median estimates and observations. The latter, a vector of 2 values, refers to the confidence intervals to be computed.</p>
 <div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="diagnostics.html#cb178-1" tabindex="-1"></a><span class="fu">plot</span>(c_d, <span class="at">type=</span><span class="st">&quot;prediction&quot;</span>, <span class="at">probs=</span><span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:cpred"></span>
 <img src="_main_files/figure-html/cpred-1.png" alt="Prediction of aggregated catch in weight" width="672" />
@@ -572,23 +573,23 @@ Green shading indicates no evidence $(p <  0.05)$ and red shading evidence $(p  
 <p>Note fmodel doesn’t change:</p>
 <pre><code>## $fit1
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5a92911382d0&gt;
+## &lt;environment: 0x573dbe0d86b8&gt;
 ## 
 ## $fit2
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5a92911382d0&gt;
+## &lt;environment: 0x573dbe0d86b8&gt;
 ## 
 ## $fit3
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5a92911382d0&gt;
+## &lt;environment: 0x573dbe0d86b8&gt;
 ## 
 ## $fit4
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5a92911382d0&gt;
+## &lt;environment: 0x573dbe0d86b8&gt;
 ## 
 ## $fit5
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5a92911382d0&gt;</code></pre>
+## &lt;environment: 0x573dbe0d86b8&gt;</code></pre>
 <p>The retrospective plot shown below presents the current fit with uncertainty and each retrospective fit on top. If the retrospective fit is not within the confidence interval of the current fit the analyst can argue that the estimate is different and as such reflecting a “poor” fit.</p>
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="diagnostics.html#cb187-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">window</span>(stks, <span class="at">start=</span><span class="dv">2005</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:retro"></span>
@@ -610,23 +611,23 @@ Figure 8.12: Retrospective analysis of the plaice in ICES area IV stock. Fixed F
 <p>Note fmodel changes:</p>
 <pre><code>## $fit1
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5a92fb091978&gt;
+## &lt;environment: 0x573db1847a28&gt;
 ## 
 ## $fit2
 ## ~te(age, year, k = c(6, 29), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5a92e7c9d2a8&gt;
+## &lt;environment: 0x573db1622e38&gt;
 ## 
 ## $fit3
 ## ~te(age, year, k = c(6, 29), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5a931262a940&gt;
+## &lt;environment: 0x573db14b0d00&gt;
 ## 
 ## $fit4
 ## ~te(age, year, k = c(6, 28), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5a931516d738&gt;
+## &lt;environment: 0x573db138cab0&gt;
 ## 
 ## $fit5
 ## ~te(age, year, k = c(6, 28), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5a9322e0ae10&gt;</code></pre>
+## &lt;environment: 0x573db11f2918&gt;</code></pre>
 <p>And the retrospective plot</p>
 <div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="diagnostics.html#cb190-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">window</span>(stks, <span class="at">start=</span><span class="dv">2005</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:retro2"></span>
@@ -639,14 +640,14 @@ Figure 8.13: Retrospective analysis of the plaice in ICES area IV stock. Updatin
 <div id="hindcast" class="section level2 hasAnchor" number="8.6">
 <h2><span class="header-section-number">8.6</span> Hindcast<a href="diagnostics.html#hindcast" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A hindcast is a method used in modeling and simulation where historical data is used to test and validate predictive models. In a hindcast, known outcomes from the past are compared with the model’s predictions to assess the model’s accuracy and performance. The primary goal of hindcasting is to improve the reliability and accuracy of predictive models by identifying discrepancies between predicted and actual outcomes and adjusting model parameters accordingly <span class="citation">(<a href="#ref-hc2002">Mason and Mimmack 2002</a>)</span>. The term retroactive forecasting is used by <span class="citation">Mason and Mimmack (<a href="#ref-hc2002">2002</a>)</span> to denote the form of hindcasting in which forecasts are made for past years (e.g. 2006–2010) using data prior to those years (perhaps 1970–2005). The terminology ex-post is used in business forecasting, referring to predictions for historical periods for which verification data are already available at the time of forecast.</p>
-<p>For this exercise we’ll use the package <code>a4adiags</code> hindcast method, which follows the suggestions by <span class="citation">Carvalho et al. (<a href="#ref-cookbook2021">2021</a>)</span> and <span class="citation">Laurence T. Kell, Kimoto, and Kitakado (<a href="#ref-KELL2016119">2016</a>)</span>. The hindacast is carried out by sequentially removing the most recent year in the data, similar to a retrospective analysis, refit the stock assessment model and project one year ahead. The Mean Absolute Scale Error (MASE) <span class="citation">(<a href="#ref-cookbook2021">Carvalho et al. 2021</a>)</span> is used to assess the predictive skill, a score higher than 1 indicates that the model forecasts have less skill than a random walk.</p>
+<p>For this exercise we’ll use the package <code>a4adiags</code> hindcast method, which follows the suggestions by <span class="citation">Carvalho et al. (<a href="#ref-cookbook2021">2021</a>)</span> and <span class="citation">Laurence T. Kell, Kimoto, and Kitakado (<a href="#ref-KELL2016119">2016</a>)</span>. The hindcast is carried out by sequentially removing the most recent year in the data, similar to a retrospective analysis, refit the stock assessment model and project one year ahead. The Mean Absolute Scale Error (MASE) <span class="citation">(<a href="#ref-cookbook2021">Carvalho et al. 2021</a>)</span> is used to assess the predictive skill, a score higher than 1 indicates that the model forecasts have less skill than a random walk.</p>
 <div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="diagnostics.html#cb191-1" tabindex="-1"></a><span class="fu">library</span>(a4adiags)</span>
 <span id="cb191-2"><a href="diagnostics.html#cb191-2" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>())</span>
 <span id="cb191-3"><a href="diagnostics.html#cb191-3" tabindex="-1"></a>nyears <span class="ot">&lt;-</span> <span class="dv">5</span></span>
 <span id="cb191-4"><a href="diagnostics.html#cb191-4" tabindex="-1"></a><span class="co"># set number of year for average biology and selectivity</span></span>
 <span id="cb191-5"><a href="diagnostics.html#cb191-5" tabindex="-1"></a>nsq <span class="ot">&lt;-</span> <span class="dv">3</span></span>
 <span id="cb191-6"><a href="diagnostics.html#cb191-6" tabindex="-1"></a>hc <span class="ot">&lt;-</span> <span class="fu">a4ahcxval</span>(ple4, ple4.indices, <span class="at">nyears =</span> nyears, <span class="at">nsq =</span> nsq)</span></code></pre></div>
-<p>Figure <a href="diagnostics.html#fig:hc">8.14</a> depicts the hincast results for the abudance indices used in the assessment. The MASE value is included in the strip above the plot. In this case one can see that 3 out of the 5 surveys are not better predictors than a random walk.</p>
+<p>Figure <a href="diagnostics.html#fig:hc">8.14</a> depicts the hincast results for the abundance indices used in the assessment. The MASE value is included in the strip above the plot. In this case one can see that 3 out of the 5 surveys are not better predictors than a random walk.</p>
 <div class="figure"><span style="display:block;" id="fig:hc"></span>
 <img src="_main_files/figure-html/hc-1.png" alt="Survey predictions of year ahead indices in hindcast process. The MASE is presented in the strip about the index and is related to the predictive skill of the index." width="672" />
 <p class="caption">
@@ -712,42 +713,42 @@ Wood, S. N. 2017. <em>Generalized Additive Models: An Introduction with r</em>. 
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-  "sharing": {
-    "github": false,
-    "facebook": true,
-    "twitter": true,
-    "linkedin": false,
-    "weibo": false,
-    "instapaper": false,
-    "vk": false,
-    "whatsapp": false,
-    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-  },
-  "fontsettings": {
-    "theme": "white",
-    "family": "sans",
-    "size": 2
-  },
-  "edit": {
-    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/08-diagnostics.Rmd",
-    "text": "Edit"
-  },
-  "history": {
-    "link": null,
-    "text": null
-  },
-  "view": {
-    "link": null,
-    "text": null
-  },
-  "download": ["_main.pdf", "_main.epub"],
-  "search": {
-    "engine": "fuse",
-    "options": null
-  },
-  "toc": {
-    "collapse": "subsection"
-  }
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/08-diagnostics.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
 });
 });
 </script>

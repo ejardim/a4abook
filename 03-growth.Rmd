@@ -17,7 +17,7 @@ data(rfLen)
 
 The `a4a` stock assessment framework is based on age dynamics. Therefore, length information must be processed before running the stock assessment model. The methods in this section provide the analyst flexibility to use a large range of information sources, _e.g._ literature or online databases, to collect information about the species growth model and uncertainty about the model parameters.
 
-The framework allows the analyst to parametrize individual growth, set the assumptions about it and condition the stock assessment model on those decisions. It incentivizes the uptake of estimation uncertainty, as well as exploring several parameterizations and/or growth models to deal with structural uncertainty, finally propagating uncertainty into stock assessment.
+The framework allows the analyst to parametrize individual growth, set the assumptions about it and condition the stock assessment model on those decisions. It incentivize the uptake of estimation uncertainty, as well as exploring several parametrizations and/or growth models to deal with structural uncertainty, finally propagating uncertainty into stock assessment.
 
 Within the `a4a` framework this is handled using the `a4aGr` class and its methods. This class stores information about the growth model and it's parameters, including parameters' uncertainty and the distributions governing it. The class's main method is `l2a` that converts length to ages based on a length based stock object and using the model defined in the `a4aGr` instance.
 
@@ -155,7 +155,7 @@ bwplot(value~factor(Var1), data=melt(predict(vbNorm, t=0:50+0.5)), par.settings=
 
 One alternative to using a normal distribution is to use a [triangle distribution](http://en.wikipedia.org/wiki/Triangle\_distribution). We use the package `triangle` [@R-triangle]  where this distribution is parametrized using the minimum, maximum and median values. This can be very attractive if the analyst needs to scrape information from the web or literature, and use a meta-analysis to build the parameters' distribution. The triangle distribution has the advantage of setting hard tail limits, avoiding to generate extreme values. Here we show an example of setting a triangle distribution with values taken from Fishbase [@fishbase].
 
-The following shows a method to extract data from fishbase. However, due to potential changes in the way one gets data from fishbase from whithin R, we've downloaded the data beforehand and load it for this example.
+The following shows a method to extract data from fishbase. However, due to potential changes in the way one gets data from fishbase from within R, we've downloaded the data beforehand and load it for this example.
 
 ```{r, fbscrap, eval=FALSE}
 # The web address for the growth parameters for redfish (Sebastes norvegicus)
@@ -215,7 +215,7 @@ Remember that the above examples use a variance-covariance matrix that we essent
 
 ## Adding uncertainty to growth parameters with statistical copulas
 
-A more general approach to adding parameter uncertainty is to make use of statistical copulas [@sklar1959]. @copulahistory describes statistical “copula” as a multivariate cumulative distribution function with uniform margins on the unit interval. @sklar1959 highlighted the fact that any multivariate distribution can be expressed as a function of its margins and a copula. The idea is very actractive, one can simulate any multivariate distribution by setting a multivariate function in the unit interval which describes how the margins relate to each other, and scale up the univariate uniform margin with any continuos univariate distribution.
+A more general approach to adding parameter uncertainty is to make use of statistical copulas [@sklar1959]. @copulahistory describes statistical “copula” as a multivariate cumulative distribution function with uniform margins on the unit interval. @sklar1959 highlighted the fact that any multivariate distribution can be expressed as a function of its margins and a copula. The idea is very attractive, one can simulate any multivariate distribution by setting a multivariate function in the unit interval which describes how the margins relate to each other, and scale up the univariate uniform margin with any continuos univariate distribution.
 
 In our case this is possible with the `mvrcop()` function, borrowed from the package `copula` [@R-copula]. The example below keeps the same parameters and changes only the copula type and family but a lot more can be done. Check the package `copula` for more information.
 

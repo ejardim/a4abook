@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>9 Uncertainty  | Fish stock assessment with R</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="9 Uncertainty  | Fish stock assessment with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-05-06" />
+<meta name="date" content="2025-05-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -291,6 +291,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="11.3" data-path="reference-points.html"><a href="reference-points.html#economics-reference-points"><i class="fa fa-check"></i><b>11.3</b> Economics reference points</a></li>
 <li class="chapter" data-level="11.4" data-path="reference-points.html"><a href="reference-points.html#computing-user-specific-reference-points"><i class="fa fa-check"></i><b>11.4</b> Computing user specific reference points</a></li>
+<li class="chapter" data-level="11.5" data-path="reference-points.html"><a href="reference-points.html#assessing-the-status-of-the-stock"><i class="fa fa-check"></i><b>11.5</b> Assessing the status of the stock</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="projections-and-harvest-control-rules.html"><a href="projections-and-harvest-control-rules.html"><i class="fa fa-check"></i><b>12</b> Projections and harvest control rules</a>
 <ul>
@@ -387,7 +388,7 @@ Figure 9.1: Simulations from the model prediction of initial age structure
 </div>
 <div id="simulate" class="section level3 hasAnchor" number="9.1.2">
 <h3><span class="header-section-number">9.1.2</span> <code>simulate()</code><a href="uncertainty.html#simulate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>As the name implies <code>simulate</code> is used to generate simulations of the fit. It operates over objects of class <code>a4aFitSA</code> using the method <code>mvrnorm()</code> provided by the R package MASS <span class="citation">(<a href="#ref-mass">Venables and Ripley 2002</a>)</span>. The method generates random draws from a multivariate normal distribution with mean given by the coefficients of the model, and variance matrix given by the estimated covariance matrix of the coefficients (in practice this is a submatrix of the inverse of the hessian matrix). The method approximates the joint distribution of the model parameters as a multivariate normal in the log space, which is inline with the assumption made by <code>ADMB</code> when fitting the model. This approach is called ‘parametric bootstrap’, and it’s a common method for generating uncertainty in the parameters of a model.</p>
+<p>As the name implies <code>simulate</code> is used to generate simulations of the fit. It operates over objects of class <code>a4aFitSA</code> using the method <code>mvrnorm()</code> provided by the R package MASS <span class="citation">(<a href="#ref-mass">Venables and Ripley 2002</a>)</span>. The method generates random draws from a multivariate normal distribution with mean given by the coefficients of the model, and variance matrix given by the estimated covariance matrix of the coefficients. The method approximates the joint distribution of the model parameters as a multivariate normal in the log space, which is inline with the assumption made by <code>ADMB</code> when fitting the model. This approach is called ‘parametric bootstrap’, and it’s a common method for generating uncertainty in the parameters of a model.</p>
 <p><code>simulate()</code> operates at the submodel level, <em>e.g.</em> <code>simulate(fit0@pars@qmodel, nsim=250)</code>, when called over a <code>a4aFitSA</code> object the method simply runs <code>simulate()</code> over each of the submodels. In this case it returns an object of the same class with model parameters replaced by <code>nsim</code> simulated parameters and updated slots <code>stock.n</code>, <code>catch.n</code> and <code>harvest</code>. Figure <a href="uncertainty.html#fig:predsimhist">9.2</a> depicts the distribution of a parameter, the observation error of the first survey index.</p>
 <div class="figure"><span style="display:block;" id="fig:predsimhist"></span>
 <img src="_main_files/figure-html/predsimhist-1.png" alt="Histogram of 250 draws from the approximate distribution of the estimate of survey observation error." width="672" />
@@ -415,7 +416,7 @@ Figure 9.3: Stock summary of the simulated and fitted data
 </div>
 <div id="prediction-error" class="section level2 hasAnchor" number="9.2">
 <h2><span class="header-section-number">9.2</span> Prediction error<a href="uncertainty.html#prediction-error" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To address this topic we’ll borrow from state-space modelling to define prediction error as the combination of observation error and estimation error (REF). Although <code>sca</code> is not a state-space model, some of the inherent concepts of statistical catch at age models are smilar to state-space models. <code>sca</code> estimates parameters to model underlying unobserved processes, <em>e.g.</em> recruitment, catchability or fishing mortaliy, based on indirect observations of those processes, number of fish caught by the fleet and changes in abundance at sea.</p>
+<p>To address this topic we’ll borrow from state-space modelling to define prediction error as the combination of observation error and estimation error (REF). Although <code>sca</code> is not a state-space model, some of the inherent concepts of statistical catch at age models are similar to state-space models. <code>sca</code> estimates parameters to model underlying unobserved processes, <em>e.g.</em> recruitment, catchability or fishing mortality, based on indirect observations of those processes, number of fish caught by the fleet and changes in abundance at sea.</p>
 <p>Another similar approach can be found in statistical learning model. <span class="citation">T. Hastie, Tibshirani, and Friedman (<a href="#ref-hastie2009">2009</a>)</span> decomposes prediction error into irreducible error, square bias and variance. Where the first term refers to variance that cannot be avoided, in our case estimated by residual variance. The second term, bias is ignored as the true value isn’t known and the fits are assumed to be unbiased. The last term is the variance of the prediction due to the training dataset samples, which we’re approximating with parameter estimation variance.</p>
 <!--EJ NOTE: I think this paper supports the same idea [@harville85], although the maths are a bit (too...) much for me.-->
 <!--In econometrics @greene explains the need to sum random noise and estimation error to build prediction intervals.
@@ -465,7 +466,7 @@ Figure 9.4: Prediction (pu), residual (ru) and estimation (eu) uncertainty
 <li>Simulate from each fit</li>
 <li>Aggregate results in single <code>FLStock</code> object.</li>
 </ol>
-<p>In this section we give an example of how uncertainty in natural mortality, set up using the <code>m()</code> method and the class <code>a4aM</code> (see chapter XX), is propagated through the stock assessment. We’ll use the stock of Red Mullet in the Mediterranean GSA 1 (see Introduction for details) and 3 methods to add estimation uncertainty (step 5 above):</p>
+<p>In this section we give an example of how uncertainty in natural mortality, set up using the <code>m()</code> method and the class <code>a4aM</code>, is propagated through the stock assessment. We’ll use the stock of Red Mullet in the Mediterranean GSA 1 (see Introduction for details) and 3 methods to add estimation uncertainty (step 5 above):</p>
 <ol style="list-style-type: decimal">
 <li>Take one draw of the fit</li>
 <li>Take n draws of the fit and summarize with the median</li>
@@ -556,42 +557,42 @@ Venables, W. N., and B. D. Ripley. 2002. <em>Modern Applied Statistics with s</e
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-  "sharing": {
-    "github": false,
-    "facebook": true,
-    "twitter": true,
-    "linkedin": false,
-    "weibo": false,
-    "instapaper": false,
-    "vk": false,
-    "whatsapp": false,
-    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-  },
-  "fontsettings": {
-    "theme": "white",
-    "family": "sans",
-    "size": 2
-  },
-  "edit": {
-    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/09-uncertainty.Rmd",
-    "text": "Edit"
-  },
-  "history": {
-    "link": null,
-    "text": null
-  },
-  "view": {
-    "link": null,
-    "text": null
-  },
-  "download": ["_main.pdf", "_main.epub"],
-  "search": {
-    "engine": "fuse",
-    "options": null
-  },
-  "toc": {
-    "collapse": "subsection"
-  }
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/09-uncertainty.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
 });
 });
 </script>
