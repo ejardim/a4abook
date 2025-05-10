@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>8 Diagnostics  | Fish stock assessment with R</title>
+  <title>8 Diagnostics  | Fish stock assessment with R - DRAFT</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
   <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="8 Diagnostics  | Fish stock assessment with R" />
+  <meta property="og:title" content="8 Diagnostics  | Fish stock assessment with R - DRAFT" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="How to do stock assessment in R using the a4a framework" />
   <meta name="github-repo" content="ejardim/a4abook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="8 Diagnostics  | Fish stock assessment with R" />
+  <meta name="twitter:title" content="8 Diagnostics  | Fish stock assessment with R - DRAFT" />
   
   <meta name="twitter:description" content="How to do stock assessment in R using the a4a framework" />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-05-09" />
+<meta name="date" content="2025-05-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -326,7 +326,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Fish stock assessment with R</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Fish stock assessment with R - DRAFT</a>
           </h1>
         </div>
 
@@ -573,23 +573,23 @@ Green shading indicates no evidence $(p <  0.05)$ and red shading evidence $(p  
 <p>Note fmodel doesn’t change:</p>
 <pre><code>## $fit1
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5a074b5f19a8&gt;
+## &lt;environment: 0x651b65aeee40&gt;
 ## 
 ## $fit2
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5a074b5f19a8&gt;
+## &lt;environment: 0x651b65aeee40&gt;
 ## 
 ## $fit3
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5a074b5f19a8&gt;
+## &lt;environment: 0x651b65aeee40&gt;
 ## 
 ## $fit4
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5a074b5f19a8&gt;
+## &lt;environment: 0x651b65aeee40&gt;
 ## 
 ## $fit5
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5a074b5f19a8&gt;</code></pre>
+## &lt;environment: 0x651b65aeee40&gt;</code></pre>
 <p>The retrospective plot shown below presents the current fit with uncertainty and each retrospective fit on top. If the retrospective fit is not within the confidence interval of the current fit the analyst can argue that the estimate is different and as such reflecting a “poor” fit.</p>
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="diagnostics.html#cb187-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">window</span>(stks, <span class="at">start=</span><span class="dv">2005</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:retro"></span>
@@ -611,23 +611,23 @@ Figure 8.12: Retrospective analysis of the plaice in ICES area IV stock. Fixed F
 <p>Note fmodel changes:</p>
 <pre><code>## $fit1
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5a074dfba7f8&gt;
+## &lt;environment: 0x651b703cb9a0&gt;
 ## 
 ## $fit2
 ## ~te(age, year, k = c(6, 29), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5a074dccfcb0&gt;
+## &lt;environment: 0x651b7026f8f0&gt;
 ## 
 ## $fit3
 ## ~te(age, year, k = c(6, 29), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5a074dba0d98&gt;
+## &lt;environment: 0x651b701263a8&gt;
 ## 
 ## $fit4
 ## ~te(age, year, k = c(6, 28), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5a074dac8340&gt;
+## &lt;environment: 0x651b6ffb3600&gt;
 ## 
 ## $fit5
 ## ~te(age, year, k = c(6, 28), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5a074d8a2678&gt;</code></pre>
+## &lt;environment: 0x651b6fca85f8&gt;</code></pre>
 <p>And the retrospective plot</p>
 <div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="diagnostics.html#cb190-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">window</span>(stks, <span class="at">start=</span><span class="dv">2005</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:retro2"></span>

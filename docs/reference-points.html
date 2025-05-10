@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>11 Reference Points | Fish stock assessment with R</title>
+  <title>11 Reference Points | Fish stock assessment with R - DRAFT</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
   <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="11 Reference Points | Fish stock assessment with R" />
+  <meta property="og:title" content="11 Reference Points | Fish stock assessment with R - DRAFT" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="How to do stock assessment in R using the a4a framework" />
   <meta name="github-repo" content="ejardim/a4abook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11 Reference Points | Fish stock assessment with R" />
+  <meta name="twitter:title" content="11 Reference Points | Fish stock assessment with R - DRAFT" />
   
   <meta name="twitter:description" content="How to do stock assessment in R using the a4a framework" />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-05-09" />
+<meta name="date" content="2025-05-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -326,7 +326,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Fish stock assessment with R</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Fish stock assessment with R - DRAFT</a>
           </h1>
         </div>
 
@@ -482,7 +482,7 @@ div.csl-indent {
 <div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="reference-points.html#cb244-1" tabindex="-1"></a>brp0 <span class="ot">&lt;-</span> <span class="fu">FLBRP</span>(stk0, <span class="at">sr=</span>sr0)</span>
 <span id="cb244-2"><a href="reference-points.html#cb244-2" tabindex="-1"></a><span class="fu">model</span>(brp0)</span></code></pre></div>
 <pre><code>## rec ~ a * ssb/(b + ssb)
-## &lt;environment: 0x5a07527794c8&gt;</code></pre>
+## &lt;environment: 0x651c2ca55088&gt;</code></pre>
 <div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="reference-points.html#cb246-1" tabindex="-1"></a><span class="fu">params</span>(brp0)</span></code></pre></div>
 <pre><code>## An object of class &quot;FLPar&quot;
 ## params
@@ -671,7 +671,7 @@ Another simple way, although it onl;y works for $SPR$ based reference points, is
 <p>On one hand, these objectives reflect the level of risk policy makers are willing to accept, expressed as biomass levels intended to remain at sea, typically linked to the replenishing capacity of the stock and risk of collapse. For example, larger biomasses generally results in lower probability of collapse, increased recruitment and stock replenishing.</p>
 <p>On the other hand, objectives consider food production, represented by the fishing mortality levels (<span class="math inline">\(F\)</span>). At similar <span class="math inline">\(SSB\)</span> levels, higher fishing mortality will result in larger catches but will also cause greater reductions in <span class="math inline">\(SSB\)</span> after the fishing season.</p>
 <p>Policy makers, with the support of scientific advisors, have to find a balance between these two objectives, food production and stock collapse, to guarantee the long term sustainability of the stocks. As such computing the status of the stock in relation to <span class="math inline">\(SSB\)</span> and <span class="math inline">\(F\)</span> becomes one of the most important pieces of information scientists can provide.</p>
-<p>For this exercise we’ll use the kobe plot (REF), which depicts estimates of <span class="math inline">\(SSB\)</span> over <span class="math inline">\(SSB_{target}\)</span> and <span class="math inline">\(F\)</span> over <span class="math inline">\(F_{target}\)</span> in a plot with <span class="math inline">\(SSB\)</span> in the y axis and <span class="math inline">\(F\)</span> in the x axis. The inspection of the plot allows a quick overview of the exploitation history of the stock and the current status in relation to the objectives set.</p>
+<p>For this exercise we’ll use the kobe plot <span class="citation">(<a href="#ref-kell2016quantification">Laurence T. Kell and Sharma 2016</a>)</span>, which depicts estimates of <span class="math inline">\(SSB\)</span> over <span class="math inline">\(SSB_{target}\)</span> and <span class="math inline">\(F\)</span> over <span class="math inline">\(F_{target}\)</span> in a plot with <span class="math inline">\(SSB\)</span> in the y axis and <span class="math inline">\(F\)</span> in the x axis. The inspection of the plot allows a quick overview of the exploitation history of the stock and the current status in relation to the objectives set.</p>
 <div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="reference-points.html#cb262-1" tabindex="-1"></a><span class="co"># code to compute kobe plot</span></span></code></pre></div>
 
 </div>
@@ -683,6 +683,9 @@ Hilborn, Ray. 2010. <span>“Pretty Good Yield and Exploited Fishes.”</span> <
 </div>
 <div id="ref-flbrp" class="csl-entry">
 Kell, Laurence T., and Finlay Scott. 2025. <em>FLBRP: Reference Points for Fisheries Management</em>. <a href="http://flr-project.org/FLBRP">http://flr-project.org/FLBRP</a>.
+</div>
+<div id="ref-kell2016quantification" class="csl-entry">
+Laurence T. Kell, Campbell R. Davies, Polina Levontin, and Rishi Sharma. 2016. <span>“The Quantification and Presentation of Risk.”</span> In <em>Management Science in Fisheries - an Introduction to Simulation-Basedmethods</em>, edited by Charles T. T. Edwards and Dorothy J. Dankel, 368–94. Routledge.
 </div>
 <div id="ref-Rindorf_etal_2016" class="csl-entry">
 Rindorf, Anna, Catherine Mary Dichmont, Phillip S. Levin, Pamela Mace, Sean Pascoe, Raul Prellezo, André E. Punt, et al. 2016. <span>“Food for Thought: Pretty Good Multispecies Yield.”</span> <em>ICES Journal of Marine Science</em> 74 (2): 475–86. <a href="https://doi.org/10.1093/icesjms/fsw071">https://doi.org/10.1093/icesjms/fsw071</a>.

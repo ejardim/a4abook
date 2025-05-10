@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Modelling Natural Mortality | Fish stock assessment with R</title>
+  <title>4 Modelling Natural Mortality | Fish stock assessment with R - DRAFT</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
   <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Modelling Natural Mortality | Fish stock assessment with R" />
+  <meta property="og:title" content="4 Modelling Natural Mortality | Fish stock assessment with R - DRAFT" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="How to do stock assessment in R using the a4a framework" />
   <meta name="github-repo" content="ejardim/a4abook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Modelling Natural Mortality | Fish stock assessment with R" />
+  <meta name="twitter:title" content="4 Modelling Natural Mortality | Fish stock assessment with R - DRAFT" />
   
   <meta name="twitter:description" content="How to do stock assessment in R using the a4a framework" />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
-<meta name="date" content="2025-05-09" />
+<meta name="date" content="2025-05-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -326,7 +326,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Fish stock assessment with R</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Fish stock assessment with R - DRAFT</a>
           </h1>
         </div>
 
@@ -436,8 +436,8 @@ div.csl-indent {
 ## iters:  100 
 ## 
 ## params
-##               k               t 
-##  0.40803(0.054) 10.02176(0.912) 
+##                k                t 
+##  0.38331(0.0385) 10.18009(0.9986) 
 ## units:  NA 
 ## 
 ## Slot &quot;vcov&quot;:
@@ -454,7 +454,7 @@ div.csl-indent {
 ## 
 ## params
 ##              b 
-## 0.47839(0.159) 
+## 0.47759(0.145) 
 ## units:  NA</code></pre>
 <p>Note the shape model has no parameters and no uncertainty:</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="modelling-natural-mortality.html#cb59-1" tabindex="-1"></a><span class="fu">params</span>(<span class="fu">shape</span>(m4))</span></code></pre></div>
@@ -501,8 +501,8 @@ div.csl-indent {
 ## iters:  1000 
 ## 
 ## params
-##            linf               k 
-## 60.0494(2.1692)  0.4011(0.0689) 
+##             linf                k 
+## 59.97078(2.1669)  0.40415(0.0709) 
 ## units:  NA 
 ## 
 ## Slot &quot;vcov&quot;:
@@ -720,14 +720,14 @@ Figure 4.2: Marginal distributions of the parameters for Gislason’s second nat
 ## 
 ##    year
 ## age 2000              2001              2002              2003             
-##   0 1.98872(0.208315) 2.96526(0.466090) 1.98872(0.208315) 2.96526(0.466090)
-##   1 0.73161(0.076635) 1.09086(0.171465) 0.73161(0.076635) 1.09086(0.171465)
-##   2 0.26914(0.028192) 0.40130(0.063078) 0.26914(0.028192) 0.40130(0.063078)
-##   3 0.09901(0.010371) 0.14763(0.023205) 0.09901(0.010371) 0.14763(0.023205)
-##   4 0.03642(0.003815) 0.05431(0.008537) 0.03642(0.003815) 0.05431(0.008537)
-##   5 0.01340(0.001404) 0.01998(0.003140) 0.01340(0.001404) 0.01998(0.003140)
-##   6 0.00493(0.000516) 0.00735(0.001155) 0.00493(0.000516) 0.00735(0.001155)
-##   7 0.00181(0.000190) 0.00270(0.000425) 0.00181(0.000190) 0.00270(0.000425)
+##   0 2.02652(0.192585) 3.06186(0.428638) 2.02652(0.192585) 3.06186(0.428638)
+##   1 0.74551(0.070848) 1.12639(0.157687) 0.74551(0.070848) 1.12639(0.157687)
+##   2 0.27426(0.026064) 0.41438(0.058010) 0.27426(0.026064) 0.41438(0.058010)
+##   3 0.10089(0.009588) 0.15244(0.021341) 0.10089(0.009588) 0.15244(0.021341)
+##   4 0.03712(0.003527) 0.05608(0.007851) 0.03712(0.003527) 0.05608(0.007851)
+##   5 0.01365(0.001298) 0.02063(0.002888) 0.01365(0.001298) 0.02063(0.002888)
+##   6 0.00502(0.000477) 0.00759(0.001062) 0.00502(0.000477) 0.00759(0.001062)
+##   7 0.00185(0.000176) 0.00279(0.000391) 0.00185(0.000176) 0.00279(0.000391)
 ## 
 ## units:  NA</code></pre>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="modelling-natural-mortality.html#cb101-1" tabindex="-1"></a><span class="fu">dim</span>(flq)</span></code></pre></div>
