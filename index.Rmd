@@ -1,7 +1,15 @@
 --- 
 title: "Fish stock assessment with R - DRAFT"
 subtitle: "The a4a Initiative"
-author: "Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira"
+author:
+  - name: "Ernesto Jardim"
+    affiliation: "Instituto Portugues do Mar e Atmosfera (IPMA), Lisbon"
+  - name: "Collin Millar"
+    affiliation: "International Council for the Exploration of the Sea (ICES), Copenhaguen"
+  - name: "Danai Mantopoulou Palouka"
+    affiliation: "European Commission Joint Research Centre (JRC), Brussels"
+  - name: "Iago Mosqueira"
+    affiliation: "Wageningen Marine Research (WMR), Ijmauden"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
@@ -92,48 +100,6 @@ getMethod('plot', signature = list("FLStock","missing"))
 ```
 
 More information can be found in `R`'s documentation (https://www.r-project.org/).
-
-## Notation
-
-Along this chapter the notation presented in Table \@ref(tab:mathsnotation) will be used. Mathematical descriptions will be kept as simple as possible for readability.
-
-|Type|Symbol|Description| 
-|:---|-----:|:----------|
-|variables| | |
-| |$C$ | catches|
-| |$F$ | fishing mortality |
-| |$M$ | natural mortality |
-| |$R$ | recruitment |
-| |$Q$ | vessel or fleet catchability |
-| |$w$ | weights |
-| |$l$ | likelihood |
-| |$I$ | abundance index |
-| |$S$ | spawning stock biomass |
-| |$CV$ | coefficient of variation |
-| |$D$ | residuals or deviances |
-| |$N$ | population numbers |
-| |$\beta, \gamma$ | parameters |
-| |$a$ | stock-recruitment parameter |
-| |$b$ | stock-recruitment parameter |
-| |$\sigma^2$ | variance of catch |
-| |$\tau^2$ | variance of index |
-| |$\phi^2$ | variance of predicted recruitment |
-| |$\upsilon^2$ | variance of residuals |
-|subscripts | | |
-| |$a$ | age |
-| |$y$ | year |
-| |$C$ | catch |
-| |$I$ | abundance index |
-| |$N$ | normal distribution |
-| |$s$ | survey |
-| |$SR$ | stock recruitment relationship |
-|superscripts and accents | | |
-| |$\hat{}$ | observation |
-| |$\tilde{}$ | prediction |
-| |$c$ | catches |
-| |$s$ | abundance index |
-
-Table: (\#tab:mathsnotation) Mathematical notation
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages

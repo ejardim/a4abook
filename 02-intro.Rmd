@@ -68,14 +68,13 @@ On the other hand, since natural mortality and individual growth are very import
 
 ## Stock assessment as a linear model
 
-The submodels formulation uses linear models, which opens the possibility of using the linear modelling tools available in `R`. For example, `mgcv` [@R-mgcv] gam formulas or factorial design formulas using `lm()`.
+Stock assessment models often involve complex relationships between biological, environmental, and fishery-dependent variables. By framing these relationships within a linear modeling structure, researchers can leverage a broad range of robust statistical techniques. In particular, the submodel formulation using linear models enables the direct application of powerful tools in R, such as `mgcv` [@R-mgcv] for generalized additive models (GAMs) or traditional factorial designs using `lm()`. These tools not only enhance modeling flexibility but also allow scientists to easily test hypotheses, explore interactions, and fit smooth trends to noisy data, all crucial aspects when assessing dynamic biological systems like fish populations.
 
-The 'language' of linear models has been developing within the statistical community for many years, and constitutes an elegant way of defining models without going through the complexity of mathematical representations. This approach makes it also easier to communicate among scientists:
+The conceptual 'language' of linear models has evolved significantly within the statistical community, offering a structured and elegant way to specify complex relationships without delving into cumbersome mathematical notation. This symbolic approach simplifies model specification, fosters reproducibility, and promotes accessibility, particularly among interdisciplinary teams where not all members may have advanced statistical training. Researchers can define model structures using intuitive formula syntax, where variables and their interactions are easily represented. Thus, linear modeling acts as a bridge between statistical theory and practical application, fostering a deeper shared understanding among scientists and stakeholders.
 
-- [@Nelder_1965], notation for randomized block design
-- [@Wilkinson_etal_1973], symbolic description for factorial designs
-- [@hastie1990generalized], introduced notation for smoothers
-- [@chambers1991statistical], further developed for use in S
+Historically, several key contributions have shaped the symbolic expression of linear models. @Nelder_1965 first introduced concise notation for randomized block designs, streamlining the analysis of experimental layouts common in agricultural and ecological studies. Building upon this, @Wilkinson_etal_1973 developed a comprehensive symbolic system for representing factorial designs, which allowed statisticians to describe main effects and interactions succinctly. Later, @hastie1990generalized extended this framework by incorporating smoothers, flexible functions that model nonlinear relationships, using familiar linear model notation. This lineage of innovation was further consolidated and expanded through the work of @chambers1991statistical, particularly in the S programming environment, laying the groundwork for many statistical packages used today.
+
+In the context of fisheries science, adopting this linear modeling philosophy offers numerous advantages. It democratizes model development by making it easier for researchers with varying statistical backgrounds to construct, modify, and interpret models. Moreover, it aligns stock assessment practices with contemporary developments in statistical computing, facilitating integration with advanced methods like machine learning and Bayesian modeling. As the complexity of ecological systems becomes increasingly recognized, the flexibility and communicability of linear model-based frameworks will remain indispensable tools for advancing stock assessment methodologies and ensuring sustainable management of marine resources.
 
 ## Data used in the book
 
@@ -94,3 +93,45 @@ Red mullets is a key commercial species in GSA 1.They can be found in sandy and 
 ### Redfish simulated length data
 
 This is a length based dataset simulated with GADGET [@gadget].
+
+## Notation
+
+Along this book the notation presented in Table \@ref(tab:mathsnotation) will be used. Mathematical descriptions will be kept as simple as possible for readability.
+
+|Type|Symbol|Description|
+|:---|-----:|:----------|
+|variables| | |
+| |$C$ | catches|
+| |$F$ | fishing mortality |
+| |$M$ | natural mortality |
+| |$R$ | recruitment |
+| |$Q$ | vessel or fleet catchability |
+| |$w$ | weights |
+| |$l$ | likelihood |
+| |$I$ | abundance index |
+| |$S$ | spawning stock biomass |
+| |$CV$ | coefficient of variation |
+| |$D$ | residuals or deviances |
+| |$N$ | population numbers |
+| |$\beta, \gamma$ | parameters |
+| |$a$ | stock-recruitment parameter |
+| |$b$ | stock-recruitment parameter |
+| |$\sigma^2$ | variance of catch |
+| |$\tau^2$ | variance of index |
+| |$\phi^2$ | variance of predicted recruitment |
+| |$\upsilon^2$ | variance of residuals |
+|subscripts | | |
+| |$a$ | age |
+| |$y$ | year |
+| |$C$ | catch |
+| |$I$ | abundance index |
+| |$N$ | normal distribution |
+| |$s$ | survey |
+| |$SR$ | stock recruitment relationship |
+|superscripts and accents | | |
+| |$\hat{}$ | observation |
+| |$\tilde{}$ | prediction |
+| |$c$ | catches |
+| |$s$ | abundance index |
+
+Table: (\#tab:mathsnotation) Mathematical notation

@@ -20,7 +20,6 @@
   <meta name="twitter:description" content="How to do stock assessment in R using the a4a framework" />
   
 
-<meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
 <meta name="date" content="2025-05-10" />
@@ -167,9 +166,8 @@ div.csl-indent {
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#installing-and-loading-libraries"><i class="fa fa-check"></i><b>1.1</b> Installing and loading libraries</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#how-to-read-this-document"><i class="fa fa-check"></i><b>1.2</b> How to read this document</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#how-to-get-help"><i class="fa fa-check"></i><b>1.3</b> How to get help</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#notation"><i class="fa fa-check"></i><b>1.4</b> Notation</a></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.5</b> Acknowledgements</a></li>
-<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.6</b> License</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.4</b> Acknowledgements</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.5</b> License</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
 <ul>
@@ -184,6 +182,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.5.3" data-path="introduction.html"><a href="introduction.html#red-mullet-in-fao-27-gsa-1"><i class="fa fa-check"></i><b>2.5.3</b> Red mullet in FAO 27, GSA 1</a></li>
 <li class="chapter" data-level="2.5.4" data-path="introduction.html"><a href="introduction.html#redfish-simulated-length-data"><i class="fa fa-check"></i><b>2.5.4</b> Redfish simulated length data</a></li>
 </ul></li>
+<li class="chapter" data-level="2.6" data-path="introduction.html"><a href="introduction.html#notation"><i class="fa fa-check"></i><b>2.6</b> Notation</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="growth.html"><a href="growth.html"><i class="fa fa-check"></i><b>3</b> Modelling Individual Growth and Using Stochastic Slicing to Convert Length-based Data Into Age-based Data</a>
 <ul>
@@ -359,7 +358,7 @@ Figure 7.1: Stock summary
 ## 
 ## Time used:
 ##  Pre-processing     Running a4a Post-processing           Total 
-##        0.874023       10.367924        0.125982       11.367929 
+##       0.7937174       9.5277896       0.1168702      10.4383771 
 ## 
 ## Submodels:
 ##   fmodel: ~s(age, k = 8) + s(year, k = 30) + te(age, year, k = c(5, 15))
@@ -413,7 +412,7 @@ Figure 7.2: Stock summary - close to official assessment
 ## 
 ## Time used:
 ##  Pre-processing     Running a4a Post-processing           Total 
-##      0.81038284      3.84847856      0.08495855      4.74381995 
+##      0.81398654      3.55376053      0.08688021      4.45462728 
 ## 
 ## Submodels:
 ##   fmodel: ~s(age, k = 6) + s(year, k = 10) + te(age, year, k = c(3, 8))

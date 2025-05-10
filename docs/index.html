@@ -20,7 +20,6 @@
   <meta name="twitter:description" content="How to do stock assessment in R using the a4a framework" />
   
 
-<meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
 <meta name="date" content="2025-05-10" />
@@ -167,9 +166,8 @@ div.csl-indent {
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#installing-and-loading-libraries"><i class="fa fa-check"></i><b>1.1</b> Installing and loading libraries</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#how-to-read-this-document"><i class="fa fa-check"></i><b>1.2</b> How to read this document</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#how-to-get-help"><i class="fa fa-check"></i><b>1.3</b> How to get help</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#notation"><i class="fa fa-check"></i><b>1.4</b> Notation</a></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.5</b> Acknowledgements</a></li>
-<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.6</b> License</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.4</b> Acknowledgements</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.5</b> License</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
 <ul>
@@ -184,6 +182,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.5.3" data-path="introduction.html"><a href="introduction.html#red-mullet-in-fao-27-gsa-1"><i class="fa fa-check"></i><b>2.5.3</b> Red mullet in FAO 27, GSA 1</a></li>
 <li class="chapter" data-level="2.5.4" data-path="introduction.html"><a href="introduction.html#redfish-simulated-length-data"><i class="fa fa-check"></i><b>2.5.4</b> Redfish simulated length data</a></li>
 </ul></li>
+<li class="chapter" data-level="2.6" data-path="introduction.html"><a href="introduction.html#notation"><i class="fa fa-check"></i><b>2.6</b> Notation</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="growth.html"><a href="growth.html"><i class="fa fa-check"></i><b>3</b> Modelling Individual Growth and Using Stochastic Slicing to Convert Length-based Data Into Age-based Data</a>
 <ul>
@@ -337,7 +336,22 @@ div.csl-indent {
 <div id="header">
 <h1 class="title">Fish stock assessment with R - DRAFT</h1>
 <h2 class="subtitle"><em>The a4a Initiative</em></h2>
-<p class="author"><em>Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira</em></p>
+<p class="author multi-author"><em>Ernesto Jardim</em></p>
+<address class="author_afil">
+Instituto Portugues do Mar e Atmosfera (IPMA), Lisbon<br>
+</address>
+<p class="author multi-author"><em>Collin Millar</em></p>
+<address class="author_afil">
+International Council for the Exploration of the Sea (ICES), Copenhaguen<br>
+</address>
+<p class="author multi-author"><em>Danai Mantopoulou Palouka</em></p>
+<address class="author_afil">
+European Commission Joint Research Centre (JRC), Brussels<br>
+</address>
+<p class="author multi-author"><em>Iago Mosqueira</em></p>
+<address class="author_afil">
+Wageningen Marine Research (WMR), Ijmauden<br>
+</address>
 <p class="date"><em>2025-05-10</em></p>
 </div>
 <div id="before-starting" class="section level1 hasAnchor" number="1">
@@ -473,7 +487,7 @@ div.csl-indent {
 ##     }
 ##     .local(x, ...)
 ## }
-## &lt;bytecode: 0x651b72064ef0&gt;
+## &lt;bytecode: 0x57998bfbf160&gt;
 ## &lt;environment: namespace:ggplotFL&gt;
 ## 
 ## Signatures:
@@ -482,194 +496,13 @@ div.csl-indent {
 ## defined &quot;FLStock&quot; &quot;missing&quot;</code></pre>
 <p>More information can be found in <code>R</code>’s documentation (<a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a>).</p>
 </div>
-<div id="notation" class="section level2 hasAnchor" number="1.4">
-<h2><span class="header-section-number">1.4</span> Notation<a href="index.html#notation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Along this chapter the notation presented in Table <a href="index.html#tab:mathsnotation">1.1</a> will be used. Mathematical descriptions will be kept as simple as possible for readability.</p>
-<table>
-<caption><span id="tab:mathsnotation">Table 1.1: </span> Mathematical notation</caption>
-<thead>
-<tr class="header">
-<th align="left">Type</th>
-<th align="right">Symbol</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">variables</td>
-<td align="right"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(C\)</span></td>
-<td align="left">catches</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(F\)</span></td>
-<td align="left">fishing mortality</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(M\)</span></td>
-<td align="left">natural mortality</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(R\)</span></td>
-<td align="left">recruitment</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(Q\)</span></td>
-<td align="left">vessel or fleet catchability</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(w\)</span></td>
-<td align="left">weights</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(l\)</span></td>
-<td align="left">likelihood</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(I\)</span></td>
-<td align="left">abundance index</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(S\)</span></td>
-<td align="left">spawning stock biomass</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(CV\)</span></td>
-<td align="left">coefficient of variation</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(D\)</span></td>
-<td align="left">residuals or deviances</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(N\)</span></td>
-<td align="left">population numbers</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(\beta, \gamma\)</span></td>
-<td align="left">parameters</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(a\)</span></td>
-<td align="left">stock-recruitment parameter</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(b\)</span></td>
-<td align="left">stock-recruitment parameter</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(\sigma^2\)</span></td>
-<td align="left">variance of catch</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(\tau^2\)</span></td>
-<td align="left">variance of index</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(\phi^2\)</span></td>
-<td align="left">variance of predicted recruitment</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(\upsilon^2\)</span></td>
-<td align="left">variance of residuals</td>
-</tr>
-<tr class="odd">
-<td align="left">subscripts</td>
-<td align="right"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(a\)</span></td>
-<td align="left">age</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(y\)</span></td>
-<td align="left">year</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(C\)</span></td>
-<td align="left">catch</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(I\)</span></td>
-<td align="left">abundance index</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(N\)</span></td>
-<td align="left">normal distribution</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(s\)</span></td>
-<td align="left">survey</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(SR\)</span></td>
-<td align="left">stock recruitment relationship</td>
-</tr>
-<tr class="odd">
-<td align="left">superscripts and accents</td>
-<td align="right"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(\hat{}\)</span></td>
-<td align="left">observation</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(\tilde{}\)</span></td>
-<td align="left">prediction</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(c\)</span></td>
-<td align="left">catches</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="right"><span class="math inline">\(s\)</span></td>
-<td align="left">abundance index</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="acknowledgements" class="section level2 hasAnchor" number="1.5">
-<h2><span class="header-section-number">1.5</span> Acknowledgements<a href="index.html#acknowledgements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="acknowledgements" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Acknowledgements<a href="index.html#acknowledgements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To be complete with version 1.0.</p>
 <p>To write this book we used AI agents (chatGPT) for some bibliographic research and grammar revisions.</p>
 </div>
-<div id="license" class="section level2 hasAnchor" number="1.6">
-<h2><span class="header-section-number">1.6</span> License<a href="index.html#license" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="license" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> License<a href="index.html#license" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This book is released under a Creative Commons license <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
 <p>The <code>FLa4a</code> package is released under the <a href="https://joinup.ec.europa.eu/community/eupl/home">EUPL 1.1</a>.</p>
 

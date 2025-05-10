@@ -20,7 +20,6 @@
   <meta name="twitter:description" content="How to do stock assessment in R using the a4a framework" />
   
 
-<meta name="author" content="Ernesto Jardim, Colin Millar, Danai Mantopoulou Palouka and Iago Mosqueira" />
 
 
 <meta name="date" content="2025-05-10" />
@@ -167,9 +166,8 @@ div.csl-indent {
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#installing-and-loading-libraries"><i class="fa fa-check"></i><b>1.1</b> Installing and loading libraries</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#how-to-read-this-document"><i class="fa fa-check"></i><b>1.2</b> How to read this document</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#how-to-get-help"><i class="fa fa-check"></i><b>1.3</b> How to get help</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#notation"><i class="fa fa-check"></i><b>1.4</b> Notation</a></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.5</b> Acknowledgements</a></li>
-<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.6</b> License</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.4</b> Acknowledgements</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.5</b> License</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
 <ul>
@@ -184,6 +182,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.5.3" data-path="introduction.html"><a href="introduction.html#red-mullet-in-fao-27-gsa-1"><i class="fa fa-check"></i><b>2.5.3</b> Red mullet in FAO 27, GSA 1</a></li>
 <li class="chapter" data-level="2.5.4" data-path="introduction.html"><a href="introduction.html#redfish-simulated-length-data"><i class="fa fa-check"></i><b>2.5.4</b> Redfish simulated length data</a></li>
 </ul></li>
+<li class="chapter" data-level="2.6" data-path="introduction.html"><a href="introduction.html#notation"><i class="fa fa-check"></i><b>2.6</b> Notation</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="growth.html"><a href="growth.html"><i class="fa fa-check"></i><b>3</b> Modelling Individual Growth and Using Stochastic Slicing to Convert Length-based Data Into Age-based Data</a>
 <ul>
@@ -436,8 +435,8 @@ div.csl-indent {
 ## iters:  100 
 ## 
 ## params
-##                k                t 
-##  0.38331(0.0385) 10.18009(0.9986) 
+##               k               t 
+## 0.39552(0.0519) 9.88366(0.9946) 
 ## units:  NA 
 ## 
 ## Slot &quot;vcov&quot;:
@@ -454,7 +453,7 @@ div.csl-indent {
 ## 
 ## params
 ##              b 
-## 0.47759(0.145) 
+## 0.50569(0.137) 
 ## units:  NA</code></pre>
 <p>Note the shape model has no parameters and no uncertainty:</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="modelling-natural-mortality.html#cb59-1" tabindex="-1"></a><span class="fu">params</span>(<span class="fu">shape</span>(m4))</span></code></pre></div>
@@ -502,7 +501,7 @@ div.csl-indent {
 ## 
 ## params
 ##             linf                k 
-## 59.97078(2.1669)  0.40415(0.0709) 
+## 59.96565(2.2693)  0.40873(0.0759) 
 ## units:  NA 
 ## 
 ## Slot &quot;vcov&quot;:
@@ -720,14 +719,14 @@ Figure 4.2: Marginal distributions of the parameters for Gislason’s second nat
 ## 
 ##    year
 ## age 2000              2001              2002              2003             
-##   0 2.02652(0.192585) 3.06186(0.428638) 2.02652(0.192585) 3.06186(0.428638)
-##   1 0.74551(0.070848) 1.12639(0.157687) 0.74551(0.070848) 1.12639(0.157687)
-##   2 0.27426(0.026064) 0.41438(0.058010) 0.27426(0.026064) 0.41438(0.058010)
-##   3 0.10089(0.009588) 0.15244(0.021341) 0.10089(0.009588) 0.15244(0.021341)
-##   4 0.03712(0.003527) 0.05608(0.007851) 0.03712(0.003527) 0.05608(0.007851)
-##   5 0.01365(0.001298) 0.02063(0.002888) 0.01365(0.001298) 0.02063(0.002888)
-##   6 0.00502(0.000477) 0.00759(0.001062) 0.00502(0.000477) 0.00759(0.001062)
-##   7 0.00185(0.000176) 0.00279(0.000391) 0.00185(0.000176) 0.00279(0.000391)
+##   0 2.00388(0.226900) 3.00967(0.351395) 2.00388(0.226900) 3.00967(0.351395)
+##   1 0.73718(0.083472) 1.10720(0.129271) 0.73718(0.083472) 1.10720(0.129271)
+##   2 0.27120(0.030708) 0.40732(0.047556) 0.27120(0.030708) 0.40732(0.047556)
+##   3 0.09977(0.011297) 0.14984(0.017495) 0.09977(0.011297) 0.14984(0.017495)
+##   4 0.03670(0.004156) 0.05512(0.006436) 0.03670(0.004156) 0.05512(0.006436)
+##   5 0.01350(0.001529) 0.02028(0.002368) 0.01350(0.001529) 0.02028(0.002368)
+##   6 0.00497(0.000562) 0.00746(0.000871) 0.00497(0.000562) 0.00746(0.000871)
+##   7 0.00183(0.000207) 0.00274(0.000320) 0.00183(0.000207) 0.00274(0.000320)
 ## 
 ## units:  NA</code></pre>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="modelling-natural-mortality.html#cb101-1" tabindex="-1"></a><span class="fu">dim</span>(flq)</span></code></pre></div>
