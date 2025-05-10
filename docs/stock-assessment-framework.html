@@ -235,9 +235,10 @@ div.csl-indent {
 <li class="chapter" data-level="7.4" data-path="fitting.html"><a href="fitting.html#observation-variance-submodel-sigma2_ay-tau2_ays"><i class="fa fa-check"></i><b>7.4</b> Observation variance submodel (<span class="math inline">\(\{\sigma^2_{ay}, \tau^2_{ays}\}\)</span>)</a></li>
 <li class="chapter" data-level="7.5" data-path="fitting.html"><a href="fitting.html#initial-year-abundance-submodel-n_ay1"><i class="fa fa-check"></i><b>7.5</b> Initial year abundance submodel (<span class="math inline">\(N_{a,y=1}\)</span>)</a></li>
 <li class="chapter" data-level="7.6" data-path="fitting.html"><a href="fitting.html#more-models"><i class="fa fa-check"></i><b>7.6</b> More models</a></li>
-<li class="chapter" data-level="7.7" data-path="fitting.html"><a href="fitting.html#working-with-covariates"><i class="fa fa-check"></i><b>7.7</b> Working with covariates</a></li>
-<li class="chapter" data-level="7.8" data-path="fitting.html"><a href="fitting.html#assessing-admb-files"><i class="fa fa-check"></i><b>7.8</b> Assessing <code>ADMB</code> files</a></li>
-<li class="chapter" data-level="7.9" data-path="fitting.html"><a href="fitting.html#missing-observations-in-the-catch-matrix-or-index"><i class="fa fa-check"></i><b>7.9</b> Missing observations in the catch matrix or index</a></li>
+<li class="chapter" data-level="7.7" data-path="fitting.html"><a href="fitting.html#data-weigthing"><i class="fa fa-check"></i><b>7.7</b> Data weigthing</a></li>
+<li class="chapter" data-level="7.8" data-path="fitting.html"><a href="fitting.html#working-with-covariates"><i class="fa fa-check"></i><b>7.8</b> Working with covariates</a></li>
+<li class="chapter" data-level="7.9" data-path="fitting.html"><a href="fitting.html#assessing-admb-files"><i class="fa fa-check"></i><b>7.9</b> Assessing <code>ADMB</code> files</a></li>
+<li class="chapter" data-level="7.10" data-path="fitting.html"><a href="fitting.html#missing-observations-in-the-catch-matrix-or-index"><i class="fa fa-check"></i><b>7.10</b> Missing observations in the catch matrix or index</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>8</b> Diagnostics </a>
 <ul>
@@ -418,7 +419,7 @@ I_{ays} = Q_{ays} R_{y}e^{-\sum (F_{ay} + M_{ay})}
 </div>
 <div id="model-structure" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> Model structure <a href="stock-assessment-framework.html#model-structure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The <code>a4a</code> stock assessment framework allows the user to set up a large number of different models. The mechanics which provide this flexibility are designed around the concept of submodels. The user has to define the model structure using <code>R</code> formulas, including <code>mgcv</code> <span class="citation">(<a href="#ref-R-mgcv">S. N. Wood 2011</a>)</span> gam formulas, for each unknown variable that must be estimated. By using <code>R</code> formulas the stock assessment framework gives lot’s of flexibility to explore models and combinations of submodels.</p>
+<p>The <code>a4a</code> stock assessment framework allows the user to set up a large number of different models. The mechanics which provide this flexibility are designed around the concept of submodels. The user has to define the model structure using <code>R</code> formulas, including <code>mgcv</code> <span class="citation">(<a href="#ref-R-mgcv">S. Wood 2023</a>)</span> gam formulas, for each unknown variable that must be estimated. By using <code>R</code> formulas the stock assessment framework gives lot’s of flexibility to explore models and combinations of submodels.</p>
 <p>There are 5 submodels in operation:</p>
 <ul>
 <li>a model for F-at-age (<span class="math inline">\(F_{ay}\)</span>)</li>
@@ -446,7 +447,7 @@ I_{ays} = Q_{ays} R_{y}e^{-\sum (F_{ay} + M_{ay})}
 ## 
 ## Time used:
 ##  Pre-processing     Running a4a Post-processing           Total 
-##       0.3628893       0.4321084       0.1292043       0.9242020 
+##      0.15459442      0.26590681      0.02918553      0.44968677 
 ## 
 ## Submodels:
 ##   fmodel: ~s(age, k = 5)
@@ -1034,7 +1035,7 @@ Figure 5.7: The fit process input/output model
 Punt, André E, Doug S Butterworth, Carryn L de Moor, José A A De Oliveira, and Malcolm Haddon. 2016. <span>“Management Strategy Evaluation: Best Practices.”</span> <em>Fish and Fisheries</em> 17 (2): 303–34. <a href="https://doi.org/10.1111/faf.12104">https://doi.org/10.1111/faf.12104</a>.
 </div>
 <div id="ref-R-mgcv" class="csl-entry">
-Wood, S. N. 2011. <span>“Fast Stable Restricted Maximum Likelihood and Marginal Likelihood Estimation of Semiparametric Generalized Linear Models.”</span> <em>Journal of the Royal Statistical Society (B)</em> 73 (1): 3–36. <a href="https://doi.org/10.1111/j.1467-9868.2010.00749.x">https://doi.org/10.1111/j.1467-9868.2010.00749.x</a>.
+Wood, Simon. 2023. <em>Mgcv: Mixed GAM Computation Vehicle with Automatic Smoothness Estimation</em>. <a href="https://CRAN.R-project.org/package=mgcv">https://CRAN.R-project.org/package=mgcv</a>.
 </div>
 </div>
             </section>

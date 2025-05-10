@@ -235,9 +235,10 @@ div.csl-indent {
 <li class="chapter" data-level="7.4" data-path="fitting.html"><a href="fitting.html#observation-variance-submodel-sigma2_ay-tau2_ays"><i class="fa fa-check"></i><b>7.4</b> Observation variance submodel (<span class="math inline">\(\{\sigma^2_{ay}, \tau^2_{ays}\}\)</span>)</a></li>
 <li class="chapter" data-level="7.5" data-path="fitting.html"><a href="fitting.html#initial-year-abundance-submodel-n_ay1"><i class="fa fa-check"></i><b>7.5</b> Initial year abundance submodel (<span class="math inline">\(N_{a,y=1}\)</span>)</a></li>
 <li class="chapter" data-level="7.6" data-path="fitting.html"><a href="fitting.html#more-models"><i class="fa fa-check"></i><b>7.6</b> More models</a></li>
-<li class="chapter" data-level="7.7" data-path="fitting.html"><a href="fitting.html#working-with-covariates"><i class="fa fa-check"></i><b>7.7</b> Working with covariates</a></li>
-<li class="chapter" data-level="7.8" data-path="fitting.html"><a href="fitting.html#assessing-admb-files"><i class="fa fa-check"></i><b>7.8</b> Assessing <code>ADMB</code> files</a></li>
-<li class="chapter" data-level="7.9" data-path="fitting.html"><a href="fitting.html#missing-observations-in-the-catch-matrix-or-index"><i class="fa fa-check"></i><b>7.9</b> Missing observations in the catch matrix or index</a></li>
+<li class="chapter" data-level="7.7" data-path="fitting.html"><a href="fitting.html#data-weigthing"><i class="fa fa-check"></i><b>7.7</b> Data weigthing</a></li>
+<li class="chapter" data-level="7.8" data-path="fitting.html"><a href="fitting.html#working-with-covariates"><i class="fa fa-check"></i><b>7.8</b> Working with covariates</a></li>
+<li class="chapter" data-level="7.9" data-path="fitting.html"><a href="fitting.html#assessing-admb-files"><i class="fa fa-check"></i><b>7.9</b> Assessing <code>ADMB</code> files</a></li>
+<li class="chapter" data-level="7.10" data-path="fitting.html"><a href="fitting.html#missing-observations-in-the-catch-matrix-or-index"><i class="fa fa-check"></i><b>7.10</b> Missing observations in the catch matrix or index</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>8</b> Diagnostics </a>
 <ul>
@@ -338,19 +339,23 @@ div.csl-indent {
 <h2 class="subtitle"><em>The a4a Initiative</em></h2>
 <p class="author multi-author"><em>Ernesto Jardim</em></p>
 <address class="author_afil">
-Instituto Portugues do Mar e Atmosfera (IPMA), Lisbon<br>
+Instituto Portugues do Mar e Atmosfera (IPMA), Lisbon, Portugal<br>
+<a class="author_email" href="mailto:#"><a href="mailto:ernesto.jardim@gmail.com" class="email">ernesto.jardim@gmail.com</a></a>
 </address>
 <p class="author multi-author"><em>Collin Millar</em></p>
 <address class="author_afil">
-International Council for the Exploration of the Sea (ICES), Copenhaguen<br>
+International Council for the Exploration of the Sea (ICES), Copenhaguen, Denmark<br>
+<a class="author_email" href="mailto:#"><a href="mailto:colin.millar@ices.dk" class="email">colin.millar@ices.dk</a></a>
 </address>
 <p class="author multi-author"><em>Danai Mantopoulou Palouka</em></p>
 <address class="author_afil">
-European Commission Joint Research Centre (JRC), Brussels<br>
+European Commission Joint Research Centre (JRC), Brussels, Belgium<br>
+<a class="author_email" href="mailto:#"><a href="mailto:Danai.MANTOPOULOU-PALOUKA@ec.europa.eu" class="email">Danai.MANTOPOULOU-PALOUKA@ec.europa.eu</a></a>
 </address>
 <p class="author multi-author"><em>Iago Mosqueira</em></p>
 <address class="author_afil">
-Wageningen Marine Research (WMR), Ijmauden<br>
+Wageningen Marine Research (WMR), Ijmauden, The Netherlands<br>
+<a class="author_email" href="mailto:#"><a href="mailto:iago.mosqueira@wur.nl" class="email">iago.mosqueira@wur.nl</a></a>
 </address>
 <p class="date"><em>2025-05-10</em></p>
 </div>
@@ -421,6 +426,8 @@ Wageningen Marine Research (WMR), Ijmauden<br>
 ## x=&quot;a4aFitMCMCs&quot;, y=&quot;missing&quot;
 ## x=&quot;a4aFitResiduals&quot;, y=&quot;missing&quot;
 ## x=&quot;a4aFits&quot;, y=&quot;missing&quot;
+## x=&quot;a4aFitSAs&quot;, y=&quot;missing&quot;
+##     (inherited from: x=&quot;a4aFits&quot;, y=&quot;missing&quot;)
 ## x=&quot;ANY&quot;, y=&quot;ANY&quot;
 ## x=&quot;color&quot;, y=&quot;ANY&quot;
 ## x=&quot;Copula&quot;, y=&quot;ANY&quot;
@@ -448,6 +455,8 @@ Wageningen Marine Research (WMR), Ijmauden<br>
 ## x=&quot;FLStocks&quot;, y=&quot;FLPar&quot;
 ## x=&quot;FLStocks&quot;, y=&quot;missing&quot;
 ## x=&quot;mvdc&quot;, y=&quot;ANY&quot;
+## x=&quot;numeric&quot;, y=&quot;numeric&quot;
+##     (inherited from: x=&quot;ANY&quot;, y=&quot;ANY&quot;)
 ## x=&quot;profile.mle&quot;, y=&quot;missing&quot;</code></pre>
 <p>by calling <code>showMethods</code> R prints all the possible uses of the <code>plot</code> function. We want to see what it does when it is called on an <code>FLStock</code> object with no other object. We observe that <code>plot</code> takes two arguments, <code>x</code> and <code>y</code>. So, in the signature of the <code>getMethod</code> function we are going to use, we need to define both <code>x</code> and <code>y</code>.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="index.html#cb11-1" tabindex="-1"></a><span class="fu">getMethod</span>(<span class="st">&#39;plot&#39;</span>, <span class="at">signature =</span> <span class="fu">list</span>(<span class="st">&quot;FLStock&quot;</span>,<span class="st">&quot;missing&quot;</span>))</span></code></pre></div>
@@ -487,7 +496,7 @@ Wageningen Marine Research (WMR), Ijmauden<br>
 ##     }
 ##     .local(x, ...)
 ## }
-## &lt;bytecode: 0x57998bfbf160&gt;
+## &lt;bytecode: 0x588334ac0290&gt;
 ## &lt;environment: namespace:ggplotFL&gt;
 ## 
 ## Signatures:

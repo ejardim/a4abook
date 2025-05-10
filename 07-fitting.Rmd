@@ -471,11 +471,11 @@ fit <- sca(ple4, ple4.indices, fmodel = fmod)
 wireframe(harvest(fit), zlab="F")
 ```
 
-<!--## Data weigthing
+## Data weigthing
 
-By default the likelihood components are not weighted and the contribution of each to the maximum likelihood depends on their own likelihood score. However, the user may change these weights by penalizing data points, the $w_{ays}$ in section \@ref(sec:maths). The likelihood score of each data point will be multiplied by the normalized weights ($\sum w_{ays} = 1$). This is done by adding a variance matrix to the `catch.n` and `index.n` slots of the stock and index objects. The values should be given as coefficients of variation on the log scale, so that variance is $\log{({CV}^2 + 1)}$. Figures \@ref(fig:likwgt) and \@ref(fig:likwgtimpact) show the results of the two fits in the population abundance and stock summary.-->
+By default the likelihood components are not weighted and the contribution of each to the maximum likelihood depends on their own likelihood score. However, the user may change these weights by penalizing data points, the $w_{ays}$ in section \@ref(sec:maths). The likelihood score of each data point will be multiplied by the inverted weights normalized to have a mean of 1. This is done by adding a variance matrix to the `catch.n` and `index.n` slots of the stock and index objects. One pragmatic way to look at this scores is to think of them as coefficients of variation, the smaller values will reflect higher weight in the fitting process, and since CVs are unitless one can compare across data points. Figures \@ref(fig:likwgt) and \@ref(fig:likwgtimpact) show the results of the two fits in the population abundance and stock summary.
 
-```{r, eval=FALSE, echo=FALSE}
+```{r}
 stk <- ple4
 idx <- ple4.indices[1]
 # cv of observed catches
@@ -491,18 +491,18 @@ fit1 <- sca(stk, idx, fmodel=fmod0, qmodel=qmod0, srmodel=srmod0, vmodel=vmod0, 
 flqs <- FLQuants(nowgt=stock.n(fit0), extwgt=stock.n(fit1))
 ```
 
-```{r, likwgt, fig.cap="Stock summary of distinct likelihood weightings", echo=FALSE, eval=FALSE}
-xyplot(data~year|factor(age), groups=qname, data=flqs, type="l", scales=scl, auto.key=lgnd, par.settings=pset, ylab="")
+```{r, likwgt, fig.cap="Stock summary of distinct likelihood weightings", echo=FALSE}
+#xyplot(data~year|factor(age), groups=qname, data=flqs, type="l", scales=scl, auto.key=lgnd, par.settings=pset, ylab="")
 ```
 
-```{r, likwgtimpact, fig.cap="Population estimates using two different variance models", eho=FALSE, eval=FALSE}
+```{r, likwgtimpact, fig.cap="Population estimates using two different variance models", eho=FALSE}
 flsts <- FLStocks(nowgt=ple4+fit0, wgt=ple4 + fit1)
 plot(flsts)
 ```
 
-<!--Note that by using a smaller CV for the index, one is increasing the contribution of the survey and penalizing catch at age, in relative terms. The ratio between likelihood scores of both fits show this effect with catch at age increasing by 2.3 while the index increases almost 8 fold.-->
+Note that by using a smaller CV for the index, one is increasing the contribution of the survey and penalizing catch at age, in relative terms. The ratio between likelihood scores of both fits show this effect with catch at age increasing by 2.3 while the index increases almost 8 fold.
 
-```{r, eval=FALSE, echo=FALSE}
+```{r, echo=FALSE}
 fit0 <- sca(ple4, ple4.indices[1], fmodel=fmod0, qmodel=qmod0, srmodel=srmod0, vmodel=vmod0, n1model=n1mod0)
 (fitSumm(fit1)/fitSumm(fit0))[c(2,8,9),]
 ```

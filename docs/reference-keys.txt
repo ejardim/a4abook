@@ -60,6 +60,7 @@ fig:ageind
 fig:coh
 fig:vm
 fig:danai01
+fig:likwgtimpact
 fig:naor
 fig:naor2
 fig:obsmissing
@@ -186,6 +187,7 @@ stock-recruitment-submodel-r_y
 observation-variance-submodel-sigma2_ay-tau2_ays
 initial-year-abundance-submodel-n_ay1
 more-models
+data-weigthing
 working-with-covariates
 assessing-admb-files
 missing-observations-in-the-catch-matrix-or-index

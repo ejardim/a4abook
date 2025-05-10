@@ -235,9 +235,10 @@ div.csl-indent {
 <li class="chapter" data-level="7.4" data-path="fitting.html"><a href="fitting.html#observation-variance-submodel-sigma2_ay-tau2_ays"><i class="fa fa-check"></i><b>7.4</b> Observation variance submodel (<span class="math inline">\(\{\sigma^2_{ay}, \tau^2_{ays}\}\)</span>)</a></li>
 <li class="chapter" data-level="7.5" data-path="fitting.html"><a href="fitting.html#initial-year-abundance-submodel-n_ay1"><i class="fa fa-check"></i><b>7.5</b> Initial year abundance submodel (<span class="math inline">\(N_{a,y=1}\)</span>)</a></li>
 <li class="chapter" data-level="7.6" data-path="fitting.html"><a href="fitting.html#more-models"><i class="fa fa-check"></i><b>7.6</b> More models</a></li>
-<li class="chapter" data-level="7.7" data-path="fitting.html"><a href="fitting.html#working-with-covariates"><i class="fa fa-check"></i><b>7.7</b> Working with covariates</a></li>
-<li class="chapter" data-level="7.8" data-path="fitting.html"><a href="fitting.html#assessing-admb-files"><i class="fa fa-check"></i><b>7.8</b> Assessing <code>ADMB</code> files</a></li>
-<li class="chapter" data-level="7.9" data-path="fitting.html"><a href="fitting.html#missing-observations-in-the-catch-matrix-or-index"><i class="fa fa-check"></i><b>7.9</b> Missing observations in the catch matrix or index</a></li>
+<li class="chapter" data-level="7.7" data-path="fitting.html"><a href="fitting.html#data-weigthing"><i class="fa fa-check"></i><b>7.7</b> Data weigthing</a></li>
+<li class="chapter" data-level="7.8" data-path="fitting.html"><a href="fitting.html#working-with-covariates"><i class="fa fa-check"></i><b>7.8</b> Working with covariates</a></li>
+<li class="chapter" data-level="7.9" data-path="fitting.html"><a href="fitting.html#assessing-admb-files"><i class="fa fa-check"></i><b>7.9</b> Assessing <code>ADMB</code> files</a></li>
+<li class="chapter" data-level="7.10" data-path="fitting.html"><a href="fitting.html#missing-observations-in-the-catch-matrix-or-index"><i class="fa fa-check"></i><b>7.10</b> Missing observations in the catch matrix or index</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="diagnostics.html"><a href="diagnostics.html"><i class="fa fa-check"></i><b>8</b> Diagnostics </a>
 <ul>
@@ -435,8 +436,8 @@ div.csl-indent {
 ## iters:  100 
 ## 
 ## params
-##               k               t 
-## 0.39552(0.0519) 9.88366(0.9946) 
+##                k                t 
+##  0.39353(0.0357) 10.05974(1.0515) 
 ## units:  NA 
 ## 
 ## Slot &quot;vcov&quot;:
@@ -453,7 +454,7 @@ div.csl-indent {
 ## 
 ## params
 ##              b 
-## 0.50569(0.137) 
+## 0.52046(0.153) 
 ## units:  NA</code></pre>
 <p>Note the shape model has no parameters and no uncertainty:</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="modelling-natural-mortality.html#cb59-1" tabindex="-1"></a><span class="fu">params</span>(<span class="fu">shape</span>(m4))</span></code></pre></div>
@@ -501,7 +502,7 @@ div.csl-indent {
 ## 
 ## params
 ##             linf                k 
-## 59.96565(2.2693)  0.40873(0.0759) 
+## 60.03809(2.1178)  0.40098(0.0708) 
 ## units:  NA 
 ## 
 ## Slot &quot;vcov&quot;:
@@ -719,14 +720,14 @@ Figure 4.2: Marginal distributions of the parameters for Gislason’s second nat
 ## 
 ##    year
 ## age 2000              2001              2002              2003             
-##   0 2.00388(0.226900) 3.00967(0.351395) 2.00388(0.226900) 3.00967(0.351395)
-##   1 0.73718(0.083472) 1.10720(0.129271) 0.73718(0.083472) 1.10720(0.129271)
-##   2 0.27120(0.030708) 0.40732(0.047556) 0.27120(0.030708) 0.40732(0.047556)
-##   3 0.09977(0.011297) 0.14984(0.017495) 0.09977(0.011297) 0.14984(0.017495)
-##   4 0.03670(0.004156) 0.05512(0.006436) 0.03670(0.004156) 0.05512(0.006436)
-##   5 0.01350(0.001529) 0.02028(0.002368) 0.01350(0.001529) 0.02028(0.002368)
-##   6 0.00497(0.000562) 0.00746(0.000871) 0.00497(0.000562) 0.00746(0.000871)
-##   7 0.00183(0.000207) 0.00274(0.000320) 0.00183(0.000207) 0.00274(0.000320)
+##   0 2.06841(0.211419) 2.99762(0.382328) 2.06841(0.211419) 2.99762(0.382328)
+##   1 0.76093(0.077777) 1.10276(0.140651) 0.76093(0.077777) 1.10276(0.140651)
+##   2 0.27993(0.028613) 0.40568(0.051742) 0.27993(0.028613) 0.40568(0.051742)
+##   3 0.10298(0.010526) 0.14924(0.019035) 0.10298(0.010526) 0.14924(0.019035)
+##   4 0.03788(0.003872) 0.05490(0.007003) 0.03788(0.003872) 0.05490(0.007003)
+##   5 0.01394(0.001425) 0.02020(0.002576) 0.01394(0.001425) 0.02020(0.002576)
+##   6 0.00513(0.000524) 0.00743(0.000948) 0.00513(0.000524) 0.00743(0.000948)
+##   7 0.00189(0.000193) 0.00273(0.000349) 0.00189(0.000193) 0.00273(0.000349)
 ## 
 ## units:  NA</code></pre>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="modelling-natural-mortality.html#cb101-1" tabindex="-1"></a><span class="fu">dim</span>(flq)</span></code></pre></div>
