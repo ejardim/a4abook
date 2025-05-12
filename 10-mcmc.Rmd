@@ -2,13 +2,13 @@
 
 The previous methods were demonstrated using maximum likelihood estimation (MLE). However, `ADMB` also supports Markov Chain Monte Carlo (MCMC) methods, which provide significant advantages, particularly when working with complex models that involve many parameters. The key difference is that while MLE finds a single best estimate of parameters by maximizing the likelihood function, MCMC offers a broader perspective by generating an entire distribution of possible values. This approach is more informative because it does not just give the most likely estimate but also helps us understand the uncertainty surrounding it. With MCMC, researchers can incorporate prior knowledge and obtain results that are often more realistic and reliable [@gelman2013bayesian]. This is especially useful when dealing with complicated models where traditional likelihood-based methods struggle, as MCMC allows for efficient exploration of possible solutions without requiring an exact mathematical formulation [@gilks1995markov; @robert2005monte].
 
-One of the biggest advantages of MCMC is its flexibility when working with models that have irregular behavior, such as those with multiple peaks or abrupt changes in likelihood. Standard MLE methods assume that the likelihood function behaves smoothly, but this is rarely true in real-world applications. In fisheries, ecology, and other applied sciences, models often have parameters that interact in complex ways, creating likelihood surfaces with ridges and multiple solutions. In these cases, MLE can easily get stuck in a local peak, failing to find the best possible estimate or underestimating the real uncertainty in the system [@neal1993probabilistic]. Since MCMC uses a probabilistic sampling approach instead of strict optimization, it moves freely across the entire space of possible values, making it more robust and adaptable to challenging problems [@robert2005monte].
+One of the biggest advantages of MCMC is its flexibility when working with models that have irregular behavior, such as those with multiple peaks or abrupt changes in likelihood. Standard MLE methods assume that the likelihood function behaves smoothly, but this is rarely true in real-world applications. In fisheries, ecology, and other applied sciences, models often have parameters that interact in complex ways, creating likelihood surfaces with ridges and multiple solutions. In these cases, MLE optimizers can easily get stuck in a local peak, failing to find the best possible estimate or underestimating the real uncertainty in the system [@neal1993probabilistic]. Since MCMC uses a probabilistic sampling approach instead of strict optimization, it moves freely across the entire space of possible values, making it more robust and adaptable to challenging problems [@robert2005monte].
 
-Traditional MLE-based uncertainty estimation relies on the hessian matrix, which essentially measures how quickly the likelihood function changes as parameters vary. This method assumes that the shape of the likelihood function is quadratic and roughly the same everywhere. However, this assumption is often unrealistic, especially in models with many parameters or correlations between them, as is common in fisheries stock assessment models
+Traditional MLE-based uncertainty estimation relies on the Hessian matrix, which essentially measures how quickly the likelihood function changes as parameters vary. This method assumes that the shape of the likelihood function is quadratic and roughly the same everywhere. However, this assumption is often unrealistic, especially in models with many parameters or strong correlations among them, as is common in fisheries stock assessment models.
 
 In fields like fisheries science, where models often involve multiple correlated parameters, MCMC provides a much more flexible and realistic way to estimate uncertainty. Unlike MLE, which assumes uncertainty follows a simple symmetrical pattern, MCMC can handle more complex distributions, giving a better representation of real-world variability. This is especially important when estimating key fisheries management indicators, such as spawning stock biomass ($SSB$) or fishing mortality ($F$), which influence critical policy decisions. Because MCMC does not impose strict mathematical assumptions about the shape of uncertainty, it produces estimates that are more reflective of real-world conditions, ultimately leading to more informed and reliable management strategies.
 
-When running MCMC `ADMB` uses automatic differentiation to improve sampling efficiency and speed [@Fournier2012]. It supports various sampling algorithms, including Metropolis-Hastings and Hamiltonian Monte Carlo, which help navigate high-dimensional parameter spaces and complex likelihood structures more effectively. This makes `ADMB` particularly useful in applied sciences like fisheries and ecology, where uncertainty estimation is crucial for decision-making. Additionally, `ADMB` provides built-in diagnostics to assess MCMC convergence and reliability, ensuring that posterior distributions are well-explored and results are robust [@gelman2013bayesian].
+When running MCMC, `ADMB` uses automatic differentiation to improve sampling efficiency and speed [@Fournier2012]. It supports various sampling algorithms, including Metropolis-Hastings and Hamiltonian Monte Carlo, which help navigate high-dimensional parameter spaces and complex likelihood structures more effectively. This makes `ADMB` particularly useful in applied sciences like fisheries and ecology, where uncertainty estimation is crucial for decision-making. Additionally, `ADMB` provides built-in diagnostics to assess MCMC convergence and reliability, ensuring that posterior distributions are well-explored and results are robust [@gelman2013bayesian].
 
 <!--To evaluate the quality of MCMC sampling, `ADMB` offers several key diagnostics. Autocorrelation analysis to detect dependencies between successive samples; effective sample size (ESS) measures the number of independent samples in the chain. The Gelman-Rubin diagnostic (\(\hat{R}\)) helps assess whether multiple chains have converged to the same distribution, with values close to 1 indicating good convergence. Trace plots visually inspect parameter behavior over iterations, revealing trends or poor mixing. Additionally, `ADMB` monitors the acceptance rate to ensure efficient sampling and provides posterior density estimates to check if the distribution has been properly explored. These tools help users refine their MCMC runs, adjusting sampling length or proposal distributions to improve performance and ensure reliable uncertainty estimates.-->
 
@@ -18,7 +18,7 @@ The manual "A Guide for Bayesian Analysis in AD Model Builder" [@monnahan2014adm
 
 This section shows how the `sca()` method interfaces with `ADMB` to use MCMC. For this section we'll use the hake assessment in Mediterranean areas (gsa) 1, 5, 6 and 7.
 
-We'll start buy fitting the MLE model and afterwards call MCMC methods. The outcomes of the MCMC fit need to be inspected to make sure the chain converged and the results are robust. A set of diagnostics are available to do this work.
+We start by fitting the MLE model and calling afterwards the necessary MCMC methods. The outcomes of the MCMC fit need to be inspected to make sure the chain converged and the results are robust. A set of diagnostics are available to do this.
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
@@ -42,7 +42,7 @@ fit <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod)
 fit <- simulate(fit, nsim)
 ```
 
-To run the MCMC method, one needs to configure a set of arguments, which is done by creating a `SCAMCMC` object. Table \@ref(tab:mcargs) describes the arguments available to run the MCMC method, extracted from Monnahan [@monnahan2019]. For more details on the MCMC configuration in `ADMB` visit the `ADMB` website.
+To run the MCMC method, one needs to configure a set of arguments, which is done by creating an object of class `SCAMCMC`. Table \@ref(tab:mcargs) describes the arguments available to run the MCMC method, extracted from Monnahan [@monnahan2019]. For more details on the MCMC configuration in `ADMB` visit the `ADMB` website.
 
 |Argument|Default value| Description|
 |---:|:---|:----------|
@@ -66,7 +66,7 @@ Table: (\#tab:mcargs) `ADMB` MCMC arguments
 mc <- SCAMCMC()
 ```
 
-Defaults for now are ok, so lets fit the model. Note that the argument `fit` must be set to `MCMC` and the argument `mcmc` takes the `SCAMCMC` object.
+Defaults provide a good starting point, so let's fit first the model. Note that the argument `fit` must be set to `MCMC` while the argument `mcmc` takes the `SCAMCMC` object just created.
 
 ```{r}
 # fit the model
@@ -75,7 +75,7 @@ fitmc00 <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod, fit = "MCMC", mcm
 fitSumm(fitmc00)
 ```
 
-As usual `fitSumm` store relevant information about the model fit. In the case of MCMC fit the information stored is the number of model parameters (`nopar`), the number of observations (`nobs`) and the acceptance rate (`accrate`).
+As usual `fitSumm` store relevant information about the model fit. In the case of an MCMC fit, the information stored includes the number of model parameters (`nopar`), the number of observations (`nobs`) and the acceptance rate (`accrate`).
 
 ```{r, fig.cap="Stock assessment summaries of maximum likelihood (mle) and monte carlo (mc) fits."}
 plot(FLStocks(mle=hke1567 + fit, mc=hke1567 + fitmc00))
@@ -83,11 +83,11 @@ plot(FLStocks(mle=hke1567 + fit, mc=hke1567 + fitmc00))
 
 ## Diagnostics with CODA
 
-In essence, the diagnostics are used to give the analyst confidence that the posterior distribution of the parameters is unbiased, as much as possible with symmetric non correlated distributions of each parameter over which one can make inference.
+MCMC diagnostics are used to give the analyst confidence that the posterior distribution of the parameters is unbiased, with symmetric non-correlated distributions of each parameter over which one can make inference.
 
-There's a large body of literature about MCMC convergence. In this section we'll focus on the out-of-the-box methods for metropolis hastings algorithm available to the stock assessment scientist: trace plots, autocorrelation and cross correlation analysis, geweke diagnostic, Gelman and Rubin's convergence diagnostic, cumulative means, distribution density and acceptance rate. These tools should be used together to evaluate proper mixing and convergence.
+There exists a large body of literature about MCMC convergence. In this section we will focus on the out-of-the-box methods for metropolis hastings algorithm available to the stock assessment scientist: trace plots, autocorrelation and cross correlation analysis, Geweke diagnostic, Gelman and Rubin's convergence diagnostic, cumulative means, distribution density and acceptance rate. These tools should be used together to evaluate proper mixing and convergence.
 
-`ADMB` has an hybrid algorithm based on Hamiltonian dynamic which will not be addressed here. The reader is invited to consult @monnahan2019 for more information.
+`ADMB` has an hybrid algorithm based on Hamiltonian dynamics which will not be employed here. The reader is invited to consult @monnahan2019 for more information.
 
 We use the package `CODA` [@coda] to run the diagnostics on MCMC fits. One needs to convert the `sca` output into a `mcmc` `CODA` object over which several diagnostics can be ran. The `mcmc` object is a matrix with the parameters (row = iters, cols= pars).
 
@@ -95,7 +95,7 @@ We use the package `CODA` [@coda] to run the diagnostics on MCMC fits. One needs
 library(coda)
 ```
 
-For demonstration purposes we'll create a chain with 1000 samples (`mcmc=1000`) and save every iter (`mcsave=1`), which will create a highly correlated and unstable chain, and update the initial MCMC fit to also have 1000 samples (`mcmc=100000`, `mcsave=100`). The latter will have lower correlation due to the higher thinning.
+For demonstration purposes we create a chain with 1000 samples (`mcmc=1000`) and save every iter (`mcsave=1`), which will create a highly correlated and unstable chain, and update the initial MCMC fit to also have 1000 samples but obtained by keeping every 100th sample (`mcmc=100000`, `mcsave=100`). The latter will have a lower correlation due to the higher thinning.
 
 ```{r}
 # update initial fit, control random seed
@@ -110,14 +110,14 @@ fitmc02.mc <- FLa4a::as.mcmc(fitmc02)
 
 ### Traceplots
 
-Trace plots (`traceplot()`) show the sampled values of a parameter over iterations. A plot that looks like a random, stable "cloud" of points with no trends or drifts, with rapid fluctuations, is a signal of convergence, meaning the chain mixes well and is stationary. If the trace plot shows a strong trend or periodicity, drifts, or long autocorrelated stretches, it means the chain hasn't converged. Figure \@ref(fig:chain01) cleary depicts this difference between the two runs.
+Trace plots (`traceplot()`) show the sampled values of a parameter over iterations. A plot that looks like a random, stable "cloud" of points with no trends or drifts, with rapid fluctuations, is a signal of convergence, meaning the chain mixes well and is stationary. If the trace plot shows a strong trend or periodicity, drifts, or long autocorrelated stretches, it means the chain has not converged as expected. Figure \@ref(fig:chain01) cleary depicts this difference between the two runs.
 
 ```{r, chain01, fig.cap="MCMC chain's trace for the first parameter. High correlation chain in blue, low correlation chain in red."}
 # use mcmc.list() to create a list with both runs so they're plot together
 traceplot(mcmc.list(mc01=fitmc01.mc[,1], mc02=fitmc02.mc[,2]), lwd=1.5, col=c(2,4), lty=1)
 ```
 
-Plotting the chains for the parameter clearly shows autocorrelation for the first parameter in the blue chain. It also shows an initial phase where the chain seems to be stuck in a single value. This initial phase, when the parameter seems to be stuck in a fixed position, is called the "burn-in" phase. These iterations can be dropped with the `burnin()`, although it doesn't sort out autocorrelation (Figure \@ref(fig:chain01b)).
+Plotting the chains for the parameter clearly shows autocorrelation for the first parameter in the blue chain. This initial phase, when the parameter seems to be stuck in a fixed position, is called the "burn-in" phase. These iterations can be dropped by using the `burnin()` function. Note however that this does not decrease the autocorrelation (Figure \@ref(fig:chain01b)).
 
 ```{r, chain01b, fig.cap="MCMC chain with high autocorrelation after removing the initial 250 samples (burnin period)."}
 traceplot(FLa4a::as.mcmc(burnin(fitmc02, 250))[,1], lwd=1.5, col=4, lty=1)
@@ -125,9 +125,9 @@ traceplot(FLa4a::as.mcmc(burnin(fitmc02, 250))[,1], lwd=1.5, col=4, lty=1)
 
 ### Autocorrelation and crosscorrelation analysis
 
-Autocorrelation analysis (`acf()` and `acfplot()`) is useful to assess stationarity, a stationary chain should have low autocorrelation, meaning that each sample is approximately independent. On the opposite, high autocorrelation indicates slow mixing and possible non-stationarity. Furthermore, in a well mixed chain autocorrelation drops quickly to near zero, while a poor mixing will display high autocorrelation reducing efficiency of the search.
+Autocorrelation analysis (`acf()` and `acfplot()`) is an useful tool to assess stationarity. A stationary chain should have low autocorrelation, meaning that each sample is approximately independent. On the opposite, high autocorrelation indicates slow mixing and possible non-stationarity. Furthermore, in a well mixed chain autocorrelation drops quickly to near zero, while a poor mixing one will display high autocorrelation, which also reduces the efficiency of the search.
 
-The autocorrelation plot will show correlation along the chain for each parameter at different lags. Figure \@ref(fig:acf01hc) shows there's a strong autocorrelation for the first parameter which we'd like to avoid, while Figure \@ref(fit:acf01) shows a much lower correlation.
+The autocorrelation plot will show correlation along the chain for each parameter at different lags. Figure \@ref(fig:acf01hc) shows that there is a strong autocorrelation for the first parameter which we would like to avoid, while Figure \@ref(fit:acf01) shows much lower correlation.
 
 ```{r, acf01hc, fig.cap="Autocorrelation plot of the first parameter in the MCMC chain", fig.show="hold"}
 acfplot(fitmc02.mc[,1], lwd=3, main="High correlation chain", ylim=c(-1, 1))
@@ -146,9 +146,9 @@ crosscorr.plot(fitmc02.mc, main="High correlation chain")
 
 ### Geweke diagnostic
 
-The geweke diagnostic (`geweke.diag()` and `geweke.plot()`) computes the Geweke-Brooks Z-score [@Geweke1992], which indicates if the first and following parts of a sample from a Markov chain are drawn from the same distribution as the last part of the chain, usually the last 50% of the samples.
+The Geweke diagnostic (`geweke.diag()` and `geweke.plot()`) computes the Geweke-Brooks Z-score [@Geweke1992], which indicates if the first and following parts of a sample from a Markov chain are drawn from the same distribution as the last part of the chain, usually the last 50% of the samples.
 
-It's useful to decide if the first few iterations should be discarded and provides information about the stability of the chain. Figure \@ref(fig:gew01) shows the geweke plot for the two MCMC runs.
+It is an useful way to decide if the first few iterations should be discarded, while also provides information about the stability of the chain. Figure \@ref(fig:gew01) shows the Geweke plot for the two MCMC runs.
 
 ```{r, gew01, fig.cap="Geweke plot of the first parameter in the MCMC chains", fig.show="hold", out.width="50%"}
 geweke.plot(fitmc01.mc[,1], main="Low correlation chain")
@@ -157,7 +157,7 @@ geweke.plot(fitmc02.mc[,1], main="High correlation chain")
 
 The panel on the left shows a much more regular chain, where the different blocks of data show similar distributions. The panel on the right clearly shows the z-score statistic changing out of the confidence intervals until about 400 samples are discarded, which points to the need to drop a set of initial samples.
 
-The geweke diagnostic is also a good way to look at mixing by comparing the mean and variance of the first part of the chain to the last part. Good mixing will show no significant difference between early and late samples. Poor mixing will show large differences, indicating the chain has not explored the posterior fully.
+The Geweke diagnostic is also a good way to look at mixing by comparing the mean and variance of the first part of the chain to the last part. Good mixing will show no significant difference between early and late samples. Poor mixing will show large differences, indicating the chain has not explored the posterior fully.
 
 ### Cumulative means
 

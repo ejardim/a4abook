@@ -9,9 +9,7 @@ lattice.options(default.args = list(as.table = TRUE))
 
 ## The "Assessment for All" Initiative (a4a)
 
-The European Commission Joint Research Centre's (JRC) "Assessment for All" Initiative (a4a) was launched to simplify and standardize the complex methodologies often employed in fisheries science, a4a focuses on creating flexible, modular frameworks that can accommodate varying data availability, regional needs, and stakeholder objectives.
-
-The JRC started its ‘Assessment for All’ Initiative (a4a), with the aim to develop, test, and distribute methods to assess a large numbers of stocks in an operational time frame, and to build the necessary expertise on stock assessment and advice provision.
+The European Commission Joint Research Centre's (JRC) "Assessment for All" Initiative (a4a) was launched to simplify and standardize the complex methodologies often employed in fisheries science. The a4a philosophy focuses on creating flexible, modular frameworks that can accommodate various levels of data availability, different regional needs, and stakeholder objectives. The main aim was to develop, test, and distribute methods able to be used to assess a large number of stocks in an operational time frame, and to build the necessary expertise on stock assessment and advice provision.
 
 According to @EJ_etal_2014, the long-term strategy of a4a is to increase the number of stock assessments by reducing the workload required to run each analysis and by bringing more scientists into fisheries management advice. The first is achieved by developing a working framework with the methods required to run all the analyses a stock assessment needs. Such approach should make the model exploration and selection processes easier, as well as decreasing the burden of moving between software platforms. The second can be achieved by making the analysis more intuitive, thereby attracting more experts to join stock assessment teams.
 
@@ -25,17 +23,17 @@ The a4a framework has been applied in various European fisheries to improve stoc
 
 Some of the key elements of stock assessment are the quantity, quality and aggregation level of the data available. As in many other models the data will condition the type of models that can be used. In `a4a` the minimum set of data, loosely defined as a "moderate data" level, consists of:
 
-- volume of catches in weight (which should include landings and discards);
+- volume of catches in weight (which should both include landings and discards);
 - length structure of the catches (based on selectivity studies or direct observations);
 - natural mortality by length;
 - proportion of mature individuals by length;
 - age-length key or growth model;
 - length-weight relationship;
-- index of abundance and its length structure, or index of biomass (the type of index is left open, it could be from a scientifc survey or a commercial CPUE series);
+- index or indices of abundance and its length structure, or indices of biomass, which could originate from either a scientifc survey or a commercial CPUE series;
 
 ## Multi-stage modelling approach
 
-In ecological and population dynamics modeling, one can choose between integrated models, which estimate correlated parameters together, and two-stage models, which separate estimation into distinct steps. These approaches differ in complexity, data requirements, interpretability, and their ability to address uncertainties. The selection depends largely on the study objectives, available data, and the system's ecological complexity.
+In ecological and population dynamics modeling, one can choose between integrated models, which estimate correlated parameters together, and two-stage models, which separate estimation into distinct steps. These approaches differ in complexity, data requirements, interpretability, and their ability to address various uncertainties. The selection depends largely on the study objectives, the available data, and the system's ecological complexity.
 
 Integrated models estimate all parameters within a unified framework, accounting for correlations and interactions between variables such as growth, natural mortality, recruitment, and environmental factors. This approach can provide a realistic depiction of biological systems by preserving dependencies and feedback loops, which are crucial for understanding processes like density dependence or predator-prey interactions [@MCAPAM2023]. Integrated models are particularly advantageous for ecosystem-based management, where interactions among multiple factors need to be captured. However, the complexity of these models makes them computationally intensive and sensitive to data quality.
 
@@ -47,24 +45,24 @@ For fisheries science, the choice between these models often depends on manageme
 
 Two-stage models are advantageous for practical applications, such as fisheries stock assessments, where simplicity and robustness take precedence over ecological nuance. Empirical estimates of \(M\), derived from life-history traits, provide reliable inputs for subsequent models, avoiding the parameter confounding that often occurs in integrated frameworks.
 
-Despite the intuitive advantages of integrated models, it is not a panacea for poor quality data or model structure uncertainty in stock assessments. There are several disadvantages, mostly related to model misspecification, the complexity of the resulting models, and the associated, often considerable, computational requirements (e.g. the use of remotely sensed environmental information). Consequently, in some situations, the traditional two-stage approach remains a better approach [@maunderPunt2013].
+Despite the intuitive advantages of integrated models, they are not a panacea for poor quality data or model structure uncertainty in stock assessment. There are also several disadvantages, mostly related to the potential for model misspecification, the complexity of the resulting model, and the associated, often considerable, computational requirements (e.g. the use of remotely sensed environmental information). Consequently, in some situations, the traditional two-stage model remains a better approach [@maunderPunt2013].
 
 ## Stock Assessment Process
 
-The following table breaks down the stock assessment process into three stages: (i) input data preparation, (ii) stock assessment model fitting, and (iii) provision of scientific advice. This breakdown is designed to explain the a4a approach, offering a general framework that outlines the sequence of analyses in the stock assessment process. Each stage includes a plethora of analyses and procedures tailored to the specific stock, considering the available data, time, and resources.
+The following table breaks down the stock assessment process into three stages: (i) input data preparation, (ii) stock assessment model fitting, and (iii) provision of scientific advice. This breakdown is designed to explain the a4a approach, offering a general framework that outlines the sequence of analyses in the stock assessment process. Each stage includes a plethora of analyses and procedures tailored to an specific stock, considering the available data, time, and resources.
 
 | Stage | Description |
 |:----|:----|
-| **Input data preparation** | Preparation of catch data, potentially separating landings and discards. Preparation of biological data, including maturity, length-weight relationships, natural mortality, and individual growth. Conversion of length data into age data. |
+| **Input data preparation** | Preparation of catch data, potentially computing both landings and discards. Preparation of biological data, including maturity, length-weight relationships, natural mortality, and individual growth. Conversion of length data into age data. |
 | **Stock assessment model fit** | Fitting the model to data, inspecting diagnostics such as residuals, retrospective analyses, and hindcasts. Fitting the stock-recruitment model to recruitment and spawning stock biomass (SSB) estimates from the stock assessment model fit or within the model itself. |
 | **Scientific advice provision** | Estimation of reference points. Assessment of stock status based on reference points and model estimates of SSB and fishing mortality. Running projections under different scenarios. Providing reports with policy outcome evaluations. |
 Table: (\#tab:sastages) Stock assessment process stages
 
-The main purpose of the above table is to clarify a4a's multi-stage approach to stock assessment. For instance, parameters like natural mortality and individual growth are estimated outside the stock assessment model fitting process, unlike integrated analyses. This is done for reasons discussed earlier. Nevertheless, the stock-recruitment relationship can be estimated within the model, as is typical in integrated analyses. This mixed approach seeks to exclude highly correlated processes from the model while incorporating those that can enhance the robustness of the stock assessment model fit.
+The main purpose of the above table is to clarify a4a's multi-stage approach to stock assessment. For instance, parameters like natural mortality and individual growth are estimated outside the stock assessment model fitting process, unlike how it is often done in integrated analyses. The stock-recruitment relationship, however, can be estimated within the model, as is common in integrated analyses. This mixed approach seeks to exclude highly correlated processes from the model while incorporating those that can enhance the robustness of the stock assessment model fit.
 
-When data are limited, the stock assessment model requires more structure, but this constraint reduces the information available to manage parameter correlations. Striking this balance is challenging. The a4a approach incorporates stock-recruitment relationships, as these are believed to exhibit lower correlation with other model parameters compared to natural mortality or individual growth.
+When data are limited, the stock assessment model requires more structure, but this constraint reduces the information available to manage parameter correlations. Striking a balance between both avenues is challenging. The a4a approach incorporates stock-recruitment relationships, as these are believed to exhibit lower correlation with other model parameters compared to natural mortality or individual growth.
 
-On the other hand, since natural mortality and individual growth are very important processes acting at a very low level in terms of data processing, there are specific methods to deal with conditioning those processes, in case there's no data or limited data available, and to provide the opportuinity to propagate their uncertainty into stock assessment.
+On the other hand, since natural mortality and individual growth are very important processes acting at a very low level in terms of data processing, there are specific methods to deal with conditioning those processes, in those cases when there is no data or very limited data is available, and to provide the opportunity to propagate their uncertainty into stock assessment.
 
 ## Stock assessment as a linear model
 
@@ -80,7 +78,7 @@ In the context of fisheries science, adopting this linear modeling philosophy of
 
 ### Plaice in area FAO 27, ICES area IV
 
-[ToDo]
+North sea plaice is an important demersal flatfish that has been targeted by different fleets operating in the area, but most importantly by beam and otter trawlers. This fishery has always had a large discard rate, which currently accounts for more than 60% of the catch. The stock has grown in recent years with the decrease of fishing mortality. A number of scientific surveys sample plaice, both in coastal areas, where spawning takes place, and in deeper waters.
 
 ### European hake in FAO 37, GSAs 1,5,6,7
 
@@ -92,7 +90,7 @@ Red mullets is a key commercial species in GSA 1.They can be found in sandy and 
 
 ### Redfish simulated length data
 
-This is a length based dataset simulated with GADGET [@gadget].
+This is a length-based dataset simulated with GADGET [@gadget].
 
 ## Notation
 
