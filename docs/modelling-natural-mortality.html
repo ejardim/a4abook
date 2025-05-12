@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4 Modelling Natural Mortality | Fish stock assessment with R - DRAFT</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4 Modelling Natural Mortality | Fish stock assessment with R - DRAFT" />
   <meta property="og:type" content="book" />
@@ -436,8 +436,8 @@ div.csl-indent {
 ## iters:  100 
 ## 
 ## params
-##               k               t 
-## 0.40897(0.0382) 9.95743(1.0637) 
+##                k                t 
+##  0.39718(0.0485) 10.04251(1.1687) 
 ## units:  NA 
 ## 
 ## Slot &quot;vcov&quot;:
@@ -454,7 +454,7 @@ div.csl-indent {
 ## 
 ## params
 ##              b 
-## 0.49701(0.162) 
+## 0.51456(0.153) 
 ## units:  NA</code></pre>
 <p>Note the shape model has no parameters and no uncertainty:</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="modelling-natural-mortality.html#cb59-1" tabindex="-1"></a><span class="fu">params</span>(<span class="fu">shape</span>(m4))</span></code></pre></div>
@@ -502,7 +502,7 @@ div.csl-indent {
 ## 
 ## params
 ##             linf                k 
-## 60.07762(2.0682)  0.40862(0.0742) 
+## 59.99317(2.1416)  0.40928(0.0717) 
 ## units:  NA 
 ## 
 ## Slot &quot;vcov&quot;:
@@ -720,14 +720,14 @@ Figure 4.2: Marginal distributions of the parameters for Gislason’s second nat
 ## 
 ##    year
 ## age 2000              2001              2002              2003             
-##   0 2.04343(0.220769) 3.00424(0.370329) 2.04343(0.220769) 3.00424(0.370329)
-##   1 0.75174(0.081216) 1.10520(0.136236) 0.75174(0.081216) 1.10520(0.136236)
-##   2 0.27655(0.029878) 0.40658(0.050119) 0.27655(0.029878) 0.40658(0.050119)
-##   3 0.10174(0.010991) 0.14957(0.018438) 0.10174(0.010991) 0.14957(0.018438)
-##   4 0.03743(0.004044) 0.05502(0.006783) 0.03743(0.004044) 0.05502(0.006783)
-##   5 0.01377(0.001488) 0.02024(0.002495) 0.01377(0.001488) 0.02024(0.002495)
-##   6 0.00507(0.000547) 0.00745(0.000918) 0.00507(0.000547) 0.00745(0.000918)
-##   7 0.00186(0.000201) 0.00274(0.000338) 0.00186(0.000201) 0.00274(0.000338)
+##   0 2.03389(0.186294) 3.12945(0.469203) 2.03389(0.186294) 3.12945(0.469203)
+##   1 0.74822(0.068534) 1.15126(0.172610) 0.74822(0.068534) 1.15126(0.172610)
+##   2 0.27526(0.025212) 0.42352(0.063500) 0.27526(0.025212) 0.42352(0.063500)
+##   3 0.10126(0.009275) 0.15581(0.023360) 0.10126(0.009275) 0.15581(0.023360)
+##   4 0.03725(0.003412) 0.05732(0.008594) 0.03725(0.003412) 0.05732(0.008594)
+##   5 0.01370(0.001255) 0.02109(0.003161) 0.01370(0.001255) 0.02109(0.003161)
+##   6 0.00504(0.000462) 0.00776(0.001163) 0.00504(0.000462) 0.00776(0.001163)
+##   7 0.00185(0.000170) 0.00285(0.000428) 0.00185(0.000170) 0.00285(0.000428)
 ## 
 ## units:  NA</code></pre>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="modelling-natural-mortality.html#cb101-1" tabindex="-1"></a><span class="fu">dim</span>(flq)</span></code></pre></div>
@@ -789,42 +789,42 @@ Venables, W. N., and B. D. Ripley. 2002. <em>Modern Applied Statistics with s</e
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-m.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["_main.pdf", "_main.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-m.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

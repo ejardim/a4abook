@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2 Introduction | Fish stock assessment with R - DRAFT</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 Introduction | Fish stock assessment with R - DRAFT" />
   <meta property="og:type" content="book" />
@@ -338,8 +338,7 @@ div.csl-indent {
 <h1><span class="header-section-number">2</span> Introduction<a href="introduction.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="the-assessment-for-all-initiative-a4a" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> The “Assessment for All” Initiative (a4a)<a href="introduction.html#the-assessment-for-all-initiative-a4a" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The European Commission Joint Research Centre’s (JRC) “Assessment for All” Initiative (a4a) was launched to simplify and standardize the complex methodologies often employed in fisheries science, a4a focuses on creating flexible, modular frameworks that can accommodate varying data availability, regional needs, and stakeholder objectives.</p>
-<p>The JRC started its ‘Assessment for All’ Initiative (a4a), with the aim to develop, test, and distribute methods to assess a large numbers of stocks in an operational time frame, and to build the necessary expertise on stock assessment and advice provision.</p>
+<p>The European Commission Joint Research Centre’s (JRC) “Assessment for All” Initiative (a4a) was launched to simplify and standardize the complex methodologies often employed in fisheries science. The a4a philosophy focuses on creating flexible, modular frameworks that can accommodate various levels of data availability, different regional needs, and stakeholder objectives. The main aim was to develop, test, and distribute methods able to be used to assess a large number of stocks in an operational time frame, and to build the necessary expertise on stock assessment and advice provision.</p>
 <p>According to <span class="citation">Jardim et al. (<a href="#ref-EJ_etal_2014">2014</a>)</span>, the long-term strategy of a4a is to increase the number of stock assessments by reducing the workload required to run each analysis and by bringing more scientists into fisheries management advice. The first is achieved by developing a working framework with the methods required to run all the analyses a stock assessment needs. Such approach should make the model exploration and selection processes easier, as well as decreasing the burden of moving between software platforms. The second can be achieved by making the analysis more intuitive, thereby attracting more experts to join stock assessment teams.</p>
 <p>One major step to achieve the a4a goals was the development of a stock assessment model that could be applied rapidly to a large number of stocks and for a wide range of applications: traditional stock assessment, conditioning of operating models, forecasting, or informing harvest control rules in MSE algorithms.</p>
 <p>The modular nature of a4a allows for the integration of data from diverse sources, including biological, environmental, and socioeconomic datasets, ensuring comprehensive assessments. This inclusivity enhances the ability to predict stock dynamics and evaluate the impacts of fishing and environmental changes.</p>
@@ -347,28 +346,28 @@ div.csl-indent {
 <p>The a4a framework has been applied in various European fisheries to improve stock assessment practices, only in the Mediterranean Sea has been used for more than 200 stock assessments, as of 2024 in <a href="https://www.fao.org/gfcm/data/star/en/">(GFCM)</a> and <a href="https://stecf.ec.europa.eu/data-dissemination/medbs_en">(STECF)</a>. Moreover, its use in small pelagic fisheries demonstrated the utility of simple linear models in capturing key population dynamics without the need for data-intensive methods <span class="citation">(<a href="#ref-EJ_etal_2014">Jardim et al. 2014</a>)</span>.</p>
 <p>Some of the key elements of stock assessment are the quantity, quality and aggregation level of the data available. As in many other models the data will condition the type of models that can be used. In <code>a4a</code> the minimum set of data, loosely defined as a “moderate data” level, consists of:</p>
 <ul>
-<li>volume of catches in weight (which should include landings and discards);</li>
+<li>volume of catches in weight (which should both include landings and discards);</li>
 <li>length structure of the catches (based on selectivity studies or direct observations);</li>
 <li>natural mortality by length;</li>
 <li>proportion of mature individuals by length;</li>
 <li>age-length key or growth model;</li>
 <li>length-weight relationship;</li>
-<li>index of abundance and its length structure, or index of biomass (the type of index is left open, it could be from a scientifc survey or a commercial CPUE series);</li>
+<li>index or indices of abundance and its length structure, or indices of biomass, which could originate from either a scientifc survey or a commercial CPUE series;</li>
 </ul>
 </div>
 <div id="multi-stage-modelling-approach" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Multi-stage modelling approach<a href="introduction.html#multi-stage-modelling-approach" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In ecological and population dynamics modeling, one can choose between integrated models, which estimate correlated parameters together, and two-stage models, which separate estimation into distinct steps. These approaches differ in complexity, data requirements, interpretability, and their ability to address uncertainties. The selection depends largely on the study objectives, available data, and the system’s ecological complexity.</p>
+<p>In ecological and population dynamics modeling, one can choose between integrated models, which estimate correlated parameters together, and two-stage models, which separate estimation into distinct steps. These approaches differ in complexity, data requirements, interpretability, and their ability to address various uncertainties. The selection depends largely on the study objectives, the available data, and the system’s ecological complexity.</p>
 <p>Integrated models estimate all parameters within a unified framework, accounting for correlations and interactions between variables such as growth, natural mortality, recruitment, and environmental factors. This approach can provide a realistic depiction of biological systems by preserving dependencies and feedback loops, which are crucial for understanding processes like density dependence or predator-prey interactions <span class="citation">(<a href="#ref-MCAPAM2023">Hamel et al. 2023</a>)</span>. Integrated models are particularly advantageous for ecosystem-based management, where interactions among multiple factors need to be captured. However, the complexity of these models makes them computationally intensive and sensitive to data quality.</p>
 <p>On the other hand, two-stage models estimate parameters such as growth or natural mortality independently before incorporating them into broader models. This step-wise approach simplifies estimation, reducing computational demands and mitigating issues like parameter confounding. For example, fisheries often use empirical relationships to estimate natural mortality (M) based on growth parameters or life history traits before including M in stock assessment models <span class="citation">(<a href="#ref-Maceina_etal_2016">Maceina and Sammons 2016</a>)</span>. However, this decoupling may overlook dynamic interactions, such as how growth influences mortality, potentially leading to biased or incomplete inferences about ecosystem dynamics <span class="citation">(<a href="#ref-Jacobsen_etal_2018">Jacobsen and Essington 2018</a>)</span>.</p>
 <p>Dealing with uncertainty is a critical aspect of both approaches. Integrated models explicitly quantify and propagate uncertainties across correlated parameters. These models incorporate multiple sources of variability, including observation, process, and structural uncertainties, enhancing the robustness of predictions <span class="citation">(<a href="#ref-López_etal_2017">López Quintero, Contreras-Reyes, and Wiff 2017</a>)</span>. Conversely, two-stage models often treat parameter estimates as fixed values, which can underestimate uncertainty propagation in subsequent analyses. However, by treating first-stage estimates as distributions rather than point estimates, two-stage models can partially address this limitation.</p>
 <p>For fisheries science, the choice between these models often depends on management goals and data availability. Integrated models are better suited for forecasting fish abundance or evaluating complex ecological interactions, such as predator-prey dynamics or responses to environmental variability <span class="citation">(<a href="#ref-Robertson_etal_2022">Robertson, Regular, and Cadigan 2022</a>)</span>. Meanwhile, two-stage models are practical for stock assessments, where simplicity and interpretability are prioritized.</p>
 <p>Two-stage models are advantageous for practical applications, such as fisheries stock assessments, where simplicity and robustness take precedence over ecological nuance. Empirical estimates of <span class="math inline">\(M\)</span>, derived from life-history traits, provide reliable inputs for subsequent models, avoiding the parameter confounding that often occurs in integrated frameworks.</p>
-<p>Despite the intuitive advantages of integrated models, it is not a panacea for poor quality data or model structure uncertainty in stock assessments. There are several disadvantages, mostly related to model misspecification, the complexity of the resulting models, and the associated, often considerable, computational requirements (e.g. the use of remotely sensed environmental information). Consequently, in some situations, the traditional two-stage approach remains a better approach <span class="citation">(<a href="#ref-maunderPunt2013">Mark N. Maunder and Punt 2013</a>)</span>.</p>
+<p>Despite the intuitive advantages of integrated models, they are not a panacea for poor quality data or model structure uncertainty in stock assessment. There are also several disadvantages, mostly related to the potential for model misspecification, the complexity of the resulting model, and the associated, often considerable, computational requirements (e.g. the use of remotely sensed environmental information). Consequently, in some situations, the traditional two-stage model remains a better approach <span class="citation">(<a href="#ref-maunderPunt2013">Mark N. Maunder and Punt 2013</a>)</span>.</p>
 </div>
 <div id="stock-assessment-process" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Stock Assessment Process<a href="introduction.html#stock-assessment-process" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The following table breaks down the stock assessment process into three stages: (i) input data preparation, (ii) stock assessment model fitting, and (iii) provision of scientific advice. This breakdown is designed to explain the a4a approach, offering a general framework that outlines the sequence of analyses in the stock assessment process. Each stage includes a plethora of analyses and procedures tailored to the specific stock, considering the available data, time, and resources.</p>
+<p>The following table breaks down the stock assessment process into three stages: (i) input data preparation, (ii) stock assessment model fitting, and (iii) provision of scientific advice. This breakdown is designed to explain the a4a approach, offering a general framework that outlines the sequence of analyses in the stock assessment process. Each stage includes a plethora of analyses and procedures tailored to an specific stock, considering the available data, time, and resources.</p>
 <table>
 <caption><span id="tab:sastages">Table 2.1: </span> Stock assessment process stages</caption>
 <colgroup>
@@ -384,7 +383,7 @@ div.csl-indent {
 <tbody>
 <tr class="odd">
 <td align="left"><strong>Input data preparation</strong></td>
-<td align="left">Preparation of catch data, potentially separating landings and discards. Preparation of biological data, including maturity, length-weight relationships, natural mortality, and individual growth. Conversion of length data into age data.</td>
+<td align="left">Preparation of catch data, potentially computing both landings and discards. Preparation of biological data, including maturity, length-weight relationships, natural mortality, and individual growth. Conversion of length data into age data.</td>
 </tr>
 <tr class="even">
 <td align="left"><strong>Stock assessment model fit</strong></td>
@@ -396,13 +395,13 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-<p>The main purpose of the above table is to clarify a4a’s multi-stage approach to stock assessment. For instance, parameters like natural mortality and individual growth are estimated outside the stock assessment model fitting process, unlike integrated analyses. This is done for reasons discussed earlier. Nevertheless, the stock-recruitment relationship can be estimated within the model, as is typical in integrated analyses. This mixed approach seeks to exclude highly correlated processes from the model while incorporating those that can enhance the robustness of the stock assessment model fit.</p>
-<p>When data are limited, the stock assessment model requires more structure, but this constraint reduces the information available to manage parameter correlations. Striking this balance is challenging. The a4a approach incorporates stock-recruitment relationships, as these are believed to exhibit lower correlation with other model parameters compared to natural mortality or individual growth.</p>
-<p>On the other hand, since natural mortality and individual growth are very important processes acting at a very low level in terms of data processing, there are specific methods to deal with conditioning those processes, in case there’s no data or limited data available, and to provide the opportuinity to propagate their uncertainty into stock assessment.</p>
+<p>The main purpose of the above table is to clarify a4a’s multi-stage approach to stock assessment. For instance, parameters like natural mortality and individual growth are estimated outside the stock assessment model fitting process, unlike how it is often done in integrated analyses. The stock-recruitment relationship, however, can be estimated within the model, as is common in integrated analyses. This mixed approach seeks to exclude highly correlated processes from the model while incorporating those that can enhance the robustness of the stock assessment model fit.</p>
+<p>When data are limited, the stock assessment model requires more structure, but this constraint reduces the information available to manage parameter correlations. Striking a balance between both avenues is challenging. The a4a approach incorporates stock-recruitment relationships, as these are believed to exhibit lower correlation with other model parameters compared to natural mortality or individual growth.</p>
+<p>On the other hand, since natural mortality and individual growth are very important processes acting at a very low level in terms of data processing, there are specific methods to deal with conditioning those processes, in those cases when there is no data or very limited data is available, and to provide the opportunity to propagate their uncertainty into stock assessment.</p>
 </div>
 <div id="stock-assessment-as-a-linear-model" class="section level2 hasAnchor" number="2.4">
 <h2><span class="header-section-number">2.4</span> Stock assessment as a linear model<a href="introduction.html#stock-assessment-as-a-linear-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Stock assessment models often involve complex relationships between biological, environmental, and fishery-dependent variables. By framing these relationships within a linear modeling structure, researchers can leverage a broad range of robust statistical techniques. In particular, the submodel formulation using linear models enables the direct application of powerful tools in R, such as <code>mgcv</code> <span class="citation">(<a href="#ref-R-mgcv">S. N. Wood 2011</a>)</span> for generalized additive models (GAMs) or traditional factorial designs using <code>lm()</code>. These tools not only enhance modeling flexibility but also allow scientists to easily test hypotheses, explore interactions, and fit smooth trends to noisy data, all crucial aspects when assessing dynamic biological systems like fish populations.</p>
+<p>Stock assessment models often involve complex relationships between biological, environmental, and fishery-dependent variables. By framing these relationships within a linear modeling structure, researchers can leverage a broad range of robust statistical techniques. In particular, the submodel formulation using linear models enables the direct application of powerful tools in R, such as <code>mgcv</code> <span class="citation">(<a href="#ref-R-mgcv">S. Wood 2023</a>)</span> for generalized additive models (GAMs) or traditional factorial designs using <code>lm()</code>. These tools not only enhance modeling flexibility but also allow scientists to easily test hypotheses, explore interactions, and fit smooth trends to noisy data, all crucial aspects when assessing dynamic biological systems like fish populations.</p>
 <p>The conceptual ‘language’ of linear models has evolved significantly within the statistical community, offering a structured and elegant way to specify complex relationships without delving into cumbersome mathematical notation. This symbolic approach simplifies model specification, fosters reproducibility, and promotes accessibility, particularly among interdisciplinary teams where not all members may have advanced statistical training. Researchers can define model structures using intuitive formula syntax, where variables and their interactions are easily represented. Thus, linear modeling acts as a bridge between statistical theory and practical application, fostering a deeper shared understanding among scientists and stakeholders.</p>
 <p>Historically, several key contributions have shaped the symbolic expression of linear models. <span class="citation">Nelder (<a href="#ref-Nelder_1965">1965</a>)</span> first introduced concise notation for randomized block designs, streamlining the analysis of experimental layouts common in agricultural and ecological studies. Building upon this, <span class="citation">Wilkinson and Rogers (<a href="#ref-Wilkinson_etal_1973">1973</a>)</span> developed a comprehensive symbolic system for representing factorial designs, which allowed statisticians to describe main effects and interactions succinctly. Later, <span class="citation">T. J. Hastie and Tibshirani (<a href="#ref-hastie1990generalized">1990</a>)</span> extended this framework by incorporating smoothers, flexible functions that model nonlinear relationships, using familiar linear model notation. This lineage of innovation was further consolidated and expanded through the work of <span class="citation">Chambers and Hastie (<a href="#ref-chambers1991statistical">1991</a>)</span>, particularly in the S programming environment, laying the groundwork for many statistical packages used today.</p>
 <p>In the context of fisheries science, adopting this linear modeling philosophy offers numerous advantages. It democratizes model development by making it easier for researchers with varying statistical backgrounds to construct, modify, and interpret models. Moreover, it aligns stock assessment practices with contemporary developments in statistical computing, facilitating integration with advanced methods like machine learning and Bayesian modeling. As the complexity of ecological systems becomes increasingly recognized, the flexibility and communicability of linear model-based frameworks will remain indispensable tools for advancing stock assessment methodologies and ensuring sustainable management of marine resources.</p>
@@ -411,7 +410,7 @@ div.csl-indent {
 <h2><span class="header-section-number">2.5</span> Data used in the book<a href="introduction.html#data-used-in-the-book" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="plaice-in-area-fao-27-ices-area-iv" class="section level3 hasAnchor" number="2.5.1">
 <h3><span class="header-section-number">2.5.1</span> Plaice in area FAO 27, ICES area IV<a href="introduction.html#plaice-in-area-fao-27-ices-area-iv" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>[ToDo]</p>
+<p>North sea plaice is an important demersal flatfish that has been targeted by different fleets operating in the area, but most importantly by beam and otter trawlers. This fishery has always had a large discard rate, which currently accounts for more than 60% of the catch. The stock has grown in recent years with the decrease of fishing mortality. A number of scientific surveys sample plaice, both in coastal areas, where spawning takes place, and in deeper waters.</p>
 </div>
 <div id="european-hake-in-fao-37-gsas-1567" class="section level3 hasAnchor" number="2.5.2">
 <h3><span class="header-section-number">2.5.2</span> European hake in FAO 37, GSAs 1,5,6,7<a href="introduction.html#european-hake-in-fao-37-gsas-1567" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -423,7 +422,7 @@ div.csl-indent {
 </div>
 <div id="redfish-simulated-length-data" class="section level3 hasAnchor" number="2.5.4">
 <h3><span class="header-section-number">2.5.4</span> Redfish simulated length data<a href="introduction.html#redfish-simulated-length-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>This is a length based dataset simulated with GADGET <span class="citation">(<a href="#ref-gadget">Begley and Howell 2004</a>)</span>.</p>
+<p>This is a length-based dataset simulated with GADGET <span class="citation">(<a href="#ref-gadget">Begley and Howell 2004</a>)</span>.</p>
 </div>
 </div>
 <div id="notation" class="section level2 hasAnchor" number="2.6">
@@ -648,7 +647,7 @@ Robertson, Matthew D., Paul M. Regular, and Noel G. Cadigan. 2022. <span>“Limi
 Wilkinson, Graham N., and C. E. Rogers. 1973. <span>“Symbolic Description of Factorial Models for Analysis of Variance.”</span> <em>Applied Statistics</em> 22: 392–99. <a href="https://api.semanticscholar.org/CorpusID:118281143">https://api.semanticscholar.org/CorpusID:118281143</a>.
 </div>
 <div id="ref-R-mgcv" class="csl-entry">
-Wood, S. N. 2011. <span>“Fast Stable Restricted Maximum Likelihood and Marginal Likelihood Estimation of Semiparametric Generalized Linear Models.”</span> <em>Journal of the Royal Statistical Society (B)</em> 73 (1): 3–36. <a href="https://doi.org/10.1111/j.1467-9868.2010.00749.x">https://doi.org/10.1111/j.1467-9868.2010.00749.x</a>.
+Wood, Simon. 2023. <em>Mgcv: Mixed GAM Computation Vehicle with Automatic Smoothness Estimation</em>. <a href="https://doi.org/10.32614/CRAN.package.mgcv">https://doi.org/10.32614/CRAN.package.mgcv</a>.
 </div>
 </div>
             </section>
@@ -671,42 +670,42 @@ Wood, S. N. 2011. <span>“Fast Stable Restricted Maximum Likelihood and Margina
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-intro.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["_main.pdf", "_main.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-intro.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

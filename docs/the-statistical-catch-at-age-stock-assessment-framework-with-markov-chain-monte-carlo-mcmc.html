@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>10 The statistical catch-at-age stock assessment framework with Markov Chain Monte Carlo (MCMC)  | Fish stock assessment with R - DRAFT</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="10 The statistical catch-at-age stock assessment framework with Markov Chain Monte Carlo (MCMC)  | Fish stock assessment with R - DRAFT" />
   <meta property="og:type" content="book" />
@@ -337,16 +337,16 @@ div.csl-indent {
 <div id="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc" class="section level1 hasAnchor" number="10">
 <h1><span class="header-section-number">10</span> The statistical catch-at-age stock assessment framework with Markov Chain Monte Carlo (MCMC) <a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The previous methods were demonstrated using maximum likelihood estimation (MLE). However, <code>ADMB</code> also supports Markov Chain Monte Carlo (MCMC) methods, which provide significant advantages, particularly when working with complex models that involve many parameters. The key difference is that while MLE finds a single best estimate of parameters by maximizing the likelihood function, MCMC offers a broader perspective by generating an entire distribution of possible values. This approach is more informative because it does not just give the most likely estimate but also helps us understand the uncertainty surrounding it. With MCMC, researchers can incorporate prior knowledge and obtain results that are often more realistic and reliable <span class="citation">(<a href="#ref-gelman2013bayesian">A. Gelman et al. 2013</a>)</span>. This is especially useful when dealing with complicated models where traditional likelihood-based methods struggle, as MCMC allows for efficient exploration of possible solutions without requiring an exact mathematical formulation <span class="citation">(<a href="#ref-gilks1995markov">Gilks, Richardson, and Spiegelhalter 1995</a>; <a href="#ref-robert2005monte">Robert and Casella 2005</a>)</span>.</p>
-<p>One of the biggest advantages of MCMC is its flexibility when working with models that have irregular behavior, such as those with multiple peaks or abrupt changes in likelihood. Standard MLE methods assume that the likelihood function behaves smoothly, but this is rarely true in real-world applications. In fisheries, ecology, and other applied sciences, models often have parameters that interact in complex ways, creating likelihood surfaces with ridges and multiple solutions. In these cases, MLE can easily get stuck in a local peak, failing to find the best possible estimate or underestimating the real uncertainty in the system <span class="citation">(<a href="#ref-neal1993probabilistic">Neal 1993</a>)</span>. Since MCMC uses a probabilistic sampling approach instead of strict optimization, it moves freely across the entire space of possible values, making it more robust and adaptable to challenging problems <span class="citation">(<a href="#ref-robert2005monte">Robert and Casella 2005</a>)</span>.</p>
-<p>Traditional MLE-based uncertainty estimation relies on the hessian matrix, which essentially measures how quickly the likelihood function changes as parameters vary. This method assumes that the shape of the likelihood function is quadratic and roughly the same everywhere. However, this assumption is often unrealistic, especially in models with many parameters or correlations between them, as is common in fisheries stock assessment models</p>
+<p>One of the biggest advantages of MCMC is its flexibility when working with models that have irregular behavior, such as those with multiple peaks or abrupt changes in likelihood. Standard MLE methods assume that the likelihood function behaves smoothly, but this is rarely true in real-world applications. In fisheries, ecology, and other applied sciences, models often have parameters that interact in complex ways, creating likelihood surfaces with ridges and multiple solutions. In these cases, MLE optimizers can easily get stuck in a local peak, failing to find the best possible estimate or underestimating the real uncertainty in the system <span class="citation">(<a href="#ref-neal1993probabilistic">Neal 1993</a>)</span>. Since MCMC uses a probabilistic sampling approach instead of strict optimization, it moves freely across the entire space of possible values, making it more robust and adaptable to challenging problems <span class="citation">(<a href="#ref-robert2005monte">Robert and Casella 2005</a>)</span>.</p>
+<p>Traditional MLE-based uncertainty estimation relies on the Hessian matrix, which essentially measures how quickly the likelihood function changes as parameters vary. This method assumes that the shape of the likelihood function is quadratic and roughly the same everywhere. However, this assumption is often unrealistic, especially in models with many parameters or strong correlations among them, as is common in fisheries stock assessment models.</p>
 <p>In fields like fisheries science, where models often involve multiple correlated parameters, MCMC provides a much more flexible and realistic way to estimate uncertainty. Unlike MLE, which assumes uncertainty follows a simple symmetrical pattern, MCMC can handle more complex distributions, giving a better representation of real-world variability. This is especially important when estimating key fisheries management indicators, such as spawning stock biomass (<span class="math inline">\(SSB\)</span>) or fishing mortality (<span class="math inline">\(F\)</span>), which influence critical policy decisions. Because MCMC does not impose strict mathematical assumptions about the shape of uncertainty, it produces estimates that are more reflective of real-world conditions, ultimately leading to more informed and reliable management strategies.</p>
-<p>When running MCMC <code>ADMB</code> uses automatic differentiation to improve sampling efficiency and speed <span class="citation">(<a href="#ref-Fournier2012">Fournier et al. 2012</a>)</span>. It supports various sampling algorithms, including Metropolis-Hastings and Hamiltonian Monte Carlo, which help navigate high-dimensional parameter spaces and complex likelihood structures more effectively. This makes <code>ADMB</code> particularly useful in applied sciences like fisheries and ecology, where uncertainty estimation is crucial for decision-making. Additionally, <code>ADMB</code> provides built-in diagnostics to assess MCMC convergence and reliability, ensuring that posterior distributions are well-explored and results are robust <span class="citation">(<a href="#ref-gelman2013bayesian">A. Gelman et al. 2013</a>)</span>.</p>
+<p>When running MCMC, <code>ADMB</code> uses automatic differentiation to improve sampling efficiency and speed <span class="citation">(<a href="#ref-Fournier2012">Fournier et al. 2012</a>)</span>. It supports various sampling algorithms, including Metropolis-Hastings and Hamiltonian Monte Carlo, which help navigate high-dimensional parameter spaces and complex likelihood structures more effectively. This makes <code>ADMB</code> particularly useful in applied sciences like fisheries and ecology, where uncertainty estimation is crucial for decision-making. Additionally, <code>ADMB</code> provides built-in diagnostics to assess MCMC convergence and reliability, ensuring that posterior distributions are well-explored and results are robust <span class="citation">(<a href="#ref-gelman2013bayesian">A. Gelman et al. 2013</a>)</span>.</p>
 <!--To evaluate the quality of MCMC sampling, `ADMB` offers several key diagnostics. Autocorrelation analysis to detect dependencies between successive samples; effective sample size (ESS) measures the number of independent samples in the chain. The Gelman-Rubin diagnostic (\(\hat{R}\)) helps assess whether multiple chains have converged to the same distribution, with values close to 1 indicating good convergence. Trace plots visually inspect parameter behavior over iterations, revealing trends or poor mixing. Additionally, `ADMB` monitors the acceptance rate to ensure efficient sampling and provides posterior density estimates to check if the distribution has been properly explored. These tools help users refine their MCMC runs, adjusting sampling length or proposal distributions to improve performance and ensure reliable uncertainty estimates.-->
 <p>The manual “A Guide for Bayesian Analysis in AD Model Builder” <span class="citation">(<a href="#ref-monnahan2014admbmcmc">Cole C. Monnahan, Muradian, and Kuriyama 2014</a>)</span> describes and explain a larger group of arguments that can be set when running MCMC with <code>ADMB</code>, which the method <code>sca()</code> uses.</p>
 <div id="the-mcmc-method-for-sca" class="section level2 hasAnchor" number="10.1">
 <h2><span class="header-section-number">10.1</span> The MCMC method for <code>sca</code><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#the-mcmc-method-for-sca" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This section shows how the <code>sca()</code> method interfaces with <code>ADMB</code> to use MCMC. For this section we’ll use the hake assessment in Mediterranean areas (gsa) 1, 5, 6 and 7.</p>
-<p>We’ll start buy fitting the MLE model and afterwards call MCMC methods. The outcomes of the MCMC fit need to be inspected to make sure the chain converged and the results are robust. A set of diagnostics are available to do this work.</p>
+<p>We start by fitting the MLE model and calling afterwards the necessary MCMC methods. The outcomes of the MCMC fit need to be inspected to make sure the chain converged and the results are robust. A set of diagnostics are available to do this.</p>
 <div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cb205-1" tabindex="-1"></a><span class="co"># load libraries and data</span></span>
 <span id="cb205-2"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cb205-2" tabindex="-1"></a><span class="fu">library</span>(FLa4a)</span>
 <span id="cb205-3"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cb205-3" tabindex="-1"></a><span class="fu">library</span>(ggplotFL)</span>
@@ -361,7 +361,7 @@ div.csl-indent {
 <span id="cb205-12"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cb205-12" tabindex="-1"></a>qmod <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="sc">~</span><span class="fu">I</span>(<span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span>age))))</span>
 <span id="cb205-13"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cb205-13" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmodel=</span>fmod, <span class="at">qmodel=</span>qmod)</span>
 <span id="cb205-14"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cb205-14" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">simulate</span>(fit, nsim)</span></code></pre></div>
-<p>To run the MCMC method, one needs to configure a set of arguments, which is done by creating a <code>SCAMCMC</code> object. Table <a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#tab:mcargs">10.1</a> describes the arguments available to run the MCMC method, extracted from Monnahan <span class="citation">(<a href="#ref-monnahan2019">Cole C. Monnahan et al. 2019</a>)</span>. For more details on the MCMC configuration in <code>ADMB</code> visit the <code>ADMB</code> website.</p>
+<p>To run the MCMC method, one needs to configure a set of arguments, which is done by creating an object of class <code>SCAMCMC</code>. Table <a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#tab:mcargs">10.1</a> describes the arguments available to run the MCMC method, extracted from Monnahan <span class="citation">(<a href="#ref-monnahan2019">Cole C. Monnahan et al. 2019</a>)</span>. For more details on the MCMC configuration in <code>ADMB</code> visit the <code>ADMB</code> website.</p>
 <table>
 <caption><span id="tab:mcargs">Table 10.1: </span> <code>ADMB</code> MCMC arguments</caption>
 <thead>
@@ -436,7 +436,7 @@ div.csl-indent {
 </table>
 <div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cb206-1" tabindex="-1"></a><span class="co"># mcmc</span></span>
 <span id="cb206-2"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cb206-2" tabindex="-1"></a>mc <span class="ot">&lt;-</span> <span class="fu">SCAMCMC</span>()</span></code></pre></div>
-<p>Defaults for now are ok, so lets fit the model. Note that the argument <code>fit</code> must be set to <code>MCMC</code> and the argument <code>mcmc</code> takes the <code>SCAMCMC</code> object.</p>
+<p>Defaults provide a good starting point, so let’s fit first the model. Note that the argument <code>fit</code> must be set to <code>MCMC</code> while the argument <code>mcmc</code> takes the <code>SCAMCMC</code> object just created.</p>
 <div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cb207-1" tabindex="-1"></a><span class="co"># fit the model</span></span>
 <span id="cb207-2"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cb207-2" tabindex="-1"></a>fitmc00 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmodel=</span>fmod, <span class="at">qmodel=</span>qmod, <span class="at">fit =</span> <span class="st">&quot;MCMC&quot;</span>, <span class="at">mcmc=</span>mc)</span>
 <span id="cb207-3"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cb207-3" tabindex="-1"></a><span class="co"># check acceptance rate</span></span>
@@ -450,7 +450,7 @@ div.csl-indent {
 ##   gcv               NA
 ##   convergence       NA
 ##   accrate       0.3271</code></pre>
-<p>As usual <code>fitSumm</code> store relevant information about the model fit. In the case of MCMC fit the information stored is the number of model parameters (<code>nopar</code>), the number of observations (<code>nobs</code>) and the acceptance rate (<code>accrate</code>).</p>
+<p>As usual <code>fitSumm</code> store relevant information about the model fit. In the case of an MCMC fit, the information stored includes the number of model parameters (<code>nopar</code>), the number of observations (<code>nobs</code>) and the acceptance rate (<code>accrate</code>).</p>
 <div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cb209-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">FLStocks</span>(<span class="at">mle=</span>hke1567 <span class="sc">+</span> fit, <span class="at">mc=</span>hke1567 <span class="sc">+</span> fitmc00))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-89"></span>
 <img src="_main_files/figure-html/unnamed-chunk-89-1.png" alt="Stock assessment summaries of maximum likelihood (mle) and monte carlo (mc) fits." width="672" />
@@ -461,12 +461,12 @@ Figure 10.1: Stock assessment summaries of maximum likelihood (mle) and monte ca
 </div>
 <div id="diagnostics-with-coda" class="section level2 hasAnchor" number="10.2">
 <h2><span class="header-section-number">10.2</span> Diagnostics with CODA<a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#diagnostics-with-coda" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In essence, the diagnostics are used to give the analyst confidence that the posterior distribution of the parameters is unbiased, as much as possible with symmetric non correlated distributions of each parameter over which one can make inference.</p>
-<p>There’s a large body of literature about MCMC convergence. In this section we’ll focus on the out-of-the-box methods for metropolis hastings algorithm available to the stock assessment scientist: trace plots, autocorrelation and cross correlation analysis, geweke diagnostic, Gelman and Rubin’s convergence diagnostic, cumulative means, distribution density and acceptance rate. These tools should be used together to evaluate proper mixing and convergence.</p>
-<p><code>ADMB</code> has an hybrid algorithm based on Hamiltonian dynamic which will not be addressed here. The reader is invited to consult <span class="citation">Cole C. Monnahan et al. (<a href="#ref-monnahan2019">2019</a>)</span> for more information.</p>
+<p>MCMC diagnostics are used to give the analyst confidence that the posterior distribution of the parameters is unbiased, with symmetric non-correlated distributions of each parameter over which one can make inference.</p>
+<p>There exists a large body of literature about MCMC convergence. In this section we will focus on the out-of-the-box methods for metropolis hastings algorithm available to the stock assessment scientist: trace plots, autocorrelation and cross correlation analysis, Geweke diagnostic, Gelman and Rubin’s convergence diagnostic, cumulative means, distribution density and acceptance rate. These tools should be used together to evaluate proper mixing and convergence.</p>
+<p><code>ADMB</code> has an hybrid algorithm based on Hamiltonian dynamics which will not be employed here. The reader is invited to consult <span class="citation">Cole C. Monnahan et al. (<a href="#ref-monnahan2019">2019</a>)</span> for more information.</p>
 <p>We use the package <code>CODA</code> <span class="citation">(<a href="#ref-coda">Plummer et al. 2006</a>)</span> to run the diagnostics on MCMC fits. One needs to convert the <code>sca</code> output into a <code>mcmc</code> <code>CODA</code> object over which several diagnostics can be ran. The <code>mcmc</code> object is a matrix with the parameters (row = iters, cols= pars).</p>
 <div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cb210-1" tabindex="-1"></a><span class="fu">library</span>(coda)</span></code></pre></div>
-<p>For demonstration purposes we’ll create a chain with 1000 samples (<code>mcmc=1000</code>) and save every iter (<code>mcsave=1</code>), which will create a highly correlated and unstable chain, and update the initial MCMC fit to also have 1000 samples (<code>mcmc=100000</code>, <code>mcsave=100</code>). The latter will have lower correlation due to the higher thinning.</p>
+<p>For demonstration purposes we create a chain with 1000 samples (<code>mcmc=1000</code>) and save every iter (<code>mcsave=1</code>), which will create a highly correlated and unstable chain, and update the initial MCMC fit to also have 1000 samples but obtained by keeping every 100th sample (<code>mcmc=100000</code>, <code>mcsave=100</code>). The latter will have a lower correlation due to the higher thinning.</p>
 <div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cb211-1" tabindex="-1"></a><span class="co"># update initial fit, control random seed</span></span>
 <span id="cb211-2"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cb211-2" tabindex="-1"></a>mc <span class="ot">&lt;-</span> <span class="fu">SCAMCMC</span>(<span class="at">mcmc=</span><span class="dv">100000</span>, <span class="at">mcsave=</span><span class="dv">100</span>, <span class="at">mcseed=</span><span class="dv">10</span>)</span>
 <span id="cb211-3"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cb211-3" tabindex="-1"></a>fitmc01 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmodel=</span>fmod, <span class="at">qmodel=</span>qmod, <span class="at">fit =</span> <span class="st">&quot;MCMC&quot;</span>, <span class="at">mcmc=</span>mc)</span>
@@ -477,7 +477,7 @@ Figure 10.1: Stock assessment summaries of maximum likelihood (mle) and monte ca
 <span id="cb211-8"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cb211-8" tabindex="-1"></a>fitmc02.mc <span class="ot">&lt;-</span> FLa4a<span class="sc">::</span><span class="fu">as.mcmc</span>(fitmc02)</span></code></pre></div>
 <div id="traceplots" class="section level3 hasAnchor" number="10.2.1">
 <h3><span class="header-section-number">10.2.1</span> Traceplots<a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#traceplots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Trace plots (<code>traceplot()</code>) show the sampled values of a parameter over iterations. A plot that looks like a random, stable “cloud” of points with no trends or drifts, with rapid fluctuations, is a signal of convergence, meaning the chain mixes well and is stationary. If the trace plot shows a strong trend or periodicity, drifts, or long autocorrelated stretches, it means the chain hasn’t converged. Figure <a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#fig:chain01">10.2</a> cleary depicts this difference between the two runs.</p>
+<p>Trace plots (<code>traceplot()</code>) show the sampled values of a parameter over iterations. A plot that looks like a random, stable “cloud” of points with no trends or drifts, with rapid fluctuations, is a signal of convergence, meaning the chain mixes well and is stationary. If the trace plot shows a strong trend or periodicity, drifts, or long autocorrelated stretches, it means the chain has not converged as expected. Figure <a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#fig:chain01">10.2</a> cleary depicts this difference between the two runs.</p>
 <div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cb212-1" tabindex="-1"></a><span class="co"># use mcmc.list() to create a list with both runs so they&#39;re plot together</span></span>
 <span id="cb212-2"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cb212-2" tabindex="-1"></a><span class="fu">traceplot</span>(<span class="fu">mcmc.list</span>(<span class="at">mc01=</span>fitmc01.mc[,<span class="dv">1</span>], <span class="at">mc02=</span>fitmc02.mc[,<span class="dv">2</span>]), <span class="at">lwd=</span><span class="fl">1.5</span>, <span class="at">col=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>), <span class="at">lty=</span><span class="dv">1</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:chain01"></span>
@@ -486,7 +486,7 @@ Figure 10.1: Stock assessment summaries of maximum likelihood (mle) and monte ca
 Figure 10.2: MCMC chain’s trace for the first parameter. High correlation chain in blue, low correlation chain in red.
 </p>
 </div>
-<p>Plotting the chains for the parameter clearly shows autocorrelation for the first parameter in the blue chain. It also shows an initial phase where the chain seems to be stuck in a single value. This initial phase, when the parameter seems to be stuck in a fixed position, is called the “burn-in” phase. These iterations can be dropped with the <code>burnin()</code>, although it doesn’t sort out autocorrelation (Figure <a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#fig:chain01b">10.3</a>).</p>
+<p>Plotting the chains for the parameter clearly shows autocorrelation for the first parameter in the blue chain. This initial phase, when the parameter seems to be stuck in a fixed position, is called the “burn-in” phase. These iterations can be dropped by using the <code>burnin()</code> function. Note however that this does not decrease the autocorrelation (Figure <a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#fig:chain01b">10.3</a>).</p>
 <div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cb213-1" tabindex="-1"></a><span class="fu">traceplot</span>(FLa4a<span class="sc">::</span><span class="fu">as.mcmc</span>(<span class="fu">burnin</span>(fitmc02, <span class="dv">250</span>))[,<span class="dv">1</span>], <span class="at">lwd=</span><span class="fl">1.5</span>, <span class="at">col=</span><span class="dv">4</span>, <span class="at">lty=</span><span class="dv">1</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:chain01b"></span>
 <img src="_main_files/figure-html/chain01b-1.png" alt="MCMC chain with high autocorrelation after removing the initial 250 samples (burnin period)." width="672" />
@@ -497,8 +497,8 @@ Figure 10.3: MCMC chain with high autocorrelation after removing the initial 250
 </div>
 <div id="autocorrelation-and-crosscorrelation-analysis" class="section level3 hasAnchor" number="10.2.2">
 <h3><span class="header-section-number">10.2.2</span> Autocorrelation and crosscorrelation analysis<a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#autocorrelation-and-crosscorrelation-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Autocorrelation analysis (<code>acf()</code> and <code>acfplot()</code>) is useful to assess stationarity, a stationary chain should have low autocorrelation, meaning that each sample is approximately independent. On the opposite, high autocorrelation indicates slow mixing and possible non-stationarity. Furthermore, in a well mixed chain autocorrelation drops quickly to near zero, while a poor mixing will display high autocorrelation reducing efficiency of the search.</p>
-<p>The autocorrelation plot will show correlation along the chain for each parameter at different lags. Figure <a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#fig:acf01hc">10.4</a> shows there’s a strong autocorrelation for the first parameter which we’d like to avoid, while Figure <a href="#fit:acf01"><strong>??</strong></a> shows a much lower correlation.</p>
+<p>Autocorrelation analysis (<code>acf()</code> and <code>acfplot()</code>) is an useful tool to assess stationarity. A stationary chain should have low autocorrelation, meaning that each sample is approximately independent. On the opposite, high autocorrelation indicates slow mixing and possible non-stationarity. Furthermore, in a well mixed chain autocorrelation drops quickly to near zero, while a poor mixing one will display high autocorrelation, which also reduces the efficiency of the search.</p>
+<p>The autocorrelation plot will show correlation along the chain for each parameter at different lags. Figure <a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#fig:acf01hc">10.4</a> shows that there is a strong autocorrelation for the first parameter which we would like to avoid, while Figure <a href="#fit:acf01"><strong>??</strong></a> shows much lower correlation.</p>
 <div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cb214-1" tabindex="-1"></a><span class="fu">acfplot</span>(fitmc02.mc[,<span class="dv">1</span>], <span class="at">lwd=</span><span class="dv">3</span>, <span class="at">main=</span><span class="st">&quot;High correlation chain&quot;</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:acf01hc"></span>
 <img src="_main_files/figure-html/acf01hc-1.png" alt="Autocorrelation plot of the first parameter in the MCMC chain" width="672" />
@@ -525,8 +525,8 @@ Figure 10.6: Crosscorrelation plots
 </div>
 <div id="geweke-diagnostic" class="section level3 hasAnchor" number="10.2.3">
 <h3><span class="header-section-number">10.2.3</span> Geweke diagnostic<a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#geweke-diagnostic" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The geweke diagnostic (<code>geweke.diag()</code> and <code>geweke.plot()</code>) computes the Geweke-Brooks Z-score <span class="citation">(<a href="#ref-Geweke1992">Geweke 1992</a>)</span>, which indicates if the first and following parts of a sample from a Markov chain are drawn from the same distribution as the last part of the chain, usually the last 50% of the samples.</p>
-<p>It’s useful to decide if the first few iterations should be discarded and provides information about the stability of the chain. Figure <a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#fig:gew01">10.7</a> shows the geweke plot for the two MCMC runs.</p>
+<p>The Geweke diagnostic (<code>geweke.diag()</code> and <code>geweke.plot()</code>) computes the Geweke-Brooks Z-score <span class="citation">(<a href="#ref-Geweke1992">Geweke 1992</a>)</span>, which indicates if the first and following parts of a sample from a Markov chain are drawn from the same distribution as the last part of the chain, usually the last 50% of the samples.</p>
+<p>It is an useful way to decide if the first few iterations should be discarded, while also provides information about the stability of the chain. Figure <a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#fig:gew01">10.7</a> shows the Geweke plot for the two MCMC runs.</p>
 <div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cb217-1" tabindex="-1"></a><span class="fu">geweke.plot</span>(fitmc01.mc[,<span class="dv">1</span>], <span class="at">main=</span><span class="st">&quot;Low correlation chain&quot;</span>)</span>
 <span id="cb217-2"><a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cb217-2" tabindex="-1"></a><span class="fu">geweke.plot</span>(fitmc02.mc[,<span class="dv">1</span>], <span class="at">main=</span><span class="st">&quot;High correlation chain&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:gew01"></span>
@@ -536,7 +536,7 @@ Figure 10.7: Geweke plot of the first parameter in the MCMC chains
 </p>
 </div>
 <p>The panel on the left shows a much more regular chain, where the different blocks of data show similar distributions. The panel on the right clearly shows the z-score statistic changing out of the confidence intervals until about 400 samples are discarded, which points to the need to drop a set of initial samples.</p>
-<p>The geweke diagnostic is also a good way to look at mixing by comparing the mean and variance of the first part of the chain to the last part. Good mixing will show no significant difference between early and late samples. Poor mixing will show large differences, indicating the chain has not explored the posterior fully.</p>
+<p>The Geweke diagnostic is also a good way to look at mixing by comparing the mean and variance of the first part of the chain to the last part. Good mixing will show no significant difference between early and late samples. Poor mixing will show large differences, indicating the chain has not explored the posterior fully.</p>
 </div>
 <div id="cumulative-means" class="section level3 hasAnchor" number="10.2.4">
 <h3><span class="header-section-number">10.2.4</span> Cumulative means<a href="the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc.html#cumulative-means" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -891,42 +891,42 @@ Robert, C., and G. Casella. 2005. <em>Monte Carlo Statistical Methods</em>. Spri
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/10-mcmc.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["_main.pdf", "_main.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/10-mcmc.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>
