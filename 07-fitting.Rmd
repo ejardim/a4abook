@@ -28,7 +28,7 @@ Submodels that are not explicitly defined will be set by default using the relev
 fit
 ```
 
-To set specific submodels the user has to write the relevant `R` formula and include it in the call. The arguments for each submodel are self-explanatory: fishing mortality is 'fmodel', indices' catchability is 'qmodel', stock-recruitment is 'srmodel', observation variance is 'vmodel' and for initial year's abundance is 'n1model'. The following model comes closer to the official stock assessment of North Sea plaice, as such we'll name it `fit0` and keep it for future comparisons.
+To set specific submodels the user has to write the relevant `R` formula and include it in the call. The arguments for each submodel are self-explanatory: fishing mortality is `fmodel`, indices' catchability is `qmodel`, stock-recruitment is `srmodel`, observation variance is `vmodel` and for initial year's abundance is `n1model`. The following model comes closer to the official stock assessment of North Sea plaice, as such we'll name it `fit0` and keep it for future comparisons.
 
 ```{r, fit0}
 fmod0 <- ~s(age, k=6)+s(year, k=10)+te(age, year, k=c(3,8))
@@ -70,7 +70,7 @@ The following subsections describe common formulations used to define submodels.
 
 One of the most useful models for fishing mortality is one in which 'age' and 'year' effects are independent, that is, where the shape of the selection pattern does not change over time, but the overall level of fishing mortality do. Commonly called a 'separable model'.
 
-A full separable model in `a4a` is written using the `factor` function which converts age and year effects into categorical values, forcing a different coefficient to be estimated for each level of both effects. This model has $age x year$ number of parameters.
+A full separable model in `a4a` is written using the `factor` function which converts age and year effects into categorical values, forcing a different coefficient to be estimated for each level of both effects. This model has $age \times year$ number of parameters.
 
 ```{r}
 fmod1 <- ~ factor(age) + factor(year)

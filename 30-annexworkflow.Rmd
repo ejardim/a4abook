@@ -6,7 +6,7 @@ The procedure is heavily supported by residuals' analysis. In a well specified m
 
 ## The "mean" model
 
-To start the analysis we'll fit a "mean" model, where all submodels will be set to an overall average, by using the $\sim 1$ formula. This will be our reference model to see how adding age and year effects will show up in the diagnostic tools, in particular in the residuals.
+To start the analysis we'll fit a "mean" model, where all submodels will be set to an overall average, by using the `~1` formula. This will be our reference model to see how adding age and year effects will show up in the diagnostic tools, in particular in the residuals.
 
 ```{r, message=FALSE, warning=FALSE}
 library(FLa4a)

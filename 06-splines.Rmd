@@ -335,13 +335,13 @@ plot(FLStocks(ThinPlate = stk + fit00,
 
 Functionality of `mgcv` package provides also the option to work with interactions. Although `s(age, year)` can be defined, it uses a common bivariate spline for the two variables which are very different in scale. It is preferable if interactions are assumed to use a tensor `te(age, year)`. Tensors are mathematical products that help model the individual smoothness of each variable while also capturing their joint interaction. The independent variables in the case of tensors are modeled with different numbers of basis functions allowing different amount of smoothness in each dimension.
 
-Following the example above, let now $\mathbf{x}$ and $\mathbf{z}$ two independent variables with $S_x$ and $S_z$ their spline functions of dimension $k$ and $m$, respectively. Given the nature of the basis functions, their tensor (interaction and main effects), $Te(\mathbf{x},\mathbf{z})$ can be defined as the sum of all possible multiplications of the elements of $S_x$ and $S_z$.
+Following the example above, let now $\mathbf{x}$ and $\mathbf{z}$ two independent variables with $S_x$ and $S_z$ their spline functions, having $k$ and $m$ number of basis functions, respectively. Given the nature of the basis functions, their tensor (interactions and main effects), $te(\mathbf{x},\mathbf{z})$ can be defined as the sum of all possible multiplications of the elements of $S_x$ and $S_z$.
 
-Again is up to the user to define the basis functions for the tensor smoothers. Figure \@ref(fig:te) shows the differences when using different basis for the tensor product.
+Again is up to the user to define the basis functions for the tensor smoothers. In the case of tensors the default basis is `cr`. Figure \@ref(fig:te) shows the differences when using different basis for the tensor product.
 
 ```{r, eval = !drafting}
 fmod03 <- ~te(age, year, k = c(3,10))
-fmod04 <- ~te(age, year, k = c(3,10), bs = 'cr')
+fmod04 <- ~te(age, year, k = c(3,10), bs = 'tp')
 fmod05 <- ~te(age, year, bs = 'bs')
 
 fit03 <- sca(stk, idx, fmodel = fmod03)
@@ -350,8 +350,8 @@ fit05 <- sca(stk, idx, fmodel = fmod05)
 ```
 
 ```{r, te, eval = !drafting, fig.cap='Multiple basis for a tensor and their effects in the fit', echo=FALSE, message = FALSE, warning=FALSE}
-plot(FLStocks(TP_tensor = stk + fit03,
-              CB_tensor = stk + fit04,
+plot(FLStocks(CR_tensor = stk + fit03,
+              TP_tensor = stk + fit04,
               BS_tensor = stk + fit05))+theme(legend.position = 'bottom')
 ```
 

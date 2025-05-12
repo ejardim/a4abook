@@ -162,19 +162,19 @@ These scenarios are defined by the target quantities one's trying to achieve. Ta
 
 | Target | Description |
 |---:|:---------|
-|ssb | The Spawning Stock Biomass at spawning time |
-|ssb_spawn| The Spawning Stock Biomass at spawning time |
-|ssb_end| The Spawning Stock Biomass at the end of the time period |
-|ssb_flash| The Spawning Stock Biomass at the beginning of the following year, kept for retro compatibility with package `FLash` [@flash] |
-|biomass_spawn| Total Stock Biomass at spawning time|
-|biomass_end| Total Stock Biomass at the end of the time period |
-|f | Fishing mortality over the time period|
-|fbar| Fishing mortality over the time period|
-|catch| The total catch over the time period|
-|landings| The total landings over the time period|
-|discards| The total discards over the time period|
-|effort| The total effort over the time period|
-|revenue| The total revenue over the time period|
+|`ssb` | The Spawning Stock Biomass at spawning time |
+|`ssb_spawn`| The Spawning Stock Biomass at spawning time |
+|`ssb_end`| The Spawning Stock Biomass at the end of the time period |
+|`ssb_flash`| The Spawning Stock Biomass at the beginning of the following year, kept for retro compatibility with package `FLash` [@flash] |
+|`biomass_spawn`| Total Stock Biomass at spawning time|
+|`biomass_end`| Total Stock Biomass at the end of the time period |
+|`f` | Fishing mortality over the time period|
+|`fbar`| Fishing mortality over the time period|
+|`catch`| The total catch over the time period|
+|`landings`| The total landings over the time period|
+|`discards`| The total discards over the time period|
+|`effort`| The total effort over the time period|
+|`revenue`| The total revenue over the time period|
 Table: (\#tab:trgqts) Target quantities and their description
 
 When projecting the stock under the conditions defined by the scenario one can mix several quantities. For example it may be interesting to project an initial situation of growing the stock followed by a higher exploitation to evaluate how catches would behave.
@@ -245,7 +245,7 @@ The HCR we're going to explore is based on a target and a limit. The target is a
 
 Such HCR could be written as
 
-$if \quad SSB_y > 0.5 \times B_{MSY} \quad then \quad F_{y+1} = F_{MSY} \quad or \quad else \quad F_{y+1} = 0.8 \times F_{MSY}$
+$\text{if} \quad SSB_y > 0.5 \times B_{MSY} \quad \text{then} \quad F_{y+1} = F_{MSY} \quad \text{or else} \quad F_{y+1} = 0.8 \times F_{MSY}$
 
 and coded like
 

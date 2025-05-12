@@ -34,13 +34,13 @@ Slots named `*.obs` will contain the related time series present in the original
 
 | Argument | Default value | Description |
 |---:|:---|:---------|
-|fbar | seq(0, 4, length.out = 101)| Vector of Fs to find minimum or maximum value of metric, e.g. MSY |
-| nyears | 3 | Number of years to average across to estimate input quantities for reference points estimation |
-| biol.nyears | nyears | Number of years to average across to estimate biological quantities, e.g. maturity|
-| fbar.nyears | nyears | Number of years to average across to scale F-at-age to 1 and compute selection pattern|
-| sel.nyears | nyears | Number of years to average across to compute landings and discards in number of individual per age |
-| na.rm | TRUE | Remove NA if existing|
-| mean | "arithmetic" | Statistic to average quantities above, alternative is "geometric" for the geometric mean|
+|`fbar` | `seq(0, 4, length.out = 101)`| Vector of Fs to find minimum or maximum value of metric, e.g. MSY |
+| `nyears` | `3` | Number of years to average across to estimate input quantities for reference points estimation |
+| `biol.nyears` | `nyears` | Number of years to average across to estimate biological quantities, e.g. maturity|
+| `fbar.nyears` | `nyears` | Number of years to average across to scale F-at-age to 1 and compute selection pattern|
+| `sel.nyears` | `nyears` | Number of years to average across to compute landings and discards in number of individual per age |
+| `na.rm` | `TRUE` | Remove `NA` if existing|
+| `mean` | `"arithmetic"` | Statistic to average quantities above, alternative is `"geometric"` for the geometric mean|
 
 Table: (\#tab:brpargs) Arguments available to create `FLBRP` object.
 

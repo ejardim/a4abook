@@ -46,18 +46,18 @@ To run the MCMC method, one needs to configure a set of arguments, which is done
 
 |Argument|Default value| Description|
 |---:|:---|:----------|
-|mcmc | 10000 |Run N MCMC iterations|
-|mcsave | 100 | Save every N th MCMC iteration|
-|mcscale | | Rescale step size for first N iterations|
-|mcmult | | Rescale the covariance matrix|
-|mcrb | | Reduce high parameter correlations|
-|mcprobe | 0.05 | Use a fat-tailed proposal distribution|
-|mcdiag| FALSE| Use a diagonal covariance matrix|
-|mcnoscale| FALSE | Do not scale the algorithm during|
-|mcu| FALSE | Use a uniform distribution as proposal distribution|
-|hybrid| FALSE | Use the hybrid method|
-|hynstep | | Mean number of steps for the leapfrog method|
-|hyeps | | The stepsize for the leapfrog method [X numeric and > 0]|
+|`mcmc` | `10000` |Run N MCMC iterations|
+|`mcsave` | `100` | Save every N th MCMC iteration|
+|`mcscale` | | Rescale step size for first N iterations|
+|`mcmult` | | Rescale the covariance matrix|
+|`mcrb` | | Reduce high parameter correlations|
+|`mcprobe` | `0.05` | Use a fat-tailed proposal distribution|
+|`mcdiag`| `FALSE`| Use a diagonal covariance matrix|
+|`mcnoscale`| `FALSE` | Do not scale the algorithm during|
+|`mcu`| `FALSE` | Use a uniform distribution as proposal distribution|
+|`hybrid`| `FALSE` | Use the hybrid method|
+|`hynstep` | | Mean number of steps for the leapfrog method|
+|`hyeps` | | The stepsize for the leapfrog method [X numeric and > 0]|
 
 Table: (\#tab:mcargs) `ADMB` MCMC arguments
 
