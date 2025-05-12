@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7 Fitting | Fish stock assessment with R - DRAFT</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7 Fitting | Fish stock assessment with R - DRAFT" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-05-10" />
+<meta name="date" content="2025-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -359,7 +359,7 @@ Figure 7.1: Stock summary
 ## 
 ## Time used:
 ##  Pre-processing     Running a4a Post-processing           Total 
-##       0.7970784       9.4985950       0.1185131      10.4141865 
+##       1.6106982      19.4638705       0.1658545      21.2404232 
 ## 
 ## Submodels:
 ##   fmodel: ~s(age, k = 8) + s(year, k = 30) + te(age, year, k = c(5, 15))
@@ -380,7 +380,7 @@ Figure 7.1: Stock summary
 ##     BTS-Combined (all):              ~1
 ##     IBTS_Q3:                         ~1
 ##     IBTS_Q1:                         ~1</code></pre>
-<p>To set specific submodels the user has to write the relevant <code>R</code> formula and include it in the call. The arguments for each submodel are self-explanatory: fishing mortality is ‘fmodel’, indices’ catchability is ‘qmodel’, stock-recruitment is ‘srmodel’, observation variance is ‘vmodel’ and for initial year’s abundance is ‘n1model’. The following model comes closer to the official stock assessment of North Sea plaice, as such we’ll name it <code>fit0</code> and keep it for future comparisons.</p>
+<p>To set specific submodels the user has to write the relevant <code>R</code> formula and include it in the call. The arguments for each submodel are self-explanatory: fishing mortality is <code>fmodel</code>, indices’ catchability is <code>qmodel</code>, stock-recruitment is <code>srmodel</code>, observation variance is <code>vmodel</code> and for initial year’s abundance is <code>n1model</code>. The following model comes closer to the official stock assessment of North Sea plaice, as such we’ll name it <code>fit0</code> and keep it for future comparisons.</p>
 <div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="fitting.html#cb115-1" tabindex="-1"></a>fmod0 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">6</span>)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">10</span>)<span class="sc">+</span><span class="fu">te</span>(age, year, <span class="at">k=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">8</span>))</span>
 <span id="cb115-2"><a href="fitting.html#cb115-2" tabindex="-1"></a>qmod0 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">4</span>),</span>
 <span id="cb115-3"><a href="fitting.html#cb115-3" tabindex="-1"></a>       <span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">3</span>),</span>
@@ -413,7 +413,7 @@ Figure 7.2: Stock summary - close to official assessment
 ## 
 ## Time used:
 ##  Pre-processing     Running a4a Post-processing           Total 
-##      0.73071098      3.51436472      0.07818079      4.32325649 
+##       1.2762582       6.6921008       0.1620283       8.1303873 
 ## 
 ## Submodels:
 ##   fmodel: ~s(age, k = 6) + s(year, k = 10) + te(age, year, k = c(3, 8))
@@ -441,7 +441,7 @@ Figure 7.2: Stock summary - close to official assessment
 <div id="separable-model" class="section level3 hasAnchor" number="7.1.1">
 <h3><span class="header-section-number">7.1.1</span> Separable model<a href="fitting.html#separable-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>One of the most useful models for fishing mortality is one in which ‘age’ and ‘year’ effects are independent, that is, where the shape of the selection pattern does not change over time, but the overall level of fishing mortality do. Commonly called a ‘separable model’.</p>
-<p>A full separable model in <code>a4a</code> is written using the <code>factor</code> function which converts age and year effects into categorical values, forcing a different coefficient to be estimated for each level of both effects. This model has <span class="math inline">\(age x year\)</span> number of parameters.</p>
+<p>A full separable model in <code>a4a</code> is written using the <code>factor</code> function which converts age and year effects into categorical values, forcing a different coefficient to be estimated for each level of both effects. This model has <span class="math inline">\(age \times year\)</span> number of parameters.</p>
 <div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="fitting.html#cb117-1" tabindex="-1"></a>fmod1 <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">factor</span>(age) <span class="sc">+</span> <span class="fu">factor</span>(year)</span>
 <span id="cb117-2"><a href="fitting.html#cb117-2" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>fmod1, <span class="at">fit=</span><span class="st">&quot;MP&quot;</span>)</span></code></pre></div>
 <p>One can reduce the number of parameters and add dependency along both effects, although still keeping independence of each other, by using smoothers rather than <code>factor</code>. We’re using the North Sea Plaice data, and since it has 10 ages we will use a simple rule of thumb that the spline should have fewer than <span class="math inline">\(\frac{10}{2} = 5\)</span> degrees of freedom, and so we opt for 4 degrees of freedom. We will also do the same for year and model the change in <span class="math inline">\(F\)</span> through time as a smoother with 20 degrees of freedom.</p>
@@ -466,7 +466,7 @@ Figure 7.4: Fishing mortality of separable models. Independent age and year effe
 </div>
 <div id="model-with-age-year-interaction" class="section level3 hasAnchor" number="7.1.2">
 <h3><span class="header-section-number">7.1.2</span> Model with age-year interaction<a href="fitting.html#model-with-age-year-interaction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A non-separable model, where we consider age and year to interact can be modeled by a smooth interaction term with a tensor product of cubic splines, the <code>te</code> method (Figure <a href="fitting.html#fig:te1">7.5</a>), again borrowed from <code>mgcv</code> (<span class="citation">S. Wood (<a href="#ref-R-mgcv">2023</a>)</span>).</p>
+<p>A non-separable model, where we consider age and year to interact can be modeled by a smooth interaction term with a tensor product of cubic splines, the <code>te</code> method (Figure <a href="fitting.html#fig:te1">7.5</a>), again borrowed from <code>mgcv</code> (<span class="citation">S. N. Wood (<a href="#ref-R-mgcv">2011</a>)</span>).</p>
 <div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="fitting.html#cb120-1" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">20</span>))</span>
 <span id="cb120-2"><a href="fitting.html#cb120-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">fmodel=</span>fmod)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:te1"></span>
@@ -900,7 +900,7 @@ Figure 7.27: Stock estimates with missing observations.
 <h3> References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-R-mgcv" class="csl-entry">
-Wood, Simon. 2023. <em>Mgcv: Mixed GAM Computation Vehicle with Automatic Smoothness Estimation</em>. <a href="https://CRAN.R-project.org/package=mgcv">https://CRAN.R-project.org/package=mgcv</a>.
+Wood, S. N. 2011. <span>“Fast Stable Restricted Maximum Likelihood and Marginal Likelihood Estimation of Semiparametric Generalized Linear Models.”</span> <em>Journal of the Royal Statistical Society (B)</em> 73 (1): 3–36. <a href="https://doi.org/10.1111/j.1467-9868.2010.00749.x">https://doi.org/10.1111/j.1467-9868.2010.00749.x</a>.
 </div>
 </div>
             </section>
@@ -923,42 +923,42 @@ Wood, Simon. 2023. <em>Mgcv: Mixed GAM Computation Vehicle with Automatic Smooth
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-  "sharing": {
-    "github": false,
-    "facebook": true,
-    "twitter": true,
-    "linkedin": false,
-    "weibo": false,
-    "instapaper": false,
-    "vk": false,
-    "whatsapp": false,
-    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-  },
-  "fontsettings": {
-    "theme": "white",
-    "family": "sans",
-    "size": 2
-  },
-  "edit": {
-    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-fitting.Rmd",
-    "text": "Edit"
-  },
-  "history": {
-    "link": null,
-    "text": null
-  },
-  "view": {
-    "link": null,
-    "text": null
-  },
-  "download": ["_main.pdf", "_main.epub"],
-  "search": {
-    "engine": "fuse",
-    "options": null
-  },
-  "toc": {
-    "collapse": "subsection"
-  }
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-fitting.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
 });
 });
 </script>

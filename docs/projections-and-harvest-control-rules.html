@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>12 Projections and harvest control rules | Fish stock assessment with R - DRAFT</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="12 Projections and harvest control rules | Fish stock assessment with R - DRAFT" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-05-10" />
+<meta name="date" content="2025-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -528,55 +528,55 @@ Figure 12.6: Stochastic projection of stock for 25 years in the absence of fishi
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">ssb</td>
+<td align="right"><code>ssb</code></td>
 <td align="left">The Spawning Stock Biomass at spawning time</td>
 </tr>
 <tr class="even">
-<td align="right">ssb_spawn</td>
+<td align="right"><code>ssb_spawn</code></td>
 <td align="left">The Spawning Stock Biomass at spawning time</td>
 </tr>
 <tr class="odd">
-<td align="right">ssb_end</td>
+<td align="right"><code>ssb_end</code></td>
 <td align="left">The Spawning Stock Biomass at the end of the time period</td>
 </tr>
 <tr class="even">
-<td align="right">ssb_flash</td>
+<td align="right"><code>ssb_flash</code></td>
 <td align="left">The Spawning Stock Biomass at the beginning of the following year, kept for retro compatibility with package <code>FLash</code> <span class="citation">(<a href="#ref-flash">Laurence T. Kell 2025</a>)</span></td>
 </tr>
 <tr class="odd">
-<td align="right">biomass_spawn</td>
+<td align="right"><code>biomass_spawn</code></td>
 <td align="left">Total Stock Biomass at spawning time</td>
 </tr>
 <tr class="even">
-<td align="right">biomass_end</td>
+<td align="right"><code>biomass_end</code></td>
 <td align="left">Total Stock Biomass at the end of the time period</td>
 </tr>
 <tr class="odd">
-<td align="right">f</td>
+<td align="right"><code>f</code></td>
 <td align="left">Fishing mortality over the time period</td>
 </tr>
 <tr class="even">
-<td align="right">fbar</td>
+<td align="right"><code>fbar</code></td>
 <td align="left">Fishing mortality over the time period</td>
 </tr>
 <tr class="odd">
-<td align="right">catch</td>
+<td align="right"><code>catch</code></td>
 <td align="left">The total catch over the time period</td>
 </tr>
 <tr class="even">
-<td align="right">landings</td>
+<td align="right"><code>landings</code></td>
 <td align="left">The total landings over the time period</td>
 </tr>
 <tr class="odd">
-<td align="right">discards</td>
+<td align="right"><code>discards</code></td>
 <td align="left">The total discards over the time period</td>
 </tr>
 <tr class="even">
-<td align="right">effort</td>
+<td align="right"><code>effort</code></td>
 <td align="left">The total effort over the time period</td>
 </tr>
 <tr class="odd">
-<td align="right">revenue</td>
+<td align="right"><code>revenue</code></td>
 <td align="left">The total revenue over the time period</td>
 </tr>
 </tbody>
@@ -638,7 +638,7 @@ Figure 12.9: Stochastic projection of stock for 25 years with SSB target of 1500
 <p>HCR are decision algorithms that can be used to codify the decision making process, allowing for longer term stability of management decisions in fisheries.</p>
 <p>The HCR we’re going to explore is based on a target and a limit. The target is applied to the management objective and represents the intent of management. The limit is applied to the process we want to use as trigger for protective actions. For example, the objective of the management system is to extract the highest catches possible for a very long time (aka equilibrium). However, due to natural variability and scientific uncertainty, it can happen that the stock’s biomass decreases below what’s expected, in which case decision makers want to make sure the stock stays healthy and productive. This situation can be translated into a target of fishing mortality at the level that extracts the Maximum Sustainable Yield, and a biomass limit of <em>e.g.</em> half the biomass that would produce the referred catches, everything being in a stable equilibrium. If <span class="math inline">\(SSB\)</span> falls below the limit then fishing mortality is set at 80% of the target.</p>
 <p>Such HCR could be written as</p>
-<p><span class="math inline">\(if \quad SSB_y &gt; 0.5 \times B_{MSY} \quad then \quad F_{y+1} = F_{MSY} \quad or \quad else \quad F_{y+1} = 0.8 \times F_{MSY}\)</span></p>
+<p><span class="math inline">\(\text{if} \quad SSB_y &gt; 0.5 \times B_{MSY} \quad \text{then} \quad F_{y+1} = F_{MSY} \quad \text{or else} \quad F_{y+1} = 0.8 \times F_{MSY}\)</span></p>
 <p>and coded like</p>
 <div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="projections-and-harvest-control-rules.html#cb275-1" tabindex="-1"></a><span class="co"># fit model</span></span>
 <span id="cb275-2"><a href="projections-and-harvest-control-rules.html#cb275-2" tabindex="-1"></a>fit00 <span class="ot">&lt;-</span> <span class="fu">sca</span>(ple4, ple4.indices, <span class="at">srmodel=</span><span class="sc">~</span><span class="fu">geomean</span>())</span>
@@ -720,42 +720,42 @@ Scott, Finlay, and Iago Mosqueira. 2016. <span>“Bioeconomic Modelling for Fish
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-  "sharing": {
-    "github": false,
-    "facebook": true,
-    "twitter": true,
-    "linkedin": false,
-    "weibo": false,
-    "instapaper": false,
-    "vk": false,
-    "whatsapp": false,
-    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-  },
-  "fontsettings": {
-    "theme": "white",
-    "family": "sans",
-    "size": 2
-  },
-  "edit": {
-    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/12-fwd.Rmd",
-    "text": "Edit"
-  },
-  "history": {
-    "link": null,
-    "text": null
-  },
-  "view": {
-    "link": null,
-    "text": null
-  },
-  "download": ["_main.pdf", "_main.epub"],
-  "search": {
-    "engine": "fuse",
-    "options": null
-  },
-  "toc": {
-    "collapse": "subsection"
-  }
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/12-fwd.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
 });
 });
 </script>

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5 Stock assessment framework | Fish stock assessment with R - DRAFT</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5 Stock assessment framework | Fish stock assessment with R - DRAFT" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-05-10" />
+<meta name="date" content="2025-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -419,7 +419,7 @@ I_{ays} = Q_{ays} R_{y}e^{-\sum (F_{ay} + M_{ay})}
 </div>
 <div id="model-structure" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> Model structure <a href="stock-assessment-framework.html#model-structure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The <code>a4a</code> stock assessment framework allows the user to set up a large number of different models. The mechanics which provide this flexibility are designed around the concept of submodels. The user has to define the model structure using <code>R</code> formulas, including <code>mgcv</code> <span class="citation">(<a href="#ref-R-mgcv">S. Wood 2023</a>)</span> gam formulas, for each unknown variable that must be estimated. By using <code>R</code> formulas the stock assessment framework gives lot’s of flexibility to explore models and combinations of submodels.</p>
+<p>The <code>a4a</code> stock assessment framework allows the user to set up a large number of different models. The mechanics which provide this flexibility are designed around the concept of submodels. The user has to define the model structure using <code>R</code> formulas, including <code>mgcv</code> <span class="citation">(<a href="#ref-R-mgcv">S. N. Wood 2011</a>)</span> gam formulas, for each unknown variable that must be estimated. By using <code>R</code> formulas the stock assessment framework gives lot’s of flexibility to explore models and combinations of submodels.</p>
 <p>There are 5 submodels in operation:</p>
 <ul>
 <li>a model for F-at-age (<span class="math inline">\(F_{ay}\)</span>)</li>
@@ -447,7 +447,7 @@ I_{ays} = Q_{ays} R_{y}e^{-\sum (F_{ay} + M_{ay})}
 ## 
 ## Time used:
 ##  Pre-processing     Running a4a Post-processing           Total 
-##      0.15459442      0.26590681      0.02918553      0.44968677 
+##       0.6786716       0.7882562       0.2506409       1.7175686 
 ## 
 ## Submodels:
 ##   fmodel: ~s(age, k = 5)
@@ -475,69 +475,69 @@ I_{ays} = Q_{ays} R_{y}e^{-\sum (F_{ay} + M_{ay})}
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">stock</td>
-<td align="left">missing</td>
-<td align="left">‘FLStock’ object containing catch and stock information</td>
+<td align="left"><code>stock</code></td>
+<td align="left"><code>missing</code></td>
+<td align="left"><code>FLStock</code> object containing catch and stock information</td>
 </tr>
 <tr class="even">
-<td align="left">indices</td>
-<td align="left">missing</td>
-<td align="left">‘FLIndices’ object containing survey indices</td>
+<td align="left"><code>indices</code></td>
+<td align="left"><code>missing</code></td>
+<td align="left"><code>FLIndices</code> object containing survey indices</td>
 </tr>
 <tr class="odd">
-<td align="left">fmodel</td>
-<td align="left">missing</td>
+<td align="left"><code>fmodel</code></td>
+<td align="left"><code>missing</code></td>
 <td align="left">a formula object depicting the model for log fishing mortality at age</td>
 </tr>
 <tr class="even">
-<td align="left">qmodel</td>
-<td align="left">missing</td>
+<td align="left"><code>qmodel</code></td>
+<td align="left"><code>missing</code></td>
 <td align="left">a list of formula objects depicting the models for log survey catchability at age</td>
 </tr>
 <tr class="odd">
-<td align="left">srmodel</td>
-<td align="left">missing</td>
+<td align="left"><code>srmodel</code></td>
+<td align="left"><code>missing</code></td>
 <td align="left">a formula object depicting the model for log recruitment</td>
 </tr>
 <tr class="even">
-<td align="left">n1model</td>
-<td align="left">missing</td>
+<td align="left"><code>n1model</code></td>
+<td align="left"><code>missing</code></td>
 <td align="left">a formula object depicting the model for the population in the first year of the time series</td>
 </tr>
 <tr class="odd">
-<td align="left">vmodel</td>
-<td align="left">missing</td>
+<td align="left"><code>vmodel</code></td>
+<td align="left"><code>missing</code></td>
 <td align="left">a list of formula objects depicting the model for the variance of fishing mortality and the indices</td>
 </tr>
 <tr class="even">
-<td align="left">covar</td>
-<td align="left">missing</td>
+<td align="left"><code>covar</code></td>
+<td align="left"><code>missing</code></td>
 <td align="left">a list with covariates to be used by the submodels. The formula must have an element with the same name as the list element</td>
 </tr>
 <tr class="odd">
-<td align="left">wkdir</td>
-<td align="left">missing</td>
-<td align="left">used to set a working directory for the admb optimiser; if wkdir is set, all admb files are saved to this folder, otherwise they are deleted</td>
+<td align="left"><code>wkdir</code></td>
+<td align="left"><code>missing</code></td>
+<td align="left">used to set a working directory for the admb optimiser; if <code>wkdir</code> is set, all admb files are saved to this folder, otherwise they are deleted</td>
 </tr>
 <tr class="even">
-<td align="left">verbose</td>
-<td align="left">FALSE</td>
-<td align="left">if true, admb fitting information is printed to the screen</td>
+<td align="left"><code>verbose</code></td>
+<td align="left"><code>FALSE</code></td>
+<td align="left">if <code>TRUE</code>, admb fitting information is printed to the screen</td>
 </tr>
 <tr class="odd">
-<td align="left">fit</td>
-<td align="left">‘assessment’</td>
-<td align="left">character with type of fit: ‘assessment’ (ML estimation, returns covariance matrix), ‘MP’ (ML estimation, doesn’t compute covariance matrix) or ‘MCMC’ (MCMC estimation)</td>
+<td align="left"><code>fit</code></td>
+<td align="left"><code>assessment</code></td>
+<td align="left">character with type of fit: <code>assessment</code> (ML estimation, returns covariance matrix), <code>MP</code> (ML estimation, doesn’t compute covariance matrix) or <code>MCMC</code> (MCMC estimation)</td>
 </tr>
 <tr class="even">
-<td align="left">center</td>
-<td align="left">TRUE</td>
+<td align="left"><code>center</code></td>
+<td align="left"><code>TRUE</code></td>
 <td align="left">logical defining if the data should be centered before fitting</td>
 </tr>
 <tr class="odd">
-<td align="left">mcmc</td>
-<td align="left">missing</td>
-<td align="left">a ‘SCAMCMC’ object with the arguments to run MCMC fits (fit=’MCMC)</td>
+<td align="left"><code>mcmc</code></td>
+<td align="left"><code>missing</code></td>
+<td align="left">a <code>SCAMCMC</code> object with the arguments to run MCMC fits (<code>fit=MCMC</code>)</td>
 </tr>
 </tbody>
 </table>
@@ -545,7 +545,7 @@ I_{ays} = Q_{ays} R_{y}e^{-\sum (F_{ay} + M_{ay})}
 <div id="submodel-building-blocks-and-fundamental-r-formulas" class="section level2 hasAnchor" number="5.3">
 <h2><span class="header-section-number">5.3</span> Submodel building blocks and fundamental <code>R</code> formulas<a href="stock-assessment-framework.html#submodel-building-blocks-and-fundamental-r-formulas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The elements available to build submodels formulas are ‘age’ and ‘year’, which can be used to build models with different structures.</p>
-<p>In R’s modelling language, a constant model is coded as <span class="math inline">\(\sim 1\)</span>, while a slope over time would simply be <span class="math inline">\(\sim year\)</span>, a smoother over time <span class="math inline">\(\sim s(year, k=10)\)</span>, a model with a coefficient for each year would be <span class="math inline">\(\sim factor(year)\)</span>. Transformations of the variables are as usual, e.g. <span class="math inline">\(\sim sqrt(year)\)</span>, etc; while combinations of all the above can be done although non-convergence will limit the possibilities.</p>
+<p>In R’s modelling language, a constant model is coded as <code>~1</code>, while a slope over time would simply be <code>~year</code>, a smoother over time <code>~s(year, k=10)</code>, a model with a coefficient for each year would be <code>~factor(year)</code>. Transformations of the variables are as usual, e.g. <code>sqrt(year)</code>, etc; while combinations of all the above can be done although non-convergence will limit the possibilities.</p>
 <p>Using the <span class="math inline">\(F\)</span> submodel as example the following specifies the models described in the previous paragraph, see Figure <a href="stock-assessment-framework.html#fig:fundforms">5.2</a>.</p>
 <div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="stock-assessment-framework.html#cb105-1" tabindex="-1"></a><span class="co"># models</span></span>
 <span id="cb105-2"><a href="stock-assessment-framework.html#cb105-2" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="er">~</span><span class="dv">1</span></span>
@@ -576,7 +576,7 @@ I_{ays} = Q_{ays} R_{y}e^{-\sum (F_{ay} + M_{ay})}
 Figure 5.2: Example of fundamental R formulas used to model the year effect
 </p>
 </div>
-<p>The models above and their combinations can be used to model both ‘age’ and ‘year’. The corresponding fits for age are show in the code below and Figure <a href="stock-assessment-framework.html#fig:fundformsage">5.3</a>.</p>
+<p>The models above and their combinations can be used to model both <code>age</code> and <code>year</code>. The corresponding fits for age are show in the code below and Figure <a href="stock-assessment-framework.html#fig:fundformsage">5.3</a>.</p>
 <div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="stock-assessment-framework.html#cb106-1" tabindex="-1"></a><span class="co"># models</span></span>
 <span id="cb106-2"><a href="stock-assessment-framework.html#cb106-2" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="er">~</span><span class="dv">1</span></span>
 <span id="cb106-3"><a href="stock-assessment-framework.html#cb106-3" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="er">~</span> age</span>
@@ -608,7 +608,7 @@ Figure 5.3: Example of fundamental R formulas used to model the age effect
 </div>
 <div id="the-major-effects-available-for-modelling" class="section level2 hasAnchor" number="5.4">
 <h2><span class="header-section-number">5.4</span> The major effects available for modelling<a href="stock-assessment-framework.html#the-major-effects-available-for-modelling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Although the building blocks for formulas are ‘age’ and ‘year’, in fact there are three effects that can be modelled for each submodel: ‘age’, ‘year’ and ‘cohort’. As examples note the following models for fishing mortality.</p>
+<p>Although the building blocks for formulas are <code>age</code> and <code>year</code>, in fact there are three effects that can be modelled for each submodel: <code>age</code>, <code>year</code> and <code>cohort</code>. As examples note the following models for fishing mortality.</p>
 <div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="stock-assessment-framework.html#cb107-1" tabindex="-1"></a><span class="co"># the age effect</span></span>
 <span id="cb107-2"><a href="stock-assessment-framework.html#cb107-2" tabindex="-1"></a>ageeffect <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">factor</span>(age)</span>
 <span id="cb107-3"><a href="stock-assessment-framework.html#cb107-3" tabindex="-1"></a></span>
@@ -664,27 +664,27 @@ Figure 5.7: The fit process input/output model
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">MP</td>
+<td align="left"><code>MP</code></td>
 <td align="left">Maximum Likelihood</td>
 <td align="left">No</td>
 <td align="left"><code>a4aFit</code></td>
 </tr>
 <tr class="even">
-<td align="left">Assessment</td>
+<td align="left"><code>assessment</code></td>
 <td align="left">Maximum Likelihood</td>
 <td align="left">Yes</td>
 <td align="left"><code>a4aFitSA</code></td>
 </tr>
 <tr class="odd">
-<td align="left">MCMC</td>
+<td align="left"><code>MCMC</code></td>
 <td align="left">MCMC</td>
 <td align="left">No</td>
 <td align="left"><code>a4aFitMCMC</code></td>
 </tr>
 </tbody>
 </table>
-<p>Type <code>MP</code>, for “Management Procedure,” returns an <code>a4aFit</code> class object designed for use in MSEs (Management Strategy Evaluations) with full feedback models <span class="citation">(<a href="#ref-puntmse">Punt et al. 2016</a>)</span>. Inverting the jacobian to compute the variance-covariance matrix is computationally intensive in maximum likelihood models, and as MSE analyses often involve thousands of iterations, using <code>type="MP"</code> significantly speeds up the process. This option is advantageous for scenarios requiring multiple model fits. However, the lack of immediate feedback on model convergence is a drawback, as convergence is assessed by inverting the Jacobian. A failed inversion indicates non-convergence.</p>
-<p>Type <code>Assessment</code>, the default, reports both the parameters and their variance-covariance, and as such requires the inversion of the hessian matrix. The method takes longer to run but returns a much richer dataset which allows the computation confidence intervals, simulate, etc. When the hessian matrix can’t be inverted this method flags potential non-convergence and returns an empty object.</p>
+<p>Type <code>MP</code>, for “Management Procedure,” returns an <code>a4aFit</code> class object designed for use in MSEs (Management Strategy Evaluations) with full feedback models <span class="citation">(<a href="#ref-puntmse">Punt et al. 2016</a>)</span>. Inverting the jacobian to compute the variance-covariance matrix is computationally intensive in maximum likelihood models, and as MSE analyses often involve thousands of iterations, using <code>fit="MP"</code> significantly speeds up the process. This option is advantageous for scenarios requiring multiple model fits. However, the lack of immediate feedback on model convergence is a drawback, as convergence is assessed by inverting the Jacobian. A failed inversion indicates non-convergence.</p>
+<p>Type <code>assessment</code>, the default, reports both the parameters and their variance-covariance, and as such requires the inversion of the hessian matrix. The method takes longer to run but returns a much richer dataset which allows the computation confidence intervals, simulate, etc. When the hessian matrix can’t be inverted this method flags potential non-convergence and returns an empty object.</p>
 <p>Type <code>MCMC</code> uses the Markov Chain Monte-Carlo approach, in which case it doesn’t compute likelihoods or variance-covariance matrices. It returns the full draws of the chain, which allows the computation of credible intervals, simulation kind of studies and so on.</p>
 <p>Table <a href="stock-assessment-framework.html#tab:a4afitclass">5.3</a> describes the composition of the <code>a4aFit</code> class.</p>
 <table>
@@ -705,63 +705,63 @@ Figure 5.7: The fit process input/output model
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">a4aFit</td>
-<td align="left">call</td>
-<td align="left">call</td>
+<td align="left"><code>a4aFit</code></td>
+<td align="left"><code>call</code></td>
+<td align="left"><code>call</code></td>
 <td align="left">Code used to run the analysis</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="left">catch.n</td>
-<td align="left">FLQuant</td>
+<td align="left"><code>catch.n</code></td>
+<td align="left"><code>FLQuant</code></td>
 <td align="left">Catch numbers at age and year</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
-<td align="left">clock</td>
-<td align="left">numeric</td>
+<td align="left"><code>clock</code></td>
+<td align="left"><code>numeric</code></td>
 <td align="left">Time to run the analysis</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="left">desc</td>
-<td align="left">character</td>
+<td align="left"><code>desc</code></td>
+<td align="left"><code>character</code></td>
 <td align="left">Description of the stock and/or analysis</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
-<td align="left">fitSumm</td>
-<td align="left">array</td>
+<td align="left"><code>fitSumm</code></td>
+<td align="left"><code>array</code></td>
 <td align="left">Summary statistics of the fit (e.g., number of data points)</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="left">harvest</td>
-<td align="left">FLQuant</td>
+<td align="left"><code>harvest</code></td>
+<td align="left"><code>FLQuant</code></td>
 <td align="left">Fishing mortality at age and year</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
-<td align="left">index</td>
-<td align="left">FLQuants</td>
+<td align="left"><code>index</code></td>
+<td align="left"><code>FLQuants</code></td>
 <td align="left">Indices of abundance (age/biomass, by year)</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="left">name</td>
-<td align="left">character</td>
+<td align="left"><code>name</code></td>
+<td align="left"><code>character</code></td>
 <td align="left">Stock name</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
-<td align="left">range</td>
-<td align="left">numeric</td>
+<td align="left"><code>range</code></td>
+<td align="left"><code>numeric</code></td>
 <td align="left">Age and year range of the data</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="left">stock.n</td>
-<td align="left">FLQuant</td>
+<td align="left"><code>stock.n</code></td>
+<td align="left"><code>FLQuant</code></td>
 <td align="left">Population in numbers (age and year)</td>
 </tr>
 </tbody>
@@ -779,27 +779,27 @@ Figure 5.7: The fit process input/output model
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">a4aFitSA</td>
+<td align="left"><code>a4aFitSA</code></td>
 <td align="left">All <code>a4aFit</code></td>
 <td align="left"></td>
 <td align="left">Inherited from <code>a4aFit</code></td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="left">pars</td>
-<td align="left">SCAPars</td>
+<td align="left"><code>pars</code></td>
+<td align="left"><code>SCAPars</code></td>
 <td align="left">Parameter information</td>
 </tr>
 <tr class="odd">
-<td align="left">a4aFitMCMC</td>
+<td align="left"><code>a4aFitMCMC</code></td>
 <td align="left">All <code>a4aFit</code></td>
 <td align="left"></td>
 <td align="left">Inherited from <code>a4aFit</code></td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="left">pars</td>
-<td align="left">SCAPars</td>
+<td align="left"><code>pars</code></td>
+<td align="left"><code>SCAPars</code></td>
 <td align="left">Parameter information</td>
 </tr>
 </tbody>
@@ -823,21 +823,21 @@ Figure 5.7: The fit process input/output model
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">SCAPars</td>
-<td align="left">stkmodel</td>
-<td align="left">a4aStkParams</td>
+<td align="left"><code>SCAPars</code></td>
+<td align="left"><code>stkmodel</code></td>
+<td align="left"><code>a4aStkParams</code></td>
 <td align="left">Details of fishing mortality, stock recruitment, and initial stock numbers</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="left">qmodel</td>
-<td align="left">submodel</td>
+<td align="left"><code>qmodel</code></td>
+<td align="left"><code>submodel</code></td>
 <td align="left">Details of catchability parameters</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
-<td align="left">vmodel</td>
-<td align="left">submodel</td>
+<td align="left"><code>vmodel</code></td>
+<td align="left"><code>submodel</code></td>
 <td align="left">Details of variance parameters</td>
 </tr>
 </tbody>
@@ -855,99 +855,99 @@ Figure 5.7: The fit process input/output model
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">a4aStkParams</td>
-<td align="left">centering</td>
-<td align="left">FLPar</td>
+<td align="left"><code>a4aStkParams</code></td>
+<td align="left"><code>centering</code></td>
+<td align="left"><code>FLPar</code></td>
 <td align="left">Centering parameters</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="left">coefficients</td>
-<td align="left">FLPar</td>
+<td align="left"><code>coefficients</code></td>
+<td align="left"><code>FLPar</code></td>
 <td align="left">Model coefficients</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
-<td align="left">desc</td>
-<td align="left">character</td>
+<td align="left"><code>desc</code></td>
+<td align="left"><code>character</code></td>
 <td align="left">Description</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="left">distr</td>
-<td align="left">character</td>
+<td align="left"><code>distr</code></td>
+<td align="left"><code>character</code></td>
 <td align="left">Distributions</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
-<td align="left">fMod</td>
-<td align="left">formula</td>
+<td align="left"><code>fMod</code></td>
+<td align="left"><code>formula</code></td>
 <td align="left">Fishing mortality model</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="left">link</td>
-<td align="left">function</td>
+<td align="left"><code>link</code></td>
+<td align="left"><code>function</code></td>
 <td align="left">Link function</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
-<td align="left">linkinv</td>
-<td align="left">function</td>
+<td align="left"><code>linkinv</code></td>
+<td align="left"><code>function</code></td>
 <td align="left">Inverse link function</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="left">m</td>
-<td align="left">FLQuant</td>
+<td align="left"><code>m</code></td>
+<td align="left"><code>FLQuant</code></td>
 <td align="left">Mortality parameters</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
-<td align="left">mat</td>
-<td align="left">FLQuant</td>
+<td align="left"><code>mat</code></td>
+<td align="left"><code>FLQuant</code></td>
 <td align="left">Maturity parameters</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="left">n1Mod</td>
-<td align="left">formula</td>
+<td align="left"><code>n1Mod</code></td>
+<td align="left"><code>formula</code></td>
 <td align="left">Initial stock numbers model</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
-<td align="left">name</td>
-<td align="left">character</td>
+<td align="left"><code>name</code></td>
+<td align="left"><code>character</code></td>
 <td align="left">Stock name</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="left">range</td>
-<td align="left">numeric</td>
+<td align="left"><code>range</code></td>
+<td align="left"><code>numeric</code></td>
 <td align="left">Age and year range</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
-<td align="left">srMod</td>
-<td align="left">formula</td>
+<td align="left"><code>srMod</code></td>
+<td align="left"><code>formula</code></td>
 <td align="left">Stock-recruitment model</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="left">units</td>
-<td align="left">character</td>
+<td align="left"><code>units</code></td>
+<td align="left"><code>character</code></td>
 <td align="left">Units of measurement</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
-<td align="left">vcov</td>
-<td align="left">array</td>
+<td align="left"><code>vcov</code></td>
+<td align="left"><code>array</code></td>
 <td align="left">Variance-covariance matrix</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="left">wt</td>
-<td align="left">FLQuant</td>
+<td align="left"><code>wt</code></td>
+<td align="left"><code>FLQuant</code></td>
 <td align="left">Weights</td>
 </tr>
 </tbody>
@@ -965,63 +965,63 @@ Figure 5.7: The fit process input/output model
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">submodel</td>
-<td align="left">centering</td>
-<td align="left">FLPar</td>
+<td align="left"><code>submodel</code></td>
+<td align="left"><code>centering</code></td>
+<td align="left"><code>FLPar</code></td>
 <td align="left">Centering parameters</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="left">coefficients</td>
-<td align="left">FLPar</td>
+<td align="left"><code>coefficients</code></td>
+<td align="left"><code>FLPar</code></td>
 <td align="left">Model coefficients</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
-<td align="left">desc</td>
-<td align="left">character</td>
+<td align="left"><code>desc</code></td>
+<td align="left"><code>character</code></td>
 <td align="left">Description</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="left">distr</td>
-<td align="left">character</td>
+<td align="left"><code>distr</code></td>
+<td align="left"><code>character</code></td>
 <td align="left">Distributions</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
-<td align="left">formula</td>
-<td align="left">formula</td>
+<td align="left"><code>formula</code></td>
+<td align="left"><code>formula</code></td>
 <td align="left">Submodel formula</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="left">link</td>
-<td align="left">function</td>
+<td align="left"><code>link</code></td>
+<td align="left"><code>function</code></td>
 <td align="left">Link function</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
-<td align="left">linkinv</td>
-<td align="left">function</td>
+<td align="left"><code>linkinv</code></td>
+<td align="left"><code>function</code></td>
 <td align="left">Inverse link function</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="left">name</td>
-<td align="left">character</td>
+<td align="left"><code>name</code></td>
+<td align="left"><code>character</code></td>
 <td align="left">Stock name</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
-<td align="left">range</td>
-<td align="left">numeric</td>
+<td align="left"><code>range</code></td>
+<td align="left"><code>numeric</code></td>
 <td align="left">Age and year range</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="left">vcov</td>
-<td align="left">array</td>
+<td align="left"><code>vcov</code></td>
+<td align="left"><code>array</code></td>
 <td align="left">Variance-covariance matrix</td>
 </tr>
 </tbody>
@@ -1035,7 +1035,7 @@ Figure 5.7: The fit process input/output model
 Punt, André E, Doug S Butterworth, Carryn L de Moor, José A A De Oliveira, and Malcolm Haddon. 2016. <span>“Management Strategy Evaluation: Best Practices.”</span> <em>Fish and Fisheries</em> 17 (2): 303–34. <a href="https://doi.org/10.1111/faf.12104">https://doi.org/10.1111/faf.12104</a>.
 </div>
 <div id="ref-R-mgcv" class="csl-entry">
-Wood, Simon. 2023. <em>Mgcv: Mixed GAM Computation Vehicle with Automatic Smoothness Estimation</em>. <a href="https://CRAN.R-project.org/package=mgcv">https://CRAN.R-project.org/package=mgcv</a>.
+Wood, S. N. 2011. <span>“Fast Stable Restricted Maximum Likelihood and Marginal Likelihood Estimation of Semiparametric Generalized Linear Models.”</span> <em>Journal of the Royal Statistical Society (B)</em> 73 (1): 3–36. <a href="https://doi.org/10.1111/j.1467-9868.2010.00749.x">https://doi.org/10.1111/j.1467-9868.2010.00749.x</a>.
 </div>
 </div>
             </section>
@@ -1058,42 +1058,42 @@ Wood, Simon. 2023. <em>Mgcv: Mixed GAM Computation Vehicle with Automatic Smooth
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-  "sharing": {
-    "github": false,
-    "facebook": true,
-    "twitter": true,
-    "linkedin": false,
-    "weibo": false,
-    "instapaper": false,
-    "vk": false,
-    "whatsapp": false,
-    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-  },
-  "fontsettings": {
-    "theme": "white",
-    "family": "sans",
-    "size": 2
-  },
-  "edit": {
-    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/05-saframework.Rmd",
-    "text": "Edit"
-  },
-  "history": {
-    "link": null,
-    "text": null
-  },
-  "view": {
-    "link": null,
-    "text": null
-  },
-  "download": ["_main.pdf", "_main.epub"],
-  "search": {
-    "engine": "fuse",
-    "options": null
-  },
-  "toc": {
-    "collapse": "subsection"
-  }
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/05-saframework.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
 });
 });
 </script>

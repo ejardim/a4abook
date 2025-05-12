@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>11 Reference Points | Fish stock assessment with R - DRAFT</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="11 Reference Points | Fish stock assessment with R - DRAFT" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-05-10" />
+<meta name="date" content="2025-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -371,39 +371,39 @@ div.csl-indent {
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">fbar</td>
-<td align="left">seq(0, 4, length.out = 101)</td>
+<td align="right"><code>fbar</code></td>
+<td align="left"><code>seq(0, 4, length.out = 101)</code></td>
 <td align="left">Vector of Fs to find minimum or maximum value of metric, e.g. MSY</td>
 </tr>
 <tr class="even">
-<td align="right">nyears</td>
-<td align="left">3</td>
+<td align="right"><code>nyears</code></td>
+<td align="left"><code>3</code></td>
 <td align="left">Number of years to average across to estimate input quantities for reference points estimation</td>
 </tr>
 <tr class="odd">
-<td align="right">biol.nyears</td>
-<td align="left">nyears</td>
+<td align="right"><code>biol.nyears</code></td>
+<td align="left"><code>nyears</code></td>
 <td align="left">Number of years to average across to estimate biological quantities, e.g. maturity</td>
 </tr>
 <tr class="even">
-<td align="right">fbar.nyears</td>
-<td align="left">nyears</td>
+<td align="right"><code>fbar.nyears</code></td>
+<td align="left"><code>nyears</code></td>
 <td align="left">Number of years to average across to scale F-at-age to 1 and compute selection pattern</td>
 </tr>
 <tr class="odd">
-<td align="right">sel.nyears</td>
-<td align="left">nyears</td>
+<td align="right"><code>sel.nyears</code></td>
+<td align="left"><code>nyears</code></td>
 <td align="left">Number of years to average across to compute landings and discards in number of individual per age</td>
 </tr>
 <tr class="even">
-<td align="right">na.rm</td>
-<td align="left">TRUE</td>
-<td align="left">Remove NA if existing</td>
+<td align="right"><code>na.rm</code></td>
+<td align="left"><code>TRUE</code></td>
+<td align="left">Remove <code>NA</code> if existing</td>
 </tr>
 <tr class="odd">
-<td align="right">mean</td>
-<td align="left">“arithmetic”</td>
-<td align="left">Statistic to average quantities above, alternative is “geometric” for the geometric mean</td>
+<td align="right"><code>mean</code></td>
+<td align="left"><code>"arithmetic"</code></td>
+<td align="left">Statistic to average quantities above, alternative is <code>"geometric"</code> for the geometric mean</td>
 </tr>
 </tbody>
 </table>
@@ -482,7 +482,7 @@ div.csl-indent {
 <div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="reference-points.html#cb246-1" tabindex="-1"></a>brp0 <span class="ot">&lt;-</span> <span class="fu">FLBRP</span>(stk0, <span class="at">sr=</span>sr0)</span>
 <span id="cb246-2"><a href="reference-points.html#cb246-2" tabindex="-1"></a><span class="fu">model</span>(brp0)</span></code></pre></div>
 <pre><code>## rec ~ a * ssb/(b + ssb)
-## &lt;environment: 0x5883c66de3b0&gt;</code></pre>
+## &lt;environment: 0x5fdc71a3f368&gt;</code></pre>
 <div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="reference-points.html#cb248-1" tabindex="-1"></a><span class="fu">params</span>(brp0)</span></code></pre></div>
 <pre><code>## An object of class &quot;FLPar&quot;
 ## params
@@ -714,42 +714,42 @@ United Nations. 1982. <span>“United Nations Convention on the Law of the Sea.�
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-  "sharing": {
-    "github": false,
-    "facebook": true,
-    "twitter": true,
-    "linkedin": false,
-    "weibo": false,
-    "instapaper": false,
-    "vk": false,
-    "whatsapp": false,
-    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-  },
-  "fontsettings": {
-    "theme": "white",
-    "family": "sans",
-    "size": 2
-  },
-  "edit": {
-    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/11-refpts.Rmd",
-    "text": "Edit"
-  },
-  "history": {
-    "link": null,
-    "text": null
-  },
-  "view": {
-    "link": null,
-    "text": null
-  },
-  "download": ["_main.pdf", "_main.epub"],
-  "search": {
-    "engine": "fuse",
-    "options": null
-  },
-  "toc": {
-    "collapse": "subsection"
-  }
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/11-refpts.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
 });
 });
 </script>

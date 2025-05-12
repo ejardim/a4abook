@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>13 Annex - stock assessment workflow | Fish stock assessment with R - DRAFT</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="13 Annex - stock assessment workflow | Fish stock assessment with R - DRAFT" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-05-10" />
+<meta name="date" content="2025-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,7 +340,7 @@ div.csl-indent {
 <p>The procedure is heavily supported by residuals’ analysis. In a well specified model residuals should show a random pattern, without any trend or very high values (outliers).</p>
 <div id="the-mean-model" class="section level2 hasAnchor" number="13.1">
 <h2><span class="header-section-number">13.1</span> The “mean” model<a href="annex---stock-assessment-workflow.html#the-mean-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To start the analysis we’ll fit a “mean” model, where all submodels will be set to an overall average, by using the <span class="math inline">\(\sim 1\)</span> formula. This will be our reference model to see how adding age and year effects will show up in the diagnostic tools, in particular in the residuals.</p>
+<p>To start the analysis we’ll fit a “mean” model, where all submodels will be set to an overall average, by using the <code>~1</code> formula. This will be our reference model to see how adding age and year effects will show up in the diagnostic tools, in particular in the residuals.</p>
 <div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="annex---stock-assessment-workflow.html#cb276-1" tabindex="-1"></a><span class="fu">library</span>(FLa4a)</span>
 <span id="cb276-2"><a href="annex---stock-assessment-workflow.html#cb276-2" tabindex="-1"></a><span class="fu">data</span>(hke1567)</span>
 <span id="cb276-3"><a href="annex---stock-assessment-workflow.html#cb276-3" tabindex="-1"></a><span class="fu">data</span>(hke1567.idx)</span>
@@ -591,42 +591,42 @@ Figure 13.17: Estimates of population abundance with different variance models
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-  "sharing": {
-    "github": false,
-    "facebook": true,
-    "twitter": true,
-    "linkedin": false,
-    "weibo": false,
-    "instapaper": false,
-    "vk": false,
-    "whatsapp": false,
-    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-  },
-  "fontsettings": {
-    "theme": "white",
-    "family": "sans",
-    "size": 2
-  },
-  "edit": {
-    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/30-annexworkflow.Rmd",
-    "text": "Edit"
-  },
-  "history": {
-    "link": null,
-    "text": null
-  },
-  "view": {
-    "link": null,
-    "text": null
-  },
-  "download": ["_main.pdf", "_main.epub"],
-  "search": {
-    "engine": "fuse",
-    "options": null
-  },
-  "toc": {
-    "collapse": "subsection"
-  }
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/30-annexworkflow.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
 });
 });
 </script>

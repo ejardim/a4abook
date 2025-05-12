@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Fish stock assessment with R - DRAFT</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Fish stock assessment with R - DRAFT" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-05-10" />
+<meta name="date" content="2025-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -357,7 +357,7 @@ European Commission Joint Research Centre (JRC), Brussels, Belgium<br>
 Wageningen Marine Research (WMR), Ijmauden, The Netherlands<br>
 <a class="author_email" href="mailto:#"><a href="mailto:iago.mosqueira@wur.nl" class="email">iago.mosqueira@wur.nl</a></a>
 </address>
-<p class="date"><em>2025-05-10</em></p>
+<p class="date"><em>2025-05-12</em></p>
 </div>
 <div id="before-starting" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">1</span> Before starting<a href="index.html#before-starting" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -426,8 +426,6 @@ Wageningen Marine Research (WMR), Ijmauden, The Netherlands<br>
 ## x=&quot;a4aFitMCMCs&quot;, y=&quot;missing&quot;
 ## x=&quot;a4aFitResiduals&quot;, y=&quot;missing&quot;
 ## x=&quot;a4aFits&quot;, y=&quot;missing&quot;
-## x=&quot;a4aFitSAs&quot;, y=&quot;missing&quot;
-##     (inherited from: x=&quot;a4aFits&quot;, y=&quot;missing&quot;)
 ## x=&quot;ANY&quot;, y=&quot;ANY&quot;
 ## x=&quot;color&quot;, y=&quot;ANY&quot;
 ## x=&quot;Copula&quot;, y=&quot;ANY&quot;
@@ -455,8 +453,6 @@ Wageningen Marine Research (WMR), Ijmauden, The Netherlands<br>
 ## x=&quot;FLStocks&quot;, y=&quot;FLPar&quot;
 ## x=&quot;FLStocks&quot;, y=&quot;missing&quot;
 ## x=&quot;mvdc&quot;, y=&quot;ANY&quot;
-## x=&quot;numeric&quot;, y=&quot;numeric&quot;
-##     (inherited from: x=&quot;ANY&quot;, y=&quot;ANY&quot;)
 ## x=&quot;profile.mle&quot;, y=&quot;missing&quot;</code></pre>
 <p>by calling <code>showMethods</code> R prints all the possible uses of the <code>plot</code> function. We want to see what it does when it is called on an <code>FLStock</code> object with no other object. We observe that <code>plot</code> takes two arguments, <code>x</code> and <code>y</code>. So, in the signature of the <code>getMethod</code> function we are going to use, we need to define both <code>x</code> and <code>y</code>.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="index.html#cb11-1" tabindex="-1"></a><span class="fu">getMethod</span>(<span class="st">&#39;plot&#39;</span>, <span class="at">signature =</span> <span class="fu">list</span>(<span class="st">&quot;FLStock&quot;</span>,<span class="st">&quot;missing&quot;</span>))</span></code></pre></div>
@@ -467,6 +463,9 @@ Wageningen Marine Research (WMR), Ijmauden, The Netherlands<br>
 ##     .local &lt;- function (x, metrics = list(Rec = rec, SSB = ssb, 
 ##         Catch = catch, F = fbar), na.rm = TRUE, ...) 
 ##     {
+##         if (all(is.na(harvest(x))) &amp; missing(metrics)) 
+##             metrics &lt;- list(Catch = catch, Landings = landings, 
+##                 Discards = discards)
 ##         metrics &lt;- metrics(x, metrics = metrics)
 ##         if (&quot;F&quot; %in% names(metrics)) 
 ##             units(metrics$F) &lt;- paste0(range(x, c(&quot;minfbar&quot;, 
@@ -477,11 +476,6 @@ Wageningen Marine Research (WMR), Ijmauden, The Netherlands<br>
 ##                   , &quot;M&quot;]
 ##                 if (&quot;Rec&quot; %in% names(metrics)) 
 ##                   metrics$Rec &lt;- unitSums(metrics$Rec)
-##             }
-##         }
-##         if (&quot;Rec&quot; %in% names(metrics)) {
-##             if (dim(metrics$Rec)[4] &gt; 1) {
-##                 metrics$Rec[metrics$Rec == 0] &lt;- NA
 ##             }
 ##         }
 ##         p &lt;- plot(metrics, na.rm = na.rm, ...) + ylim(c(0, NA))
@@ -496,7 +490,7 @@ Wageningen Marine Research (WMR), Ijmauden, The Netherlands<br>
 ##     }
 ##     .local(x, ...)
 ## }
-## &lt;bytecode: 0x588334ac0290&gt;
+## &lt;bytecode: 0x5fdc53d3e098&gt;
 ## &lt;environment: namespace:ggplotFL&gt;
 ## 
 ## Signatures:
@@ -546,42 +540,42 @@ Millar, Colin, and Ernesto Jardim. 2025. <em>A4a: A Flexible and Robust Stock As
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-  "sharing": {
-    "github": false,
-    "facebook": true,
-    "twitter": true,
-    "linkedin": false,
-    "weibo": false,
-    "instapaper": false,
-    "vk": false,
-    "whatsapp": false,
-    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-  },
-  "fontsettings": {
-    "theme": "white",
-    "family": "sans",
-    "size": 2
-  },
-  "edit": {
-    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
-    "text": "Edit"
-  },
-  "history": {
-    "link": null,
-    "text": null
-  },
-  "view": {
-    "link": null,
-    "text": null
-  },
-  "download": ["_main.pdf", "_main.epub"],
-  "search": {
-    "engine": "fuse",
-    "options": null
-  },
-  "toc": {
-    "collapse": "subsection"
-  }
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
 });
 });
 </script>

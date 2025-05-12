@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8 Diagnostics  | Fish stock assessment with R - DRAFT</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8 Diagnostics  | Fish stock assessment with R - DRAFT" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-05-10" />
+<meta name="date" content="2025-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -353,8 +353,12 @@ div.csl-indent {
 <div id="residuals" class="section level2 hasAnchor" number="8.1">
 <h2><span class="header-section-number">8.1</span> Residuals<a href="diagnostics.html#residuals" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Residuals are a ubiquos metrics to check quality of a fit. For <code>sca()</code> fits there are out-of-the-box methods to compute in the log scale, raw residuals (aka deviances), standardized residuals and pearson residuals. A set of plots to inspect residuals and evaluate fit quality and assumptions are implemented.</p>
-<p>Consider <span class="math inline">\(x_{ay}\)</span> to be either a catch-at-age matrix (<span class="math inline">\(C_{ay}\)</span>) or one abundance index (<span class="math inline">\(I_{ay}\)</span>) and <span class="math inline">\(d_{ay}\)</span> to represent residuals.</p>
-<p>Raw residuals are compute by <span class="math inline">\(d_{ay} = \log{x_{ay}} - \log{\tilde{x}_{ay}}\)</span> and have distribution <span class="math inline">\(N(0,\upsilon^2_{a})\)</span>. Standardized residuals will be compute with <span class="math inline">\(d^s_{ay} = \frac{d_{ay}}{\hat{\upsilon}^2_{a}}\)</span> where <span class="math inline">\(\hat{\upsilon}^2_{a} = (n-1)^{-1} \sum_y(d_{ay})^2\)</span>. Pearson residuals scale raw residuals by the estimates of <span class="math inline">\(\sigma^2\)</span> or <span class="math inline">\(\tau^2\)</span>, as such <span class="math inline">\(d^p_{ay} = \frac{d_{ay}}{\tilde{\upsilon}^2_{a}}\)</span> where <span class="math inline">\(\tilde{\upsilon}^2_{a} = \tilde{\sigma}^2_{a}\)</span> for catches, or <span class="math inline">\(\tilde{\upsilon}^2_{a} = \tilde{\tau}^2_{a}\)</span> for each index of abundance.</p>
+<p>Let <span class="math inline">\(x_{ay}\)</span> denote either an element of the catch-at-age matrix (<span class="math inline">\(C_{ay}\)</span>) or the abundance index (<span class="math inline">\(I_{ay})\)</span> and let <span class="math inline">\(d_{ay}\)</span> represent the corresponding residuals.</p>
+<p>The raw residuals are computed by <span class="math display">\[d_{ay} = \log{x_{ay}} - \log{\tilde{x}_{ay}}\]</span> and follow a normal distribution, <span class="math inline">\(N(0,\upsilon^2_{a})\)</span>.</p>
+<p>Standardized residuals are computed as <span class="math display">\[d^s_{ay} = \frac{d_{ay}}{\hat{\upsilon}^2_{a}}\]</span> where <span class="math display">\[\hat{\upsilon}^2_{a} = (n-1)^{-1} \sum_y(d_{ay})^2\]</span> the variance of the residuals for age <span class="math inline">\(a\)</span> over <span class="math inline">\(n\)</span> years.</p>
+<p>Pearson residuals scale raw residuals by the estimates of variance parameters and are given by
+<span class="math display">\[d^p_{ay} = \frac{d_{ay}}{\tilde{\upsilon}^2_{a}}\]</span>
+where <span class="math inline">\(\tilde{\upsilon}^2_{a} = \tilde{\sigma}^2_{a}\)</span> for catches, or <span class="math inline">\(\tilde{\upsilon}^2_{a} = \tilde{\tau}^2_{a}\)</span> for each index of abundance.</p>
 <p>The <code>residuals()</code> method computes these residuals and generate a object which can be plotted using a set of out-of-the-box methods. The argument <code>type</code> will allow the user to chose which residuals will be computed. By default the method computes standardized residuals.</p>
 <div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="diagnostics.html#cb169-1" tabindex="-1"></a><span class="co"># residuals</span></span>
 <span id="cb169-2"><a href="diagnostics.html#cb169-2" tabindex="-1"></a>d_s <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit, stk, idx)</span>
@@ -383,39 +387,39 @@ Figure 8.1: Standardized residuals for abundance indices and catch numbers (catc
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">l</td>
+<td align="left"><code>l</code></td>
 <td align="left">lines</td>
 </tr>
 <tr class="even">
-<td align="left">h</td>
-<td align="left">draws vertical (or horizontal if horizontal = TRUE) line segments from the points to the origin</td>
+<td align="left"><code>h</code></td>
+<td align="left">draws vertical (or horizontal if <code>horizontal = TRUE</code>) line segments from the points to the origin</td>
 </tr>
 <tr class="odd">
-<td align="left">s</td>
-<td align="left">like “l” in the sense that they join consecutive points, but instead of being joined by a straight line, points are connected by a vertical and a horizontal segment forming a ‘step’, with the vertical segment coming first</td>
+<td align="left"><code>s</code></td>
+<td align="left">like <code>l</code> in the sense that they join consecutive points, but instead of being joined by a straight line, points are connected by a vertical and a horizontal segment forming a ‘step’, with the vertical segment coming first</td>
 </tr>
 <tr class="even">
-<td align="left">S</td>
+<td align="left"><code>S</code></td>
 <td align="left">same as s but the horizontal segment coming first</td>
 </tr>
 <tr class="odd">
-<td align="left">g</td>
+<td align="left"><code>g</code></td>
 <td align="left">adds a reference grid</td>
 </tr>
 <tr class="even">
-<td align="left">r</td>
+<td align="left"><code>r</code></td>
 <td align="left">adds a linear regression line</td>
 </tr>
 <tr class="odd">
-<td align="left">smooth</td>
+<td align="left"><code>smooth</code></td>
 <td align="left">adds a loess fit</td>
 </tr>
 <tr class="even">
-<td align="left">spline</td>
+<td align="left"><code>spline</code></td>
 <td align="left">adds a cubic smoothing spline fit</td>
 </tr>
 <tr class="odd">
-<td align="left">a</td>
+<td align="left"><code>a</code></td>
 <td align="left">draws line segments joining the average y value for each distinct x value</td>
 </tr>
 </tbody>
@@ -573,23 +577,23 @@ Green shading indicates no evidence $(p <  0.05)$ and red shading evidence $(p  
 <p>Note fmodel doesn’t change:</p>
 <pre><code>## $fit1
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x58833639d148&gt;
+## &lt;environment: 0x5fdc525e9a78&gt;
 ## 
 ## $fit2
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x58833639d148&gt;
+## &lt;environment: 0x5fdc525e9a78&gt;
 ## 
 ## $fit3
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x58833639d148&gt;
+## &lt;environment: 0x5fdc525e9a78&gt;
 ## 
 ## $fit4
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x58833639d148&gt;
+## &lt;environment: 0x5fdc525e9a78&gt;
 ## 
 ## $fit5
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x58833639d148&gt;</code></pre>
+## &lt;environment: 0x5fdc525e9a78&gt;</code></pre>
 <p>The retrospective plot shown below presents the current fit with uncertainty and each retrospective fit on top. If the retrospective fit is not within the confidence interval of the current fit the analyst can argue that the estimate is different and as such reflecting a “poor” fit.</p>
 <div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="diagnostics.html#cb189-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">window</span>(stks, <span class="at">start=</span><span class="dv">2005</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:retro"></span>
@@ -611,23 +615,23 @@ Figure 8.12: Retrospective analysis of the plaice in ICES area IV stock. Fixed F
 <p>Note fmodel changes:</p>
 <pre><code>## $fit1
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x58833a846190&gt;
+## &lt;environment: 0x5fdc56bfefe8&gt;
 ## 
 ## $fit2
 ## ~te(age, year, k = c(6, 29), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x58833e7e5918&gt;
+## &lt;environment: 0x5fdc56b2ef80&gt;
 ## 
 ## $fit3
 ## ~te(age, year, k = c(6, 29), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x588339eb8f90&gt;
+## &lt;environment: 0x5fdc56a6f488&gt;
 ## 
 ## $fit4
 ## ~te(age, year, k = c(6, 28), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x588339c30058&gt;
+## &lt;environment: 0x5fdc569afd58&gt;
 ## 
 ## $fit5
 ## ~te(age, year, k = c(6, 28), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x588336180a30&gt;</code></pre>
+## &lt;environment: 0x5fdc565c5690&gt;</code></pre>
 <p>And the retrospective plot</p>
 <div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="diagnostics.html#cb192-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">window</span>(stks, <span class="at">start=</span><span class="dv">2005</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:retro2"></span>
@@ -713,42 +717,42 @@ Wood, S. N. 2017. <em>Generalized Additive Models: An Introduction with r</em>. 
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-  "sharing": {
-    "github": false,
-    "facebook": true,
-    "twitter": true,
-    "linkedin": false,
-    "weibo": false,
-    "instapaper": false,
-    "vk": false,
-    "whatsapp": false,
-    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-  },
-  "fontsettings": {
-    "theme": "white",
-    "family": "sans",
-    "size": 2
-  },
-  "edit": {
-    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/08-diagnostics.Rmd",
-    "text": "Edit"
-  },
-  "history": {
-    "link": null,
-    "text": null
-  },
-  "view": {
-    "link": null,
-    "text": null
-  },
-  "download": ["_main.pdf", "_main.epub"],
-  "search": {
-    "engine": "fuse",
-    "options": null
-  },
-  "toc": {
-    "collapse": "subsection"
-  }
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/08-diagnostics.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
 });
 });
 </script>

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6 Introduction to Splines | Fish stock assessment with R - DRAFT</title>
   <meta name="description" content="How to do stock assessment in R using the a4a framework" />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6 Introduction to Splines | Fish stock assessment with R - DRAFT" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-05-10" />
+<meta name="date" content="2025-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -463,10 +463,10 @@ Figure 6.10: Multiple fits of thin plate splines, cubic splines, b-splines, p-sp
 </p>
 </div>
 <p>Functionality of <code>mgcv</code> package provides also the option to work with interactions. Although <code>s(age, year)</code> can be defined, it uses a common bivariate spline for the two variables which are very different in scale. It is preferable if interactions are assumed to use a tensor <code>te(age, year)</code>. Tensors are mathematical products that help model the individual smoothness of each variable while also capturing their joint interaction. The independent variables in the case of tensors are modeled with different numbers of basis functions allowing different amount of smoothness in each dimension.</p>
-<p>Following the example above, let now <span class="math inline">\(\mathbf{x}\)</span> and <span class="math inline">\(\mathbf{z}\)</span> two independent variables with <span class="math inline">\(S_x\)</span> and <span class="math inline">\(S_z\)</span> their spline functions of dimension <span class="math inline">\(k\)</span> and <span class="math inline">\(m\)</span>, respectively. Given the nature of the basis functions, their tensor (interaction and main effects), <span class="math inline">\(Te(\mathbf{x},\mathbf{z})\)</span> can be defined as the sum of all possible multiplications of the elements of <span class="math inline">\(S_x\)</span> and <span class="math inline">\(S_z\)</span>.</p>
-<p>Again is up to the user to define the basis functions for the tensor smoothers. Figure <a href="introduction-to-splines.html#fig:te">6.11</a> shows the differences when using different basis for the tensor product.</p>
+<p>Following the example above, let now <span class="math inline">\(\mathbf{x}\)</span> and <span class="math inline">\(\mathbf{z}\)</span> two independent variables with <span class="math inline">\(S_x\)</span> and <span class="math inline">\(S_z\)</span> their spline functions, having <span class="math inline">\(k\)</span> and <span class="math inline">\(m\)</span> number of basis functions, respectively. Given the nature of the basis functions, their tensor (interactions and main effects), <span class="math inline">\(te(\mathbf{x},\mathbf{z})\)</span> can be defined as the sum of all possible multiplications of the elements of <span class="math inline">\(S_x\)</span> and <span class="math inline">\(S_z\)</span>.</p>
+<p>Again is up to the user to define the basis functions for the tensor smoothers. In the case of tensors the default basis is <code>cr</code>. Figure <a href="introduction-to-splines.html#fig:te">6.11</a> shows the differences when using different basis for the tensor product.</p>
 <div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="introduction-to-splines.html#cb110-1" tabindex="-1"></a>fmod03 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>))</span>
-<span id="cb110-2"><a href="introduction-to-splines.html#cb110-2" tabindex="-1"></a>fmod04 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>), <span class="at">bs =</span> <span class="st">&#39;cr&#39;</span>)</span>
+<span id="cb110-2"><a href="introduction-to-splines.html#cb110-2" tabindex="-1"></a>fmod04 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">te</span>(age, year, <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>), <span class="at">bs =</span> <span class="st">&#39;tp&#39;</span>)</span>
 <span id="cb110-3"><a href="introduction-to-splines.html#cb110-3" tabindex="-1"></a>fmod05 <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">te</span>(age, year, <span class="at">bs =</span> <span class="st">&#39;bs&#39;</span>)</span>
 <span id="cb110-4"><a href="introduction-to-splines.html#cb110-4" tabindex="-1"></a></span>
 <span id="cb110-5"><a href="introduction-to-splines.html#cb110-5" tabindex="-1"></a>fit03 <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel =</span> fmod03)</span>
@@ -531,42 +531,42 @@ Figure 6.13: BIC (Bayesian Information Criteria) and GCV (Generalized Cross Vali
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-  "sharing": {
-    "github": false,
-    "facebook": true,
-    "twitter": true,
-    "linkedin": false,
-    "weibo": false,
-    "instapaper": false,
-    "vk": false,
-    "whatsapp": false,
-    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-  },
-  "fontsettings": {
-    "theme": "white",
-    "family": "sans",
-    "size": 2
-  },
-  "edit": {
-    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/06-splines.Rmd",
-    "text": "Edit"
-  },
-  "history": {
-    "link": null,
-    "text": null
-  },
-  "view": {
-    "link": null,
-    "text": null
-  },
-  "download": ["_main.pdf", "_main.epub"],
-  "search": {
-    "engine": "fuse",
-    "options": null
-  },
-  "toc": {
-    "collapse": "subsection"
-  }
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/06-splines.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
 });
 });
 </script>
