@@ -30,9 +30,15 @@ fit <- sca(stk, idx, fmodel=fmod, qmodel=qmod, n1model=n1mod, vmodel=vmod)
 
 Residuals are a ubiquos metrics to check quality of a fit. For `sca()` fits there are out-of-the-box methods to compute in the log scale, raw residuals (aka deviances), standardized residuals and pearson residuals. A set of plots to inspect residuals and evaluate fit quality and assumptions are implemented.
 
-Consider $x_{ay}$ to be either a catch-at-age matrix ($C_{ay}$) or one abundance index ($I_{ay}$\footnote{For simplicity of notation we'll avoid the subscript $s$ in $I$, since we're referring to individual indices}) and $d_{ay}$ to represent residuals.
+Let $x_{ay}$ denote either an element of the catch-at-age matrix ($C_{ay}$) or the abundance index ($I_{ay})$\footnote{For simplicity of notation we'll avoid the subscript $s$ in $I$, since we're referring to individual indices} and let $d_{ay}$ represent the corresponding residuals.
 
-Raw residuals are compute by $d_{ay} = \log{x_{ay}} - \log{\tilde{x}_{ay}}$ and have distribution $N(0,\upsilon^2_{a})$. Standardized residuals will be compute with $d^s_{ay} = \frac{d_{ay}}{\hat{\upsilon}^2_{a}}$ where $\hat{\upsilon}^2_{a} = (n-1)^{-1} \sum_y(d_{ay})^2$. Pearson residuals scale raw residuals by the estimates of $\sigma^2$ or $\tau^2$, as such $d^p_{ay} = \frac{d_{ay}}{\tilde{\upsilon}^2_{a}}$ where $\tilde{\upsilon}^2_{a} = \tilde{\sigma}^2_{a}$ for catches, or $\tilde{\upsilon}^2_{a} = \tilde{\tau}^2_{a}$ for each index of abundance.
+The raw residuals are computed by $$d_{ay} = \log{x_{ay}} - \log{\tilde{x}_{ay}}$$ and follow a normal distribution, $N(0,\upsilon^2_{a})$. 
+
+Standardized residuals are computed as $$d^s_{ay} = \frac{d_{ay}}{\hat{\upsilon}^2_{a}}$$ where $$\hat{\upsilon}^2_{a} = (n-1)^{-1} \sum_y(d_{ay})^2$$ the variance of the residuals for age $a$ over $n$ years.
+
+Pearson residuals scale raw residuals by the estimates of variance parameters and are given by 
+$$d^p_{ay} = \frac{d_{ay}}{\tilde{\upsilon}^2_{a}}$$
+where $\tilde{\upsilon}^2_{a} = \tilde{\sigma}^2_{a}$ for catches, or $\tilde{\upsilon}^2_{a} = \tilde{\tau}^2_{a}$ for each index of abundance.
 
 The `residuals()` method computes these residuals and generate a object which can be plotted using a set of out-of-the-box methods. The argument `type` will allow the user to chose which residuals will be computed. By default the method computes standardized residuals.
 
@@ -53,15 +59,15 @@ When plotting residuals, by default the auxiliary line is a smoother. However it
 
 |Argument|Description|
 |:---|:----------|
-|l|lines|
-|h|draws vertical (or horizontal if horizontal = TRUE) line segments from the points to the origin|
-|s|like "l" in the sense that they join consecutive points, but instead of being joined by a straight line, points are connected by a vertical and a horizontal segment forming a ‘step’, with the vertical segment coming first|
-|S|same as s but the horizontal segment coming first|
-|g| adds a reference grid|
-|r|adds a linear regression line|
-|smooth|adds a loess fit|
-|spline|adds a cubic smoothing spline fit|
-|a|draws line segments joining the average y value for each distinct x value|
+|`l`|lines|
+|`h`|draws vertical (or horizontal if `horizontal = TRUE`) line segments from the points to the origin|
+|`s`|like `l` in the sense that they join consecutive points, but instead of being joined by a straight line, points are connected by a vertical and a horizontal segment forming a ‘step’, with the vertical segment coming first|
+|`S`|same as s but the horizontal segment coming first|
+|`g`| adds a reference grid|
+|`r`|adds a linear regression line|
+|`smooth`|adds a loess fit|
+|`spline`|adds a cubic smoothing spline fit|
+|`a`|draws line segments joining the average y value for each distinct x value|
 Table: (\#tab:auxargs) Values for the argument `auxline` of residual plots
 
 Figure \@ref(fig:resaux) shows a regression line over the residuals instead of the loess smooother with a grid on the background.
