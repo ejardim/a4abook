@@ -12,13 +12,13 @@ author:
     affiliation: "European Commission Joint Research Centre (JRC), Brussels, Belgium"
     email: "Danai.MANTOPOULOU-PALOUKA@ec.europa.eu"
   - name: "Iago Mosqueira"
-    affiliation: "Wageningen Marine Research (WMR), Ijmauden, The Netherlands"
+    affiliation: "Wageningen Marine Research (WMR), IJmuiden, The Netherlands"
     email: "iago.mosqueira@wur.nl"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
-url: your book url like https://ejardim.github.io/a4abook/
+url: htps://ejardim.github.io/a4abook/
 # cover-image: path to the social sharing image like images/cover.jpg
 description: |
   How to do stock assessment in R using the a4a framework
