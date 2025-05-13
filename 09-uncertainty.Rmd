@@ -106,7 +106,10 @@ plot(FLStocks(simulated=stk.pred, fitted=stk0))
 
 ## Prediction error
 
-To address this topic we'll borrow from state-space modelling to define prediction error as the combination of observation error and estimation error (REF). Although `sca` is not a state-space model, some of the inherent concepts of statistical catch at age models are similar to state-space models. `sca` estimates parameters to model underlying unobserved processes, *e.g.* recruitment, catchability or fishing mortality, based on indirect observations of those processes, number of fish caught by the fleet and changes in abundance at sea.
+TBD
+
+<!--
+To address this topic we'll borrow from state-space modelling to define prediction error as the combination of observation error and estimation error (REF). Although `sca()` is not a state-space model, some of the inherent concepts of statistical catch at age models are similar to state-space models. `sca()` estimates parameters to model underlying unobserved processes, *e.g.* recruitment, catchability or fishing mortality, based on indirect observations of those processes, number of fish caught by the fleet and changes in abundance at sea.
 
 Another similar approach can be found in statistical learning model. @hastie2009 decomposes prediction error into irreducible error, square bias and variance. Where the first term refers to variance that cannot be avoided, in our case estimated by residual variance. The second term, bias is ignored as the true value isn't known and the fits are assumed to be unbiased. The last term is the variance of the prediction due to the training dataset samples, which we're approximating with parameter estimation variance.
 
@@ -125,9 +128,9 @@ Another similar approach can be found in statistical learning model. @hastie2009
 
 However, `sca`'s residuals are estimates of observation error (measurement noise) and model error (misspecification, omitted variables), which means it will be an overestimate of observation error.
 
-Nevertheless, in this section we'll assume prediction error to be the sum of residual variance and estimation variance, and will describe how to compute both elements and bringing them together in a `FLStock` object.
+Nevertheless, in this section we'll assume prediction error to be the sum of residual variance and estimation variance, and will describe how to compute both elements and bringing them together in a `FLStock` object.-->
 
-```{r}
+```{r, eval=FALSE, echo=FALSE}
 # compute deviances
 res0 <- residuals(fit0, hke1567, hke1567.idx, type="deviances")
 # build object with estimation uncertainty
@@ -138,11 +141,13 @@ stk.ru <- propagate(stk0, nsim) + res0
 stk.pu <- hke1567 + simulate(fit0, nsim) + res0
 ```
 
-```{r, preduncert, fig.cap="Prediction (pu), residual (ru) and estimation (eu) uncertainty", echo=FALSE}
+```{r, preduncert, fig.cap="Prediction (pu), residual (ru) and estimation (eu) uncertainty", echo=FALSE, eval=FALSE}
 plot(FLStocks(pu=stk.pu, eu=stk.eu, ru=stk.ru)) + facet_grid(qname~stock, scales="free") + theme(legend.position = "top")
 ```
 
 ## Confidence interval coverage
+
+TBD
 
 ## Propagate uncertainty into stock assessment
 

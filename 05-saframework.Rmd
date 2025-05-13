@@ -85,11 +85,9 @@ The remaining parameters are written in terms of a linear combination of covaria
 \log F_{ay} = \sum_k \beta_k x_{ayk}
 \end{equation}
 
-where $k$ is the number of parameters to be estimated and is sufficiently small. Using this technique the quantities $\log F$, $\log Q$, $\log \sigma$ and $\log \tau$
-%$\log \text{initial\,age\,structure}$ % this is not present in the above
-(in bold in the equations above) can be described by a reduced number of parameters. The following section has more discussion on the use of linear models in a4a.
+where $k$ is the number of parameters to be estimated and is sufficiently small. Using this technique the quantities $\log F$, $\log Q$, $\log \sigma$ and $\log \tau$ can be described by a reduced number of parameters.
 
-The a4a statistical catch-at-age model can additionally allow for a functional relationship that links predicted recruitment $\tilde{R}$ based on spawning stock biomass and modelled recruitment $R$, to be imposed as a fixed variance random effect. [NEEDS REVISION, sentence not clear]
+The a4a statistical catch-at-age model can additionally allow for a functional relationship that links predicted recruitment $\tilde{R}$ based on spawning stock biomass and modelled recruitment $R$, to be imposed as a fixed variance random effect.
 
 Options for the relationship are the hard coded models Ricker, Beverton Holt, smooth hockey-stick or geometric mean. This is implemented by including a third component in the log-likelihood:
 

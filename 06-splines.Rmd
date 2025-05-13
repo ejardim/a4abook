@@ -281,8 +281,6 @@ ggplot(data = df_xm_basis_b, aes(x = x, y = value, group = variable, colour = va
 
 Figure \@ref(fig:spliesandtps) shows both models fitted to the dataset, both fits use the same number of knots.
 
-**[Can we say a bit more here?]**
-
 ```{r, spliesandtps, fig.cap="Thin plate splines and cubic regression splines fit", echo=FALSE, message = FALSE, warning=FALSE}
 ggplot(data, aes(x, y)) +
   geom_point(alpha = 0.4) +

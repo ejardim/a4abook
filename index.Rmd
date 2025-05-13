@@ -3,7 +3,9 @@ title: "Fish stock assessment with R - DRAFT"
 subtitle: "The a4a Initiative"
 author:
   - name: "Ernesto Jardim"
-    affiliation: "Instituto Portugues do Mar e Atmosfera (IPMA), Lisbon, Portugal"
+    affiliation:
+      - "Instituto Portugues do Mar e Atmosfera (IPMA), Lisbon, Portugal"
+      - "National Institute of Aquatic Resources, Technical University of Denmark (DTU-Aqua), Copenhagen, Denmark"
     email: "ernesto.jardim@gmail.com"
   - name: "Collin Millar"
     affiliation: "International Council for the Exploration of the Sea (ICES), Copenhaguen, Denmark"
@@ -45,13 +47,13 @@ lattice.options(default.args = list(as.table = TRUE))
 
 ## Installing and loading libraries
 
-To run the methods in this book the reader will need to install the `FLa4a` package [@fla4a] and its dependencies. Some datasets are distributed with the package and as such need to be loaded too.
+To run the methods in this book the reader will need to install the `FLa4a` package [@fla4a], `FLCore` [], some FLR packages, and relevant dependencies. Some datasets are distributed with the package and as such need to be loaded too.
 
 ```{R, eval=FALSE}
-# from CRAN
-install.packages(c("copula","triangle", "coda", "grid", "gridExtra", "latticeExtra"))
-# from FLR
-install.packages(c("FLCore", "FLa4a"), repos="http://flr-project.org/R")
+# FLR packages used in the book
+install.packages(
+  c("FLCore", "FLa4a", "FLBRP", "FLasher", "a4adiags", "ggplotFL"),
+  repos=c(FLR="https://flr.r-universe.dev", CRAN="https://cloud.r-project.org"))
 ```
 
 ```{R, message=FALSE, warning=FALSE}

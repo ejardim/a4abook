@@ -8,10 +8,9 @@ The most common classification of stock status is bidimensional, comparing explo
    
 2. Biomass Size: Commonly measured by spawning stock biomass ($SSB$), stocks are deemed overfished if the $SSB$ falls below the reference point.
 
-These assessments often utilize tools like the Kobe plot, which visually represents stock status in relation to these metrics (REF).
+These assessments often utilize tools like the Kobe plot, which visually represents stock status in relation to these metrics [@kell2016quantification].
 
 In addition to target reference points, limit reference points (LRPs) are commonly included in stock assessments. These represent thresholds that should not be crossed, as they signal a high risk of stock collapse or significant uncertainty in population dynamics. Effective management aims to maintain fishing pressure and biomass levels away from these limits to ensure long-term sustainability and reduce the risk of adverse outcomes.
-
 
 In 1982, the United Nations Convention on the Law of the Sea (UNCLOS, @unclos1982), in Article 61, required coastal states to determine and maintain, or restore, populations of harvested species at levels capable of producing the maximum sustainable yield (MSY). MSY is defined as the largest yield (catch) that can be taken from a specific fish stock over an indefinite period without causing stock depletion. Since then MSY and its proxies, such as $B_{MSY}$ (biomass at MSY) and $F_{MSY}$ (fishing mortality at MSY), remain widely used. These reference points are related with the stock's productivity, which results of a complex interaction between recruitment, individual growth and mortality processes.
 
@@ -24,7 +23,8 @@ library(FLBRP)
 library(FLa4a)
 data(ple4)
 data(ple4.indices)
-fit0 <- sca(ple4, ple4.indices)
+fmod <- ~ s(age, k = 8) + s(year, k = 25) + te(age, year, k = c(6, 15))
+fit0 <- sca(ple4, ple4.indices, fmodel=fmod)
 stk0 <- ple4 + fit0
 ```
 
@@ -125,7 +125,7 @@ An alternative option, using `sca()`, its to fit the stock recruitment model tog
 
 ```{r}
 # fit with Beverton and Holt model
-fit1 <- sca(ple4, ple4.indices, srmodel = ~ bevholt(CV = 0.5))
+fit1 <- sca(ple4, ple4.indices, srmodel = ~ bevholt(CV = 0.5), fmodel=fmod)
 # create FLSR object
 a4aflsr <- as(fit1, "FLSR")
 ```
@@ -168,7 +168,7 @@ brp0 <- brp(brp0)
 refpts(brp0)
 ```
 
-The reference points table is now complete with values for `revenue`, `costs` and `profit`, as well as estimtes for $MEY$ based reference points. The point where `profits` are maximized, instead of the point where `catch` is maximized as in the case of `MSY` (Figure \@ref(fig:ecorp)).
+The reference points table is now complete with values for `revenue`, `costs` and `profit`, as well as estimates for $MEY$ based reference points. The point where `profits` are maximized, instead of the point where `catch` is maximized as in the case of `MSY` (Figure \@ref(fig:ecorp)).
 
 ```{r ecorp, fig.cap="Reference points including economic reference points"}
 plot(brp0)
@@ -215,10 +215,33 @@ On the other hand, objectives consider food production, represented by the fishi
 
 Policy makers, with the support of scientific advisors, have to find a balance between these two objectives, food production and stock collapse, to guarantee the long term sustainability of the stocks. As such computing the status of the stock in relation to $SSB$ and $F$ becomes one of the most important pieces of information scientists can provide.
 
-For this exercise we'll use the kobe plot [@kell2016quantification], which depicts estimates of $SSB$ over $SSB_{target}$ and $F$ over $F_{target}$ in a plot with $SSB$ in the y axis and $F$ in the x axis. The inspection of the plot allows a quick overview of the exploitation history of the stock and the current status in relation to the objectives set.
+For this exercise we'll use the kobe plot [@kell2016quantification], which depicts estimates of $SSB$ over $SSB_{target}$ and $F$ over $F_{target}$ in a plot with $SSB$ in the x axis and $F$ in the y axis (Figure \@ref(fig:kobeplot)). The inspection of the plot allows a quick overview of the exploitation history of the stock and the current status in relation to the objectives set.
 
-```{r}
+```{r, kobeplot, fig.cap="Kobe plot trajectory"}
+# ssb and F relative to MSY reference points
+ssb_ssbmsy <- ssb(ple4+fit1)/refpts(a4abrp)["msy", "ssb"]
+f_fmsy <- fbar(ple4+fit1)/refpts(a4abrp)["msy", "harvest"]
+
 # code to compute kobe plot
+ggplot(mapping=aes(x=c(f_fmsy), y=c(ssb_ssbmsy))) +
+  # Add quadrants
+  geom_rect(aes(xmin = 1, xmax = Inf, ymin = 0, ymax = 1), fill = "green", alpha = 0.5) +
+  geom_rect(aes(xmin = 0, xmax = 1, ymin = 0, ymax = 1), fill = "yellow", alpha = 0.5) +
+  geom_rect(aes(xmin = 0, xmax = 1, ymin = 1, ymax = Inf), fill = "red", alpha = 0.5) +
+  geom_rect(aes(xmin = 1, xmax = Inf, ymin = 1, ymax = Inf), fill = "yellow", alpha = 0.5) +
+  # Reference lines
+  geom_vline(xintercept = 1, linetype = "dashed") +
+  geom_hline(yintercept = 1, linetype = "dashed") +
+  # Points
+  geom_point(size = 2) +
+  # lines
+  geom_path(arrow = arrow(type = "open", length = unit(0.15, "inches")), linewidth = 0.5) +
+  # Labels and theme
+  labs(
+    x = expression(B / B[MSY]),
+    y = expression(F / F[MSY]),
+  ) +
+  theme_minimal()
 ```
 
 
