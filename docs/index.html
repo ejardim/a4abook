@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-05-12" />
+<meta name="date" content="2025-05-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -339,7 +339,7 @@ div.csl-indent {
 <h2 class="subtitle"><em>The a4a Initiative</em></h2>
 <p class="author multi-author"><em>Ernesto Jardim</em></p>
 <address class="author_afil">
-Instituto Portugues do Mar e Atmosfera (IPMA), Lisbon, Portugal<br>
+Instituto Portugues do Mar e Atmosfera (IPMA), Lisbon, PortugalNational Institute of Aquatic Resources, Technical University of Denmark (DTU-Aqua), Copenhagen, Denmark<br>
 <a class="author_email" href="mailto:#"><a href="mailto:ernesto.jardim@gmail.com" class="email">ernesto.jardim@gmail.com</a></a>
 </address>
 <p class="author multi-author"><em>Collin Millar</em></p>
@@ -349,7 +349,7 @@ International Council for the Exploration of the Sea (ICES), Copenhaguen, Denmar
 </address>
 <p class="author multi-author"><em>Danai Mantopoulou Palouka</em></p>
 <address class="author_afil">
-European Commission Joint Research Centre (JRC), Brussels, Belgium<br>
+European Commission Joint Research Centre (JRC), Ispra, Italy<br>
 <a class="author_email" href="mailto:#"><a href="mailto:Danai.MANTOPOULOU-PALOUKA@ec.europa.eu" class="email">Danai.MANTOPOULOU-PALOUKA@ec.europa.eu</a></a>
 </address>
 <p class="author multi-author"><em>Iago Mosqueira</em></p>
@@ -357,17 +357,17 @@ European Commission Joint Research Centre (JRC), Brussels, Belgium<br>
 Wageningen Marine Research (WMR), IJmuiden, The Netherlands<br>
 <a class="author_email" href="mailto:#"><a href="mailto:iago.mosqueira@wur.nl" class="email">iago.mosqueira@wur.nl</a></a>
 </address>
-<p class="date"><em>2025-05-12</em></p>
+<p class="date"><em>2025-05-13</em></p>
 </div>
 <div id="before-starting" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">1</span> Before starting<a href="index.html#before-starting" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="installing-and-loading-libraries" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> Installing and loading libraries<a href="index.html#installing-and-loading-libraries" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To run the methods in this book the reader will need to install the <code>FLa4a</code> package <span class="citation">(<a href="#ref-fla4a">Millar and Jardim 2025</a>)</span> and its dependencies. Some datasets are distributed with the package and as such need to be loaded too.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" tabindex="-1"></a><span class="co"># from CRAN</span></span>
-<span id="cb1-2"><a href="index.html#cb1-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;copula&quot;</span>,<span class="st">&quot;triangle&quot;</span>, <span class="st">&quot;coda&quot;</span>, <span class="st">&quot;grid&quot;</span>, <span class="st">&quot;gridExtra&quot;</span>, <span class="st">&quot;latticeExtra&quot;</span>))</span>
-<span id="cb1-3"><a href="index.html#cb1-3" tabindex="-1"></a><span class="co"># from FLR</span></span>
-<span id="cb1-4"><a href="index.html#cb1-4" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;FLCore&quot;</span>, <span class="st">&quot;FLa4a&quot;</span>), <span class="at">repos=</span><span class="st">&quot;http://flr-project.org/R&quot;</span>)</span></code></pre></div>
+<p>To run the methods in this book the reader will need to install the <code>FLa4a</code> package <span class="citation">(<a href="#ref-fla4a">Millar and Jardim 2025</a>)</span>, <code>FLCore</code> [], some FLR packages, and relevant dependencies. Some datasets are distributed with the package and as such need to be loaded too.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" tabindex="-1"></a><span class="co"># FLR packages used in the book</span></span>
+<span id="cb1-2"><a href="index.html#cb1-2" tabindex="-1"></a><span class="fu">install.packages</span>(</span>
+<span id="cb1-3"><a href="index.html#cb1-3" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;FLCore&quot;</span>, <span class="st">&quot;FLa4a&quot;</span>, <span class="st">&quot;FLBRP&quot;</span>, <span class="st">&quot;FLasher&quot;</span>, <span class="st">&quot;a4adiags&quot;</span>, <span class="st">&quot;ggplotFL&quot;</span>),</span>
+<span id="cb1-4"><a href="index.html#cb1-4" tabindex="-1"></a>  <span class="at">repos=</span><span class="fu">c</span>(<span class="at">FLR=</span><span class="st">&quot;https://flr.r-universe.dev&quot;</span>, <span class="at">CRAN=</span><span class="st">&quot;https://cloud.r-project.org&quot;</span>))</span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" tabindex="-1"></a><span class="co"># libraries</span></span>
 <span id="cb2-2"><a href="index.html#cb2-2" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
 <span id="cb2-3"><a href="index.html#cb2-3" tabindex="-1"></a><span class="fu">library</span>(FLa4a)</span>
@@ -489,7 +489,7 @@ Wageningen Marine Research (WMR), IJmuiden, The Netherlands<br>
 ##     }
 ##     .local(x, ...)
 ## }
-## &lt;bytecode: 0x5a145490dc78&gt;
+## &lt;bytecode: 0x5e3ec096c6a0&gt;
 ## &lt;environment: namespace:ggplotFL&gt;
 ## 
 ## Signatures:
