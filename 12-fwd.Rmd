@@ -70,7 +70,7 @@ stk02 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 ```
 
 ```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment"}
-plot(window(stk02, start=inipy)
+plot(window(stk02, start=inipy))
 ```
 
 An alternative to the above workflow is to fit the stock recruitment model after the stock assessment model, using the output of the assessment as input to the stock recruitment fit. In which case stock recruitment estimation uncertainty can be added by fitting the stock recruitment model over stock assessment uncertainty, so that there will be stock-recruitment fit to each iteration generated from the stock assessment model.
@@ -83,12 +83,12 @@ sr00 <- fmle(sr00, control = list(trace = 0))
 stk00 <- fwdWindow(stk00, end = endpy)
 res00 <- residuals(sr00)
 rec00 <- window(rec(stk00), inipy, endpy)
-rec00 <- rlnorm(rec00, c(yearMeans(res00)), sqrt(c(yearVars(res00))))
+rec00 <- rlnorm(rec00, mean(res00), sqrt(var(res00)))
 stk03 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 ```
 
 ```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment"}
-plot(window(stk03, start=inipy)
+plot(window(stk03, start=inipy))
 ```
 
 These two methods don't give very different results when the stock recruitment model is not having a large impact in the other parameters. However the second method is much slower due to all the fits needed to have the empirical distribution of the stock recruitment model parameters.
@@ -118,7 +118,6 @@ One can also define if those assumptions will be based on the mean value over th
 For the next examples we will use the approach of fitting the stock recruitment within the assessment together with other parameters. We will set to 20 the number of years to compute mean weights at age, to 10 the number of years to average across and estimate the selection pattern in terms of fishing mortality at age. Finally, we will use a 10 year period to compute the average discard ratio.
 
 ```{r, warning=FALSE, message=FALSE}
-fmod <- ~ s(age, k = 8) + s(year, k = 25) + te(age, year, k = c(6, 15))
 fit00 <- sca(ple4, ple4.indices, srmodel=~geomean(), fmodel=fmod)
 sr00 <- as(fit00, "FLSR")
 stk00 <- ple4 + fit00
@@ -136,7 +135,6 @@ plot(FLStocks(default=window(stk01, start=inipy), alternative=window(stk04, star
 There's a wide range of scenarios that can be of interest to project in order to give advice to policy makers, or to better understand the fitted stock assessment model. For example, projecting the stock in the absence of fishing for a few generations, gives good insights about the dynamics of the population being modelled.
 
 ```{r, warning=FALSE, message=FALSE}
-fmod <- ~ s(age, k = 8) + s(year, k = 25) + te(age, year, k = c(6, 15))
 fit00 <- sca(ple4, ple4.indices, srmodel=~geomean(), fmodel=fmod)
 sr00 <- as(fit00, "FLSR")
 stk00 <- ple4 + simulate(fit00, nsim)
@@ -155,7 +153,7 @@ stk05 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 ```
 
 ```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 25 years in the absence of fishing"}
-plot(window(stk05, start=inipy)
+plot(window(stk05, start=inipy))
 ```
 
 These scenarios are defined by the target quantities set to be achieved. Table \@ref(tab:trgqts) `FLasher` can currently solve for the following target quantities:
@@ -178,12 +176,13 @@ Table: (\#tab:trgqts) Target quantities and their description
 When projecting the stock under the conditions defined by the scenario one can mix several quantities. For example it may be interesting to project an initial situation of growing the stock followed by a higher exploitation to evaluate how catches would behave.
 
 ```{r, warning=FALSE, message=FALSE}
-trg00 <- fwdControl(year = inipy:endpy, quant = c(rep("ssb_end", 15), rep("f", 10)), value = c(rep(2000000, 15), rep(0.3, 10)))
+trg00 <- fwdControl(year = inipy:endpy, quant = c(rep("ssb_end", 15), rep("f", 10)),
+    value = c(rep(2000000, 15), rep(0.3, 10)))
 stk06 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 ```
 
 ```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 25 years with fixed SSB for 15 years followed by fixed fishing mortality for 10 years and constant recruitment"}
-plot(window(stk06, start=inipy)
+plot(window(stk06, start=inipy))
 ```
 
 ## Relative scenarios
@@ -280,6 +279,4 @@ if(ssb(stk00)[,ac(maxy)] > blim){
 }
 ```
 
-```{r, echo=FALSE, fig.cap="Projection of stock for 2 years following a HCR with a target of FMSY and limit of 50% SSBMSY"}
-plot(window(stk10, start = inipy))
-```
+A full working HCR would require the above code to be looped throughout the projection years, evaluating each time if $SSB$ was above $B_{LIM}$ and if not decreasing $F$ by 0.8.

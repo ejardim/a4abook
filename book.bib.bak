@@ -819,4 +819,14 @@ journal = {Journal of Climate}
   pages   = {405--424},
 }
 
+@Article{hu2002weighted,
+  author  = {Hu, Feifang and Zidek, James V.},
+  title   = {The Weighted Likelihood},
+  journal = {The Canadian Journal of Statistics / La Revue Canadienne de Statistique},
+  year    = {2002},
+  volume  = {30},
+  number  = {3},
+  pages   = {347--371},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
