@@ -9,7 +9,7 @@ author:
     affiliation: "International Council for the Exploration of the Sea (ICES), Copenhaguen, Denmark"
     email: "colin.millar@ices.dk"
   - name: "Danai Mantopoulou Palouka"
-    affiliation: "European Commission Joint Research Centre (JRC), Brussels, Belgium"
+    affiliation: "European Commission Joint Research Centre (JRC), Ispra, Italy"
     email: "Danai.MANTOPOULOU-PALOUKA@ec.europa.eu"
   - name: "Iago Mosqueira"
     affiliation: "Wageningen Marine Research (WMR), IJmuiden, The Netherlands"
