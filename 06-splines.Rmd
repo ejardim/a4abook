@@ -58,7 +58,7 @@ ggarrange(p2,p1)
 
 In this case our parameters are a $\beta_0 =$ `r round(mean(data$y),2)` for the mean (left) model, while for the straight line model, $\beta_0 =$ `r round(coef(model)[1], 2)` and $\beta_1 =$ `r round(coef(model)[2], 2)`. In Figure \@ref(fig:meanandlinear) we see how by adding to the constant model $\beta_0$ a multiple ($\beta_1$) of the variable $\mathbf{x}$, the model becomes a little more complex but it can now follow the general upward trend compared to the first line, although it fails to follow the peaks and the lows of the data set.
 
-One of the mechanisms that splines use is to split the set of values of the predictor, in our case $\mathbf{x}$, in smaller compartments and fit in those compartments a specified model. The points where the splitting occurs are called *knots*. In Figure \@ref(fig:knots) we take a stepwise approach following the logic behind the use of piecewise polynomials in smoothing splines. First, we split our range of $\mathbf{x}$ values in 4 subsets, by defining our knots, then we take the average of $\mathbf{y}$ data for each of these compartments and in the final step we add a bit of complexity by fitting a straight line model in each of these subsets of our original dataset. Figure X2 demonstrates a naive approach to try and follow better the trends of the data, where in each step we manage to capture a bit more.
+One of the mechanisms that splines use is to split the set of values of the predictor, in our case $\mathbf{x}$, in smaller compartments and fit in those compartments a specified model. The points where the splitting occurs are called *knots*. In Figure \@ref(fig:knots) we take a stepwise approach following the logic behind the use of piecewise polynomials in smoothing splines. First, we split our range of $\mathbf{x}$ values in 4 subsets, by defining our knots, then we take the average of $\mathbf{y}$ data for each of these compartments and in the final step we add a bit of complexity by fitting a straight line model in each of these subsets of our original dataset. \@ref(fig:knots) demonstrates a naive approach to try and follow better the trends of the data, where in each step we manage to capture a bit more.
 
 
 ```{r, knots, fig.cap='Effect of breaking the data in sections, by knots, and fitting the mean or a linear model to each section.', fig.pos = 'H', echo=FALSE, message=FALSE, warning=FALSE}
@@ -121,29 +121,23 @@ By combining polynomial pieces and ensuring smoothness at their junctions, i.e. 
 
 The polynomials are build by transforming the predictor variable or the sets of variables into higher order polynomials (usually 2nd or 3rd grade polynomials). These polynomials need to have matching values at the knots.
 
-Let $S$ our spline function, that is defined in an interval $[a,b]$. We seek to construct $S$ by combining $k-1$ polynomials $P$, where $k$ is the number of knots. Let also $t_{i}, i = 0, ..., k-1$ the positions of the knots in the interval $[a,b]$.
+Let $S$ our spline function, that is defined in an interval $[a,b]$. We seek to construct $S$ by combining $k$ polynomials $P$, where $k$ is the number of knots. Let also $t_{i}, i = 1, ..., k$ the positions of the knots in the interval $[a,b]$.
 
 $S$ is going to be defined as:
 
 $$
-S(x) =
-\begin{cases}
-P_1(x) & \text{if } a \leq x < t_1, \\
-P_2(x) & \text{if } t_1 \leq x < t_2, \\
-\quad\vdots \\
-P_{k-1}(x) & \text{if } t_{k-1} \leq x \leq b,
-\end{cases}
+S(x) = \sum_{i = 1}^{k}\beta_iP_{i}(x)
 $$
 
-
+where $\beta_i$ parameters to be estimated
 
 The above definition is a simplified version of how splines work and can help as an intuitive approach. In reality splines need to satisfy some extra conditions like continuity, i.e. $P_{i-1}(t_{i}) = P_{i}(t_{i})$ on the points of junction, and of the first and second derivative. Depending on the basis functions the conditions may differ.
 
-In Figure \@ref(fig:naivespline) we demonstrate the fitting of cubic regression splines. In this case the highest order of the polynomials $P_i(x)$ are 3rd degree polynomials and it comprises 4 cubic segments, i.e basis functions.
+In Figure \@ref(fig:naivespline) we demonstrate the fitting of B splines. In this each of the polynomials i.e basis functions, $P_i(x)$ is a simple function which is constructed based on the position of knots.
 
 The spline would be then as follows:
 
-$$\mathbf{y} = \beta_0 + \beta_1P_1(\mathbf{x}) + \beta_2P_2(\mathbf{x}) + \beta_3P_3(\mathbf{x}) + \beta_4P_4(\mathbf{x})+\beta_5P_5(\mathbf{x}) $$
+$$\mathbf{y} = \beta_1P_1(\mathbf{x}) + \beta_2P_2(\mathbf{x}) + \beta_3P_3(\mathbf{x}) + \beta_4P_4(\mathbf{x})+\beta_5P_5(\mathbf{x}) $$
 
 
 ```{r, naivespline, fig.cap = "A B-spline with 5 knots consists of 5 cubic polynomials",echo=FALSE, message=FALSE, warning=FALSE, warning=FALSE}
