@@ -105,8 +105,6 @@ fig:ecorp
 fig:kobeplot
 fig:unnamed-chunk-115
 fig:unnamed-chunk-117
-fig:unnamed-chunk-119
-fig:unnamed-chunk-120
 tab:initcond
 fig:unnamed-chunk-122
 fig:unnamed-chunk-124
@@ -141,7 +139,6 @@ introduction
 the-assessment-for-all-initiative-a4a
 multi-stage-modelling-approach
 stock-assessment-process
-stock-assessment-as-a-linear-model
 data-used-in-the-book
 plaice-in-area-fao-27-ices-area-iv
 european-hake-in-fao-37-gsas-1567
@@ -201,8 +198,6 @@ uncertainty
 the-simulate-and-predict-methods
 predict
 simulate
-prediction-error
-confidence-interval-coverage
 propagate-uncertainty-into-stock-assessment
 the-statistical-catch-at-age-stock-assessment-framework-with-markov-chain-monte-carlo-mcmc
 the-mcmc-method-for-sca

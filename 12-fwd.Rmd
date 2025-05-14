@@ -73,9 +73,9 @@ stk02 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 plot(window(stk02, start=inipy))
 ```
 
-An alternative to the above workflow is to fit the stock recruitment model after the stock assessment model, using the output of the assessment as input to the stock recruitment fit. In which case stock recruitment estimation uncertainty can be added by fitting the stock recruitment model over stock assessment uncertainty, so that there will be stock-recruitment fit to each iteration generated from the stock assessment model.
+<!--An alternative to the above workflow is to fit the stock recruitment model after the stock assessment model, using the output of the assessment as input to the stock recruitment fit. In which case stock recruitment estimation uncertainty can be added by fitting the stock recruitment model over stock assessment uncertainty, so that there will be stock-recruitment fit to each iteration generated from the stock assessment model.-->
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE, eval=FALSE}
 fit00 <- sca(ple4, ple4.indices) 
 stk00 <- ple4 + simulate(fit00, nsim)
 sr00 <- as.FLSR(stk00, model="geomean")
@@ -87,13 +87,13 @@ rec00 <- rlnorm(rec00, mean(res00), sqrt(var(res00)))
 stk03 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 ```
 
-```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment"}
+```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment", message=FALSE, echo=FALSE, eval=FALSE}
 plot(window(stk03, start=inipy))
 ```
 
-These two methods don't give very different results when the stock recruitment model is not having a large impact in the other parameters. However the second method is much slower due to all the fits needed to have the empirical distribution of the stock recruitment model parameters.
+<!--These two methods don't give very different results when the stock recruitment model is not having a large impact in the other parameters. However the second method is much slower due to all the fits needed to have the empirical distribution of the stock recruitment model parameters.-->
 
-```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment. 01: projection without uncertainty, stock recruitment model fit within the stock assessment model; 02: projection with uncertainty, stock recruitment model fit within the stock assessment model; 03: projection with uncertainty, stock recruitment model fit after the stock assessment model"}
+```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment. 01: projection without uncertainty, stock recruitment model fit within the stock assessment model; 02: projection with uncertainty, stock recruitment model fit within the stock assessment model; 03: projection with uncertainty, stock recruitment model fit after the stock assessment model", message=FALSE, echo=FALSE, eval=FALSE}
 plot(window(FLStocks('01' = stk01, '02' = stk02, '03' = stk03), start = inipy))
 
 ```
@@ -153,7 +153,7 @@ stk05 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 ```
 
 ```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 25 years in the absence of fishing"}
-plot(window(stk05, start=inipy))
+plot(window(stk05, start=2015))
 ```
 
 These scenarios are defined by the target quantities set to be achieved. Table \@ref(tab:trgqts) `FLasher` can currently solve for the following target quantities:
@@ -182,7 +182,7 @@ stk06 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 ```
 
 ```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 25 years with fixed SSB for 15 years followed by fixed fishing mortality for 10 years and constant recruitment"}
-plot(window(stk06, start=inipy))
+plot(window(stk06, start=2015))
 ```
 
 ## Relative scenarios
@@ -229,7 +229,7 @@ stk09 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 ```
 
 ```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 25 years with SSB target of 1500000t and catch limit of 50% historical catches"}
-plot(window(stk09, start = inipy))
+plot(window(stk09, start = 2015))
 ```
 
 ## Harvest Control Rules (HCR)

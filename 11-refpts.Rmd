@@ -23,8 +23,7 @@ library(FLBRP)
 library(FLa4a)
 data(ple4)
 data(ple4.indices)
-fmod <- ~ s(age, k = 8) + s(year, k = 25) + te(age, year, k = c(6, 15))
-fit0 <- sca(ple4, ple4.indices, fmodel=fmod)
+fit0 <- sca(ple4, ple4.indices)
 stk0 <- ple4 + fit0
 ```
 
@@ -125,7 +124,7 @@ An alternative option, using `sca()`, its to fit the stock recruitment model tog
 
 ```{r}
 # fit with Beverton and Holt model
-fit1 <- sca(ple4, ple4.indices, srmodel = ~ bevholt(CV = 0.5), fmodel=fmod)
+fit1 <- sca(ple4, ple4.indices, srmodel = ~ bevholt(CV = 0.5))
 # create FLSR object
 a4aflsr <- as(fit1, "FLSR")
 ```

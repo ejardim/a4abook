@@ -3,10 +3,9 @@ title: "Fish stock assessment with R - DRAFT"
 subtitle: "The a4a Initiative"
 author:
   - name: "Ernesto Jardim"
-    affiliation:
-      - "Instituto Portugues do Mar e Atmosfera (IPMA), Lisbon, Portugal"
-      - "National Institute of Aquatic Resources, Technical University of Denmark (DTU-Aqua), Copenhagen, Denmark"
     email: "ernesto.jardim@gmail.com"
+    affiliation:
+      Instituto Portugues do Mar e Atmosfera (IPMA), Lisbon, Portugal<br>National Institute of Aquatic Resources, Technical University of Denmark (DTU-Aqua), Copenhagen, Denmark
   - name: "Collin Millar"
     affiliation: "International Council for the Exploration of the Sea (ICES), Copenhaguen, Denmark"
     email: "colin.millar@ices.dk"

@@ -104,9 +104,8 @@ stk.pred <- hke1567 + fit.sim
 plot(FLStocks(simulated=stk.pred, fitted=stk0))
 ```
 
-## Prediction error
+<!--## Prediction error-->
 
-TBD
 
 <!--
 To address this topic we'll borrow from state-space modelling to define prediction error as the combination of observation error and estimation error (REF). Although `sca()` is not a state-space model, some of the inherent concepts of statistical catch at age models are similar to state-space models. `sca()` estimates parameters to model underlying unobserved processes, *e.g.* recruitment, catchability or fishing mortality, based on indirect observations of those processes, number of fish caught by the fleet and changes in abundance at sea.
@@ -126,11 +125,20 @@ Another similar approach can be found in statistical learning model. @hastie2009
   isbn={9780134461366}
 }-->
 
-However, `sca`'s residuals are estimates of observation error (measurement noise) and model error (misspecification, omitted variables), which means it will be an overestimate of observation error.
+<!--However, `sca`'s residuals are estimates of observation error (measurement noise) and model error (misspecification, omitted variables), which means it will be an overestimate of observation error.
 
 Nevertheless, in this section we'll assume prediction error to be the sum of residual variance and estimation variance, and will describe how to compute both elements and bringing them together in a `FLStock` object.-->
 
 ```{r, eval=FALSE, echo=FALSE}
+nsim <- 250
+fmod <- ~s(age, k = 4) +
+    s(year, k = 8) +
+    s(year, k = 8, by = as.numeric(age == 0)) +
+    s(year, k = 8, by = as.numeric(age == 4))
+qmod <- list(~I(1/(1 + exp(-age))))
+fit0 <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod)
+stk0 <- hke1567 + fit0
+
 # compute deviances
 res0 <- residuals(fit0, hke1567, hke1567.idx, type="deviances")
 # build object with estimation uncertainty
@@ -145,14 +153,12 @@ stk.pu <- hke1567 + simulate(fit0, nsim) + res0
 plot(FLStocks(pu=stk.pu, eu=stk.eu, ru=stk.ru)) + facet_grid(qname~stock, scales="free") + theme(legend.position = "top")
 ```
 
-## Confidence interval coverage
+<!--## Confidence interval coverage-->
 
-TBD
 
 ## Propagate uncertainty into stock assessment
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
-library(FLa4a)
+```{r, message=FALSE, warning=FALSE}
 stk00 <- readRDS("data/MUT1_stk.rds")
 idx00 <- readRDS("data/MUT1_idx.rds")
 ```
@@ -182,11 +188,11 @@ These outcomes will be compared with a fit across M iterations without any sampl
 Using `a4a` methods we'll model natural mortality using a negative exponential model by age, Jensen's estimator for the level and no time trend. We include multivariate normal uncertainty using the `mvrnorm()` method and create 250 iterations.
 
 ```{r}
-nits <- 250
+nits <- 25
 
 shape <- FLModelSim(model=~exp(-age-0.5))
 level <- FLModelSim(model=~k^0.66*t^0.57, params = FLPar(k=0.4, t=10),
-                     vcov=matrix(c(0.002, 0.01,0.01, 1), ncol=2))
+                     vcov=matrix(c(0.001, 0.01,0.01, 1), ncol=2))
 #trend <- FLModelSim(model=~b, params=FLPar(b=0.5), vcov=matrix(0.02))
 
 m4 <- a4aM(shape=shape, level=level)
@@ -214,8 +220,10 @@ stk01 <- stk0
 stk02 <- stk0
 stk03 <- propagate(stk00, nits*nits)
 
-# run without estimation unceratainty
+# run without estimation uncertainty
 stk04 <- stk00 + sca(stk0, idx00)
+# update M, the "+" method doesn't do it automatically
+m(stk04) <- flq
 
 for(i in 1:nits){
     stk <- iter(stk0, i)
@@ -231,8 +239,8 @@ for(i in 1:nits){
 ```
 
 
-```{r, mprop, fig.cap="Stock summary. Stock metrics computed over fits including uncertainty in M and estimation uncertainty"}
-plot(FLStocks("M"=stk04, "M + 1 estimation sample"=stk01, "M + estimation median"=stk02, "M + n estimation samples"=stk03))
+```{r, mprop, fig.cap="Stock summary. Stock metrics computed over fits including uncertainty in M and estimation uncertainty", echo=FALSE}
+plot(FLStocks("M"=stk04, "M + 1 estimation sample"=stk01, "M + estimation median"=stk02, "M + n estimation samples"=stk03)) + facet_grid(qname~stock, scales="free") + theme(legend.position = "top")
 ```
 
 
