@@ -217,7 +217,7 @@ The retrospective plot shown below presents the current fit with uncertainty and
 plot(window(stks, start=2005))
 ```
 
-One could use specific submodels and pass them to the fitting function `scas`, including with some adjustments to take into account the data reduction. In the next example the fishing mortality model is set reducing the smoothness taking into account the length of the dataset. Not considering the adjustment of the model to the new dataset may result in comparisons across models which are very different due to the relationship between information contained in the data and the number of parameters in the model. This issue is more relevant for stocks with shorter time series.
+One could use specific submodels and pass them to the fitting function `scas()`, including with some adjustments to take into account the data reduction. In the next example the fishing mortality model is set reducing the smoothness taking into account the length of the dataset. Not considering the adjustment of the model to the new dataset may result in comparisons across models which are very different due to the relationship between information contained in the data and the number of parameters in the model. This issue is more relevant for stocks with shorter time series.
 
 ```{r}
 n <- 5

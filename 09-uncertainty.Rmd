@@ -4,9 +4,9 @@ Uncertainty is a fundamental aspect of scientific advice, serving as a reflectio
 
 In fisheries science, a field that has evolved primarily to provide evidence-based advice for the sustainable exploitation of marine resources, acknowledging and addressing uncertainty is of major importance. Given the dynamic, complex, and partially observable nature of aquatic ecosystems, the need to systematically characterize and communicate uncertainty is paramount to ensuring robust and credible assessments [@privitera2019].
 
-In this section we'll address two important elements of quantifying uncertainty in stock assessment results, prediction error and propagation of uncertainty across modelling stages.
+In this section we'll address two important elements of quantifying uncertainty in stock assessment results, prediction error[^1] and propagation of uncertainty across modelling stages.
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE}
 library(FLa4a)
 library(ggplot2)
 data(hke1567)
@@ -27,6 +27,8 @@ qmod <- list(~I(1/(1 + exp(-age))))
 fit0 <- sca(hke1567, hke1567.idx, fmodel=fmod, qmodel=qmod)
 stk0 <- hke1567 + fit0
 ```
+
+[^1]: Work in progress
 
 ## The `simulate` and `predict` methods
 
@@ -158,7 +160,7 @@ plot(FLStocks(pu=stk.pu, eu=stk.eu, ru=stk.ru)) + facet_grid(qname~stock, scales
 
 ## Propagate uncertainty into stock assessment
 
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
 stk00 <- readRDS("data/MUT1_stk.rds")
 idx00 <- readRDS("data/MUT1_idx.rds")
 ```
@@ -243,4 +245,4 @@ for(i in 1:nits){
 plot(FLStocks("M"=stk04, "M + 1 estimation sample"=stk01, "M + estimation median"=stk02, "M + n estimation samples"=stk03)) + facet_grid(qname~stock, scales="free") + theme(legend.position = "top")
 ```
 
-
+Method 1 and method 3 are the best propagating uncertainty and both give similar results. Method 1 will be faster since only one sample per fit is drawn, while method 3 will better describe the distribution but will be more computationally intensive.

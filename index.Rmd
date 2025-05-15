@@ -46,7 +46,7 @@ lattice.options(default.args = list(as.table = TRUE))
 
 ## Installing and loading libraries
 
-To run the methods in this book the reader will need to install the `FLa4a` package [@fla4a], `FLCore` [], some FLR packages, and relevant dependencies. Some datasets are distributed with the package and as such need to be loaded too.
+To run the methods in this book the reader will need to install the `FLa4a` package [@fla4a], `FLCore` [@flr], some FLR packages, and relevant dependencies. Some datasets are distributed with the package and as such need to be loaded too. `R` packages used throughout the book will have to be installed if not yet available in the `R` environment.
 
 ```{R, eval=FALSE}
 # FLR packages used in the book
@@ -80,7 +80,7 @@ The target audience for this document are readers with some experience in R and 
 
 The document explains the approach being developed by the Assessment for All Initiative (a4a) for fish stock assessment and scientific advice. It presents a mixture of text and code, where the first explains the concepts behind the methods, while the last shows how these can be run with the software provided. Moreover, having the code allows the reader to copy/paste and replicate the analysis presented here.
 
-The sections and subsections are as independent as possible, so they can be used as a reference document for the `FLa4a`.
+The sections and subsections are as independent as possible, so they can be used as a reference document for `FLa4a`.
 
 ## How to get help 
 
@@ -98,7 +98,7 @@ The object oriented structure of `FLa4a` gives the opportunity to change the beh
 showMethods("plot")
 ```
 
-by calling `showMethods` R prints all the possible uses of the `plot` function. We want to see what it does when it is called on an `FLStock` object with no other object. We observe that `plot` takes two arguments, `x` and `y`. So, in the signature of the `getMethod` function we are going to use, we need to define both `x` and `y`.
+By calling `showMethods` R prints all the possible uses of the `plot` function. We want to see what it does when it is called on an `FLStock` object with no other object. We observe that `plot` takes two arguments, `x` and `y`. So, in the signature of the `getMethod` function we are going to use, we need to define both `x` and `y`.
 
 ```{r}
 getMethod('plot', signature = list("FLStock","missing"))

@@ -8,6 +8,15 @@ The `a4a` stock assessment framework is implemented in `R` through the method `s
 
 Having described building blocks, basic formulations and effects available to build a submodel's model, it's important to look into specific formulations and relate them to commonly known representations. Note that although a large number of formulations are available for each submodel, the user must carefully decide on the full stock assessment model being build and avoid over-parameterize. Over-parametrization may lead to non-convergence, but may also end up not being very useful for prediction/forecasting, which is one of the main objectives of stock assessment.
 
+As mentioned before there are 5 submodels in operation:
+
+- a model for F-at-age ($F_{ay}$)
+- a (list) of model(s) for abundance indices catchability-at-age ($Q_{ays}$),
+- a model for recruitment ($R_y$)
+- a list of models for the observation variance of catch-at-age and abundance indices ($\{\sigma^2_{ay}, \tau^2_{ays}\}$)
+- a model for the initial age structure ($N_{a,y=1}$)
+
+
 ```{r}
 library(FLa4a)
 data(ple4)
