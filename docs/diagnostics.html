@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-05-14" />
+<meta name="date" content="2025-05-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -196,7 +196,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.1" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#a4am---the-m-class"><i class="fa fa-check"></i><b>4.1</b> <code>a4aM</code> - The M class</a></li>
 <li class="chapter" data-level="4.2" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>4.2</b> Adding uncertainty to natural mortality parameters with a multivariate normal distribution</a></li>
 <li class="chapter" data-level="4.3" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>4.3</b> Adding uncertainty to natural mortality parameters with statistical copulas</a></li>
-<li class="chapter" data-level="4.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>4.4</b> Computing natural mortality time series - the “m” method</a></li>
+<li class="chapter" data-level="4.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>4.4</b> Computing natural mortality time series - the <code>m()</code> method</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html"><i class="fa fa-check"></i><b>5</b> Stock assessment framework</a>
 <ul>
@@ -571,23 +571,23 @@ Green shading indicates no evidence $(p <  0.05)$ and red shading evidence $(p  
 <p>Note fmodel doesn’t change:</p>
 <pre><code>## $fit1
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x652da647ec60&gt;
+## &lt;environment: 0x5f4553303f80&gt;
 ## 
 ## $fit2
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x652da647ec60&gt;
+## &lt;environment: 0x5f4553303f80&gt;
 ## 
 ## $fit3
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x652da647ec60&gt;
+## &lt;environment: 0x5f4553303f80&gt;
 ## 
 ## $fit4
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x652da647ec60&gt;
+## &lt;environment: 0x5f4553303f80&gt;
 ## 
 ## $fit5
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x652da647ec60&gt;</code></pre>
+## &lt;environment: 0x5f4553303f80&gt;</code></pre>
 <p>The retrospective plot shown below presents the current fit with uncertainty and each retrospective fit on top. If the retrospective fit is not within the confidence interval of the current fit the analyst can argue that the estimate is different and as such reflecting a “poor” fit.</p>
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="diagnostics.html#cb187-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">window</span>(stks, <span class="at">start=</span><span class="dv">2005</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:retro"></span>
@@ -596,7 +596,7 @@ Green shading indicates no evidence $(p <  0.05)$ and red shading evidence $(p  
 Figure 8.12: Retrospective analysis of the plaice in ICES area IV stock. Fixed F model.
 </p>
 </div>
-<p>One could use specific submodels and pass them to the fitting function <code>scas</code>, including with some adjustments to take into account the data reduction. In the next example the fishing mortality model is set reducing the smoothness taking into account the length of the dataset. Not considering the adjustment of the model to the new dataset may result in comparisons across models which are very different due to the relationship between information contained in the data and the number of parameters in the model. This issue is more relevant for stocks with shorter time series.</p>
+<p>One could use specific submodels and pass them to the fitting function <code>scas()</code>, including with some adjustments to take into account the data reduction. In the next example the fishing mortality model is set reducing the smoothness taking into account the length of the dataset. Not considering the adjustment of the model to the new dataset may result in comparisons across models which are very different due to the relationship between information contained in the data and the number of parameters in the model. This issue is more relevant for stocks with shorter time series.</p>
 <div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="diagnostics.html#cb188-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">5</span></span>
 <span id="cb188-2"><a href="diagnostics.html#cb188-2" tabindex="-1"></a>nret <span class="ot">&lt;-</span> <span class="fu">as.list</span>(<span class="dv">1</span><span class="sc">:</span>n)</span>
 <span id="cb188-3"><a href="diagnostics.html#cb188-3" tabindex="-1"></a>stks <span class="ot">&lt;-</span> <span class="fu">FLStocks</span>(<span class="fu">lapply</span>(nret, <span class="cf">function</span>(x){<span class="fu">window</span>(ple4, <span class="at">end=</span>(<span class="fu">range</span>(ple4)[<span class="st">&quot;maxyear&quot;</span>]<span class="sc">-</span>x))}))</span>
@@ -609,23 +609,23 @@ Figure 8.12: Retrospective analysis of the plaice in ICES area IV stock. Fixed F
 <p>Note fmodel changes:</p>
 <pre><code>## $fit1
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x652d95aafaf0&gt;
+## &lt;environment: 0x5f454951cbb0&gt;
 ## 
 ## $fit2
 ## ~te(age, year, k = c(6, 29), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x652d959445f0&gt;
+## &lt;environment: 0x5f454939fd90&gt;
 ## 
 ## $fit3
 ## ~te(age, year, k = c(6, 29), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x652d955a5280&gt;
+## &lt;environment: 0x5f454926f6e8&gt;
 ## 
 ## $fit4
 ## ~te(age, year, k = c(6, 28), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x652d954095b0&gt;
+## &lt;environment: 0x5f4549018478&gt;
 ## 
 ## $fit5
 ## ~te(age, year, k = c(6, 28), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x652d95216c10&gt;</code></pre>
+## &lt;environment: 0x5f4548edb9a0&gt;</code></pre>
 <p>And the retrospective plot</p>
 <div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="diagnostics.html#cb190-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">window</span>(stks, <span class="at">start=</span><span class="dv">2005</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:retro2"></span>

@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-05-14" />
+<meta name="date" content="2025-05-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -196,7 +196,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.1" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#a4am---the-m-class"><i class="fa fa-check"></i><b>4.1</b> <code>a4aM</code> - The M class</a></li>
 <li class="chapter" data-level="4.2" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>4.2</b> Adding uncertainty to natural mortality parameters with a multivariate normal distribution</a></li>
 <li class="chapter" data-level="4.3" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>4.3</b> Adding uncertainty to natural mortality parameters with statistical copulas</a></li>
-<li class="chapter" data-level="4.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>4.4</b> Computing natural mortality time series - the “m” method</a></li>
+<li class="chapter" data-level="4.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>4.4</b> Computing natural mortality time series - the <code>m()</code> method</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html"><i class="fa fa-check"></i><b>5</b> Stock assessment framework</a>
 <ul>
@@ -335,24 +335,28 @@ div.csl-indent {
 <h1><span class="header-section-number">9</span> Uncertainty <a href="uncertainty.html#uncertainty" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Uncertainty is a fundamental aspect of scientific advice, serving as a reflection of the inherent limitations within the knowledge base used to construct evidence and support scientific opinions. It highlights the gaps, variability, and potential biases present in data, methods, and modeling assumptions that underlie scientific conclusions.</p>
 <p>In fisheries science, a field that has evolved primarily to provide evidence-based advice for the sustainable exploitation of marine resources, acknowledging and addressing uncertainty is of major importance. Given the dynamic, complex, and partially observable nature of aquatic ecosystems, the need to systematically characterize and communicate uncertainty is paramount to ensuring robust and credible assessments <span class="citation">(<a href="#ref-privitera2019">Privitera-Johnson and Punt 2019</a>)</span>.</p>
-<p>In this section we’ll address two important elements of quantifying uncertainty in stock assessment results, prediction error and propagation of uncertainty across modelling stages.</p>
+<p>In this section we’ll address two important elements of quantifying uncertainty in stock assessment results, prediction error<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> and propagation of uncertainty across modelling stages.</p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="uncertainty.html#cb192-1" tabindex="-1"></a><span class="fu">library</span>(FLa4a)</span>
+<span id="cb192-2"><a href="uncertainty.html#cb192-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb192-3"><a href="uncertainty.html#cb192-3" tabindex="-1"></a><span class="fu">data</span>(hke1567)</span>
+<span id="cb192-4"><a href="uncertainty.html#cb192-4" tabindex="-1"></a><span class="fu">data</span>(hke1567.idx)</span></code></pre></div>
 <p>The two workhorses for this topic are <code>predict()</code> and <code>simulate()</code> which are implemented to work with <code>sca</code> fits of type <code>"assessment"</code>. Note <code>fit = "MP"</code> doesn’t compute the variance-covariance matrix of the parameters, which is essential for simulating.</p>
 <p>This chapter is based on the following model:</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="uncertainty.html#cb192-1" tabindex="-1"></a>nsim <span class="ot">&lt;-</span> <span class="dv">250</span></span>
-<span id="cb192-2"><a href="uncertainty.html#cb192-2" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb192-3"><a href="uncertainty.html#cb192-3" tabindex="-1"></a>    <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">8</span>) <span class="sc">+</span></span>
-<span id="cb192-4"><a href="uncertainty.html#cb192-4" tabindex="-1"></a>    <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">8</span>, <span class="at">by =</span> <span class="fu">as.numeric</span>(age <span class="sc">==</span> <span class="dv">0</span>)) <span class="sc">+</span></span>
-<span id="cb192-5"><a href="uncertainty.html#cb192-5" tabindex="-1"></a>    <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">8</span>, <span class="at">by =</span> <span class="fu">as.numeric</span>(age <span class="sc">==</span> <span class="dv">4</span>))</span>
-<span id="cb192-6"><a href="uncertainty.html#cb192-6" tabindex="-1"></a>qmod <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="sc">~</span><span class="fu">I</span>(<span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span>age))))</span>
-<span id="cb192-7"><a href="uncertainty.html#cb192-7" tabindex="-1"></a>fit0 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmodel=</span>fmod, <span class="at">qmodel=</span>qmod)</span>
-<span id="cb192-8"><a href="uncertainty.html#cb192-8" tabindex="-1"></a>stk0 <span class="ot">&lt;-</span> hke1567 <span class="sc">+</span> fit0</span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="uncertainty.html#cb193-1" tabindex="-1"></a>nsim <span class="ot">&lt;-</span> <span class="dv">250</span></span>
+<span id="cb193-2"><a href="uncertainty.html#cb193-2" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age, <span class="at">k =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb193-3"><a href="uncertainty.html#cb193-3" tabindex="-1"></a>    <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">8</span>) <span class="sc">+</span></span>
+<span id="cb193-4"><a href="uncertainty.html#cb193-4" tabindex="-1"></a>    <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">8</span>, <span class="at">by =</span> <span class="fu">as.numeric</span>(age <span class="sc">==</span> <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb193-5"><a href="uncertainty.html#cb193-5" tabindex="-1"></a>    <span class="fu">s</span>(year, <span class="at">k =</span> <span class="dv">8</span>, <span class="at">by =</span> <span class="fu">as.numeric</span>(age <span class="sc">==</span> <span class="dv">4</span>))</span>
+<span id="cb193-6"><a href="uncertainty.html#cb193-6" tabindex="-1"></a>qmod <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="sc">~</span><span class="fu">I</span>(<span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span>age))))</span>
+<span id="cb193-7"><a href="uncertainty.html#cb193-7" tabindex="-1"></a>fit0 <span class="ot">&lt;-</span> <span class="fu">sca</span>(hke1567, hke1567.idx, <span class="at">fmodel=</span>fmod, <span class="at">qmodel=</span>qmod)</span>
+<span id="cb193-8"><a href="uncertainty.html#cb193-8" tabindex="-1"></a>stk0 <span class="ot">&lt;-</span> hke1567 <span class="sc">+</span> fit0</span></code></pre></div>
 <div id="the-simulate-and-predict-methods" class="section level2 hasAnchor" number="9.1">
 <h2><span class="header-section-number">9.1</span> The <code>simulate</code> and <code>predict</code> methods<a href="uncertainty.html#the-simulate-and-predict-methods" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="predict" class="section level3 hasAnchor" number="9.1.1">
 <h3><span class="header-section-number">9.1.1</span> <code>predict()</code><a href="uncertainty.html#predict" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The predict method computes the quantities of interest using the estimated coefficients and the design matrix of the model, defined via the formulas in the submodels. The method uses a fitted model object, created by a call to <code>sca</code>, and returns a list with one element for each submodel, where each element is a <code>FLQuants</code> object.</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="uncertainty.html#cb193-1" tabindex="-1"></a>fit.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit0)</span>
-<span id="cb193-2"><a href="uncertainty.html#cb193-2" tabindex="-1"></a><span class="fu">lapply</span>(fit.pred, names)</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="uncertainty.html#cb194-1" tabindex="-1"></a>fit.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit0)</span>
+<span id="cb194-2"><a href="uncertainty.html#cb194-2" tabindex="-1"></a><span class="fu">lapply</span>(fit.pred, names)</span></code></pre></div>
 <pre><code>## $stkmodel
 ## [1] &quot;harvest&quot; &quot;rec&quot;     &quot;ny1&quot;    
 ## 
@@ -394,15 +398,15 @@ Figure 9.2: Histogram of 250 draws from the approximate distribution of the esti
 </p>
 </div>
 <p>In some simulation studies one needs to make sure the random draws are the same, which in <code>R</code> is obtained by explicitly setting the random seed with the method <code>set.seed()</code>. The same is achieved in this case as the example below shows.</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="uncertainty.html#cb196-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb196-2"><a href="uncertainty.html#cb196-2" tabindex="-1"></a>fit.sim1 <span class="ot">&lt;-</span> <span class="fu">simulate</span>(fit0, <span class="at">nsim =</span> <span class="dv">250</span>)</span>
-<span id="cb196-3"><a href="uncertainty.html#cb196-3" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb196-4"><a href="uncertainty.html#cb196-4" tabindex="-1"></a>fit.sim2 <span class="ot">&lt;-</span> <span class="fu">simulate</span>(fit0, <span class="at">nsim =</span> <span class="dv">250</span>)</span>
-<span id="cb196-5"><a href="uncertainty.html#cb196-5" tabindex="-1"></a><span class="fu">all.equal</span>(fit.sim1, fit.sim2)</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="uncertainty.html#cb197-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb197-2"><a href="uncertainty.html#cb197-2" tabindex="-1"></a>fit.sim1 <span class="ot">&lt;-</span> <span class="fu">simulate</span>(fit0, <span class="at">nsim =</span> <span class="dv">250</span>)</span>
+<span id="cb197-3"><a href="uncertainty.html#cb197-3" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb197-4"><a href="uncertainty.html#cb197-4" tabindex="-1"></a>fit.sim2 <span class="ot">&lt;-</span> <span class="fu">simulate</span>(fit0, <span class="at">nsim =</span> <span class="dv">250</span>)</span>
+<span id="cb197-5"><a href="uncertainty.html#cb197-5" tabindex="-1"></a><span class="fu">all.equal</span>(fit.sim1, fit.sim2)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>If the whole stock is of interest, for example, to inspect model predictions of <span class="math inline">\(SSB\)</span>, the user should use the <code>+</code> method with a fitted object including iterations. In such case the <code>stock.n</code>, <code>catch.n</code> and <code>harvest</code> slots of the stock object will be updated and the usual metrics can be computed and extracted, <em>e.g.</em> <code>ssb(stk.pred)</code>. Figure <a href="uncertainty.html#fig:sim2">9.3</a> depicts the stock summary plot after adding estimation uncertainty through <code>simulate</code>.</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="uncertainty.html#cb198-1" tabindex="-1"></a>stk.pred <span class="ot">&lt;-</span> hke1567 <span class="sc">+</span> fit.sim</span>
-<span id="cb198-2"><a href="uncertainty.html#cb198-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">FLStocks</span>(<span class="at">simulated=</span>stk.pred, <span class="at">fitted=</span>stk0))</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="uncertainty.html#cb199-1" tabindex="-1"></a>stk.pred <span class="ot">&lt;-</span> hke1567 <span class="sc">+</span> fit.sim</span>
+<span id="cb199-2"><a href="uncertainty.html#cb199-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">FLStocks</span>(<span class="at">simulated=</span>stk.pred, <span class="at">fitted=</span>stk0))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:sim2"></span>
 <img src="_main_files/figure-html/sim2-1.png" alt="Stock summary of the simulated and fitted data" width="672" />
 <p class="caption">
@@ -434,8 +438,6 @@ Nevertheless, in this section we'll assume prediction error to be the sum of res
 </div>
 <div id="propagate-uncertainty-into-stock-assessment" class="section level2 hasAnchor" number="9.2">
 <h2><span class="header-section-number">9.2</span> Propagate uncertainty into stock assessment<a href="uncertainty.html#propagate-uncertainty-into-stock-assessment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="uncertainty.html#cb199-1" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/MUT1_stk.rds&quot;</span>)</span>
-<span id="cb199-2"><a href="uncertainty.html#cb199-2" tabindex="-1"></a>idx00 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/MUT1_idx.rds&quot;</span>)</span></code></pre></div>
 <p>In a multistage stock assessment process as described in this book, it’s important to be able to propagate uncertainty across the different stages. This section describes methods to propagate uncertainty across stages and compares their outcomes in terms of stock assessment outputs.</p>
 <p>The idea is to add uncertainty as one moves from one stage to the next. If a stock has uncertainty on it’s growth parameters, or natural mortality, or any other quantity estimated or set during the input data preparation, the model fit uncertainty will be added to it by generating iterations in the input data which are then used to fit the stock assessment model. The suggested workflow is:</p>
 <ol style="list-style-type: decimal">
@@ -508,6 +510,7 @@ Figure 9.4: Natural mortality generated from M model’s parameter uncertainty
 Figure 9.5: Stock summary. Stock metrics computed over fits including uncertainty in M and estimation uncertainty
 </p>
 </div>
+<p>Method 1 and method 3 are the best propagating uncertainty and both give similar results. Method 1 will be faster since only one sample per fit is drawn, while method 3 will better describe the distribution but will be more computationally intensive.</p>
 
 </div>
 </div>
@@ -519,6 +522,12 @@ Privitera-Johnson, Kristin M, and André E Punt. 2019. <span>“Leveraging Scien
 <div id="ref-mass" class="csl-entry">
 Venables, W. N., and B. D. Ripley. 2002. <em>Modern Applied Statistics with s</em>. Fourth. New York: Springer. <a href="https://www.stats.ox.ac.uk/pub/MASS4/">https://www.stats.ox.ac.uk/pub/MASS4/</a>.
 </div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Work in progress<a href="uncertainty.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 

@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-05-14" />
+<meta name="date" content="2025-05-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -196,7 +196,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.1" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#a4am---the-m-class"><i class="fa fa-check"></i><b>4.1</b> <code>a4aM</code> - The M class</a></li>
 <li class="chapter" data-level="4.2" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>4.2</b> Adding uncertainty to natural mortality parameters with a multivariate normal distribution</a></li>
 <li class="chapter" data-level="4.3" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>4.3</b> Adding uncertainty to natural mortality parameters with statistical copulas</a></li>
-<li class="chapter" data-level="4.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>4.4</b> Computing natural mortality time series - the “m” method</a></li>
+<li class="chapter" data-level="4.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>4.4</b> Computing natural mortality time series - the <code>m()</code> method</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html"><i class="fa fa-check"></i><b>5</b> Stock assessment framework</a>
 <ul>
@@ -334,9 +334,9 @@ div.csl-indent {
 <div id="modelling-natural-mortality" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">4</span> Modelling Natural Mortality<a href="modelling-natural-mortality.html#modelling-natural-mortality" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Natural mortality (<span class="math inline">\(M\)</span>) is a critical parameter in stock assessment models, representing all sources of mortality not related to fishing or harvest (<span class="math inline">\(F\)</span>). Combined, these two sources constitute the total mortality (<span class="math inline">\(Z\)</span>) that individuals experience, with <span class="math inline">\(Z = F + M\)</span>.</p>
-<p>However, natural mortality is notoriously difficult to observe and estimate. Only a few methods, such as mark-recapture studies, provide direct estimates of <span class="math inline">\(M\)</span>. However, these methods are not applicable to all species and are often costly. As an alternative, life-history theory is commonly used to derive values for <span class="math inline">\(M\)</span> that are consistent with individual growth and reproduction.</p>
+<p>However, natural mortality is notoriously difficult to observe and estimate. Only a few methods, such as mark-recapture studies, provide direct estimates of <span class="math inline">\(M\)</span>, and these methods are not applicable to all species and are often costly. As an alternative, life-history theory is commonly used to derive values for <span class="math inline">\(M\)</span> that are consistent with individual growth and reproduction.</p>
 <p>There is an extensive body of literature on natural mortality. Works by <span class="citation">Pauly (<a href="#ref-pauly1980">1980</a>)</span>, <span class="citation">Gislason et al. (<a href="#ref-gislason2010">2010</a>)</span>, <span class="citation">Charnov (<a href="#ref-charnov1993">1993</a>)</span>, <span class="citation">Mark N. Maunder et al. (<a href="#ref-maunder2023mrev">2023</a>)</span> and <span class="citation">Quinn and Deriso (<a href="#ref-quinn1999">1999</a>)</span>, as well as a dedicated special issue in Fisheries Research <span class="citation">(<a href="#ref-MCAPAM2023">Hamel et al. 2023</a>)</span>, offer valuable insights and serve as excellent starting points. Given the parameter’s importance and the difficulty of obtaining direct observations, natural mortality is widely regarded as one of the most significant sources of uncertainty in stock assessments.</p>
-<p>Within the <code>a4a</code> framework, natural mortality is treated as an externally fixed parameter in the stock assessment model. Our aim is to develop a system that enables analysts to explore alternative models for <span class="math inline">\(M\)</span> and compare the resulting assessment outcomes. This approach provides a more comprehensive information base to support informed decision-making throughout the stock assessment process.</p>
+<p>Within the <code>a4a</code> framework, natural mortality is treated as an external parameter in the stock assessment model. Our aim is to develop a system that enables analysts to explore alternative models for <span class="math inline">\(M\)</span> and compare the resulting assessment outcomes. This approach provides a more comprehensive information base to support informed decision-making throughout the stock assessment process.</p>
 <p>Within the <code>a4a</code> framework, the general method for adding natural mortality in the stock assessment model is to:</p>
 <ol style="list-style-type: decimal">
 <li>Create an object of class <code>a4aM</code> which holds the natural mortality model and parameters.</li>
@@ -347,7 +347,7 @@ div.csl-indent {
 <p>In this section we go through each of the steps in detail using a variety of different models.</p>
 <div id="a4am---the-m-class" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> <code>a4aM</code> - The M class<a href="modelling-natural-mortality.html#a4am---the-m-class" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Natural mortality is implemented in a class named <code>a4aM</code>. This class is made up of three objects of the class <code>FLModelSim</code>. Each object is a model that represents one effect: an age or length effect, a scaling (level) effect and a time trend, named <code>shape</code>, <code>level</code> and <code>trend</code>, respectively. The impact of the models is multiplicative, i.e. the overal natural mortality is given by <code>shape</code> x <code>level</code> x <code>trend</code>.</p>
+<p>Natural mortality is implemented in a class named <code>a4aM</code>. This class is made up of three objects of the class <code>FLModelSim</code>. Each object is a model that represents one effect: an age or length effect, a scaling (level) effect and a time trend, named <code>shape</code>, <code>level</code> and <code>trend</code>, respectively. The impact of the models is multiplicative, i.e. the overall natural mortality is given by <code>shape</code> x <code>level</code> x <code>trend</code>.</p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="modelling-natural-mortality.html#cb44-1" tabindex="-1"></a><span class="fu">showClass</span>(<span class="st">&quot;a4aM&quot;</span>)</span></code></pre></div>
 <pre><code>## Class &quot;a4aM&quot; [package &quot;FLa4a&quot;]
 ## 
@@ -366,7 +366,7 @@ div.csl-indent {
 ##   shape: ~1
 ##   level: ~a
 ##   trend: ~1</code></pre>
-<p>More interesting natural mortality shapes can be set up using biological knowledge. The following example uses an exponential decay over ages (implying that the resulting <code>FLQuant</code>} generated by the <code>m()</code> method will be age based). We also use Jensen’s second estimator <span class="citation">(<a href="#ref-Kenchington2014">Kenchington 2014</a>)</span> as a scaling <code>level</code> model, which is based on the von Bertalanffy <span class="math inline">\(K\)</span> parameter, <span class="math inline">\(M=1.5K\)</span>.</p>
+<p>More interesting natural mortality shapes can be set up using biological knowledge. The following example uses an exponential decay over ages, implying that the resulting <code>FLQuant</code> generated by the <code>m()</code> method will be age based. We also use Jensen’s second estimator <span class="citation">(<a href="#ref-Kenchington2014">Kenchington 2014</a>)</span> as a scaling <code>level</code> model, which is based on the von Bertalanffy <span class="math inline">\(K\)</span> parameter, <span class="math inline">\(M=1.5K\)</span>.</p>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="modelling-natural-mortality.html#cb48-1" tabindex="-1"></a>shape2 <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span><span class="fu">exp</span>(<span class="sc">-</span>age<span class="fl">-0.5</span>))</span>
 <span id="cb48-2"><a href="modelling-natural-mortality.html#cb48-2" tabindex="-1"></a>level2 <span class="ot">&lt;-</span> <span class="fu">FLModelSim</span>(<span class="at">model=</span><span class="sc">~</span><span class="fl">1.5</span><span class="sc">*</span>k, <span class="at">params=</span><span class="fu">FLPar</span>(<span class="at">k=</span><span class="fl">0.4</span>))</span>
 <span id="cb48-3"><a href="modelling-natural-mortality.html#cb48-3" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">a4aM</span>(<span class="at">shape=</span>shape2, <span class="at">level=</span>level2)</span>
@@ -434,7 +434,7 @@ div.csl-indent {
 ## 
 ## params
 ##                k                t 
-##  0.40119(0.0426) 10.22821(0.8130) 
+##  0.39595(0.0465) 10.04895(0.9418) 
 ## units:  NA 
 ## 
 ## Slot &quot;vcov&quot;:
@@ -450,8 +450,8 @@ div.csl-indent {
 ## iters:  100 
 ## 
 ## params
-##              b 
-## 0.50696(0.164) 
+##             b 
+## 0.48127(0.18) 
 ## units:  NA</code></pre>
 <p>Note the shape model has no parameters and no uncertainty:</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="modelling-natural-mortality.html#cb59-1" tabindex="-1"></a><span class="fu">params</span>(<span class="fu">shape</span>(m4))</span></code></pre></div>
@@ -499,7 +499,7 @@ div.csl-indent {
 ## 
 ## params
 ##             linf                k 
-## 60.14548(2.1440)  0.40837(0.0715) 
+## 59.89279(2.2530)  0.40189(0.0706) 
 ## units:  NA 
 ## 
 ## Slot &quot;vcov&quot;:
@@ -529,7 +529,7 @@ Figure 4.2: Marginal distributions of the parameters for Gislason’s second nat
 <span id="cb66-4"><a href="modelling-natural-mortality.html#cb66-4" tabindex="-1"></a><span class="fu">shape</span>(m5) <span class="ot">&lt;-</span> mgis2</span></code></pre></div>
 </div>
 <div id="computing-natural-mortality-time-series---the-m-method" class="section level2 hasAnchor" number="4.4">
-<h2><span class="header-section-number">4.4</span> Computing natural mortality time series - the “m” method<a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">4.4</span> Computing natural mortality time series - the <code>m()</code> method<a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Now that we have set up the natural mortality <code>a4aM</code> model and added parameter uncertainty to each component, we are ready to generate the <code>FLQuant</code> of natural mortality with <code>m()</code>. The <code>m()</code> method is the workhorse method for computing natural mortality. The method returns a <code>FLQuant</code> that can be inserted in an <code>FLStock</code> to be used in the assessment method.</p>
 <p>The size of the <code>FLQuant</code> object is determined by the <code>min</code>, <code>max</code>, <code>minyear</code> and <code>maxyear</code> elements of the <code>range</code> slot of the <code>a4aM</code> object. By default the values of these elements are set to 0, which generates a <code>FLQuant</code> with length 1 in the <code>quant</code> and <code>year</code> dimension. The <code>range</code> slot can be set by hand, or by using the <code>rngquant()</code> and <code>rngyear()</code> methods.</p>
 <p>The name of the first dimension of the output <code>FLQuant</code> (e.g. ‘age’ or ‘len’) is determined by the parameters of the <code>shape</code> model. If it is not clear what the name should be then the name is set to ‘quant’.</p>
@@ -717,14 +717,14 @@ Figure 4.2: Marginal distributions of the parameters for Gislason’s second nat
 ## 
 ##    year
 ## age 2000              2001              2002              2003             
-##   0 2.05327(0.236463) 3.02446(0.474022) 2.05327(0.236463) 3.02446(0.474022)
-##   1 0.75536(0.086990) 1.11264(0.174383) 0.75536(0.086990) 1.11264(0.174383)
-##   2 0.27788(0.032002) 0.40932(0.064152) 0.27788(0.032002) 0.40932(0.064152)
-##   3 0.10223(0.011773) 0.15058(0.023600) 0.10223(0.011773) 0.15058(0.023600)
-##   4 0.03761(0.004331) 0.05539(0.008682) 0.03761(0.004331) 0.05539(0.008682)
-##   5 0.01383(0.001593) 0.02038(0.003194) 0.01383(0.001593) 0.02038(0.003194)
-##   6 0.00509(0.000586) 0.00750(0.001175) 0.00509(0.000586) 0.00750(0.001175)
-##   7 0.00187(0.000216) 0.00276(0.000432) 0.00187(0.000216) 0.00276(0.000432)
+##   0 2.07903(0.173980) 3.07150(0.417816) 2.07903(0.173980) 3.07150(0.417816)
+##   1 0.76483(0.064004) 1.12994(0.153706) 0.76483(0.064004) 1.12994(0.153706)
+##   2 0.28137(0.023546) 0.41568(0.056545) 0.28137(0.023546) 0.41568(0.056545)
+##   3 0.10351(0.008662) 0.15292(0.020802) 0.10351(0.008662) 0.15292(0.020802)
+##   4 0.03808(0.003187) 0.05626(0.007653) 0.03808(0.003187) 0.05626(0.007653)
+##   5 0.01401(0.001172) 0.02070(0.002815) 0.01401(0.001172) 0.02070(0.002815)
+##   6 0.00515(0.000431) 0.00761(0.001036) 0.00515(0.000431) 0.00761(0.001036)
+##   7 0.00190(0.000159) 0.00280(0.000381) 0.00190(0.000159) 0.00280(0.000381)
 ## 
 ## units:  NA</code></pre>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="modelling-natural-mortality.html#cb101-1" tabindex="-1"></a><span class="fu">dim</span>(flq)</span></code></pre></div>

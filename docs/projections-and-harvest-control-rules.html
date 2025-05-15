@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-05-14" />
+<meta name="date" content="2025-05-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -196,7 +196,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.1" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#a4am---the-m-class"><i class="fa fa-check"></i><b>4.1</b> <code>a4aM</code> - The M class</a></li>
 <li class="chapter" data-level="4.2" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>4.2</b> Adding uncertainty to natural mortality parameters with a multivariate normal distribution</a></li>
 <li class="chapter" data-level="4.3" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>4.3</b> Adding uncertainty to natural mortality parameters with statistical copulas</a></li>
-<li class="chapter" data-level="4.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>4.4</b> Computing natural mortality time series - the “m” method</a></li>
+<li class="chapter" data-level="4.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>4.4</b> Computing natural mortality time series - the <code>m()</code> method</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html"><i class="fa fa-check"></i><b>5</b> Stock assessment framework</a>
 <ul>
@@ -335,7 +335,7 @@ div.csl-indent {
 <h1><span class="header-section-number">12</span> Projections and harvest control rules<a href="projections-and-harvest-control-rules.html#projections-and-harvest-control-rules" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Prediction in general science can be categorized into two main components: forecasting and projection <span class="citation">(<a href="#ref-massad2005">Massad et al. 2005</a>)</span>. According to this definition, a forecast is an attempt to predict what will happen, whereas a projection describes what would happen given certain hypotheses.</p>
 <p>This distinction is also reflected by the Organisation for Economic Co-operation and Development (OECD) <span class="citation">(<a href="#ref-OECD">OECD 2009</a>)</span>, which notes that “forecasting” and “prediction” are often used interchangeably when estimating the future value of a given variable. The term projection is generally used in two interrelated senses: (1) as a future value of a time series computed based on specific assumptions about environmental changes, and (2) in probability theory, as the conditional expectation of a variable <span class="citation">(<a href="#ref-OECD">OECD 2009</a>)</span>.</p>
-<p>Applying this conceptual framework to fisheries science, the process of advising on future fishing opportunities is best viewed as a projection exercise. Predicting future outcomes is always conditioned on assumptions about the future —e.g., recruitment— or used to test hypotheses —e.g., regarding levels of extraction.</p>
+<p>Applying this conceptual framework to fisheries science, the process of advising on future fishing opportunities is best viewed as a projection exercise. Predicting future outcomes is always conditioned on assumptions about the future, e.g., recruitment, or used to test hypotheses, e.g. regarding levels of extraction.</p>
 <p>In the multi-stage stock assessment process described in this book, projections are not part of the stock assessment modeling itself. The assessment concludes when analysts compare estimates of biomass and fishing mortality with reference points, determining whether a stock is overfished or subject to overfishing <span class="citation">(<a href="#ref-hilborn2013quantitative">Hilborn and Walters 2013</a>)</span>. Projections typically follow this assessment and incorporate estimates or assumptions about population dynamics—such as growth, reproduction, and natural mortality—to predict future catches, biomass, and abundance under specific conditions and quantified uncertainty. This final stage aims at providing scientific advice to decision-makers about potential consequences of the decisions they need to make.</p>
 <p>For this section we will be using the package <code>FLasher</code> <span class="citation">(<a href="#ref-flasher">Mosqueira and Scott 2025</a>; <a href="#ref-flasher2016">Scott and Mosqueira 2016</a>)</span> from the FLR toolset.</p>
 <div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="projections-and-harvest-control-rules.html#cb262-1" tabindex="-1"></a><span class="fu">library</span>(FLa4a)</span>

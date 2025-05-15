@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-05-14" />
+<meta name="date" content="2025-05-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -196,7 +196,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.1" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#a4am---the-m-class"><i class="fa fa-check"></i><b>4.1</b> <code>a4aM</code> - The M class</a></li>
 <li class="chapter" data-level="4.2" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>4.2</b> Adding uncertainty to natural mortality parameters with a multivariate normal distribution</a></li>
 <li class="chapter" data-level="4.3" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>4.3</b> Adding uncertainty to natural mortality parameters with statistical copulas</a></li>
-<li class="chapter" data-level="4.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>4.4</b> Computing natural mortality time series - the “m” method</a></li>
+<li class="chapter" data-level="4.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>4.4</b> Computing natural mortality time series - the <code>m()</code> method</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html"><i class="fa fa-check"></i><b>5</b> Stock assessment framework</a>
 <ul>
@@ -334,8 +334,8 @@ div.csl-indent {
 <div id="growth" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">3</span> Modelling Individual Growth and Using Stochastic Slicing to Convert Length-based Data Into Age-based Data<a href="growth.html#growth" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The <code>a4a</code> stock assessment framework is based on age dynamics. Therefore, length information must be processed before running the stock assessment model. The methods in this section provide the analyst flexibility to use a large range of information sources, <em>e.g.</em> literature or online databases, to collect information about the species growth model and uncertainty about the model parameters.</p>
-<p>The framework allows the analyst to parametrize individual growth, set the assumptions about it and condition the stock assessment model on those decisions. It incentivize the uptake of estimation uncertainty, as well as exploring several parametrizations and/or growth models to deal with structural uncertainty, finally propagating uncertainty into stock assessment.</p>
-<p>Within the <code>a4a</code> framework this is handled using the <code>a4aGr</code> class and its methods. This class stores information about the growth model and it’s parameters, including parameters’ uncertainty and the distributions governing it. The class’s main method is <code>l2a</code> that converts length to ages based on a length based stock object and using the model defined in the <code>a4aGr</code> instance.</p>
+<p>The framework allows the analyst to parametrize individual growth, set the assumptions about it and condition the stock assessment model on those decisions. It incentivize the uptake of estimation uncertainty, as well as exploring several parametrizations and/or growth models to deal with structural uncertainty.</p>
+<p>Within the <code>a4a</code> framework this is handled using the <code>a4aGr</code> class and its methods. This class stores information about the growth model and it’s parameters, including parameters’ uncertainty and the distributions governing it. The class’s main method is <code>l2a()</code> that converts length to ages based on a length based stock object and using the model defined in the <code>a4aGr</code> instance.</p>
 <div id="a4agr---the-growth-class" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> a4aGr - The growth class<a href="growth.html#a4agr---the-growth-class" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The conversion of length data to age is performed through the use of a growth model. The implementation is done through the <code>a4aGr</code> class .</p>
@@ -440,7 +440,7 @@ div.csl-indent {
 ## 
 ## params
 ##                linf                   k                  t0 
-## 60.0208645(11.5617)  0.0898981( 0.0171) -0.0099351( 0.0019) 
+## 59.580004(11.11868)  0.092775( 0.01810) -0.010144( 0.00186) 
 ## units:  cm year-1 year</code></pre>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="growth.html#cb33-1" tabindex="-1"></a><span class="fu">dim</span>(vbNorm<span class="sc">@</span>params)</span></code></pre></div>
 <pre><code>## [1]   3 250</code></pre>

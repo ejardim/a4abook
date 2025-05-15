@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-05-14" />
+<meta name="date" content="2025-05-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -196,7 +196,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.1" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#a4am---the-m-class"><i class="fa fa-check"></i><b>4.1</b> <code>a4aM</code> - The M class</a></li>
 <li class="chapter" data-level="4.2" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-a-multivariate-normal-distribution"><i class="fa fa-check"></i><b>4.2</b> Adding uncertainty to natural mortality parameters with a multivariate normal distribution</a></li>
 <li class="chapter" data-level="4.3" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#adding-uncertainty-to-natural-mortality-parameters-with-statistical-copulas"><i class="fa fa-check"></i><b>4.3</b> Adding uncertainty to natural mortality parameters with statistical copulas</a></li>
-<li class="chapter" data-level="4.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>4.4</b> Computing natural mortality time series - the “m” method</a></li>
+<li class="chapter" data-level="4.4" data-path="modelling-natural-mortality.html"><a href="modelling-natural-mortality.html#computing-natural-mortality-time-series---the-m-method"><i class="fa fa-check"></i><b>4.4</b> Computing natural mortality time series - the <code>m()</code> method</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="stock-assessment-framework.html"><a href="stock-assessment-framework.html"><i class="fa fa-check"></i><b>5</b> Stock assessment framework</a>
 <ul>
@@ -335,6 +335,14 @@ div.csl-indent {
 <h1><span class="header-section-number">7</span> Fitting<a href="fitting.html#fitting" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The <code>a4a</code> stock assessment framework is implemented in <code>R</code> through the method <code>sca()</code>. The method call requires as a minimum a <code>FLStock</code> object and a <code>FLIndices</code> or <code>FLindex</code> object, in which case the default submodels will be set by the method.</p>
 <p>Having described building blocks, basic formulations and effects available to build a submodel’s model, it’s important to look into specific formulations and relate them to commonly known representations. Note that although a large number of formulations are available for each submodel, the user must carefully decide on the full stock assessment model being build and avoid over-parameterize. Over-parametrization may lead to non-convergence, but may also end up not being very useful for prediction/forecasting, which is one of the main objectives of stock assessment.</p>
+<p>As mentioned before there are 5 submodels in operation:</p>
+<ul>
+<li>a model for F-at-age (<span class="math inline">\(F_{ay}\)</span>)</li>
+<li>a (list) of model(s) for abundance indices catchability-at-age (<span class="math inline">\(Q_{ays}\)</span>),</li>
+<li>a model for recruitment (<span class="math inline">\(R_y\)</span>)</li>
+<li>a list of models for the observation variance of catch-at-age and abundance indices (<span class="math inline">\(\{\sigma^2_{ay}, \tau^2_{ays}\}\)</span>)</li>
+<li>a model for the initial age structure (<span class="math inline">\(N_{a,y=1}\)</span>)</li>
+</ul>
 <div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="fitting.html#cb113-1" tabindex="-1"></a><span class="fu">library</span>(FLa4a)</span>
 <span id="cb113-2"><a href="fitting.html#cb113-2" tabindex="-1"></a><span class="fu">data</span>(ple4)</span>
 <span id="cb113-3"><a href="fitting.html#cb113-3" tabindex="-1"></a><span class="fu">data</span>(ple4.indices)</span>
@@ -356,7 +364,7 @@ Figure 7.1: Stock summary
 ## 
 ## Time used:
 ##  Pre-processing     Running a4a Post-processing           Total 
-##       1.3962712      18.6604824       0.2407944      20.2975481 
+##       0.7271259       9.7006507       0.1139824      10.5417590 
 ## 
 ## Submodels:
 ##   fmodel: ~s(age, k = 8) + s(year, k = 25) + te(age, year, k = c(6, 15))
@@ -410,7 +418,7 @@ Figure 7.2: Stock summary - close to official assessment
 ## 
 ## Time used:
 ##  Pre-processing     Running a4a Post-processing           Total 
-##       1.2824473       6.6604960       0.1420689       8.0850122 
+##      0.65770864      3.47257018      0.08249617      4.21277499 
 ## 
 ## Submodels:
 ##   fmodel: ~s(age, k = 6) + s(year, k = 10) + te(age, year, k = c(3, 8))
