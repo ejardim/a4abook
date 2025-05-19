@@ -21,7 +21,7 @@ fit01 <- sca(hke1567, hke1567.idx,
 res01 <- residuals(fit01, hke1567, hke1567.idx)
 ```
 
-The common residuals plot clearly shows a time trend for each age (Figure \@ref(fig:meanresbyage)) for both datasets. Furthermore, inspecting how catch ate age residuals are positioned across ages, by comparing the level of residuals for each age, one can see the pattern of lower than 0 residuals in age 0, reversing the signal for ages 1 and 2, close to 0 in ages 3 and 4, and again below 0 in age 5.
+The common residuals plot clearly shows a time trend for each age (Figure \@ref(fig:meanresbyage)) for both datasets. Furthermore, inspecting how catch at age residuals are positioned across ages, by comparing the level of residuals for each age, one can see the pattern of lower than 0 residuals in age 0, reversing the signal for ages 1 and 2, close to 0 in ages 3 and 4, and again below 0 in age 5.
 
 
 ```{r, meanresbyyear, fig.cap="Mean fit residuals by year)"}
