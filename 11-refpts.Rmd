@@ -222,7 +222,7 @@ ssb_ssbmsy <- ssb(ple4+fit1)/refpts(a4abrp)["msy", "ssb"]
 f_fmsy <- fbar(ple4+fit1)/refpts(a4abrp)["msy", "harvest"]
 
 # code to compute kobe plot
-ggplot(mapping=aes(x=c(f_fmsy), y=c(ssb_ssbmsy))) +
+ggplot(mapping=aes(y=c(f_fmsy), x=c(ssb_ssbmsy))) +
   # Add quadrants
   geom_rect(aes(xmin = 1, xmax = Inf, ymin = 0, ymax = 1), fill = "green", alpha = 0.5) +
   geom_rect(aes(xmin = 0, xmax = 1, ymin = 0, ymax = 1), fill = "yellow", alpha = 0.5) +
