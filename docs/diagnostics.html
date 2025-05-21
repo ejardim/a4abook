@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-05-15" />
+<meta name="date" content="2025-05-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -178,7 +178,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="2.4.1" data-path="introduction.html"><a href="introduction.html#plaice-in-area-fao-27-ices-area-iv"><i class="fa fa-check"></i><b>2.4.1</b> Plaice in area FAO 27, ICES area IV</a></li>
 <li class="chapter" data-level="2.4.2" data-path="introduction.html"><a href="introduction.html#european-hake-in-fao-37-gsas-1567"><i class="fa fa-check"></i><b>2.4.2</b> European hake in FAO 37, GSAs 1,5,6,7</a></li>
-<li class="chapter" data-level="2.4.3" data-path="introduction.html"><a href="introduction.html#red-mullet-in-fao-27-gsa-1"><i class="fa fa-check"></i><b>2.4.3</b> Red mullet in FAO 27, GSA 1</a></li>
+<li class="chapter" data-level="2.4.3" data-path="introduction.html"><a href="introduction.html#red-mullet-in-fao-37-gsa-9"><i class="fa fa-check"></i><b>2.4.3</b> Red mullet in FAO 37, GSA 9</a></li>
 <li class="chapter" data-level="2.4.4" data-path="introduction.html"><a href="introduction.html#redfish-simulated-length-data"><i class="fa fa-check"></i><b>2.4.4</b> Redfish simulated length data</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="introduction.html"><a href="introduction.html#notation"><i class="fa fa-check"></i><b>2.5</b> Notation</a></li>
@@ -571,23 +571,23 @@ Green shading indicates no evidence $(p <  0.05)$ and red shading evidence $(p  
 <p>Note fmodel doesn’t change:</p>
 <pre><code>## $fit1
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5f4553303f80&gt;
+## &lt;environment: 0x5f2b94ac1080&gt;
 ## 
 ## $fit2
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5f4553303f80&gt;
+## &lt;environment: 0x5f2b94ac1080&gt;
 ## 
 ## $fit3
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5f4553303f80&gt;
+## &lt;environment: 0x5f2b94ac1080&gt;
 ## 
 ## $fit4
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5f4553303f80&gt;
+## &lt;environment: 0x5f2b94ac1080&gt;
 ## 
 ## $fit5
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5f4553303f80&gt;</code></pre>
+## &lt;environment: 0x5f2b94ac1080&gt;</code></pre>
 <p>The retrospective plot shown below presents the current fit with uncertainty and each retrospective fit on top. If the retrospective fit is not within the confidence interval of the current fit the analyst can argue that the estimate is different and as such reflecting a “poor” fit.</p>
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="diagnostics.html#cb187-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">window</span>(stks, <span class="at">start=</span><span class="dv">2005</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:retro"></span>
@@ -609,23 +609,23 @@ Figure 8.12: Retrospective analysis of the plaice in ICES area IV stock. Fixed F
 <p>Note fmodel changes:</p>
 <pre><code>## $fit1
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5f454951cbb0&gt;
+## &lt;environment: 0x5f2b7c9f1d90&gt;
 ## 
 ## $fit2
 ## ~te(age, year, k = c(6, 29), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5f454939fd90&gt;
+## &lt;environment: 0x5f2b7b394a00&gt;
 ## 
 ## $fit3
 ## ~te(age, year, k = c(6, 29), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5f454926f6e8&gt;
+## &lt;environment: 0x5f2b8dec7018&gt;
 ## 
 ## $fit4
 ## ~te(age, year, k = c(6, 28), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5f4549018478&gt;
+## &lt;environment: 0x5f2b8ac7e988&gt;
 ## 
 ## $fit5
 ## ~te(age, year, k = c(6, 28), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x5f4548edb9a0&gt;</code></pre>
+## &lt;environment: 0x5f2b98e23ed8&gt;</code></pre>
 <p>And the retrospective plot</p>
 <div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="diagnostics.html#cb190-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">window</span>(stks, <span class="at">start=</span><span class="dv">2005</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:retro2"></span>

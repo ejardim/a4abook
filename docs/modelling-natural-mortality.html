@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-05-15" />
+<meta name="date" content="2025-05-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -178,7 +178,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="2.4.1" data-path="introduction.html"><a href="introduction.html#plaice-in-area-fao-27-ices-area-iv"><i class="fa fa-check"></i><b>2.4.1</b> Plaice in area FAO 27, ICES area IV</a></li>
 <li class="chapter" data-level="2.4.2" data-path="introduction.html"><a href="introduction.html#european-hake-in-fao-37-gsas-1567"><i class="fa fa-check"></i><b>2.4.2</b> European hake in FAO 37, GSAs 1,5,6,7</a></li>
-<li class="chapter" data-level="2.4.3" data-path="introduction.html"><a href="introduction.html#red-mullet-in-fao-27-gsa-1"><i class="fa fa-check"></i><b>2.4.3</b> Red mullet in FAO 27, GSA 1</a></li>
+<li class="chapter" data-level="2.4.3" data-path="introduction.html"><a href="introduction.html#red-mullet-in-fao-37-gsa-9"><i class="fa fa-check"></i><b>2.4.3</b> Red mullet in FAO 37, GSA 9</a></li>
 <li class="chapter" data-level="2.4.4" data-path="introduction.html"><a href="introduction.html#redfish-simulated-length-data"><i class="fa fa-check"></i><b>2.4.4</b> Redfish simulated length data</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="introduction.html"><a href="introduction.html#notation"><i class="fa fa-check"></i><b>2.5</b> Notation</a></li>
@@ -434,7 +434,7 @@ div.csl-indent {
 ## 
 ## params
 ##                k                t 
-##  0.39595(0.0465) 10.04895(0.9418) 
+##  0.39926(0.0498) 10.14960(1.1368) 
 ## units:  NA 
 ## 
 ## Slot &quot;vcov&quot;:
@@ -450,8 +450,8 @@ div.csl-indent {
 ## iters:  100 
 ## 
 ## params
-##             b 
-## 0.48127(0.18) 
+##              b 
+## 0.46575(0.127) 
 ## units:  NA</code></pre>
 <p>Note the shape model has no parameters and no uncertainty:</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="modelling-natural-mortality.html#cb59-1" tabindex="-1"></a><span class="fu">params</span>(<span class="fu">shape</span>(m4))</span></code></pre></div>
@@ -498,8 +498,8 @@ div.csl-indent {
 ## iters:  1000 
 ## 
 ## params
-##             linf                k 
-## 59.89279(2.2530)  0.40189(0.0706) 
+##            linf               k 
+## 59.99346(2.254)  0.40461(0.069) 
 ## units:  NA 
 ## 
 ## Slot &quot;vcov&quot;:
@@ -717,14 +717,14 @@ Figure 4.2: Marginal distributions of the parameters for Gislason’s second nat
 ## 
 ##    year
 ## age 2000              2001              2002              2003             
-##   0 2.07903(0.173980) 3.07150(0.417816) 2.07903(0.173980) 3.07150(0.417816)
-##   1 0.76483(0.064004) 1.12994(0.153706) 0.76483(0.064004) 1.12994(0.153706)
-##   2 0.28137(0.023546) 0.41568(0.056545) 0.28137(0.023546) 0.41568(0.056545)
-##   3 0.10351(0.008662) 0.15292(0.020802) 0.10351(0.008662) 0.15292(0.020802)
-##   4 0.03808(0.003187) 0.05626(0.007653) 0.03808(0.003187) 0.05626(0.007653)
-##   5 0.01401(0.001172) 0.02070(0.002815) 0.01401(0.001172) 0.02070(0.002815)
-##   6 0.00515(0.000431) 0.00761(0.001036) 0.00515(0.000431) 0.00761(0.001036)
-##   7 0.00190(0.000159) 0.00280(0.000381) 0.00190(0.000159) 0.00280(0.000381)
+##   0 2.02930(0.156898) 3.08573(0.398927) 2.02930(0.156898) 3.08573(0.398927)
+##   1 0.74654(0.057719) 1.13518(0.146757) 0.74654(0.057719) 1.13518(0.146757)
+##   2 0.27464(0.021234) 0.41761(0.053989) 0.27464(0.021234) 0.41761(0.053989)
+##   3 0.10103(0.007811) 0.15363(0.019861) 0.10103(0.007811) 0.15363(0.019861)
+##   4 0.03717(0.002874) 0.05652(0.007307) 0.03717(0.002874) 0.05652(0.007307)
+##   5 0.01367(0.001057) 0.02079(0.002688) 0.01367(0.001057) 0.02079(0.002688)
+##   6 0.00503(0.000389) 0.00765(0.000989) 0.00503(0.000389) 0.00765(0.000989)
+##   7 0.00185(0.000143) 0.00281(0.000364) 0.00185(0.000143) 0.00281(0.000364)
 ## 
 ## units:  NA</code></pre>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="modelling-natural-mortality.html#cb101-1" tabindex="-1"></a><span class="fu">dim</span>(flq)</span></code></pre></div>
