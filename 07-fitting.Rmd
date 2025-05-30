@@ -8,23 +8,23 @@ The `a4a` stock assessment framework is implemented in `R` through the method `s
 
 Having described building blocks, basic formulations and effects available to build a submodel's model, it's important to look into specific formulations and relate them to commonly known representations. Note that although a large number of formulations are available for each submodel, the user must carefully decide on the full stock assessment model being build and avoid over-parameterize. Over-parametrization may lead to non-convergence, but may also end up not being very useful for prediction/forecasting, which is one of the main objectives of stock assessment.
 
-```{r}
+```{r, eval=FALSE, echo=FALSE}
 library(FLa4a)
 data(ple4)
 data(ple4.indices)
 data(ple4.index)
-fmod <- ~ s(age, k=8) + s(year, k=30) + te(age, year, k = c(5, 15))
+fmod <- ~ s(age, k=8) + s(year, k=25) + te(age, year, k = c(5, 15))
 fit <- sca(ple4, ple4.indices, fmodel=fmod)
 stk <- ple4 + fit
 ```
 
-```{r, plt01, fig.cap="Stock summary", echo=FALSE}
+```{r, plt01, fig.cap="Stock summary", echo=FALSE, eval=FALSE}
 plot(stk)
 ```
 
-Submodels that are not explicitly defined will be set by default using the relevant call to `defaultFmod()`, `defaultQmod`, `defaultSRmod()`, `defaultN1mod` or `defaultVmod()`. These methods will use the length of the time series and number of age groups to define the models. The `show` method for `a4aFit` objects display the models used for the fit.
+Submodels that are not explicitly defined will be set by default using the relevant call to `defaultFmod()`, `defaultQmod`, `defaultSRmod()`, `defaultN1mod` or `defaultVmod()`. These methods will use the length of the time series and number of age groups to define the models.
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, eva=FALSE}
 fit
 ```
 
@@ -54,7 +54,7 @@ stk0 <- ple4 + fit0
 plot(stk0)
 ```
 
-As before by calling the fitted object, the submodels' formulas are printed in the console:
+The `show` method for `a4aFit` objects display the models used for the fit. Calling the fitted object, the submodels' formulas are printed in the console:
 
 ```{r, echo=FALSE}
 fit0

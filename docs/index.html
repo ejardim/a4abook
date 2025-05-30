@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-05-10" />
+<meta name="date" content="2025-05-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -357,7 +357,7 @@ European Commission Joint Research Centre (JRC), Brussels, Belgium<br>
 Wageningen Marine Research (WMR), Ijmauden, The Netherlands<br>
 <a class="author_email" href="mailto:#"><a href="mailto:iago.mosqueira@wur.nl" class="email">iago.mosqueira@wur.nl</a></a>
 </address>
-<p class="date"><em>2025-05-10</em></p>
+<p class="date"><em>2025-05-30</em></p>
 </div>
 <div id="before-starting" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">1</span> Before starting<a href="index.html#before-starting" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -382,7 +382,7 @@ Wageningen Marine Research (WMR), Ijmauden, The Netherlands<br>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">&quot;FLCore&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &#39;2.6.20.9333&#39;</code></pre>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="index.html#cb5-1" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">&quot;FLa4a&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &#39;1.9.3&#39;</code></pre>
+<pre><code>## [1] &#39;1.9.4&#39;</code></pre>
 </div>
 <div id="how-to-read-this-document" class="section level2 hasAnchor" number="1.2">
 <h2><span class="header-section-number">1.2</span> How to read this document<a href="index.html#how-to-read-this-document" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -426,8 +426,6 @@ Wageningen Marine Research (WMR), Ijmauden, The Netherlands<br>
 ## x=&quot;a4aFitMCMCs&quot;, y=&quot;missing&quot;
 ## x=&quot;a4aFitResiduals&quot;, y=&quot;missing&quot;
 ## x=&quot;a4aFits&quot;, y=&quot;missing&quot;
-## x=&quot;a4aFitSAs&quot;, y=&quot;missing&quot;
-##     (inherited from: x=&quot;a4aFits&quot;, y=&quot;missing&quot;)
 ## x=&quot;ANY&quot;, y=&quot;ANY&quot;
 ## x=&quot;color&quot;, y=&quot;ANY&quot;
 ## x=&quot;Copula&quot;, y=&quot;ANY&quot;
@@ -455,8 +453,6 @@ Wageningen Marine Research (WMR), Ijmauden, The Netherlands<br>
 ## x=&quot;FLStocks&quot;, y=&quot;FLPar&quot;
 ## x=&quot;FLStocks&quot;, y=&quot;missing&quot;
 ## x=&quot;mvdc&quot;, y=&quot;ANY&quot;
-## x=&quot;numeric&quot;, y=&quot;numeric&quot;
-##     (inherited from: x=&quot;ANY&quot;, y=&quot;ANY&quot;)
 ## x=&quot;profile.mle&quot;, y=&quot;missing&quot;</code></pre>
 <p>by calling <code>showMethods</code> R prints all the possible uses of the <code>plot</code> function. We want to see what it does when it is called on an <code>FLStock</code> object with no other object. We observe that <code>plot</code> takes two arguments, <code>x</code> and <code>y</code>. So, in the signature of the <code>getMethod</code> function we are going to use, we need to define both <code>x</code> and <code>y</code>.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="index.html#cb11-1" tabindex="-1"></a><span class="fu">getMethod</span>(<span class="st">&#39;plot&#39;</span>, <span class="at">signature =</span> <span class="fu">list</span>(<span class="st">&quot;FLStock&quot;</span>,<span class="st">&quot;missing&quot;</span>))</span></code></pre></div>
@@ -496,7 +492,7 @@ Wageningen Marine Research (WMR), Ijmauden, The Netherlands<br>
 ##     }
 ##     .local(x, ...)
 ## }
-## &lt;bytecode: 0x588334ac0290&gt;
+## &lt;bytecode: 0x5d58ede66f58&gt;
 ## &lt;environment: namespace:ggplotFL&gt;
 ## 
 ## Signatures:

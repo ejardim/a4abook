@@ -38,7 +38,6 @@ fig:a4asplines
 fig:te
 fig:ks
 fig:bic
-fig:plt01
 fig:plt02
 fig:sep00
 fig:sep01

@@ -19,8 +19,8 @@ idx[[1]] <- idx[[1]][1:9]
 stk <- setPlusGroup(ple4, 9)
 iy <- 2003
 # fit
-fmod <- ~ s(age, k = 8) + s(year, k = 29) + te(age, year, k = c(6, 15))
-qmod <- list(~factor(age))
+fmod <- ~s(age, k=6)+s(year, k=10)+te(age, year, k=c(3,8))
+qmod <- list(~s(age, k=4))
 n1mod <- ~s(age, k=5)
 vmod <- list(~s(age, k=3), ~s(age, k=3))
 fit <- sca(stk, idx, fmodel=fmod, qmodel=qmod, n1model=n1mod, vmodel=vmod)
