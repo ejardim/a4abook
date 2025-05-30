@@ -1,3 +1,5 @@
+% Encoding: UTF-8
+
 @Article{EJ_etal_2014,
   author  = {Jardim, Ernesto and Millar, Colin P. and Mosqueira, Iago and Scott, Finlay and Osio, Giacomo Chato and Ferretti, Marco and Alzorriz, Nekane and Orio, Alessandro},
   journal = {ICES Journal of Marine Science},
@@ -300,7 +302,7 @@ MRREVIEWER = {Ulrich\ D.\ Jentschura},
   issue = {1},
   year = {2009},
   publisher = {OECD Publishing, Paris},
-  doi = {https://doi.org/10.1787/eco_outlook-v2009-1-en} 
+  doi = {10.1787/eco_outlook-v2009-1-en} 
 }
 
 @article{punt2001review,
@@ -323,7 +325,7 @@ number = {1},
 pages = {193-196},
 year = {2010},
 issn = {0308-597X},
-doi = {https://doi.org/10.1016/j.marpol.2009.04.013},
+doi = {10.1016/j.marpol.2009.04.013},
 url = {https://www.sciencedirect.com/science/article/pii/S0308597X09000682},
 author = {Ray Hilborn},
 keywords = {Maximum sustainable yield, Steepness, Recruitment compensation, Overfishing, Meta-analysis}
@@ -353,7 +355,7 @@ volume = {240},
 pages = {105959},
 year = {2021},
 issn = {0165-7836},
-doi = {https://doi.org/10.1016/j.fishres.2021.105959},
+doi = {10.1016/j.fishres.2021.105959},
 url = {https://www.sciencedirect.com/science/article/pii/S0165783621000874},
 author = {Felipe Carvalho and Henning Winker and Dean Courtney and Maia Kapur and Laurence Kell and Massimiliano Cardinale and Michael Schirripa and Toshihide Kitakado and Dawit Yemane and Kevin R. Piner and Mark N. Maunder and Ian Taylor and Chantel R. Wetzel and Kathryn Doering and Kelli F. Johnson and Richard D. Methot}
 }
@@ -365,7 +367,7 @@ volume = {183},
 pages = {119-127},
 year = {2016},
 issn = {0165-7836},
-doi = {https://doi.org/10.1016/j.fishres.2016.05.017},
+doi = {10.1016/j.fishres.2016.05.017},
 url = {https://www.sciencedirect.com/science/article/pii/S0165783616301540},
 author = {Laurence T. Kell and Ai Kimoto and Toshihide Kitakado}
 }
@@ -445,7 +447,7 @@ journal = {Journal of Climate}
   note    = {Copula Modeling from Abe Sklar to the present day},
   pages   = {105278},
   volume  = {201},
-  doi     = {https://doi.org/10.1016/j.jmva.2023.105278},
+  doi     = {10.1016/j.jmva.2023.105278},
   url     = {https://www.sciencedirect.com/science/article/pii/S0047259X23001240},
 }
 
@@ -506,7 +508,7 @@ journal = {Journal of Climate}
   issn    = {0165-7836},
   pages   = {106638},
   volume  = {261},
-  doi     = {https://doi.org/10.1016/j.fishres.2023.106638},
+  doi     = {10.1016/j.fishres.2023.106638},
   url     = {https://www.sciencedirect.com/science/article/pii/S0165783623000310},
 }
 
@@ -518,7 +520,7 @@ journal = {Journal of Climate}
   number   = {4},
   pages    = {533-562},
   volume   = {15},
-  doi      = {https://doi.org/10.1111/faf.12027},
+  doi      = {10.1111/faf.12027},
   eprint   = {https://onlinelibrary.wiley.com/doi/pdf/10.1111/faf.12027},
   keywords = {Information-limited fisheries, natural mortality},
   url      = {https://onlinelibrary.wiley.com/doi/abs/10.1111/faf.12027},
@@ -532,7 +534,7 @@ journal = {Journal of Climate}
   number  = {2},
   pages   = {303-334},
   volume  = {17},
-  doi     = {https://doi.org/10.1111/faf.12104},
+  doi     = {10.1111/faf.12104},
 }
 
 @Book{Wood2017,
@@ -571,6 +573,260 @@ journal = {Journal of Climate}
   edition   = {Fourth},
   note      = {ISBN 0-387-95457-0},
   url       = {https://www.stats.ox.ac.uk/pub/MASS4/},
+}
+
+@Article{hickey2019,
+  author  = {Hickey, Graeme L. and Kontopantelis, Evangelos and Takkenberg, Johanna J.M. and Beyersdorf, Friedhelm},
+  title   = {Statistical primer: checking model assumptions with regression diagnostics},
+  journal = {Interactive Cardiovascular and Thoracic Surgery},
+  year    = {2019},
+  doi     = {10.1093/ICVTS/IVY207},
+  url     = {https://scispace.com/papers/statistical-primer-checking-model-assumptions-with-4q5hjel1qt?utm_source=chatgpt},
+}
+
+@Article{ding2023information,
+  author    = {Ding, Jie},
+  journal   = {Wiley Interdisciplinary Reviews: Computational Statistics},
+  title     = {Information criteria for model selection},
+  year      = {2023},
+  number    = {2},
+  pages     = {e1607},
+  volume    = {15},
+  doi       = {10.1002/wics.1607},
+  publisher = {Wiley},
+}
+
+@Manual{admb123manual,
+  title        = {ADMB 12.3 Manual},
+  author       = {ADMB Project},
+  note         = {Available at \url{https://www.admb-project.org/docs/manuals/}},
+  organization = {ADMB Foundation},
+  year         = {2013},
+}
+
+@Manual{monnahan2014admbmcmc,
+  title        = {A Guide for Bayesian Analysis in AD Model Builder},
+  author       = {Cole C. Monnahan and Melissa L. Muradian and Peter T. Kuriyama},
+  note         = {Available at \url{https://www.admb-project.org/developers/mcmc/mcmc-guide-for-admb.pdf}},
+  organization = {ADMB Project},
+  year         = {2014},
+}
+
+@Article{mohn1999retrospective,
+  author    = {Mohn, R.},
+  journal   = {ICES Journal of Marine Science},
+  title     = {The retrospective problem in sequential population analysis: an investigation using cod fishery and simulated data},
+  year      = {1999},
+  number    = {4},
+  pages     = {473--488},
+  volume    = {56},
+  doi       = {10.1006/jmsc.1999.0481},
+  publisher = {Oxford University Press},
+}
+
+@Article{cadrin2025misinterpreting,
+  author    = {Cadrin, Steven X.},
+  journal   = {ICES Journal of Marine Science},
+  title     = {Misinterpreting retrospective patterns in fishery stock assessment},
+  year      = {2025},
+  number    = {2},
+  pages     = {473--488},
+  volume    = {82},
+  doi       = {10.1093/icesjms/fsaf014},
+  publisher = {Oxford University Press},
+}
+
+@Article{pope1972,
+  author  = {Pope, J. G.},
+  journal = {Research Bulletin of the International Commission for the Northwest Atlantic Fisheries},
+  title   = {An investigation of the accuracy of virtual population analysis using cohort analysis},
+  year    = {1972},
+  pages   = {65--74},
+  volume  = {9},
+}
+
+@Article{hardin2002robust,
+  author    = {Hardin, James W.},
+  journal   = {Stata Journal},
+  title     = {The robust variance estimator for two-stage models},
+  year      = {2002},
+  number    = {3},
+  pages     = {253--266},
+  volume    = {2},
+  publisher = {StataCorp LLC},
+}
+
+@Book{hastie2009,
+  author    = {Hastie, Trevor and Tibshirani, Robert and Friedman, Jerome},
+  publisher = {Springer Science \& Business Media},
+  title     = {The Elements of Statistical Learning: Data Mining, Inference, and Prediction},
+  year      = {2009},
+  edition   = {2nd},
+  isbn      = {9780387848570},
+}
+
+@Article{harville85,
+  author    = {David A. Harville},
+  journal   = {Journal of the American Statistical Association},
+  title     = {Decomposition of Prediction Error},
+  year      = {1985},
+  issn      = {01621459},
+  number    = {389},
+  pages     = {132--138},
+  volume    = {80},
+  publisher = {[American Statistical Association, Taylor & Francis, Ltd.]},
+  url       = {http://www.jstor.org/stable/2288063},
+}
+
+@Article{privitera2019,
+  author  = {Privitera-Johnson, Kristin M and Punt, André E},
+  journal = {ICES Journal of Marine Science},
+  title   = {Leveraging scientific uncertainty in fisheries management for estimating among-assessment variation in overfishing limits},
+  year    = {2019},
+  number  = {2},
+  pages   = {515-526},
+  volume  = {77},
+  doi     = {10.1093/icesjms/fsz237},
+}
+
+@TechReport{flasher2016,
+  author      = {Finlay Scott and Iago Mosqueira},
+  institution = {European Union},
+  title       = {Bioeconomic Modelling for Fisheries},
+  year        = {2016},
+  number      = {EUR 28383 EN},
+  doi         = {10.2788/722156},
+}
+
+@Article{massad2005,
+  author  = {Eduardo Massad and Marcelo N. Burattini and Luis F. Lopez and Francisco A.B. Coutinho},
+  journal = {Medical Hypotheses},
+  title   = {Forecasting versus projection models in epidemiology: The case of the SARS epidemics},
+  year    = {2005},
+  issn    = {0306-9877},
+  number  = {1},
+  pages   = {17-22},
+  volume  = {65},
+  doi     = {10.1016/j.mehy.2004.09.029},
+  url     = {https://www.sciencedirect.com/science/article/pii/S0306987705000800},
+}
+
+@Manual{flash,
+  title  = {FLash: Forecasting and Projection of Fish Stocks},
+  author = {Laurence T. Kell},
+  note   = {R package version 2.5.11},
+  year   = {2025},
+  url    = {https://github.com/flr/FLash},
+}
+
+@Article{coda,
+  author  = {Martyn Plummer and Nicky Best and Kate Cowles and Karen Vines},
+  journal = {R News},
+  title   = {CODA: Convergence Diagnosis and Output Analysis for MCMC},
+  year    = {2006},
+  number  = {1},
+  pages   = {7--11},
+  volume  = {6},
+}
+
+@Article{gelman97,
+  author    = {A. Gelman and W. R. Gilks and G. O. Roberts},
+  journal   = {The Annals of Applied Probability},
+  title     = {{Weak convergence and optimal scaling of random walk Metropolis algorithms}},
+  year      = {1997},
+  number    = {1},
+  pages     = {110 -- 120},
+  volume    = {7},
+  keywords  = {Markov chain Monte Carlo, Metropolis algorithm, Optimal scaling, weak convergence},
+  publisher = {Institute of Mathematical Statistics},
+}
+
+
+@Misc{unclos1982,
+  author = {{United Nations}},
+  title  = {United Nations Convention on the Law of the Sea},
+  year   = {1982},
+  url    = {https://www.un.org/depts/los/convention_agreements/texts/unclos/unclos_e.pdf},
+}
+
+@Manual{Kell2025,
+  title  = {FLBRP: Reference Points for Fisheries Management},
+  author = {Laurence T. Kell and Finlay Scott},
+  year   = {2025},
+  note   = {R package version 2.5.9.9051},
+  url    = {http://flr-project.org/FLBRP},
+}
+
+@Article{R-mgcv,
+    title = {Fast stable restricted maximum likelihood and marginal likelihood estimation of semiparametric generalized linear models},
+    journal = {Journal of the Royal Statistical Society (B)},
+    volume = {73},
+    number = {1},
+    pages = {3--36},
+    year = {2011},
+    author = {S. N. Wood},
+    doi = {10.1111/j.1467-9868.2010.00749.x},
+}
+
+@inproceedings{gadget,
+  title={An overview of Gadget, the globally applicable area-disaggregated general ecosystem toolbox},
+  author={Begley, James and Howell, Daniel},
+  year={2004},
+  organization={ICES}
+}
+
+@Article{maunderPunt2013,
+   title = {A review of integrated analysis in fisheries stock assessment},
+   journal = {Fisheries Research},
+   volume = {142},
+   pages = {61-74},
+   year = {2013},
+   issn = {0165-7836},
+   doi = {10.1016/j.fishres.2012.07.025},
+   url = {https://www.sciencedirect.com/science/article/pii/S0165783612002627},
+   author = {Mark N. Maunder and André E. Punt},
+   keywords = {Bayesian, Data assimilation, Fisheries stock assessment, Integrated analysis, Maximum likelihood, Meta-analysis, Multivariate nonlinear regression}
+}
+
+@InCollection{kell2016quantification,
+  author    = {Laurence T. Kell, Polina Levontin,Campbell R. Davies, Shelton Harley, Dale S. Kolody,Mark N. Maunder, Iago Mosqueira, Graham M. Pilling and Rishi Sharma},
+  booktitle = {Management Science in Fisheries - An introduction to simulation-basedmethods},
+  publisher = {Routledge},
+  title     = {The quantification and presentation of risk},
+  year      = {2016},
+  editor    = {Charles T. T. Edwards and Dorothy J. Dankel},
+  pages     = {368--394},
+}
+
+@Article{wang2004asymptotic,
+  author    = {Wang, Xiaogang and van Eeden, Constance and Zidek, James V},
+  title     = {Asymptotic properties of maximum weighted likelihood estimators},
+  journal   = {Journal of Statistical Planning and Inference},
+  year      = {2004},
+  volume    = {119},
+  number    = {1},
+  pages     = {37-54},
+  publisher = {Elsevier},
+}
+
+@Article{fieldwle,
+  author  = {Field, C. and Smith, B.},
+  title   = {Robust Estimation: A Weighted Maximum Likelihood Approach},
+  journal = {International Statistical Review},
+  year    = {1994},
+  volume  = {62},
+  number  = {3},
+  pages   = {405--424},
+}
+
+@Article{hu2002weighted,
+  author  = {Hu, Feifang and Zidek, James V.},
+  title   = {The Weighted Likelihood},
+  journal = {The Canadian Journal of Statistics / La Revue Canadienne de Statistique},
+  year    = {2002},
+  volume  = {30},
+  number  = {3},
+  pages   = {347--371},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}

@@ -1,38 +1,37 @@
 # Projections and harvest control rules
 
-@massad2005 provide a useful distinction between forecasting and projection in scientific prediction, stating that prediction in general science can be categorized into two main components: forecasting and projection. According to their definition, a forecast is an attempt to predict what will happen, whereas a projection describes what would happen given certain hypotheses.
+Prediction in general science can be categorized into two main components: forecasting and projection [@massad2005]. According to this definition, a forecast is an attempt to predict what will happen, whereas a projection describes what would happen given certain hypotheses.
 
 This distinction is also reflected by the Organisation for Economic Co-operation and Development (OECD) [@OECD], which notes that “forecasting” and “prediction” are often used interchangeably when estimating the future value of a given variable. The term projection is generally used in two interrelated senses: (1) as a future value of a time series computed based on specific assumptions about environmental changes, and (2) in probability theory, as the conditional expectation of a variable [@OECD].
 
-Applying this conceptual framework to fisheries science, the process of advising on future fishing opportunities is best viewed as a projection exercise. Predicting future outcomes is always conditioned on assumptions about future conditions—e.g., recruitment—or used to test hypotheses—e.g., regarding levels of extraction.
+Applying this conceptual framework to fisheries science, the process of advising on future fishing opportunities is best viewed as a projection exercise. Predicting future outcomes is always conditioned on assumptions about the future, e.g., recruitment, or used to test hypotheses, e.g. regarding levels of extraction.
 
 In the multi-stage stock assessment process described in this book, projections are not part of the stock assessment modeling itself. The assessment concludes when analysts compare estimates of biomass and fishing mortality with reference points, determining whether a stock is overfished or subject to overfishing [@hilborn2013quantitative]. Projections typically follow this assessment and incorporate estimates or assumptions about population dynamics—such as growth, reproduction, and natural mortality—to predict future catches, biomass, and abundance under specific conditions and quantified uncertainty. This final stage aims at providing scientific advice to decision-makers about potential consequences of the decisions they need to make.
 
-For this section we'll be using the package `FLasher` [@flasher; @flasher2016] from the FLR family of packages.
+For this section we will be using the package `FLasher` [@flasher; @flasher2016] from the FLR toolset.
 
 ```{r, warning=FALSE, message=FALSE}
 library(FLa4a)
 library(FLasher)
 library(FLBRP)
-#library(ggplotFL)
 data(ple4)
 data(ple4.indices)
 ```
 
 ## Simple workflow
 
-The basic workflow to project with `FLasher` is:
+The basic workflow for projection with `FLasher` is:
 
-1. extend the `FLStock` object to store the predictions using the method `fwdWindow()`
-2. set the targets for the projection with method `fwdControl()`
-3. project with the method `fwd()` using a `FLStock` and a `FLSR`
+1. extend the `FLStock` object to store future predictions, and to set assumed future values for certain quantities, by using the method `fwdWindow()`
+2. set the targets and limits for the projection with the method `fwdControl()`
+3. project with the method `fwd()` using both a `FLStock` and a `FLSR` object.
 
-We'll start by fitting a model including, a stock recruitment model which will be used to forecast recruitment. We'll also set the number of iterations we'll be working with and the time period we want to project.
+We will start by fitting a model including a stock recruitment relationship which will be used to forecast recruitment. We will also set the number of iterations to work with and the time period we want to project.
 
 ```{r, warning=FALSE, message=FALSE}
 # fit model
 fmod <- ~ s(age, k = 8) + s(year, k = 25) + te(age, year, k = c(6, 15))
-fit00 <- sca(ple4, ple4.indices, srmodel=~geomean(), fmodel=fmod)
+fit00 <- sca(ple4, ple4.indices, srmodel=~geomean(CV=0.5), fmodel=fmod)
 stk00 <- ple4 + fit00
 # create stock recruitment model object
 sr00 <- as(fit00, "FLSR")
@@ -59,7 +58,7 @@ stk01 <- fwd(stk00, control=trg00, sr=sr00)
 plot(stk01)
 ```
 
-A natural addition to this forecast is to add uncertainty. We'll do that by generating uncertainty in population numbers, catch numbers and fishing mortality, using `simulate()`, and add stock recruitment uncertainty using the residuals of the fit.
+A natural addition to this forecast is to add uncertainty. We will do that by generating uncertainty in population numbers, catch numbers and fishing mortality, through the `simulate()` function, and add stock recruitment uncertainty using the residuals of the fit.
 
 ```{r, warning=FALSE, message=FALSE}
 stk00 <- ple4 + simulate(fit00, nsim)
@@ -71,12 +70,12 @@ stk02 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 ```
 
 ```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment"}
-plot(stk02)
+plot(window(stk02, start=inipy))
 ```
 
-An alternative to the above workflow is to fit the stock recruitment model after the stock assessment model, using the output of the assessment as input to the stock recruitment fit. In which case stock recruitment estimation uncertainty can be added by fitting the stock recruitment model over stock assessment uncertainty, so that there will be stock-recruitment fit to each iteration generated from the stock assessment model.
+<!--An alternative to the above workflow is to fit the stock recruitment model after the stock assessment model, using the output of the assessment as input to the stock recruitment fit. In which case stock recruitment estimation uncertainty can be added by fitting the stock recruitment model over stock assessment uncertainty, so that there will be stock-recruitment fit to each iteration generated from the stock assessment model.-->
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE, eval=FALSE}
 fit00 <- sca(ple4, ple4.indices) 
 stk00 <- ple4 + simulate(fit00, nsim)
 sr00 <- as.FLSR(stk00, model="geomean")
@@ -84,23 +83,24 @@ sr00 <- fmle(sr00, control = list(trace = 0))
 stk00 <- fwdWindow(stk00, end = endpy)
 res00 <- residuals(sr00)
 rec00 <- window(rec(stk00), inipy, endpy)
-rec00 <- rlnorm(rec00, c(yearMeans(res00)), sqrt(c(yearVars(res00))))
+rec00 <- rlnorm(rec00, mean(res00), sqrt(var(res00)))
 stk03 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 ```
 
-```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment"}
-plot(stk03)
+```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment", message=FALSE, echo=FALSE, eval=FALSE}
+plot(window(stk03, start=inipy))
 ```
 
-These two methods don't give very different result when the stock recruitment model is not having a large impact in the other parameters. However the second method is much slower due to all the fits needed to have the empirical distribution of the stock recruitment model parameters.
+<!--These two methods don't give very different results when the stock recruitment model is not having a large impact in the other parameters. However the second method is much slower due to all the fits needed to have the empirical distribution of the stock recruitment model parameters.-->
 
-```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment. 01: projection without uncertainty, stock recruitment model fit within the stock assessment model; 02: projection with uncertainty, stock recruitment model fit within the stock assessment model; 03: projection with uncertainty, stock recruitment model fit after the stock assessment model"}
-plot(window(FLStocks('01' = stk01, '02' = stk02, '03' = stk03), start = 2000))
+```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment. 01: projection without uncertainty, stock recruitment model fit within the stock assessment model; 02: projection with uncertainty, stock recruitment model fit within the stock assessment model; 03: projection with uncertainty, stock recruitment model fit after the stock assessment model", message=FALSE, echo=FALSE, eval=FALSE}
+plot(window(FLStocks('01' = stk01, '02' = stk02, '03' = stk03), start = inipy))
+
 ```
 
 ## Initial condition assumptions
 
-When projecting the stock forward one needs to make a number of assumptions about initial conditions, the starting point from where projections will be made. The method `fwdWindow()` has a set of options that allows the analyst to decide about those assumptions:
+When projecting the stock forward one needs to make a number of assumptions about certain quantities and processes in the projection period, for example weights-at-age, maturity or selectivity . The method `fwdWindow()` has a set of options that allows the analyst to decide about those assumptions:
 
 | Argument | Default value | Description |
 |---:|:-|:---------|
@@ -109,16 +109,15 @@ When projecting the stock forward one needs to make a number of assumptions abou
 |`m`| 3 |Number of years to average over to get the future natural mortality at age|
 |`spwn`| 3 | Number of years to average over to get the future fraction of mortality before spawning|
 |`discards.ratio`| 3 | Number of years to average over to get the future mean proportion of discards at age|
-|`catch.sel`| 3 |Number of years to average over to get the future selection patern (fishing mortality at age which will be scaled based on canges in $\bar{F}$)|
+|`catch.sel`| 3 |Number of years to average over to get the future selection patern (fishing mortality at age which will be scaled based on changes in $\bar{F}$)|
 
 Table: (\#tab:initcond) Initial conditions
 
 One can also define if those assumptions will be based on the mean value over the time period set, or randomly sampled from historical values, through setting the argument `fun` to `mean` or `sample`, respectively.
 
-For the next examples we'll use the approach of fitting the stock recruitment within the assessment together with other parameters. We'll set to 20 the number of years to compute mean weights at age, to 10 the number of years to average across and estimate the selection pattern in terms of fishing mortality at age. Finally, we'll use a 10 year period to compute the average discard ratio.
+For the next examples we will use the approach of fitting the stock recruitment within the assessment together with other parameters. We will set to 20 the number of years to compute mean weights at age, to 10 the number of years to average across and estimate the selection pattern in terms of fishing mortality at age. Finally, we will use a 10 year period to compute the average discard ratio.
 
 ```{r, warning=FALSE, message=FALSE}
-fmod <- ~ s(age, k = 8) + s(year, k = 25) + te(age, year, k = c(6, 15))
 fit00 <- sca(ple4, ple4.indices, srmodel=~geomean(), fmodel=fmod)
 sr00 <- as(fit00, "FLSR")
 stk00 <- ple4 + fit00
@@ -128,7 +127,7 @@ stk04 <- fwd(stk00, control=trg00, sr=sr00)
 ```
 
 ```{r, echo=FALSE, fig.cap="Stochastic projections of stock for 5 years with fixed fishing mortality and recruitment. Two scenarios with different assumptions about initial conditions"}
-plot(FLStocks(default=stk01, alternative=stk04))
+plot(FLStocks(default=window(stk01, start=inipy), alternative=window(stk04, start=inipy)))
 ```
 
 ## Scenarios
@@ -136,7 +135,6 @@ plot(FLStocks(default=stk01, alternative=stk04))
 There's a wide range of scenarios that can be of interest to project in order to give advice to policy makers, or to better understand the fitted stock assessment model. For example, projecting the stock in the absence of fishing for a few generations, gives good insights about the dynamics of the population being modelled.
 
 ```{r, warning=FALSE, message=FALSE}
-fmod <- ~ s(age, k = 8) + s(year, k = 25) + te(age, year, k = c(6, 15))
 fit00 <- sca(ple4, ple4.indices, srmodel=~geomean(), fmodel=fmod)
 sr00 <- as(fit00, "FLSR")
 stk00 <- ple4 + simulate(fit00, nsim)
@@ -155,42 +153,41 @@ stk05 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 ```
 
 ```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 25 years in the absence of fishing"}
-plot(stk05)
+plot(window(stk05, start=2015))
 ```
 
-These scenarios are defined by the target quantities one's trying to achieve. Table \@ref(tab:trgqts) `FLasher` there are the following target quantities:
+These scenarios are defined by the target quantities set to be achieved. Table \@ref(tab:trgqts) `FLasher` can currently solve for the following target quantities:
 
 | Target | Description |
 |---:|:---------|
-|ssb | The Spawning Stock Biomass at spawning time |
-|ssb_spawn| The Spawning Stock Biomass at spawning time |
-|ssb_end| The Spawning Stock Biomass at the end of the time period |
-|ssb_flash| The Spawning Stock Biomass at the beginning of the following year, kept for retro compatibility with package `FLash` [@flash] |
-|biomass_spawn| Total Stock Biomass at spawning time|
-|biomass_end| Total Stock Biomass at the end of the time period |
-|f | Fishing mortality over the time period|
-|fbar| Fishing mortality over the time period|
-|catch| The total catch over the time period|
-|landings| The total landings over the time period|
-|discards| The total discards over the time period|
-|effort| The total effort over the time period|
-|revenue| The total revenue over the time period|
+|`ssb` | The Spawning Stock Biomass at spawning time |
+|`ssb_spawn`| The Spawning Stock Biomass at spawning time |
+|`ssb_end`| The Spawning Stock Biomass at the end of the time period |
+|`ssb_flash`| The Spawning Stock Biomass at the beginning of the following year, kept for retro compatibility with package `FLash` [@flash] |
+|`biomass_spawn`| Total Stock Biomass at spawning time|
+|`biomass_end`| Total Stock Biomass at the end of the time period |
+|`f` | Fishing mortality over the time period|
+|`fbar`| Fishing mortality over the time period|
+|`catch`| The total catch over the time period|
+|`landings`| The total landings over the time period|
+|`discards`| The total discards over the time period|
 Table: (\#tab:trgqts) Target quantities and their description
 
 When projecting the stock under the conditions defined by the scenario one can mix several quantities. For example it may be interesting to project an initial situation of growing the stock followed by a higher exploitation to evaluate how catches would behave.
 
 ```{r, warning=FALSE, message=FALSE}
-trg00 <- fwdControl(year = inipy:endpy, quant = c(rep("ssb_end", 15), rep("f", 10)), value = c(rep(2000000, 15), rep(0.3, 10)))
+trg00 <- fwdControl(year = inipy:endpy, quant = c(rep("ssb_end", 15), rep("f", 10)),
+    value = c(rep(2000000, 15), rep(0.3, 10)))
 stk06 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 ```
 
 ```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 25 years with fixed SSB for 15 years followed by fixed fishing mortality for 10 years and constant recruitment"}
-plot(stk06)
+plot(window(stk06, start=2015))
 ```
 
 ## Relative scenarios
 
-Another scenario that is very useful when advising decision makers is to have objectives which are relative to previous performances. For example one could increase spawning stock biomass by 10% each year. This is done buy using the argument `relYear` and setting `value` in relative terms, 1.1.
+Another scenario that is very useful when advising decision makers is to have objectives which are relative to previous values. For example one could increase spawning stock biomass by 10% each year. This is done buy using the argument `relYear` and setting `value` in relative terms, 1.1.
 
 ```{r, warning=FALSE, message=FALSE}
 fit00 <- sca(ple4, ple4.indices, srmodel=~geomean())
@@ -218,7 +215,7 @@ stk08 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 ```
 
 ```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 25 years with fixed SSB for 15 years followed by fixed fishing mortality for 10 years and constant recruitment. scn01 = 10% SSB growth relative to previous year; scn02 = 10% higher SSB relative to most recent estimate"}
-plot(window(FLStocks(scn01 = stk07, scn02 = stk08), start = 2000))
+plot(window(FLStocks(scn01 = stk07, scn02 = stk08), start = inipy))
 ```
 
 ## Limits
@@ -232,7 +229,7 @@ stk09 <- fwd(stk00, control=trg00, sr=sr00, residuals=rec00)
 ```
 
 ```{r, echo=FALSE, fig.cap="Stochastic projection of stock for 25 years with SSB target of 1500000t and catch limit of 50% historical catches"}
-plot(window(stk09, start = 2000))
+plot(window(stk09, start = 2015))
 ```
 
 ## Harvest Control Rules (HCR)
@@ -245,7 +242,7 @@ The HCR we're going to explore is based on a target and a limit. The target is a
 
 Such HCR could be written as
 
-$if \quad SSB_y > 0.5 \times B_{MSY} \quad then \quad F_{y+1} = F_{MSY} \quad or \quad else \quad F_{y+1} = 0.8 \times F_{MSY}$
+$\text{if} \quad SSB_y > 0.5 \times B_{MSY} \quad \text{then} \quad F_{y+1} = F_{MSY} \quad \text{or else} \quad F_{y+1} = 0.8 \times F_{MSY}$
 
 and coded like
 
@@ -282,6 +279,4 @@ if(ssb(stk00)[,ac(maxy)] > blim){
 }
 ```
 
-```{r, echo=FALSE, fig.cap="Projection of stock for 2 years following a HCR with a target of FMSY and limit of 50% SSBMSY"}
-plot(window(stk10, start = 2000))
-```
+A full working HCR would require the above code to be looped throughout the projection years, evaluating each time if $SSB$ was above $B_{LIM}$ and if not decreasing $F$ by 0.8.

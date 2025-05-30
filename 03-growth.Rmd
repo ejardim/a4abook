@@ -17,9 +17,9 @@ data(rfLen)
 
 The `a4a` stock assessment framework is based on age dynamics. Therefore, length information must be processed before running the stock assessment model. The methods in this section provide the analyst flexibility to use a large range of information sources, _e.g._ literature or online databases, to collect information about the species growth model and uncertainty about the model parameters.
 
-The framework allows the analyst to parametrize individual growth, set the assumptions about it and condition the stock assessment model on those decisions. It incentivize the uptake of estimation uncertainty, as well as exploring several parametrizations and/or growth models to deal with structural uncertainty, finally propagating uncertainty into stock assessment.
+The framework allows the analyst to parametrize individual growth, set the assumptions about it and condition the stock assessment model on those decisions. It incentivize the uptake of estimation uncertainty, as well as exploring several parametrizations and/or growth models to deal with structural uncertainty.
 
-Within the `a4a` framework this is handled using the `a4aGr` class and its methods. This class stores information about the growth model and it's parameters, including parameters' uncertainty and the distributions governing it. The class's main method is `l2a` that converts length to ages based on a length based stock object and using the model defined in the `a4aGr` instance.
+Within the `a4a` framework this is handled using the `a4aGr` class and its methods. This class stores information about the growth model and it's parameters, including parameters' uncertainty and the distributions governing it. The class's main method is `l2a()` that converts length to ages based on a length based stock object and using the model defined in the `a4aGr` instance.
 
 ## a4aGr - The growth class
 

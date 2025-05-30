@@ -85,11 +85,9 @@ The remaining parameters are written in terms of a linear combination of covaria
 \log F_{ay} = \sum_k \beta_k x_{ayk}
 \end{equation}
 
-where $k$ is the number of parameters to be estimated and is sufficiently small. Using this technique the quantities $\log F$, $\log Q$, $\log \sigma$ and $\log \tau$
-%$\log \text{initial\,age\,structure}$ % this is not present in the above
-(in bold in the equations above) can be described by a reduced number of parameters. The following section has more discussion on the use of linear models in a4a.
+where $k$ is the number of parameters to be estimated and is sufficiently small. Using this technique the quantities $\log F$, $\log Q$, $\log \sigma$ and $\log \tau$ can be described by a reduced number of parameters.
 
-The a4a statistical catch-at-age model can additionally allow for a functional relationship that links predicted recruitment $\tilde{R}$ based on spawning stock biomass and modelled recruitment $R$, to be imposed as a fixed variance random effect. [NEEDS REVISION, sentence not clear]
+The a4a statistical catch-at-age model can additionally allow for a functional relationship that links predicted recruitment $\tilde{R}$ based on spawning stock biomass and modelled recruitment $R$, to be imposed as a fixed variance random effect.
 
 Options for the relationship are the hard coded models Ricker, Beverton Holt, smooth hockey-stick or geometric mean. This is implemented by including a third component in the log-likelihood:
 
@@ -162,19 +160,19 @@ The `sca()` method arguments are shown in Table \@ref(tab:scaargs)
 
 |Argument|Default|Description|
 |:---|:---|:----------|
-|stock|missing|‘FLStock’ object containing catch and stock information|
-|indices|missing|‘FLIndices’ object containing survey indices|
-|fmodel|missing|a formula object depicting the model for log fishing mortality at age|
-|qmodel|missing|a list of formula objects depicting the models for log survey catchability at age|
-|srmodel|missing|a formula object depicting the model for log recruitment|
-|n1model|missing|a formula object depicting the model for the population in the first year of the time series|
-|vmodel|missing|a list of formula objects depicting the model for the variance of fishing mortality and the indices|
-|covar|missing|a list with covariates to be used by the submodels. The formula must have an element with the same name as the list element|
-|wkdir|missing|used to set a working directory for the admb optimiser; if wkdir is set, all admb files are saved to this folder, otherwise they are deleted|
-|verbose|FALSE|if true, admb fitting information is printed to the screen|
-|fit|'assessment'|character with type of fit: 'assessment' (ML estimation, returns covariance matrix), 'MP' (ML estimation, doesn't compute covariance matrix) or 'MCMC' (MCMC estimation)|
-|center|TRUE|logical defining if the data should be centered before fitting|
-|mcmc|missing|a ‘SCAMCMC’ object with the arguments to run MCMC fits (fit='MCMC)|
+|`stock`|`missing`|`FLStock` object containing catch and stock information|
+|`indices`|`missing`|`FLIndices` object containing survey indices|
+|`fmodel`|`missing`|a formula object depicting the model for log fishing mortality at age|
+|`qmodel`|`missing`|a list of formula objects depicting the models for log survey catchability at age|
+|`srmodel`|`missing`|a formula object depicting the model for log recruitment|
+|`n1model`|`missing`|a formula object depicting the model for the population in the first year of the time series|
+|`vmodel`|`missing`|a list of formula objects depicting the model for the variance of fishing mortality and the indices|
+|`covar`|`missing`|a list with covariates to be used by the submodels. The formula must have an element with the same name as the list element|
+|`wkdir`|`missing`|used to set a working directory for the admb optimiser; if `wkdir` is set, all admb files are saved to this folder, otherwise they are deleted|
+|`verbose`|`FALSE`|if `TRUE`, admb fitting information is printed to the screen|
+|`fit`|`assessment`|character with type of fit: `assessment` (ML estimation, returns covariance matrix), `MP` (ML estimation, doesn't compute covariance matrix) or `MCMC` (MCMC estimation)|
+|`center`|`TRUE`|logical defining if the data should be centered before fitting|
+|`mcmc`|`missing`|a `SCAMCMC` object with the arguments to run MCMC fits (`fit=MCMC`)|
 
 Table: (\#tab:scaargs) `sca()` arguments
 
@@ -182,7 +180,7 @@ Table: (\#tab:scaargs) `sca()` arguments
 
 The elements available to build submodels formulas are 'age' and 'year', which can be used to build models with different structures.
 
-In R's modelling language, a constant model is coded as $\sim 1$, while a slope over time would simply be $\sim year$, a smoother over time $\sim s(year, k=10)$, a model with a coefficient for each year would be $\sim factor(year)$. Transformations of the variables are as usual, e.g. $\sim sqrt(year)$, etc; while combinations of all the above can be done although non-convergence will limit the possibilities.
+In R's modelling language, a constant model is coded as `~1`, while a slope over time would simply be `~year`, a smoother over time `~s(year, k=10)`, a model with a coefficient for each year would be `~factor(year)`. Transformations of the variables are as usual, e.g. `sqrt(year)`, etc; while combinations of all the above can be done although non-convergence will limit the possibilities.
 
 Using the $F$ submodel as example the following specifies the models described in the previous paragraph, see Figure \@ref(fig:fundforms).
 
@@ -212,7 +210,7 @@ lgnd <- list(points=FALSE, lines=TRUE, space='right')
 xyplot(data~year, groups=qname, lst, auto.key=lgnd, type='l', ylab='fishing mortality')
 ```
 
-The models above and their combinations can be used to model both 'age' and 'year'. The corresponding fits for age are show in the code below and Figure \@ref(fig:fundformsage).
+The models above and their combinations can be used to model both `age` and `year`. The corresponding fits for age are show in the code below and Figure \@ref(fig:fundformsage).
 
 ```{r, fundformsage, fig.cap="Example of fundamental R formulas  used to model the age effect"}
 # models
@@ -241,7 +239,7 @@ xyplot(data~age, groups=qname, lst, auto.key=lgnd, type='l', ylab='fishing morta
 
 ## The major effects available for modelling
 
-Although the building blocks for formulas are 'age' and 'year', in fact there are three effects that can be modelled for each submodel: 'age', 'year' and 'cohort'. As examples note the following models for fishing mortality.
+Although the building blocks for formulas are `age` and `year`, in fact there are three effects that can be modelled for each submodel: `age`, `year` and `cohort`. As examples note the following models for fishing mortality.
 
 ```{r}
 # the age effect
@@ -286,14 +284,14 @@ Table \@ref(tab:scatype) provides details about the type of fit approach and com
 
 |Type of Fit|Fit Method|Variance-Covariance Matrix|Output Object Class|
 |:--|:--|:--|:--|
-|MP|Maximum Likelihood|No|`a4aFit`|
-|Assessment|Maximum Likelihood|Yes|`a4aFitSA`|
-|MCMC|MCMC|No|`a4aFitMCMC`|
+|`MP`|Maximum Likelihood|No|`a4aFit`|
+|`assessment`|Maximum Likelihood|Yes|`a4aFitSA`|
+|`MCMC`|MCMC|No|`a4aFitMCMC`|
 Table: (\#tab:scatype) Fit Types and Associated Classes
 
-Type `MP`, for "Management Procedure," returns an `a4aFit` class object designed for use in MSEs (Management Strategy Evaluations) with full feedback models [@puntmse]. Inverting the jacobian to compute the variance-covariance matrix is computationally intensive in maximum likelihood models, and as MSE analyses often involve thousands of iterations, using `type="MP"` significantly speeds up the process. This option is advantageous for scenarios requiring multiple model fits. However, the lack of immediate feedback on model convergence is a drawback, as convergence is assessed by inverting the Jacobian. A failed inversion indicates non-convergence.
+Type `MP`, for "Management Procedure," returns an `a4aFit` class object designed for use in MSEs (Management Strategy Evaluations) with full feedback models [@puntmse]. Inverting the jacobian to compute the variance-covariance matrix is computationally intensive in maximum likelihood models, and as MSE analyses often involve thousands of iterations, using `fit="MP"` significantly speeds up the process. This option is advantageous for scenarios requiring multiple model fits. However, the lack of immediate feedback on model convergence is a drawback, as convergence is assessed by inverting the Jacobian. A failed inversion indicates non-convergence.
 
-Type `Assessment`, the default, reports both the parameters and their variance-covariance, and as such requires the inversion of the hessian matrix. The method takes longer to run but returns a much richer dataset which allows the computation confidence intervals, simulate, etc. When the hessian matrix can't be inverted this method flags potential non-convergence and returns an empty object.
+Type `assessment`, the default, reports both the parameters and their variance-covariance, and as such requires the inversion of the hessian matrix. The method takes longer to run but returns a much richer dataset which allows the computation confidence intervals, simulate, etc. When the hessian matrix can't be inverted this method flags potential non-convergence and returns an empty object.
 
 Type `MCMC` uses the Markov Chain Monte-Carlo approach, in which case it doesn't compute likelihoods or variance-covariance matrices. It returns the full draws of the chain, which allows the computation of credible intervals, simulation kind of studies and so on.
 
@@ -301,73 +299,73 @@ Table \@ref(tab:a4afitclass) describes the composition of the `a4aFit` class.
 
 |Class|Slot|Slot's Class|Description|
 |:--|:--|:--|:--|
-|a4aFit|call|call|Code used to run the analysis|
-| |catch.n|FLQuant|Catch numbers at age and year|
-| |clock|numeric|Time to run the analysis|
-| |desc|character|Description of the stock and/or analysis|
-| |fitSumm|array|Summary statistics of the fit (e.g., number of data points)|
-| |harvest|FLQuant|Fishing mortality at age and year|
-| |index|FLQuants|Indices of abundance (age/biomass, by year)|
-| |name|character|Stock name|
-| |range|numeric|Age and year range of the data|
-| |stock.n|FLQuant|Population in numbers (age and year)|
+|`a4aFit`|`call`|`call`|Code used to run the analysis|
+| |`catch.n`|`FLQuant`|Catch numbers at age and year|
+| |`clock`|`numeric`|Time to run the analysis|
+| |`desc`|`character`|Description of the stock and/or analysis|
+| |`fitSumm`|`array`|Summary statistics of the fit (e.g., number of data points)|
+| |`harvest`|`FLQuant`|Fishing mortality at age and year|
+| |`index`|`FLQuants`|Indices of abundance (age/biomass, by year)|
+| |`name`|`character`|Stock name|
+| |`range`|`numeric`|Age and year range of the data|
+| |`stock.n`|`FLQuant`|Population in numbers (age and year)|
 Table: (\#tab:a4afitclass) `a4aFit` Class Description
 
 The `a4aFitSA` and `a4aFitMCMC` classes extend `a4aFit`, retaining all its slots while adding a `pars` slot of class `SCAPars`. Table \@ref(tab:a4afitSAclass) outlines these classes.
 
 |Class|Slot|Slot's Class|Description|
 |:--|:--|:--|:--|
-|a4aFitSA|All `a4aFit`||Inherited from `a4aFit`|
-| |pars|SCAPars|Parameter information|
-|a4aFitMCMC|All `a4aFit`||Inherited from `a4aFit`|
-| |pars|SCAPars|Parameter information|
+|`a4aFitSA`|All `a4aFit`||Inherited from `a4aFit`|
+| |`pars`|`SCAPars`|Parameter information|
+|`a4aFitMCMC`|All `a4aFit`||Inherited from `a4aFit`|
+| |`pars`|`SCAPars`|Parameter information|
 Table: (\#tab:a4afitSAclass) `a4aFitSA` and `a4aFitMCMC` Class Description
 
 The `SCAPars` class stores details about submodel parameters, such as formulas and distributions, and includes three slots: `stkmodel` for stock model parameters, `qmodel` for catchability parameters, and `vmodel` for variance parameters. Table \@ref(tab:SCAParsclass) describes the `SCAPars` class.
 
 |Class|Slot|Slot's Class|Description|
 |:--|:--|:--|:--|
-|SCAPars|stkmodel|a4aStkParams|Details of fishing mortality, stock recruitment, and initial stock numbers|
-| |qmodel|submodel|Details of catchability parameters|
-| |vmodel|submodel|Details of variance parameters|
+|`SCAPars`|`stkmodel`|`a4aStkParams`|Details of fishing mortality, stock recruitment, and initial stock numbers|
+| |`qmodel`|`submodel`|Details of catchability parameters|
+| |`vmodel`|`submodel`|Details of variance parameters|
 Table: (\#tab:SCAParsclass) `SCAPars` Class Description
 
 The `stkmodel` slot encompasses parameters for fishing mortality, stock recruitment, and initial stock numbers. Due to potential correlations among these parameters, their variance-covariance matrix is reported collectively. Table \@ref(tab:a4aStkParamsclass) describes the slots of the `a4aStkParams` class.
 
 |Class|Slot|Slot's Class|Description|
 |:--|:--|:--|:--|
-|a4aStkParams|centering|FLPar|Centering parameters|
-| |coefficients|FLPar|Model coefficients|
-| |desc|character|Description|
-| |distr|character|Distributions|
-| |fMod|formula|Fishing mortality model|
-| |link|function|Link function|
-| |linkinv|function|Inverse link function|
-| |m|FLQuant|Mortality parameters|
-| |mat|FLQuant|Maturity parameters|
-| |n1Mod|formula|Initial stock numbers model|
-| |name|character|Stock name|
-| |range|numeric|Age and year range|
-| |srMod|formula|Stock-recruitment model|
-| |units|character|Units of measurement|
-| |vcov|array|Variance-covariance matrix|
-| |wt|FLQuant|Weights|
+|`a4aStkParams`|`centering`|`FLPar`|Centering parameters|
+| |`coefficients`|`FLPar`|Model coefficients|
+| |`desc`|`character`|Description|
+| |`distr`|`character`|Distributions|
+| |`fMod`|`formula`|Fishing mortality model|
+| |`link`|`function`|Link function|
+| |`linkinv`|`function`|Inverse link function|
+| |`m`|`FLQuant`|Mortality parameters|
+| |`mat`|`FLQuant`|Maturity parameters|
+| |`n1Mod`|`formula`|Initial stock numbers model|
+| |`name`|`character`|Stock name|
+| |`range`|`numeric`|Age and year range|
+| |`srMod`|`formula`|Stock-recruitment model|
+| |`units`|`character`|Units of measurement|
+| |`vcov`|`array`|Variance-covariance matrix|
+| |`wt`|`FLQuant`|Weights|
 Table: (\#tab:a4aStkParamsclass) `a4aStkParams` Class Description
 
 The `qmodel` and `vmodel` slots share the `submodel` class, which describes single submodels. Table \@ref(tab:submodelclass) provides details.
 
 |Class|Slot|Slot's Class|Description|
 |:--|:--|:--|:--|
-|submodel|centering|FLPar|Centering parameters|
-| |coefficients|FLPar|Model coefficients|
-| |desc|character|Description|
-| |distr|character|Distributions|
-| |formula|formula|Submodel formula|
-| |link|function|Link function|
-| |linkinv|function|Inverse link function|
-| |name|character|Stock name|
-| |range|numeric|Age and year range|
-| |vcov|array|Variance-covariance matrix|
+|`submodel`|`centering`|`FLPar`|Centering parameters|
+| |`coefficients`|`FLPar`|Model coefficients|
+| |`desc`|`character`|Description|
+| |`distr`|`character`|Distributions|
+| |`formula`|`formula`|Submodel formula|
+| |`link`|`function`|Link function|
+| |`linkinv`|`function`|Inverse link function|
+| |`name`|`character`|Stock name|
+| |`range`|`numeric`|Age and year range|
+| |`vcov`|`array`|Variance-covariance matrix|
 Table: (\#tab:submodelclass) `submodel` Class Description
 
 
