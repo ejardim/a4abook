@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-05-30" />
+<meta name="date" content="2025-06-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -336,15 +336,15 @@ div.csl-indent {
 <h1><span class="header-section-number">8</span> Diagnostics <a href="diagnostics.html#diagnostics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Statistical model diagnostics are essential to identify potential issues in the model, such as violations of assumptions, outliers, and influential data points. Without proper diagnostics, fitted models may provide misleading conclusions due to violated assumptions or undetected anomalies. For instance, residual analysis is a widely used diagnostic method that assesses the discrepancy between observed and fitted values, helping to validate underlying model assumptions <span class="citation">(<a href="#ref-hickey2019">Hickey et al. 2019</a>)</span></p>
 <p>The <code>a4a</code> framework implements several analysis of residuals, visualizations and statistics, that can be used to evaluate the fit quality and chose across multiple fits.</p>
-<p>For demonstration purposes we’ll use the plaice in ICES area 4 stock with a plus group at age 9, a single index “BTS-Combined (all)”, and, in some cases, will trim the time series to the most recent 10 years.</p>
+<p>For demonstration purposes we’ll use the plaice in ICES area 4 stock with a plus group at age 9 and a single index “BTS-Combined (all)”.</p>
 <div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="diagnostics.html#cb164-1" tabindex="-1"></a><span class="co"># use single indices and set plus group at 9</span></span>
 <span id="cb164-2"><a href="diagnostics.html#cb164-2" tabindex="-1"></a>idx <span class="ot">&lt;-</span> ple4.indices[<span class="fu">c</span>(<span class="st">&quot;BTS-Combined (all)&quot;</span>)]</span>
 <span id="cb164-3"><a href="diagnostics.html#cb164-3" tabindex="-1"></a>idx[[<span class="dv">1</span>]] <span class="ot">&lt;-</span> idx[[<span class="dv">1</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>]</span>
 <span id="cb164-4"><a href="diagnostics.html#cb164-4" tabindex="-1"></a>stk <span class="ot">&lt;-</span> <span class="fu">setPlusGroup</span>(ple4, <span class="dv">9</span>)</span>
 <span id="cb164-5"><a href="diagnostics.html#cb164-5" tabindex="-1"></a>iy <span class="ot">&lt;-</span> <span class="dv">2008</span></span>
 <span id="cb164-6"><a href="diagnostics.html#cb164-6" tabindex="-1"></a><span class="co"># fit</span></span>
-<span id="cb164-7"><a href="diagnostics.html#cb164-7" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">6</span>)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">10</span>)<span class="sc">+</span><span class="fu">te</span>(age, year, <span class="at">k=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">8</span>))</span>
-<span id="cb164-8"><a href="diagnostics.html#cb164-8" tabindex="-1"></a>qmod <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">4</span>))</span>
+<span id="cb164-7"><a href="diagnostics.html#cb164-7" tabindex="-1"></a>fmod <span class="ot">&lt;-</span> <span class="er">~</span> <span class="fu">factor</span>(age)<span class="sc">+</span><span class="fu">s</span>(year, <span class="at">k=</span><span class="dv">15</span>)<span class="sc">+</span><span class="fu">te</span>(age, year, <span class="at">k=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">8</span>))</span>
+<span id="cb164-8"><a href="diagnostics.html#cb164-8" tabindex="-1"></a>qmod <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="sc">~</span> <span class="fu">factor</span>(age))</span>
 <span id="cb164-9"><a href="diagnostics.html#cb164-9" tabindex="-1"></a>n1mod <span class="ot">&lt;-</span> <span class="er">~</span><span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">5</span>)</span>
 <span id="cb164-10"><a href="diagnostics.html#cb164-10" tabindex="-1"></a>vmod <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="sc">~</span><span class="fu">s</span>(age, <span class="at">k=</span><span class="dv">4</span>), <span class="sc">~</span><span class="dv">1</span>)</span>
 <span id="cb164-11"><a href="diagnostics.html#cb164-11" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sca</span>(stk, idx, <span class="at">fmodel=</span>fmod, <span class="at">qmodel=</span>qmod, <span class="at">n1model=</span>n1mod, <span class="at">vmodel=</span>vmod)</span></code></pre></div>
@@ -572,23 +572,23 @@ Green shading indicates no evidence $(p <  0.05)$ and red shading evidence $(p  
 <p>Note fmodel doesn’t change:</p>
 <pre><code>## $fit1
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x61db87a6cc68&gt;
+## &lt;environment: 0x6205d81fbec8&gt;
 ## 
 ## $fit2
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x61db87a6cc68&gt;
+## &lt;environment: 0x6205d81fbec8&gt;
 ## 
 ## $fit3
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x61db87a6cc68&gt;
+## &lt;environment: 0x6205d81fbec8&gt;
 ## 
 ## $fit4
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x61db87a6cc68&gt;
+## &lt;environment: 0x6205d81fbec8&gt;
 ## 
 ## $fit5
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x61db87a6cc68&gt;</code></pre>
+## &lt;environment: 0x6205d81fbec8&gt;</code></pre>
 <p>The retrospective plot shown below presents the current fit with uncertainty and each retrospective fit on top. If the retrospective fit is not within the confidence interval of the current fit the analyst can argue that the estimate is different and as such reflecting a “poor” fit.</p>
 <div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="diagnostics.html#cb185-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">window</span>(stks, <span class="at">start=</span><span class="dv">2005</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:retro"></span>
@@ -610,23 +610,23 @@ Figure 8.12: Retrospective analysis of the plaice in ICES area IV stock. Fixed F
 <p>Note fmodel changes:</p>
 <pre><code>## $fit1
 ## ~te(age, year, k = c(6, 30), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x61db843ac030&gt;
+## &lt;environment: 0x6205d8d6cd38&gt;
 ## 
 ## $fit2
 ## ~te(age, year, k = c(6, 29), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x61db8c11bb78&gt;
+## &lt;environment: 0x6205d412de18&gt;
 ## 
 ## $fit3
 ## ~te(age, year, k = c(6, 29), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x61db89d1fd60&gt;
+## &lt;environment: 0x6205ddb68a50&gt;
 ## 
 ## $fit4
 ## ~te(age, year, k = c(6, 28), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x61db8946b798&gt;
+## &lt;environment: 0x6205e25858b8&gt;
 ## 
 ## $fit5
 ## ~te(age, year, k = c(6, 28), bs = &quot;tp&quot;) + s(age, k = 6)
-## &lt;environment: 0x61db8a8cc4e0&gt;</code></pre>
+## &lt;environment: 0x6205de7987d8&gt;</code></pre>
 <p>And the retrospective plot</p>
 <div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="diagnostics.html#cb188-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">window</span>(stks, <span class="at">start=</span><span class="dv">2005</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:retro2"></span>

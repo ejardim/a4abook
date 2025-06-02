@@ -1,3 +1,14 @@
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(formatR)
+#thm = knit_theme$get("bclear") #moe, bclear
+#knit_theme$set(thm)
+opts_chunk$set(dev='png', dev.args=list(type="cairo"), warning=FALSE)
+# lattice theme
+library(lattice)
+lattice.options(default.args = list(as.table = TRUE))
+```
+
 # Diagnostics \label{sec:diagn}
 
 Statistical model diagnostics are essential to identify potential issues in the model, such as violations of assumptions, outliers, and influential data points. Without proper diagnostics, fitted models may provide misleading conclusions due to violated assumptions or undetected anomalies. For instance, residual analysis is a widely used diagnostic method that assesses the discrepancy between observed and fitted values, helping to validate underlying model assumptions [@hickey2019]
@@ -10,7 +21,7 @@ data(ple4)
 data(ple4.indices)
 ```
 
-For demonstration purposes we'll use the plaice in ICES area 4 stock with a plus group at age 9, a single index "BTS-Combined (all)", and, in some cases, will trim the time series to the most recent 10 years.
+For demonstration purposes we'll use the plaice in ICES area 4 stock with a plus group at age 9 and a single index "BTS-Combined (all)".
 
 ```{r}
 # use single indices and set plus group at 9
@@ -19,8 +30,8 @@ idx[[1]] <- idx[[1]][1:9]
 stk <- setPlusGroup(ple4, 9)
 iy <- 2008
 # fit
-fmod <- ~s(age, k=6)+s(year, k=10)+te(age, year, k=c(3,8))
-qmod <- list(~s(age, k=4))
+fmod <- ~ factor(age)+s(year, k=15)+te(age, year, k=c(3,8))
+qmod <- list(~ factor(age))
 n1mod <- ~s(age, k=5)
 vmod <- list(~s(age, k=4), ~1)
 fit <- sca(stk, idx, fmodel=fmod, qmodel=qmod, n1model=n1mod, vmodel=vmod)

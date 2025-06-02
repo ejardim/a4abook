@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-05-30" />
+<meta name="date" content="2025-06-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -376,8 +376,8 @@ div.csl-indent {
 <span id="cb262-21"><a href="projections-and-harvest-control-rules.html#cb262-21" tabindex="-1"></a>trg00 <span class="ot">&lt;-</span> <span class="fu">fwdControl</span>(<span class="at">year =</span> inipy<span class="sc">:</span>endpy, <span class="at">quant =</span> <span class="st">&quot;f&quot;</span>, <span class="at">value =</span> <span class="fl">0.3</span>)</span>
 <span id="cb262-22"><a href="projections-and-harvest-control-rules.html#cb262-22" tabindex="-1"></a><span class="co"># project</span></span>
 <span id="cb262-23"><a href="projections-and-harvest-control-rules.html#cb262-23" tabindex="-1"></a>stk01 <span class="ot">&lt;-</span> <span class="fu">fwd</span>(stk00, <span class="at">control=</span>trg00, <span class="at">sr=</span>sr00)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-113"></span>
-<img src="_main_files/figure-html/unnamed-chunk-113-1.png" alt="Projection of stock for 5 years with fixed fishing mortality and recruitment" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-114"></span>
+<img src="_main_files/figure-html/unnamed-chunk-114-1.png" alt="Projection of stock for 5 years with fixed fishing mortality and recruitment" width="672" />
 <p class="caption">
 Figure 12.1: Projection of stock for 5 years with fixed fishing mortality and recruitment
 </p>
@@ -389,8 +389,8 @@ Figure 12.1: Projection of stock for 5 years with fixed fishing mortality and re
 <span id="cb263-4"><a href="projections-and-harvest-control-rules.html#cb263-4" tabindex="-1"></a>rec00 <span class="ot">&lt;-</span> <span class="fu">window</span>(<span class="fu">rec</span>(stk00), <span class="dv">2018</span>, <span class="dv">2022</span>)</span>
 <span id="cb263-5"><a href="projections-and-harvest-control-rules.html#cb263-5" tabindex="-1"></a>rec00 <span class="ot">&lt;-</span> <span class="fu">rlnorm</span>(rec00, <span class="fu">mean</span>(res00), <span class="fu">sqrt</span>(<span class="fu">var</span>(res00)))</span>
 <span id="cb263-6"><a href="projections-and-harvest-control-rules.html#cb263-6" tabindex="-1"></a>stk02 <span class="ot">&lt;-</span> <span class="fu">fwd</span>(stk00, <span class="at">control=</span>trg00, <span class="at">sr=</span>sr00, <span class="at">residuals=</span>rec00)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-115"></span>
-<img src="_main_files/figure-html/unnamed-chunk-115-1.png" alt="Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-116"></span>
+<img src="_main_files/figure-html/unnamed-chunk-116-1.png" alt="Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment" width="672" />
 <p class="caption">
 Figure 12.2: Stochastic projection of stock for 5 years with fixed fishing mortality and recruitment
 </p>
@@ -456,8 +456,8 @@ Figure 12.2: Stochastic projection of stock for 5 years with fixed fishing morta
 <span id="cb264-4"><a href="projections-and-harvest-control-rules.html#cb264-4" tabindex="-1"></a>stk00 <span class="ot">&lt;-</span> <span class="fu">fwdWindow</span>(stk00, <span class="at">end =</span> endpy, <span class="at">years =</span> <span class="fu">list</span>(<span class="at">wt =</span> <span class="dv">20</span>, <span class="at">catch.sel =</span> <span class="dv">10</span>, <span class="at">discards.ratio =</span> <span class="dv">10</span>), <span class="at">fun =</span> <span class="fu">list</span>(<span class="at">wt =</span> <span class="st">&quot;sample&quot;</span>))</span>
 <span id="cb264-5"><a href="projections-and-harvest-control-rules.html#cb264-5" tabindex="-1"></a>trg00 <span class="ot">&lt;-</span> <span class="fu">fwdControl</span>(<span class="at">year =</span> inipy<span class="sc">:</span>endpy, <span class="at">quant =</span> <span class="st">&quot;f&quot;</span>, <span class="at">value =</span> <span class="fl">0.3</span>)</span>
 <span id="cb264-6"><a href="projections-and-harvest-control-rules.html#cb264-6" tabindex="-1"></a>stk04 <span class="ot">&lt;-</span> <span class="fu">fwd</span>(stk00, <span class="at">control=</span>trg00, <span class="at">sr=</span>sr00)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-120"></span>
-<img src="_main_files/figure-html/unnamed-chunk-120-1.png" alt="Stochastic projections of stock for 5 years with fixed fishing mortality and recruitment. Two scenarios with different assumptions about initial conditions" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-121"></span>
+<img src="_main_files/figure-html/unnamed-chunk-121-1.png" alt="Stochastic projections of stock for 5 years with fixed fishing mortality and recruitment. Two scenarios with different assumptions about initial conditions" width="672" />
 <p class="caption">
 Figure 12.3: Stochastic projections of stock for 5 years with fixed fishing mortality and recruitment. Two scenarios with different assumptions about initial conditions
 </p>
@@ -481,8 +481,8 @@ Figure 12.3: Stochastic projections of stock for 5 years with fixed fishing mort
 <span id="cb265-13"><a href="projections-and-harvest-control-rules.html#cb265-13" tabindex="-1"></a>rec00 <span class="ot">&lt;-</span> <span class="fu">rlnorm</span>(rec00, <span class="fu">mean</span>(res00), <span class="fu">sqrt</span>(<span class="fu">var</span>(res00)))</span>
 <span id="cb265-14"><a href="projections-and-harvest-control-rules.html#cb265-14" tabindex="-1"></a><span class="co"># project</span></span>
 <span id="cb265-15"><a href="projections-and-harvest-control-rules.html#cb265-15" tabindex="-1"></a>stk05 <span class="ot">&lt;-</span> <span class="fu">fwd</span>(stk00, <span class="at">control=</span>trg00, <span class="at">sr=</span>sr00, <span class="at">residuals=</span>rec00)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-122"></span>
-<img src="_main_files/figure-html/unnamed-chunk-122-1.png" alt="Stochastic projection of stock for 25 years in the absence of fishing" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-123"></span>
+<img src="_main_files/figure-html/unnamed-chunk-123-1.png" alt="Stochastic projection of stock for 25 years in the absence of fishing" width="672" />
 <p class="caption">
 Figure 12.4: Stochastic projection of stock for 25 years in the absence of fishing
 </p>
@@ -551,8 +551,8 @@ Figure 12.4: Stochastic projection of stock for 25 years in the absence of fishi
 <div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="projections-and-harvest-control-rules.html#cb266-1" tabindex="-1"></a>trg00 <span class="ot">&lt;-</span> <span class="fu">fwdControl</span>(<span class="at">year =</span> inipy<span class="sc">:</span>endpy, <span class="at">quant =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;ssb_end&quot;</span>, <span class="dv">15</span>), <span class="fu">rep</span>(<span class="st">&quot;f&quot;</span>, <span class="dv">10</span>)),</span>
 <span id="cb266-2"><a href="projections-and-harvest-control-rules.html#cb266-2" tabindex="-1"></a>    <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">2000000</span>, <span class="dv">15</span>), <span class="fu">rep</span>(<span class="fl">0.3</span>, <span class="dv">10</span>)))</span>
 <span id="cb266-3"><a href="projections-and-harvest-control-rules.html#cb266-3" tabindex="-1"></a>stk06 <span class="ot">&lt;-</span> <span class="fu">fwd</span>(stk00, <span class="at">control=</span>trg00, <span class="at">sr=</span>sr00, <span class="at">residuals=</span>rec00)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-124"></span>
-<img src="_main_files/figure-html/unnamed-chunk-124-1.png" alt="Stochastic projection of stock for 25 years with fixed SSB for 15 years followed by fixed fishing mortality for 10 years and constant recruitment" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-125"></span>
+<img src="_main_files/figure-html/unnamed-chunk-125-1.png" alt="Stochastic projection of stock for 25 years with fixed SSB for 15 years followed by fixed fishing mortality for 10 years and constant recruitment" width="672" />
 <p class="caption">
 Figure 12.5: Stochastic projection of stock for 25 years with fixed SSB for 15 years followed by fixed fishing mortality for 10 years and constant recruitment
 </p>
@@ -579,8 +579,8 @@ Figure 12.5: Stochastic projection of stock for 25 years with fixed SSB for 15 y
 <p>Similar scenarios can be set for all quantities and any years to use as reference. The next example sets a scenario where <span class="math inline">\(SSB\)</span> levels are set in relation to the most recent estimate out of the assessment.</p>
 <div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="projections-and-harvest-control-rules.html#cb268-1" tabindex="-1"></a>trg00 <span class="ot">&lt;-</span> <span class="fu">fwdControl</span>(<span class="at">year =</span> inipy<span class="sc">:</span>endpy, <span class="at">quant =</span> <span class="st">&quot;ssb_end&quot;</span>, <span class="at">value =</span> <span class="fl">1.1</span>, <span class="at">relYear =</span> maxy)</span>
 <span id="cb268-2"><a href="projections-and-harvest-control-rules.html#cb268-2" tabindex="-1"></a>stk08 <span class="ot">&lt;-</span> <span class="fu">fwd</span>(stk00, <span class="at">control=</span>trg00, <span class="at">sr=</span>sr00, <span class="at">residuals=</span>rec00)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-127"></span>
-<img src="_main_files/figure-html/unnamed-chunk-127-1.png" alt="Stochastic projection of stock for 25 years with fixed SSB for 15 years followed by fixed fishing mortality for 10 years and constant recruitment. scn01 = 10% SSB growth relative to previous year; scn02 = 10% higher SSB relative to most recent estimate" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-128"></span>
+<img src="_main_files/figure-html/unnamed-chunk-128-1.png" alt="Stochastic projection of stock for 25 years with fixed SSB for 15 years followed by fixed fishing mortality for 10 years and constant recruitment. scn01 = 10% SSB growth relative to previous year; scn02 = 10% higher SSB relative to most recent estimate" width="672" />
 <p class="caption">
 Figure 12.6: Stochastic projection of stock for 25 years with fixed SSB for 15 years followed by fixed fishing mortality for 10 years and constant recruitment. scn01 = 10% SSB growth relative to previous year; scn02 = 10% higher SSB relative to most recent estimate
 </p>
@@ -592,8 +592,8 @@ Figure 12.6: Stochastic projection of stock for 25 years with fixed SSB for 15 y
 <div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="projections-and-harvest-control-rules.html#cb269-1" tabindex="-1"></a>minc <span class="ot">&lt;-</span> <span class="fl">0.2</span><span class="sc">*</span><span class="fu">mean</span>(<span class="fu">catch</span>(stk00), <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
 <span id="cb269-2"><a href="projections-and-harvest-control-rules.html#cb269-2" tabindex="-1"></a>trg00 <span class="ot">&lt;-</span> <span class="fu">fwdControl</span>(<span class="at">year =</span> inipy<span class="sc">:</span>endpy, <span class="at">quant =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;ssb_end&quot;</span>, <span class="st">&quot;catch&quot;</span>), projy), <span class="at">value =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1500000</span>, <span class="cn">NA</span>), projy), <span class="at">min=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="cn">NA</span>, minc), projy))</span>
 <span id="cb269-3"><a href="projections-and-harvest-control-rules.html#cb269-3" tabindex="-1"></a>stk09 <span class="ot">&lt;-</span> <span class="fu">fwd</span>(stk00, <span class="at">control=</span>trg00, <span class="at">sr=</span>sr00, <span class="at">residuals=</span>rec00)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-129"></span>
-<img src="_main_files/figure-html/unnamed-chunk-129-1.png" alt="Stochastic projection of stock for 25 years with SSB target of 1500000t and catch limit of 50% historical catches" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-130"></span>
+<img src="_main_files/figure-html/unnamed-chunk-130-1.png" alt="Stochastic projection of stock for 25 years with SSB target of 1500000t and catch limit of 50% historical catches" width="672" />
 <p class="caption">
 Figure 12.7: Stochastic projection of stock for 25 years with SSB target of 1500000t and catch limit of 50% historical catches
 </p>
