@@ -129,6 +129,8 @@ However, `sca`'s residuals are estimates of observation error (measurement noise
 
 Nevertheless, in this section we'll assume prediction error to be the sum of residual variance and estimation variance, and will describe how to compute both elements and bringing them together in a `FLStock` object.
 
+We'll make extensive use of `+` for this analysis. When operating between a `FLStock` object and a `a4aFit` object, the method replaces the slots estimated by the model with its estimates. If operating between a `FLStock` object and a `a4aFitResiduals` object, the method will use the values in the `FLStock` object and add lognormal multiplicative error. When computing prediction uncertainty both sources need to be added, which means the sequence matters. To perform the computations correctly, residual uncertainty needs to be added after estimation uncertainty, so it will add uncertainty to the updated estimates.
+
 ```{r}
 nsim <- 250
 fmod <- ~s(age, k = 4) +
@@ -153,8 +155,59 @@ stk.pu <- hke1567 + simulate(fit0, nsim) + res0
 plot(FLStocks(pu=stk.pu, eu=stk.eu, ru=stk.ru)) + facet_grid(qname~stock, scales="free") + theme(legend.position = "top")
 ```
 
-<!--## Confidence interval coverage-->
+## Confidence interval coverage
 
+```{r, eval=FALSE}
+cv <- 0.5
+sn <- genFLQuant(fit0@stock.n, cv=cv)
+ff <- genFLQuant(fit0@harvest, cv=cv, niter=nsim)
+stk00 <- genFLStock(stk0, R=sn[1], F=ff, ny1=sn[,1])
+idx00 <- hke1567.idx
+index(idx00) <-  predict(simulate(fit0, nsim))$qmodel[[1]]*sn[ac(0:4)]
+fit00 <- sca(stk00, idx00, fmodel=fmod, qmodel=qmod)
+stk00 <- stk00 + fit00
+
+# objects to store results
+flq <- ssb(stk00) #expand(ssb(stk0), unit=c("eu", "ru", "pu"), iter=1:nsim)
+flq[] <- NA
+ssb.cicvg <- FLQuants("eu"=flq, "ru"=flq, "pu"=flq)
+flq <- expand(flq, age=c("l", "u"))
+ssb.ci <- FLQuants("eu"=flq, "ru"=flq, "pu"=flq)
+
+# remove iters that failed
+vv <- c(!is.na(fit00@stock.n[1,1]))
+
+# loop through iters, compute CI, check if OM value is within interval
+for(i in (1:nsim)[vv]){
+
+  # residual uncertainty
+  res00 <- residuals(iter(fit00, i), iter(stk00, i), iter(idx00, i), type="deviances")
+  stk <- propagate(iter(stk00, i), nsim) + res00
+  qtl <- quantile(ssb(stk), probs=c(0.025, 0.975), na.rm=TRUE)
+  ssb.cicvg[["eu"]][,,,,, i] <- ssb(stk0)>=iter(qtl, 1) & ssb(stk0)<=iter(qtl, 2)
+  ssb.ci[["eu"]]["l",,,,, i] <- iter(qtl,1)
+  ssb.ci[["eu"]]["u",,,,, i] <- iter(qtl,2)
+
+  # estimation uncertainty
+  stk <- iter(stk00, i) + simulate(iter(fit00, i), 250)
+  qtl <- quantile(ssb(stk), probs=c(0.025, 0.975), na.rm=TRUE)
+  ssb.cicvg[["ru"]][,,,,, i] <- ssb(stk0)>=iter(qtl, 1) & ssb(stk0)<=iter(qtl, 2)
+  ssb.ci[["ru"]]["l",,,,, i] <- iter(qtl,1)
+  ssb.ci[["ru"]]["u",,,,, i] <- iter(qtl,2)
+
+  # prediction uncertainty
+  stk <- stk + res00
+  qtl <- quantile(ssb(stk), probs=c(0.025, 0.975), na.rm=TRUE)
+  ssb.cicvg[["pu"]][,,,,, i] <- ssb(stk0)>=iter(qtl, 1) & ssb(stk0)<=iter(qtl, 2)
+  ssb.ci[["pu"]]["l",,,,, i] <- iter(qtl,1)
+  ssb.ci[["pu"]]["u",,,,, i] <- iter(qtl,2)
+
+}
+```
+
+```{r, cicvg, fig.cap="Confidence interval coverage for uncertainty methods: prediction (pu), residual (ru) and estimation (eu)", echo=FALSE, eval=FALSE}
+plot(iterMeans(ssb.cicvg))+geom_hline(yintercept=0.95)
+```
 
 ## Propagate uncertainty into stock assessment
 
