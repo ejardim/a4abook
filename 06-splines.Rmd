@@ -162,7 +162,7 @@ ggplot(data, aes(x, y)) +
 ```
 
 
-The B-spline fit above is constrained at the boundaries, by putting two of the five knots there, resulting in a linear behavior at the ends of the data range. This approach is helpful for data that has an approximately linear trend at the boundaries but exhibits non-linearity in the center.
+The B-spline fit above is constrained at the boundaries, by putting two of the five knots there, resulting in a linear behavior at the ends of the data range. This approach is helpful for data that has an approximately linear trend at the boundaries but exhibits non-linearity in the center. (Hello Eduardo. Long time no see :) I would add vertical dashed lines at the boundary knots too, noting in the figure legend what all the vertical dashed lines are. The image seems to have 4 polynomilas, not 5?). 
 
 The knots in this regression spline are placed by quantiles through the variable space, so in the case where the data are evenly spread across the variable space the knots will be placed evenly.
 
