@@ -1,3 +1,9 @@
+<!--# Foreword
+
+## Alessandra Zampieri, Director, Institute ...
+
+## Steve Cadrin, Professor, University of Massachusets-->
+
 # Introduction
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
@@ -6,6 +12,8 @@ opts_chunk$set(dev='png', dev.args=list(type="cairo"), warning=FALSE)
 library(lattice)
 lattice.options(default.args = list(as.table = TRUE))
 ```
+
+## Book concept and target audience
 
 ## The "Assessment for All" Initiative (a4a)
 
